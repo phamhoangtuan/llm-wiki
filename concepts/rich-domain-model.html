@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rich Domain Model — LLM Wiki</title>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
+    --text: #e4e6f0; --text-dim: #8b8fa8; --accent: #f0b429; --accent-dim: #b8860b;
+    --accent-glow: rgba(240, 180, 41, 0.15); --green: #4ade80; --blue: #60a5fa;
+    --rose: #fb7185; --purple: #a78bfa; --teal: #2dd4bf; --radius: 12px;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .hero { min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 50%, rgba(96,165,250,0.08) 0%, transparent 70%), radial-gradient(ellipse 500px 500px at 70% 30%, rgba(240,180,41,0.06) 0%, transparent 70%), radial-gradient(ellipse 400px 400px at 50% 80%, rgba(167,139,250,0.04) 0%, transparent 70%); z-index: 0; }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.25); color: var(--blue); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--blue); }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 2rem; }
+  .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
+  .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
+  .hero-back { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.5rem; transition: opacity 0.2s; }
+  .hero-back:hover { opacity: 0.8; }
+  .hero-back svg { width: 16px; height: 16px; }
+  section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+  .section-desc { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem; }
+  .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--blue); }
+  .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
+  .content-area h2:first-child { margin-top: 0; }
+  .content-area h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--text); }
+  .content-area p { margin-bottom: 1rem; line-height: 1.7; }
+  .content-area ul, .content-area ol { margin: 0.5rem 0 1rem 1.5rem; }
+  .content-area li { margin-bottom: 0.4rem; line-height: 1.6; }
+  .content-area blockquote { margin: 1rem 0; padding: 1rem 1.25rem; background: var(--surface-2); border-radius: 8px; border-left: 3px solid var(--accent); font-style: italic; color: var(--text-dim); }
+  .content-area pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1rem 0; }
+  .content-area pre code { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }
+  .content-area code { font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }
+  .content-area pre code { background: none; padding: 0; color: var(--text); }
+  .content-area table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .content-area th, .content-area td { border: 1px solid var(--border); padding: 0.6rem 0.75rem; text-align: left; font-size: 0.9rem; }
+  .content-area th { background: var(--surface-2); font-weight: 600; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .content-area td code { font-size: 0.82rem; }
+  .content-area strong { color: var(--text); }
+  .wiki-link { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }
+  .wiki-link:hover { border-color: var(--blue); }
+  .connections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .connection-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+  .connection-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+  .connection-card h4 { font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }
+  .connection-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
+  .connection-type { font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; display: inline-block; }
+  .connection-type.core { background: rgba(240,180,41,0.12); color: var(--accent); }
+  .connection-type.related { background: rgba(167,139,250,0.12); color: var(--purple); }
+  .connection-type.extends { background: rgba(96,165,250,0.12); color: var(--blue); }
+  .connection-type.drives { background: rgba(45,212,191,0.12); color: var(--teal); }
+  footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  @media (max-width: 768px) { section { padding: 2.5rem 1.25rem; } .content-area { padding: 1.5rem; } }
+  @media (prefers-color-scheme: light) {
+    :root { --bg: #f8f9fb; --surface: #ffffff; --surface-2: #f0f1f5; --border: #e2e4ec; --text: #1a1d27; --text-dim: #6b7089; }
+  }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <a href="../index.html" class="hero-back">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Wiki Index
+    </a>
+    <div class="hero-badge">Concept</div>
+    <h1>Rich Domain Model<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">oop</span><span class="tag">architecture</span><span class="tag">domain-driven-design</span></div>
+    <p class="hero-meta">Source: contieri-clean-code-cookbook · Updated: 2026-05-23</p>
+  </div>
+</div>
+<section>
+  <div class="content-area">
+<h2>Summary</h2>
+<p>Rich domain models encapsulate both data and behavior within objects. The alternative — <strong>Anemic Domain Model</strong> — is a data holder with only getters/setters, which is procedural programming in disguise.</p>
+<h2>Anemic Model (Anti-pattern)</h2>
+<pre><code class="language-java">// ❌ Object is just a data bag
+public class Order {
+    private double amount;
+    private String status;
+    public double getAmount() { return amount; }
+    public void setAmount(double amount) { this.amount = amount; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+}
+
+// Logic lives outside → procedural programming
+if (order.getAmount() &gt; 100) {
+    order.setStatus(&quot;PREMIUM&quot;);
+}</code></pre>
+<p><strong>Problems</strong>: Violates encapsulation, logic scattered across codebase, object has no responsibility.</p>
+<h2>Rich Model (Correct)</h2>
+<pre><code class="language-java">// ✅ Object encapsulates data AND behavior
+public class Order {
+    private final Money amount;       // Value Object, immutable
+    private OrderStatus status;
+
+    public void applyPremiumDiscount() {
+        if (amount.isGreaterThan(Money.of(100))) {
+            this.status = OrderStatus.PREMIUM;
+            this.amount = this.amount.multiply(0.9);
+        }
+    }
+}</code></pre>
+<h2>Key Benefits</h2>
+<ul>
+<li>Change localization: when business rules change, fix one place (inside the class)</li>
+<li>Encapsulation: internal state is protected</li>
+<li>Objects have responsibility — they are active behavioral entities</li>
+</ul>
+<h2>Connections</h2>
+<ul>
+<li>Enforced by <a href="bijection.html" class="wiki-link">bijection</a> — anemic objects are a bijection violation</li>
+<li>Supported by <a href="tell-dont-ask.html" class="wiki-link">tell-dont-ask</a> — the behavioral principle</li>
+<li>Related to <a href="immutability.html" class="wiki-link">immutability</a> — rich objects protect essential attributes</li>
+<li>Contrasts with procedural programming — logic inside objects, not outside</li>
+</ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Knowledge Graph</div>
+  <h2 class="section-title">Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="bijection.html">
+      <span class="connection-type extends">Enforced by</span>
+      <h4>Bijection</h4>
+      <p>anemic objects are a bijection violation</p>
+    </a>
+    <a class="connection-card" href="tell-dont-ask.html">
+      <span class="connection-type related">Supported by</span>
+      <h4>Tell, Don't Ask</h4>
+      <p>the behavioral principle</p>
+    </a>
+    <a class="connection-card" href="immutability.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Immutability of Essence</h4>
+      <p>rich objects protect essential attributes</p>
+    </a>
+  </div>
+</section>
+<footer>
+  <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
+  <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>
+</footer>
+<script>
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    document.documentElement.style.setProperty('--bg', '#f8f9fb');
+    document.documentElement.style.setProperty('--surface', '#ffffff');
+    document.documentElement.style.setProperty('--surface-2', '#f0f1f5');
+    document.documentElement.style.setProperty('--border', '#e2e4ec');
+    document.documentElement.style.setProperty('--text', '#1a1d27');
+    document.documentElement.style.setProperty('--text-dim', '#6b7089');
+  }
+</script>
+</body>
+</html>

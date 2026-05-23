@@ -30,3 +30,12 @@
 - New concepts: software-as-simulation, mapper-principles, bijection, rich-domain-model, tell-dont-ask, immutability, fail-fast, essential-accidental-complexity, technological-centaur, readability-vs-performance
 - Updated index.md: +10 concept entries, +1 source entry
 - Total pages: 23
+
+## [2026-05-23] migrate | Markdown → HTML conversion
+
+- Converted all concept and source pages from .md to styled .html
+- Created scripts/convert-to-html.py for automated conversion
+- Updated AGENTS.md to prefer HTML output
+- Updated index.md with clickable HTML links
+- All pages now self-contained, styled, and interlinked
+- Dark/light theme auto-detection on all pages
