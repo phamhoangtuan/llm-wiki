@@ -40,8 +40,11 @@ def load_slug_map():
                 except:
                     pass
 
-def convert_wikilinks(text):
+def convert_wikilinks(text, output_dir):
     """Convert [[wikilinks]] and [[wikilinks|display]] to HTML anchor tags."""
+    is_concept = (output_dir == CONCEPTS_DIR)
+    is_source = (output_dir == SOURCES_DIR)
+
     def replace_link(m):
         full = m.group(1).strip()
         if "|" in full:
@@ -53,27 +56,25 @@ def convert_wikilinks(text):
         target = target.strip()
         display = display.strip()
 
-        # Determine the HTML file path
-        # Check if it's a concepts/ or sources/ reference
         if target.startswith("concepts/"):
             slug = target.replace("concepts/", "")
-            href = f"{slug}.html"
+            href = f"../concepts/{slug}.html" if is_source else f"{slug}.html"
         elif target.startswith("sources/"):
             slug = target.replace("sources/", "")
-            href = f"../sources/{slug}.html"
+            href = f"../sources/{slug}.html" if is_concept else f"{slug}.html"
         elif target.startswith("syntheses/"):
             slug = target.replace("syntheses/", "")
             href = f"../syntheses/{slug}.html"
+        elif is_source:
+            href = f"../concepts/{target}.html"
         else:
-            # Try to find the slug
-            slug = target
-            href = f"{slug}.html"
+            href = f"{target}.html"
 
         return f'<a href="{href}" class="wiki-link">{display}</a>'
 
     return re.sub(r'\[\[(.*?)\]\]', replace_link, text)
 
-def md_to_html(text):
+def md_to_html(text, output_dir):
     """Simple markdown to HTML converter."""
     lines = text.split('\n')
     html_lines = []
@@ -119,7 +120,7 @@ def md_to_html(text):
         if heading_match:
             close_list()
             level = len(heading_match.group(1))
-            content = convert_wikilinks(heading_match.group(2))
+            content = convert_wikilinks(heading_match.group(2), output_dir)
             content = inline_format(content)
             html_lines.append(f'<h{level}>{content}</h{level}>')
             continue
@@ -127,7 +128,7 @@ def md_to_html(text):
         # Blockquotes
         if line.startswith('> '):
             close_list()
-            content = convert_wikilinks(line[2:])
+            content = convert_wikilinks(line[2:], output_dir)
             content = inline_format(content)
             html_lines.append(f'<blockquote>{content}</blockquote>')
             continue
@@ -142,13 +143,13 @@ def md_to_html(text):
             if not html_lines or not html_lines[-1].startswith('<table'):
                 html_lines.append('<table><thead><tr>')
                 for cell in cells:
-                    cell = inline_format(convert_wikilinks(cell))
+                    cell = inline_format(convert_wikilinks(cell, output_dir))
                     html_lines.append(f'<th>{cell}</th>')
                 html_lines.append('</tr></thead><tbody>')
             else:
                 html_lines.append('<tr>')
                 for cell in cells:
-                    cell = inline_format(convert_wikilinks(cell))
+                    cell = inline_format(convert_wikilinks(cell, output_dir))
                     html_lines.append(f'<td>{cell}</td>')
                 html_lines.append('</tr>')
             continue
@@ -164,7 +165,7 @@ def md_to_html(text):
                 list_type = 'ul'
                 html_lines.append('<ul>')
             content = re.sub(r'^[-*]\s+', '', line)
-            content = convert_wikilinks(content)
+            content = convert_wikilinks(content, output_dir)
             content = inline_format(content)
             html_lines.append(f'<li>{content}</li>')
             continue
@@ -176,7 +177,7 @@ def md_to_html(text):
                 list_type = 'ol'
                 html_lines.append('<ol>')
             content = re.sub(r'^\d+\.\s+', '', line)
-            content = convert_wikilinks(content)
+            content = convert_wikilinks(content, output_dir)
             content = inline_format(content)
             html_lines.append(f'<li>{content}</li>')
             continue
@@ -188,7 +189,7 @@ def md_to_html(text):
 
         # Regular paragraph
         close_list()
-        content = convert_wikilinks(line)
+        content = convert_wikilinks(line, output_dir)
         content = inline_format(content)
         html_lines.append(f'<p>{content}</p>')
 
@@ -423,18 +424,16 @@ SOURCE_TEMPLATE = '''<!DOCTYPE html>
 </body>
 </html>'''
 
-def build_connections_section(connections, base_path=""):
+def build_connections_section(connections, output_dir):
     """Build the connections section HTML."""
     if not connections:
         return ""
 
-    # Parse connection lines
     conn_items = []
     for line in connections:
         line = line.strip()
         if not line:
             continue
-        # Extract relationship type and target
         m = re.match(r'^(Core to|Foundation for|Extends|Complements|Used by|Related to|Contrasts with|Informs|Drives|Enforced by|Supported by|Protects|Prevents|Managed by|Reduced by|Relies on|Requires|Depends on|Operationalizes|Enforced|Supports)\s+\[\[([^\]]+)\]\](.*)', line)
         if m:
             rel_type = m.group(1)
@@ -442,7 +441,6 @@ def build_connections_section(connections, base_path=""):
             desc = m.group(3).strip().lstrip('—').strip()
             conn_items.append({"type": rel_type, "target": target, "desc": desc})
         else:
-            # Simple link
             m2 = re.match(r'\[\[([^\]]+)\]\](.*)', line)
             if m2:
                 target = m2.group(1).strip()
@@ -452,16 +450,22 @@ def build_connections_section(connections, base_path=""):
     if not conn_items:
         return ""
 
+    is_concept = (output_dir == CONCEPTS_DIR)
+    is_source = (output_dir == SOURCES_DIR)
+
     cards_html = ""
     for c in conn_items:
         target = c["target"]
-        # Resolve the target to an HTML file
         if target.startswith("concepts/"):
             slug = target.replace("concepts/", "")
-            href = f"{slug}.html"
+            href = f"../concepts/{slug}.html" if is_source else f"{slug}.html"
         elif target.startswith("sources/"):
             slug = target.replace("sources/", "")
-            href = f"../sources/{slug}.html"
+            href = f"../sources/{slug}.html" if is_concept else f"{slug}.html"
+        elif is_source:
+            href = f"../concepts/{target}.html"
+        elif is_concept:
+            href = f"{target}.html"
         else:
             href = f"{target}.html"
 
@@ -515,7 +519,7 @@ def convert_file(md_path, output_dir, template, is_source=False):
     source_name = ", ".join(sources) if sources else "Unknown"
 
     # Convert body
-    body_html = md_to_html(body_md)
+    body_html = md_to_html(body_md, output_dir)
 
     # Connections
     connections = []
@@ -524,7 +528,7 @@ def convert_file(md_path, output_dir, template, is_source=False):
         if line.startswith('- ') and ('[[' in line):
             connections.append(line[2:])
 
-    connections_html = build_connections_section(connections)
+    connections_html = build_connections_section(connections, output_dir)
 
     # Format template
     if is_source:

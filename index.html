@@ -610,7 +610,7 @@
     <div class="layer-card">
       <div class="layer-icon wiki">🧠</div>
       <h3>The Wiki</h3>
-      <p>Structured, interlinked markdown files. Summaries, concept pages, comparisons, syntheses. This is the compiled knowledge.</p>
+      <p>Structured, interlinked HTML pages. Summaries, concept pages, comparisons, syntheses. This is the compiled knowledge.</p>
       <span class="layer-owner llm">🤖 LLM maintains</span>
     </div>
     <div class="layer-card">
@@ -626,10 +626,10 @@
 <section id="structure">
   <div class="section-label">Repository</div>
   <h2 class="section-title">Directory Structure</h2>
-  <p class="section-desc">
-    Everything is a markdown file in a folder. Zero dependencies. Git-native.
-    Click to expand.
-  </p>
+    <p class="section-desc">
+      Everything is an HTML file in a folder. Zero dependencies. Git-native.
+      Click to expand.
+    </p>
   <div class="tree-container">
     <div class="tree" id="treeRoot">
       <div class="tree-item" onclick="toggleTree(this)">
@@ -644,10 +644,10 @@
           <span>AGENTS.md</span>
           <span class="tree-tag llm">schema</span>
         </div>
-        <!-- index.md -->
-        <div class="tree-item" onclick="showTip('index.md','Content catalog. Every page listed with a one-line summary. Updated on every ingest.')">
+        <!-- index.html -->
+        <div class="tree-item" onclick="showTip('index.html','Content catalog. Every page listed with a one-line summary. Updated on every ingest.')">
           <span class="tree-icon file-md">📄</span>
-          <span>index.md</span>
+          <span>index.html</span>
           <span class="tree-tag llm">catalog</span>
         </div>
         <!-- log.md -->
@@ -682,11 +682,11 @@
           <span class="tree-tag rw">llm-writes</span>
         </div>
         <div class="tree-children">
-          <div class="tree-item" onclick="showTip('concepts/wiki-maintenance.md','How this LLM-maintained wiki works — conventions, workflows, and the operational model.')">
-            <span class="tree-icon file-md">📄</span><span>wiki-maintenance.md</span>
+          <div class="tree-item" onclick="showTip('concepts/wiki-maintenance.html','How this LLM-maintained wiki works — conventions, workflows, and the operational model.')">
+            <span class="tree-icon file-md">📄</span><span>wiki-maintenance.html</span>
           </div>
-          <div class="tree-item" onclick="showTip('concepts/knowledge-graph.md','Lightweight knowledge graph via cross-linked markdown. No vector DB needed.')">
-            <span class="tree-icon file-md">📄</span><span>knowledge-graph.md</span>
+          <div class="tree-item" onclick="showTip('concepts/knowledge-graph.html','Lightweight knowledge graph via cross-linked HTML pages. No vector DB needed.')">
+            <span class="tree-icon file-md">📄</span><span>knowledge-graph.html</span>
           </div>
         </div>
         <!-- sources/ -->
@@ -697,8 +697,8 @@
           <span class="tree-tag rw">llm-writes</span>
         </div>
         <div class="tree-children">
-          <div class="tree-item" onclick="showTip('sources/sample-article.md','LLM-generated summary of a source, with backlinks to concept pages.')">
-            <span class="tree-icon file-md">📄</span><span>sample-article.md</span>
+          <div class="tree-item" onclick="showTip('sources/sample-article.html','LLM-generated summary of a source, with backlinks to concept pages.')">
+            <span class="tree-icon file-md">📄</span><span>sample-article.html</span>
           </div>
         </div>
         <!-- syntheses/ -->
@@ -721,8 +721,8 @@
           <span class="tree-tag llm">auto</span>
         </div>
         <div class="tree-children">
-          <div class="tree-item" onclick="showTip('meta/tags.md','Auto-generated tag index from YAML frontmatter.')">
-            <span class="tree-icon file-md">📄</span><span>tags.md</span>
+          <div class="tree-item" onclick="showTip('meta/tags.html','Auto-generated tag index from YAML frontmatter.')">
+            <span class="tree-icon file-md">📄</span><span>tags.html</span>
           </div>
         </div>
         <!-- scripts/ -->
@@ -854,14 +854,94 @@
   <div class="section-label">Pages</div>
   <h2 class="section-title">Page Formats</h2>
   <p class="section-desc">
-    Three page types, each with consistent YAML frontmatter and linking conventions.
+    Three page types, each with consistent YAML frontmatter and linking conventions. Pages are self-contained HTML with dark/light theme.
   </p>
   <div class="example-grid">
     <div class="example-card">
       <div class="example-header">
-        <h4>concepts/cap-theorem.md</h4>
+        <h4>concepts/cap-theorem.html</h4>
         <span class="example-badge concept">concept</span>
       </div>
+      <div class="example-body"><span class="hl">&lt;!-- Hero section --&gt;</span>
+<span class="hl4">&lt;div class="hero"&gt;</span>
+  <span class="hl">&lt;h1&gt;</span><span class="hl4">CAP Theorem</span><span class="hl">&lt;/h1&gt;</span>
+  <span class="hl">&lt;div class="tags"&gt;</span>
+    <span class="hl">&lt;span class="tag"&gt;</span><span class="hl2">distributed-systems</span><span class="hl">&lt;/span&gt;</span>
+    <span class="hl">&lt;span class="tag"&gt;</span><span class="hl2">consistency</span><span class="hl">&lt;/span&gt;</span>
+  <span class="hl">&lt;/div&gt;</span>
+  <span class="hl">&lt;a href="../index.html"&gt;</span><span class="hl4">Back to Index</span><span class="hl">&lt;/a&gt;</span>
+<span class="hl4">&lt;/div&gt;</span>
+
+<span class="hl">&lt;!-- Content --&gt;</span>
+<span class="hl4">&lt;section&gt;</span>
+  <span class="hl">&lt;h2&gt;</span><span class="hl4">Summary</span><span class="hl">&lt;/h2&gt;</span>
+  CAP theorem states a distributed
+  data store can only provide two
+  of three guarantees...
+
+  <span class="hl">&lt;h2&gt;</span><span class="hl4">Connections</span><span class="hl">&lt;/h2&gt;</span>
+  <span class="hl">&lt;a href="pacelc.html"&gt;</span>
+    Contrast with PACELC
+  <span class="hl">&lt;/a&gt;</span>
+<span class="hl4">&lt;/section&gt;</span>
+      </div>
+    </div>
+    <div class="example-card">
+      <div class="example-header">
+        <h4>sources/paper-cap.html</h4>
+        <span class="example-badge source">source</span>
+      </div>
+      <div class="example-body"><span class="hl">&lt;!-- Hero section --&gt;</span>
+<span class="hl4">&lt;div class="hero"&gt;</span>
+  <span class="hl">&lt;h1&gt;</span><span class="hl4">Brewer's CAP Theorem</span><span class="hl">&lt;/h1&gt;</span>
+  <span class="hl">&lt;div class="meta"&gt;</span>
+    <span class="hl2">Eric Brewer</span> · <span class="hl3">2000</span>
+  <span class="hl">&lt;/div&gt;</span>
+  <span class="hl">&lt;div class="tags"&gt;</span>
+    <span class="hl">&lt;span class="tag"&gt;</span><span class="hl2">distributed-systems</span><span class="hl">&lt;/span&gt;</span>
+  <span class="hl">&lt;/div&gt;</span>
+<span class="hl4">&lt;/div&gt;</span>
+
+<span class="hl">&lt;!-- Content --&gt;</span>
+<span class="hl4">&lt;section&gt;</span>
+  <span class="hl">&lt;h2&gt;</span><span class="hl4">Summary</span><span class="hl">&lt;/h2&gt;</span>
+  Brewer originally presented CAP
+  as a conjecture in 2000...
+
+  <span class="hl">&lt;h2&gt;</span><span class="hl4">Connections</span><span class="hl">&lt;/h2&gt;</span>
+  <span class="hl">&lt;a href="../concepts/cap-theorem.html"&gt;</span>
+    CAP Theorem
+  <span class="hl">&lt;/a&gt;</span>
+<span class="hl4">&lt;/section&gt;</span>
+      </div>
+    </div>
+    <div class="example-card">
+      <div class="example-header">
+        <h4>syntheses/cap-vs-pacelc.html</h4>
+        <span class="example-badge synthesis">synthesis</span>
+      </div>
+      <div class="example-body"><span class="hl">&lt;!-- Hero section --&gt;</span>
+<span class="hl4">&lt;div class="hero"&gt;</span>
+  <span class="hl">&lt;h1&gt;</span><span class="hl4">CAP vs PACELC</span><span class="hl">&lt;/h1&gt;</span>
+  <span class="hl">&lt;div class="tags"&gt;</span>
+    <span class="hl">&lt;span class="tag"&gt;</span><span class="hl2">distributed-systems</span><span class="hl">&lt;/span&gt;</span>
+  <span class="hl">&lt;/div&gt;</span>
+<span class="hl4">&lt;/div&gt;</span>
+
+<span class="hl">&lt;!-- Content --&gt;</span>
+<span class="hl4">&lt;section&gt;</span>
+  <span class="hl">&lt;h2&gt;</span><span class="hl4">Core Difference</span><span class="hl">&lt;/h2&gt;</span>
+  <span class="hl">CAP</span> addresses partition
+  tolerance as a binary...
+  <span class="hl">PACELC</span> extends CAP by
+  considering latency...
+
+  <span class="hl">&lt;h2&gt;</span><span class="hl4">Practical Implications</span><span class="hl">&lt;/h2&gt;</span>
+  When choosing a database...
+<span class="hl4">&lt;/section&gt;</span>
+      </div>
+    </div>
+  </div>
       <div class="example-body">---
 <span class="hl">title:</span> <span class="hl4">"CAP Theorem"</span>
 <span class="hl">type:</span> <span class="hl4">concept</span>
@@ -942,6 +1022,8 @@ When choosing a database...
   </div>
 </section>
 
+
+
 <!-- ─── BROWSE WIKI ─── -->
 <section id="browse">
   <div class="section-label">Knowledge Base</div>
@@ -956,93 +1038,93 @@ When choosing a database...
       Concepts <span class="browse-count concept">22 pages</span>
     </div>
     <div class="browse-grid">
-      <a class="browse-card" href="concepts/wiki-maintenance.html">
-        <div class="browse-card-title"><span class="dot concept"></span>Wiki Maintenance</div>
-        <div class="browse-card-desc">How this LLM-maintained wiki works, its conventions and workflows</div>
-      </a>
-      <a class="browse-card" href="concepts/knowledge-graph.html">
-        <div class="browse-card-title"><span class="dot concept"></span>Knowledge Graph</div>
-        <div class="browse-card-desc">Lightweight knowledge graph via cross-linked pages, no vector DB needed</div>
-      </a>
-      <a class="browse-card" href="concepts/software-as-simulation.html">
-        <div class="browse-card-title"><span class="dot concept"></span>Software as Simulation</div>
-        <div class="browse-card-desc">Software is a simulator of reality, not a list of commands</div>
-      </a>
-      <a class="browse-card" href="concepts/mapper-principles.html">
-        <div class="browse-card-title"><span class="dot concept"></span>MAPPER Principles</div>
-        <div class="browse-card-desc">6 principles: Model, Abstract, Partial, Programmable, Explaining, Reality</div>
-      </a>
       <a class="browse-card" href="concepts/bijection.html">
         <div class="browse-card-title"><span class="dot concept"></span>Bijection</div>
-        <div class="browse-card-desc">1-1 mapping between reality and code; the golden design rule</div>
-      </a>
-      <a class="browse-card" href="concepts/rich-domain-model.html">
-        <div class="browse-card-title"><span class="dot concept"></span>Rich Domain Model</div>
-        <div class="browse-card-desc">Objects encapsulate data + behavior; contrast with anemic domain model</div>
-      </a>
-      <a class="browse-card" href="concepts/tell-dont-ask.html">
-        <div class="browse-card-title"><span class="dot concept"></span>Tell, Don't Ask</div>
-        <div class="browse-card-desc">Tell objects to act, don't ask for data to process outside</div>
-      </a>
-      <a class="browse-card" href="concepts/immutability.html">
-        <div class="browse-card-title"><span class="dot concept"></span>Immutability</div>
-        <div class="browse-card-desc">Essential attributes should never change; create new objects instead</div>
-      </a>
-      <a class="browse-card" href="concepts/fail-fast.html">
-        <div class="browse-card-title"><span class="dot concept"></span>Fail Fast</div>
-        <div class="browse-card-desc">Stop execution immediately on error; don't let errors propagate</div>
+        <div class="browse-card-desc"></div>
       </a>
       <a class="browse-card" href="concepts/essential-accidental-complexity.html">
         <div class="browse-card-title"><span class="dot concept"></span>Essential vs Accidental Complexity</div>
-        <div class="browse-card-desc">Fred Brooks' two types: inherent vs design-caused complexity</div>
+        <div class="browse-card-desc"></div>
       </a>
-      <a class="browse-card" href="concepts/technological-centaur.html">
-        <div class="browse-card-title"><span class="dot concept"></span>Technological Centaur</div>
-        <div class="browse-card-desc">Human architect + AI assistant; clean code enables collaboration</div>
+      <a class="browse-card" href="concepts/fail-fast.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Fail Fast</div>
+        <div class="browse-card-desc"></div>
       </a>
-      <a class="browse-card" href="concepts/readability-vs-performance.html">
-        <div class="browse-card-title"><span class="dot concept"></span>Readability vs Performance</div>
-        <div class="browse-card-desc">Write clean code first, optimize bottlenecks after profiling</div>
+      <a class="browse-card" href="concepts/immutability.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Immutability of Essence</div>
+        <div class="browse-card-desc"></div>
       </a>
-      <a class="browse-card" href="concepts/pytest-basics.html">
-        <div class="browse-card-title"><span class="dot concept"></span>pytest Basics</div>
-        <div class="browse-card-desc">Test discovery, naming conventions, plain assert, CLI usage</div>
+      <a class="browse-card" href="concepts/knowledge-graph.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Knowledge Graph</div>
+        <div class="browse-card-desc"></div>
       </a>
-      <a class="browse-card" href="concepts/pytest-fixtures.html">
-        <div class="browse-card-title"><span class="dot concept"></span>pytest Fixtures</div>
-        <div class="browse-card-desc">Reusable setup/teardown via dependency injection, conftest.py, scopes</div>
-      </a>
-      <a class="browse-card" href="concepts/pytest-parametrization.html">
-        <div class="browse-card-title"><span class="dot concept"></span>pytest Parametrization</div>
-        <div class="browse-card-desc">Run one test function with multiple data sets</div>
-      </a>
-      <a class="browse-card" href="concepts/pytest-markers.html">
-        <div class="browse-card-title"><span class="dot concept"></span>pytest Markers</div>
-        <div class="browse-card-desc">Tag tests for selective execution: skip, xfail, custom markers</div>
-      </a>
-      <a class="browse-card" href="concepts/pytest-mocking.html">
-        <div class="browse-card-title"><span class="dot concept"></span>pytest Mocking</div>
-        <div class="browse-card-desc">Isolate external dependencies via monkeypatch, pytest-mock, autospec</div>
-      </a>
-      <a class="browse-card" href="concepts/pytest-plugins.html">
-        <div class="browse-card-title"><span class="dot concept"></span>pytest Plugins</div>
-        <div class="browse-card-desc">Essential plugins: cov, xdist, randomly, mock, asyncio</div>
-      </a>
-      <a class="browse-card" href="concepts/pytest-configuration.html">
-        <div class="browse-card-title"><span class="dot concept"></span>pytest Configuration</div>
-        <div class="browse-card-desc">pyproject.toml and pytest.ini configuration</div>
+      <a class="browse-card" href="concepts/mapper-principles.html">
+        <div class="browse-card-title"><span class="dot concept"></span>MAPPER Principles</div>
+        <div class="browse-card-desc"></div>
       </a>
       <a class="browse-card" href="concepts/pytest-assertions.html">
         <div class="browse-card-title"><span class="dot concept"></span>pytest Assertions</div>
-        <div class="browse-card-desc">Assert rewriting mechanism: rich diffs without framework-specific syntax</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-basics.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Basics</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-configuration.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Configuration</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-fixtures.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Fixtures</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-markers.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Markers</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-mocking.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Mocking</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-parametrization.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Parametrization</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-plugins.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Plugins</div>
+        <div class="browse-card-desc"></div>
       </a>
       <a class="browse-card" href="concepts/pytest-test-results.html">
         <div class="browse-card-title"><span class="dot concept"></span>pytest Test Results</div>
-        <div class="browse-card-desc">Result symbols: PASSED, FAILED, SKIPPED, XFAIL, XPASS, ERROR</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/readability-vs-performance.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Readability vs Performance</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/rich-domain-model.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Rich Domain Model</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/software-as-simulation.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Software as Simulation</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/technological-centaur.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Technological Centaur</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/tell-dont-ask.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Tell, Don&amp;#x27;t Ask</div>
+        <div class="browse-card-desc"></div>
       </a>
       <a class="browse-card" href="concepts/testing-strategy.html">
         <div class="browse-card-title"><span class="dot concept"></span>Testing Strategy</div>
-        <div class="browse-card-desc">API-first testing, test pyramid, 4 pillars of professional testing</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="concepts/wiki-maintenance.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Wiki Maintenance</div>
+        <div class="browse-card-desc"></div>
       </a>
     </div>
   </div>
@@ -1053,17 +1135,17 @@ When choosing a database...
       Sources <span class="browse-count source">3 pages</span>
     </div>
     <div class="browse-grid">
-      <a class="browse-card" href="sources/okken-python-testing-pytest.html">
-        <div class="browse-card-title"><span class="dot source"></span>Python Testing with pytest</div>
-        <div class="browse-card-desc">Notes on Brian Okken's book — 398 pages covering beginner to enterprise pytest</div>
-      </a>
       <a class="browse-card" href="sources/contieri-clean-code-cookbook.html">
-        <div class="browse-card-title"><span class="dot source"></span>Clean Code Cookbook</div>
-        <div class="browse-card-desc">Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection</div>
+        <div class="browse-card-title"><span class="dot source"></span>Clean Code Cookbook (Maximiliano Contieri)</div>
+        <div class="browse-card-desc"></div>
+      </a>
+      <a class="browse-card" href="sources/okken-python-testing-pytest.html">
+        <div class="browse-card-title"><span class="dot source"></span>Python Testing with pytest (Brian Okken)</div>
+        <div class="browse-card-desc"></div>
       </a>
       <a class="browse-card" href="sources/sample-article.html">
         <div class="browse-card-title"><span class="dot source"></span>The LLM Wiki Pattern</div>
-        <div class="browse-card-desc">Karpathy's gist: LLM-maintained persistent wiki instead of RAG</div>
+        <div class="browse-card-desc"></div>
       </a>
     </div>
   </div>
@@ -1095,7 +1177,7 @@ When choosing a database...
       <div class="step-num">3</div>
       <div class="step-content">
         <h4>Open in Obsidian (optional)</h4>
-        <p>The wiki is built with Obsidian markdown — <code>[[wikilinks]]</code>, YAML frontmatter, image attachments. Open the repo folder as an Obsidian vault for the graph view.</p>
+        <p>The wiki is built with HTML pages — <code>[[wikilinks]]</code> in source markdown, YAML frontmatter, image attachments. Open the repo folder as an Obsidian vault for the graph view, or browse directly on GitHub Pages.</p>
       </div>
     </div>
     <div class="step-item">
@@ -1118,7 +1200,7 @@ When choosing a database...
 <!-- ─── FOOTER ─── -->
 <footer>
   <p>Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern. Built for compounding knowledge.</p>
-  <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>
+  <p style="margin-top:0.5rem;font-size:0.78rem;">All HTML. Zero lock-in.</p>
 </footer>
 
 <!-- ─── TOAST ─── -->
