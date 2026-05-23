@@ -7,6 +7,10 @@ Instead of retrieving chunks at query time (RAG), the LLM incrementally builds a
 > *"Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase."*
 > — Andrej Karpathy
 
+<div align="center">
+  <a href="https://phamhoangtuan.github.io/llm-wiki/"><strong>🌐 Live Visualization → phamhoangtuan.github.io/llm-wiki</strong></a>
+</div>
+
 ---
 
 ## Table of Contents
