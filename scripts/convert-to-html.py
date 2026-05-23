@@ -557,6 +557,100 @@ def convert_file(md_path, output_dir, template, is_source=False):
     output_path.write_text(html_content)
     print(f"  → {output_path.name}")
 
+def generate_browse_section():
+    """Generate the Browse Wiki section for index.html from existing HTML files."""
+    concept_cards = []
+    source_cards = []
+
+    for d, card_list in [(CONCEPTS_DIR, concept_cards), (SOURCES_DIR, source_cards)]:
+        if not d.exists():
+            continue
+        for html_file in sorted(d.glob("*.html")):
+            content = html_file.read_text()
+            # Extract title from <h1> tag
+            m = re.search(r'<h1[^>]*>(.*?)<span', content, re.DOTALL)
+            title = m.group(1).strip() if m else html_file.stem
+            # Extract first paragraph after content-area as description
+            m2 = re.search(r'<div class="content-area">\s*<p>(.*?)</p>', content, re.DOTALL)
+            desc = m2.group(1).strip() if m2 else ""
+            # Strip HTML tags from description
+            desc = re.sub(r'<[^>]+>', '', desc)
+            # Truncate if too long
+            if len(desc) > 120:
+                desc = desc[:117] + "..."
+            href = f"{d.name}/{html_file.name}"
+            card_type = "concept" if d == CONCEPTS_DIR else "source"
+            card_list.append((title, desc, href, card_type))
+
+    # Build HTML
+    concept_html = ""
+    for title, desc, href, _ in concept_cards:
+        concept_html += f'''
+      <a class="browse-card" href="{href}">
+        <div class="browse-card-title"><span class="dot concept"></span>{html.escape(title)}</div>
+        <div class="browse-card-desc">{html.escape(desc)}</div>
+      </a>'''
+
+    source_html = ""
+    for title, desc, href, _ in source_cards:
+        source_html += f'''
+      <a class="browse-card" href="{href}">
+        <div class="browse-card-title"><span class="dot source"></span>{html.escape(title)}</div>
+        <div class="browse-card-desc">{html.escape(desc)}</div>
+      </a>'''
+
+    n_concepts = len(concept_cards)
+    n_sources = len(source_cards)
+
+    return f'''
+<!-- ─── BROWSE WIKI ─── -->
+<section id="browse">
+  <div class="section-label">Knowledge Base</div>
+  <h2 class="section-title">Browse the Wiki</h2>
+  <p class="section-desc">
+    {n_concepts + n_sources} pages of compiled knowledge. Click any card to open the styled HTML page.
+  </p>
+
+  <!-- Concepts -->
+  <div class="browse-section">
+    <div class="browse-subtitle">
+      Concepts <span class="browse-count concept">{n_concepts} pages</span>
+    </div>
+    <div class="browse-grid">{concept_html}
+    </div>
+  </div>
+
+  <!-- Sources -->
+  <div class="browse-section">
+    <div class="browse-subtitle">
+      Sources <span class="browse-count source">{n_sources} pages</span>
+    </div>
+    <div class="browse-grid">{source_html}
+    </div>
+  </div>
+</section>
+'''
+
+def update_index_html():
+    """Update the Browse Wiki section in index.html."""
+    index_path = WIKI_ROOT / "index.html"
+    if not index_path.exists():
+        print("  index.html not found, skipping browse section update")
+        return
+
+    content = index_path.read_text()
+    new_section = generate_browse_section()
+
+    pattern = r'<!-- ─── BROWSE WIKI ─── -->.*?<!-- ─── QUICKSTART ─── -->'
+    replacement = new_section.rstrip() + '\n\n<!-- ─── QUICKSTART ─── -->'
+    new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
+
+    if new_content != content:
+        index_path.write_text(new_content)
+        print("  → Updated Browse Wiki section in index.html")
+    else:
+        print("  → Browse section in index.html is up to date")
+
 def main():
     load_slug_map()
     print("Converting concept pages...")
@@ -566,6 +660,9 @@ def main():
     print("\nConverting source pages...")
     for md_file in sorted(SOURCES_DIR.glob("*.md")):
         convert_file(md_file, SOURCES_DIR, SOURCE_TEMPLATE, is_source=True)
+
+    print("\nUpdating Browse Wiki section in index.html...")
+    update_index_html()
 
     print("\nDone!")
 

@@ -407,6 +407,81 @@
   .example-body .hl3 { color: var(--teal); }
   .example-body .hl4 { color: var(--text); }
 
+  /* ─── BROWSE WIKI ─── */
+  .browse-section { margin-bottom: 3rem; }
+  .browse-subtitle {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .browse-count {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 100px;
+  }
+  .browse-count.concept { background: rgba(96,165,250,0.12); color: var(--blue); }
+  .browse-count.source { background: rgba(45,212,191,0.12); color: var(--teal); }
+  .browse-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .browse-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem 1.15rem;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .browse-card:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  }
+  .browse-card-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .browse-card-title .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .browse-card-title .dot.concept { background: var(--blue); }
+  .browse-card-title .dot.source { background: var(--teal); }
+  .browse-card-desc {
+    font-size: 0.78rem;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+  .browse-card-tags {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+    margin-top: 2px;
+  }
+  .browse-card-tag {
+    font-size: 0.62rem;
+    font-weight: 600;
+    padding: 1px 6px;
+    border-radius: 3px;
+    background: var(--surface-2);
+    color: var(--text-dim);
+  }
+
   /* ─── QUICKSTART ─── */
   .steps-list { counter-reset: step; }
   .step-item {
@@ -863,6 +938,133 @@ considering latency...
 
 When choosing a database...
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BROWSE WIKI ─── -->
+<section id="browse">
+  <div class="section-label">Knowledge Base</div>
+  <h2 class="section-title">Browse the Wiki</h2>
+  <p class="section-desc">
+    25 pages of compiled knowledge. Click any card to open the styled HTML page.
+  </p>
+
+  <!-- Concepts -->
+  <div class="browse-section">
+    <div class="browse-subtitle">
+      Concepts <span class="browse-count concept">22 pages</span>
+    </div>
+    <div class="browse-grid">
+      <a class="browse-card" href="concepts/wiki-maintenance.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Wiki Maintenance</div>
+        <div class="browse-card-desc">How this LLM-maintained wiki works, its conventions and workflows</div>
+      </a>
+      <a class="browse-card" href="concepts/knowledge-graph.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Knowledge Graph</div>
+        <div class="browse-card-desc">Lightweight knowledge graph via cross-linked pages, no vector DB needed</div>
+      </a>
+      <a class="browse-card" href="concepts/software-as-simulation.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Software as Simulation</div>
+        <div class="browse-card-desc">Software is a simulator of reality, not a list of commands</div>
+      </a>
+      <a class="browse-card" href="concepts/mapper-principles.html">
+        <div class="browse-card-title"><span class="dot concept"></span>MAPPER Principles</div>
+        <div class="browse-card-desc">6 principles: Model, Abstract, Partial, Programmable, Explaining, Reality</div>
+      </a>
+      <a class="browse-card" href="concepts/bijection.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Bijection</div>
+        <div class="browse-card-desc">1-1 mapping between reality and code; the golden design rule</div>
+      </a>
+      <a class="browse-card" href="concepts/rich-domain-model.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Rich Domain Model</div>
+        <div class="browse-card-desc">Objects encapsulate data + behavior; contrast with anemic domain model</div>
+      </a>
+      <a class="browse-card" href="concepts/tell-dont-ask.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Tell, Don't Ask</div>
+        <div class="browse-card-desc">Tell objects to act, don't ask for data to process outside</div>
+      </a>
+      <a class="browse-card" href="concepts/immutability.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Immutability</div>
+        <div class="browse-card-desc">Essential attributes should never change; create new objects instead</div>
+      </a>
+      <a class="browse-card" href="concepts/fail-fast.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Fail Fast</div>
+        <div class="browse-card-desc">Stop execution immediately on error; don't let errors propagate</div>
+      </a>
+      <a class="browse-card" href="concepts/essential-accidental-complexity.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Essential vs Accidental Complexity</div>
+        <div class="browse-card-desc">Fred Brooks' two types: inherent vs design-caused complexity</div>
+      </a>
+      <a class="browse-card" href="concepts/technological-centaur.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Technological Centaur</div>
+        <div class="browse-card-desc">Human architect + AI assistant; clean code enables collaboration</div>
+      </a>
+      <a class="browse-card" href="concepts/readability-vs-performance.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Readability vs Performance</div>
+        <div class="browse-card-desc">Write clean code first, optimize bottlenecks after profiling</div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-basics.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Basics</div>
+        <div class="browse-card-desc">Test discovery, naming conventions, plain assert, CLI usage</div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-fixtures.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Fixtures</div>
+        <div class="browse-card-desc">Reusable setup/teardown via dependency injection, conftest.py, scopes</div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-parametrization.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Parametrization</div>
+        <div class="browse-card-desc">Run one test function with multiple data sets</div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-markers.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Markers</div>
+        <div class="browse-card-desc">Tag tests for selective execution: skip, xfail, custom markers</div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-mocking.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Mocking</div>
+        <div class="browse-card-desc">Isolate external dependencies via monkeypatch, pytest-mock, autospec</div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-plugins.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Plugins</div>
+        <div class="browse-card-desc">Essential plugins: cov, xdist, randomly, mock, asyncio</div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-configuration.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Configuration</div>
+        <div class="browse-card-desc">pyproject.toml and pytest.ini configuration</div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-assertions.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Assertions</div>
+        <div class="browse-card-desc">Assert rewriting mechanism: rich diffs without framework-specific syntax</div>
+      </a>
+      <a class="browse-card" href="concepts/pytest-test-results.html">
+        <div class="browse-card-title"><span class="dot concept"></span>pytest Test Results</div>
+        <div class="browse-card-desc">Result symbols: PASSED, FAILED, SKIPPED, XFAIL, XPASS, ERROR</div>
+      </a>
+      <a class="browse-card" href="concepts/testing-strategy.html">
+        <div class="browse-card-title"><span class="dot concept"></span>Testing Strategy</div>
+        <div class="browse-card-desc">API-first testing, test pyramid, 4 pillars of professional testing</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Sources -->
+  <div class="browse-section">
+    <div class="browse-subtitle">
+      Sources <span class="browse-count source">3 pages</span>
+    </div>
+    <div class="browse-grid">
+      <a class="browse-card" href="sources/okken-python-testing-pytest.html">
+        <div class="browse-card-title"><span class="dot source"></span>Python Testing with pytest</div>
+        <div class="browse-card-desc">Notes on Brian Okken's book — 398 pages covering beginner to enterprise pytest</div>
+      </a>
+      <a class="browse-card" href="sources/contieri-clean-code-cookbook.html">
+        <div class="browse-card-title"><span class="dot source"></span>Clean Code Cookbook</div>
+        <div class="browse-card-desc">Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection</div>
+      </a>
+      <a class="browse-card" href="sources/sample-article.html">
+        <div class="browse-card-title"><span class="dot source"></span>The LLM Wiki Pattern</div>
+        <div class="browse-card-desc">Karpathy's gist: LLM-maintained persistent wiki instead of RAG</div>
+      </a>
     </div>
   </div>
 </section>
