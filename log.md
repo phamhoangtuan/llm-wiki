@@ -21,3 +21,12 @@
 - New concepts: pytest-basics, pytest-fixtures, pytest-parametrization, pytest-markers, pytest-mocking, pytest-plugins, pytest-configuration, pytest-assertions, pytest-test-results, testing-strategy
 - Updated index.md: +12 concept entries, +1 source entry
 - Total pages: 13
+
+## [2026-05-23] ingest | Clean Code Cookbook (Maximiliano Contieri)
+
+- Source: Notion notes on "Clean Code Cookbook" by Maximiliano Contieri
+- Copied to: raw/notes/contieri-clean-code-cookbook.md
+- Created sources/contieri-clean-code-cookbook.md
+- New concepts: software-as-simulation, mapper-principles, bijection, rich-domain-model, tell-dont-ask, immutability, fail-fast, essential-accidental-complexity, technological-centaur, readability-vs-performance
+- Updated index.md: +10 concept entries, +1 source entry
+- Total pages: 23
