@@ -1,0 +1,10 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Obsidian per-machine config (keep if you sync .obsidian/)
+.obsidian/
+
+# Temp
+*.tmp
+*.swp
