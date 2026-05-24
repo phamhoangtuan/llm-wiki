@@ -98,49 +98,43 @@
 <th>Meaning</th>
 <th>Example</th>
 </tr></thead><tbody>
-<table><thead><tr>
-<th><strong>M</strong></th>
-<th>Model</th>
-<th>Code is a "theory" about how the world works</th>
-<th><code>BankAccount</code> class simulates a real bank account</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><strong>A</strong></th>
-<th>Abstract</th>
-<th>Focus on contracts & behavior, not implementation details</th>
-<th><code>PaymentProcessor</code> interface with <code>process()</code> — doesn't matter if it's Stripe or PayPal</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><strong>P</strong></th>
-<th>Partial</th>
-<th>Only simulate what's relevant — not the entire reality</th>
-<th><code>User</code> class needs email and name, not shoe size (unless it's a shoe store)</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><strong>P</strong></th>
-<th>Programmable</th>
-<th>The model must be executable to observe its evolution and response</th>
-<th>Code must compile and run, not just be theory on paper</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><strong>E</strong></th>
-<th>Explaining</th>
-<th>Code should reveal "why" not just "what" — declarative naming</th>
-<th><code>isPremiumUser</code> is clearer than <code>flag1</code></th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><strong>R</strong></th>
-<th>Reality</th>
-<th>The observable world is the ultimate source of truth</th>
-<th>Units must be explicit: Newtons vs. pound-force — never ambiguous</th>
-</tr></thead><tbody>
-<h2>Connections</h2>
-<ul>
-<li>Operationalizes <a href="software-as-simulation.html" class="wiki-link">software-as-simulation</a> — turns philosophy into actionable guidelines</li>
-<li>Enforced by <a href="bijection.html" class="wiki-link">bijection</a> — the 1-1 mapping is the concrete implementation of Model + Reality</li>
-<li>Supports <a href="rich-domain-model.html" class="wiki-link">rich-domain-model</a> — Abstract + Explaining encourage behavioral objects</li>
-<li>Related to <a href="tell-dont-ask.html" class="wiki-link">tell-dont-ask</a> — Explaining principle guides naming and behavior revelation</li>
-</ul></tbody></table>
+<tr>
+<td><strong>M</strong></td>
+<td>Model</td>
+<td>Code is a "theory" about how the world works</td>
+<td><code>BankAccount</code> class simulates a real bank account</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td>Abstract</td>
+<td>Focus on contracts & behavior, not implementation details</td>
+<td><code>PaymentProcessor</code> interface with <code>process()</code> — doesn't matter if it's Stripe or PayPal</td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td>Partial</td>
+<td>Only simulate what's relevant — not the entire reality</td>
+<td><code>User</code> class needs email and name, not shoe size (unless it's a shoe store)</td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td>Programmable</td>
+<td>The model must be executable to observe its evolution and response</td>
+<td>Code must compile and run, not just be theory on paper</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>Explaining</td>
+<td>Code should reveal "why" not just "what" — declarative naming</td>
+<td><code>isPremiumUser</code> is clearer than <code>flag1</code></td>
+</tr>
+<tr>
+<td><strong>R</strong></td>
+<td>Reality</td>
+<td>The observable world is the ultimate source of truth</td>
+<td>Units must be explicit: Newtons vs. pound-force — never ambiguous</td>
+</tr>
+</tbody></table>
   </div>
 </section>
 

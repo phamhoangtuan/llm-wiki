@@ -93,7 +93,7 @@
 <p>Fixtures are pytest's killer feature — reusable setup/teardown logic via dependency injection. They replace <code>setUp()</code>/<code>tearDown()</code> from unittest with a more flexible, composable system.</p>
 <h2>How It Works</h2>
 <p>A fixture is any function decorated with <code>@pytest.fixture</code>. Tests receive fixtures as function arguments — dependencies are declared explicitly.</p>
-<pre><code class="language-python">@pytest.fixture
+<pre><code>@pytest.fixture
 def db_connection():
     conn = create_connection()
     yield conn
@@ -108,35 +108,27 @@ def test_query(db_connection):
 <th>Lifecycle</th>
 <th>Use Case</th>
 </tr></thead><tbody>
-<table><thead><tr>
-<th><code>function</code> (default)</th>
-<th>Runs for each test</th>
-<th>Isolated test data</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>class</code></th>
-<th>Once per test class</th>
-<th>Shared class setup</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>module</code></th>
-<th>Once per module</th>
-<th>Module-level resources</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>session</code></th>
-<th>Once per entire run</th>
-<th>Database connections, config</th>
-</tr></thead><tbody>
-<h2>conftest.py</h2>
-<p>A special file automatically loaded by pytest. Fixtures defined here are available to all tests in the same directory and subdirectories — no imports needed.</p>
-<h2>Connections</h2>
-<ul>
-<li>Extends <a href="pytest-basics.html" class="wiki-link">pytest-basics</a> — the next level after plain tests</li>
-<li>Complements <a href="pytest-parametrization.html" class="wiki-link">pytest-parametrization</a> — fixtures can be parametrized</li>
-<li>Used by <a href="pytest-mocking.html" class="wiki-link">pytest-mocking</a> — mock objects often provided as fixtures</li>
-<li>Related to <a href="testing-strategy.html" class="wiki-link">testing-strategy</a> — fixtures enable clean API layer testing</li>
-</ul></tbody></table>
+<tr>
+<td><code>function</code> (default)</td>
+<td>Runs for each test</td>
+<td>Isolated test data</td>
+</tr>
+<tr>
+<td><code>class</code></td>
+<td>Once per test class</td>
+<td>Shared class setup</td>
+</tr>
+<tr>
+<td><code>module</code></td>
+<td>Once per module</td>
+<td>Module-level resources</td>
+</tr>
+<tr>
+<td><code>session</code></td>
+<td>Once per entire run</td>
+<td>Database connections, config</td>
+</tr>
+</tbody></table>
   </div>
 </section>
 

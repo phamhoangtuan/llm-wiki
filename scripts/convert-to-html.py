@@ -4,7 +4,6 @@
 import re
 import yaml
 import html
-import sys
 from pathlib import Path
 
 WIKI_ROOT = Path(__file__).parent.parent
@@ -66,9 +65,19 @@ def convert_wikilinks(text, output_dir):
             slug = target.replace("syntheses/", "")
             href = f"../syntheses/{slug}.html"
         elif is_source:
-            href = f"../concepts/{target}.html"
+            entry = SLUG_MAP.get(target)
+            if entry and entry["type"] == "source":
+                href = f"{target}.html"
+            else:
+                href = f"../concepts/{target}.html"
         else:
-            href = f"{target}.html"
+            entry = SLUG_MAP.get(target)
+            if entry and entry["type"] == "source":
+                href = f"../sources/{target}.html"
+            elif entry and entry["type"] == "synthesis":
+                href = f"../syntheses/{target}.html"
+            else:
+                href = f"{target}.html"
 
         return f'<a href="{href}" class="wiki-link">{display}</a>'
 
@@ -83,6 +92,7 @@ def md_to_html(text, output_dir):
     code_content = []
     in_list = False
     list_type = None
+    in_table = False
 
     def close_list():
         nonlocal in_list, list_type
@@ -140,7 +150,8 @@ def md_to_html(text, output_dir):
             # Check if it's a separator line
             if all(set(c.strip()) <= set('-|: ') for c in cells):
                 continue
-            if not html_lines or not html_lines[-1].startswith('<table'):
+            if not in_table:
+                in_table = True
                 html_lines.append('<table><thead><tr>')
                 for cell in cells:
                     cell = inline_format(convert_wikilinks(cell, output_dir))
@@ -155,8 +166,9 @@ def md_to_html(text, output_dir):
             continue
 
         # Close table if we were in one
-        if html_lines and html_lines[-1] == '</tbody></table>' or (html_lines and '</tbody>' in html_lines[-1] and '<table' not in html_lines[-1]):
-            pass  # Already closed
+        if in_table:
+            in_table = False
+            html_lines.append('</tbody></table>')
 
         # Unordered lists
         if re.match(r'^[-*]\s+', line):
@@ -182,6 +194,11 @@ def md_to_html(text, output_dir):
             html_lines.append(f'<li>{content}</li>')
             continue
 
+        # Horizontal rule — stop body rendering (connections follow)
+        if line.strip() == '---' and not in_code_block:
+            close_list()
+            break
+
         # Empty line
         if not line.strip():
             close_list()
@@ -205,6 +222,8 @@ def md_to_html(text, output_dir):
 
 def inline_format(text):
     """Apply inline markdown formatting."""
+    # Markdown links [text](url)
+    text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank" rel="noopener">\1</a>', text)
     # Bold
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
     # Italic
@@ -441,7 +460,7 @@ def build_connections_section(connections, output_dir):
             desc = m.group(3).strip().lstrip('—').strip()
             conn_items.append({"type": rel_type, "target": target, "desc": desc})
         else:
-            m2 = re.match(r'\[\[([^\]]+)\]\](.*)', line)
+            m2 = re.match(r'.*?\[\[([^\]]+)\]\](.*)', line)
             if m2:
                 target = m2.group(1).strip()
                 desc = m2.group(2).strip().lstrip('—').strip()
@@ -521,9 +540,11 @@ def convert_file(md_path, output_dir, template, is_source=False):
     # Convert body
     body_html = md_to_html(body_md, output_dir)
 
-    # Connections
+    # Connections — only scan lines after --- separator
     connections = []
-    for line in body_md.split('\n'):
+    parts = body_md.split('\n---\n')
+    after_separator = parts[-1] if len(parts) > 1 else ""
+    for line in after_separator.split('\n'):
         line = line.strip()
         if line.startswith('- ') and ('[[' in line):
             connections.append(line[2:])

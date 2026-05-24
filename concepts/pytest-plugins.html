@@ -97,48 +97,32 @@
 <th>Purpose</th>
 <th>Usage</th>
 </tr></thead><tbody>
-<table><thead><tr>
-<th><code>pytest-cov</code></th>
-<th>Coverage reporting</th>
-<th><code>pytest --cov=src</code></th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>pytest-xdist</code></th>
-<th>Parallel execution</th>
-<th><code>pytest -n auto</code></th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>pytest-randomly</code></th>
-<th>Randomize test order</th>
-<th>Detects hidden state dependencies</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>pytest-mock</code></th>
-<th>Cleaner mocking API</th>
-<th><code>mocker</code> fixture</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>pytest-asyncio</code></th>
-<th>Async test support</th>
-<th><code>@pytest.mark.asyncio</code></th>
-</tr></thead><tbody>
-<h2>CI/CD Integration</h2>
-<pre><code class="language-bash"># Full suite with coverage
-pytest --cov=src --cov-report=term-missing
-
-# Parallel execution
-pytest -n auto --cov=src
-
-# Multi-version with tox
-tox</code></pre>
-<h2>Custom Plugins</h2>
-<p><code>conftest.py</code> logic can be packaged as an installable plugin for organization-wide reuse.</p>
-<h2>Connections</h2>
-<ul>
-<li>Extends <a href="pytest-basics.html" class="wiki-link">pytest-basics</a> — plugins add capabilities to the core framework</li>
-<li>Related to <a href="pytest-configuration.html" class="wiki-link">pytest-configuration</a> — plugins are configured in <code>pyproject.toml</code></li>
-<li>Related to <a href="testing-strategy.html" class="wiki-link">testing-strategy</a> — coverage and parallel execution enable CI quality gates</li>
-</ul></tbody></table>
+<tr>
+<td><code>pytest-cov</code></td>
+<td>Coverage reporting</td>
+<td><code>pytest --cov=src</code></td>
+</tr>
+<tr>
+<td><code>pytest-xdist</code></td>
+<td>Parallel execution</td>
+<td><code>pytest -n auto</code></td>
+</tr>
+<tr>
+<td><code>pytest-randomly</code></td>
+<td>Randomize test order</td>
+<td>Detects hidden state dependencies</td>
+</tr>
+<tr>
+<td><code>pytest-mock</code></td>
+<td>Cleaner mocking API</td>
+<td><code>mocker</code> fixture</td>
+</tr>
+<tr>
+<td><code>pytest-asyncio</code></td>
+<td>Async test support</td>
+<td><code>@pytest.mark.asyncio</code></td>
+</tr>
+</tbody></table>
   </div>
 </section>
 

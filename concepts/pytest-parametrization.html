@@ -92,7 +92,7 @@
 <h2>Summary</h2>
 <p>Parametrization allows running the same test function with multiple input data sets, eliminating copy-paste test methods.</p>
 <h2>How It Works</h2>
-<pre><code class="language-python">@pytest.mark.parametrize(&quot;input,expected&quot;, [
+<pre><code>@pytest.mark.parametrize(&quot;input,expected&quot;, [
     (2, 4),
     (3, 9),
     (-1, 1),
@@ -101,18 +101,12 @@ def test_square(input, expected):
     assert input ** 2 == expected</code></pre>
 <p>Each tuple generates a separate test case. pytest reports each individually in the output.</p>
 <h2>Multiple Parameters</h2>
-<pre><code class="language-python">@pytest.mark.parametrize(&quot;name,age,expected&quot;, [
+<pre><code>@pytest.mark.parametrize(&quot;name,age,expected&quot;, [
     (&quot;Alice&quot;, 30, True),
     (&quot;Bob&quot;, 17, False),
 ])
 def test_is_adult(name, age, expected):
     assert is_adult(age) == expected</code></pre>
-<h2>Connections</h2>
-<ul>
-<li>Builds on <a href="pytest-basics.html" class="wiki-link">pytest-basics</a> — extends plain test functions</li>
-<li>Complements <a href="pytest-fixtures.html" class="wiki-link">pytest-fixtures</a> — indirect parametrization offloads setup to fixtures</li>
-<li>Related to <a href="testing-strategy.html" class="wiki-link">testing-strategy</a> — enables thorough API testing with minimal code</li>
-</ul>
   </div>
 </section>
 

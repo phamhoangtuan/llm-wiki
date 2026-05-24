@@ -96,30 +96,19 @@
 <th>Old Way (Ask)</th>
 <th>New Way (Tell)</th>
 </tr></thead><tbody>
-<table><thead><tr>
-<th><code>if (order.getAmount() > 100) { order.setStatus("PREMIUM"); }</code></th>
-<th><code>order.applyPremiumDiscount();</code></th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th>Logic outside object</th>
-<th>Logic inside object</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th>Ripple effect on requirement changes</th>
-<th>Change localized in object</th>
-</tr></thead><tbody>
-<h2>Why It Matters</h2>
-<p>When business rules change:</p>
-<ul>
-<li><strong>Ask approach</strong>: Find and fix logic scattered across the entire codebase</li>
-<li><strong>Tell approach</strong>: Fix one method inside the class</li>
-</ul>
-<h2>Connections</h2>
-<ul>
-<li>Enforces <a href="rich-domain-model.html" class="wiki-link">rich-domain-model</a> — objects must have behavior, not just data</li>
-<li>Protects <a href="bijection.html" class="wiki-link">bijection</a> — the object represents the real entity's behavior</li>
-<li>Related to <a href="immutability.html" class="wiki-link">immutability</a> — telling an object to act is safer than mutating its state from outside</li>
-</ul></tbody></table>
+<tr>
+<td><code>if (order.getAmount() > 100) { order.setStatus("PREMIUM"); }</code></td>
+<td><code>order.applyPremiumDiscount();</code></td>
+</tr>
+<tr>
+<td>Logic outside object</td>
+<td>Logic inside object</td>
+</tr>
+<tr>
+<td>Ripple effect on requirement changes</td>
+<td>Change localized in object</td>
+</tr>
+</tbody></table>
   </div>
 </section>
 

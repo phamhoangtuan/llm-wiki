@@ -96,62 +96,48 @@
 <th>Pillar</th>
 <th>Description</th>
 </tr></thead><tbody>
-<table><thead><tr>
-<th><strong>Simple</strong></th>
-<th>Tests easy to write and read — serve as living documentation</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><strong>Rapid</strong></th>
-<th>Start in seconds — minimize friction in dev cycle</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><strong>Effective</strong></th>
-<th>Tight feedback loop — actionable failure info, reduce MTTR</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><strong>Scalable</strong></th>
-<th>From single script to multi-layer enterprise system</th>
-</tr></thead><tbody>
-<h2>API Layer: The Sweet Spot</h2>
-<table><thead><tr>
-<th>Layer</th>
-<th>Recommendation</th>
-<th>Why</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th>UI/CLI Tests</th>
-<th>❌ Avoid</th>
-<th>Brittle, slow, break on UI changes</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th>API Tests</th>
-<th>✅ 70-80% effort</th>
-<th>Validate core logic, stable interface, fast</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th>DB Tests</th>
-<th>❌ Avoid</th>
-<th>Implementation-specific, hard to maintain</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th>Integration/E2E</th>
-<th>✅ 20-30% effort</th>
-<th>Validate real-world flows</th>
-</tr></thead><tbody>
-<h2>Key Principles</h2>
-<ul>
-<li>Test the API layer first — it validates core logic without UI brittleness</li>
-<li>Use fixtures for setup, not copy-paste in each test</li>
-<li>Mock external dependencies with <code>autospec=True</code> to prevent stale interface bugs</li>
-<li>Integrate with CI: <code>tox</code> for multi-version, <code>pytest-cov</code> for coverage, GitHub Actions for automation</li>
-</ul>
-<h2>Connections</h2>
-<ul>
-<li>Informs <a href="pytest-basics.html" class="wiki-link">pytest-basics</a> — strategy guides what to test first</li>
-<li>Drives <a href="pytest-fixtures.html" class="wiki-link">pytest-fixtures</a> usage — fixtures enable clean API testing</li>
-<li>Drives <a href="pytest-mocking.html" class="wiki-link">pytest-mocking</a> usage — mocking isolates API from external deps</li>
-<li>Drives <a href="pytest-plugins.html" class="wiki-link">pytest-plugins</a> usage — coverage and parallel execution for CI</li>
-</ul></tbody></table>
+<tr>
+<td><strong>Simple</strong></td>
+<td>Tests easy to write and read — serve as living documentation</td>
+</tr>
+<tr>
+<td><strong>Rapid</strong></td>
+<td>Start in seconds — minimize friction in dev cycle</td>
+</tr>
+<tr>
+<td><strong>Effective</strong></td>
+<td>Tight feedback loop — actionable failure info, reduce MTTR</td>
+</tr>
+<tr>
+<td><strong>Scalable</strong></td>
+<td>From single script to multi-layer enterprise system</td>
+</tr>
+<tr>
+<td>Layer</td>
+<td>Recommendation</td>
+<td>Why</td>
+</tr>
+<tr>
+<td>UI/CLI Tests</td>
+<td>❌ Avoid</td>
+<td>Brittle, slow, break on UI changes</td>
+</tr>
+<tr>
+<td>API Tests</td>
+<td>✅ 70-80% effort</td>
+<td>Validate core logic, stable interface, fast</td>
+</tr>
+<tr>
+<td>DB Tests</td>
+<td>❌ Avoid</td>
+<td>Implementation-specific, hard to maintain</td>
+</tr>
+<tr>
+<td>Integration/E2E</td>
+<td>✅ 20-30% effort</td>
+<td>Validate real-world flows</td>
+</tr>
+</tbody></table>
   </div>
 </section>
 

@@ -98,50 +98,43 @@
 <th>Meaning</th>
 <th>When</th>
 </tr></thead><tbody>
-<table><thead><tr>
-<th><code>.</code></th>
-<th>PASSED</th>
-<th>Test succeeded</th>
-<th>Logic correct, assertion passes</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>F</code></th>
-<th>FAILED</th>
-<th>AssertionError</th>
-<th>Logic wrong, data mismatch</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>s</code></th>
-<th>SKIPPED</th>
-<th>Intentionally skipped</th>
-<th><code>@pytest.mark.skip()</code> or <code>skipif</code></th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>x</code></th>
-<th>XFAIL</th>
-<th>Expected failure</th>
-<th><code>@pytest.mark.xfail()</code> for known issues</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>X</code></th>
-<th>XPASS</th>
-<th>Unexpected pass</th>
-<th>Marked xfail but passed — review needed</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>E</code></th>
-<th>ERROR</th>
-<th>Exception outside test</th>
-<th>Fixture/hook failure — infrastructure problem</th>
-</tr></thead><tbody>
-<h2>Verbose Output</h2>
-<p><code>pytest -v</code> shows each test name with its result, plus detailed diffs on failure.</p>
-<h2>Connections</h2>
-<ul>
-<li>Related to <a href="pytest-basics.html" class="wiki-link">pytest-basics</a> — understanding output is essential for reading test results</li>
-<li>Related to <a href="pytest-markers.html" class="wiki-link">pytest-markers</a> — skip and xfail are marker-driven results</li>
-<li>Related to <a href="pytest-assertions.html" class="wiki-link">pytest-assertions</a> — assertion failures produce FAILED results with rich diffs</li>
-</ul></tbody></table>
+<tr>
+<td><code>.</code></td>
+<td>PASSED</td>
+<td>Test succeeded</td>
+<td>Logic correct, assertion passes</td>
+</tr>
+<tr>
+<td><code>F</code></td>
+<td>FAILED</td>
+<td>AssertionError</td>
+<td>Logic wrong, data mismatch</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>SKIPPED</td>
+<td>Intentionally skipped</td>
+<td><code>@pytest.mark.skip()</code> or <code>skipif</code></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>XFAIL</td>
+<td>Expected failure</td>
+<td><code>@pytest.mark.xfail()</code> for known issues</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>XPASS</td>
+<td>Unexpected pass</td>
+<td>Marked xfail but passed — review needed</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>ERROR</td>
+<td>Exception outside test</td>
+<td>Fixture/hook failure — infrastructure problem</td>
+</tr>
+</tbody></table>
   </div>
 </section>
 

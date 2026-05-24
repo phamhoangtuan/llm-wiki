@@ -100,18 +100,11 @@
 <li><strong>Clear contracts</strong>: Invalid input is rejected at the boundary</li>
 </ul>
 <h2>Anti-pattern: Silent Failure</h2>
-<pre><code class="language-java">// ❌ Auto-corrects invalid data → hides the error
+<pre><code>// ❌ Auto-corrects invalid data → hides the error
 LocalDate date = LocalDate.of(2024, 11, 31); // Silently becomes Dec 1</code></pre>
 <h2>Correct: Fail Fast</h2>
-<pre><code class="language-java">// ✅ Throws exception immediately
+<pre><code>// ✅ Throws exception immediately
 LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
-<h2>Connections</h2>
-<ul>
-<li>Enforced by <a href="immutability.html" class="wiki-link">immutability</a> — immutable objects fail fast on invalid construction</li>
-<li>Prevents <a href="bijection.html" class="wiki-link">bijection</a> violations — implicit transformations hide errors</li>
-<li>Related to <a href="rich-domain-model.html" class="wiki-link">rich-domain-model</a> — rich objects validate their own state</li>
-<li>Related to <a href="essential-accidental-complexity.html" class="wiki-link">essential-accidental-complexity</a> — silent failures add accidental complexity</li>
-</ul>
   </div>
 </section>
 

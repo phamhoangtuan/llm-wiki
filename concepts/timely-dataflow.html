@@ -23,9 +23,9 @@
   .hero-content { position: relative; z-index: 1; max-width: 720px; }
   .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.25); color: var(--blue); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
   .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }
-  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
   .hero h1 span { color: var(--blue); }
-  .hero-sub { font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 1.5rem; }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 2rem; }
   .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
   .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
@@ -35,6 +35,7 @@
   section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
   .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
   .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+  .section-desc { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem; }
   .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--blue); }
   .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
   .content-area h2:first-child { margin-top: 0; }
@@ -90,31 +91,38 @@
   <div class="content-area">
 <h2>Summary</h2>
 <p><strong>Timely Dataflow (TD)</strong> is a general computational model introduced in the <strong>Naiad</strong> paper (2013). It provides a low-level substrate where every message in the system carries a logical timestamp, and nodes can request notifications when a timestamp is "complete" — meaning no further messages for that timestamp can arrive. This mechanism enables correct, efficient incremental computation in distributed systems.</p>
-
 <h2>Key Ideas</h2>
 <ul>
-  <li><strong>Timestamped messages</strong>: Every piece of data flowing through the system is tagged with a logical timestamp, allowing the system to reason about ordering and completeness.</li>
-  <li><strong>Notification mechanism</strong>: A node tells the system "notify me when timestamp <em>t</em> is complete." The system tracks across the entire distributed cluster to ensure no more messages for <em>t</em> will arrive.</li>
-  <li><strong>Three capabilities in one framework</strong>: Before Naiad, applications needed separate systems for batch (high throughput), stream (low latency), and iterative computation. TD provides all three.</li>
+<li><strong>Timestamped messages</strong>: Every piece of data flowing through the system is tagged with a logical timestamp, allowing the system to reason about ordering and completeness.</li>
+<li><strong>Notification mechanism</strong>: A node tells the system "notify me when timestamp <em>t</em> is complete." The system tracks across the entire distributed cluster to ensure no more messages for <em>t</em> will arrive.</li>
+<li><strong>Three capabilities in one framework</strong>: Before Naiad, applications needed separate systems for batch (high throughput), stream (low latency), and iterative computation. TD provides all three.</li>
 </ul>
-
 <h2>The Four API Methods</h2>
-<table>
-  <thead><tr><th>Method</th><th>Purpose</th></tr></thead>
-  <tbody>
-    <tr><td><code>send(message)</code></td><td>Send a timestamped message to another node</td></tr>
-    <tr><td><code>receive(message)</code></td><td>Receive a timestamped message</td></tr>
-    <tr><td><code>notify_at(t)</code></td><td>Request notification when timestamp <em>t</em> is complete</td></tr>
-    <tr><td><code>notification(t)</code></td><td>Receive the notification — guaranteed no more messages for <em>t</em></td></tr>
-  </tbody>
-</table>
-
+<table><thead><tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><code>send(message)</code></td>
+<td>Send a timestamped message to another node</td>
+</tr>
+<tr>
+<td><code>receive(message)</code></td>
+<td>Receive a timestamped message</td>
+</tr>
+<tr>
+<td><code>notify_at(t)</code></td>
+<td>Request notification when timestamp <em>t</em> is complete</td>
+</tr>
+<tr>
+<td><code>notification(t)</code></td>
+<td>Receive the notification — guaranteed no more messages for <em>t</em></td>
+</tr>
+</tbody></table>
 <h2>Relevance to Materialized Views</h2>
 <p>Most SQL MVs don't have loops, so TD's iterative computation support isn't the primary benefit. What matters for MVs is the <strong>notification guarantee</strong>: it tells the system when a given version of a view is complete and safe to emit. This is the correctness foundation that <a href="differential-dataflow.html" class="wiki-link">Differential Dataflow</a> builds on.</p>
-
 <h2>Historical Note</h2>
 <p>TD was designed for deeply nested iterative algorithms (e.g., graph processing). Its generality makes it a substrate for higher-level systems, including Differential Dataflow and, by extension, modern IVM implementations.</p>
-
 <h2>Reference</h2>
 <p>Original paper: <em>The Naiad Project</em> — <a href="https://dl.acm.org/doi/epdf/10.1145/2517349.2522738" target="_blank" rel="noopener">ACM Digital Library</a></p>
   </div>
@@ -125,23 +133,23 @@
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
     <a class="connection-card" href="differential-dataflow.html">
-      <span class="connection-type extends">Built on top</span>
+      <span class="connection-type core">Foundation for</span>
       <h4>Differential Dataflow</h4>
       <p>versioned incremental computation built on TD's notification guarantee</p>
     </a>
     <a class="connection-card" href="incremental-view-maintenance.html">
-      <span class="connection-type drives">Enables</span>
+      <span class="connection-type extends">Supports</span>
       <h4>Incremental View Maintenance</h4>
       <p>one of three theoretical IVM approaches</p>
     </a>
     <a class="connection-card" href="materialized-views.html">
-      <span class="connection-type related">Applied to</span>
+      <span class="connection-type related">Related to</span>
       <h4>Materialized Views</h4>
       <p>TD provides the completeness notification MV refresh needs</p>
     </a>
-    <a class="connection-card" href="../sources/materialized-views-quick-insights.html">
-      <span class="connection-type related">Source</span>
-      <h4>Quick Insights on MVs</h4>
+    <a class="connection-card" href="materialized-views-quick-insights.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Quick Insights on Materialized Views</h4>
       <p>Vu Trinh's article introducing TD as an IVM approach</p>
     </a>
   </div>

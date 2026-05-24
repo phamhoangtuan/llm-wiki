@@ -92,29 +92,23 @@
 <h2>Summary</h2>
 <p>Mocking isolates tests from external dependencies (APIs, databases, files). pytest provides two approaches: the built-in <code>monkeypatch</code> fixture and the <code>pytest-mock</code> plugin wrapping <code>unittest.mock</code>.</p>
 <h2>monkeypatch (Built-in)</h2>
-<pre><code class="language-python">def test_env_var(monkeypatch):
+<pre><code>def test_env_var(monkeypatch):
     monkeypatch.setenv(&quot;DATABASE_URL&quot;, &quot;sqlite:///test.db&quot;)
     assert get_db_url() == &quot;sqlite:///test.db&quot;</code></pre>
 <p>Safely modifies objects and environment variables — automatically restored after test.</p>
 <h2>pytest-mock Plugin</h2>
-<pre><code class="language-python">def test_api_call(mocker):
+<pre><code>def test_api_call(mocker):
     mock_response = mocker.patch(&quot;requests.get&quot;)
     mock_response.return_value.json.return_value = {&quot;id&quot;: 1}
     result = fetch_user(1)
     assert result[&quot;id&quot;] == 1</code></pre>
 <h2>autospec — Defense in Depth</h2>
-<pre><code class="language-python">from unittest.mock import create_autospec
+<pre><code>from unittest.mock import create_autospec
 
 # Mock must match real signature — errors if interface changes
 mock_db = create_autospec(Database, instance=True)
 mock_db.get_user.return_value = {&quot;id&quot;: 1}</code></pre>
 <p>Prevents "green tests that mask real bugs" — a major risk when refactoring large systems.</p>
-<h2>Connections</h2>
-<ul>
-<li>Complements <a href="pytest-fixtures.html" class="wiki-link">pytest-fixtures</a> — mocks are often provided as fixture return values</li>
-<li>Related to <a href="testing-strategy.html" class="wiki-link">testing-strategy</a> — essential for API layer isolation</li>
-<li>Contrasts with integration testing — mocking removes external dependencies</li>
-</ul>
   </div>
 </section>
 

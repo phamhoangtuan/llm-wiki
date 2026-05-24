@@ -92,7 +92,7 @@
 <h2>Summary</h2>
 <p>Assert rewriting is pytest's secret weapon — it intercepts <code>assert</code> statements at runtime, analyzes the expression, and generates rich diffs when assertions fail. You get framework-specific assertion quality without learning new syntax.</p>
 <h2>How It Works</h2>
-<pre><code class="language-python"># Plain Python assert — no framework methods needed
+<pre><code># Plain Python assert — no framework methods needed
 assert actual_result == expected_result</code></pre>
 <p>When it fails:</p>
 <pre><code>E       assert (3, 2, 1) == (1, 2, 3)
@@ -103,16 +103,11 @@ E         + (1, 2, 3)
 E         ?  ^     ^</code></pre>
 <p>Carets point to exact failure indices. Side-by-side diff shows what changed.</p>
 <h2>Comparison with unittest</h2>
-<pre><code class="language-python"># unittest: verbose, hard to read
+<pre><code># unittest: verbose, hard to read
 self.assertEqual(actual_result, expected_result, &quot;Error message&quot;)
 
 # pytest: clean, natural Python
 assert actual_result == expected_result</code></pre>
-<h2>Connections</h2>
-<ul>
-<li>Core to <a href="pytest-basics.html" class="wiki-link">pytest-basics</a> — the foundation of pytest's simplicity</li>
-<li>Related to <a href="pytest-test-results.html" class="wiki-link">pytest-test-results</a> — assertion failures produce FAILED results</li>
-</ul>
   </div>
 </section>
 

@@ -23,9 +23,9 @@
   .hero-content { position: relative; z-index: 1; max-width: 720px; }
   .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.25); color: var(--blue); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
   .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }
-  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
   .hero h1 span { color: var(--blue); }
-  .hero-sub { font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 1.5rem; }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 2rem; }
   .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
   .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
@@ -35,6 +35,7 @@
   section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
   .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
   .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+  .section-desc { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem; }
   .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--blue); }
   .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
   .content-area h2:first-child { margin-top: 0; }
@@ -55,7 +56,7 @@
   .wiki-link { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }
   .wiki-link:hover { border-color: var(--blue); }
   .connections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-  .connection-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform  0.2s; }
+  .connection-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
   .connection-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
   .connection-card h4 { font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }
   .connection-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
@@ -90,20 +91,16 @@
   <div class="content-area">
 <h2>Summary</h2>
 <p><strong>Differential Dataflow (DD)</strong> is a programming model built on top of <a href="timely-dataflow.html" class="wiki-link">Timely Dataflow</a>. It answers the question: <em>given that we know when a computation is complete (via TD's notification mechanism), how do we compute as little as possible as the input changes?</em></p>
-
 <h2>Key Ideas</h2>
 <ul>
-  <li><strong>Versioned state tracking</strong>: DD tracks data as multiple versions ordered by timestamps (from Timely Dataflow). Each version represents the state of the data at a point in logical time.</li>
-  <li><strong>Incremental updates</strong>: When input changes arrive, DD computes only the <em>difference</em> (the differential) between versions, rather than recomputing from scratch.</li>
-  <li><strong>Reuse of computation</strong>: Because versions are ordered and the system knows which are finalized (thanks to TD notifications), DD can safely reuse prior partial results.</li>
+<li><strong>Versioned state tracking</strong>: DD tracks data as multiple versions ordered by timestamps (from Timely Dataflow). Each version represents the state of the data at a point in logical time.</li>
+<li><strong>Incremental updates</strong>: When input changes arrive, DD computes only the <em>difference</em> (the differential) between versions, rather than recomputing from scratch.</li>
+<li><strong>Reuse of computation</strong>: Because versions are ordered and the system knows which are finalized (thanks to TD notifications), DD can safely reuse prior partial results.</li>
 </ul>
-
 <h2>Relationship to Timely Dataflow</h2>
 <p>DD is a <strong>higher-level abstraction</strong> built directly on TD. TD provides the infrastructure for timestamp-ordered messaging and completion notifications. DD adds the computation model layer: tracking versioned collections, computing differences between them, and ensuring that incremental updates are correct and minimal.</p>
-
 <h2>Relationship to Materialized Views</h2>
 <p>DD is one of the three theoretical foundations for <a href="incremental-view-maintenance.html" class="wiki-link">Incremental View Maintenance</a>. Its contribution is showing how to efficiently compute only the changed portions of a view when the underlying data changes, while maintaining correctness guarantees via TD's notification system.</p>
-
 <h2>Reference</h2>
 <p>Original paper: <em>Differential Dataflow</em> — <a href="https://www.cidrdb.org/cidr2013/Papers/CIDR13_Paper111.pdf" target="_blank" rel="noopener">CIDR 2013</a></p>
   </div>
@@ -114,28 +111,28 @@
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
     <a class="connection-card" href="timely-dataflow.html">
-      <span class="connection-type extends">Built on</span>
+      <span class="connection-type extends">Extends</span>
       <h4>Timely Dataflow</h4>
       <p>DD uses TD's timestamp and notification mechanism</p>
     </a>
     <a class="connection-card" href="incremental-view-maintenance.html">
-      <span class="connection-type drives">Enables</span>
+      <span class="connection-type extends">Supports</span>
       <h4>Incremental View Maintenance</h4>
       <p>one of three theoretical IVM approaches</p>
     </a>
     <a class="connection-card" href="materialized-views.html">
-      <span class="connection-type related">Applied to</span>
+      <span class="connection-type related">Related to</span>
       <h4>Materialized Views</h4>
       <p>DD computes minimal diffs for MV refresh</p>
     </a>
     <a class="connection-card" href="dbsp.html">
-      <span class="connection-type related">Alternative</span>
+      <span class="connection-type related">Related</span>
       <h4>DBSP</h4>
       <p>a different IVM formalism based on signal processing</p>
     </a>
-    <a class="connection-card" href="../sources/materialized-views-quick-insights.html">
-      <span class="connection-type related">Source</span>
-      <h4>Quick Insights on MVs</h4>
+    <a class="connection-card" href="materialized-views-quick-insights.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Quick Insights on Materialized Views</h4>
       <p>Vu Trinh's article comparing IVM approaches</p>
     </a>
   </div>

@@ -92,7 +92,7 @@
 <h2>Summary</h2>
 <p>pytest configuration unifies flags and settings across a team. Modern pytest supports native TOML configuration in <code>pyproject.toml</code>.</p>
 <h2>pyproject.toml Configuration</h2>
-<pre><code class="language-toml">[tool.pytest.ini_options]
+<pre><code>[tool.pytest.ini_options]
 addopts = &quot;-v --tb=short&quot;
 testpaths = [&quot;tests&quot;]
 markers = [
@@ -100,7 +100,7 @@ markers = [
     &quot;integration: marks tests requiring external services&quot;,
 ]</code></pre>
 <h2>pytest.ini (Legacy)</h2>
-<pre><code class="language-ini">[pytest]
+<pre><code>[pytest]
 addopts = -v --tb=short
 markers =
     slow: marks tests as slow
@@ -110,28 +110,23 @@ markers =
 <th>Setting</th>
 <th>Purpose</th>
 </tr></thead><tbody>
-<table><thead><tr>
-<th><code>addopts</code></th>
-<th>Default command-line flags</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>testpaths</code></th>
-<th>Directories to search for tests</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>markers</code></th>
-<th>Register custom markers</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><code>filterwarnings</code></th>
-<th>Control warning behavior</th>
-</tr></thead><tbody>
-<h2>Connections</h2>
-<ul>
-<li>Extends <a href="pytest-basics.html" class="wiki-link">pytest-basics</a> — configuration affects discovery and execution</li>
-<li>Related to <a href="pytest-plugins.html" class="wiki-link">pytest-plugins</a> — plugins are configured here</li>
-<li>Related to <a href="pytest-markers.html" class="wiki-link">pytest-markers</a> — custom markers must be registered</li>
-</ul></tbody></table>
+<tr>
+<td><code>addopts</code></td>
+<td>Default command-line flags</td>
+</tr>
+<tr>
+<td><code>testpaths</code></td>
+<td>Directories to search for tests</td>
+</tr>
+<tr>
+<td><code>markers</code></td>
+<td>Register custom markers</td>
+</tr>
+<tr>
+<td><code>filterwarnings</code></td>
+<td>Control warning behavior</td>
+</tr>
+</tbody></table>
   </div>
 </section>
 

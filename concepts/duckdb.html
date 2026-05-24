@@ -35,6 +35,7 @@
   section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
   .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
   .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+  .section-desc { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem; }
   .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--blue); }
   .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
   .content-area h2:first-child { margin-top: 0; }
@@ -90,42 +91,56 @@
   <div class="content-area">
 <h2>Summary</h2>
 <p><strong>DuckDB</strong> is an open-source (MIT), in-process OLAP database management system — often described as "SQLite for analytics." It runs as an embedded library inside your application (Python, R, Node.js, C++, etc.), requiring zero server setup. Its performance comes from four architectural pillars: <strong>columnar storage</strong>, <a href="vectorized-execution.html" class="wiki-link">vectorized execution</a>, <strong>parallel execution</strong>, and <strong>late materialization</strong>.</p>
-
 <h2>Identity: "SQLite for Analytics"</h2>
-<table>
-  <thead><tr><th>Aspect</th><th>SQLite</th><th>DuckDB</th></tr></thead>
-  <tbody>
-    <tr><td>Workload</td><td>OLTP (transactions)</td><td>OLAP (analytics)</td></tr>
-    <tr><td>Storage</td><td>Row-based</td><td>Columnar</td></tr>
-    <tr><td>Execution</td><td>Row-at-a-time</td><td>Vectorized (chunk-at-a-time)</td></tr>
-    <tr><td>Embedding</td><td>Yes (in-process)</td><td>Yes (in-process)</td></tr>
-    <tr><td>License</td><td>Public domain</td><td>MIT</td></tr>
-  </tbody>
-</table>
-
+<table><thead><tr>
+<th>Aspect</th>
+<th>SQLite</th>
+<th>DuckDB</th>
+</tr></thead><tbody>
+<tr>
+<td>Workload</td>
+<td>OLTP (transactions)</td>
+<td>OLAP (analytics)</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>Row-based</td>
+<td>Columnar</td>
+</tr>
+<tr>
+<td>Execution</td>
+<td>Row-at-a-time</td>
+<td>Vectorized (chunk-at-a-time)</td>
+</tr>
+<tr>
+<td>Embedding</td>
+<td>Yes (in-process)</td>
+<td>Yes (in-process)</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Public domain</td>
+<td>MIT</td>
+</tr>
+</tbody></table>
 <h2>Architectural Pillars</h2>
 <h3>1. Columnar Storage</h3>
 <p>Data is stored by column, not by row. Analytical queries typically need only a few columns across many rows — DuckDB reads only what's needed, dramatically reducing I/O.</p>
-
 <h3>2. Vectorized Execution</h3>
 <p>Processes data in "vectors" (chunks of 1K–64K rows) instead of row-by-row. Reduces CPU instruction overhead, improves cache efficiency, and leverages SIMD instructions. → See <a href="vectorized-execution.html" class="wiki-link">vectorized-execution</a></p>
-
 <h3>3. Parallel Execution</h3>
 <p>Automatically splits queries across available CPU cores. No configuration required — a laptop can achieve throughput that previously required distributed clusters.</p>
-
 <h3>4. Late Materialization</h3>
 <p>Postpones fetching full row data until absolutely necessary. Works with column indices and metadata first, minimizing data movement in memory.</p>
-
 <h2>Key Capabilities</h2>
 <ul>
-  <li><strong>Query data in place</strong>: Run SQL directly on CSV, Parquet, JSON, Excel files without loading them first. <code>SELECT AVG(price) FROM read_csv_auto('data.csv')</code></li>
-  <li><strong>Zero-copy DataFrame integration</strong>: Run SQL on pandas/Polars DataFrames without copying data.</li>
-  <li><strong>Larger-than-memory</strong>: Streams data in chunks; 5.8M-row flight dataset uses ~280MB vs. pandas' 4.2GB.</li>
-  <li><strong>Remote file access</strong>: Query files over HTTP/S, S3, GitHub, Hugging Face via the <code>httpfs</code> extension.</li>
-  <li><strong>Full SQL</strong>: Standard analytical SQL including window functions, advanced aggregations, CTEs.</li>
-  <li><strong>Python UDFs</strong>: Define custom functions in Python and call them from SQL.</li>
+<li><strong>Query data in place</strong>: Run SQL directly on CSV, Parquet, JSON, Excel files without loading them first. <code>SELECT AVG(price) FROM read_csv_auto('data.csv')</code></li>
+<li><strong>Zero-copy DataFrame integration</strong>: Run SQL on pandas/Polars DataFrames without copying data.</li>
+<li><strong>Larger-than-memory</strong>: Streams data in chunks; 5.8M-row flight dataset uses ~280MB vs. pandas' 4.2GB.</li>
+<li><strong>Remote file access</strong>: Query files over HTTP/S, S3, GitHub, Hugging Face via the <code>httpfs</code> extension.</li>
+<li><strong>Full SQL</strong>: Standard analytical SQL including window functions, advanced aggregations, CTEs.</li>
+<li><strong>Python UDFs</strong>: Define custom functions in Python and call them from SQL.</li>
 </ul>
-
 <h2>Getting Started</h2>
 <pre><code># Install
 pip install duckdb
@@ -134,39 +149,64 @@ pip install duckdb
 import duckdb
 
 # Query a CSV directly — no loading needed
-result = duckdb.query("""
+result = duckdb.query(&quot;&quot;&quot;
     SELECT category, AVG(price) as avg_price
-    FROM read_csv_auto('products.csv')
+    FROM read_csv_auto(&#x27;products.csv&#x27;)
     GROUP BY category
     ORDER BY avg_price DESC
-""")
+&quot;&quot;&quot;)
 
 # Convert to pandas DataFrame
 print(result.df())
 </code></pre>
-
 <h2>When to Use / When Not to Use</h2>
-<table>
-  <thead><tr><th>✅ Use DuckDB</th><th>❌ Don't Use DuckDB</th></tr></thead>
-  <tbody>
-    <tr><td>Exploratory analysis on CSV/Parquet</td><td>High-volume OLTP (use PostgreSQL/MySQL)</td></tr>
-    <tr><td>Prototyping analytics pipelines</td><td>Multi-user concurrent writes (single-writer)</td></tr>
-    <tr><td>Embedding SQL in Python/R apps</td><td>Real-time streaming ingestion (use Kafka + Flink)</td></tr>
-    <tr><td>Local dev and testing of data workflows</td><td>Need full client-server multi-tenancy</td></tr>
-    <tr><td>"Larger-than-memory" datasets on a laptop</td><td></td></tr>
-  </tbody>
-</table>
-
+<table><thead><tr>
+<th>✅ Use DuckDB</th>
+<th>❌ Don't Use DuckDB</th>
+</tr></thead><tbody>
+<tr>
+<td>Exploratory analysis on CSV/Parquet</td>
+<td>High-volume OLTP (use PostgreSQL/MySQL)</td>
+</tr>
+<tr>
+<td>Prototyping analytics pipelines</td>
+<td>Multi-user concurrent writes (single-writer)</td>
+</tr>
+<tr>
+<td>Embedding SQL in Python/R apps</td>
+<td>Real-time streaming ingestion (use Kafka + Flink)</td>
+</tr>
+<tr>
+<td>Local dev and testing of data workflows</td>
+<td>Need full client-server multi-tenancy</td>
+</tr>
+<tr>
+<td>"Larger-than-memory" datasets on a laptop</td>
+<td></td>
+</tr>
+</tbody></table>
 <h2>Ecosystem & Extensions</h2>
-<table>
-  <thead><tr><th>Extension</th><th>Purpose</th></tr></thead>
-  <tbody>
-    <tr><td><code>httpfs</code></td><td>Query remote files over HTTP/S (S3, GitHub, Hugging Face)</td></tr>
-    <tr><td><code>spatial</code></td><td>Geospatial data types and functions</td></tr>
-    <tr><td><code>json</code></td><td>Advanced JSON parsing and querying</td></tr>
-    <tr><td><code>icu</code></td><td>Unicode and locale-aware string operations</td></tr>
-  </tbody>
-</table>
+<table><thead><tr>
+<th>Extension</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><code>httpfs</code></td>
+<td>Query remote files over HTTP/S (S3, GitHub, Hugging Face)</td>
+</tr>
+<tr>
+<td><code>spatial</code></td>
+<td>Geospatial data types and functions</td>
+</tr>
+<tr>
+<td><code>json</code></td>
+<td>Advanced JSON parsing and querying</td>
+</tr>
+<tr>
+<td><code>icu</code></td>
+<td>Unicode and locale-aware string operations</td>
+</tr>
+</tbody></table>
 <p><strong>Languages</strong>: Python, R, Julia, C/C++, Java, Go, Rust, Node.js.</p>
 <p><strong>MotherDuck</strong>: A managed SaaS platform built around DuckDB that enables hybrid queries — joining local data with cloud tables in a single SQL statement.</p>
   </div>
@@ -177,17 +217,17 @@ print(result.df())
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
     <a class="connection-card" href="vectorized-execution.html">
-      <span class="connection-type extends">Powered by</span>
+      <span class="connection-type related">Related</span>
       <h4>Vectorized Execution</h4>
       <p>one of DuckDB's four architectural pillars</p>
     </a>
     <a class="connection-card" href="in-process-olap.html">
-      <span class="connection-type core">Implements</span>
+      <span class="connection-type related">Related</span>
       <h4>In-Process OLAP</h4>
       <p>DuckDB is the canonical example of in-process OLAP</p>
     </a>
-    <a class="connection-card" href="../sources/duckdb-up-and-running.html">
-      <span class="connection-type related">Source</span>
+    <a class="connection-card" href="duckdb-up-and-running.html">
+      <span class="connection-type related">Related to</span>
       <h4>DuckDB: Up and Running</h4>
       <p>Wei-Meng Lee's practical guide</p>
     </a>

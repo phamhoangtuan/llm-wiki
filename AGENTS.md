@@ -26,32 +26,18 @@ You are the **wiki maintainer** for this knowledge base. Your job is to read sou
 
 ## Page Format
 
-### Output: HTML Files (Preferred)
+### Dual Format: Markdown (Canonical) + HTML (Generated)
 
-**All wiki pages should be created as HTML files**, not markdown. HTML pages are self-contained, styled, and link to each other via clickable links. This makes the wiki easier and more attractive to read in a browser.
+**Markdown is the canonical source of truth.** `.md` files are what you edit and what Obsidian reads. **HTML is auto-generated** from markdown via `scripts/convert-to-html.py` — never hand-edit `.html` files.
 
-Use the conversion script `scripts/convert-to-html.py` to generate HTML from markdown, or write HTML directly using the template pattern below.
+After creating or updating any `.md` page, regenerate HTML:
+```bash
+python scripts/convert-to-html.py
+```
 
-**Concept pages** (`concepts/<slug>.html`):
-- Hero section with title, tags, source reference, and back-to-index link
-- Content area with left-border accent (blue for concepts)
-- Sections for Summary, Key Ideas, How It Works, etc.
-- Connections section at the bottom with clickable cards linking to related HTML pages
-- Dark/light theme auto-detection
-- Consistent CSS variables matching `index.html` style
+The GitHub Actions workflow (`.github/workflows/build.yml`) does this automatically on every push to `main`.
 
-**Source summaries** (`sources/<slug>.html`):
-- Hero section with title, author, source type, date, and tags
-- Content area with left-border accent (teal for sources)
-- Sections for Summary, Key Takeaways, Case Studies, Quotes, Connections
-- Connections section with clickable cards to concept HTML pages
-
-**Synthesis pages** (`syntheses/<slug>.html`):
-- Same structure as concept pages but with purple accent color
-
-### Markdown Fallback
-
-If you must create markdown first (for Obsidian compatibility), follow this format:
+#### Markdown Format (Canonical)
 
 **Concept pages** (`concepts/<slug>.md`):
 ```yaml
@@ -65,6 +51,8 @@ sources: [source-slug-1]     # references sources/<slug>
 aliases: [alt-name]           # other names this concept is known by
 ---
 ```
+
+Content body follows standard markdown with `[[wikilinks]]`. Connection cards are placed at the end after a `---` separator. The conversion script detects these and renders them as styled cards in the HTML.
 
 **Source summaries** (`sources/<slug>.md`):
 ```yaml
@@ -94,6 +82,16 @@ sources: [source-slug-1]
 ---
 ```
 
+#### Generated HTML (for GitHub Pages)
+
+The conversion script produces styled, self-contained HTML pages at `concepts/<slug>.html`, `sources/<slug>.html`, etc. These are what GitHub Pages serves at `https://phamhoangtuan.github.io/llm-wiki/`.
+
+- Concept pages: hero with title, tags, source reference; left-border accent (blue for concepts)
+- Source pages: hero with title, author, source type, date, tags; left-border accent (teal for sources)
+- Synthesis pages: same structure with purple accent color
+- All pages: dark/light theme auto-detection, consistent CSS, connections section with clickable cards
+- Never manually edit HTML files — always edit the markdown and regenerate.
+
 ### Body Conventions
 
 - Use `[[Page Name]]` for cross-references to other wiki pages. These will be converted to clickable HTML links.
@@ -121,12 +119,15 @@ Steps:
 1. Read the source file from `raw/`.
 2. Identify key concepts, claims, entities, and their relationships.
 3. [Optional] Discuss with user: "Key takeaways: X, Y, Z. What should I emphasize?"
-4. Create `sources/<slug>.html` with summary + backlinks to concept pages.
+4. Create `sources/<slug>.md` with summary + backlinks to concept pages.
 5. For each concept identified:
-   - If `concepts/<concept>.html` exists → read it, update with new info, note contradictions.
+   - If `concepts/<concept>.md` exists → read it, update with new info, note contradictions.
    - If not → create it with summary + backlinks to source.
-6. Update `index.md` — add/update entries for all changed pages.
-7. Append to `log.md` with prefix: `## [YYYY-MM-DD] ingest | Title`.
+6. Run `python scripts/convert-to-html.py` to regenerate HTML files (this syncs index.html too).
+7. Update `index.md` — add/update entries for all changed pages.
+8. Append to `log.md` with prefix: `## [YYYY-MM-DD] ingest | Title`.
+
+**Note**: The `.html` files are auto-generated from `.md`. Only edit `.md` files. If the GitHub Actions workflow runs on push, HTML regeneration happens automatically. When working locally, run the script manually.
 
 ### 2. Query
 
@@ -168,7 +169,9 @@ Steps:
 - **ALWAYS** append to `log.md` after every operation.
 - **ALWAYS** use YYYY-MM-DD date format.
 - **ALWAYS** ask before destructive operations.
-- **PREFER HTML output** over markdown for new pages. HTML pages are styled, self-contained, and link to each other.
+- **ALWAYS** regenerate HTML after editing markdown — run `python scripts/convert-to-html.py`.
+- **NEVER** hand-edit `.html` files — they are auto-generated from `.md`.
+- **PREFER `[[wikilinks]]`** for cross-references — they work in both Obsidian and HTML output.
 
 ---
 

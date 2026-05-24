@@ -93,7 +93,7 @@
 <p>A lightweight knowledge graph built from cross-linked markdown pages. Instead of a dedicated graph database or vector store, the wiki uses wikilinks, a content index (<code>index.md</code>), and consistent YAML frontmatter to achieve the same effect without infrastructure.</p>
 <h2>How It Works</h2>
 <ol>
-<li><strong>Write-time linking</strong> — when the LLM ingests a source, it creates/updates concept pages with explicit links (<code>&lt;a href="..."&gt;</code>) to related pages. The connections are compiled once, not re-derived.</li>
+<li><strong>Write-time linking</strong> — when the LLM ingests a source, it creates/updates concept pages with explicit links (<code><a href="..."></code>) to related pages. The connections are compiled once, not re-derived.</li>
 </ol>
 <ol>
 <li><strong>Index as entry point</strong> — <code>index.md</code> lists every page with a one-line summary. The LLM reads this first to find relevant pages, then drills in. This replaces vector search at moderate scale (~500 pages).</li>
@@ -108,15 +108,20 @@
 <li>LLM-maintainable — the LLM writes the links as a natural part of ingest</li>
 <li>Scales to hundreds of pages before needing search tooling</li>
 </ul>
-<h2>Connections</h2>
-<ul>
-<li>Core to the <a href="wiki-maintenance.html" class="wiki-link">wiki-maintenance</a> operational model</li>
-<li>Contrasts with embedding-based RAG — graph is explicit rather than statistical</li>
-<li>Extends naturally with tools like qmd (hybrid BM25/vector search for markdown)</li>
-</ul>
   </div>
 </section>
 
+<section>
+  <div class="section-label">Knowledge Graph</div>
+  <h2 class="section-title">Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="wiki-maintenance.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Wiki Maintenance</h4>
+      <p>the operational model</p>
+    </a>
+  </div>
+</section>
 <footer>
   <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
   <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>

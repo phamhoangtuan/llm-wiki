@@ -2,8 +2,11 @@
 .DS_Store
 Thumbs.db
 
-# Obsidian per-machine config (keep if you sync .obsidian/)
-.obsidian/
+# Obsidian — exclude machine-specific files only; shared config is committed
+.obsidian/workspace
+.obsidian/workspace.json
+.obsidian/cache/
+.obsidian/plugins/beta.json
 
 # Temp
 *.tmp

@@ -63,3 +63,28 @@
 - Updated index.md with clickable HTML links
 - All pages now self-contained, styled, and interlinked
 - Dark/light theme auto-detection on all pages
+
+## [2026-05-24] review | Self-review — duplicate connection rendering
+
+- Found: 12 .md files had `## Connections` section in body AND `---`-separated connection list, causing connections to render twice in HTML
+- Root cause: html-to-md.py migration preserved original body connections as a heading+list, then converter also extracted the same connections from after `---`
+- Fixed: Removed `## Connections` heading and body-duplicated connection list items from all 12 files, keeping only the `---`-separated list
+- Affected: fail-fast, pytest-assertions, pytest-mocking, pytest-parametrization, readability-vs-performance, rich-domain-model, software-as-simulation, wiki-maintenance (concepts), contieri-clean-code-cookbook, duckdb-up-and-running, materialized-views-quick-insights, okken-python-testing-pytest (sources)
+- Verified: 114 connection cards across 35 pages, no duplicates
+- Note: 6 unrecognized connection types (Alternative, Builds on, Enabled by, Grounded in, Implements, Powered by) fall through to lenient fallback → rendered as "Related" — cosmetic, not a bug
+
+## [2026-05-24] review | Self-review — missing connection separators
+
+- Found: 2 .md files had `## Connections` section in body but NO `---` separator, so connections rendered as body content (h2 + ul/li) instead of connection cards
+- Fixed: Added `---` separator before connections list in `knowledge-graph.md` and `sample-article.md`
+- Also fixed: `knowledge-graph.md` "Core to the [[wiki-maintenance]]" → "Core to [[wiki-maintenance]] — the operational model" (proper regex match)
+- Verified: 116 connection cards across 35 pages (was 114), all pages now have connection cards
+
+## [2026-05-24] review | Self-review — multi-wikilink data loss
+
+- Found: `pytest-basics.md` connection line had 3 wikilinks: `- Foundation for [[pytest-fixtures]] — , [[pytest-parametrization]], [[pytest-markers]]`
+- Root cause: html-to-md.py migration merged multiple connections into one line; converter regex only captures first `[[...]]`
+- Fixed: Split into 3 separate connection lines with proper descriptions
+- Verified: 118 connection cards across 35 pages (was 116)
+- Structural checks: all HTML files have consistent structure (hero, content-area, connections, footer), no broken cross-directory links, no unclosed tags, no wikilink orphans
+- Note: 5 source files missing `updated` field in frontmatter (converter falls back to default)

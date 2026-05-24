@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quick Insights on Materialized Views (Vu Trinh) — LLM Wiki</title>
+<title>Quick Insights on Materialized Views — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -45,10 +45,6 @@
   .content-area pre code { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }
   .content-area code { font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }
   .content-area pre code { background: none; padding: 0; color: var(--text); }
-  .content-area table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-  .content-area th, .content-area td { border: 1px solid var(--border); padding: 0.6rem 0.75rem; text-align: left; font-size: 0.9rem; }
-  .content-area th { background: var(--surface-2); font-weight: 600; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-  .content-area td code { font-size: 0.82rem; }
   .content-area strong { color: var(--text); }
   .wiki-link { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }
   .wiki-link:hover { border-color: var(--blue); }
@@ -57,11 +53,6 @@
   .connection-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
   .connection-card h4 { font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }
   .connection-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
-  .connection-type { font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; display: inline-block; }
-  .connection-type.core { background: rgba(240,180,41,0.12); color: var(--accent); }
-  .connection-type.related { background: rgba(167,139,250,0.12); color: var(--purple); }
-  .connection-type.extends { background: rgba(96,165,250,0.12); color: var(--blue); }
-  .connection-type.drives { background: rgba(45,212,191,0.12); color: var(--teal); }
   footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
   footer a { color: var(--accent); text-decoration: none; }
   @media (max-width: 768px) { section { padding: 2.5rem 1.25rem; } .content-area { padding: 1.5rem; } }
@@ -87,43 +78,44 @@
   <div class="content-area">
 <h2>Summary</h2>
 <p>A practical exploration of <strong>materialized views</strong> (MVs) — the hybrid of tables and views that stores pre-computed query results. The article covers what MVs are, how Incremental View Maintenance (IVM) works through three theoretical frameworks (Timely Dataflow, Differential Dataflow, DBSP), the freshness vs. cost trade-off, and MVs' emerging role in real-time/stream processing as an alternative to dedicated stream processors.</p>
-
 <h2>Key Takeaways</h2>
 <ul>
-  <li><strong>MV = table × view hybrid</strong>: A pre-computed query result stored physically. It is "aware" of the query (like a view) but stores data (like a table). Refreshed when source data changes.</li>
-  <li><strong>MV as cache</strong>: Semantically, an MV is a cache — it holds computed results so queries avoid accessing the "original location" (source tables). The core challenge is keeping the cache fresh.</li>
-  <li><strong>Three IVM approaches</strong>: <a href="../concepts/timely-dataflow.html" class="wiki-link">Timely Dataflow</a> (timestamp-based notification), <a href="../concepts/differential-dataflow.html" class="wiki-link">Differential Dataflow</a> (versioned state on TD), and <a href="../concepts/dbsp.html" class="wiki-link">DBSP</a> (signal-processing formalism with 4 operators).</li>
-  <li><strong>Freshness vs. cost trade-off</strong>: Higher freshness = more frequent refreshes = higher compute cost. Full refresh is simple but expensive; incremental refresh is efficient but doesn't support all SQL operations.</li>
-  <li><strong>MVs in stream processing</strong>: Flink Dynamic Tables, RisingWave, and ClickHouse incremental MVs all use MV semantics for real-time analytics —MV is a first-class concept in streaming.</li>
-  <li><strong>Practical rule</strong>: Check if your database supports incremental refresh (ClickHouse, Databricks, BigQuery, Snowflake). If your use case can leverage it, prioritize incremental refresh. When MV can't serve your use case (e.g., missing JOIN change capture), then move to Flink.</li>
+<li><strong>MV = table × view hybrid</strong>: A pre-computed query result stored physically. It is "aware" of the query (like a view) but stores data (like a table). Refreshed when source data changes.</li>
+<li><strong>MV as cache</strong>: Semantically, an MV is a cache — it holds computed results so queries avoid accessing the "original location" (source tables). The core challenge is keeping the cache fresh.</li>
+<li><strong>Three IVM approaches</strong>: <a href="../concepts/timely-dataflow.html" class="wiki-link">Timely Dataflow</a> (timestamp-based notification), <a href="../concepts/differential-dataflow.html" class="wiki-link">Differential Dataflow</a> (versioned state on TD), and <a href="../concepts/dbsp.html" class="wiki-link">DBSP</a> (signal-processing formalism with 4 operators).</li>
+<li><strong>Freshness vs. cost trade-off</strong>: Higher freshness = more frequent refreshes = higher compute cost. Full refresh is simple but expensive; incremental refresh is efficient but doesn't support all SQL operations.</li>
+<li><strong>MVs in stream processing</strong>: Flink Dynamic Tables, RisingWave, and ClickHouse incremental MVs all use MV semantics for real-time analytics —MV is a first-class concept in streaming.</li>
+<li><strong>Practical rule</strong>: Check if your database supports incremental refresh (ClickHouse, Databricks, BigQuery, Snowflake). If your use case can leverage it, prioritize incremental refresh. When MV can't serve your use case (e.g., missing JOIN change capture), then move to Flink.</li>
 </ul>
-
 <h2>Freshness vs. Cost Spectrum</h2>
-<table>
-  <thead><tr><th>Strategy</th><th>How It Works</th><th>Pros</th><th>Cons</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Full refresh</strong></td><td>Recompute everything on schedule</td><td>Simple, predictable</td><td>Stale between runs, expensive for large data</td></tr>
-    <tr><td><strong>Incremental refresh</strong></td><td>Process only what changed</td><td>Efficient, enables frequent refreshes</td><td>Not all SQL ops supported; complexity</td></tr>
-  </tbody>
-</table>
-
+<table><thead><tr>
+<th>Strategy</th>
+<th>How It Works</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Full refresh</strong></td>
+<td>Recompute everything on schedule</td>
+<td>Simple, predictable</td>
+<td>Stale between runs, expensive for large data</td>
+</tr>
+<tr>
+<td><strong>Incremental refresh</strong></td>
+<td>Process only what changed</td>
+<td>Efficient, enables frequent refreshes</td>
+<td>Not all SQL ops supported; complexity</td>
+</tr>
+</tbody></table>
 <h2>Real-World Implementations</h2>
 <ul>
-  <li><strong>Flink Dynamic Tables</strong>: A dynamic table changes over time as its stream evolves. A continuous SQL query on a dynamic table is semantically equivalent to an MV with eager view updating.</li>
-  <li><strong>RisingWave</strong>: A streaming OLAP database built around MV principles. MVs are maintained incrementally via dataflow graphs.</li>
-  <li><strong>ClickHouse</strong>: Treats incremental MV as a stream processor — a trigger that runs a query on new data as it arrives, merging results incrementally.</li>
+<li><strong>Flink Dynamic Tables</strong>: A dynamic table changes over time as its stream evolves. A continuous SQL query on a dynamic table is semantically equivalent to an MV with eager view updating.</li>
+<li><strong>RisingWave</strong>: A streaming OLAP database built around MV principles. MVs are maintained incrementally via dataflow graphs.</li>
+<li><strong>ClickHouse</strong>: Treats incremental MV as a stream processor — a trigger that runs a query on new data as it arrives, merging results incrementally.</li>
 </ul>
-
 <h2>Quotes</h2>
 <blockquote>"A materialized view can be considered a cache, as it helps queries run faster by accessing computed data and avoiding access to the data's original location."</blockquote>
 <blockquote>"The higher the freshness, the more frequently the MV is refreshed. Which means you pay a higher cost for more frequent refreshes."</blockquote>
-
-<h2>Connections</h2>
-<ul>
-  <li>Core concept: <a href="../concepts/materialized-views.html" class="wiki-link">materialized-views</a></li>
-  <li>Maintenance mechanism: <a href="../concepts/incremental-view-maintenance.html" class="wiki-link">incremental-view-maintenance</a></li>
-  <li>Theoretical foundations: <a href="../concepts/timely-dataflow.html" class="wiki-link">timely-dataflow</a>, <a href="../concepts/differential-dataflow.html" class="wiki-link">differential-dataflow</a>, <a href="../concepts/dbsp.html" class="wiki-link">dbsp</a></li>
-</ul>
   </div>
 </section>
 
@@ -132,27 +124,27 @@
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
     <a class="connection-card" href="../concepts/materialized-views.html">
-      <span class="connection-type core">Core concept</span>
+      <span class="connection-type core">Core to</span>
       <h4>Materialized Views</h4>
       <p>the hybrid of tables and views — pre-computed, stored, refreshable</p>
     </a>
     <a class="connection-card" href="../concepts/incremental-view-maintenance.html">
-      <span class="connection-type core">Mechanism</span>
+      <span class="connection-type core">Foundation for</span>
       <h4>Incremental View Maintenance</h4>
       <p>how databases keep MVs fresh without full recompute</p>
     </a>
     <a class="connection-card" href="../concepts/timely-dataflow.html">
-      <span class="connection-type extends">Foundation</span>
+      <span class="connection-type core">Foundation for</span>
       <h4>Timely Dataflow</h4>
       <p>timestamp-based notification model for distributed computation</p>
     </a>
     <a class="connection-card" href="../concepts/differential-dataflow.html">
-      <span class="connection-type extends">Foundation</span>
+      <span class="connection-type core">Foundation for</span>
       <h4>Differential Dataflow</h4>
       <p>versioned incremental computation built on Timely Dataflow</p>
     </a>
     <a class="connection-card" href="../concepts/dbsp.html">
-      <span class="connection-type extends">Foundation</span>
+      <span class="connection-type core">Foundation for</span>
       <h4>DBSP</h4>
       <p>signal-processing formalism for incremental view computation</p>
     </a>

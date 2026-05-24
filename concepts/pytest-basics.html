@@ -110,37 +110,25 @@
 <th>Valid</th>
 <th>Invalid</th>
 </tr></thead><tbody>
-<table><thead><tr>
-<th>File</th>
-<th><code>test_<em>.py</code> or <code></em>_test.py</code></th>
-<th><code>test_user.py</code></th>
-<th><code>user.py</code></th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th>Function</th>
-<th>starts with <code>test_</code></th>
-<th><code>test_login()</code></th>
-<th><code>check_login()</code></th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th>Class</th>
-<th>starts with <code>Test</code></th>
-<th><code>TestUserAPI</code></th>
-<th><code>UserTests</code></th>
-</tr></thead><tbody>
-<p>Warning: Non-compliant names are silently skipped — a dangerous silent failure.</p>
-<h2>Running Tests</h2>
-<pre><code class="language-bash">pytest                    # run all tests
-pytest -v                 # verbose mode
-pytest --tb=no            # hide tracebacks
-pytest test_file.py::test_function  # run specific test
-pytest -m smoke           # run tests with &quot;smoke&quot; marker</code></pre>
-<h2>Connections</h2>
-<ul>
-<li>Foundation for <a href="pytest-fixtures.html" class="wiki-link">pytest-fixtures</a>, <a href="pytest-parametrization.html" class="wiki-link">pytest-parametrization</a>, <a href="pytest-markers.html" class="wiki-link">pytest-markers</a></li>
-<li>Contrasts with the Python unittest framework — no boilerplate classes needed</li>
-<li>Related to <a href="pytest-assertions.html" class="wiki-link">pytest-assertions</a> — the assert rewriting mechanism</li>
-</ul></tbody></table>
+<tr>
+<td>File</td>
+<td><code>test_<em>.py</code> or <code></em>_test.py</code></td>
+<td><code>test_user.py</code></td>
+<td><code>user.py</code></td>
+</tr>
+<tr>
+<td>Function</td>
+<td>starts with <code>test_</code></td>
+<td><code>test_login()</code></td>
+<td><code>check_login()</code></td>
+</tr>
+<tr>
+<td>Class</td>
+<td>starts with <code>Test</code></td>
+<td><code>TestUserAPI</code></td>
+<td><code>UserTests</code></td>
+</tr>
+</tbody></table>
   </div>
 </section>
 
@@ -151,7 +139,17 @@ pytest -m smoke           # run tests with &quot;smoke&quot; marker</code></pre>
     <a class="connection-card" href="pytest-fixtures.html">
       <span class="connection-type core">Foundation for</span>
       <h4>pytest Fixtures</h4>
-      <p>, [[pytest-parametrization]], [[pytest-markers]]</p>
+      <p>reusable setup/teardown via dependency injection</p>
+    </a>
+    <a class="connection-card" href="pytest-parametrization.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>pytest Parametrization</h4>
+      <p>run one test with multiple data sets</p>
+    </a>
+    <a class="connection-card" href="pytest-markers.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>pytest Markers</h4>
+      <p>tag tests for selective execution</p>
     </a>
     <a class="connection-card" href="pytest-assertions.html">
       <span class="connection-type related">Related to</span>

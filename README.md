@@ -84,8 +84,8 @@ llm-wiki/
 ├── log.md               # Append-only chronological record
 │
 ├── concepts/            # Entity/concept pages (the core knowledge)
-│   ├── cap-theorem.md
-│   ├── raft-consensus.md
+│   ├── cap-theorem.md   #   CANONICAL markdown (edit these)
+│   ├── cap-theorem.html #   GENERATED HTML (auto-built from .md)
 │   └── ...
 │
 ├── sources/             # Source summaries (one per ingested source)
@@ -104,7 +104,10 @@ llm-wiki/
 │
 ├── meta/                # Auto-generated indexes (tags, orphans, etc.)
 │
-└── scripts/             # Optional CLI helpers (search, lint)
+├── .github/workflows/   # CI: auto-generates HTML on push
+├── .obsidian/           # Shared Obsidian vault config (graph colors, plugins)
+│
+└── scripts/             # CLI helpers (convert-to-html.py, etc.)
 ```
 
 ### Directory Contract
@@ -139,12 +142,13 @@ For **Claude Code** / **OpenCode**, the `AGENTS.md` is read automatically when y
 
 ### 3. Open in Obsidian (recommended)
 
-The wiki uses Obsidian-flavored markdown — `[[wikilinks]]`, YAML frontmatter, image attachments. Open the repo folder as an Obsidian vault to get:
+Open the repo folder as an Obsidian vault. The wiki uses Obsidian-flavored markdown — `[[wikilinks]]`, YAML frontmatter, image attachments. Get started:
 
-- **Graph view** — see connections between concepts
-- **Backlinks** — see what links to a page
-- **Dataview** — query pages by frontmatter
-- **Web Clipper** — convert articles to markdown for `raw/`
+- **Graph view** — see connections between concepts (color-coded groups for pytest, Clean Code, Databases, Stream Processing)
+- **Backlinks** — see what links to a page, plus unlinked mentions
+- **Dataview** — query pages by frontmatter (`FROM "concepts" WHERE contains(tags, "streaming")`)
+- **Quick Switcher** — `Cmd+P` to fuzzy-find any page
+- **Web Clipper** — browser extension to save articles directly into `raw/`
 
 ### 4. Ingest your first source
 
@@ -155,10 +159,13 @@ Drop an article into `raw/articles/` and tell your agent:
 The LLM will:
 1. Read the source
 2. Discuss key takeaways with you
-3. Write a summary in `sources/`
-4. Create/update relevant `concepts/` pages
-5. Update `index.md`
-6. Append to `log.md`
+3. Write a summary in `sources/<slug>.md`
+4. Create/update relevant `concepts/<slug>.md` pages
+5. Run `python scripts/convert-to-html.py` to regenerate `.html` from `.md`
+6. Update `index.md`
+7. Append to `log.md`
+
+The wiki uses **dual format**: edit `.md` files (work in Obsidian), and `.html` files are auto-generated for the web (GitHub Pages). A CI workflow regenerates `.html` on every push. Never hand-edit `.html` files.
 
 ### 5. Ask a question
 

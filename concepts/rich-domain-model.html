@@ -92,7 +92,7 @@
 <h2>Summary</h2>
 <p>Rich domain models encapsulate both data and behavior within objects. The alternative — <strong>Anemic Domain Model</strong> — is a data holder with only getters/setters, which is procedural programming in disguise.</p>
 <h2>Anemic Model (Anti-pattern)</h2>
-<pre><code class="language-java">// ❌ Object is just a data bag
+<pre><code>// ❌ Object is just a data bag
 public class Order {
     private double amount;
     private String status;
@@ -108,7 +108,7 @@ if (order.getAmount() &gt; 100) {
 }</code></pre>
 <p><strong>Problems</strong>: Violates encapsulation, logic scattered across codebase, object has no responsibility.</p>
 <h2>Rich Model (Correct)</h2>
-<pre><code class="language-java">// ✅ Object encapsulates data AND behavior
+<pre><code>// ✅ Object encapsulates data AND behavior
 public class Order {
     private final Money amount;       // Value Object, immutable
     private OrderStatus status;
@@ -125,13 +125,6 @@ public class Order {
 <li>Change localization: when business rules change, fix one place (inside the class)</li>
 <li>Encapsulation: internal state is protected</li>
 <li>Objects have responsibility — they are active behavioral entities</li>
-</ul>
-<h2>Connections</h2>
-<ul>
-<li>Enforced by <a href="bijection.html" class="wiki-link">bijection</a> — anemic objects are a bijection violation</li>
-<li>Supported by <a href="tell-dont-ask.html" class="wiki-link">tell-dont-ask</a> — the behavioral principle</li>
-<li>Related to <a href="immutability.html" class="wiki-link">immutability</a> — rich objects protect essential attributes</li>
-<li>Contrasts with procedural programming — logic inside objects, not outside</li>
 </ul>
   </div>
 </section>

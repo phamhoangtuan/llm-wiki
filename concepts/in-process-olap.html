@@ -23,9 +23,9 @@
   .hero-content { position: relative; z-index: 1; max-width: 720px; }
   .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.25); color: var(--blue); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
   .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }
-  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
   .hero h1 span { color: var(--blue); }
-  .hero-sub { font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 1.5rem; }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 2rem; }
   .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
   .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
@@ -35,6 +35,7 @@
   section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
   .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
   .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+  .section-desc { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem; }
   .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--blue); }
   .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
   .content-area h2:first-child { margin-top: 0; }
@@ -90,29 +91,55 @@
   <div class="content-area">
 <h2>Summary</h2>
 <p><strong>In-process OLAP</strong> is an architectural pattern where an analytical database runs as an <strong>embedded library</strong> inside the application process — no separate server, no network communication, no infrastructure overhead. It is the OLAP analog of SQLite for OLTP. <a href="duckdb.html" class="wiki-link">DuckDB</a> is the canonical implementation.</p>
-
 <h2>In-Process vs. Client-Server</h2>
-<table>
-  <thead><tr><th>Aspect</th><th>In-Process OLAP (DuckDB)</th><th>Client-Server OLAP (Snowflake, BigQuery)</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Setup</strong></td><td><code>pip install duckdb</code></td><td>Provision cluster, configure networking</td></tr>
-    <tr><td><strong>Communication</strong></td><td>Direct function calls</td><td>Network (TCP/TLS, driver protocol)</td></tr>
-    <tr><td><strong>Latency</strong></td><td>Zero — no network hop</td><td>Network latency per query (ms)</td></tr>
-    <tr><td><strong>Data locality</strong></td><td>Data can be local files (CSV, Parquet)</td><td>Data must be loaded into warehouse storage</td></tr>
-    <tr><td><strong>Multi-user</strong></td><td>Single-writer (embedded)</td><td>Multi-user, concurrent reads/writes</td></tr>
-    <tr><td><strong>Scaling</strong></td><td>Vertical (one machine's cores)</td><td>Horizontal (add more nodes)</td></tr>
-    <tr><td><strong>Cost</strong></td><td>Free (open-source, runs on your hardware)</td><td>Pay per query / storage / compute</td></tr>
-  </tbody>
-</table>
-
+<table><thead><tr>
+<th>Aspect</th>
+<th>In-Process OLAP (DuckDB)</th>
+<th>Client-Server OLAP (Snowflake, BigQuery)</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Setup</strong></td>
+<td><code>pip install duckdb</code></td>
+<td>Provision cluster, configure networking</td>
+</tr>
+<tr>
+<td><strong>Communication</strong></td>
+<td>Direct function calls</td>
+<td>Network (TCP/TLS, driver protocol)</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>Zero — no network hop</td>
+<td>Network latency per query (ms)</td>
+</tr>
+<tr>
+<td><strong>Data locality</strong></td>
+<td>Data can be local files (CSV, Parquet)</td>
+<td>Data must be loaded into warehouse storage</td>
+</tr>
+<tr>
+<td><strong>Multi-user</strong></td>
+<td>Single-writer (embedded)</td>
+<td>Multi-user, concurrent reads/writes</td>
+</tr>
+<tr>
+<td><strong>Scaling</strong></td>
+<td>Vertical (one machine's cores)</td>
+<td>Horizontal (add more nodes)</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Free (open-source, runs on your hardware)</td>
+<td>Pay per query / storage / compute</td>
+</tr>
+</tbody></table>
 <h2>Why In-Process Matters for Analytics</h2>
 <ul>
-  <li><strong>Zero "infrastructure tax"</strong>: No server config, no permission management, no networking setup. Focus on analysis, not administration.</li>
-  <li><strong>Query data in place</strong>: Run SQL directly on local CSV, Parquet, or pandas DataFrames. Skip the traditional ELT "Load" step — just point and query.</li>
-  <li><strong>Development velocity</strong>: Fast iteration loop — prototype locally with real SQL, then scale to cloud warehouses when collaboration demands it.</li>
-  <li><strong>Hybrid workflows</strong>: With <a href="https://motherduck.com" target="_blank" rel="noopener">MotherDuck</a>, join local data with cloud tables in a single query, keeping sensitive data local.</li>
+<li><strong>Zero "infrastructure tax"</strong>: No server config, no permission management, no networking setup. Focus on analysis, not administration.</li>
+<li><strong>Query data in place</strong>: Run SQL directly on local CSV, Parquet, or pandas DataFrames. Skip the traditional ELT "Load" step — just point and query.</li>
+<li><strong>Development velocity</strong>: Fast iteration loop — prototype locally with real SQL, then scale to cloud warehouses when collaboration demands it.</li>
+<li><strong>Hybrid workflows</strong>: With <a href="https://motherduck.com" target="_blank" rel="noopener">MotherDuck</a>, join local data with cloud tables in a single query, keeping sensitive data local.</li>
 </ul>
-
 <h2>The Pattern: Local → Cloud Gradient</h2>
 <pre><code>Local Exploration (In-Process OLAP)
     ↓
@@ -129,19 +156,17 @@ Production Deployment
     Embed analytics in apps
     DuckDB: ship analytical SQL inside your application
 </code></pre>
-
 <h2>Related Patterns</h2>
 <ul>
-  <li><strong>In-process OLTP</strong>: SQLite — the same embedded-library approach but for transactional (row-based) workloads.</li>
-  <li><strong>Embedded analytical engines</strong>: Apache DataFusion (Rust), Velox (C++, Meta) — in-process query engines without a full database.</li>
-  <li><strong>Hybrid cloud</strong>: MotherDuck, TileDB — keep local data local, share aggregated results in the cloud.</li>
+<li><strong>In-process OLTP</strong>: SQLite — the same embedded-library approach but for transactional (row-based) workloads.</li>
+<li><strong>Embedded analytical engines</strong>: Apache DataFusion (Rust), Velox (C++, Meta) — in-process query engines without a full database.</li>
+<li><strong>Hybrid cloud</strong>: MotherDuck, TileDB — keep local data local, share aggregated results in the cloud.</li>
 </ul>
-
 <h2>Limitations</h2>
 <ul>
-  <li><strong>Single-writer</strong>: Not designed for concurrent write transactions (use client-server for that).</li>
-  <li><strong>Vertical scaling only</strong>: Limited to one machine's CPU cores and memory — can't horizontally scale across nodes.</li>
-  <li><strong>Process lifecycle</strong>: Database lives and dies with the application process (or is persisted to disk).</li>
+<li><strong>Single-writer</strong>: Not designed for concurrent write transactions (use client-server for that).</li>
+<li><strong>Vertical scaling only</strong>: Limited to one machine's CPU cores and memory — can't horizontally scale across nodes.</li>
+<li><strong>Process lifecycle</strong>: Database lives and dies with the application process (or is persisted to disk).</li>
 </ul>
   </div>
 </section>
@@ -151,17 +176,17 @@ Production Deployment
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
     <a class="connection-card" href="duckdb.html">
-      <span class="connection-type core">Canonical example</span>
+      <span class="connection-type core">Core to</span>
       <h4>DuckDB</h4>
       <p>"SQLite for analytics" — the reference implementation</p>
     </a>
     <a class="connection-card" href="vectorized-execution.html">
-      <span class="connection-type extends">Enabled by</span>
+      <span class="connection-type related">Related</span>
       <h4>Vectorized Execution</h4>
       <p>makes in-process analytical performance practical</p>
     </a>
-    <a class="connection-card" href="../sources/duckdb-up-and-running.html">
-      <span class="connection-type related">Source</span>
+    <a class="connection-card" href="duckdb-up-and-running.html">
+      <span class="connection-type related">Related to</span>
       <h4>DuckDB: Up and Running</h4>
       <p>Wei-Meng Lee's guide covers the in-process architecture</p>
     </a>

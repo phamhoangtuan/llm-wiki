@@ -23,9 +23,9 @@
   .hero-content { position: relative; z-index: 1; max-width: 720px; }
   .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.25); color: var(--blue); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
   .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }
-  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
   .hero h1 span { color: var(--blue); }
-  .hero-sub { font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 1.5rem; }
+  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 2rem; }
   .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
   .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
   .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
@@ -35,6 +35,7 @@
   section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
   .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
   .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+  .section-desc { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem; }
   .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--blue); }
   .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
   .content-area h2:first-child { margin-top: 0; }
@@ -90,42 +91,71 @@
   <div class="content-area">
 <h2>Summary</h2>
 <p><strong>Vectorized execution</strong> is a query execution model where the database engine processes data in <strong>vectors</strong> — chunks of rows (typically 1K–64K rows at a time) — instead of processing one row at a time (the "Volcano" iterator model). This is a key architectural pillar of modern OLAP databases like <a href="duckdb.html" class="wiki-link">DuckDB</a>, ClickHouse, and Velox (Meta).</p>
-
 <h2>How It Works</h2>
 <ul>
-  <li><strong>Traditional (row-at-a-time)</strong>: The engine calls <code>next()</code> on each operator for every single row. One function call per row, per operator → high CPU instruction overhead.</li>
-  <li><strong>Vectorized (chunk-at-a-time)</strong>: The engine processes a block of rows at once. One function call per <em>vector</em> of rows → dramatically fewer function calls per operation.</li>
+<li><strong>Traditional (row-at-a-time)</strong>: The engine calls <code>next()</code> on each operator for every single row. One function call per row, per operator → high CPU instruction overhead.</li>
+<li><strong>Vectorized (chunk-at-a-time)</strong>: The engine processes a block of rows at once. One function call per <em>vector</em> of rows → dramatically fewer function calls per operation.</li>
 </ul>
-
 <h2>Why It's Faster</h2>
-<table>
-  <thead><tr><th>Factor</th><th>Mechanism</th><th>Impact</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Reduced instruction overhead</strong></td><td>One function call per vector instead of per row</td><td>10–100x fewer virtual function dispatches</td></tr>
-    <tr><td><strong>Cache efficiency</strong></td><td>Data is processed in contiguous blocks that fit CPU cache lines</td><td>Fewer cache misses per row processed</td></tr>
-    <tr><td><strong>SIMD utilization</strong></td><td>Modern CPUs can apply one instruction to multiple data elements simultaneously (AVX, AVX-512)</td><td>Up to 8–16 operations per instruction vs. 1</td></tr>
-    <tr><td><strong>Branch predictability</strong></td><td>Loop-based processing over arrays has predictable branches</td><td>CPU branch predictor accuracy → fewer pipeline stalls</td></tr>
-  </tbody>
-</table>
-
+<table><thead><tr>
+<th>Factor</th>
+<th>Mechanism</th>
+<th>Impact</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Reduced instruction overhead</strong></td>
+<td>One function call per vector instead of per row</td>
+<td>10–100x fewer virtual function dispatches</td>
+</tr>
+<tr>
+<td><strong>Cache efficiency</strong></td>
+<td>Data is processed in contiguous blocks that fit CPU cache lines</td>
+<td>Fewer cache misses per row processed</td>
+</tr>
+<tr>
+<td><strong>SIMD utilization</strong></td>
+<td>Modern CPUs can apply one instruction to multiple data elements simultaneously (AVX, AVX-512)</td>
+<td>Up to 8–16 operations per instruction vs. 1</td>
+</tr>
+<tr>
+<td><strong>Branch predictability</strong></td>
+<td>Loop-based processing over arrays has predictable branches</td>
+<td>CPU branch predictor accuracy → fewer pipeline stalls</td>
+</tr>
+</tbody></table>
 <h2>Relationship to Other Execution Models</h2>
-<table>
-  <thead><tr><th>Model</th><th>Granularity</th><th>Strengths</th><th>Used By</th></tr></thead>
-  <tbody>
-    <tr><td><strong>Volcano (Iterator)</strong></td><td>Row-at-a-time</td><td>Simple, composable, low memory</td><td>MySQL, PostgreSQL, SQLite</td></tr>
-    <tr><td><strong>Vectorized</strong></td><td>Column-chunks (vectors)</td><td>High throughput on analytical queries</td><td>DuckDB, ClickHouse, Velox, DataFusion</td></tr>
-    <tr><td><strong>JIT-compiled</strong></td><td>Query-at-a-time</td><td>Lowest overhead for complex expressions</td><td>HyPer, SingleStore</td></tr>
-  </tbody>
-</table>
-
+<table><thead><tr>
+<th>Model</th>
+<th>Granularity</th>
+<th>Strengths</th>
+<th>Used By</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Volcano (Iterator)</strong></td>
+<td>Row-at-a-time</td>
+<td>Simple, composable, low memory</td>
+<td>MySQL, PostgreSQL, SQLite</td>
+</tr>
+<tr>
+<td><strong>Vectorized</strong></td>
+<td>Column-chunks (vectors)</td>
+<td>High throughput on analytical queries</td>
+<td>DuckDB, ClickHouse, Velox, DataFusion</td>
+</tr>
+<tr>
+<td><strong>JIT-compiled</strong></td>
+<td>Query-at-a-time</td>
+<td>Lowest overhead for complex expressions</td>
+<td>HyPer, SingleStore</td>
+</tr>
+</tbody></table>
 <h2>Vectorized Execution in DuckDB</h2>
 <p>In DuckDB, the vectorized engine works hand-in-hand with <strong>columnar storage</strong>: data is already laid out column-by-column on disk, so reading a column produces a contiguous array ready for vectorized operations. Together with <strong>parallel execution</strong> (splitting work across CPU cores) and <strong>late materialization</strong> (postponing full row assembly), this creates a highly efficient analytical pipeline.</p>
-
 <h2>Limitations</h2>
 <ul>
-  <li>Vectorized engines are optimized for <strong>analytical (OLAP)</strong> queries with large scans and aggregations — not row-level lookups (OLTP).</li>
-  <li>Vector size must be tuned: too small → not enough amortization; too large → doesn't fit in CPU cache.</li>
-  <li>Some operations (e.g., correlated subqueries with row-dependent logic) don't vectorize cleanly.</li>
+<li>Vectorized engines are optimized for <strong>analytical (OLAP)</strong> queries with large scans and aggregations — not row-level lookups (OLTP).</li>
+<li>Vector size must be tuned: too small → not enough amortization; too large → doesn't fit in CPU cache.</li>
+<li>Some operations (e.g., correlated subqueries with row-dependent logic) don't vectorize cleanly.</li>
 </ul>
   </div>
 </section>
@@ -135,17 +165,17 @@
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
     <a class="connection-card" href="duckdb.html">
-      <span class="connection-type core">Used by</span>
+      <span class="connection-type related">Used by</span>
       <h4>DuckDB</h4>
       <p>one of four architectural pillars of DuckDB's performance</p>
     </a>
     <a class="connection-card" href="in-process-olap.html">
-      <span class="connection-type related">Enables</span>
+      <span class="connection-type extends">Supports</span>
       <h4>In-Process OLAP</h4>
       <p>vectorized execution makes laptop-scale analytics practical</p>
     </a>
-    <a class="connection-card" href="../sources/duckdb-up-and-running.html">
-      <span class="connection-type related">Source</span>
+    <a class="connection-card" href="duckdb-up-and-running.html">
+      <span class="connection-type related">Related to</span>
       <h4>DuckDB: Up and Running</h4>
       <p>Wei-Meng Lee's guide on DuckDB architecture</p>
     </a>

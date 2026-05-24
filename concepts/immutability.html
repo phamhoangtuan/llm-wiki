@@ -98,40 +98,19 @@
 <th>Example</th>
 <th>Can Eliminate?</th>
 </tr></thead><tbody>
-<table><thead><tr>
-<th><strong>Essential</strong></th>
-<th>Inherent complexity of the real problem</th>
-<th>Physics of landing a rover on Mars</th>
-<th>❌ No — must manage</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><strong>Accidental</strong></th>
-<th>Complexity from bad design/implementation</th>
-<th>Mutable Date auto-correcting Nov 31 → Dec 1</th>
-<th>✅ Yes — better design</th>
-</tr></thead><tbody>
-<h2>Case Study: Mutable Date Object</h2>
-<pre><code class="language-java">// ❌ Mutable Date: allows changing &quot;essence&quot;
-LocalDate date = LocalDate.of(2024, 11, 31); // Invalid!
-// Java &quot;helps&quot;: auto-converts to Dec 1 → hides semantic error
-
-// ✅ Immutable Date: Fail Fast
-try {
-    LocalDate date = LocalDate.of(2024, 11, 31); // Throws DateTimeException
-} catch (DateTimeException e) {
-    // Handle error immediately — don&#x27;t let it propagate
-}</code></pre>
-<h2>Key Rule</h2>
-<p>If you need to "change" an essential attribute, create a new object:</p>
-<pre><code class="language-java">// Instead of: order.setAmount(newAmount)
-Order updatedOrder = order.withAmount(newAmount);  // Returns new Order</code></pre>
-<h2>Connections</h2>
-<ul>
-<li>Protects <a href="bijection.html" class="wiki-link">bijection</a> — mutable essence breaks the 1-1 mapping</li>
-<li>Enables <a href="rich-domain-model.html" class="wiki-link">rich-domain-model</a> — rich objects manage their own state transitions</li>
-<li>Supports <a href="fail-fast.html" class="wiki-link">fail-fast</a> — immutable objects fail fast on invalid construction</li>
-<li>Related to <a href="essential-accidental-complexity.html" class="wiki-link">essential-accidental-complexity</a> — immutability eliminates accidental complexity</li>
-</ul></tbody></table>
+<tr>
+<td><strong>Essential</strong></td>
+<td>Inherent complexity of the real problem</td>
+<td>Physics of landing a rover on Mars</td>
+<td>❌ No — must manage</td>
+</tr>
+<tr>
+<td><strong>Accidental</strong></td>
+<td>Complexity from bad design/implementation</td>
+<td>Mutable Date auto-correcting Nov 31 → Dec 1</td>
+<td>✅ Yes — better design</td>
+</tr>
+</tbody></table>
   </div>
 </section>
 

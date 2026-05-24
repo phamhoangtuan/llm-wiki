@@ -98,35 +98,19 @@
 <th>Example</th>
 <th>Can Eliminate?</th>
 </tr></thead><tbody>
-<table><thead><tr>
-<th><strong>Essential</strong></th>
-<th>Inherent complexity of the real-world problem</th>
-<th>Physics of landing a rover on Mars</th>
-<th>❌ No — must manage</th>
-</tr></thead><tbody>
-<table><thead><tr>
-<th><strong>Accidental</strong></th>
-<th>Complexity introduced by bad design/implementation</th>
-<th>Mutable Date auto-correcting Nov 31 → Dec 1</th>
-<th>✅ Yes — better design</th>
-</tr></thead><tbody>
-<h2>Key Insight</h2>
-<p>Most codebase complexity is <strong>accidental</strong>, not essential. Good design eliminates accidental complexity so you can focus on the essential complexity of the domain.</p>
-<h2>Sources of Accidental Complexity</h2>
-<ul>
-<li>Mutable state that silently corrupts data</li>
-<li>Anemic domain models with logic scattered everywhere</li>
-<li>Implicit type conversions that hide semantic errors</li>
-<li>Poor naming that obscures intent</li>
-<li>Tight coupling that makes changes ripple</li>
-</ul>
-<h2>Connections</h2>
-<ul>
-<li>Managed by <a href="immutability.html" class="wiki-link">immutability</a> — eliminates accidental complexity from mutable state</li>
-<li>Reduced by <a href="rich-domain-model.html" class="wiki-link">rich-domain-model</a> — eliminates scattered logic</li>
-<li>Prevented by <a href="fail-fast.html" class="wiki-link">fail-fast</a> — catches errors before they create accidental complexity</li>
-<li>Related to <a href="bijection.html" class="wiki-link">bijection</a> — bijection violations create accidental complexity</li>
-</ul></tbody></table>
+<tr>
+<td><strong>Essential</strong></td>
+<td>Inherent complexity of the real-world problem</td>
+<td>Physics of landing a rover on Mars</td>
+<td>❌ No — must manage</td>
+</tr>
+<tr>
+<td><strong>Accidental</strong></td>
+<td>Complexity introduced by bad design/implementation</td>
+<td>Mutable Date auto-correcting Nov 31 → Dec 1</td>
+<td>✅ Yes — better design</td>
+</tr>
+</tbody></table>
   </div>
 </section>
 
