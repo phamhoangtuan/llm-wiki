@@ -29,12 +29,18 @@
 - [Essential vs Accidental Complexity](concepts/essential-accidental-complexity.html) — Fred Brooks' two types: inherent vs design-caused
 - [Technological Centaur](concepts/technological-centaur.html) — Human architect + AI assistant; clean code enables collaboration
 - [Readability vs Performance](concepts/readability-vs-performance.html) — Write clean code first, optimize bottlenecks after profiling
+- [Materialized Views](concepts/materialized-views.html) — Pre-computed query results stored as physical tables — the hybrid of tables and views
+- [Incremental View Maintenance](concepts/incremental-view-maintenance.html) — Updating MVs by processing only changed data, not full recompute
+- [Timely Dataflow](concepts/timely-dataflow.html) — Timestamp-based notification model for distributed incremental computation (Naiad)
+- [Differential Dataflow](concepts/differential-dataflow.html) — Versioned incremental computation built on Timely Dataflow
+- [DBSP](concepts/dbsp.html) — Signal-processing formalism for incremental view maintenance with 4 operators
 
 ## Sources
 
 - [Python Testing with pytest](sources/okken-python-testing-pytest.html) — Notes on "Python Testing with pytest (2nd Ed.)" by Brian Okken — 398 pages
 - [The LLM Wiki Pattern](sources/sample-article.html) — Karpathy's gist: LLM-maintained persistent wiki instead of RAG
 - [Clean Code Cookbook](sources/contieri-clean-code-cookbook.html) — Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection
+- [Quick Insights on Materialized Views](sources/materialized-views-quick-insights.html) — Vu Trinh on MVs, IVM theory, freshness trade-offs, and streaming applications
 
 ## Syntheses
 
@@ -42,5 +48,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-05-23*
-*Pages: 25 (22 concepts + 3 sources)*
+*Last updated: 2026-05-24*
+*Pages: 31 (27 concepts + 4 sources)*

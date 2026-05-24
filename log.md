@@ -31,6 +31,15 @@
 - Updated index.md: +10 concept entries, +1 source entry
 - Total pages: 23
 
+## [2026-05-24] ingest | Quick Insights on Materialized Views (Vu Trinh)
+
+- Source: "Quick Insights on Materialized Views" by Vu Trinh (Substack, 2026-05-21)
+- URL: https://vutr.substack.com/p/quick-insights-on-materialized-views
+- Created sources/materialized-views-quick-insights.html
+- New concepts: materialized-views, incremental-view-maintenance, timely-dataflow, differential-dataflow, dbsp
+- Updated index.md: +5 concept entries, +1 source entry
+- Total pages: 31
+
 ## [2026-05-23] migrate | Markdown → HTML conversion
 
 - Converted all concept and source pages from .md to styled .html
