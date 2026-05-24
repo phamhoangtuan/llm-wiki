@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The LLM Wiki Pattern — LLM Wiki</title>
+<title>DuckDB: Up and Running (Wei-Meng Lee) — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -45,6 +45,10 @@
   .content-area pre code { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }
   .content-area code { font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }
   .content-area pre code { background: none; padding: 0; color: var(--text); }
+  .content-area table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+  .content-area th, .content-area td { border: 1px solid var(--border); padding: 0.6rem 0.75rem; text-align: left; font-size: 0.9rem; }
+  .content-area th { background: var(--surface-2); font-weight: 600; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  .content-area td code { font-size: 0.82rem; }
   .content-area strong { color: var(--text); }
   .wiki-link { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }
   .wiki-link:hover { border-color: var(--blue); }
@@ -53,6 +57,11 @@
   .connection-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
   .connection-card h4 { font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }
   .connection-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
+  .connection-type { font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; display: inline-block; }
+  .connection-type.core { background: rgba(240,180,41,0.12); color: var(--accent); }
+  .connection-type.related { background: rgba(167,139,250,0.12); color: var(--purple); }
+  .connection-type.extends { background: rgba(96,165,250,0.12); color: var(--blue); }
+  .connection-type.drives { background: rgba(45,212,191,0.12); color: var(--teal); }
   footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
   footer a { color: var(--accent); text-decoration: none; }
   @media (max-width: 768px) { section { padding: 2.5rem 1.25rem; } .content-area { padding: 1.5rem; } }
@@ -68,35 +77,106 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Source</div>
-    <h1>The LLM Wiki Pattern<span>.</span></h1>
-    <p class="hero-sub">Andrej Karpathy · article · 2026-04-04</p>
-    <div class="hero-tags"><span class="tag">meta</span><span class="tag">architecture</span><span class="tag">llm</span><span class="tag">knowledge-management</span></div>
-    <p class="hero-meta">Ingested: 2026-05-23</p>
+    <h1>DuckDB: Up and Running<span>.</span></h1>
+    <p class="hero-sub">Wei-Meng Lee · ebook · 308 pages</p>
+    <div class="hero-tags"><span class="tag">duckdb</span><span class="tag">olap</span><span class="tag">analytics</span><span class="tag">python</span><span class="tag">data-engineering</span></div>
+    <p class="hero-meta">Ingested: 2026-05-24</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Karpathy describes a pattern for building personal knowledge bases using LLMs. Instead of RAG (retrieving chunks at query time), the LLM incrementally builds and maintains a persistent wiki — structured, interlinked markdown files that sit between the user and raw sources.</p>
+<p>A practical guide to <strong>DuckDB</strong> — the open-source, in-process OLAP database often described as "SQLite for analytics." The book covers DuckDB's architecture (columnar storage, vectorized execution, parallel execution, late materialization), performance vs. pandas, seamless data format integration (CSV, Parquet, pandas DataFrames), extensions (httpfs, spatial), and the MotherDuck cloud platform.</p>
+
 <h2>Key Takeaways</h2>
 <ul>
-<li><strong>Three-layer architecture</strong>: raw sources (immutable) → wiki (LLM-owned) → schema (co-evolved in AGENTS.md)</li>
-<li><strong>Three operations</strong>: ingest (process sources), query (synthesize with citations), lint (health check)</li>
-<li><strong>Compounding knowledge</strong>: answers to queries can be filed as permanent synthesis pages — the wiki gets richer with every interaction</li>
-<li><strong>Index + Log</strong>: <code>index.md</code> (content catalog) and <code>log.md</code> (chronological record) replace vector search at moderate scale</li>
-<li><strong>Maintenance is free</strong>: LLMs don't get bored updating cross-references — the cost of bookkeeping is near zero</li>
+  <li><strong>In-process, zero setup</strong>: DuckDB runs inside your application as a library — no server, no config, no network latency. <code>pip install duckdb</code> and go.</li>
+  <li><strong>Four architectural pillars</strong>: <a href="../concepts/vectorized-execution.html" class="wiki-link">Vectorized execution</a>, columnar storage, parallel execution, and late materialization deliver fast analytics on standard hardware.</li>
+  <li><strong>Query data in place</strong>: No need to load CSV/Parquet/pandas into a database first — query files and DataFrames directly with zero-copy overhead.</li>
+  <li><strong>Memory efficient</strong>: Processes data in streaming chunks; handles datasets larger than RAM. 5.8M-row flight dataset: 280MB memory vs. pandas' 4.2GB.</li>
+  <li><strong>Extension ecosystem</strong>: httpfs (remote files via HTTP/S, S3, Hugging Face), spatial (geospatial), json, icu (locale-aware strings).</li>
+  <li><strong>Cloud via MotherDuck</strong>: Hybrid queries — join local data with cloud tables in a single SQL statement.</li>
 </ul>
+
+<h2>Architectural Pillars</h2>
+<table>
+  <thead><tr><th>Pillar</th><th>Mechanism</th><th>Benefit</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Columnar storage</strong></td><td>Data stored by column, not row</td><td>Read only needed columns → less I/O</td></tr>
+    <tr><td><strong>Vectorized execution</strong></td><td>Process data in chunks (vectors), not row-by-row</td><td>Reduced CPU overhead, SIMD, better cache use</td></tr>
+    <tr><td><strong>Parallel execution</strong></td><td>Auto-split queries across CPU cores</td><td>No configuration; automatic throughput scaling</td></tr>
+    <tr><td><strong>Late materialization</strong></td><td>Postpone full row fetch; work with indices first</td><td>Minimized data movement → lower memory, faster filtering</td></tr>
+  </tbody>
+</table>
+
+<h2>Performance vs. pandas (5.8M-row flight dataset)</h2>
+<table>
+  <thead><tr><th>Metric</th><th>pandas</th><th>DuckDB</th></tr></thead>
+  <tbody>
+    <tr><td>Execution Time</td><td>~7.5s</td><td>~0.5s</td></tr>
+    <tr><td>Peak Memory</td><td>~4.2 GB</td><td>~280 MB</td></tr>
+    <tr><td>Loading</td><td>Must load entire file into RAM</td><td>Streams data; processes in chunks</td></tr>
+  </tbody>
+</table>
+
+<h2>Supported Formats & Sources</h2>
+<table>
+  <thead><tr><th>Type</th><th>Examples</th></tr></thead>
+  <tbody>
+    <tr><td>Flat Files</td><td>CSV, JSON, Excel</td></tr>
+    <tr><td>Columnar</td><td>Parquet (recommended for performance)</td></tr>
+    <tr><td>In-Memory</td><td>pandas/Polars DataFrames (zero-copy)</td></tr>
+    <tr><td>Databases</td><td>MySQL, PostgreSQL (via extensions)</td></tr>
+    <tr><td>Remote</td><td>HTTP/S URLs, S3, GitHub, Hugging Face (via httpfs)</td></tr>
+  </tbody>
+</table>
+
+<h2>When to Use / When Not to Use</h2>
+<table>
+  <thead><tr><th>✅ Ideal For</th><th>❌ Less Suitable For</th></tr></thead>
+  <tbody>
+    <tr><td>Exploratory analysis on large CSV/Parquet files</td><td>High-volume transactional workloads (use PostgreSQL/MySQL)</td></tr>
+    <tr><td>Prototyping analytics pipelines</td><td>Multi-user concurrent writes (DuckDB is single-writer)</td></tr>
+    <tr><td>Embedding analytical SQL in Python/R apps</td><td>Real-time streaming ingestion (use Kafka + Flink/Spark)</td></tr>
+    <tr><td>Local dev and testing of data workflows</td><td></td></tr>
+    <tr><td>"Larger-than-memory" datasets on standard hardware</td><td></td></tr>
+  </tbody>
+</table>
+
 <h2>Quotes</h2>
-<blockquote>"The tedious part of maintaining a knowledge base is not the reading or the thinking — it's the bookkeeping."</blockquote>
-<blockquote>"Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase."</blockquote>
+<blockquote>"DuckDB removes the 'infrastructure tax' — you focus on analysis, not database administration."</blockquote>
+<blockquote>"DuckDB proves that you don't need a massive cluster to do serious analytics. With the right architecture, a single laptop can become a powerful analytical engine."</blockquote>
+<blockquote>"DuckDB isn't meant to replace your cloud data warehouse — it's meant to accelerate the work that happens before and after."</blockquote>
+
 <h2>Connections</h2>
 <ul>
-<li>Inspired by Vannevar Bush's Memex (1945)</li>
-<li>Implemented in this wiki — see <a href="../concepts/wiki-maintenance.html" class="wiki-link">wiki-maintenance</a> for the operational model</li>
+  <li>Core to <a href="../concepts/duckdb.html" class="wiki-link">duckdb</a> — the in-process OLAP database</li>
+  <li>Architecture depends on <a href="../concepts/vectorized-execution.html" class="wiki-link">vectorized-execution</a> and <a href="../concepts/in-process-olap.html" class="wiki-link">in-process-olap</a></li>
 </ul>
   </div>
 </section>
 
+<section>
+  <div class="section-label">Knowledge Graph</div>
+  <h2 class="section-title">Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="../concepts/duckdb.html">
+      <span class="connection-type core">Core concept</span>
+      <h4>DuckDB</h4>
+      <p>the in-process OLAP database — "SQLite for analytics"</p>
+    </a>
+    <a class="connection-card" href="../concepts/vectorized-execution.html">
+      <span class="connection-type extends">Architecture</span>
+      <h4>Vectorized Execution</h4>
+      <p>processing data in chunks, not row-by-row</p>
+    </a>
+    <a class="connection-card" href="../concepts/in-process-olap.html">
+      <span class="connection-type extends">Architecture</span>
+      <h4>In-Process OLAP</h4>
+      <p>analytical database running as an embedded library</p>
+    </a>
+  </div>
+</section>
 <footer>
   <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
   <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>

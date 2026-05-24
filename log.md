@@ -31,6 +31,21 @@
 - Updated index.md: +10 concept entries, +1 source entry
 - Total pages: 23
 
+## [2026-05-24] ingest | DuckDB: Up and Running (Wei-Meng Lee)
+
+- Source: "DuckDB: Up and Running" by Wei-Meng Lee (ebook, 308 pages, finished 2026-05-24)
+- Created sources/duckdb-up-and-running.html
+- New concepts: duckdb, vectorized-execution, in-process-olap
+- Updated index.md: +3 concept entries, +1 source entry
+- Total pages: 35
+
+## [2026-05-24] lint | Health check — fixed 15 broken links
+
+- Broken links found: 15 across 5 files (wiki-maintenance, knowledge-graph, pytest-basics, software-as-simulation, sample-article)
+- Fixed all by removing non-existent page references and rewriting surrounding text
+- Orphans: 0 | Index coverage: complete | Stale claims: none
+- Re-verified: all 36 pages link-clean
+
 ## [2026-05-24] ingest | Quick Insights on Materialized Views (Vu Trinh)
 
 - Source: "Quick Insights on Materialized Views" by Vu Trinh (Substack, 2026-05-21)

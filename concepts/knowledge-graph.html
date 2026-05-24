@@ -90,10 +90,10 @@
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>A lightweight knowledge graph built from cross-linked markdown pages. Instead of a dedicated graph database or vector store, the wiki uses <a href="wikilinks.html" class="wiki-link">wikilinks</a>, a content index (<code>index.md</code>), and consistent YAML frontmatter to achieve the same effect without infrastructure.</p>
+<p>A lightweight knowledge graph built from cross-linked markdown pages. Instead of a dedicated graph database or vector store, the wiki uses wikilinks, a content index (<code>index.md</code>), and consistent YAML frontmatter to achieve the same effect without infrastructure.</p>
 <h2>How It Works</h2>
 <ol>
-<li><strong>Write-time linking</strong> — when the LLM ingests a source, it creates/updates concept pages with explicit <code><a href="links.html" class="wiki-link">links</a></code> to related pages. The connections are compiled once, not re-derived.</li>
+<li><strong>Write-time linking</strong> — when the LLM ingests a source, it creates/updates concept pages with explicit links (<code>&lt;a href="..."&gt;</code>) to related pages. The connections are compiled once, not re-derived.</li>
 </ol>
 <ol>
 <li><strong>Index as entry point</strong> — <code>index.md</code> lists every page with a one-line summary. The LLM reads this first to find relevant pages, then drills in. This replaces vector search at moderate scale (~500 pages).</li>
@@ -112,7 +112,7 @@
 <ul>
 <li>Core to the <a href="wiki-maintenance.html" class="wiki-link">wiki-maintenance</a> operational model</li>
 <li>Contrasts with embedding-based RAG — graph is explicit rather than statistical</li>
-<li>Extends naturally with tools like <a href="qmd.html" class="wiki-link">qmd</a> (hybrid BM25/vector search for markdown)</li>
+<li>Extends naturally with tools like qmd (hybrid BM25/vector search for markdown)</li>
 </ul>
   </div>
 </section>

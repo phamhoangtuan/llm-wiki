@@ -34,6 +34,9 @@
 - [Timely Dataflow](concepts/timely-dataflow.html) — Timestamp-based notification model for distributed incremental computation (Naiad)
 - [Differential Dataflow](concepts/differential-dataflow.html) — Versioned incremental computation built on Timely Dataflow
 - [DBSP](concepts/dbsp.html) — Signal-processing formalism for incremental view maintenance with 4 operators
+- [DuckDB](concepts/duckdb.html) — In-process OLAP database — "SQLite for analytics" — columnar, vectorized, zero-setup
+- [Vectorized Execution](concepts/vectorized-execution.html) — Processing data in vectors (chunks) not row-by-row; SIMD, cache-efficient
+- [In-Process OLAP](concepts/in-process-olap.html) — Analytical database runs as embedded library — no server, no network latency
 
 ## Sources
 
@@ -41,6 +44,7 @@
 - [The LLM Wiki Pattern](sources/sample-article.html) — Karpathy's gist: LLM-maintained persistent wiki instead of RAG
 - [Clean Code Cookbook](sources/contieri-clean-code-cookbook.html) — Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection
 - [Quick Insights on Materialized Views](sources/materialized-views-quick-insights.html) — Vu Trinh on MVs, IVM theory, freshness trade-offs, and streaming applications
+- [DuckDB: Up and Running](sources/duckdb-up-and-running.html) — Wei-Meng Lee's guide — 308 pages on architecture, performance, and ecosystem
 
 ## Syntheses
 
@@ -49,4 +53,4 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 *Last updated: 2026-05-24*
-*Pages: 31 (27 concepts + 4 sources)*
+*Pages: 35 (30 concepts + 5 sources)*
