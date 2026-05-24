@@ -37,6 +37,15 @@
 - [DuckDB](concepts/duckdb.html) — In-process OLAP database — "SQLite for analytics" — columnar, vectorized, zero-setup
 - [Vectorized Execution](concepts/vectorized-execution.html) — Processing data in vectors (chunks) not row-by-row; SIMD, cache-efficient
 - [In-Process OLAP](concepts/in-process-olap.html) — Analytical database runs as embedded library — no server, no network latency
+- [System Design Interview](concepts/system-design-interview.html) — Framework for designing scalable distributed systems under constraints
+- [Scalable Architecture](concepts/scalable-architecture.html) — Evolution from single server to horizontal scaling with distributed components
+- [Load Balancer](concepts/load-balancer.html) — Traffic distribution, security, and high availability across backend servers
+- [Database Replication](concepts/database-replication.html) — Master-slave pattern for read/write separation and horizontal read scaling
+- [Cache Strategy](concepts/cache-strategy.html) — Read-through cache, TTL, eviction policies, and invalidation strategies
+- [CDN](concepts/cdn.html) — Geographically distributed edge caching for static content delivery
+- [Stateless Architecture](concepts/stateless-architecture.html) — Externalized sessions enabling horizontal scaling and autoscaling
+- [Message Queue](concepts/message-queue.html) — Async decoupling of producers and consumers for resilience and independent scaling
+- [Observability](concepts/observability.html) — Metrics, logs, and traces for understanding distributed system health
 
 ## Sources
 
@@ -45,6 +54,7 @@
 - [Clean Code Cookbook](sources/contieri-clean-code-cookbook.html) — Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection
 - [Quick Insights on Materialized Views](sources/materialized-views-quick-insights.html) — Vu Trinh on MVs, IVM theory, freshness trade-offs, and streaming applications
 - [DuckDB: Up and Running](sources/duckdb-up-and-running.html) — Wei-Meng Lee's guide — 308 pages on architecture, performance, and ecosystem
+- [System Design Interview – An Insider's Guide](sources/system-design-interview-xu.html) — Alex Xu's 252-page ebook on designing scalable systems from single server to millions of users
 
 ## Syntheses
 
@@ -53,4 +63,4 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 *Last updated: 2026-05-24*
-*Pages: 35 (30 concepts + 5 sources)*
+*Pages: 45 (39 concepts + 6 sources)*

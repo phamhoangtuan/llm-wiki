@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Design Interview – An Insider&#x27;s Guide (Alex Xu) — LLM Wiki</title>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
+    --text: #e4e6f0; --text-dim: #8b8fa8; --accent: #f0b429; --accent-dim: #b8860b;
+    --accent-glow: rgba(240, 180, 41, 0.15); --green: #4ade80; --blue: #60a5fa;
+    --rose: #fb7185; --purple: #a78bfa; --teal: #2dd4bf; --radius: 12px;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .hero { min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 50%, rgba(45,212,191,0.08) 0%, transparent 70%), radial-gradient(ellipse 500px 500px at 70% 30%, rgba(240,180,41,0.06) 0%, transparent 70%); z-index: 0; }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(45,212,191,0.12); border: 1px solid rgba(45,212,191,0.25); color: var(--teal); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--teal); }
+  .hero-sub { font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 1.5rem; }
+  .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
+  .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
+  .hero-back { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.5rem; transition: opacity 0.2s; }
+  .hero-back:hover { opacity: 0.8; }
+  .hero-back svg { width: 16px; height: 16px; }
+  section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+  .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--teal); }
+  .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
+  .content-area h2:first-child { margin-top: 0; }
+  .content-area h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--text); }
+  .content-area p { margin-bottom: 1rem; line-height: 1.7; }
+  .content-area ul, .content-area ol { margin: 0.5rem 0 1rem 1.5rem; }
+  .content-area li { margin-bottom: 0.4rem; line-height: 1.6; }
+  .content-area blockquote { margin: 1rem 0; padding: 1rem 1.25rem; background: var(--surface-2); border-radius: 8px; border-left: 3px solid var(--accent); font-style: italic; color: var(--text-dim); }
+  .content-area pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1rem 0; }
+  .content-area pre code { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }
+  .content-area code { font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }
+  .content-area pre code { background: none; padding: 0; color: var(--text); }
+  .content-area strong { color: var(--text); }
+  .wiki-link { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }
+  .wiki-link:hover { border-color: var(--blue); }
+  .connections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .connection-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+  .connection-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+  .connection-card h4 { font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }
+  .connection-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
+  footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  @media (max-width: 768px) { section { padding: 2.5rem 1.25rem; } .content-area { padding: 1.5rem; } }
+  @media (prefers-color-scheme: light) { :root { --bg: #f8f9fb; --surface: #ffffff; --surface-2: #f0f1f5; --border: #e2e4ec; --text: #1a1d27; --text-dim: #6b7089; } }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <a href="../index.html" class="hero-back">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Wiki Index
+    </a>
+    <div class="hero-badge">Source</div>
+    <h1>System Design Interview – An Insider&#x27;s Guide (Alex Xu)<span>.</span></h1>
+    <p class="hero-sub">Alex Xu · ebook · 2026-05-17</p>
+    <div class="hero-tags"><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">architecture</span><span class="tag">distributed-systems</span><span class="tag">interview</span></div>
+    <p class="hero-meta">Ingested: 2026-05-24</p>
+  </div>
+</div>
+<section>
+  <div class="content-area">
+<h2>Summary</h2>
+<p>Vietnamese notes on <strong>System Design Interview – An Insider's Guide</strong> by Alex Xu — a 252-page ebook that teaches how to design scalable systems from single-server setups to distributed architectures serving millions of users. The core philosophy: system design is not about finding "the right answer" — it's the art of balancing requirements, constraints, and bottlenecks to build context-appropriate architecture.</p>
+<h2>Key Takeaways</h2>
+<ul>
+<li><strong>Interview framework</strong>: Clarify requirements → Estimate scale → Define core components → Deep dive → Identify bottlenecks → Propose optimizations</li>
+<li><strong>Architecture evolution</strong>: Single server → Separate tiers (web + DB) → Vertical scaling → Horizontal scaling with load balancer</li>
+<li><strong>SQL vs NoSQL</strong>: Start with SQL unless you have a specific reason for NoSQL — premature optimization is the enemy</li>
+<li><strong>Load balancer</strong>: Distributes traffic, hides backend servers (private IPs), enables high availability through failover</li>
+<li><strong>Database replication</strong>: Master-slave pattern separates writes (master) from reads (slaves) — watch for replication lag</li>
+<li><strong>Cache</strong>: Read-through cache with proper TTL and eviction policy (LRU/LFU/FIFO) — but beware stale data and cache invalidation</li>
+<li><strong>CDN</strong>: Geographically distributed edge servers cache static content — reduces latency 10x for global users</li>
+<li><strong>Stateless web tier</strong>: Move session data to shared store (Redis) so any server can handle any request → enables autoscaling</li>
+<li><strong>Message queues</strong>: Decouple producers and consumers for independent scaling, failure resilience, and load leveling</li>
+<li><strong>Multi-datacenter</strong>: GeoDNS routes users to nearest data center — challenges include traffic redirection, data sync, and deployment automation</li>
+<li><strong>Observability</strong>: Monitor at host level (CPU, memory), aggregated level (DB latency, cache hit rate), and business level (DAU, conversion)</li>
+<li><strong>Trade-offs are unavoidable</strong>: Every decision has a cost. Understand requirements to choose the right priorities.</li>
+</ul>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Knowledge Graph</div>
+  <h2 class="section-title">Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="../concepts/system-design-interview.html">
+      <span class="connection-type core">Core to</span>
+      <h4>System Design Interview</h4>
+      <p>the interview framework and methodology</p>
+    </a>
+    <a class="connection-card" href="../concepts/scalable-architecture.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Scalable Architecture</h4>
+      <p>evolution from single server to distributed system</p>
+    </a>
+    <a class="connection-card" href="../concepts/load-balancer.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Load Balancer</h4>
+      <p>traffic distribution and high availability</p>
+    </a>
+    <a class="connection-card" href="../concepts/database-replication.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Database Replication</h4>
+      <p>master-slave read/write separation</p>
+    </a>
+    <a class="connection-card" href="../concepts/cache-strategy.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Cache Strategy</h4>
+      <p>read-through cache, TTL, eviction policies</p>
+    </a>
+    <a class="connection-card" href="../concepts/cdn.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>CDN</h4>
+      <p>edge caching for global static content delivery</p>
+    </a>
+    <a class="connection-card" href="../concepts/stateless-architecture.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Stateless Architecture</h4>
+      <p>session externalization for autoscaling</p>
+    </a>
+    <a class="connection-card" href="../concepts/message-queue.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Message Queue</h4>
+      <p>async decoupling for resilience</p>
+    </a>
+    <a class="connection-card" href="../concepts/observability.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Observability</h4>
+      <p>monitoring, logging, and metrics at all levels</p>
+    </a>
+  </div>
+</section>
+<footer>
+  <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
+  <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>
+</footer>
+<script>
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    document.documentElement.style.setProperty('--bg', '#f8f9fb');
+    document.documentElement.style.setProperty('--surface', '#ffffff');
+    document.documentElement.style.setProperty('--surface-2', '#f0f1f5');
+    document.documentElement.style.setProperty('--border', '#e2e4ec');
+    document.documentElement.style.setProperty('--text', '#1a1d27');
+    document.documentElement.style.setProperty('--text-dim', '#6b7089');
+  }
+</script>
+</body>
+</html>

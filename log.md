@@ -88,3 +88,12 @@
 - Verified: 118 connection cards across 35 pages (was 116)
 - Structural checks: all HTML files have consistent structure (hero, content-area, connections, footer), no broken cross-directory links, no unclosed tags, no wikilink orphans
 - Note: 5 source files missing `updated` field in frontmatter (converter falls back to default)
+
+## [2026-05-24] ingest | System Design Interview – An Insider's Guide (Alex Xu)
+
+- Source: "System Design Interview – An Insider's Guide" by Alex Xu (ebook, 252 pages, finished 2026-05-17)
+- Copied to: raw/system-design-interview-xu.md (Vietnamese notes)
+- Created sources/system-design-interview-xu.md
+- New concepts: system-design-interview, scalable-architecture, load-balancer, database-replication, cache-strategy, cdn, stateless-architecture, message-queue, observability
+- Updated index.md: +9 concept entries, +1 source entry
+- Total pages: 45 (39 concepts + 6 sources)
