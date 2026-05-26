@@ -3,8 +3,8 @@ title: "DuckDB"
 type: concept
 tags: [databases, olap, analytics, python, data-engineering]
 created: 2026-05-24
-updated: 2026-05-24
-sources: [duckdb-up-and-running]
+updated: 2026-05-26
+sources: [duckdb-up-and-running, benchmarking-vortex-file-format]
 ---
 
 ## Summary
@@ -88,6 +88,7 @@ print(result.df())
 | `spatial` | Geospatial data types and functions |
 | `json` | Advanced JSON parsing and querying |
 | `icu` | Unicode and locale-aware string operations |
+| `vortex` | Read/write [[vortex-file-format|Vortex]] files (⚠️ early-stage, reported OOM crashes on multi-file reads as of 2026-05) |
 
 **Languages**: Python, R, Julia, C/C++, Java, Go, Rust, Node.js.
 
@@ -96,3 +97,5 @@ print(result.df())
 - Powered by [[vectorized-execution]] — one of DuckDB's four architectural pillars
 - Implements [[in-process-olap]] — DuckDB is the canonical example of in-process OLAP
 - Related to [[duckdb-up-and-running]] — Wei-Meng Lee's practical guide
+- Related to [[benchmarking-vortex-file-format]] — benchmark against Vortex, Polars, DataFusion (Backblaze dataset)
+- Competes with [[polars]] — both target Python data engineering; DuckDB uses SQL, Polars uses DataFrame API

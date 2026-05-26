@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Message Queue — LLM Wiki</title>
+<title>Apache Iceberg — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,87 +82,84 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Message Queue<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">system-design</span><span class="tag">messaging</span><span class="tag">async</span><span class="tag">decoupling</span><span class="tag">resilience</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu, hugo-data-ingestion-platform-flink · Updated: 2026-05-26</p>
+    <h1>Apache Iceberg<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">table-formats</span><span class="tag">data-lake</span><span class="tag">iceberg</span><span class="tag">data-engineering</span></div>
+    <p class="hero-meta">Source: hugo-data-ingestion-platform-flink · Updated: 2026-05-26</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>A message queue is an asynchronous communication mechanism that decouples producers (services that create jobs) from consumers (services that process jobs). By introducing a buffer between components, message queues enable independent scaling, failure resilience, and load leveling.</p>
-<h2>Architecture</h2>
-<pre><code>Producer → [Message Queue] → Consumer 1
-                         → Consumer 2
-                         → Consumer 3</code></pre>
+<p><strong>Apache Iceberg</strong> is an open-source table format for large analytic datasets, designed to bring ACID transactions, schema evolution, and time travel to data lakes. It is Grab's planned future table format for Hugo's data lake, replacing Hive tables to improve pipeline SLAs and reduce costs.</p>
+<h2>Key Features</h2>
+<ul>
+<li><strong>ACID transactions</strong> — serializable isolation for concurrent reads and writes</li>
+<li><strong>Schema evolution</strong> — add, drop, rename, reorder columns without rewriting data</li>
+<li><strong>Partition evolution</strong> — change partition scheme without rewriting existing data</li>
+<li><strong>Time travel</strong> — query data as it existed at any point in time</li>
+<li><strong>Hidden partitioning</strong> — partition values derived automatically; no need for users to specify partition columns in queries</li>
+<li><strong>Engine-agnostic</strong> — works with Spark, Flink, Trino, Presto, Hive, Impala, DuckDB</li>
+</ul>
+<h2>Comparison with Other Table Formats</h2>
 <table><thead><tr>
-<th>Role</th>
-<th>Responsibility</th>
+<th>Feature</th>
+<th>Iceberg</th>
+<th>Hive</th>
+<th>Delta Lake</th>
+<th>Hudi</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Producer</strong></td>
-<td>Publishes jobs into the queue (e.g., "process this image")</td>
+<td>ACID</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
 </tr>
 <tr>
-<td><strong>Queue</strong></td>
-<td>Durable buffer that holds jobs until consumed</td>
+<td>Schema evolution</td>
+<td>✅</td>
+<td>❌ (manual)</td>
+<td>✅</td>
+<td>✅</td>
 </tr>
 <tr>
-<td><strong>Consumer</strong></td>
-<td>Worker nodes that pick up and process jobs</td>
+<td>Partition evolution</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Time travel</td>
+<td>✅</td>
+<td>❌ (manual snapshots)</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Hidden partitioning</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Engine support</td>
+<td>Broad (5+ engines)</td>
+<td>Broad</td>
+<td>Spark-primary</td>
+<td>Spark-primary</td>
 </tr>
 </tbody></table>
-<h2>Benefits</h2>
-<table><thead><tr>
-<th>Benefit</th>
-<th>Description</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>Independent scaling</strong></td>
-<td>Add workers when queue is long; remove when empty</td>
-</tr>
-<tr>
-<td><strong>Failure resilience</strong></td>
-<td>If a worker dies, the job remains in queue — another worker picks it up</td>
-</tr>
-<tr>
-<td><strong>Load leveling</strong></td>
-<td>Producers aren't blocked waiting for jobs to finish; fast response times</td>
-</tr>
-<tr>
-<td><strong>Temporal decoupling</strong></td>
-<td>Producers and consumers don't need to be online simultaneously</td>
-</tr>
-</tbody></table>
-<h2>Common Implementations</h2>
-<table><thead><tr>
-<th>Tool</th>
-<th>Pattern</th>
-<th>Best For</th>
-</tr></thead><tbody>
-<tr>
-<td>RabbitMQ</td>
-<td>Traditional message broker</td>
-<td>Complex routing, pub/sub</td>
-</tr>
-<tr>
-<td>Kafka</td>
-<td>Distributed log</td>
-<td>High throughput, event sourcing, data pipelines</td>
-</tr>
-</tbody></table>
-<p>→ See <a href="apache-kafka.html" class="wiki-link">apache-kafka</a> for detailed Kafka architecture and its role in data ingestion pipelines.</p>
-<table><thead><tr>
-<th>SQS</th>
-<th>Managed cloud queue</th>
-<th>AWS ecosystem, simple ops</th>
-</tr></thead><tbody>
-<tr>
-<td>Redis Streams</td>
-<td>Lightweight queue</td>
-<td>Low latency, simple use cases</td>
-</tr>
-</tbody></table>
+<h2>Why Grab is Considering Iceberg</h2>
+<p>Hugo currently writes to Hive tables (with Spark compaction). Iceberg would address:</p>
+<ul>
+<li><strong>SLA improvements</strong> — ACID transactions prevent inconsistent reads during compaction</li>
+<li><strong>Cost reduction</strong> — hidden partitioning eliminates expensive full-table scans caused by incorrect partition filters</li>
+<li><strong>Schema evolution</strong> — current Hive schema changes require manual intervention; Iceberg supports online, non-blocking schema changes</li>
+</ul>
+<p>→ See <a href="data-ingestion.html" class="wiki-link">data-ingestion</a> for Hugo's current architecture and <a href="apache-flink.html" class="wiki-link">apache-flink</a> for Flink's Iceberg sink connector.</p>
+<blockquote><strong>Note</strong>: This page is a stub — Iceberg was mentioned as a future direction in the Hugo article but not evaluated in depth. A dedicated source would add substance.</blockquote>
   </div>
 </section>
 
@@ -170,30 +167,20 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>decouples components for independent scaling</p>
-    </a>
-    <a class="connection-card" href="stateless-architecture.html">
+    <a class="connection-card" href="data-ingestion.html">
       <span class="connection-type related">Related to</span>
-      <h4>Stateless Architecture</h4>
-      <p>async processing complements stateless design</p>
+      <h4>Data Ingestion</h4>
+      <p>Iceberg is the planned next-gen table format for Hugo's data lake</p>
     </a>
-    <a class="connection-card" href="observability.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Observability</h4>
-      <p>queue depth and consumer lag are critical metrics</p>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Flink</h4>
+      <p>Flink has an Iceberg sink connector for writing streaming data to Iceberg tables</p>
     </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>workers scale independently from web tier</p>
-    </a>
-    <a class="connection-card" href="apache-kafka.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Apache Kafka</h4>
-      <p>Kafka is the most widely used distributed log implementation for data pipelines</p>
+    <a class="connection-card" href="hugo-data-ingestion-platform-flink.html">
+      <span class="connection-type related">Related</span>
+      <h4>The Hugo Evolution: Engineering Grab's Unified, One-Click Data Ingestion Platform with Apache Flink</h4>
+      <p>mentioned as Hugo's future table format to replace Hive</p>
     </a>
   </div>
 </section>

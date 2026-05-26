@@ -46,6 +46,16 @@
 - [Stateless Architecture](concepts/stateless-architecture.html) — Externalized sessions enabling horizontal scaling and autoscaling
 - [Message Queue](concepts/message-queue.html) — Async decoupling of producers and consumers for resilience and independent scaling
 - [Observability](concepts/observability.html) — Metrics, logs, and traces for understanding distributed system health
+- [Vortex File Format](concepts/vortex-file-format.html) — Next-gen Rust-native columnar format; 100× random access claims vs Parquet, immature Python ecosystem as of 2026-05
+- [Polars](concepts/polars.html) — Rust-based DataFrame library with lazy evaluation; reported OOM reliability issues on large CSV
+- [Apache DataFusion](concepts/apache-datafusion.html) — Rust-native embeddable SQL query engine; fastest CSV scan in benchmarks (5.1s vs 25.5s DuckDB)
+- [Apache Parquet](concepts/apache-parquet.html) — Dominant columnar storage format for data lakes; ~200× faster than CSV for analytics
+- [Lance File Format](concepts/lance-file-format.html) — Columnar format optimized for ML/AI workloads; random access, versioning
+- [Apache Flink](concepts/apache-flink.html) — Distributed stream processing engine with exactly-once semantics; Flink CDC for database ingestion
+- [Change Data Capture (CDC)](concepts/change-data-capture.html) — Capturing row-level DB changes from transaction logs for real-time data sync
+- [Data Ingestion](concepts/data-ingestion.html) — Moving data from sources to data lake; self-service platforms, batch vs streaming patterns
+- [Apache Kafka](concepts/apache-kafka.html) — Distributed event streaming platform; persistent log, high throughput, schema registry
+- [Apache Iceberg](concepts/apache-iceberg.html) — Open table format for data lakes with ACID transactions, schema evolution, time travel
 
 ## Sources
 
@@ -55,6 +65,8 @@
 - [Quick Insights on Materialized Views](sources/materialized-views-quick-insights.html) — Vu Trinh on MVs, IVM theory, freshness trade-offs, and streaming applications
 - [DuckDB: Up and Running](sources/duckdb-up-and-running.html) — Wei-Meng Lee's guide — 308 pages on architecture, performance, and ecosystem
 - [System Design Interview – An Insider's Guide](sources/system-design-interview-xu.html) — Alex Xu's 252-page ebook on designing scalable systems from single server to millions of users
+- [Benchmarking Vortex File Format vs Parquet, CSV](sources/benchmarking-vortex-file-format.html) — Daniel Beach benchmarks Vortex vs Parquet/CSV with DuckDB, Polars, DataFusion (Backblaze ~24 GB dataset, 2026-05)
+- [Hugo Data Ingestion Platform with Apache Flink](sources/hugo-data-ingestion-platform-flink.html) — Grab Engineering's evolution from siloed ingestion (Kafka Connect + Sprinkler) to unified Flink-based platform
 
 ## Syntheses
 
@@ -62,5 +74,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-05-24*
-*Pages: 45 (39 concepts + 6 sources)*
+*Last updated: 2026-05-26*
+*Pages: 57 (49 concepts + 8 sources)*

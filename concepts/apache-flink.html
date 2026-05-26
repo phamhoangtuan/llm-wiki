@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Message Queue — LLM Wiki</title>
+<title>Apache Flink — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,87 +82,140 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Message Queue<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">system-design</span><span class="tag">messaging</span><span class="tag">async</span><span class="tag">decoupling</span><span class="tag">resilience</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu, hugo-data-ingestion-platform-flink · Updated: 2026-05-26</p>
+    <h1>Apache Flink<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">stream-processing</span><span class="tag">apache</span><span class="tag">flink</span><span class="tag">data-engineering</span><span class="tag">cdc</span></div>
+    <p class="hero-meta">Source: hugo-data-ingestion-platform-flink · Updated: 2026-05-26</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>A message queue is an asynchronous communication mechanism that decouples producers (services that create jobs) from consumers (services that process jobs). By introducing a buffer between components, message queues enable independent scaling, failure resilience, and load leveling.</p>
-<h2>Architecture</h2>
-<pre><code>Producer → [Message Queue] → Consumer 1
-                         → Consumer 2
-                         → Consumer 3</code></pre>
+<p><strong>Apache Flink</strong> is an open-source, distributed stream processing framework for stateful computations over data streams. It provides exactly-once semantics, low-latency processing, and a unified API for both streaming and batch workloads. Flink is the engine that powered Grab's Hugo platform migration, replacing Kafka Connect and Sprinkler for data ingestion into their data lake.</p>
+<h2>Core Characteristics</h2>
+<ul>
+<li><strong>Unified stream + batch</strong> — one runtime for both streaming and batch; batch = bounded stream</li>
+<li><strong>Exactly-once state consistency</strong> — checkpoints and savepoints guarantee no data loss or duplication even on failure</li>
+<li><strong>Low latency</strong> — sub-second processing latency for real-time pipelines</li>
+<li><strong>Distributed</strong> — scales horizontally across clusters</li>
+<li><strong>Rich connector ecosystem</strong> — CDC connectors (MySQL, PostgreSQL, MongoDB), Kafka, S3, Hive, Iceberg, and more</li>
+</ul>
+<h2>Key Primitives</h2>
 <table><thead><tr>
-<th>Role</th>
-<th>Responsibility</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>Producer</strong></td>
-<td>Publishes jobs into the queue (e.g., "process this image")</td>
-</tr>
-<tr>
-<td><strong>Queue</strong></td>
-<td>Durable buffer that holds jobs until consumed</td>
-</tr>
-<tr>
-<td><strong>Consumer</strong></td>
-<td>Worker nodes that pick up and process jobs</td>
-</tr>
-</tbody></table>
-<h2>Benefits</h2>
-<table><thead><tr>
-<th>Benefit</th>
+<th>Primitive</th>
 <th>Description</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Independent scaling</strong></td>
-<td>Add workers when queue is long; remove when empty</td>
+<td><strong>DataStream API</strong></td>
+<td>Low-level API for event-at-a-time processing; Java/Scala</td>
 </tr>
 <tr>
-<td><strong>Failure resilience</strong></td>
-<td>If a worker dies, the job remains in queue — another worker picks it up</td>
+<td><strong>Table API / SQL</strong></td>
+<td>Declarative relational API on top of streams</td>
 </tr>
 <tr>
-<td><strong>Load leveling</strong></td>
-<td>Producers aren't blocked waiting for jobs to finish; fast response times</td>
+<td><strong>State</strong></td>
+<td>Flink manages application state (counts, windows, joins) in durable backends (RocksDB, heap)</td>
 </tr>
 <tr>
-<td><strong>Temporal decoupling</strong></td>
-<td>Producers and consumers don't need to be online simultaneously</td>
+<td><strong>Checkpoints</strong></td>
+<td>Periodic snapshots of state for failure recovery</td>
+</tr>
+<tr>
+<td><strong>Savepoints</strong></td>
+<td>Manually triggered snapshots for upgrades, migrations, debugging</td>
 </tr>
 </tbody></table>
-<h2>Common Implementations</h2>
+<h2>CDC (Change Data Capture) with Flink</h2>
+<p>Flink CDC connectors read database transaction logs (e.g., MySQL binlog, PostgreSQL WAL) directly, capturing insert/update/delete events and streaming them to downstream sinks. This is a key use case:</p>
+<pre><code>MySQL binlog → Flink CDC connector → S3 / Hive / Kafka / Iceberg</code></pre>
+<p>Advantages of Flink CDC over Kafka Connect:</p>
+<ul>
+<li><strong>Fewer moving parts</strong> — no intermediary Kafka broker/topic</li>
+<li><strong>Automated schema detection</strong> — Flink infers schema from the source database</li>
+<li><strong>Single control plane</strong> — pipeline lifecycle managed in one place</li>
+<li><strong>Exactly-once</strong> — end-to-end guarantees from binlog to sink</li>
+</ul>
+<p>→ See <a href="change-data-capture.html" class="wiki-link">change-data-capture</a> for the broader CDC pattern.</p>
+<h2>Hugo Use Case (Grab)</h2>
+<p>In Grab's Hugo data ingestion platform, Flink replaced a fragmented architecture of 4 components (Kafka Connect → Kafka → Sprinkler → Spark) with 2 (Flink → Spark compaction):</p>
+<ol>
+<li><strong>MySQL CDC</strong>: Flink reads MySQL binlog directly, writes to S3, Spark compacts into Hive tables (~3 min onboarding)</li>
+<li><strong>Kafka ingestion</strong>: Flink fetches Protobuf schemas dynamically from Confluent Schema Registry, writes to S3, Spark compacts into Hive tables (~6 min onboarding)</li>
+</ol>
+<h2>Comparison with Other Stream Processors</h2>
 <table><thead><tr>
-<th>Tool</th>
-<th>Pattern</th>
-<th>Best For</th>
+<th>Aspect</th>
+<th>Flink</th>
+<th>Spark Streaming</th>
+<th>Kafka Streams</th>
 </tr></thead><tbody>
 <tr>
-<td>RabbitMQ</td>
-<td>Traditional message broker</td>
-<td>Complex routing, pub/sub</td>
+<td>Processing model</td>
+<td>True streaming (event-at-a-time)</td>
+<td>Micro-batch</td>
+<td>Event-at-a-time</td>
 </tr>
 <tr>
-<td>Kafka</td>
-<td>Distributed log</td>
-<td>High throughput, event sourcing, data pipelines</td>
+<td>Latency</td>
+<td>Sub-second</td>
+<td>Seconds (micro-batch)</td>
+<td>Sub-second</td>
+</tr>
+<tr>
+<td>State management</td>
+<td>Built-in (RocksDB, checkpointing)</td>
+<td>Stateful operations via DStream</td>
+<td>Built-in (RocksDB)</td>
+</tr>
+<tr>
+<td>SQL support</td>
+<td>Table API + SQL (mature)</td>
+<td>Structured Streaming SQL</td>
+<td>KSQL / ksqlDB</td>
+</tr>
+<tr>
+<td>Exactly-once</td>
+<td>Yes (checkpoints + two-phase commit)</td>
+<td>Yes (with idempotent sinks)</td>
+<td>Yes (transactions)</td>
+</tr>
+<tr>
+<td>Deployment complexity</td>
+<td>High (JobManager + TaskManagers)</td>
+<td>High (Spark cluster)</td>
+<td>Low (embedded library)</td>
 </tr>
 </tbody></table>
-<p>→ See <a href="apache-kafka.html" class="wiki-link">apache-kafka</a> for detailed Kafka architecture and its role in data ingestion pipelines.</p>
+<h2>When to Use Flink</h2>
 <table><thead><tr>
-<th>SQS</th>
-<th>Managed cloud queue</th>
-<th>AWS ecosystem, simple ops</th>
+<th>✅ Use Flink</th>
+<th>❌ Don't Use Flink</th>
 </tr></thead><tbody>
 <tr>
-<td>Redis Streams</td>
-<td>Lightweight queue</td>
-<td>Low latency, simple use cases</td>
+<td>Real-time CDC pipelines</td>
+<td>Simple batch ETL (use Spark)</td>
+</tr>
+<tr>
+<td>Low-latency streaming analytics</td>
+<td>Lightweight stream processing (use Kafka Streams)</td>
+</tr>
+<tr>
+<td>Stateful event processing (windows, joins)</td>
+<td>Occasional data movement (use cron + script)</td>
+</tr>
+<tr>
+<td>Large-scale, distributed streaming</td>
+<td>Single-node processing (use embedded lib)</td>
 </tr>
 </tbody></table>
+<h2>Ecosystem</h2>
+<ul>
+<li><strong>Flink SQL</strong> — ANSI SQL on streaming data with window functions, temporal joins</li>
+<li><strong>Flink CDC</strong> — Connectors for MySQL, PostgreSQL, MongoDB, Oracle, TiDB</li>
+<li><strong>Ververica</strong> — Commercial Flink platform (original creators)</li>
+<li><strong>Apache Iceberg</strong> — Table format sink (future direction for Hugo)</li>
+<li><strong>Kubernetes</strong> — Native K8s operator for Flink deployments</li>
+</ul>
   </div>
 </section>
 
@@ -170,30 +223,30 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>decouples components for independent scaling</p>
+    <a class="connection-card" href="change-data-capture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>Flink CDC is the primary production implementation of CDC at Grab</p>
     </a>
-    <a class="connection-card" href="stateless-architecture.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Stateless Architecture</h4>
-      <p>async processing complements stateless design</p>
-    </a>
-    <a class="connection-card" href="observability.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Observability</h4>
-      <p>queue depth and consumer lag are critical metrics</p>
-    </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>workers scale independently from web tier</p>
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Ingestion</h4>
+      <p>Flink is the engine behind Hugo's unified ingestion platform</p>
     </a>
     <a class="connection-card" href="apache-kafka.html">
-      <span class="connection-type related">Related to</span>
+      <span class="connection-type related">Related</span>
       <h4>Apache Kafka</h4>
-      <p>Kafka is the most widely used distributed log implementation for data pipelines</p>
+      <p>Flink consumes and produces to Kafka topics; replaces Kafka Connect</p>
+    </a>
+    <a class="connection-card" href="apache-iceberg.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Iceberg</h4>
+      <p>Flink writes to Iceberg tables (Hugo's future direction)</p>
+    </a>
+    <a class="connection-card" href="hugo-data-ingestion-platform-flink.html">
+      <span class="connection-type related">Related</span>
+      <h4>The Hugo Evolution: Engineering Grab's Unified, One-Click Data Ingestion Platform with Apache Flink</h4>
+      <p>Grab's production migration from Kafka Connect+Sprinkler to Flink</p>
     </a>
   </div>
 </section>

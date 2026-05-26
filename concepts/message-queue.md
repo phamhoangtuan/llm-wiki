@@ -3,8 +3,8 @@ title: "Message Queue"
 type: concept
 tags: [system-design, messaging, async, decoupling, resilience]
 created: 2026-05-24
-updated: 2026-05-24
-sources: [system-design-interview-xu]
+updated: 2026-05-26
+sources: [system-design-interview-xu, hugo-data-ingestion-platform-flink]
 aliases: [message-broker, event-queue, task-queue]
 ---
 
@@ -40,7 +40,9 @@ Producer → [Message Queue] → Consumer 1
 | Tool | Pattern | Best For |
 |------|---------|----------|
 | RabbitMQ | Traditional message broker | Complex routing, pub/sub |
-| Kafka | Distributed log | High throughput, event sourcing |
+| Kafka | Distributed log | High throughput, event sourcing, data pipelines |
+
+→ See [[apache-kafka]] for detailed Kafka architecture and its role in data ingestion pipelines.
 | SQS | Managed cloud queue | AWS ecosystem, simple ops |
 | Redis Streams | Lightweight queue | Low latency, simple use cases |
 
@@ -49,3 +51,4 @@ Producer → [Message Queue] → Consumer 1
 - Related to [[stateless-architecture]] — async processing complements stateless design
 - Related to [[observability]] — queue depth and consumer lag are critical metrics
 - Related to [[load-balancer]] — workers scale independently from web tier
+- Related to [[apache-kafka]] — Kafka is the most widely used distributed log implementation for data pipelines

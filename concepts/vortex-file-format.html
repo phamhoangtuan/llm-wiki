@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Message Queue — LLM Wiki</title>
+<title>Vortex File Format — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,87 +82,107 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Message Queue<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">system-design</span><span class="tag">messaging</span><span class="tag">async</span><span class="tag">decoupling</span><span class="tag">resilience</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu, hugo-data-ingestion-platform-flink · Updated: 2026-05-26</p>
+    <h1>Vortex File Format<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">file-formats</span><span class="tag">columnar</span><span class="tag">rust</span><span class="tag">data-engineering</span></div>
+    <p class="hero-meta">Source: benchmarking-vortex-file-format · Updated: 2026-05-26</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>A message queue is an asynchronous communication mechanism that decouples producers (services that create jobs) from consumers (services that process jobs). By introducing a buffer between components, message queues enable independent scaling, failure resilience, and load leveling.</p>
-<h2>Architecture</h2>
-<pre><code>Producer → [Message Queue] → Consumer 1
-                         → Consumer 2
-                         → Consumer 3</code></pre>
+<p><strong>Vortex</strong> is a next-generation columnar file format and toolkit written in Rust, designed for high-performance data processing on object storage (S3, GCS, etc.). It claims significant speed improvements over <a href="apache-parquet.html" class="wiki-link">Apache Parquet</a>: 100× faster random access, 10–20× faster scans, 5× faster writes, with similar compression ratios.</p>
+<h2>Design & Architecture</h2>
+<ul>
+<li><strong>Written in Rust</strong> — performance-first language with memory safety</li>
+<li><strong>Zero-copy compatibility with Apache Arrow</strong> — can interoperate with the Arrow ecosystem without data copying</li>
+<li><strong>Modeled after Apache DataFusion's extensible approach</strong> — modular, pluggable design</li>
+<li><strong>Supports major engines</strong>: Arrow, DataFusion, DuckDB, Spark, Pandas, <a href="polars.html" class="wiki-link">Polars</a></li>
+<li><strong>Filter pushdown</strong> — predicates pushed to scan level, minimizing data read</li>
+</ul>
+<h2>Performance Claims (from Vortex team)</h2>
 <table><thead><tr>
-<th>Role</th>
-<th>Responsibility</th>
+<th>Claim</th>
+<th>vs Parquet</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Producer</strong></td>
-<td>Publishes jobs into the queue (e.g., "process this image")</td>
+<td>Random access</td>
+<td>100× faster</td>
 </tr>
 <tr>
-<td><strong>Queue</strong></td>
-<td>Durable buffer that holds jobs until consumed</td>
+<td>Scan</td>
+<td>10–20× faster</td>
 </tr>
 <tr>
-<td><strong>Consumer</strong></td>
-<td>Worker nodes that pick up and process jobs</td>
+<td>Writes</td>
+<td>5× faster</td>
+</tr>
+<tr>
+<td>Compression</td>
+<td>Similar</td>
 </tr>
 </tbody></table>
-<h2>Benefits</h2>
+<h2>Benchmarked Reality (2026-05)</h2>
+<p>Daniel Beach's independent benchmarks using Backblaze hard drive data (~24 GB, 184 CSV files) found more modest gains:</p>
 <table><thead><tr>
-<th>Benefit</th>
-<th>Description</th>
+<th>Scenario</th>
+<th>Best Time</th>
+<th>Engine</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Independent scaling</strong></td>
-<td>Add workers when queue is long; remove when empty</td>
+<td>CSV (baseline)</td>
+<td>25.465s</td>
+<td>DuckDB</td>
 </tr>
 <tr>
-<td><strong>Failure resilience</strong></td>
-<td>If a worker dies, the job remains in queue — another worker picks it up</td>
+<td>Parquet</td>
+<td>0.125s</td>
+<td>DuckDB</td>
 </tr>
 <tr>
-<td><strong>Load leveling</strong></td>
-<td>Producers aren't blocked waiting for jobs to finish; fast response times</td>
+<td>Vortex (native scan)</td>
+<td>0.111s</td>
+<td>Vortex pure</td>
 </tr>
 <tr>
-<td><strong>Temporal decoupling</strong></td>
-<td>Producers and consumers don't need to be online simultaneously</td>
+<td>Vortex (via bridge)</td>
+<td>0.114s</td>
+<td>Polars via PyArrow</td>
 </tr>
 </tbody></table>
-<h2>Common Implementations</h2>
+<p>The jump from CSV to any columnar format (~200×) dwarfs Vortex's marginal advantage over Parquet (~11%). The claimed 10–20× scan advantage was <strong>not observed</strong> at this data scale (~24 GB).</p>
+<h2>Python Ecosystem Maturity (2026-05)</h2>
+<p>The Python integration story is immature:</p>
 <table><thead><tr>
-<th>Tool</th>
-<th>Pattern</th>
-<th>Best For</th>
+<th>Integration</th>
+<th>Status</th>
 </tr></thead><tbody>
 <tr>
-<td>RabbitMQ</td>
-<td>Traditional message broker</td>
-<td>Complex routing, pub/sub</td>
+<td><strong>DuckDB vortex extension</strong></td>
+<td>OOM crashes on multi-file reads; requires PyArrow bridge workaround</td>
 </tr>
 <tr>
-<td>Kafka</td>
-<td>Distributed log</td>
-<td>High throughput, event sourcing, data pipelines</td>
+<td><strong>Polars</strong></td>
+<td>Per-file loading only (no globbing); converts to PyArrow immediately</td>
 </tr>
-</tbody></table>
-<p>→ See <a href="apache-kafka.html" class="wiki-link">apache-kafka</a> for detailed Kafka architecture and its role in data ingestion pipelines.</p>
-<table><thead><tr>
-<th>SQS</th>
-<th>Managed cloud queue</th>
-<th>AWS ecosystem, simple ops</th>
-</tr></thead><tbody>
 <tr>
-<td>Redis Streams</td>
-<td>Lightweight queue</td>
-<td>Low latency, simple use cases</td>
+<td><strong>DataFusion</strong></td>
+<td>Works via PyArrow bridge</td>
+</tr>
+<tr>
+<td><strong>Pure Vortex</strong></td>
+<td>Fastest, but limited ecosystem support</td>
 </tr>
 </tbody></table>
+<p>Most practical usage requires converting to PyArrow first — losing any potential zero-copy benefits.</p>
+<h2>Positioning</h2>
+<p>Vortex appears to be competing directly with <a href="apache-parquet.html" class="wiki-link">Apache Parquet</a> as the dominant columnar format for data lakes and object-storage-based analytics. It also positions itself as an alternative to <a href="apache-arrow.html" class="wiki-link">Apache Arrow</a>, with claims of faster processing. However, as of mid-2026, it remains <strong>early-stage</strong> with immature Python integrations and unproven claims at production scale.</p>
+<h2>When to Watch</h2>
+<p>Promising but not yet production-ready for Python-heavy data engineering workflows. Worth revisiting as integrations mature, especially for:</p>
+<ul>
+<li>Rust-native data pipelines</li>
+<li>High-performance object-storage analytics</li>
+<li>Workloads bottlenecked on Parquet scan/random-access performance at petabyte scale</li>
+</ul>
   </div>
 </section>
 
@@ -170,30 +190,30 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>decouples components for independent scaling</p>
+    <a class="connection-card" href="apache-parquet.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Parquet</h4>
+      <p>Vortex positions itself as a Parquet alternative for object storage</p>
     </a>
-    <a class="connection-card" href="stateless-architecture.html">
+    <a class="connection-card" href="polars.html">
       <span class="connection-type related">Related to</span>
-      <h4>Stateless Architecture</h4>
-      <p>async processing complements stateless design</p>
+      <h4>Polars</h4>
+      <p>Vortex provides a Polars bridge via `to_polars()` LazyFrame</p>
     </a>
-    <a class="connection-card" href="observability.html">
+    <a class="connection-card" href="duckdb.html">
       <span class="connection-type related">Related to</span>
-      <h4>Observability</h4>
-      <p>queue depth and consumer lag are critical metrics</p>
+      <h4>DuckDB</h4>
+      <p>DuckDB has a vortex extension (currently buggy) and a PyArrow bridge workaround</p>
     </a>
-    <a class="connection-card" href="load-balancer.html">
+    <a class="connection-card" href="apache-datafusion.html">
       <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>workers scale independently from web tier</p>
+      <h4>Apache DataFusion</h4>
+      <p>Vortex modeled after DataFusion's extensible approach</p>
     </a>
-    <a class="connection-card" href="apache-kafka.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Apache Kafka</h4>
-      <p>Kafka is the most widely used distributed log implementation for data pipelines</p>
+    <a class="connection-card" href="benchmarking-vortex-file-format.html">
+      <span class="connection-type related">Related</span>
+      <h4>Benchmarking Vortex File Format vs Parquet, CSV — DuckDB, Polars, DataFusion</h4>
+      <p>Daniel Beach's independent performance evaluation</p>
     </a>
   </div>
 </section>

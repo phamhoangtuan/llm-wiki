@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Message Queue — LLM Wiki</title>
+<title>Apache DataFusion — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,87 +82,74 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Message Queue<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">system-design</span><span class="tag">messaging</span><span class="tag">async</span><span class="tag">decoupling</span><span class="tag">resilience</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu, hugo-data-ingestion-platform-flink · Updated: 2026-05-26</p>
+    <h1>Apache DataFusion<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">query-engines</span><span class="tag">rust</span><span class="tag">apache</span><span class="tag">sql</span><span class="tag">data-engineering</span></div>
+    <p class="hero-meta">Source: benchmarking-vortex-file-format · Updated: 2026-05-26</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>A message queue is an asynchronous communication mechanism that decouples producers (services that create jobs) from consumers (services that process jobs). By introducing a buffer between components, message queues enable independent scaling, failure resilience, and load leveling.</p>
-<h2>Architecture</h2>
-<pre><code>Producer → [Message Queue] → Consumer 1
-                         → Consumer 2
-                         → Consumer 3</code></pre>
+<p><strong>Apache DataFusion</strong> is an extensible, Rust-native query engine that provides SQL and DataFrame APIs for building high-performance data systems. It is designed to be embedded into other applications (similar to <a href="duckdb.html" class="wiki-link">DuckDB</a>) rather than being a standalone database. Its architecture — particularly its extensibility — served as the design model for the <a href="vortex-file-format.html" class="wiki-link">Vortex file format</a>.</p>
+<h2>Key Characteristics</h2>
+<ul>
+<li><strong>Written in Rust</strong> — zero-cost abstractions, memory safety, near-C performance</li>
+<li><strong>SQL + DataFrame APIs</strong> — supports both paradigms</li>
+<li><strong>Apache Arrow native</strong> — in-memory columnar format, zero-copy interop</li>
+<li><strong>Extensible design</strong> — composable components (planner, optimizer, execution engine) that can be mixed and matched</li>
+<li><strong>Used as a foundation</strong> — powers InfluxDB IOx, HoraeDB, GreptimeDB, and other databases</li>
+<li><strong><a href="vectorized-execution.html" class="wiki-link">Vectorized execution</a></strong> — columnar batch-at-a-time processing</li>
+</ul>
+<h2>Benchmarks (Backblaze Dataset, 2026-05)</h2>
+<p>DataFusion stood out in Daniel Beach's benchmarks as the <strong>fastest engine on raw CSV</strong> by a wide margin:</p>
 <table><thead><tr>
-<th>Role</th>
-<th>Responsibility</th>
+<th>Format</th>
+<th>Engine</th>
+<th>Runtime</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Producer</strong></td>
-<td>Publishes jobs into the queue (e.g., "process this image")</td>
+<td>CSV</td>
+<td>DuckDB</td>
+<td>25.465s</td>
 </tr>
 <tr>
-<td><strong>Queue</strong></td>
-<td>Durable buffer that holds jobs until consumed</td>
+<td>CSV</td>
+<td>Polars</td>
+<td>OOM (crashed)</td>
 </tr>
 <tr>
-<td><strong>Consumer</strong></td>
-<td>Worker nodes that pick up and process jobs</td>
+<td><strong>CSV</strong></td>
+<td><strong>DataFusion</strong></td>
+<td><strong>5.106s</strong></td>
+</tr>
+<tr>
+<td>Parquet</td>
+<td>DuckDB</td>
+<td>0.125s</td>
+</tr>
+<tr>
+<td>Parquet</td>
+<td>DataFusion</td>
+<td>0.370s</td>
 </tr>
 </tbody></table>
-<h2>Benefits</h2>
-<table><thead><tr>
-<th>Benefit</th>
-<th>Description</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>Independent scaling</strong></td>
-<td>Add workers when queue is long; remove when empty</td>
-</tr>
-<tr>
-<td><strong>Failure resilience</strong></td>
-<td>If a worker dies, the job remains in queue — another worker picks it up</td>
-</tr>
-<tr>
-<td><strong>Load leveling</strong></td>
-<td>Producers aren't blocked waiting for jobs to finish; fast response times</td>
-</tr>
-<tr>
-<td><strong>Temporal decoupling</strong></td>
-<td>Producers and consumers don't need to be online simultaneously</td>
-</tr>
-</tbody></table>
-<h2>Common Implementations</h2>
-<table><thead><tr>
-<th>Tool</th>
-<th>Pattern</th>
-<th>Best For</th>
-</tr></thead><tbody>
-<tr>
-<td>RabbitMQ</td>
-<td>Traditional message broker</td>
-<td>Complex routing, pub/sub</td>
-</tr>
-<tr>
-<td>Kafka</td>
-<td>Distributed log</td>
-<td>High throughput, event sourcing, data pipelines</td>
-</tr>
-</tbody></table>
-<p>→ See <a href="apache-kafka.html" class="wiki-link">apache-kafka</a> for detailed Kafka architecture and its role in data ingestion pipelines.</p>
-<table><thead><tr>
-<th>SQS</th>
-<th>Managed cloud queue</th>
-<th>AWS ecosystem, simple ops</th>
-</tr></thead><tbody>
-<tr>
-<td>Redis Streams</td>
-<td>Lightweight queue</td>
-<td>Low latency, simple use cases</td>
-</tr>
-</tbody></table>
+<p>DataFusion was nearly <strong>5× faster than DuckDB</strong> on raw CSV, demonstrating exceptional CSV parsing performance. On Parquet, DataFusion (0.370s) was slower than DuckDB (0.125s) — likely because DuckDB's C++ Parquet reader is more mature than DataFusion's Rust one.</p>
+<h2>Python Integration</h2>
+<p>DataFusion provides Python bindings via <code>datafusion</code> package:</p>
+<pre><code class="language-python">import datafusion
+
+ctx = datafusion.SessionContext()
+ctx.register_parquet(&quot;drive_data&quot;, &quot;data/*.parquet&quot;)
+result = ctx.sql(&quot;&quot;&quot;
+    SELECT date, COUNT(*) as failure_count
+    FROM drive_data
+    WHERE failure = 1
+    GROUP BY date
+    ORDER BY failure_count DESC
+&quot;&quot;&quot;)
+print(result)</code></pre>
+<h2>Position in the Ecosystem</h2>
+<p>DataFusion sits between DuckDB (batteries-included database) and Apache Spark (distributed cluster framework). It's a <strong>library</strong> for building data systems rather than a ready-to-use tool — developers compose DataFusion's optimizer, planner, and execution engine into custom database or query products.</p>
   </div>
 </section>
 
@@ -170,30 +157,30 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>decouples components for independent scaling</p>
+    <a class="connection-card" href="duckdb.html">
+      <span class="connection-type related">Related</span>
+      <h4>DuckDB</h4>
+      <p>both are embeddable query engines with SQL support; DuckDB is C++, DataFusion is Rust</p>
     </a>
-    <a class="connection-card" href="stateless-architecture.html">
+    <a class="connection-card" href="vortex-file-format.html">
       <span class="connection-type related">Related to</span>
-      <h4>Stateless Architecture</h4>
-      <p>async processing complements stateless design</p>
+      <h4>Vortex File Format</h4>
+      <p>Vortex's architecture was modeled after DataFusion's extensible approach</p>
     </a>
-    <a class="connection-card" href="observability.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Observability</h4>
-      <p>queue depth and consumer lag are critical metrics</p>
+    <a class="connection-card" href="vectorized-execution.html">
+      <span class="connection-type related">Related</span>
+      <h4>Vectorized Execution</h4>
+      <p>columnar batch processing for analytical queries</p>
     </a>
-    <a class="connection-card" href="load-balancer.html">
+    <a class="connection-card" href="apache-parquet.html">
       <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>workers scale independently from web tier</p>
+      <h4>Apache Parquet</h4>
+      <p>DataFusion reads Parquet natively (0.370s in benchmarks)</p>
     </a>
-    <a class="connection-card" href="apache-kafka.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Apache Kafka</h4>
-      <p>Kafka is the most widely used distributed log implementation for data pipelines</p>
+    <a class="connection-card" href="benchmarking-vortex-file-format.html">
+      <span class="connection-type related">Related</span>
+      <h4>Benchmarking Vortex File Format vs Parquet, CSV — DuckDB, Polars, DataFusion</h4>
+      <p>5.106s CSV scan, best-in-class for raw CSV</p>
     </a>
   </div>
 </section>

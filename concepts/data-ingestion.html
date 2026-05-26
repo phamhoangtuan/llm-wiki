@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Message Queue — LLM Wiki</title>
+<title>Data Ingestion — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,85 +82,181 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Message Queue<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">system-design</span><span class="tag">messaging</span><span class="tag">async</span><span class="tag">decoupling</span><span class="tag">resilience</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu, hugo-data-ingestion-platform-flink · Updated: 2026-05-26</p>
+    <h1>Data Ingestion<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">data-engineering</span><span class="tag">ingestion</span><span class="tag">etl</span><span class="tag">streaming</span><span class="tag">data-lake</span></div>
+    <p class="hero-meta">Source: hugo-data-ingestion-platform-flink · Updated: 2026-05-26</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>A message queue is an asynchronous communication mechanism that decouples producers (services that create jobs) from consumers (services that process jobs). By introducing a buffer between components, message queues enable independent scaling, failure resilience, and load leveling.</p>
-<h2>Architecture</h2>
-<pre><code>Producer → [Message Queue] → Consumer 1
-                         → Consumer 2
-                         → Consumer 3</code></pre>
+<p><strong>Data ingestion</strong> is the process of moving data from source systems (databases, message queues, APIs, files) into a centralized destination (data lake, warehouse, or streaming platform) where it can be processed, analyzed, and served. In modern data platforms, ingestion is increasingly expected to be <strong>self-service, near-real-time, and low-code</strong> — as exemplified by Grab's Hugo platform.</p>
+<h2>Ingestion Patterns</h2>
+<h3>Batch Ingestion</h3>
+<p>Data is extracted on a schedule (hourly, daily), typically as full snapshots or incremental dumps.</p>
 <table><thead><tr>
-<th>Role</th>
-<th>Responsibility</th>
+<th>Characteristic</th>
+<th>Typical Values</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Producer</strong></td>
-<td>Publishes jobs into the queue (e.g., "process this image")</td>
+<td>Latency</td>
+<td>Hours to days</td>
 </tr>
 <tr>
-<td><strong>Queue</strong></td>
-<td>Durable buffer that holds jobs until consumed</td>
+<td>Source impact</td>
+<td>Full table scans can load the source DB</td>
 </tr>
 <tr>
-<td><strong>Consumer</strong></td>
-<td>Worker nodes that pick up and process jobs</td>
+<td>Complexity</td>
+<td>Low (simple scheduled jobs)</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><code>mysqldump</code> → S3 → Spark → Hive (Hugo's original design)</td>
 </tr>
 </tbody></table>
-<h2>Benefits</h2>
+<h3>Streaming (Real-Time) Ingestion</h3>
+<p>Data is captured continuously as it changes, using CDC or event streams.</p>
 <table><thead><tr>
-<th>Benefit</th>
-<th>Description</th>
+<th>Characteristic</th>
+<th>Typical Values</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Independent scaling</strong></td>
-<td>Add workers when queue is long; remove when empty</td>
+<td>Latency</td>
+<td>Seconds to minutes</td>
 </tr>
 <tr>
-<td><strong>Failure resilience</strong></td>
-<td>If a worker dies, the job remains in queue — another worker picks it up</td>
+<td>Source impact</td>
+<td>Minimal (reads transaction log, not source tables)</td>
 </tr>
 <tr>
-<td><strong>Load leveling</strong></td>
-<td>Producers aren't blocked waiting for jobs to finish; fast response times</td>
+<td>Complexity</td>
+<td>Higher (stateful pipelines, checkpointing, schema evolution)</td>
 </tr>
 <tr>
-<td><strong>Temporal decoupling</strong></td>
-<td>Producers and consumers don't need to be online simultaneously</td>
+<td>Example</td>
+<td>MySQL binlog → [[apache-flink</td>
+<td>Flink CDC]] → S3 → Hive (Hugo's evolved design)</td>
 </tr>
 </tbody></table>
-<h2>Common Implementations</h2>
+<p>→ See <a href="change-data-capture.html" class="wiki-link">change-data-capture</a> for CDC specifically.</p>
+<h2>Platform Maturity Model</h2>
+<p>Data ingestion platforms evolve through stages:</p>
 <table><thead><tr>
-<th>Tool</th>
-<th>Pattern</th>
-<th>Best For</th>
+<th>Stage</th>
+<th>Hallmarks</th>
+<th>Onboarding Time</th>
 </tr></thead><tbody>
 <tr>
-<td>RabbitMQ</td>
-<td>Traditional message broker</td>
-<td>Complex routing, pub/sub</td>
+<td><strong>Stage 1: Manual</strong></td>
+<td>Engineers write custom scripts per pipeline; no platform</td>
+<td>Days to weeks</td>
 </tr>
 <tr>
-<td>Kafka</td>
-<td>Distributed log</td>
-<td>High throughput, event sourcing, data pipelines</td>
+<td><strong>Stage 2: Siloed</strong></td>
+<td>Multiple platforms (Kafka Connect, custom apps, Spark); users coordinate across systems</td>
+<td>Days (multi-team tickets)</td>
+</tr>
+<tr>
+<td><strong>Stage 3: Unified</strong></td>
+<td>Single self-service platform; one-click onboarding; automated schema handling</td>
+<td>Minutes</td>
 </tr>
 </tbody></table>
-<p>→ See <a href="apache-kafka.html" class="wiki-link">apache-kafka</a> for detailed Kafka architecture and its role in data ingestion pipelines.</p>
+<p>Grab's Hugo evolved from Stage 2 (Kafka Connect + Sprinkler + Spark) to Stage 3 (Flink + automation layer + Spark compaction).</p>
+<h2>Key Design Dimensions</h2>
+<h3>1. Self-Service vs Central Team</h3>
 <table><thead><tr>
-<th>SQS</th>
-<th>Managed cloud queue</th>
-<th>AWS ecosystem, simple ops</th>
+<th>Self-Service</th>
+<th>Central Team</th>
 </tr></thead><tbody>
 <tr>
-<td>Redis Streams</td>
-<td>Lightweight queue</td>
-<td>Low latency, simple use cases</td>
+<td>Source teams configure their own pipelines via UI/API</td>
+<td>Data platform team writes and maintains all pipelines</td>
+</tr>
+<tr>
+<td>Faster onboarding (minutes)</td>
+<td>Higher quality control</td>
+</tr>
+<tr>
+<td>Requires validation guardrails</td>
+<td>Bottleneck on team bandwidth</td>
+</tr>
+<tr>
+<td>Hugo approach: self-service with <strong>early validation</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3>2. Schema Handling</h3>
+<p>The hardest part of ingestion is schema evolution:</p>
+<ul>
+<li><strong>Hardcoded DTOs</strong> — brittle; every schema change requires code change (Hugo's legacy Sprinkler)</li>
+<li><strong>Schema registry</strong> — schemas versioned in Confluent Schema Registry; pipelines fetch at runtime (Hugo's Flink approach)</li>
+<li><strong>Automated inference</strong> — connector reads schema from source at runtime (Flink CDC)</li>
+<li><strong>Zero-touch</strong> — auto-detect, validate compatibility, apply changes (Hugo's future goal)</li>
+</ul>
+<h3>3. Validation Guardrails</h3>
+<p>Hugo's onboarding UI validates prerequisites <strong>before</strong> pipeline creation, preventing wasted attempts:</p>
+<ul>
+<li>For Kafka: topic ownership verification, non-zero message volume, no duplicate table names</li>
+<li>For MySQL CDC: credential setup, binlog user config, binlog format (ROW required), binlog expiration settings</li>
+</ul>
+<h2>Hugo's Architecture (Case Study)</h2>
+<p>Hugo unified two previously siloed ingestion patterns under one platform:</p>
+<pre><code>┌─────────────────────────────────────────────────┐
+│                  Hugo Platform                     │
+│  ┌──────────┐  ┌──────────┐  ┌───────────────┐  │
+│  │  Kafka    │  │  MySQL   │  │  Validation   │  │
+│  │  Source   │  │  CDC     │  │  Guardrails   │  │
+│  └────┬─────┘  └────┬─────┘  └───────────────┘  │
+│       │             │                             │
+│  ┌────▼─────────────▼─────┐                      │
+│  │      Apache Flink       │  (streaming engine)  │
+│  └───────────┬────────────┘                      │
+│              │                                    │
+│  ┌───────────▼────────────┐                      │
+│  │    S3 (object store)    │                      │
+│  └───────────┬────────────┘                      │
+│              │                                    │
+│  ┌───────────▼────────────┐                      │
+│  │  Spark Compaction       │  (small-file merge)  │
+│  └───────────┬────────────┘                      │
+│              │                                    │
+│  ┌───────────▼────────────┐                      │
+│  │  Hive Tables (queryable)│                      │
+│  └────────────────────────┘                      │
+└─────────────────────────────────────────────────┘</code></pre>
+<h2>Tooling Landscape</h2>
+<table><thead><tr>
+<th>Category</th>
+<th>Tools</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Streaming engines</strong></td>
+<td>[[apache-flink</td>
+<td>Apache Flink]], Spark Streaming, Kafka Streams</td>
+</tr>
+<tr>
+<td><strong>CDC connectors</strong></td>
+<td>Flink CDC, Debezium (Kafka Connect), AWS DMS</td>
+</tr>
+<tr>
+<td><strong>Batch ETL</strong></td>
+<td>Apache Spark, dbt, Airbyte</td>
+</tr>
+<tr>
+<td><strong>Message queues</strong></td>
+<td>[[apache-kafka</td>
+<td>Apache Kafka]], Amazon Kinesis, Google Pub/Sub</td>
+</tr>
+<tr>
+<td><strong>Schema registry</strong></td>
+<td>Confluent Schema Registry, AWS Glue Schema Registry</td>
+</tr>
+<tr>
+<td><strong>Table formats</strong></td>
+<td>Hive, [[apache-iceberg</td>
+<td>Apache Iceberg]], Delta Lake, Hudi</td>
 </tr>
 </tbody></table>
   </div>
@@ -170,30 +266,30 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>decouples components for independent scaling</p>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Flink</h4>
+      <p>Flink is the streaming engine in Hugo's unified ingestion platform</p>
     </a>
-    <a class="connection-card" href="stateless-architecture.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Stateless Architecture</h4>
-      <p>async processing complements stateless design</p>
-    </a>
-    <a class="connection-card" href="observability.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Observability</h4>
-      <p>queue depth and consumer lag are critical metrics</p>
-    </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>workers scale independently from web tier</p>
+    <a class="connection-card" href="change-data-capture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>CDC is the primary pattern for database ingestion</p>
     </a>
     <a class="connection-card" href="apache-kafka.html">
-      <span class="connection-type related">Related to</span>
+      <span class="connection-type related">Related</span>
       <h4>Apache Kafka</h4>
-      <p>Kafka is the most widely used distributed log implementation for data pipelines</p>
+      <p>Kafka is both a source (topic ingestion) and was the legacy intermediary (replaced by direct CDC)</p>
+    </a>
+    <a class="connection-card" href="apache-iceberg.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Iceberg</h4>
+      <p>Iceberg is Hugo's future table format for improved SLA and cost</p>
+    </a>
+    <a class="connection-card" href="hugo-data-ingestion-platform-flink.html">
+      <span class="connection-type related">Related</span>
+      <h4>The Hugo Evolution: Engineering Grab's Unified, One-Click Data Ingestion Platform with Apache Flink</h4>
+      <p>Grab's platform evolution case study</p>
     </a>
   </div>
 </section>

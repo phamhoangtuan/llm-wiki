@@ -97,3 +97,23 @@
 - New concepts: system-design-interview, scalable-architecture, load-balancer, database-replication, cache-strategy, cdn, stateless-architecture, message-queue, observability
 - Updated index.md: +9 concept entries, +1 source entry
 - Total pages: 45 (39 concepts + 6 sources)
+
+## [2026-05-26] ingest | Benchmarking Vortex File Format vs Parquet, CSV
+
+- Source: Daniel Beach (Data Engineering Central), Substack article published 2026-05-25
+- URL: https://dataengineeringcentral.substack.com/p/benchmarking-vortex-file-format-vs
+- Created sources/benchmarking-vortex-file-format.md
+- New concepts: vortex-file-format, polars, apache-datafusion, apache-parquet, lance-file-format
+- Updated concepts: duckdb (added benchmark source ref, vortex extension notes, Polars competitor connection)
+- Updated index.md: +5 concept entries, +1 source entry
+- Total pages: 51 (44 concepts + 7 sources)
+
+## [2026-05-26] ingest | Hugo Data Ingestion Platform with Apache Flink (Grab Engineering)
+
+- Source: Grab Engineering blog by Shuguang Xiang, Hung Nguyen, Hung Tran Viet, Shi Kai Ng (2026-05-22)
+- URL: https://engineering.grab.com/one-click-data-ingestion-platform-with-apache-flink
+- Created sources/hugo-data-ingestion-platform-flink.md
+- New concepts: apache-flink, change-data-capture, data-ingestion, apache-kafka, apache-iceberg
+- Updated concepts: message-queue (added Kafka reference and cross-link)
+- Updated index.md: +5 concept entries, +1 source entry
+- Total pages: 57 (49 concepts + 8 sources)

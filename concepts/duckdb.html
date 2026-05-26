@@ -84,7 +84,7 @@
     <div class="hero-badge">Concept</div>
     <h1>DuckDB<span>.</span></h1>
     <div class="hero-tags"><span class="tag">databases</span><span class="tag">olap</span><span class="tag">analytics</span><span class="tag">python</span><span class="tag">data-engineering</span></div>
-    <p class="hero-meta">Source: duckdb-up-and-running · Updated: 2026-05-24</p>
+    <p class="hero-meta">Source: duckdb-up-and-running, benchmarking-vortex-file-format · Updated: 2026-05-26</p>
   </div>
 </div>
 <section>
@@ -206,6 +206,11 @@ print(result.df())
 <td><code>icu</code></td>
 <td>Unicode and locale-aware string operations</td>
 </tr>
+<tr>
+<td><code>vortex</code></td>
+<td>Read/write [[vortex-file-format</td>
+<td>Vortex]] files (⚠️ early-stage, reported OOM crashes on multi-file reads as of 2026-05)</td>
+</tr>
 </tbody></table>
 <p><strong>Languages</strong>: Python, R, Julia, C/C++, Java, Go, Rust, Node.js.</p>
 <p><strong>MotherDuck</strong>: A managed SaaS platform built around DuckDB that enables hybrid queries — joining local data with cloud tables in a single SQL statement.</p>
@@ -230,6 +235,16 @@ print(result.df())
       <span class="connection-type related">Related to</span>
       <h4>DuckDB: Up and Running</h4>
       <p>Wei-Meng Lee's practical guide</p>
+    </a>
+    <a class="connection-card" href="benchmarking-vortex-file-format.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Benchmarking Vortex File Format vs Parquet, CSV — DuckDB, Polars, DataFusion</h4>
+      <p>benchmark against Vortex, Polars, DataFusion (Backblaze dataset)</p>
+    </a>
+    <a class="connection-card" href="polars.html">
+      <span class="connection-type related">Related</span>
+      <h4>Polars</h4>
+      <p>both target Python data engineering; DuckDB uses SQL, Polars uses DataFrame API</p>
     </a>
   </div>
 </section>

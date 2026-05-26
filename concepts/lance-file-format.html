@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Message Queue — LLM Wiki</title>
+<title>Lance File Format — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,87 +82,48 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Message Queue<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">system-design</span><span class="tag">messaging</span><span class="tag">async</span><span class="tag">decoupling</span><span class="tag">resilience</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu, hugo-data-ingestion-platform-flink · Updated: 2026-05-26</p>
+    <h1>Lance File Format<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">file-formats</span><span class="tag">columnar</span><span class="tag">ml</span><span class="tag">data-engineering</span></div>
+    <p class="hero-meta">Source: benchmarking-vortex-file-format · Updated: 2026-05-26</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>A message queue is an asynchronous communication mechanism that decouples producers (services that create jobs) from consumers (services that process jobs). By introducing a buffer between components, message queues enable independent scaling, failure resilience, and load leveling.</p>
-<h2>Architecture</h2>
-<pre><code>Producer → [Message Queue] → Consumer 1
-                         → Consumer 2
-                         → Consumer 3</code></pre>
+<p><strong>Lance</strong> is a modern columnar file format optimized for machine learning and AI workloads. It was mentioned as another "<a href="apache-parquet.html" class="wiki-link">Parquet</a> alternative" alongside <a href="vortex-file-format.html" class="wiki-link">Vortex</a> in Daniel Beach's benchmarking article, though it was not actually tested in the benchmarks.</p>
+<h2>Key Characteristics</h2>
+<ul>
+<li><strong>Columnar storage</strong> — like Parquet, stores data by column for efficient compression and selective reads</li>
+<li><strong>Random access</strong> — optimized for accessing specific rows without scanning the entire file (important for ML training data sampling)</li>
+<li><strong>Versioning</strong> — built-in support for dataset versioning (useful for ML experiment tracking)</li>
+<li><strong>ML-native</strong> — designed with machine learning workflows (training, shuffling, sampling) in mind</li>
+</ul>
+<h2>Position in the Ecosystem</h2>
+<p>Lance competes in the same space as other "next-generation" columnar formats aiming to improve on Parquet:</p>
 <table><thead><tr>
-<th>Role</th>
-<th>Responsibility</th>
+<th>Format</th>
+<th>Primary Niche</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Producer</strong></td>
-<td>Publishes jobs into the queue (e.g., "process this image")</td>
+<td>[[apache-parquet</td>
+<td>Parquet]]</td>
+<td>General-purpose analytics (incumbent)</td>
 </tr>
 <tr>
-<td><strong>Queue</strong></td>
-<td>Durable buffer that holds jobs until consumed</td>
+<td>[[vortex-file-format</td>
+<td>Vortex]]</td>
+<td>High-performance scans, object storage</td>
 </tr>
 <tr>
-<td><strong>Consumer</strong></td>
-<td>Worker nodes that pick up and process jobs</td>
+<td><strong>Lance</strong></td>
+<td>ML/AI workloads, random access, versioning</td>
+</tr>
+<tr>
+<td>Apache ORC</td>
+<td>Hive ecosystem, nested data</td>
 </tr>
 </tbody></table>
-<h2>Benefits</h2>
-<table><thead><tr>
-<th>Benefit</th>
-<th>Description</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>Independent scaling</strong></td>
-<td>Add workers when queue is long; remove when empty</td>
-</tr>
-<tr>
-<td><strong>Failure resilience</strong></td>
-<td>If a worker dies, the job remains in queue — another worker picks it up</td>
-</tr>
-<tr>
-<td><strong>Load leveling</strong></td>
-<td>Producers aren't blocked waiting for jobs to finish; fast response times</td>
-</tr>
-<tr>
-<td><strong>Temporal decoupling</strong></td>
-<td>Producers and consumers don't need to be online simultaneously</td>
-</tr>
-</tbody></table>
-<h2>Common Implementations</h2>
-<table><thead><tr>
-<th>Tool</th>
-<th>Pattern</th>
-<th>Best For</th>
-</tr></thead><tbody>
-<tr>
-<td>RabbitMQ</td>
-<td>Traditional message broker</td>
-<td>Complex routing, pub/sub</td>
-</tr>
-<tr>
-<td>Kafka</td>
-<td>Distributed log</td>
-<td>High throughput, event sourcing, data pipelines</td>
-</tr>
-</tbody></table>
-<p>→ See <a href="apache-kafka.html" class="wiki-link">apache-kafka</a> for detailed Kafka architecture and its role in data ingestion pipelines.</p>
-<table><thead><tr>
-<th>SQS</th>
-<th>Managed cloud queue</th>
-<th>AWS ecosystem, simple ops</th>
-</tr></thead><tbody>
-<tr>
-<td>Redis Streams</td>
-<td>Lightweight queue</td>
-<td>Low latency, simple use cases</td>
-</tr>
-</tbody></table>
+<blockquote><strong>Note</strong>: This page is a stub — Lance was mentioned but not evaluated in the source. A dedicated source or deeper investigation would add substance.</blockquote>
   </div>
 </section>
 
@@ -170,30 +131,20 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>decouples components for independent scaling</p>
+    <a class="connection-card" href="apache-parquet.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Parquet</h4>
+      <p>Lance is another next-gen columnar format targeting Parquet's dominance</p>
     </a>
-    <a class="connection-card" href="stateless-architecture.html">
+    <a class="connection-card" href="vortex-file-format.html">
       <span class="connection-type related">Related to</span>
-      <h4>Stateless Architecture</h4>
-      <p>async processing complements stateless design</p>
+      <h4>Vortex File Format</h4>
+      <p>both are modern columnar formats seeking to replace Parquet for specific workloads</p>
     </a>
-    <a class="connection-card" href="observability.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Observability</h4>
-      <p>queue depth and consumer lag are critical metrics</p>
-    </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>workers scale independently from web tier</p>
-    </a>
-    <a class="connection-card" href="apache-kafka.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Apache Kafka</h4>
-      <p>Kafka is the most widely used distributed log implementation for data pipelines</p>
+    <a class="connection-card" href="benchmarking-vortex-file-format.html">
+      <span class="connection-type related">Related</span>
+      <h4>Benchmarking Vortex File Format vs Parquet, CSV — DuckDB, Polars, DataFusion</h4>
+      <p>mentioned as a comparison target (not tested)</p>
     </a>
   </div>
 </section>
