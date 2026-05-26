@@ -8,6 +8,11 @@ Thumbs.db
 .obsidian/cache/
 .obsidian/plugins/beta.json
 
+# Python
+.venv/
+__pycache__/
+*.pyc
+
 # Temp
 *.tmp
 *.swp

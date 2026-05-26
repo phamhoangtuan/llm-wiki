@@ -103,7 +103,7 @@ A: Make sure you have `.md` files in `concepts/` and `sources/`. Obsidian only r
 A: The target page probably doesn't exist yet. Create it, or the link will still work — Obsidian just shows it as unresolved until you create the page.
 
 **Q: My edits aren't showing on GitHub Pages.**
-A: The CI build runs on push. Make sure to commit and push. If you're editing locally, run `python scripts/convert-to-html.py` manually first to verify the build works.
+A: The CI build runs on push. Make sure to commit and push. If you're editing locally, run `uv run scripts/convert-to-html.py` manually first to verify the build works.
 
 **Q: Dataview queries show no results.**
 A: Make sure the Dataview plugin is installed and enabled (`Settings → Community Plugins → Dataview → Enable`).

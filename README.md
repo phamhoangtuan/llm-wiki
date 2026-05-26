@@ -161,7 +161,7 @@ The LLM will:
 2. Discuss key takeaways with you
 3. Write a summary in `sources/<slug>.md`
 4. Create/update relevant `concepts/<slug>.md` pages
-5. Run `python scripts/convert-to-html.py` to regenerate `.html` from `.md`
+5. Run `uv run scripts/convert-to-html.py` to regenerate `.html` from `.md`
 6. Update `index.md`
 7. Append to `log.md`
 

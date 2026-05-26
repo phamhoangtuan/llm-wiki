@@ -18,7 +18,9 @@ You are the **wiki maintainer** for this knowledge base. Your job is to read sou
 | `index.md` | UPDATE on every ingest. Content catalog — every page listed with link + one-line summary. |
 | `log.md` | APPEND on every operation. Dated entries with consistent prefixes. |
 | `meta/` | UPDATE on lint passes. Auto-generated indexes. |
-| `scripts/convert-to-html.py` | RUN after creating MD files to generate HTML. Or write HTML directly. |
+| `scripts/convert-to-html.py` | RUN after creating MD files to generate HTML: `uv run scripts/convert-to-html.py`. Dependencies managed by `uv` (see `pyproject.toml`). |
+| `pyproject.toml` | Python project config. Dependencies: `pyyaml`. |
+| `uv.lock` | Lock file — do not hand-edit. Regenerate with `uv lock`. |
 
 **IMPORTANT**: The wiki never shrinks. You may update pages, but never delete them without explicit user approval.
 
@@ -32,7 +34,7 @@ You are the **wiki maintainer** for this knowledge base. Your job is to read sou
 
 After creating or updating any `.md` page, regenerate HTML:
 ```bash
-python scripts/convert-to-html.py
+uv run scripts/convert-to-html.py
 ```
 
 The GitHub Actions workflow (`.github/workflows/build.yml`) does this automatically on every push to `main`.
@@ -123,7 +125,7 @@ Steps:
 5. For each concept identified:
    - If `concepts/<concept>.md` exists → read it, update with new info, note contradictions.
    - If not → create it with summary + backlinks to source.
-6. Run `python scripts/convert-to-html.py` to regenerate HTML files (this syncs index.html too).
+6. Run `uv run scripts/convert-to-html.py` to regenerate HTML files (this syncs index.html too).
 7. Update `index.md` — add/update entries for all changed pages.
 8. Append to `log.md` with prefix: `## [YYYY-MM-DD] ingest | Title`.
 
@@ -169,7 +171,7 @@ Steps:
 - **ALWAYS** append to `log.md` after every operation.
 - **ALWAYS** use YYYY-MM-DD date format.
 - **ALWAYS** ask before destructive operations.
-- **ALWAYS** regenerate HTML after editing markdown — run `python scripts/convert-to-html.py`.
+- **ALWAYS** regenerate HTML after editing markdown — run `uv run scripts/convert-to-html.py`.
 - **NEVER** hand-edit `.html` files — they are auto-generated from `.md`.
 - **PREFER `[[wikilinks]]`** for cross-references — they work in both Obsidian and HTML output.
 
