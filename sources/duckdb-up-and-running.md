@@ -5,9 +5,10 @@ tags: [duckdb, olap, analytics, python, data-engineering]
 created: 2026-05-24
 author: "Wei-Meng Lee"
 source_type: ebook
-source_date: 308 pages
+source_date: 2024-05-24
 ingested: 2026-05-24
-concepts: [vectorized-execution, duckdb, vectorized-execution, in-process-olap]
+url: ""
+concepts: [vectorized-execution, duckdb, in-process-olap]
 ---
 
 ## Summary

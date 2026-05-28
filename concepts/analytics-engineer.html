@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Database Replication — LLM Wiki</title>
+<title>Analytics Engineer — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,65 +82,128 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Database Replication<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">databases</span><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">data-consistency</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu · Updated: 2026-05-24</p>
+    <h1>Analytics Engineer<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">data-engineering</span><span class="tag">analytics</span><span class="tag">roles</span><span class="tag">dbt</span><span class="tag">data-modeling</span></div>
+    <p class="hero-meta">Source: unlocking-dbt-design-deploy-transformations · Updated: 2026-05-28</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Database replication is the process of copying data from a primary database (master) to one or more secondary databases (slaves/replicas). The master-slave pattern separates write operations from read operations, enabling horizontal scaling of read-heavy workloads.</p>
-<h2>Master-Slave Architecture</h2>
+<p>The <strong>Analytics Engineer</strong> is a role formalized by the <a href="dbt.html" class="wiki-link">dbt (data build tool)</a> ecosystem — a bridge between Data Engineers (who build infrastructure and pipelines) and Data Analysts (who generate business insights). Analytics Engineers own the transformation layer: they write modular SQL, apply software engineering practices, build documentation, and serve as a catalyst that makes the entire data team more effective.</p>
+<h2>Role Positioning</h2>
 <table><thead><tr>
-<th>Component</th>
-<th>Responsibility</th>
-<th>Benefit</th>
+<th>Role</th>
+<th>Focus</th>
+<th>Primary Tools</th>
 </tr></thead><tbody>
 <tr>
-<td>Master</td>
-<td>Handles all writes (INSERT, UPDATE, DELETE)</td>
-<td>Single source of truth for data consistency</td>
+<td><strong>Data Engineer</strong></td>
+<td>Infrastructure, pipeline orchestration, data movement</td>
+<td>Airflow, Kafka, Terraform, [[apache-flink</td>
+<td>Flink]]</td>
 </tr>
 <tr>
-<td>Slave(s)</td>
-<td>Receive data copies from master; handle reads</td>
-<td>Scale reads horizontally; parallel processing</td>
+<td><strong>Analytics Engineer</strong> ✅</td>
+<td>Transform logic, data modeling, testing, documentation</td>
+<td>[[dbt</td>
+<td>dbt]], SQL, Git</td>
+</tr>
+<tr>
+<td><strong>Data Analyst</strong></td>
+<td>Business insights, reporting, ad-hoc analysis</td>
+<td>Looker, Tableau, SQL</td>
 </tr>
 </tbody></table>
-<h2>Failover Scenarios</h2>
+<p>The Analytics Engineer does <strong>not</strong> replace either role — they enable both to work more effectively by providing tested, documented, and reliable data models.</p>
+<h2>Core Responsibilities</h2>
+<ul>
+<li><strong>Write modular SQL models</strong> — build maintainable, reusable transformations using dbt's 3-tier pattern (staging → intermediate → marts)</li>
+<li><strong>Apply software engineering practices</strong> — version control, CI/CD, code review, DRY principles to SQL workflows</li>
+<li><strong>Build data documentation</strong> — auto-generated from code + YAML, always in sync with the actual transformations</li>
+<li><strong>Implement data quality testing</strong> — automated tests for uniqueness, nulls, referential integrity, and custom business rules</li>
+<li><strong>Bridge technical and business</strong> — translate business requirements into data models; explain data lineage and quality to stakeholders</li>
+</ul>
+<h2>Key Skills</h2>
 <table><thead><tr>
-<th>Failure</th>
-<th>Response</th>
+<th>Skill</th>
+<th>Importance (1-5)</th>
+<th>Role in Daily Work</th>
 </tr></thead><tbody>
 <tr>
-<td>Slave dies</td>
-<td>Reads redirect to master or another healthy slave</td>
+<td><strong>SQL</strong></td>
+<td>4/5</td>
+<td>Primary language: SELECT, CTEs, window functions, complex joins</td>
 </tr>
 <tr>
-<td>Master dies</td>
-<td>Promote a slave to master (may require data recovery if slave hasn't synced)</td>
+<td><strong>Jinja</strong></td>
+<td>2/5</td>
+<td>Templating language for adding logic (loops, conditionals) to SQL models</td>
+</tr>
+<tr>
+<td><strong>YAML</strong></td>
+<td>2/5</td>
+<td>Configuration for models, tests, sources, and documentation</td>
+</tr>
+<tr>
+<td><strong>Git</strong></td>
+<td>2/5</td>
+<td>Version control, pull request workflows, CI/CD integration</td>
+</tr>
+<tr>
+<td><strong>Data Modeling</strong></td>
+<td>1-4/5</td>
+<td>Higher for architects: dimensional modeling, Data Vault, star schemas</td>
+</tr>
+<tr>
+<td><strong>Python</strong></td>
+<td>1/5</td>
+<td>Optional: custom dbt macros, hooks, or advanced use cases</td>
 </tr>
 </tbody></table>
-<h2>Trade-offs</h2>
+<blockquote>If you can write SELECT queries, you're ready to start as an Analytics Engineer. Other skills are learned incrementally.</blockquote>
+<h2>Why This Role Matters</h2>
+<p>Before dbt and the Analytics Engineer role:</p>
+<ul>
+<li>Data transformations were scattered across ETL tools, scripts, and undocumented SQL</li>
+<li>No single owner for data quality and model consistency</li>
+<li>Documentation was manual, wiki-based, and perpetually outdated</li>
+<li>Business stakeholders couldn't trace where data came from</li>
+</ul>
+<p>With the Analytics Engineer:</p>
+<ul>
+<li>Transformations live in version-controlled code</li>
+<li>Testing and documentation are automated and always current</li>
+<li>Data lineage is visible and traceable</li>
+<li>The "trust gap" between engineering and business narrows</li>
+</ul>
+<h2>Adoption Roadmap</h2>
 <table><thead><tr>
-<th>Challenge</th>
-<th>Description</th>
+<th>Phase</th>
+<th>Timeline</th>
+<th>Focus</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Replication lag</strong></td>
-<td>Slave may not be fully up-to-date with master — application must handle eventual consistency</td>
+<td><strong>Foundation</strong></td>
+<td>Weeks 1-2</td>
+<td>Install dbt Core, connect to warehouse, write 3-5 staging models</td>
 </tr>
 <tr>
-<td><strong>Write bottleneck</strong></td>
-<td>All writes go to a single master — master capacity is the write ceiling</td>
+<td><strong>Best Practices</strong></td>
+<td>Weeks 3-4</td>
+<td>Adopt 3-tier modeling, add tests for critical columns, configure docs</td>
 </tr>
 <tr>
-<td><strong>Split-brain</strong></td>
-<td>If master and promoted slave both accept writes, data diverges</td>
+<td><strong>Collaboration</strong></td>
+<td>Weeks 5-6</td>
+<td>Git workflow, CI/CD pipeline, PR-based code review</td>
+</tr>
+<tr>
+<td><strong>Scale</strong></td>
+<td>Weeks 7+</td>
+<td>Incremental models for large tables, macros for DRY logic, performance monitoring</td>
 </tr>
 </tbody></table>
-<blockquote><strong>Rule of thumb</strong>: Start with a single database. Add replication when read load exceeds what one server can handle.</blockquote>
   </div>
 </section>
 
@@ -148,25 +211,25 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>scales the data tier</p>
+    <a class="connection-card" href="dbt.html">
+      <span class="connection-type related">Related</span>
+      <h4>dbt (data build tool)</h4>
+      <p>the Analytics Engineer role emerged from the dbt ecosystem and tooling</p>
     </a>
-    <a class="connection-card" href="cache-strategy.html">
+    <a class="connection-card" href="elt.html">
       <span class="connection-type related">Related to</span>
-      <h4>Cache Strategy</h4>
-      <p>cache sits in front of replicated reads for further scaling</p>
+      <h4>ELT (Extract-Load-Transform)</h4>
+      <p>Analytics Engineers own the "T" (Transform) step in the ELT pipeline</p>
     </a>
-    <a class="connection-card" href="load-balancer.html">
+    <a class="connection-card" href="data-ingestion.html">
       <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>routes reads to available slaves</p>
+      <h4>Data Ingestion</h4>
+      <p>Analytics Engineers consume ingested data to build downstream models</p>
     </a>
-    <a class="connection-card" href="database-sharding.html">
-      <span class="connection-type related">Contrasts with</span>
-      <h4>Database Sharding</h4>
-      <p>replication copies data; sharding partitions data</p>
+    <a class="connection-card" href="unlocking-dbt-design-deploy-transformations.html">
+      <span class="connection-type related">Related</span>
+      <h4>Unlocking dbt: Design and Deploy Transformations in Your Cloud Data Warehouse</h4>
+      <p>Cyr & Dorsey's book formalizing the role</p>
     </a>
   </div>
 </section>

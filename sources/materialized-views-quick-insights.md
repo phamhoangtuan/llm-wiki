@@ -7,7 +7,8 @@ author: "Vu Trinh"
 source_type: article
 source_date: 2026-05-21
 ingested: 2026-05-24
-concepts: [timely-dataflow, differential-dataflow, dbsp, materialized-views, incremental-view-maintenance, timely-dataflow, differential-dataflow, dbsp]
+url: "https://vutr.substack.com/p/quick-insights-on-materialized-views"
+concepts: [timely-dataflow, differential-dataflow, dbsp, materialized-views, incremental-view-maintenance]
 ---
 
 ## Summary

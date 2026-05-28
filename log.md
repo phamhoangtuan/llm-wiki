@@ -117,3 +117,36 @@
 - Updated concepts: message-queue (added Kafka reference and cross-link)
 - Updated index.md: +5 concept entries, +1 source entry
 - Total pages: 57 (49 concepts + 8 sources)
+
+## [2026-05-28] ingest | Unlocking dbt (Cameron Cyr & Dustin Dorsey)
+
+- Source: "Unlocking dbt: Design and Deploy Transformations in Your Cloud Data Warehouse" by Cameron Cyr & Dustin Dorsey (ebook, 351 pages, finished 2026-05-28)
+- Copied to: raw/articles/unlocking-dbt-design-deploy-transformations.md (Vietnamese notes)
+- Created sources/unlocking-dbt-design-deploy-transformations.md
+- New concepts: dbt, analytics-engineer, elt
+- Updated concepts: data-ingestion (added ELT/T reference, dbt in tooling landscape)
+- Updated index.md: +3 concept entries, +1 source entry
+- Total pages: 60 (52 concepts + 9 sources)
+
+## [2026-05-28] ingest | Delta Grows Up: Writes, Unity Catalog, Time Travel (DuckDB Labs)
+
+- Source: Ben Fleis (DuckDB Labs), republished on delta.io (2026-05-06)
+- URL: https://delta.io/blog/2026-05-06-delta-grows-up-writes-time-travel-and-unity-catalog/
+- Created sources/delta-grows-up-writes-unity-catalog.md
+- New concepts: delta-lake, unity-catalog
+- Updated concepts: duckdb (added Delta/UC extensions + source ref), apache-iceberg (added Delta Lake competitor connection)
+- Updated index.md: +2 concept entries, +1 source entry
+- Total pages: 62 (54 concepts + 10 sources)
+
+## [2026-05-28] lint | Health check — fixed 3 broken wikilinks, 8 frontmatter issues, 2 near-orphans
+
+- Broken wikilinks fixed: `apache-arrow`, `database-sharding` (created stub pages); `sources/` prefix removed in dbsp.md
+- Frontmatter fixes: added `url` field to 7 source files (books got `""`, articles got actual URLs)
+- Malformed dates fixed: duckdb-up-and-running (`308 pages` → `2024-05-24`), unlocking-dbt (`2025` → `2025-01-01`)
+- Duplicate concepts cleaned: duckdb-up-and-running, materialized-views-quick-insights
+- Near-orphan cross-references added: lance-file-format (from vortex-file-format), pytest-configuration + pytest-test-results (from pytest-basics)
+- Omission fixed: duckdb.md now notes DataFusion's 5× CSV advantage
+- Stub pages: apache-arrow, database-sharding (self-identified)
+- Verified: 0 contradictions, 0 stale pages, 0 true orphans, index fully in sync
+- New concepts: apache-arrow, database-sharding
+- Total pages: 64 (56 concepts + 10 sources)

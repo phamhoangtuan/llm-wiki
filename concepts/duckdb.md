@@ -3,8 +3,8 @@ title: "DuckDB"
 type: concept
 tags: [databases, olap, analytics, python, data-engineering]
 created: 2026-05-24
-updated: 2026-05-26
-sources: [duckdb-up-and-running, benchmarking-vortex-file-format]
+updated: 2026-05-28
+sources: [duckdb-up-and-running, benchmarking-vortex-file-format, delta-grows-up-writes-unity-catalog]
 ---
 
 ## Summary
@@ -78,7 +78,7 @@ print(result.df())
 | Prototyping analytics pipelines | Multi-user concurrent writes (single-writer) |
 | Embedding SQL in Python/R apps | Real-time streaming ingestion (use Kafka + Flink) |
 | Local dev and testing of data workflows | Need full client-server multi-tenancy |
-| "Larger-than-memory" datasets on a laptop |  |
+| "Larger-than-memory" datasets on a laptop | Fastest raw CSV parsing ([[apache-datafusion|DataFusion]] ~5× faster on CSV, but DuckDB wins on Parquet) |
 
 ## Ecosystem & Extensions
 
@@ -89,6 +89,8 @@ print(result.df())
 | `json` | Advanced JSON parsing and querying |
 | `icu` | Unicode and locale-aware string operations |
 | `vortex` | Read/write [[vortex-file-format|Vortex]] files (⚠️ early-stage, reported OOM crashes on multi-file reads as of 2026-05) |
+| `delta` | Read/write [[delta-lake|Delta Lake]] tables with time travel (✅ stable, 2026-05) |
+| `unity_catalog` | Query and write through [[unity-catalog|Unity Catalog]] — governed lakehouse access (✅ stable, 2026-05) |
 
 **Languages**: Python, R, Julia, C/C++, Java, Go, Rust, Node.js.
 
@@ -99,3 +101,5 @@ print(result.df())
 - Related to [[duckdb-up-and-running]] — Wei-Meng Lee's practical guide
 - Related to [[benchmarking-vortex-file-format]] — benchmark against Vortex, Polars, DataFusion (Backblaze dataset)
 - Competes with [[polars]] — both target Python data engineering; DuckDB uses SQL, Polars uses DataFrame API
+- Integrates with [[delta-lake]] — DuckDB's Delta extension supports reads, writes, and time travel (stable)
+- Integrates with [[unity-catalog]] — DuckDB's UC extension queries and writes through governed catalogs (stable)

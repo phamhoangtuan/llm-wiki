@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DuckDB: Up and Running — LLM Wiki</title>
+<title>Delta Grows Up: Writes, Unity Catalog and Time Travel — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -68,154 +68,104 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Source</div>
-    <h1>DuckDB: Up and Running<span>.</span></h1>
-    <p class="hero-sub">Wei-Meng Lee · ebook · 2024-05-24</p>
-    <div class="hero-tags"><span class="tag">duckdb</span><span class="tag">olap</span><span class="tag">analytics</span><span class="tag">python</span><span class="tag">data-engineering</span></div>
-    <p class="hero-meta">Ingested: 2026-05-24</p>
+    <h1>Delta Grows Up: Writes, Unity Catalog and Time Travel<span>.</span></h1>
+    <p class="hero-sub">Ben Fleis (DuckDB Labs) · article · 2026-05-06</p>
+    <div class="hero-tags"><span class="tag">delta-lake</span><span class="tag">unity-catalog</span><span class="tag">duckdb</span><span class="tag">time-travel</span><span class="tag">data-lake</span><span class="tag">lakehouse</span></div>
+    <p class="hero-meta">Ingested: 2026-05-28</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>A practical guide to <strong>DuckDB</strong> — the open-source, in-process OLAP database often described as "SQLite for analytics." The book covers DuckDB's architecture (columnar storage, vectorized execution, parallel execution, late materialization), performance vs. pandas, seamless data format integration (CSV, Parquet, pandas DataFrames), extensions (httpfs, spatial), and the MotherDuck cloud platform.</p>
-<h2>Key Takeaways</h2>
+<p>DuckDB's Delta and Unity Catalog extensions have graduated from experimental status. The blog (republished from DuckDB's own blog) announces three major capabilities: <strong>write support</strong> (INSERT into Delta tables), <strong>time travel</strong> (query Delta tables at any historical version), and <strong>Unity Catalog integration</strong> including <strong>Catalog Managed Tables</strong> with concurrent write coordination.</p>
+<h2>Key Announcements</h2>
+<h3>1. Delta Writes (INSERT)</h3>
+<p>DuckDB can now write to Delta tables — not just read them:</p>
+<pre><code class="language-sql">ATTACH &#x27;./path/to/my_table&#x27; AS my_table (TYPE delta);
+INSERT INTO my_table VALUES (&#x27;Question 2&#x27;, 2), (&#x27;The Answer&#x27;, 42);
+INSERT INTO my_table FROM (SELECT text || &#x27; (copy)&#x27;, code + 100 FROM my_table);</code></pre>
+<p>Multiple INSERTs within a <code>BEGIN</code>/<code>COMMIT</code> block are stored as a single Delta version (atomic commit). UPDATE, MERGE, and DELETE are on the roadmap but not yet supported.</p>
+<h3>2. Time Travel</h3>
+<p>Query Delta tables at any historical version:</p>
+<pre><code class="language-sql">-- Query specific version inline
+SELECT count() FROM my_table AT (VERSION =&gt; 0);  -- v0
+
+-- Attach pinned to a version (stable reference, ignores future writes)
+ATTACH &#x27;./path/to/my_table&#x27; AS my_table_v1 (TYPE delta, VERSION 1);
+
+-- Pin to latest at attach time
+ATTACH &#x27;./path/to/my_table&#x27; AS my_table_pinned (TYPE delta, PIN_SNAPSHOT);</code></pre>
+<p><strong>Incremental snapshot loading</strong> (nightly builds, coming in v1.5.3): when querying nearby versions, DuckDB reuses cached metadata rather than reloading the full Delta log. This provides big wins in lakes with thousands/millions of snapshots.</p>
+<h3>3. Unity Catalog Support</h3>
+<p>Unity Catalog (UC) is an open standard for governing data and AI assets. DuckDB's UC extension connects to both OSS Unity Catalog (self-hosted) and Databricks Unity Catalog (managed):</p>
+<pre><code class="language-sql">LOAD unity_catalog;
+CREATE SECRET (TYPE unity_catalog, TOKEN &#x27;...&#x27;, ENDPOINT &#x27;http://...&#x27;);
+ATTACH &#x27;unity&#x27; AS my_catalog (TYPE unity_catalog, DEFAULT_SCHEMA &#x27;my_schema&#x27;);
+SELECT * FROM my_catalog.pets;
+INSERT INTO my_catalog.pets ...;  -- Writes through UC!</code></pre>
+<h3>4. Catalog Managed Tables & Catalog Commits</h3>
+<p><strong>Catalog Managed Tables (CMT)</strong> enable <strong>Catalog Commits (CC)</strong>: every write is staged and registered through UC before becoming visible. UC acts as the commit arbiter:</p>
 <ul>
-<li><strong>In-process, zero setup</strong>: DuckDB runs inside your application as a library — no server, no config, no network latency. <code>pip install duckdb</code> and go.</li>
-<li><strong>Four architectural pillars</strong>: <a href="../concepts/vectorized-execution.html" class="wiki-link">Vectorized execution</a>, columnar storage, parallel execution, and late materialization deliver fast analytics on standard hardware.</li>
-<li><strong>Query data in place</strong>: No need to load CSV/Parquet/pandas into a database first — query files and DataFrames directly with zero-copy overhead.</li>
-<li><strong>Memory efficient</strong>: Processes data in streaming chunks; handles datasets larger than RAM. 5.8M-row flight dataset: 280MB memory vs. pandas' 4.2GB.</li>
-<li><strong>Extension ecosystem</strong>: httpfs (remote files via HTTP/S, S3, Hugging Face), spatial (geospatial), json, icu (locale-aware strings).</li>
-<li><strong>Cloud via MotherDuck</strong>: Hybrid queries — join local data with cloud tables in a single SQL statement.</li>
+<li>First writer wins the version</li>
+<li>Later writers get a conflict error (not silent data loss)</li>
+<li>UC's metadata, audit trail, and statistics stay in sync</li>
 </ul>
-<h2>Architectural Pillars</h2>
+<p>In a concurrency test with 20 parallel DuckDB writers (8 at a time), 5 committed successfully and 15 received clear conflict signals — exactly the semantics expected from coordinated concurrent writes.</p>
+<h2>Technical Details</h2>
 <table><thead><tr>
-<th>Pillar</th>
-<th>Mechanism</th>
-<th>Benefit</th>
+<th>Feature</th>
+<th>Status</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Columnar storage</strong></td>
-<td>Data stored by column, not row</td>
-<td>Read only needed columns → less I/O</td>
+<td>Read Delta tables</td>
+<td>✅ Stable</td>
 </tr>
 <tr>
-<td><strong>Vectorized execution</strong></td>
-<td>Process data in chunks (vectors), not row-by-row</td>
-<td>Reduced CPU overhead, SIMD, better cache use</td>
+<td>INSERT (writes)</td>
+<td>✅ Stable</td>
 </tr>
 <tr>
-<td><strong>Parallel execution</strong></td>
-<td>Auto-split queries across CPU cores</td>
-<td>No configuration; automatic throughput scaling</td>
+<td>Time travel (VERSION, PIN_SNAPSHOT)</td>
+<td>✅ Stable</td>
 </tr>
 <tr>
-<td><strong>Late materialization</strong></td>
-<td>Postpone full row fetch; work with indices first</td>
-<td>Minimized data movement → lower memory, faster filtering</td>
+<td>Incremental snapshot loading</td>
+<td>🧪 Nightly (→ v1.5.3)</td>
+</tr>
+<tr>
+<td>Unity Catalog reads</td>
+<td>✅ Stable</td>
+</tr>
+<tr>
+<td>Unity Catalog writes (CMT)</td>
+<td>✅ Stable</td>
+</tr>
+<tr>
+<td>UPDATE, MERGE, DELETE</td>
+<td>🔮 Future</td>
+</tr>
+<tr>
+<td>DDL (CREATE TABLE via UC)</td>
+<td>🔮 Future</td>
+</tr>
+<tr>
+<td>Multi-table atomic writes</td>
+<td>🔮 Future</td>
 </tr>
 </tbody></table>
-<h2>Performance vs. pandas (5.8M-row flight dataset)</h2>
-<table><thead><tr>
-<th>Metric</th>
-<th>pandas</th>
-<th>DuckDB</th>
-</tr></thead><tbody>
-<tr>
-<td>Execution Time</td>
-<td>~7.5s</td>
-<td>~0.5s</td>
-</tr>
-<tr>
-<td>Peak Memory</td>
-<td>~4.2 GB</td>
-<td>~280 MB</td>
-</tr>
-<tr>
-<td>Loading</td>
-<td>Must load entire file into RAM</td>
-<td>Streams data; processes in chunks</td>
-</tr>
-</tbody></table>
-<h2>Supported Formats & Sources</h2>
-<table><thead><tr>
-<th>Type</th>
-<th>Examples</th>
-</tr></thead><tbody>
-<tr>
-<td>Flat Files</td>
-<td>CSV, JSON, Excel</td>
-</tr>
-<tr>
-<td>Columnar</td>
-<td>Parquet (recommended for performance)</td>
-</tr>
-<tr>
-<td>In-Memory</td>
-<td>pandas/Polars DataFrames (zero-copy)</td>
-</tr>
-<tr>
-<td>Databases</td>
-<td>MySQL, PostgreSQL (via extensions)</td>
-</tr>
-<tr>
-<td>Remote</td>
-<td>HTTP/S URLs, S3, GitHub, Hugging Face (via httpfs)</td>
-</tr>
-</tbody></table>
-<h2>When to Use / When Not to Use</h2>
-<table><thead><tr>
-<th>✅ Ideal For</th>
-<th>❌ Less Suitable For</th>
-</tr></thead><tbody>
-<tr>
-<td>Exploratory analysis on large CSV/Parquet files</td>
-<td>High-volume transactional workloads (use PostgreSQL/MySQL)</td>
-</tr>
-<tr>
-<td>Prototyping analytics pipelines</td>
-<td>Multi-user concurrent writes (DuckDB is single-writer)</td>
-</tr>
-<tr>
-<td>Embedding analytical SQL in Python/R apps</td>
-<td>Real-time streaming ingestion (use Kafka + Flink/Spark)</td>
-</tr>
-<tr>
-<td>Local dev and testing of data workflows</td>
-<td></td>
-</tr>
-<tr>
-<td>"Larger-than-memory" datasets on standard hardware</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2>Quotes</h2>
-<blockquote>"DuckDB removes the 'infrastructure tax' — you focus on analysis, not database administration."</blockquote>
-<blockquote>"DuckDB proves that you don't need a massive cluster to do serious analytics. With the right architecture, a single laptop can become a powerful analytical engine."</blockquote>
-<blockquote>"DuckDB isn't meant to replace your cloud data warehouse — it's meant to accelerate the work that happens before and after."</blockquote>
+<h2>Stack Implications</h2>
+<p>The combination of <strong>Delta</strong> (open storage), <strong>Unity Catalog</strong> (governance + coordination), and <strong>DuckDB</strong> (fast analytical queries) forms a production-ready lakehouse stack. Previously, DuckDB could only read Delta tables — now it's a full participant in the Delta ecosystem.</p>
+<h2>Links</h2>
+<ul>
+<li><a href="https://duckdb.org/docs/current/core_extensions/delta.html" target="_blank" rel="noopener">DuckDB Delta Extension docs</a></li>
+<li><a href="https://duckdb.org/docs/current/core_extensions/unity_catalog.html" target="_blank" rel="noopener">DuckDB Unity Catalog Extension docs</a></li>
+<li><a href="https://github.com/benfleis/duckdb-unitycatalog-playground/" target="_blank" rel="noopener">Playground Docker image</a></li>
+<li><a href="https://unitycatalog.io/" target="_blank" rel="noopener">OSS Unity Catalog</a></li>
+<li><a href="https://delta.io/" target="_blank" rel="noopener">Delta Lake</a></li>
+</ul>
   </div>
 </section>
 
-<section>
-  <div class="section-label">Knowledge Graph</div>
-  <h2 class="section-title">Connections</h2>
-  <div class="connections-grid">
-    <a class="connection-card" href="../concepts/duckdb.html">
-      <span class="connection-type core">Core to</span>
-      <h4>DuckDB</h4>
-      <p>the in-process OLAP database — "SQLite for analytics"</p>
-    </a>
-    <a class="connection-card" href="../concepts/vectorized-execution.html">
-      <span class="connection-type core">Foundation for</span>
-      <h4>Vectorized Execution</h4>
-      <p>processing data in chunks, not row-by-row</p>
-    </a>
-    <a class="connection-card" href="../concepts/in-process-olap.html">
-      <span class="connection-type core">Foundation for</span>
-      <h4>In-Process OLAP</h4>
-      <p>analytical database running as an embedded library</p>
-    </a>
-  </div>
-</section>
 <footer>
   <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
   <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>

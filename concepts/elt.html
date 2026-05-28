@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Database Replication — LLM Wiki</title>
+<title>ELT (Extract-Load-Transform) — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,65 +82,129 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Database Replication<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">databases</span><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">data-consistency</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu · Updated: 2026-05-24</p>
+    <h1>ELT (Extract-Load-Transform)<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">data-engineering</span><span class="tag">elt</span><span class="tag">etl</span><span class="tag">data-warehouse</span><span class="tag">architecture</span></div>
+    <p class="hero-meta">Source: unlocking-dbt-design-deploy-transformations · Updated: 2026-05-28</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Database replication is the process of copying data from a primary database (master) to one or more secondary databases (slaves/replicas). The master-slave pattern separates write operations from read operations, enabling horizontal scaling of read-heavy workloads.</p>
-<h2>Master-Slave Architecture</h2>
+<p><strong>ELT</strong> (Extract-Load-Transform) is a data integration paradigm where raw data is extracted from source systems, loaded directly into the data warehouse (or data lake) with minimal processing, and then transformed in-place using the warehouse's compute power. This inverts the traditional ETL (Extract-Transform-Load) model where transformation happens before loading. ELT is the architectural foundation that <a href="dbt.html" class="wiki-link">dbt</a> was built to serve.</p>
+<h2>ELT vs ETL</h2>
+<pre><code>ETL:  Source → [Transform on external server] → Load to Warehouse → Analytics
+ELT:  Source → Load Raw to Warehouse → [Transform IN warehouse] → Analytics</code></pre>
 <table><thead><tr>
-<th>Component</th>
-<th>Responsibility</th>
-<th>Benefit</th>
+<th>Dimension</th>
+<th>Traditional ETL</th>
+<th>ELT (with dbt)</th>
 </tr></thead><tbody>
 <tr>
-<td>Master</td>
-<td>Handles all writes (INSERT, UPDATE, DELETE)</td>
-<td>Single source of truth for data consistency</td>
+<td><strong>When to transform</strong></td>
+<td>Before loading</td>
+<td>After loading (in-warehouse)</td>
 </tr>
 <tr>
-<td>Slave(s)</td>
-<td>Receive data copies from master; handle reads</td>
-<td>Scale reads horizontally; parallel processing</td>
+<td><strong>Where compute happens</strong></td>
+<td>External ETL server</td>
+<td>Cloud data warehouse</td>
+</tr>
+<tr>
+<td><strong>Iteration speed</strong></td>
+<td>Slow — must re-extract to fix logic</td>
+<td>Fast — raw data already in warehouse; just re-run SQL</td>
+</tr>
+<tr>
+<td><strong>Flexibility</strong></td>
+<td>Schema locked at transform time</td>
+<td>Schema decisions deferred; evolve incrementally</td>
+</tr>
+<tr>
+<td><strong>Cost model</strong></td>
+<td>Expensive compute + network transfer per iteration</td>
+<td>Cheap storage; warehouse compute scales on demand</td>
+</tr>
+<tr>
+<td><strong>Tool examples</strong></td>
+<td>Informatica, Talend, SSIS</td>
+<td>[[dbt</td>
+<td>dbt]] + Fivetran/Airbyte/Stitch</td>
 </tr>
 </tbody></table>
-<h2>Failover Scenarios</h2>
+<h2>Why ELT Wins in the Cloud Era</h2>
+<h3>1. Storage is Cheap, Engineer Time is Expensive</h3>
+<p>Cloud storage (S3, GCS, BigQuery storage) costs fractions of a cent per GB/month. The real cost is <strong>engineer time</strong> spent waiting for data re-extraction.</p>
+<blockquote>Example: Loading 100 GB from on-premise takes 5 hours.</blockquote>
+<blockquote>- ETL: Logic error → re-extract 100 GB → another 5 hours.</blockquote>
+<blockquote>- ELT + dbt: Raw data already in warehouse → fix SQL, re-run in 5 minutes.</blockquote>
+<h3>2. Land Once, Transform Many Times</h3>
+<p>Raw data persists in the warehouse indefinitely. You can:</p>
+<ul>
+<li>Iterate on transformation logic without touching source systems</li>
+<li>Build multiple transformation pipelines from the same raw data</li>
+<li>Add new business logic without re-extracting historical data</li>
+</ul>
+<h3>3. Leverage Warehouse Compute</h3>
+<p>Modern cloud warehouses (Snowflake, BigQuery, Redshift) provide:</p>
+<ul>
+<li><strong>Elastic scaling</strong> — scale compute up/down on demand</li>
+<li><strong>Separation of storage and compute</strong> — pay only for what you use</li>
+<li><strong>Massive parallelism</strong> — transform terabytes in minutes</li>
+</ul>
+<p>By transforming in-warehouse, you use the same infrastructure that runs your queries — no separate ETL cluster to manage.</p>
+<h3>4. Deferred Schema Decisions</h3>
+<p>In traditional ETL, the schema must be defined at transform time — before data lands. In ELT:</p>
+<ul>
+<li>Raw data lands with minimal schema enforcement (or schema-on-read)</li>
+<li>Transformations build the final schema incrementally</li>
+<li>Schema evolution is handled in dbt, not at the extraction layer</li>
+</ul>
+<h2>The ELT Stack</h2>
+<p>A typical modern ELT pipeline:</p>
+<pre><code>Sources (DBs, APIs, events)
+    │
+    ▼
+[Extract + Load]  ← Fivetran, Airbyte, Stitch, Kafka Connect
+    │
+    ▼
+[Raw Data]  ← Stored in warehouse/data lake (S3, BigQuery, Snowflake)
+    │
+    ▼
+[Transform]  ← dbt: modular SQL, tests, docs, CI/CD
+    │
+    ▼
+[Consume]  ← BI tools (Looker, Tableau), ML models, reverse ETL</code></pre>
+<h2>dbt's Role in ELT</h2>
+<p>dbt is the <strong>canonical "T" tool</strong> in the modern ELT stack:</p>
+<ul>
+<li>Transforms raw warehouse data into analytics-ready models</li>
+<li>Applies software engineering practices to SQL transformations</li>
+<li>Provides testing, documentation, and dependency management</li>
+<li>Integrates into CI/CD pipelines for data quality gates</li>
+</ul>
+<p>→ See <a href="dbt.html" class="wiki-link">dbt</a> for dbt's architecture and patterns.</p>
+<h2>When ELT Makes Sense</h2>
 <table><thead><tr>
-<th>Failure</th>
-<th>Response</th>
+<th>✅ Use ELT</th>
+<th>❌ Stick with ETL</th>
 </tr></thead><tbody>
 <tr>
-<td>Slave dies</td>
-<td>Reads redirect to master or another healthy slave</td>
+<td>Cloud data warehouse in place</td>
+<td>On-premise DB with limited compute</td>
 </tr>
 <tr>
-<td>Master dies</td>
-<td>Promote a slave to master (may require data recovery if slave hasn't synced)</td>
+<td>Raw data needed for multiple use cases</td>
+<td>Single-purpose, fixed-schema pipeline</td>
+</tr>
+<tr>
+<td>Team prefers SQL over proprietary tools</td>
+<td>Highly regulated data requiring pre-load masking</td>
+</tr>
+<tr>
+<td>Need fast iteration and experimentation</td>
+<td>Simple, unchanging transformations</td>
 </tr>
 </tbody></table>
-<h2>Trade-offs</h2>
-<table><thead><tr>
-<th>Challenge</th>
-<th>Description</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>Replication lag</strong></td>
-<td>Slave may not be fully up-to-date with master — application must handle eventual consistency</td>
-</tr>
-<tr>
-<td><strong>Write bottleneck</strong></td>
-<td>All writes go to a single master — master capacity is the write ceiling</td>
-</tr>
-<tr>
-<td><strong>Split-brain</strong></td>
-<td>If master and promoted slave both accept writes, data diverges</td>
-</tr>
-</tbody></table>
-<blockquote><strong>Rule of thumb</strong>: Start with a single database. Add replication when read load exceeds what one server can handle.</blockquote>
   </div>
 </section>
 
@@ -148,25 +212,25 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>scales the data tier</p>
+    <a class="connection-card" href="dbt.html">
+      <span class="connection-type related">Related</span>
+      <h4>dbt (data build tool)</h4>
+      <p>dbt was designed specifically for the ELT paradigm's "Transform" step</p>
     </a>
-    <a class="connection-card" href="cache-strategy.html">
+    <a class="connection-card" href="analytics-engineer.html">
+      <span class="connection-type related">Related</span>
+      <h4>Analytics Engineer</h4>
+      <p>the role that owns the transform layer in ELT</p>
+    </a>
+    <a class="connection-card" href="data-ingestion.html">
       <span class="connection-type related">Related to</span>
-      <h4>Cache Strategy</h4>
-      <p>cache sits in front of replicated reads for further scaling</p>
+      <h4>Data Ingestion</h4>
+      <p>ELT describes the full pipeline; ingestion handles the "EL" portion</p>
     </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>routes reads to available slaves</p>
-    </a>
-    <a class="connection-card" href="database-sharding.html">
-      <span class="connection-type related">Contrasts with</span>
-      <h4>Database Sharding</h4>
-      <p>replication copies data; sharding partitions data</p>
+    <a class="connection-card" href="unlocking-dbt-design-deploy-transformations.html">
+      <span class="connection-type related">Related</span>
+      <h4>Unlocking dbt: Design and Deploy Transformations in Your Cloud Data Warehouse</h4>
+      <p>Cyr & Dorsey's book explains why ELT beats ETL</p>
     </a>
   </div>
 </section>

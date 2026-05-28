@@ -7,6 +7,7 @@ author: "Andrej Karpathy"
 source_type: article
 source_date: 2026-04-04
 ingested: 2026-05-23
+url: "https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f"
 concepts: [wiki-maintenance]
 ---
 

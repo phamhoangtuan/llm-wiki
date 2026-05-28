@@ -56,6 +56,13 @@
 - [Data Ingestion](concepts/data-ingestion.html) — Moving data from sources to data lake; self-service platforms, batch vs streaming patterns
 - [Apache Kafka](concepts/apache-kafka.html) — Distributed event streaming platform; persistent log, high throughput, schema registry
 - [Apache Iceberg](concepts/apache-iceberg.html) — Open table format for data lakes with ACID transactions, schema evolution, time travel
+- [dbt (data build tool)](concepts/dbt.html) — SQL transformation framework for ELT; compute-neutral, declarative, with built-in testing and docs
+- [Analytics Engineer](concepts/analytics-engineer.html) — Bridge role between Data Engineer and Analyst; owns the transformation layer
+- [ELT (Extract-Load-Transform)](concepts/elt.html) — Modern data paradigm: load raw first, transform in-warehouse; dbt handles the "T"
+- [Delta Lake](concepts/delta-lake.html) — Open table format with ACID, time travel, schema enforcement; DuckDB supports reads + writes (stable)
+- [Unity Catalog](concepts/unity-catalog.html) — Open standard for data governance; Catalog Commits coordinate concurrent writes to Delta tables
+- [Apache Arrow](concepts/apache-arrow.html) — Language-agnostic columnar in-memory format; zero-copy interop across Python, C++, Rust, Java
+- [Database Sharding](concepts/database-sharding.html) — Horizontal partitioning for write scalability; contrasts with replication
 
 ## Sources
 
@@ -67,6 +74,8 @@
 - [System Design Interview – An Insider's Guide](sources/system-design-interview-xu.html) — Alex Xu's 252-page ebook on designing scalable systems from single server to millions of users
 - [Benchmarking Vortex File Format vs Parquet, CSV](sources/benchmarking-vortex-file-format.html) — Daniel Beach benchmarks Vortex vs Parquet/CSV with DuckDB, Polars, DataFusion (Backblaze ~24 GB dataset, 2026-05)
 - [Hugo Data Ingestion Platform with Apache Flink](sources/hugo-data-ingestion-platform-flink.html) — Grab Engineering's evolution from siloed ingestion (Kafka Connect + Sprinkler) to unified Flink-based platform
+- [Unlocking dbt: Design and Deploy Transformations](sources/unlocking-dbt-design-deploy-transformations.html) — Cameron Cyr & Dustin Dorsey's 351-page guide to dbt fundamentals, modeling, testing, and deployment
+- [Delta Grows Up: Writes, Unity Catalog and Time Travel](sources/delta-grows-up-writes-unity-catalog.html) — DuckDB Labs announces stable Delta extension with writes, time travel, and Unity Catalog integration
 
 ## Syntheses
 
@@ -74,5 +83,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-05-26*
-*Pages: 57 (49 concepts + 8 sources)*
+*Last updated: 2026-05-28*
+*Pages: 64 (56 concepts + 10 sources)*

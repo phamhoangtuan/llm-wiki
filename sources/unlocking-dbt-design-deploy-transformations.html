@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DuckDB: Up and Running — LLM Wiki</title>
+<title>Unlocking dbt: Design and Deploy Transformations in Your Cloud Data Warehouse — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -68,154 +68,137 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Source</div>
-    <h1>DuckDB: Up and Running<span>.</span></h1>
-    <p class="hero-sub">Wei-Meng Lee · ebook · 2024-05-24</p>
-    <div class="hero-tags"><span class="tag">duckdb</span><span class="tag">olap</span><span class="tag">analytics</span><span class="tag">python</span><span class="tag">data-engineering</span></div>
-    <p class="hero-meta">Ingested: 2026-05-24</p>
+    <h1>Unlocking dbt: Design and Deploy Transformations in Your Cloud Data Warehouse<span>.</span></h1>
+    <p class="hero-sub">Cameron Cyr &amp; Dustin Dorsey · book · 2025-01-01</p>
+    <div class="hero-tags"><span class="tag">dbt</span><span class="tag">data-engineering</span><span class="tag">analytics</span><span class="tag">elt</span><span class="tag">data-modeling</span><span class="tag">sql</span></div>
+    <p class="hero-meta">Ingested: 2026-05-28</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>A practical guide to <strong>DuckDB</strong> — the open-source, in-process OLAP database often described as "SQLite for analytics." The book covers DuckDB's architecture (columnar storage, vectorized execution, parallel execution, late materialization), performance vs. pandas, seamless data format integration (CSV, Parquet, pandas DataFrames), extensions (httpfs, spatial), and the MotherDuck cloud platform.</p>
-<h2>Key Takeaways</h2>
+<p>A practical guide to dbt (data build tool) — the open-source data transformation framework that applies software engineering best practices to SQL. The 351-page book covers dbt's architecture, project structure, modeling patterns, testing, documentation, and deployment, positioning dbt as the canonical "T" in the modern ELT (Extract-Load-Transform) stack.</p>
+<h2>Core Message</h2>
+<blockquote>dbt is not a database or ETL tool. It's a framework that brings software engineering best practices to SQL — turning data transformation from "arcane art" into a process you can version control, test, and collaborate on.</blockquote>
+<h2>Three Architectural Pillars of dbt</h2>
+<h3>1. Warehouse Compute: dbt Orchestrates, Not Executes</h3>
+<p>dbt has <strong>no engine of its own</strong>. It compiles SQL into executable queries and sends them to the cloud data warehouse (Snowflake, BigQuery, Redshift, Databricks) for execution. The compute happens entirely in the warehouse — dbt only manages the orchestration, dependencies, and lifecycle.</p>
+<h3>2. SQL SELECT-Centricity: Declarative Over Imperative</h3>
+<p>Instead of writing DDL/DML (CREATE TABLE, INSERT, MERGE), you write <strong>only SELECT statements</strong>. dbt handles the rest:</p>
 <ul>
-<li><strong>In-process, zero setup</strong>: DuckDB runs inside your application as a library — no server, no config, no network latency. <code>pip install duckdb</code> and go.</li>
-<li><strong>Four architectural pillars</strong>: <a href="../concepts/vectorized-execution.html" class="wiki-link">Vectorized execution</a>, columnar storage, parallel execution, and late materialization deliver fast analytics on standard hardware.</li>
-<li><strong>Query data in place</strong>: No need to load CSV/Parquet/pandas into a database first — query files and DataFrames directly with zero-copy overhead.</li>
-<li><strong>Memory efficient</strong>: Processes data in streaming chunks; handles datasets larger than RAM. 5.8M-row flight dataset: 280MB memory vs. pandas' 4.2GB.</li>
-<li><strong>Extension ecosystem</strong>: httpfs (remote files via HTTP/S, S3, Hugging Face), spatial (geospatial), json, icu (locale-aware strings).</li>
-<li><strong>Cloud via MotherDuck</strong>: Hybrid queries — join local data with cloud tables in a single SQL statement.</li>
+<li>Materializations: table, view, incremental, ephemeral</li>
+<li>Dependencies: <code>{{ ref('model_name') }}</code> auto-resolves build order</li>
+<li>Schema changes: <code>on_schema_change</code> config for automatic handling</li>
 </ul>
-<h2>Architectural Pillars</h2>
+<h3>3. Automated Object Management</h3>
+<p>dbt automatically creates/updates tables and views in the warehouse, manages dependency graphs between models, and handles schema evolution — no manual DDL required.</p>
+<h2>3-Tier Modeling Pattern</h2>
+<pre><code>Raw Tables
+  ↓ [stg_] Staging: Clean, rename, basic transforms
+  ↓ [int_] Intermediate: Business logic, joins, aggregations
+  ↓ [fct_/dim_] Marts: Business-ready tables for BI/ML</code></pre>
+<p>Modular design enables maintainability, testability, and reuse across projects.</p>
+<h2>Built-in Testing</h2>
+<p>dbt provides automated data quality testing via YAML configuration:</p>
+<ul>
+<li><strong>Generic tests</strong>: <code>unique</code>, <code>not_null</code>, <code>accepted_values</code>, <code>relationships</code> (foreign key validation)</li>
+<li><strong>Singular tests</strong>: Custom SQL queries for complex assertions</li>
+<li>Tests run as part of <code>dbt test</code>, integrable into CI/CD pipelines</li>
+</ul>
+<h2>Auto-Generated Documentation</h2>
+<p><code>dbt docs generate</code> produces a static website with:</p>
+<ul>
+<li>Model descriptions from YAML</li>
+<li><strong>Lineage graph</strong> (DAG) visualizing model dependencies</li>
+<li>Column-level metadata, test status, and source table references</li>
+</ul>
+<p>Documentation stays in sync with code — no more outdated wikis.</p>
+<h2>Core vs. Cloud</h2>
 <table><thead><tr>
-<th>Pillar</th>
-<th>Mechanism</th>
-<th>Benefit</th>
+<th>Aspect</th>
+<th>dbt Core (Open Source)</th>
+<th>dbt Cloud (Managed)</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Columnar storage</strong></td>
-<td>Data stored by column, not row</td>
-<td>Read only needed columns → less I/O</td>
+<td>Cost</td>
+<td>Free</td>
+<td>Per-user/month pricing</td>
 </tr>
 <tr>
-<td><strong>Vectorized execution</strong></td>
-<td>Process data in chunks (vectors), not row-by-row</td>
-<td>Reduced CPU overhead, SIMD, better cache use</td>
+<td>Deployment</td>
+<td>CLI-based, self-managed</td>
+<td>Browser IDE, auto-scheduling</td>
 </tr>
 <tr>
-<td><strong>Parallel execution</strong></td>
-<td>Auto-split queries across CPU cores</td>
-<td>No configuration; automatic throughput scaling</td>
+<td>Adapters</td>
+<td>Broadest support (community + vendor)</td>
+<td>Official adapters only</td>
 </tr>
 <tr>
-<td><strong>Late materialization</strong></td>
-<td>Postpone full row fetch; work with indices first</td>
-<td>Minimized data movement → lower memory, faster filtering</td>
+<td>Features</td>
+<td>Core functionality</td>
+<td>+ Job scheduler, alerting, hosted docs</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Teams with DevOps capacity</td>
+<td>Teams wanting reduced operational overhead</td>
 </tr>
 </tbody></table>
-<h2>Performance vs. pandas (5.8M-row flight dataset)</h2>
+<h2>The Analytics Engineer Role</h2>
+<p>dbt formalized a new role in data teams: the <strong>Analytics Engineer</strong> — a bridge between Data Engineers (infrastructure, pipelines) and Data Analysts (business insights). They write modular SQL, apply software engineering practices, build documentation, and serve as a catalyst for the entire data team.</p>
+<p>→ See <a href="../concepts/analytics-engineer.html" class="wiki-link">analytics-engineer</a></p>
+<h2>ELT Paradigm</h2>
+<p>dbt embodies the ELT (Extract-Load-Transform) approach where raw data lands in the warehouse first and transformations happen in-warehouse afterward. This contrasts with traditional ETL where data is transformed before loading — making iteration slow and expensive.</p>
+<p>→ See <a href="../concepts/elt.html" class="wiki-link">elt</a></p>
+<h2>Key Skills Required</h2>
 <table><thead><tr>
-<th>Metric</th>
-<th>pandas</th>
-<th>DuckDB</th>
+<th>Skill</th>
+<th>Importance</th>
+<th>Role in dbt</th>
 </tr></thead><tbody>
 <tr>
-<td>Execution Time</td>
-<td>~7.5s</td>
-<td>~0.5s</td>
+<td>SQL</td>
+<td>4/5</td>
+<td>Primary language for models</td>
 </tr>
 <tr>
-<td>Peak Memory</td>
-<td>~4.2 GB</td>
-<td>~280 MB</td>
+<td>Jinja</td>
+<td>2/5</td>
+<td>Templating for SQL logic (loops, variables)</td>
 </tr>
 <tr>
-<td>Loading</td>
-<td>Must load entire file into RAM</td>
-<td>Streams data; processes in chunks</td>
+<td>YAML</td>
+<td>2/5</td>
+<td>Configuration for models, tests, sources</td>
+</tr>
+<tr>
+<td>Git</td>
+<td>2/5</td>
+<td>Version control, collaboration, CI/CD</td>
+</tr>
+<tr>
+<td>Data Modeling</td>
+<td>1-4/5</td>
+<td>Dimensional, Data Vault, etc. (architects)</td>
+</tr>
+<tr>
+<td>Python</td>
+<td>1/5</td>
+<td>Optional: custom scripts, hooks</td>
 </tr>
 </tbody></table>
-<h2>Supported Formats & Sources</h2>
-<table><thead><tr>
-<th>Type</th>
-<th>Examples</th>
-</tr></thead><tbody>
-<tr>
-<td>Flat Files</td>
-<td>CSV, JSON, Excel</td>
-</tr>
-<tr>
-<td>Columnar</td>
-<td>Parquet (recommended for performance)</td>
-</tr>
-<tr>
-<td>In-Memory</td>
-<td>pandas/Polars DataFrames (zero-copy)</td>
-</tr>
-<tr>
-<td>Databases</td>
-<td>MySQL, PostgreSQL (via extensions)</td>
-</tr>
-<tr>
-<td>Remote</td>
-<td>HTTP/S URLs, S3, GitHub, Hugging Face (via httpfs)</td>
-</tr>
-</tbody></table>
-<h2>When to Use / When Not to Use</h2>
-<table><thead><tr>
-<th>✅ Ideal For</th>
-<th>❌ Less Suitable For</th>
-</tr></thead><tbody>
-<tr>
-<td>Exploratory analysis on large CSV/Parquet files</td>
-<td>High-volume transactional workloads (use PostgreSQL/MySQL)</td>
-</tr>
-<tr>
-<td>Prototyping analytics pipelines</td>
-<td>Multi-user concurrent writes (DuckDB is single-writer)</td>
-</tr>
-<tr>
-<td>Embedding analytical SQL in Python/R apps</td>
-<td>Real-time streaming ingestion (use Kafka + Flink/Spark)</td>
-</tr>
-<tr>
-<td>Local dev and testing of data workflows</td>
-<td></td>
-</tr>
-<tr>
-<td>"Larger-than-memory" datasets on standard hardware</td>
-<td></td>
-</tr>
-</tbody></table>
-<h2>Quotes</h2>
-<blockquote>"DuckDB removes the 'infrastructure tax' — you focus on analysis, not database administration."</blockquote>
-<blockquote>"DuckDB proves that you don't need a massive cluster to do serious analytics. With the right architecture, a single laptop can become a powerful analytical engine."</blockquote>
-<blockquote>"DuckDB isn't meant to replace your cloud data warehouse — it's meant to accelerate the work that happens before and after."</blockquote>
+<h2>Platform Support (Adapters)</h2>
+<p>dbt connects via an adapter plugin system:</p>
+<ul>
+<li><strong>dbt Labs supported</strong>: Snowflake, BigQuery, Redshift, Postgres, Spark</li>
+<li><strong>Vendor supported</strong>: Databricks, Oracle, ClickHouse, Teradata</li>
+<li><strong>Community supported</strong>: MySQL, SQL Server, <a href="../concepts/duckdb.html" class="wiki-link">DuckDB</a>, SQLite</li>
+<li><strong>Custom</strong>: Any SQL engine via custom adapter</li>
+</ul>
   </div>
 </section>
 
-<section>
-  <div class="section-label">Knowledge Graph</div>
-  <h2 class="section-title">Connections</h2>
-  <div class="connections-grid">
-    <a class="connection-card" href="../concepts/duckdb.html">
-      <span class="connection-type core">Core to</span>
-      <h4>DuckDB</h4>
-      <p>the in-process OLAP database — "SQLite for analytics"</p>
-    </a>
-    <a class="connection-card" href="../concepts/vectorized-execution.html">
-      <span class="connection-type core">Foundation for</span>
-      <h4>Vectorized Execution</h4>
-      <p>processing data in chunks, not row-by-row</p>
-    </a>
-    <a class="connection-card" href="../concepts/in-process-olap.html">
-      <span class="connection-type core">Foundation for</span>
-      <h4>In-Process OLAP</h4>
-      <p>analytical database running as an embedded library</p>
-    </a>
-  </div>
-</section>
 <footer>
   <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
   <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>

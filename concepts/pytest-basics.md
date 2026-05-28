@@ -37,3 +37,5 @@ pytest is a command-line testing framework for Python that automatically discove
 - Foundation for [[pytest-parametrization]] — run one test with multiple data sets
 - Foundation for [[pytest-markers]] — tag tests for selective execution
 - Related to [[pytest-assertions]] — the assert rewriting mechanism
+- Related to [[pytest-configuration]] — pyproject.toml and pytest.ini setup
+- Related to [[pytest-test-results]] — result symbols: PASSED, FAILED, SKIPPED, XFAIL, XPASS, ERROR

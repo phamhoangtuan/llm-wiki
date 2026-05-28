@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Database Replication — LLM Wiki</title>
+<title>Apache Arrow — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,65 +82,34 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Database Replication<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">databases</span><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">data-consistency</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu · Updated: 2026-05-24</p>
+    <h1>Apache Arrow<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">data-engineering</span><span class="tag">columnar</span><span class="tag">apache</span><span class="tag">in-memory</span></div>
+    <p class="hero-meta">Source: benchmarking-vortex-file-format · Updated: 2026-05-28</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Database replication is the process of copying data from a primary database (master) to one or more secondary databases (slaves/replicas). The master-slave pattern separates write operations from read operations, enabling horizontal scaling of read-heavy workloads.</p>
-<h2>Master-Slave Architecture</h2>
-<table><thead><tr>
-<th>Component</th>
-<th>Responsibility</th>
-<th>Benefit</th>
-</tr></thead><tbody>
-<tr>
-<td>Master</td>
-<td>Handles all writes (INSERT, UPDATE, DELETE)</td>
-<td>Single source of truth for data consistency</td>
-</tr>
-<tr>
-<td>Slave(s)</td>
-<td>Receive data copies from master; handle reads</td>
-<td>Scale reads horizontally; parallel processing</td>
-</tr>
-</tbody></table>
-<h2>Failover Scenarios</h2>
-<table><thead><tr>
-<th>Failure</th>
-<th>Response</th>
-</tr></thead><tbody>
-<tr>
-<td>Slave dies</td>
-<td>Reads redirect to master or another healthy slave</td>
-</tr>
-<tr>
-<td>Master dies</td>
-<td>Promote a slave to master (may require data recovery if slave hasn't synced)</td>
-</tr>
-</tbody></table>
-<h2>Trade-offs</h2>
-<table><thead><tr>
-<th>Challenge</th>
-<th>Description</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>Replication lag</strong></td>
-<td>Slave may not be fully up-to-date with master — application must handle eventual consistency</td>
-</tr>
-<tr>
-<td><strong>Write bottleneck</strong></td>
-<td>All writes go to a single master — master capacity is the write ceiling</td>
-</tr>
-<tr>
-<td><strong>Split-brain</strong></td>
-<td>If master and promoted slave both accept writes, data diverges</td>
-</tr>
-</tbody></table>
-<blockquote><strong>Rule of thumb</strong>: Start with a single database. Add replication when read load exceeds what one server can handle.</blockquote>
+<p><strong>Apache Arrow</strong> is an open-source, language-agnostic columnar in-memory format designed for efficient data interchange between systems. It provides zero-copy data sharing across languages (Python, C++, Java, Rust) and serves as the memory model for many modern data tools including <a href="polars.html" class="wiki-link">Polars</a>, <a href="apache-datafusion.html" class="wiki-link">Apache DataFusion</a>, and <a href="vortex-file-format.html" class="wiki-link">Vortex</a>.</p>
+<h2>Key Features</h2>
+<ul>
+<li><strong>Columnar in-memory format</strong> — data stored column-by-column for vectorized processing</li>
+<li><strong>Zero-copy interop</strong> — pass data between Python, R, C++, Java without serialization</li>
+<li><strong>Language-agnostic</strong> — native implementations in 12+ languages</li>
+<li><strong>SIMD-optimized</strong> — leverages modern CPU instructions for analytics</li>
+</ul>
+<h2>Role in the Ecosystem</h2>
+<p>Arrow serves as the universal memory representation that enables fast data interchange between compute engines:</p>
+<pre><code>Source → Arrow (in-memory) → DuckDB / Polars / DataFusion / Vortex</code></pre>
+<p>Tools that use Arrow as their memory model:</p>
+<ul>
+<li><a href="polars.html" class="wiki-link">Polars</a> — Rust DataFrame library</li>
+<li><a href="apache-datafusion.html" class="wiki-link">Apache DataFusion</a> — Rust query engine</li>
+<li><a href="vortex-file-format.html" class="wiki-link">Vortex</a> — integrates via zero-copy Arrow compatibility</li>
+<li>PySpark — pandas UDFs use Arrow for data transfer</li>
+<li><a href="duckdb.html" class="wiki-link">DuckDB</a> — can export to Arrow tables</li>
+</ul>
+<blockquote><strong>Note</strong>: This page is a stub. Arrow is referenced by multiple wiki pages (vortex-file-format, polars, duckdb) but was not the subject of any single ingested source.</blockquote>
   </div>
 </section>
 
@@ -148,25 +117,25 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>scales the data tier</p>
+    <a class="connection-card" href="polars.html">
+      <span class="connection-type related">Used by</span>
+      <h4>Polars</h4>
+      <p>Polars uses Apache Arrow as its in-memory columnar format</p>
     </a>
-    <a class="connection-card" href="cache-strategy.html">
+    <a class="connection-card" href="apache-datafusion.html">
+      <span class="connection-type related">Used by</span>
+      <h4>Apache DataFusion</h4>
+      <p>DataFusion is Arrow-native for zero-copy interop</p>
+    </a>
+    <a class="connection-card" href="vortex-file-format.html">
+      <span class="connection-type related">Related</span>
+      <h4>Vortex File Format</h4>
+      <p>Vortex claims zero-copy compatibility with Arrow</p>
+    </a>
+    <a class="connection-card" href="apache-parquet.html">
       <span class="connection-type related">Related to</span>
-      <h4>Cache Strategy</h4>
-      <p>cache sits in front of replicated reads for further scaling</p>
-    </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>routes reads to available slaves</p>
-    </a>
-    <a class="connection-card" href="database-sharding.html">
-      <span class="connection-type related">Contrasts with</span>
-      <h4>Database Sharding</h4>
-      <p>replication copies data; sharding partitions data</p>
+      <h4>Apache Parquet</h4>
+      <p>Arrow is the in-memory format; Parquet is the on-disk format</p>
     </a>
   </div>
 </section>

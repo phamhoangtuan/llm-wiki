@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Database Replication — LLM Wiki</title>
+<title>Database Sharding — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,65 +82,89 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Database Replication<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">databases</span><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">data-consistency</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu · Updated: 2026-05-24</p>
+    <h1>Database Sharding<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">system-design</span><span class="tag">databases</span><span class="tag">scalability</span><span class="tag">partitioning</span></div>
+    <p class="hero-meta">Source: system-design-interview-xu · Updated: 2026-05-28</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Database replication is the process of copying data from a primary database (master) to one or more secondary databases (slaves/replicas). The master-slave pattern separates write operations from read operations, enabling horizontal scaling of read-heavy workloads.</p>
-<h2>Master-Slave Architecture</h2>
+<p><strong>Database sharding</strong> is a horizontal partitioning technique that splits a large database into smaller, independent "shards," each holding a subset of the data. Unlike <a href="database-replication.html" class="wiki-link">replication</a> (which copies the same data to multiple servers), sharding distributes different data across servers — enabling write scalability beyond what a single database instance can handle.</p>
+<h2>Sharding vs Replication</h2>
 <table><thead><tr>
-<th>Component</th>
-<th>Responsibility</th>
-<th>Benefit</th>
+<th>Aspect</th>
+<th>Replication</th>
+<th>Sharding</th>
 </tr></thead><tbody>
 <tr>
-<td>Master</td>
-<td>Handles all writes (INSERT, UPDATE, DELETE)</td>
-<td>Single source of truth for data consistency</td>
+<td><strong>Data distribution</strong></td>
+<td>Same data on every replica</td>
+<td>Different data on each shard</td>
 </tr>
 <tr>
-<td>Slave(s)</td>
-<td>Receive data copies from master; handle reads</td>
-<td>Scale reads horizontally; parallel processing</td>
+<td><strong>Write scaling</strong></td>
+<td>❌ All writes hit master</td>
+<td>✅ Writes distributed across shards</td>
+</tr>
+<tr>
+<td><strong>Read scaling</strong></td>
+<td>✅ Reads from replicas</td>
+<td>✅ Reads from specific shards</td>
+</tr>
+<tr>
+<td><strong>Complexity</strong></td>
+<td>Moderate (read/write split)</td>
+<td>High (cross-shard queries, rebalancing)</td>
 </tr>
 </tbody></table>
-<h2>Failover Scenarios</h2>
+<h2>Sharding Strategies</h2>
 <table><thead><tr>
-<th>Failure</th>
-<th>Response</th>
+<th>Strategy</th>
+<th>How It Works</th>
+<th>Example</th>
 </tr></thead><tbody>
 <tr>
-<td>Slave dies</td>
-<td>Reads redirect to master or another healthy slave</td>
+<td><strong>Key-based / Hash</strong></td>
+<td>Hash the shard key → mod by shard count</td>
+<td><code>hash(user_id) % 4</code></td>
 </tr>
 <tr>
-<td>Master dies</td>
-<td>Promote a slave to master (may require data recovery if slave hasn't synced)</td>
+<td><strong>Range-based</strong></td>
+<td>Partition by key range</td>
+<td>Users A–M on shard 1, N–Z on shard 2</td>
+</tr>
+<tr>
+<td><strong>Directory-based</strong></td>
+<td>Lookup table maps keys → shards</td>
+<td>External service routes queries</td>
 </tr>
 </tbody></table>
-<h2>Trade-offs</h2>
+<h2>Key Challenges</h2>
+<ul>
+<li><strong>Cross-shard joins</strong> — data on different shards can't be joined with standard SQL</li>
+<li><strong>Resharding</strong> — adding/removing shards requires data redistribution</li>
+<li><strong>Hotspots</strong> — celebrity users can overload a single shard</li>
+<li><strong>Analytical queries</strong> — aggregations across all shards require scatter-gather patterns</li>
+</ul>
+<h2>When to Shard</h2>
 <table><thead><tr>
-<th>Challenge</th>
-<th>Description</th>
+<th>✅ Shard</th>
+<th>❌ Don't Shard</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Replication lag</strong></td>
-<td>Slave may not be fully up-to-date with master — application must handle eventual consistency</td>
+<td>Write throughput exceeds single DB</td>
+<td>Read-heavy workloads (use replication + cache)</td>
 </tr>
 <tr>
-<td><strong>Write bottleneck</strong></td>
-<td>All writes go to a single master — master capacity is the write ceiling</td>
+<td>Data volume too large for one instance</td>
+<td>Still growing — wait until necessary</td>
 </tr>
 <tr>
-<td><strong>Split-brain</strong></td>
-<td>If master and promoted slave both accept writes, data diverges</td>
+<td>Multi-tenancy with natural tenant isolation</td>
+<td>Simple apps that don't need scale</td>
 </tr>
 </tbody></table>
-<blockquote><strong>Rule of thumb</strong>: Start with a single database. Add replication when read load exceeds what one server can handle.</blockquote>
   </div>
 </section>
 
@@ -148,25 +172,25 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
+    <a class="connection-card" href="database-replication.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Database Replication</h4>
+      <p>replication copies data; sharding partitions data</p>
+    </a>
     <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
+      <span class="connection-type related">Related to</span>
       <h4>Scalable Architecture</h4>
-      <p>scales the data tier</p>
+      <p>sharding is a horizontal scaling technique for databases</p>
     </a>
     <a class="connection-card" href="cache-strategy.html">
       <span class="connection-type related">Related to</span>
       <h4>Cache Strategy</h4>
-      <p>cache sits in front of replicated reads for further scaling</p>
+      <p>caching reduces read load; sharding handles write load</p>
     </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>routes reads to available slaves</p>
-    </a>
-    <a class="connection-card" href="database-sharding.html">
-      <span class="connection-type related">Contrasts with</span>
-      <h4>Database Sharding</h4>
-      <p>replication copies data; sharding partitions data</p>
+    <a class="connection-card" href="system-design-interview-xu.html">
+      <span class="connection-type related">Related</span>
+      <h4>System Design Interview – An Insider's Guide (Alex Xu)</h4>
+      <p>Alex Xu's system design guide</p>
     </a>
   </div>
 </section>

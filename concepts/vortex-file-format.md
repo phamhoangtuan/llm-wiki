@@ -69,4 +69,5 @@ Promising but not yet production-ready for Python-heavy data engineering workflo
 - Related to [[polars]] — Vortex provides a Polars bridge via `to_polars()` LazyFrame
 - Related to [[duckdb]] — DuckDB has a vortex extension (currently buggy) and a PyArrow bridge workaround
 - Related to [[apache-datafusion]] — Vortex modeled after DataFusion's extensible approach
+- Competes with [[lance-file-format]] — both are next-gen columnar formats targeting Parquet's dominance
 - Benchmark source: [[benchmarking-vortex-file-format]] — Daniel Beach's independent performance evaluation

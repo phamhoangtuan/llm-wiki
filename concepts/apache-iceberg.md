@@ -3,8 +3,8 @@ title: "Apache Iceberg"
 type: concept
 tags: [table-formats, data-lake, iceberg, data-engineering]
 created: 2026-05-26
-updated: 2026-05-26
-sources: [hugo-data-ingestion-platform-flink]
+updated: 2026-05-28
+sources: [hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog]
 ---
 
 ## Summary
@@ -45,3 +45,4 @@ Hugo currently writes to Hive tables (with Spark compaction). Iceberg would addr
 - Related to [[data-ingestion]] — Iceberg is the planned next-gen table format for Hugo's data lake
 - Integrates with [[apache-flink]] — Flink has an Iceberg sink connector for writing streaming data to Iceberg tables
 - Reference: [[hugo-data-ingestion-platform-flink]] — mentioned as Hugo's future table format to replace Hive
+- Competes with [[delta-lake]] — Iceberg and Delta are the two dominant open table formats; Iceberg has partition evolution, Delta has deeper Databricks integration

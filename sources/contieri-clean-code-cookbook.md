@@ -7,6 +7,7 @@ author: "Maximiliano Contieri"
 source_type: notes
 source_date: 2026-05-18
 ingested: 2026-05-23
+url: ""
 concepts: [software-as-simulation, mapper-principles, bijection, rich-domain-model, tell-dont-ask, immutability, fail-fast, technological-centaur, readability-vs-performance]
 ---
 

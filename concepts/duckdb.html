@@ -84,7 +84,7 @@
     <div class="hero-badge">Concept</div>
     <h1>DuckDB<span>.</span></h1>
     <div class="hero-tags"><span class="tag">databases</span><span class="tag">olap</span><span class="tag">analytics</span><span class="tag">python</span><span class="tag">data-engineering</span></div>
-    <p class="hero-meta">Source: duckdb-up-and-running, benchmarking-vortex-file-format · Updated: 2026-05-26</p>
+    <p class="hero-meta">Source: duckdb-up-and-running, benchmarking-vortex-file-format, delta-grows-up-writes-unity-catalog · Updated: 2026-05-28</p>
   </div>
 </div>
 <section>
@@ -182,7 +182,8 @@ print(result.df())
 </tr>
 <tr>
 <td>"Larger-than-memory" datasets on a laptop</td>
-<td></td>
+<td>Fastest raw CSV parsing ([[apache-datafusion</td>
+<td>DataFusion]] ~5× faster on CSV, but DuckDB wins on Parquet)</td>
 </tr>
 </tbody></table>
 <h2>Ecosystem & Extensions</h2>
@@ -210,6 +211,16 @@ print(result.df())
 <td><code>vortex</code></td>
 <td>Read/write [[vortex-file-format</td>
 <td>Vortex]] files (⚠️ early-stage, reported OOM crashes on multi-file reads as of 2026-05)</td>
+</tr>
+<tr>
+<td><code>delta</code></td>
+<td>Read/write [[delta-lake</td>
+<td>Delta Lake]] tables with time travel (✅ stable, 2026-05)</td>
+</tr>
+<tr>
+<td><code>unity_catalog</code></td>
+<td>Query and write through [[unity-catalog</td>
+<td>Unity Catalog]] — governed lakehouse access (✅ stable, 2026-05)</td>
 </tr>
 </tbody></table>
 <p><strong>Languages</strong>: Python, R, Julia, C/C++, Java, Go, Rust, Node.js.</p>
@@ -245,6 +256,16 @@ print(result.df())
       <span class="connection-type related">Related</span>
       <h4>Polars</h4>
       <p>both target Python data engineering; DuckDB uses SQL, Polars uses DataFrame API</p>
+    </a>
+    <a class="connection-card" href="delta-lake.html">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Lake</h4>
+      <p>DuckDB's Delta extension supports reads, writes, and time travel (stable)</p>
+    </a>
+    <a class="connection-card" href="unity-catalog.html">
+      <span class="connection-type related">Related</span>
+      <h4>Unity Catalog</h4>
+      <p>DuckDB's UC extension queries and writes through governed catalogs (stable)</p>
     </a>
   </div>
 </section>

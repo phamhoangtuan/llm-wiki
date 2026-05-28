@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Database Replication — LLM Wiki</title>
+<title>Delta Lake — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,65 +82,186 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Database Replication<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">databases</span><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">data-consistency</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu · Updated: 2026-05-24</p>
+    <h1>Delta Lake<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">table-formats</span><span class="tag">data-lake</span><span class="tag">delta-lake</span><span class="tag">lakehouse</span><span class="tag">duckdb</span><span class="tag">data-engineering</span></div>
+    <p class="hero-meta">Source: delta-grows-up-writes-unity-catalog · Updated: 2026-05-28</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Database replication is the process of copying data from a primary database (master) to one or more secondary databases (slaves/replicas). The master-slave pattern separates write operations from read operations, enabling horizontal scaling of read-heavy workloads.</p>
-<h2>Master-Slave Architecture</h2>
+<p><strong>Delta Lake</strong> is an open-source storage framework that brings ACID transactions, time travel, and schema enforcement to data lakes. It is one of the three major open table formats (alongside <a href="apache-iceberg.html" class="wiki-link">Apache Iceberg</a> and Apache Hudi) for building lakehouse architectures. Delta Lake stores data as <a href="apache-parquet.html" class="wiki-link">Parquet</a> files with a transaction log (<code>_delta_log/</code>) that tracks every change — enabling versioning, rollback, and concurrent read/write coordination.</p>
+<h2>Core Features</h2>
 <table><thead><tr>
-<th>Component</th>
-<th>Responsibility</th>
-<th>Benefit</th>
-</tr></thead><tbody>
-<tr>
-<td>Master</td>
-<td>Handles all writes (INSERT, UPDATE, DELETE)</td>
-<td>Single source of truth for data consistency</td>
-</tr>
-<tr>
-<td>Slave(s)</td>
-<td>Receive data copies from master; handle reads</td>
-<td>Scale reads horizontally; parallel processing</td>
-</tr>
-</tbody></table>
-<h2>Failover Scenarios</h2>
-<table><thead><tr>
-<th>Failure</th>
-<th>Response</th>
-</tr></thead><tbody>
-<tr>
-<td>Slave dies</td>
-<td>Reads redirect to master or another healthy slave</td>
-</tr>
-<tr>
-<td>Master dies</td>
-<td>Promote a slave to master (may require data recovery if slave hasn't synced)</td>
-</tr>
-</tbody></table>
-<h2>Trade-offs</h2>
-<table><thead><tr>
-<th>Challenge</th>
+<th>Feature</th>
 <th>Description</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Replication lag</strong></td>
-<td>Slave may not be fully up-to-date with master — application must handle eventual consistency</td>
+<td><strong>ACID transactions</strong></td>
+<td>Serializable isolation for concurrent reads and writes</td>
 </tr>
 <tr>
-<td><strong>Write bottleneck</strong></td>
-<td>All writes go to a single master — master capacity is the write ceiling</td>
+<td><strong>Time travel</strong></td>
+<td>Query data as it existed at any historical version (<code>VERSION AS OF</code>)</td>
 </tr>
 <tr>
-<td><strong>Split-brain</strong></td>
-<td>If master and promoted slave both accept writes, data diverges</td>
+<td><strong>Schema enforcement</strong></td>
+<td>Rejects writes with mismatched schema; schema evolution via explicit DDL</td>
+</tr>
+<tr>
+<td><strong>Schema evolution</strong></td>
+<td>Add, rename, reorder columns; automatic for compatible changes</td>
+</tr>
+<tr>
+<td><strong>Compaction (OPTIMIZE)</strong></td>
+<td>Merge small files into larger ones for better query performance</td>
+</tr>
+<tr>
+<td><strong>File skipping</strong></td>
+<td>Statistics in the transaction log let engines skip irrelevant files via filter pushdown</td>
+</tr>
+<tr>
+<td><strong>Z-ordering</strong></td>
+<td>Multi-dimensional clustering for faster queries on multiple columns</td>
 </tr>
 </tbody></table>
-<blockquote><strong>Rule of thumb</strong>: Start with a single database. Add replication when read load exceeds what one server can handle.</blockquote>
+<h2>Architecture</h2>
+<p>A Delta table is a directory of Parquet files plus a transaction log:</p>
+<pre><code>my_table/
+├── _delta_log/
+│   ├── 00000000000000000000.json   # Version 0
+│   ├── 00000000000000000001.json   # Version 1
+│   └── 00000000000000000002.json   # Version 2
+├── part-00000-xxx.parquet
+├── part-00001-xxx.parquet
+└── ...</code></pre>
+<p>Each JSON log entry records which files were added/removed in that version, plus statistics (min/max per column, row count) for file skipping.</p>
+<h2>Time Travel</h2>
+<p>Delta's transaction log enables querying historical snapshots. In <a href="duckdb.html" class="wiki-link">DuckDB</a>'s Delta extension:</p>
+<pre><code class="language-sql">-- Query specific version
+SELECT count() FROM my_table AT (VERSION =&gt; 0);
+
+-- Attach pinned to a specific version (stable, ignores future writes)
+ATTACH &#x27;./my_table&#x27; AS my_table_v1 (TYPE delta, VERSION 1);
+
+-- Attach pinned to latest at attach time
+ATTACH &#x27;./my_table&#x27; AS my_table_snapped (TYPE delta, PIN_SNAPSHOT);</code></pre>
+<p>Incremental snapshot loading (DuckDB nightly, → v1.5.3) reuses cached log metadata across nearby versions, making time travel fast even in lakes with millions of snapshots.</p>
+<h2>DuckDB Delta Extension</h2>
+<p>As of 2026-05, DuckDB's Delta extension is <strong>stable</strong> (no longer experimental):</p>
+<table><thead><tr>
+<th>Capability</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td>Read Delta tables</td>
+<td>✅ Stable</td>
+</tr>
+<tr>
+<td>INSERT (append writes)</td>
+<td>✅ Stable</td>
+</tr>
+<tr>
+<td>Time travel</td>
+<td>✅ Stable</td>
+</tr>
+<tr>
+<td>UPDATE, MERGE, DELETE</td>
+<td>🔮 Future</td>
+</tr>
+<tr>
+<td>Multi-table atomic writes</td>
+<td>🔮 Future</td>
+</tr>
+</tbody></table>
+<p>Multiple INSERTs in a <code>BEGIN</code>/<code>COMMIT</code> block create a single atomic Delta version.</p>
+<h2>Delta vs Iceberg vs Hudi</h2>
+<table><thead><tr>
+<th>Feature</th>
+<th>Delta Lake</th>
+<th>Apache Iceberg</th>
+<th>Apache Hudi</th>
+</tr></thead><tbody>
+<tr>
+<td>ACID</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Time travel</td>
+<td>✅ (via version)</td>
+<td>✅ (via snapshot)</td>
+<td>✅ (via commit time)</td>
+</tr>
+<tr>
+<td>Schema evolution</td>
+<td>✅</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Partition evolution</td>
+<td>❌ (static)</td>
+<td>✅ (dynamic)</td>
+<td>❌ (static)</td>
+</tr>
+<tr>
+<td>Hidden partitioning</td>
+<td>❌</td>
+<td>✅</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Compaction</td>
+<td>OPTIMIZE</td>
+<td>Rewrite data files</td>
+<td>Clustering + compaction</td>
+</tr>
+<tr>
+<td>Catalog integration</td>
+<td>Unity Catalog (native)</td>
+<td>Multiple catalogs</td>
+<td>Hive Metastore</td>
+</tr>
+<tr>
+<td>DuckDB support</td>
+<td>✅ (read + write)</td>
+<td>✅ (via Iceberg ext)</td>
+<td>❌</td>
+</tr>
+</tbody></table>
+<p>→ See <a href="apache-iceberg.html" class="wiki-link">apache-iceberg</a> for the Iceberg comparison perspective.</p>
+<h2>Unity Catalog & Catalog Managed Tables</h2>
+<p>Delta Lake integrates natively with <a href="unity-catalog.html" class="wiki-link">Unity Catalog</a> for governance and concurrent write coordination:</p>
+<ul>
+<li><strong>Catalog Managed Tables (CMT)</strong>: UC owns the table lifecycle — creation, metadata, audit trail</li>
+<li><strong>Catalog Commits (CC)</strong>: Every write is staged and registered through UC; UC arbitrates concurrent writers (first wins, others get conflict error)</li>
+</ul>
+<p>This ensures UC's metadata stays in sync with the actual Delta table state — critical when multiple engines (DuckDB, Spark, Trino) write to the same table.</p>
+<p>→ See <a href="unity-catalog.html" class="wiki-link">unity-catalog</a> for details.</p>
+<h2>When to Use Delta</h2>
+<table><thead><tr>
+<th>✅ Use Delta</th>
+<th>❌ Use Something Else</th>
+</tr></thead><tbody>
+<tr>
+<td>Databricks/Spark-centric ecosystem</td>
+<td>Iceberg-native engines (Trino, Flink prefer Iceberg)</td>
+</tr>
+<tr>
+<td>Need Unity Catalog governance</td>
+<td>Using AWS Glue Catalog (→ Iceberg)</td>
+</tr>
+<tr>
+<td>DuckDB reads + writes to lakehouse</td>
+<td>Read-only DuckDB analytics (either works)</td>
+</tr>
+<tr>
+<td>Can tolerate static partitioning</td>
+<td>Need partition evolution (→ Iceberg)</td>
+</tr>
+</tbody></table>
   </div>
 </section>
 
@@ -148,25 +269,30 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>scales the data tier</p>
+    <a class="connection-card" href="apache-iceberg.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Iceberg</h4>
+      <p>both are open table formats for lakehouse architectures; Iceberg has partition evolution, Delta has deeper Databricks integration</p>
     </a>
-    <a class="connection-card" href="cache-strategy.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Cache Strategy</h4>
-      <p>cache sits in front of replicated reads for further scaling</p>
+    <a class="connection-card" href="apache-parquet.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Parquet</h4>
+      <p>Delta tables are Parquet files + transaction log</p>
     </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>routes reads to available slaves</p>
+    <a class="connection-card" href="duckdb.html">
+      <span class="connection-type related">Related</span>
+      <h4>DuckDB</h4>
+      <p>DuckDB's Delta extension supports reads, writes, and time travel (stable as of 2026-05)</p>
     </a>
-    <a class="connection-card" href="database-sharding.html">
-      <span class="connection-type related">Contrasts with</span>
-      <h4>Database Sharding</h4>
-      <p>replication copies data; sharding partitions data</p>
+    <a class="connection-card" href="unity-catalog.html">
+      <span class="connection-type related">Related</span>
+      <h4>Unity Catalog</h4>
+      <p>UC provides catalog management and concurrent write coordination for Delta tables</p>
+    </a>
+    <a class="connection-card" href="delta-grows-up-writes-unity-catalog.html">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Grows Up: Writes, Unity Catalog and Time Travel</h4>
+      <p>DuckDB Labs announces stable Delta writes, time travel, and UC support</p>
     </a>
   </div>
 </section>

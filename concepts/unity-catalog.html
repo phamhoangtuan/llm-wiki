@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Database Replication — LLM Wiki</title>
+<title>Unity Catalog — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,65 +82,147 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Database Replication<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">databases</span><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">data-consistency</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu · Updated: 2026-05-24</p>
+    <h1>Unity Catalog<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">data-governance</span><span class="tag">catalog</span><span class="tag">unity-catalog</span><span class="tag">delta-lake</span><span class="tag">lakehouse</span><span class="tag">duckdb</span></div>
+    <p class="hero-meta">Source: delta-grows-up-writes-unity-catalog · Updated: 2026-05-28</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Database replication is the process of copying data from a primary database (master) to one or more secondary databases (slaves/replicas). The master-slave pattern separates write operations from read operations, enabling horizontal scaling of read-heavy workloads.</p>
-<h2>Master-Slave Architecture</h2>
+<p><strong>Unity Catalog (UC)</strong> is an open standard (and open-source implementation) for governing data and AI assets — tables, volumes, models, and functions — across engines and clouds. It provides a single place to discover, audit, and control access to data, turning a data lake into a governed lakehouse. DuckDB's Unity Catalog extension graduated from experimental status in 2026-05, supporting both reads and writes through UC.</p>
+<h2>What Unity Catalog Provides</h2>
 <table><thead><tr>
-<th>Component</th>
-<th>Responsibility</th>
-<th>Benefit</th>
-</tr></thead><tbody>
-<tr>
-<td>Master</td>
-<td>Handles all writes (INSERT, UPDATE, DELETE)</td>
-<td>Single source of truth for data consistency</td>
-</tr>
-<tr>
-<td>Slave(s)</td>
-<td>Receive data copies from master; handle reads</td>
-<td>Scale reads horizontally; parallel processing</td>
-</tr>
-</tbody></table>
-<h2>Failover Scenarios</h2>
-<table><thead><tr>
-<th>Failure</th>
-<th>Response</th>
-</tr></thead><tbody>
-<tr>
-<td>Slave dies</td>
-<td>Reads redirect to master or another healthy slave</td>
-</tr>
-<tr>
-<td>Master dies</td>
-<td>Promote a slave to master (may require data recovery if slave hasn't synced)</td>
-</tr>
-</tbody></table>
-<h2>Trade-offs</h2>
-<table><thead><tr>
-<th>Challenge</th>
+<th>Capability</th>
 <th>Description</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Replication lag</strong></td>
-<td>Slave may not be fully up-to-date with master — application must handle eventual consistency</td>
+<td><strong>Discovery</strong></td>
+<td>Single catalog of all data assets across engines and storage locations</td>
 </tr>
 <tr>
-<td><strong>Write bottleneck</strong></td>
-<td>All writes go to a single master — master capacity is the write ceiling</td>
+<td><strong>Access control</strong></td>
+<td>Fine-grained permissions on tables, schemas, catalogs</td>
 </tr>
 <tr>
-<td><strong>Split-brain</strong></td>
-<td>If master and promoted slave both accept writes, data diverges</td>
+<td><strong>Audit trail</strong></td>
+<td>Who accessed what, when — unified across engines</td>
+</tr>
+<tr>
+<td><strong>Metadata sync</strong></td>
+<td>Table schemas, statistics, and lineage kept in sync</td>
+</tr>
+<tr>
+<td><strong>Write coordination</strong></td>
+<td>Catalog Commits arbitrate concurrent writes to Delta tables</td>
 </tr>
 </tbody></table>
-<blockquote><strong>Rule of thumb</strong>: Start with a single database. Add replication when read load exceeds what one server can handle.</blockquote>
+<h2>Two Implementations</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>OSS Unity Catalog</th>
+<th>Databricks Unity Catalog</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Deployment</strong></td>
+<td>Self-hosted (Docker, K8s)</td>
+<td>Managed SaaS (Databricks)</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Free (open source)</td>
+<td>Part of Databricks platform</td>
+</tr>
+<tr>
+<td><strong>API</strong></td>
+<td>UC Open API</td>
+<td>UC Open API + Databricks extensions</td>
+</tr>
+<tr>
+<td><strong>Best for</strong></td>
+<td>Custom lakehouse stacks, experimentation</td>
+<td>Databricks-centric organizations</td>
+</tr>
+</tbody></table>
+<p>OSS Unity Catalog can be Docker-ified in minutes — DuckDB Labs provides a <a href="https://github.com/benfleis/duckdb-unitycatalog-playground/" target="_blank" rel="noopener">playground image</a> bundling UC + DuckDB.</p>
+<h2>DuckDB Integration</h2>
+<p>Connecting DuckDB to Unity Catalog:</p>
+<pre><code class="language-sql">LOAD unity_catalog;
+
+CREATE SECRET (
+    TYPE     unity_catalog,
+    TOKEN    &#x27;your-token&#x27;,
+    ENDPOINT &#x27;https://your-workspace.cloud.databricks.com&#x27;
+);
+
+ATTACH &#x27;unity&#x27; AS my_catalog
+    (TYPE unity_catalog, DEFAULT_SCHEMA &#x27;my_schema&#x27;);
+
+-- Read through UC
+SELECT * FROM my_catalog.pets;
+
+-- Write through UC (INSERT, Delta tables)
+INSERT INTO my_catalog.pets (name, age) VALUES (&#x27;Luna&#x27;, 3);</code></pre>
+<h2>Catalog Managed Tables & Catalog Commits</h2>
+<p>The key feature for production usage is <strong>Catalog Managed Tables (CMT)</strong> with <strong>Catalog Commits (CC)</strong>:</p>
+<h3>Without Catalog Commits (the problem)</h3>
+<pre><code>DuckDB --writes--&gt; Delta log directly
+                    ↓
+              UC metadata out of sync
+              UC audit trail incomplete
+              Other engines see stale state</code></pre>
+<p>Writes go directly to the Delta transaction log, bypassing UC entirely. UC's metadata, audit trail, and statistics fall out of sync with actual table state.</p>
+<h3>With Catalog Commits (the solution)</h3>
+<pre><code>DuckDB --stages commit--&gt; _staged_commits/
+           ↓
+        UC registers commit
+           ↓
+    UC arbitrates (first writer wins)
+           ↓
+    UC metadata stays in sync
+    UC audit trail is complete
+    All engines see consistent state</code></pre>
+<p>Every write is staged and registered through UC before becoming visible. UC preserves the first writer's commit and sends conflict errors to later writers — no silent data loss.</p>
+<h3>Concurrency Test (20 writers, 8 parallel)</h3>
+<p>In DuckDB Labs' test:</p>
+<ul>
+<li>5 writers committed successfully</li>
+<li>15 received clear conflict signals (not silent failures)</li>
+<li>In a real workload, conflicted writers would retry</li>
+</ul>
+<pre><code>[worker 6] OK - inserted 5 rows
+[worker 5] CONFLICT - another writer won this version, retry needed
+[worker 2] CONFLICT - another writer won this version, retry needed
+...</code></pre>
+<p>Catalog Commits coordinate <strong>per table</strong> — no cross-table atomicity. Two tables in the same <code>BEGIN</code>/<code>COMMIT</code> block commit independently.</p>
+<h2>Enabling Catalog Managed Tables</h2>
+<p>Set the table property at creation time (via Spark or UC CLI; DuckDB's <code>CREATE TABLE</code> DDL via UC is on the roadmap):</p>
+<pre><code class="language-sql">-- Via Spark
+CREATE TABLE my_catalog.my_schema.concurrent_tbl (...)
+TBLPROPERTIES (&#x27;delta.feature.catalogManaged&#x27; = &#x27;supported&#x27;);</code></pre>
+<p>Once enabled, DuckDB INSERTs automatically route through UC's commit staging.</p>
+<h2>When to Use Unity Catalog</h2>
+<table><thead><tr>
+<th>✅ Use Unity Catalog</th>
+<th>❌ Skip Unity Catalog</th>
+</tr></thead><tbody>
+<tr>
+<td>Multi-engine lakehouse (DuckDB + Spark + Trino)</td>
+<td>Single-engine setup</td>
+</tr>
+<tr>
+<td>Need governance (access control, audit)</td>
+<td>No regulatory/compliance requirements</td>
+</tr>
+<tr>
+<td>Concurrent writers to same Delta table</td>
+<td>Single-writer pipelines</td>
+</tr>
+<tr>
+<td>Databricks shop wanting open standards</td>
+<td>Custom metadata store already in place</td>
+</tr>
+</tbody></table>
   </div>
 </section>
 
@@ -148,25 +230,25 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>scales the data tier</p>
+    <a class="connection-card" href="delta-lake.html">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Lake</h4>
+      <p>UC is the native catalog for Delta tables; Catalog Commits coordinate concurrent writes</p>
     </a>
-    <a class="connection-card" href="cache-strategy.html">
+    <a class="connection-card" href="duckdb.html">
+      <span class="connection-type related">Related</span>
+      <h4>DuckDB</h4>
+      <p>DuckDB's UC extension (stable) supports reads and writes through UC-managed catalogs</p>
+    </a>
+    <a class="connection-card" href="apache-iceberg.html">
       <span class="connection-type related">Related to</span>
-      <h4>Cache Strategy</h4>
-      <p>cache sits in front of replicated reads for further scaling</p>
+      <h4>Apache Iceberg</h4>
+      <p>UC can catalog Iceberg tables too; Iceberg also has its own catalog ecosystem (REST catalog, Hive, Glue)</p>
     </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>routes reads to available slaves</p>
-    </a>
-    <a class="connection-card" href="database-sharding.html">
-      <span class="connection-type related">Contrasts with</span>
-      <h4>Database Sharding</h4>
-      <p>replication copies data; sharding partitions data</p>
+    <a class="connection-card" href="delta-grows-up-writes-unity-catalog.html">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Grows Up: Writes, Unity Catalog and Time Travel</h4>
+      <p>DuckDB Labs announces stable UC extension with Catalog Commits</p>
     </a>
   </div>
 </section>
