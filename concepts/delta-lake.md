@@ -3,8 +3,8 @@ title: "Delta Lake"
 type: concept
 tags: [table-formats, data-lake, delta-lake, lakehouse, duckdb, data-engineering]
 created: 2026-05-28
-updated: 2026-05-28
-sources: [delta-grows-up-writes-unity-catalog]
+updated: 2026-05-31
+sources: [delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables]
 aliases: [Delta]
 ---
 
@@ -87,16 +87,68 @@ Multiple INSERTs in a `BEGIN`/`COMMIT` block create a single atomic Delta versio
 
 → See [[apache-iceberg]] for the Iceberg comparison perspective.
 
-## Unity Catalog & Catalog Managed Tables
+## Catalog-Managed Tables (Delta 4.1.0+)
 
-Delta Lake integrates natively with [[unity-catalog|Unity Catalog]] for governance and concurrent write coordination:
+Delta 4.1.0 introduces **catalog-managed tables** — a fundamental architectural shift where the catalog (not the filesystem) becomes the authority for table identity, discovery, authorization, and commit coordination.
 
-- **Catalog Managed Tables (CMT)**: UC owns the table lifecycle — creation, metadata, audit trail
-- **Catalog Commits (CC)**: Every write is staged and registered through UC; UC arbitrates concurrent writers (first wins, others get conflict error)
+### Filesystem-Managed (Legacy) vs Catalog-Managed
 
-This ensures UC's metadata stays in sync with the actual Delta table state — critical when multiple engines (DuckDB, Spark, Trino) write to the same table.
+| Aspect | Filesystem-Managed (Legacy) | Catalog-Managed (4.1.0+) |
+|---|---|---|
+| **Discovery** | Clients know exact filesystem path | Clients resolve by name (`catalog.schema.table`) |
+| **Authorization** | Coarse-grained storage credentials | Fine-grained catalog-level access control |
+| **Reads** | Replay `_delta_log` from filesystem (100ms+ latency) | `get_catalog_commits` API → direct metadata, skip storage |
+| **Writes** | Filesystem "PUT-if-absent" determines winner | Catalog ratifies commits; can inspect/enforce/reject |
+| **Schema changes** | Unvalidated — incompatible changes possible | Catalog validates before accepting commits |
 
-→ See [[unity-catalog]] for details.
+### Reads (Catalog-Mediated)
+
+1. Client calls `get_catalog_commits` API → retrieves **latest ratified commits** directly from catalog
+2. If older history is needed, LIST the filesystem for published commits and checkpoints
+3. Merge catalog + filesystem commits to build complete snapshot
+
+The catalog always serves the most recent table state; long-term storage stays in the filesystem.
+
+### Writes (Catalog Commits)
+
+1. Client **stages** commit to `_delta_log/_staged_commits/` (or sends **inline**)
+2. Client requests **ratification** from the catalog
+3. Catalog inspects commit contents, enforces constraints, applies policies
+4. Catalog **ratifies** (accepts) or **rejects** the commit
+5. Ratified commits are periodically **published** to the filesystem `_delta_log/`
+
+**Inline commits**: Commit payload sent directly to catalog — skips the 100ms+ filesystem write. Enables sub-100ms commits for latency-sensitive workloads.
+
+### Enabling Catalog-Managed Mode
+
+```sql
+CREATE TABLE catalog.schema.table (...)
+USING DELTA
+TBLPROPERTIES ('delta.feature.catalogManaged' = 'supported');
+```
+
+Without this property, Delta falls back to standard filesystem-based coordination.
+
+### Convergence with Iceberg
+
+Delta's catalog-managed design closely resembles [[apache-iceberg|Iceberg]]'s catalog model. This shared foundation enables:
+- **Consistent governance** across formats from a single catalog
+- **Multi-engine interoperability** — any engine speaking the catalog API can access either format
+- **Simplified operations** — no need to manage format-specific access patterns
+
+## Unity Catalog Integration
+
+[[unity-catalog|Unity Catalog]] 0.4.0+ is the first open lakehouse catalog to support catalog-managed Delta tables. The UC integration provides:
+
+| Feature | Mechanism |
+|---|---|
+| **Table discovery** | Three-level namespace (`catalog.schema.table`) |
+| **Authorization** | Fine-grained access control per table/column |
+| **Commit coordination** | UC ratifies commits; validates constraints before accepting |
+| **Inline commits** | Commit metadata sent directly to UC (sub-100ms latency) |
+| **Audit trail** | All ratified commits tracked by UC |
+
+→ See [[unity-catalog]] for UC's catalog commit protocol details.
 
 ## When to Use Delta
 
@@ -112,3 +164,4 @@ This ensures UC's metadata stays in sync with the actual Delta table state — c
 - Integrates with [[duckdb]] — DuckDB's Delta extension supports reads, writes, and time travel (stable as of 2026-05)
 - governed by [[unity-catalog]] — UC provides catalog management and concurrent write coordination for Delta tables
 - Benchmark source: [[delta-grows-up-writes-unity-catalog]] — DuckDB Labs announces stable Delta writes, time travel, and UC support
+- Powered by [[delta-catalog-managed-tables]] — architectural shift from filesystem-managed to catalog-managed tables (Delta 4.1.0)

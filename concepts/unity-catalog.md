@@ -3,8 +3,8 @@ title: "Unity Catalog"
 type: concept
 tags: [data-governance, catalog, unity-catalog, delta-lake, lakehouse, duckdb]
 created: 2026-05-28
-updated: 2026-05-28
-sources: [delta-grows-up-writes-unity-catalog]
+updated: 2026-05-31
+sources: [delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables]
 aliases: [UC]
 ---
 
@@ -58,35 +58,45 @@ INSERT INTO my_catalog.pets (name, age) VALUES ('Luna', 3);
 
 ## Catalog Managed Tables & Catalog Commits
 
-The key feature for production usage is **Catalog Managed Tables (CMT)** with **Catalog Commits (CC)**:
+With Delta Lake 4.1.0 and Unity Catalog 0.4.0, catalog-managed tables represent a fundamental architectural shift: the catalog (not the filesystem) becomes the **authority** for table state.
 
-### Without Catalog Commits (the problem)
+### How the Protocol Works
 
-```
-DuckDB --writes--> Delta log directly
-                    ↓
-              UC metadata out of sync
-              UC audit trail incomplete
-              Other engines see stale state
-```
+#### Table Discovery
 
-Writes go directly to the Delta transaction log, bypassing UC entirely. UC's metadata, audit trail, and statistics fall out of sync with actual table state.
+Clients resolve tables by **logical name** (`catalog.schema.table`) through the catalog — not by filesystem path. The catalog provides identity, location, and access credentials.
 
-### With Catalog Commits (the solution)
+#### Reads (Catalog-Mediated)
 
 ```
-DuckDB --stages commit--> _staged_commits/
-           ↓
-        UC registers commit
-           ↓
-    UC arbitrates (first writer wins)
-           ↓
-    UC metadata stays in sync
-    UC audit trail is complete
-    All engines see consistent state
+1. Client → get_catalog_commits API → latest ratified commits (0ms to catalog, skip storage)
+2. If older history needed → LIST filesystem for published commits + checkpoints
+3. Merge catalog commits + filesystem commits → complete snapshot
 ```
 
-Every write is staged and registered through UC before becoming visible. UC preserves the first writer's commit and sends conflict errors to later writers — no silent data loss.
+This eliminates the 100ms+ filesystem round-trip for metadata resolution on every query.
+
+#### Writes (Catalog-Ratified)
+
+```
+1. Client stages commit → _delta_log/_staged_commits/ (or sends inline to catalog)
+2. Client requests ratification from UC
+3. UC inspects commit contents, enforces constraints, applies policies
+4. UC ratifies or rejects the commit
+5. Ratified commits periodically published to the filesystem _delta_log/
+```
+
+**Inline commits**: Commit payload is sent directly to the catalog, skipping filesystem write entirely → sub-100ms commit latency.
+
+### Filesystem-Managed (Legacy) vs Catalog-Managed
+
+| Aspect | Without Catalog Commits | With Catalog Commits |
+|---|---|---|
+| **Discovery** | Clients need exact filesystem path | Clients resolve by name through catalog |
+| **Authorization** | Coarse-grained storage credentials | Fine-grained catalog-level access control |
+| **Writes** | Filesystem "PUT-if-absent" determines winner | Catalog ratifies; inspects content, enforces constraints |
+| **Schema changes** | Unvalidated — incompatible changes can break pipelines | Catalog validates before accepting commits |
+| **Metadata latency** | Replay `_delta_log` from filesystem (100ms+) | `get_catalog_commits` direct from catalog |
 
 ### Concurrency Test (20 writers, 8 parallel)
 
@@ -103,6 +113,13 @@ In DuckDB Labs' test:
 ```
 
 Catalog Commits coordinate **per table** — no cross-table atomicity. Two tables in the same `BEGIN`/`COMMIT` block commit independently.
+
+## Convergence with Iceberg
+
+Delta's catalog-managed design closely resembles [[apache-iceberg|Iceberg]]'s catalog model. Since Unity Catalog can govern both formats, this convergence enables:
+- **Consistent governance** across Delta and Iceberg from a single catalog
+- **Multi-engine interoperability** — any engine speaking UC's API can access either format
+- **Simplified operations** — no format-specific access patterns to manage
 
 ## Enabling Catalog Managed Tables
 
@@ -129,3 +146,4 @@ Once enabled, DuckDB INSERTs automatically route through UC's commit staging.
 - Integrates with [[duckdb]] — DuckDB's UC extension (stable) supports reads and writes through UC-managed catalogs
 - Related to [[apache-iceberg]] — UC can catalog Iceberg tables too; Iceberg also has its own catalog ecosystem (REST catalog, Hive, Glue)
 - Benchmark source: [[delta-grows-up-writes-unity-catalog]] — DuckDB Labs announces stable UC extension with Catalog Commits
+- Benchmark source: [[delta-catalog-managed-tables]] — architectural shift: filesystem-managed → catalog-managed (Delta 4.1.0 + UC 0.4.0)

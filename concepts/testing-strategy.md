@@ -3,7 +3,7 @@ title: "Testing Strategy"
 type: concept
 tags: [python, testing, strategy, architecture]
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-05-31
 sources: [okken-python-testing-pytest]
 ---
 
@@ -29,3 +29,5 @@ A professional testing strategy focuses effort where it matters most — the API
 - Drives [[pytest-fixtures]] — usage — fixtures enable clean API testing
 - Drives [[pytest-mocking]] — usage — mocking isolates API from external deps
 - Drives [[pytest-plugins]] — usage — coverage and parallel execution for CI
+- Enabled by [[dependency-injection]] — DI provides the loose coupling that makes testing practical
+- Related to [[harness-engineering]] — harness engineering's closed-loop verification applies rigorous testing to AI agents

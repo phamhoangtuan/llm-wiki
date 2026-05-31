@@ -159,3 +159,33 @@
 - New concepts: dependency-injection, composition-root, solid-principles
 - Updated index.md: +3 concept entries, +1 source entry
 - Total pages: 69 (59 concepts + 11 sources)
+
+## [2026-05-31] ingest | Delta Catalog-Managed Tables (Delta 4.1.0 + UC 0.4.0)
+
+- Source: Benjamin Mathew, Scott Sandre, Scott Haines — delta.io blog (2026-02-02)
+- URL: https://delta.io/blog/2026-02-02-delta-catalog-managed-tables/
+- Created sources/delta-catalog-managed-tables.md
+- New concepts: none (enriched existing)
+- Updated concepts: delta-lake (catalog-managed architecture: discovery, reads via get_catalog_commits, writes via ratification, inline commits, convergence with Iceberg), unity-catalog (catalog commit protocol, get_catalog_commits API, staged vs inline commits, ratification/publishing)
+- Updated index.md: +1 source entry
+- Total pages: 70 (59 concepts + 12 sources)
+
+## [2026-05-31] ingest | Learn Harness Engineering (walkinglabs)
+
+- Source: "Learn Harness Engineering" by walkinglabs — online guide
+- URL: https://walkinglabs.github.io/learn-harness-engineering/en/
+- Copied to: raw/articles/learn-harness-engineering.md (Vietnamese notes)
+- Created sources/learn-harness-engineering.md
+- New concepts: harness-engineering
+- Updated index.md: +1 concept entries, +1 source entry
+- Total pages: 73 (60 concepts + 13 sources)
+
+## [2026-05-31] lint | Cross-reference fixes
+
+- Added backlinks to harness-engineering: technological-centaur, testing-strategy, fail-fast
+- Added bidirectional cross-link: technological-centaur ↔ harness-engineering
+- Added dependency-injection wikilink to pytest-fixtures
+- Added dependency-injection and harness-engineering wikilinks to testing-strategy
+- Added lakehouse tag to apache-iceberg
+- Updated dates on all modified concept pages
+- No new pages created

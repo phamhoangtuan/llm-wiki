@@ -3,7 +3,7 @@ title: "Technological Centaur"
 type: concept
 tags: [ai, architecture, developer-role]
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-05-31
 sources: [contieri-clean-code-cookbook]
 ---
 
@@ -39,3 +39,4 @@ The "Technological Centaur" is the model of human architect + AI coding assistan
 - Requires [[rich-domain-model]] — knowledge to review AI output
 - Depends on [[bijection]] — awareness to catch semantic errors AI introduces
 - Related to [[readability-vs-performance]] — clean code enables effective AI collaboration
+- Implemented via [[harness-engineering]] — structural enforcement makes the centaur model reliable at scale

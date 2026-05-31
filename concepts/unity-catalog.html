@@ -84,7 +84,7 @@
     <div class="hero-badge">Concept</div>
     <h1>Unity Catalog<span>.</span></h1>
     <div class="hero-tags"><span class="tag">data-governance</span><span class="tag">catalog</span><span class="tag">unity-catalog</span><span class="tag">delta-lake</span><span class="tag">lakehouse</span><span class="tag">duckdb</span></div>
-    <p class="hero-meta">Source: delta-grows-up-writes-unity-catalog · Updated: 2026-05-28</p>
+    <p class="hero-meta">Source: delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables · Updated: 2026-05-31</p>
   </div>
 </div>
 <section>
@@ -164,25 +164,54 @@ SELECT * FROM my_catalog.pets;
 -- Write through UC (INSERT, Delta tables)
 INSERT INTO my_catalog.pets (name, age) VALUES (&#x27;Luna&#x27;, 3);</code></pre>
 <h2>Catalog Managed Tables & Catalog Commits</h2>
-<p>The key feature for production usage is <strong>Catalog Managed Tables (CMT)</strong> with <strong>Catalog Commits (CC)</strong>:</p>
-<h3>Without Catalog Commits (the problem)</h3>
-<pre><code>DuckDB --writes--&gt; Delta log directly
-                    ↓
-              UC metadata out of sync
-              UC audit trail incomplete
-              Other engines see stale state</code></pre>
-<p>Writes go directly to the Delta transaction log, bypassing UC entirely. UC's metadata, audit trail, and statistics fall out of sync with actual table state.</p>
-<h3>With Catalog Commits (the solution)</h3>
-<pre><code>DuckDB --stages commit--&gt; _staged_commits/
-           ↓
-        UC registers commit
-           ↓
-    UC arbitrates (first writer wins)
-           ↓
-    UC metadata stays in sync
-    UC audit trail is complete
-    All engines see consistent state</code></pre>
-<p>Every write is staged and registered through UC before becoming visible. UC preserves the first writer's commit and sends conflict errors to later writers — no silent data loss.</p>
+<p>With Delta Lake 4.1.0 and Unity Catalog 0.4.0, catalog-managed tables represent a fundamental architectural shift: the catalog (not the filesystem) becomes the <strong>authority</strong> for table state.</p>
+<h3>How the Protocol Works</h3>
+<h4>Table Discovery</h4>
+<p>Clients resolve tables by <strong>logical name</strong> (<code>catalog.schema.table</code>) through the catalog — not by filesystem path. The catalog provides identity, location, and access credentials.</p>
+<h4>Reads (Catalog-Mediated)</h4>
+<pre><code>1. Client → get_catalog_commits API → latest ratified commits (0ms to catalog, skip storage)
+2. If older history needed → LIST filesystem for published commits + checkpoints
+3. Merge catalog commits + filesystem commits → complete snapshot</code></pre>
+<p>This eliminates the 100ms+ filesystem round-trip for metadata resolution on every query.</p>
+<h4>Writes (Catalog-Ratified)</h4>
+<pre><code>1. Client stages commit → _delta_log/_staged_commits/ (or sends inline to catalog)
+2. Client requests ratification from UC
+3. UC inspects commit contents, enforces constraints, applies policies
+4. UC ratifies or rejects the commit
+5. Ratified commits periodically published to the filesystem _delta_log/</code></pre>
+<p><strong>Inline commits</strong>: Commit payload is sent directly to the catalog, skipping filesystem write entirely → sub-100ms commit latency.</p>
+<h3>Filesystem-Managed (Legacy) vs Catalog-Managed</h3>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Without Catalog Commits</th>
+<th>With Catalog Commits</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Discovery</strong></td>
+<td>Clients need exact filesystem path</td>
+<td>Clients resolve by name through catalog</td>
+</tr>
+<tr>
+<td><strong>Authorization</strong></td>
+<td>Coarse-grained storage credentials</td>
+<td>Fine-grained catalog-level access control</td>
+</tr>
+<tr>
+<td><strong>Writes</strong></td>
+<td>Filesystem "PUT-if-absent" determines winner</td>
+<td>Catalog ratifies; inspects content, enforces constraints</td>
+</tr>
+<tr>
+<td><strong>Schema changes</strong></td>
+<td>Unvalidated — incompatible changes can break pipelines</td>
+<td>Catalog validates before accepting commits</td>
+</tr>
+<tr>
+<td><strong>Metadata latency</strong></td>
+<td>Replay <code>_delta_log</code> from filesystem (100ms+)</td>
+<td><code>get_catalog_commits</code> direct from catalog</td>
+</tr>
+</tbody></table>
 <h3>Concurrency Test (20 writers, 8 parallel)</h3>
 <p>In DuckDB Labs' test:</p>
 <ul>
@@ -195,6 +224,13 @@ INSERT INTO my_catalog.pets (name, age) VALUES (&#x27;Luna&#x27;, 3);</code></pr
 [worker 2] CONFLICT - another writer won this version, retry needed
 ...</code></pre>
 <p>Catalog Commits coordinate <strong>per table</strong> — no cross-table atomicity. Two tables in the same <code>BEGIN</code>/<code>COMMIT</code> block commit independently.</p>
+<h2>Convergence with Iceberg</h2>
+<p>Delta's catalog-managed design closely resembles <a href="apache-iceberg.html" class="wiki-link">Iceberg</a>'s catalog model. Since Unity Catalog can govern both formats, this convergence enables:</p>
+<ul>
+<li><strong>Consistent governance</strong> across Delta and Iceberg from a single catalog</li>
+<li><strong>Multi-engine interoperability</strong> — any engine speaking UC's API can access either format</li>
+<li><strong>Simplified operations</strong> — no format-specific access patterns to manage</li>
+</ul>
 <h2>Enabling Catalog Managed Tables</h2>
 <p>Set the table property at creation time (via Spark or UC CLI; DuckDB's <code>CREATE TABLE</code> DDL via UC is on the roadmap):</p>
 <pre><code class="language-sql">-- Via Spark
@@ -249,6 +285,11 @@ TBLPROPERTIES (&#x27;delta.feature.catalogManaged&#x27; = &#x27;supported&#x27;)
       <span class="connection-type related">Related</span>
       <h4>Delta Grows Up: Writes, Unity Catalog and Time Travel</h4>
       <p>DuckDB Labs announces stable UC extension with Catalog Commits</p>
+    </a>
+    <a class="connection-card" href="delta-catalog-managed-tables.html">
+      <span class="connection-type related">Related</span>
+      <h4>The Next Evolution of Delta — Catalog-Managed Tables</h4>
+      <p>architectural shift: filesystem-managed → catalog-managed (Delta 4.1.0 + UC 0.4.0)</p>
     </a>
   </div>
 </section>

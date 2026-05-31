@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Next Evolution of Delta — Catalog-Managed Tables — LLM Wiki</title>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
+    --text: #e4e6f0; --text-dim: #8b8fa8; --accent: #f0b429; --accent-dim: #b8860b;
+    --accent-glow: rgba(240, 180, 41, 0.15); --green: #4ade80; --blue: #60a5fa;
+    --rose: #fb7185; --purple: #a78bfa; --teal: #2dd4bf; --radius: 12px;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .hero { min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 50%, rgba(45,212,191,0.08) 0%, transparent 70%), radial-gradient(ellipse 500px 500px at 70% 30%, rgba(240,180,41,0.06) 0%, transparent 70%); z-index: 0; }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(45,212,191,0.12); border: 1px solid rgba(45,212,191,0.25); color: var(--teal); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--teal); }
+  .hero-sub { font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 1.5rem; }
+  .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
+  .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
+  .hero-back { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.5rem; transition: opacity 0.2s; }
+  .hero-back:hover { opacity: 0.8; }
+  .hero-back svg { width: 16px; height: 16px; }
+  section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+  .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--teal); }
+  .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
+  .content-area h2:first-child { margin-top: 0; }
+  .content-area h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--text); }
+  .content-area p { margin-bottom: 1rem; line-height: 1.7; }
+  .content-area ul, .content-area ol { margin: 0.5rem 0 1rem 1.5rem; }
+  .content-area li { margin-bottom: 0.4rem; line-height: 1.6; }
+  .content-area blockquote { margin: 1rem 0; padding: 1rem 1.25rem; background: var(--surface-2); border-radius: 8px; border-left: 3px solid var(--accent); font-style: italic; color: var(--text-dim); }
+  .content-area pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1rem 0; }
+  .content-area pre code { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }
+  .content-area code { font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }
+  .content-area pre code { background: none; padding: 0; color: var(--text); }
+  .content-area strong { color: var(--text); }
+  .wiki-link { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }
+  .wiki-link:hover { border-color: var(--blue); }
+  .connections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .connection-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+  .connection-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+  .connection-card h4 { font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }
+  .connection-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
+  footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  @media (max-width: 768px) { section { padding: 2.5rem 1.25rem; } .content-area { padding: 1.5rem; } }
+  @media (prefers-color-scheme: light) { :root { --bg: #f8f9fb; --surface: #ffffff; --surface-2: #f0f1f5; --border: #e2e4ec; --text: #1a1d27; --text-dim: #6b7089; } }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <a href="../index.html" class="hero-back">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Wiki Index
+    </a>
+    <div class="hero-badge">Source</div>
+    <h1>The Next Evolution of Delta — Catalog-Managed Tables<span>.</span></h1>
+    <p class="hero-sub">Benjamin Mathew, Scott Sandre, Scott Haines · article · 2026-02-02</p>
+    <div class="hero-tags"><span class="tag">delta-lake</span><span class="tag">unity-catalog</span><span class="tag">catalog-managed-tables</span><span class="tag">lakehouse</span><span class="tag">data-governance</span></div>
+    <p class="hero-meta">Ingested: 2026-05-31</p>
+  </div>
+</div>
+<section>
+  <div class="content-area">
+<h2>Summary</h2>
+<p>With <strong>Delta Lake 4.1.0</strong> and <strong>Unity Catalog 0.4.0</strong>, Delta introduces <strong>catalog-managed tables</strong> — a fundamental shift where the catalog (not the filesystem) becomes the authority for table identity, discovery, authorization, and commit coordination. This moves Delta toward the catalog-managed model pioneered by Iceberg and creates a shared foundation for interoperable lakehouse tables.</p>
+<h2>Before: Filesystem-Managed Delta (Legacy)</h2>
+<p>In the traditional model, the filesystem (<code>_delta_log/</code>) was the primary authority:</p>
+<ol>
+<li><strong>Discovery</strong>: Clients needed the exact filesystem path to the table</li>
+<li><strong>Authorization</strong>: Credentials managed directly by the storage system — coarse-grained access</li>
+<li><strong>Commits</strong>: Atomic writes via filesystem "PUT-if-absent" APIs — filesystem determines write winner</li>
+<li><strong>Read planning</strong>: Replay the Delta transaction log from the filesystem → 100+ ms latency per query</li>
+</ol>
+<p>Challenges:</p>
+<ul>
+<li><strong>Brittle path-based access</strong>: Table relocation broke pipelines</li>
+<li><strong>Risky coarse-grained authorization</strong>: Fragmented governance across storage systems</li>
+<li><strong>Unsafe schema changes</strong>: Path-based writes could modify schemas without validation</li>
+<li><strong>Bottlenecked performance</strong>: Log replay added latency to every query</li>
+</ul>
+<h2>After: Catalog-Managed Delta (Delta 4.1.0+)</h2>
+<h3>Table Discovery</h3>
+<p>Clients resolve tables by <strong>name</strong> (e.g., Unity Catalog's three-level namespace: <code>catalog.schema.table</code>), not by filesystem path. The catalog provides table identity, location, and access credentials before any storage interaction.</p>
+<h3>Reads</h3>
+<ol>
+<li>Client calls <code>get_catalog_commits</code> API to retrieve the <strong>latest ratified commits</strong> from the catalog</li>
+<li>If older history is needed, the client LISTs the filesystem for published commits and checkpoints</li>
+<li>The client <strong>merges</strong> catalog-provided commits with filesystem-discovered commits to build a complete snapshot</li>
+</ol>
+<p>This means the catalog always serves the most recent table state, while long-term commit storage remains in the filesystem.</p>
+<h3>Writes (Catalog Commits)</h3>
+<ol>
+<li>Client <strong>stages</strong> commits in <code>_delta_log/_staged_commits/</code> directory (or sends inline)</li>
+<li>Client requests <strong>ratification</strong> from the catalog</li>
+<li>The catalog inspects commit contents, enforces constraints, and applies policies</li>
+<li>The catalog ratifies (accepts) or rejects the commit</li>
+<li>Ratified commits are periodically <strong>published</strong> to the filesystem <code>_delta_log/</code></li>
+</ol>
+<p><strong>Inline commits</strong>: Commit contents can be sent directly to the catalog, skipping the 100ms+ filesystem write entirely — enabling sub-100ms commits.</p>
+<h3>Authorization</h3>
+<p>The catalog becomes the single point of governance:</p>
+<ul>
+<li>Fine-grained access control per table/column</li>
+<li>Schema and constraint validation on every commit</li>
+<li>Catalog can distinguish between "write data" and "modify schema" permissions</li>
+<li>No more fragmented storage-level policies</li>
+</ul>
+<h2>Enabling Catalog-Managed Tables</h2>
+<pre><code class="language-sql">CREATE TABLE sanctuary.pets (...)
+USING DELTA
+TBLPROPERTIES (&#x27;delta.feature.catalogManaged&#x27; = &#x27;supported&#x27;);</code></pre>
+<p>The <code>delta.feature.catalogManaged</code> property opts the table into catalog-managed mode. Without it, Delta falls back to filesystem-based coordination.</p>
+<h2>Convergence with Iceberg</h2>
+<p>Delta's catalog-managed design closely resembles Iceberg's catalog model. This convergence means:</p>
+<ul>
+<li><strong>Consistent governance</strong> across Delta and Iceberg tables</li>
+<li><strong>Multi-engine interoperability</strong> — any engine that speaks the catalog API can access either format</li>
+<li><strong>Single catalog</strong> for discovery and authorization regardless of underlying table format</li>
+</ul>
+<h2>Links</h2>
+<ul>
+<li><a href="https://github.com/delta-io/delta/releases/tag/v4.1.0" target="_blank" rel="noopener">Delta Lake 4.1.0 release</a></li>
+<li><a href="https://github.com/unitycatalog/unitycatalog/releases/tag/v0.4.0" target="_blank" rel="noopener">Unity Catalog 0.4.0 release</a></li>
+<li><a href="https://github.com/delta-io/delta/blob/master/PROTOCOL.md#catalog-managed-tables" target="_blank" rel="noopener">Catalog-Managed Tables protocol (RFC)</a></li>
+<li><a href="https://github.com/newfront/unitycatalog-playground/" target="_blank" rel="noopener">Unity Catalog Playground (Docker)</a></li>
+</ul>
+  </div>
+</section>
+
+<footer>
+  <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
+  <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>
+</footer>
+<script>
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    document.documentElement.style.setProperty('--bg', '#f8f9fb');
+    document.documentElement.style.setProperty('--surface', '#ffffff');
+    document.documentElement.style.setProperty('--surface-2', '#f0f1f5');
+    document.documentElement.style.setProperty('--border', '#e2e4ec');
+    document.documentElement.style.setProperty('--text', '#1a1d27');
+    document.documentElement.style.setProperty('--text-dim', '#6b7089');
+  }
+</script>
+</body>
+</html>

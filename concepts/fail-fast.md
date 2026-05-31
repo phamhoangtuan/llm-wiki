@@ -3,7 +3,7 @@ title: "Fail Fast"
 type: concept
 tags: [design-principles, error-handling, reliability]
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-05-31
 sources: [contieri-clean-code-cookbook]
 ---
 
@@ -38,3 +38,4 @@ LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException
 - Prevents [[bijection]] violations — implicit transformations hide errors
 - Related to [[rich-domain-model]] — rich objects validate their own state
 - Related to [[essential-accidental-complexity]] — silent failures add accidental complexity
+- Applied in [[harness-engineering]] — harnesses prevent AI agents from declaring victory before verification

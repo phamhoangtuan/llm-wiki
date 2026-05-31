@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>pytest Fixtures — LLM Wiki</title>
+<title>Harness Engineering — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,53 +82,126 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>pytest Fixtures<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">python</span><span class="tag">testing</span><span class="tag">pytest</span><span class="tag">dependency-injection</span></div>
-    <p class="hero-meta">Source: okken-python-testing-pytest · Updated: 2026-05-31</p>
+    <h1>Harness Engineering<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">reliability</span><span class="tag">testing</span><span class="tag">workflow</span></div>
+    <p class="hero-meta">Source: learn-harness-engineering · Updated: 2026-05-31</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Fixtures are pytest's killer feature — reusable setup/teardown logic via dependency injection. They replace <code>setUp()</code>/<code>tearDown()</code> from unittest with a more flexible, composable system.</p>
-<h2>How It Works</h2>
-<p>A fixture is any function decorated with <code>@pytest.fixture</code>. Tests receive fixtures as function arguments — dependencies are declared explicitly.</p>
-<pre><code>@pytest.fixture
-def db_connection():
-    conn = create_connection()
-    yield conn
-    conn.close()  # teardown after test
-
-def test_query(db_connection):
-    result = db_connection.execute(&quot;SELECT 1&quot;)
-    assert result == 1</code></pre>
-<h2>Fixture Scopes</h2>
+<p><strong>Harness Engineering</strong> is a discipline for building reliable, closed-loop systems around AI agents. Rather than trying to make models "smarter" through better prompts, harness engineering focuses on structural enforcement: explicit rules, state management, granular verification, and systematic feedback loops. The output is not a better model — it's a <em>trustworthy engineering system</em>.</p>
+<blockquote>"If the AI is the engine, the harness is the chassis and the steering."</blockquote>
+<h2>Core Problem: Intelligence ≠ Reliability</h2>
 <table><thead><tr>
-<th>Scope</th>
-<th>Lifecycle</th>
-<th>Use Case</th>
+<th>Capability</th>
+<th>Failure Mode (Without Harness)</th>
 </tr></thead><tbody>
 <tr>
-<td><code>function</code> (default)</td>
-<td>Runs for each test</td>
-<td>Isolated test data</td>
+<td>Fast code generation</td>
+<td>Loss of continuity in long, multi-session tasks</td>
 </tr>
 <tr>
-<td><code>class</code></td>
-<td>Once per test class</td>
-<td>Shared class setup</td>
+<td>Advanced reasoning</td>
+<td>Overreach & under-finish: drifts beyond scope</td>
 </tr>
 <tr>
-<td><code>module</code></td>
-<td>Once per module</td>
-<td>Module-level resources</td>
-</tr>
-<tr>
-<td><code>session</code></td>
-<td>Once per entire run</td>
-<td>Database connections, config</td>
+<td>Large context windows</td>
+<td>Declare victory too early: stops when code "looks good," skips testing</td>
 </tr>
 </tbody></table>
+<blockquote>Raw intelligence without structural enforcement is a liability, not an asset.</blockquote>
+<h2>The Closed-Loop System</h2>
+<pre><code>❌ Without harness: Prompt → Model → Output → &quot;Done!&quot; (may have bugs, lost context, wrong scope)
+
+✅ With harness:
+   Goal → Init → Execute → Feedback → Verify → (Fail? Auto-fix → Verify) → Done → Handoff</code></pre>
+<p>The agent <strong>cannot</strong> proceed past verification until the test suite returns "Passed." Verification is mandatory — not optional.</p>
+<h2>Four Harness Primitives</h2>
+<p>A reliable harness is built from four atomic configuration files:</p>
+<table><thead><tr>
+<th>Primitive</th>
+<th>Role</th>
+<th>Prevents</th>
+</tr></thead><tbody>
+<tr>
+<td><strong><code>AGENTS.md</code></strong></td>
+<td>Rule definition: Clear Objective, constraints, boundaries</td>
+<td>Agent overreach — going outside scope</td>
+</tr>
+<tr>
+<td><strong><code>init.sh</code></strong></td>
+<td>Environment setup: Reproducible, stable starting point</td>
+<td>Building on broken foundations</td>
+</tr>
+<tr>
+<td><strong><code>feature_list.json</code></strong></td>
+<td>Requirement tracking: Granular checklist per feature</td>
+<td>"Declare victory too early" — agent must tick each item</td>
+</tr>
+<tr>
+<td><strong><code>claude-progress.md</code></strong></td>
+<td>State persistence: Progress + context for next session</td>
+<td>Loss of continuity across sessions</td>
+</tr>
+</tbody></table>
+<h3>Design Principle: Primitives > Prompts</h3>
+<p>Mega-prompts (one giant instruction file) cause instruction drift, competing priorities, and model confusion. Harness primitives are <strong>atomic, separate files</strong> — each with a single responsibility.</p>
+<h2>Five-Phase Agentic Workflow</h2>
+<pre><code>┌─────────────────────────────────────┐
+│ 1. GOAL SETTING                      │
+│    Read AGENTS.md → internalize rules │
+├─────────────────────────────────────┤
+│ 2. INITIALIZATION                    │
+│    Run init.sh → verify environment   │
+├─────────────────────────────────────┤
+│ 3. EXECUTION                         │
+│    Perform tasks → update             │
+│    feature_list.json → reconcile      │
+├─────────────────────────────────────┤
+│ 4. FEEDBACK LOOPS                    │
+│    Monitor CLI/logs → run test suite  │
+│    ❌ Fail → Auto-fix loop → re-verify│
+│    ✅ Pass → Proceed to Phase 5       │
+├─────────────────────────────────────┤
+│ 5. STATE PERSISTENCE                 │
+│    claude-progress.md → clean handoff │
+│    Document done + next → commit      │
+└─────────────────────────────────────┘</code></pre>
+<h2>Three Failure Modes & Solutions</h2>
+<h3>1. "Declare Victory Too Early"</h3>
+<p>Agent sees no syntax errors → claims "done." Root cause: no granular verification.</p>
+<p><strong>Solution</strong>: <code>feature_list.json</code> forces per-requirement sign-off. "Done" = every item ticked + test suite passed.</p>
+<h3>2. Loss of Continuity</h3>
+<p>Session timeout or context shift → agent "forgets" what it was doing. Root cause: model memory is ephemeral.</p>
+<p><strong>Solution</strong>: <code>claude-progress.md</code> persists state in the repository. The repository, not chat history, is the System of Record.</p>
+<h3>3. Building on Broken Foundations</h3>
+<p>Agent starts in an inconsistent environment → builds on top of failures. Root cause: no stable starting point.</p>
+<p><strong>Solution</strong>: <code>init.sh</code> as a dedicated phase ensures a reproducible, verified foundation before execution begins.</p>
+<h2>Verification Loop: The Heart of Reliability</h2>
+<pre><code>Encounter Issues → Auto-fix → Run Test Suite → Verify
+    ↑                                              ↓
+    └────────── (Fail: loop back) ←───────────────┘
+                                     (Pass: Done)</code></pre>
+<p>Reliability is a byproduct of closed-loop verification, not of prompt engineering. If the harness doesn't facilitate auto-fix through runtime observability, you have expensive autocomplete — not an agent.</p>
+<h2>Deployment Readiness Checklist</h2>
+<p>Before deploying any agentic harness, verify:</p>
+<ul>
+<li>✅ <strong>System of Record</strong>: Does the repository hold ultimate authority for state and progress?</li>
+<li>✅ <strong>Explicit Boundaries</strong>: Does <code>AGENTS.md</code> define strict rules to prevent overreach?</li>
+<li>✅ <strong>Initialization Integrity</strong>: Does <code>init.sh</code> ensure a stable environment before execution?</li>
+<li>✅ <strong>Victory Prevention</strong>: Does <code>feature_list.json</code> force per-requirement verification?</li>
+<li>✅ <strong>Closed-Loop Verification</strong>: Is there a mandatory "Verify & QA" phase with auto-fix loop?</li>
+<li>✅ <strong>State Continuity</strong>: Does <code>claude-progress.md</code> provide clean handoff for the next session?</li>
+</ul>
+<blockquote>If you answer "No" to any of these, your harness is not production-ready.</blockquote>
+<h2>The Role Shift</h2>
+<p>Harness engineering represents a shift from:</p>
+<ul>
+<li>❌ "How do I write better prompts?"</li>
+<li>✅ "How do I design better environments?"</li>
+</ul>
+<p>The AI engineer's role is not prompt whisperer — it's <strong>environment designer</strong>. Build the system, not just the instruction.</p>
   </div>
 </section>
 
@@ -136,30 +209,25 @@ def test_query(db_connection):
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="pytest-basics.html">
-      <span class="connection-type extends">Extends</span>
-      <h4>pytest Basics</h4>
-      <p>the next level after plain tests</p>
-    </a>
-    <a class="connection-card" href="pytest-parametrization.html">
-      <span class="connection-type related">Complements</span>
-      <h4>pytest Parametrization</h4>
-      <p>fixtures can be parametrized</p>
-    </a>
-    <a class="connection-card" href="pytest-mocking.html">
-      <span class="connection-type related">Used by</span>
-      <h4>pytest Mocking</h4>
-      <p>mock objects often provided as fixtures</p>
-    </a>
     <a class="connection-card" href="testing-strategy.html">
       <span class="connection-type related">Related to</span>
       <h4>Testing Strategy</h4>
-      <p>fixtures enable clean API layer testing</p>
+      <p>harness engineering applies automated testing as a mandatory gate for agentic workflows</p>
     </a>
-    <a class="connection-card" href="dependency-injection.html">
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fail Fast</h4>
+      <p>shared philosophy: prevention over cure; catch issues before they compound</p>
+    </a>
+    <a class="connection-card" href="composition-root.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Composition Root</h4>
+      <p>both centralize control: Composition Root centralizes dependency wiring; harness centralizes agent behavior rules</p>
+    </a>
+    <a class="connection-card" href="technological-centaur.html">
       <span class="connection-type related">Related</span>
-      <h4>Dependency Injection</h4>
-      <p>pytest's fixture system is DI applied to test setup and teardown</p>
+      <h4>Technological Centaur</h4>
+      <p>harness engineering provides the structural enforcement that makes the human+AI centaur model reliable</p>
     </a>
   </div>
 </section>

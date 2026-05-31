@@ -1,9 +1,9 @@
 ---
 title: "Apache Iceberg"
 type: concept
-tags: [table-formats, data-lake, iceberg, data-engineering]
+tags: [table-formats, data-lake, iceberg, data-engineering, lakehouse]
 created: 2026-05-26
-updated: 2026-05-28
+updated: 2026-05-31
 sources: [hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog]
 ---
 
