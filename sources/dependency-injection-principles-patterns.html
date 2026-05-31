@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dependency Injection Principles, Practices, and Patterns — LLM Wiki</title>
+<style>
+  :root {
+    --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
+    --text: #e4e6f0; --text-dim: #8b8fa8; --accent: #f0b429; --accent-dim: #b8860b;
+    --accent-glow: rgba(240, 180, 41, 0.15); --green: #4ade80; --blue: #60a5fa;
+    --rose: #fb7185; --purple: #a78bfa; --teal: #2dd4bf; --radius: 12px;
+    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+  ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg); } ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+  .hero { min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 50%, rgba(45,212,191,0.08) 0%, transparent 70%), radial-gradient(ellipse 500px 500px at 70% 30%, rgba(240,180,41,0.06) 0%, transparent 70%); z-index: 0; }
+  .hero-content { position: relative; z-index: 1; max-width: 720px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(45,212,191,0.12); border: 1px solid rgba(45,212,191,0.25); color: var(--teal); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
+  .hero h1 span { color: var(--teal); }
+  .hero-sub { font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 1.5rem; }
+  .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+  .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
+  .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
+  .hero-back { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.5rem; transition: opacity 0.2s; }
+  .hero-back:hover { opacity: 0.8; }
+  .hero-back svg { width: 16px; height: 16px; }
+  section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
+  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
+  .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--teal); }
+  .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
+  .content-area h2:first-child { margin-top: 0; }
+  .content-area h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--text); }
+  .content-area p { margin-bottom: 1rem; line-height: 1.7; }
+  .content-area ul, .content-area ol { margin: 0.5rem 0 1rem 1.5rem; }
+  .content-area li { margin-bottom: 0.4rem; line-height: 1.6; }
+  .content-area blockquote { margin: 1rem 0; padding: 1rem 1.25rem; background: var(--surface-2); border-radius: 8px; border-left: 3px solid var(--accent); font-style: italic; color: var(--text-dim); }
+  .content-area pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1rem 0; }
+  .content-area pre code { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }
+  .content-area code { font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }
+  .content-area pre code { background: none; padding: 0; color: var(--text); }
+  .content-area strong { color: var(--text); }
+  .wiki-link { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }
+  .wiki-link:hover { border-color: var(--blue); }
+  .connections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+  .connection-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
+  .connection-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
+  .connection-card h4 { font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }
+  .connection-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
+  footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
+  footer a { color: var(--accent); text-decoration: none; }
+  @media (max-width: 768px) { section { padding: 2.5rem 1.25rem; } .content-area { padding: 1.5rem; } }
+  @media (prefers-color-scheme: light) { :root { --bg: #f8f9fb; --surface: #ffffff; --surface-2: #f0f1f5; --border: #e2e4ec; --text: #1a1d27; --text-dim: #6b7089; } }
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <a href="../index.html" class="hero-back">
+      <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      Back to Wiki Index
+    </a>
+    <div class="hero-badge">Source</div>
+    <h1>Dependency Injection Principles, Practices, and Patterns<span>.</span></h1>
+    <p class="hero-sub">Steven van Deursen &amp; Mark Seemann · book · 2019-01-01</p>
+    <div class="hero-tags"><span class="tag">dependency-injection</span><span class="tag">design-patterns</span><span class="tag">solid</span><span class="tag">architecture</span><span class="tag">testing</span></div>
+    <p class="hero-meta">Ingested: 2026-05-31</p>
+  </div>
+</div>
+<section>
+  <div class="content-area">
+<h2>Summary</h2>
+<p>A 643-page definitive guide to Dependency Injection (DI) — not as a library or framework, but as a <strong>discipline of software design</strong> that enables loosely coupled, maintainable, and testable systems. Covers the three injection patterns, Composition Root, object lifetime management, anti-patterns, and SOLID principles as the foundation for effective DI.</p>
+<h2>Core Message</h2>
+<blockquote>DI is not the destination — it's the vehicle to achieve maintainability through loose coupling, where components can be replaced, intercepted, or extended without causing a "domino effect" across the system.</blockquote>
+<h2>Three Injection Patterns</h2>
+<h3>1. Constructor Injection (Primary Pattern)</h3>
+<p>For <strong>mandatory dependencies</strong> — things the class cannot function without.</p>
+<pre><code class="language-csharp">public class OrderService
+{
+    private readonly IPaymentProcessor _payment;
+    
+    public OrderService(IPaymentProcessor payment)
+    {
+        _payment = payment ?? throw new ArgumentNullException(nameof(payment));
+    }
+}</code></pre>
+<p>Benefits: ensures class invariant (object never exists in invalid state), preserves encapsulation (dependencies are readonly, protected from external mutation).</p>
+<h3>2. Method Injection (Contextual Pattern)</h3>
+<p>For dependencies that <strong>vary per call</strong> — not the same across all method invocations.</p>
+<pre><code class="language-csharp">public decimal Convert(decimal amount, string from, string to, IExchangeRateProvider rateProvider)
+{
+    var rate = rateProvider.GetRate(from, to);
+    return amount * rate;
+}</code></pre>
+<h3>3. Property Injection (Extensibility Pattern)</h3>
+<p>For <strong>optional dependencies</strong> — the class still works without them, but can extend behavior.</p>
+<pre><code class="language-csharp">public class ReportGenerator
+{
+    public IEmailSender EmailSender { get; set; } // Optional
+    
+    public void GenerateReport(ReportData data)
+    {
+        // Only send email if configured
+        EmailSender?.Send(data.Recipient, data.Content);
+    }
+}</code></pre>
+<p>Also used as a last resort to break cyclic dependencies.</p>
+<h2>Stable vs Volatile Dependencies</h2>
+<table><thead><tr>
+<th>Type</th>
+<th>Characteristics</th>
+<th>Management</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Stable</strong></td>
+<td>Available in runtime (stdlib), deterministic logic, value types</td>
+<td>New up internally — no DI needed</td>
+</tr>
+<tr>
+<td><strong>Volatile</strong></td>
+<td>Non-deterministic (DateTime.Now, Random), infrastructure (DB, file system, API), doesn't exist at code-writing time</td>
+<td>Must inject for testability</td>
+</tr>
+</tbody></table>
+<blockquote>Rule of thumb: If a dependency makes the class hard to test or reuse, it's volatile → inject it.</blockquote>
+<h2>Composition Root</h2>
+<p>The single, centralized location in the application where the entire object graph is wired together. Everything outside the Composition Root focuses purely on business logic, never on wiring.</p>
+<h3>Pure DI vs DI Containers</h3>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Pure DI (Manual)</th>
+<th>DI Container (Autofac, etc.)</th>
+</tr></thead><tbody>
+<tr>
+<td>Feedback</td>
+<td>Compile-time errors (type-safe)</td>
+<td>Runtime errors (harder to debug)</td>
+</tr>
+<tr>
+<td>Transparency</td>
+<td>Clear, traceable object graph</td>
+<td>"Magic" auto-wiring</td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Manual wiring burdensome at scale</td>
+<td>Auto-wiring saves time</td>
+</tr>
+<tr>
+<td>Risk</td>
+<td>No third-party dependency</td>
+<td>Leaky abstractions, container-specific bugs</td>
+</tr>
+</tbody></table>
+<blockquote>Start with Pure DI to learn fundamentals. Switch to a container only when manual wiring becomes too costly.</blockquote>
+<h2>Object Lifetime Management</h2>
+<table><thead><tr>
+<th>Lifestyle</th>
+<th>Definition</th>
+<th>Use Case</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Singleton</strong></td>
+<td>Single instance for entire app lifetime</td>
+<td>Stateless services, caching, config</td>
+</tr>
+<tr>
+<td><strong>Transient</strong></td>
+<td>New instance per request</td>
+<td>Stateful services, short-lived ops</td>
+</tr>
+<tr>
+<td><strong>Scoped</strong></td>
+<td>Shared instance within a logical context (e.g., web request)</td>
+<td>Unit of Work, current user</td>
+</tr>
+</tbody></table>
+<h3>Captive Dependency (Critical Bug)</h3>
+<p>Never inject a Scoped or Transient dependency into a Singleton. Consequences: stale data, memory leaks, concurrency bugs.</p>
+<h2>Anti-Patterns</h2>
+<ol>
+<li><strong>Service Locator</strong> — Class asks the container for dependencies instead of declaring them. Obscures requirements, hard to test.</li>
+<li><strong>Ambient Context</strong> — Global static access point (e.g., <code>Logger.Global.Log()</code>). Hard to replace for testing.</li>
+<li><strong>Control Freak</strong> — Class instantiates its own volatile dependencies (<code>new SqlDatabase()</code>). Locks into implementation.</li>
+</ol>
+<h2>SOLID as Foundation</h2>
+<p>DI works because of SOLID principles:</p>
+<ul>
+<li><strong>S</strong> (Single Responsibility) — class has one reason to change; focused dependencies</li>
+<li><strong>O</strong> (Open/Closed) — open for extension via decoration/interception</li>
+<li><strong>L</strong> (Liskov Substitution) — any implementation can replace the abstraction</li>
+<li><strong>I</strong> (Interface Segregation) — small, focused interfaces</li>
+<li><strong>D</strong> (Dependency Inversion) — both high and low-level modules depend on abstractions</li>
+</ul>
+<p>→ See <a href="../concepts/solid-principles.html" class="wiki-link">solid-principles</a></p>
+<h2>Adoption Roadmap</h2>
+<ol>
+<li><strong>Foundation</strong> (weeks 1-2): Classify dependencies, refactor to constructor injection, create Composition Root</li>
+<li><strong>Best Practices</strong> (weeks 3-4): Apply SOLID, manage lifetimes, write unit tests with mocks</li>
+<li><strong>Advanced</strong> (weeks 5-6): Decorator pattern for cross-cutting concerns, handle cyclic dependencies</li>
+<li><strong>Scale</strong> (weeks 7+): Document dependency graph, CI/CD for DI bugs, team training</li>
+</ol>
+  </div>
+</section>
+
+<footer>
+  <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
+  <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>
+</footer>
+<script>
+  if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+    document.documentElement.style.setProperty('--bg', '#f8f9fb');
+    document.documentElement.style.setProperty('--surface', '#ffffff');
+    document.documentElement.style.setProperty('--surface-2', '#f0f1f5');
+    document.documentElement.style.setProperty('--border', '#e2e4ec');
+    document.documentElement.style.setProperty('--text', '#1a1d27');
+    document.documentElement.style.setProperty('--text-dim', '#6b7089');
+  }
+</script>
+</body>
+</html>

@@ -150,3 +150,12 @@
 - Verified: 0 contradictions, 0 stale pages, 0 true orphans, index fully in sync
 - New concepts: apache-arrow, database-sharding
 - Total pages: 64 (56 concepts + 10 sources)
+
+## [2026-05-31] ingest | Dependency Injection Principles, Practices, and Patterns (van Deursen & Seemann)
+
+- Source: "Dependency Injection Principles, Practices, and Patterns" by Steven van Deursen & Mark Seemann (ebook, 643 pages, finished 2026-05-31)
+- Copied to: raw/articles/dependency-injection-principles-patterns.md (Vietnamese notes)
+- Created sources/dependency-injection-principles-patterns.md
+- New concepts: dependency-injection, composition-root, solid-principles
+- Updated index.md: +3 concept entries, +1 source entry
+- Total pages: 69 (59 concepts + 11 sources)

@@ -63,6 +63,9 @@
 - [Unity Catalog](concepts/unity-catalog.html) — Open standard for data governance; Catalog Commits coordinate concurrent writes to Delta tables
 - [Apache Arrow](concepts/apache-arrow.html) — Language-agnostic columnar in-memory format; zero-copy interop across Python, C++, Rust, Java
 - [Database Sharding](concepts/database-sharding.html) — Horizontal partitioning for write scalability; contrasts with replication
+- [Dependency Injection](concepts/dependency-injection.html) — Design discipline for loose coupling; constructor/method/property injection, lifetime management, anti-patterns
+- [Composition Root](concepts/composition-root.html) — Single centralized location where object graphs are wired; Pure DI vs DI Containers
+- [SOLID Principles](concepts/solid-principles.html) — SRP, OCP, LSP, ISP, DIP — the foundation for effective Dependency Injection
 
 ## Sources
 
@@ -75,6 +78,7 @@
 - [Benchmarking Vortex File Format vs Parquet, CSV](sources/benchmarking-vortex-file-format.html) — Daniel Beach benchmarks Vortex vs Parquet/CSV with DuckDB, Polars, DataFusion (Backblaze ~24 GB dataset, 2026-05)
 - [Hugo Data Ingestion Platform with Apache Flink](sources/hugo-data-ingestion-platform-flink.html) — Grab Engineering's evolution from siloed ingestion (Kafka Connect + Sprinkler) to unified Flink-based platform
 - [Unlocking dbt: Design and Deploy Transformations](sources/unlocking-dbt-design-deploy-transformations.html) — Cameron Cyr & Dustin Dorsey's 351-page guide to dbt fundamentals, modeling, testing, and deployment
+- [Dependency Injection Principles, Practices, and Patterns](sources/dependency-injection-principles-patterns.html) — van Deursen & Seemann's 643-page definitive guide to DI, Composition Root, and SOLID
 - [Delta Grows Up: Writes, Unity Catalog and Time Travel](sources/delta-grows-up-writes-unity-catalog.html) — DuckDB Labs announces stable Delta extension with writes, time travel, and Unity Catalog integration
 
 ## Syntheses
@@ -84,4 +88,4 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 *Last updated: 2026-05-28*
-*Pages: 64 (56 concepts + 10 sources)*
+*Pages: 69 (59 concepts + 11 sources)*
