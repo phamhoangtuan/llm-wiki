@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Change Data Capture (CDC) — LLM Wiki</title>
+<title>Delta Kernel — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,188 +82,112 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Change Data Capture (CDC)<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">data-engineering</span><span class="tag">cdc</span><span class="tag">streaming</span><span class="tag">databases</span><span class="tag">data-lake</span><span class="tag">delta-lake</span><span class="tag">clickhouse</span></div>
-    <p class="hero-meta">Source: hugo-data-ingestion-platform-flink, integrating-rust-delta-kernel-clickhouse · Updated: 2026-06-02</p>
+    <h1>Delta Kernel<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">delta-lake</span><span class="tag">delta-kernel</span><span class="tag">rust</span><span class="tag">table-formats</span><span class="tag">data-engineering</span></div>
+    <p class="hero-meta">Source: integrating-rust-delta-kernel-clickhouse · Updated: 2026-06-02</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p><strong>Change Data Capture (CDC)</strong> is a data integration pattern that captures row-level changes (inserts, updates, deletes) from a source database's transaction log and streams them to downstream systems in near real-time. Unlike batch ETL, which periodically snapshots the entire table, CDC propagates only the deltas — enabling low-latency, efficient data synchronization.</p>
-<h2>How It Works</h2>
-<pre><code>Source DB → Transaction Log → CDC Connector → Target System
-              (binlog/WAL)      (reads log)     (data lake, cache, search index)</code></pre>
+<p>The <strong>Delta Kernel</strong> (specifically <code>delta-kernel-rs</code>) is a Rust library that provides a shared, maintained abstraction layer for the <a href="delta-lake.html" class="wiki-link">Delta Lake</a> protocol. Instead of each query engine implementing the Delta protocol from scratch, the Kernel centralizes protocol handling and exposes well-defined Engine APIs. Engines like <a href="clickhouse.html" class="wiki-link">ClickHouse</a> plug in their own optimized Parquet readers and file access while the Kernel handles everything else.</p>
+<h2>Architecture</h2>
+<pre><code>┌──────────────────────────────────────────┐
+│            QUERY ENGINE (e.g. ClickHouse) │
+│  ┌────────────────────────────────────┐  │
+│  │  Custom Parquet reader             │  │
+│  │  Custom file access (S3, HDFS)     │  │
+│  └───────────┬────────────────────────┘  │
+│              │ Engine APIs                │
+│  ┌───────────▼────────────────────────┐  │
+│  │        DELTA KERNEL (Rust)          │  │
+│  │  • Transaction log parsing          │  │
+│  │  • Snapshot resolution              │  │
+│  │  • Metadata interpretation          │  │
+│  │  • Data skipping (partition+stats)  │  │
+│  │  • Schema evolution reconciliation  │  │
+│  │  • Write coordination               │  │
+│  └───────────┬────────────────────────┘  │
+└──────────────┼───────────────────────────┘
+               │
+┌──────────────▼───────────────────────────┐
+│          DELTA TABLE FILES                │
+│  _delta_log/  +  *.parquet               │
+└──────────────────────────────────────────┘</code></pre>
+<h2>What the Kernel Abstracts</h2>
+<p>Instead of each engine independently implementing the <a href="https://github.com/delta-io/delta/blob/master/PROTOCOL.md" target="_blank" rel="noopener">Delta protocol</a>, the Kernel handles:</p>
 <table><thead><tr>
-<th>Step</th>
+<th>Responsibility</th>
 <th>Description</th>
 </tr></thead><tbody>
 <tr>
-<td>1. Transaction committed</td>
-<td>Database writes change to its transaction log (MySQL binlog, PostgreSQL WAL)</td>
+<td><strong>Transaction log parsing</strong></td>
+<td>Reads and interprets <code>_delta_log/*.json</code> files</td>
 </tr>
 <tr>
-<td>2. CDC connector reads log</td>
-<td>Connector tails the log, parses row-level events</td>
+<td><strong>Snapshot resolution</strong></td>
+<td>Determines the correct set of data files for a given version</td>
 </tr>
 <tr>
-<td>3. Events streamed downstream</td>
-<td>Each change becomes an event with before/after state</td>
+<td><strong>Data skipping</strong></td>
+<td>Applies partition and statistics-based pruning to eliminate irrelevant files</td>
 </tr>
-<tr>
-<td>4. Target applies changes</td>
-<td>Sink applies inserts/updates/deletes to the target (data lake, cache, search index)</td>
-</tr>
-</tbody></table>
-<h2>Key Concepts</h2>
-<h3>Transaction Logs</h3>
-<table><thead><tr>
-<th>Database</th>
-<th>Log Mechanism</th>
-<th>Format</th>
-</tr></thead><tbody>
-<tr>
-<td>MySQL</td>
-<td>Binary log (binlog)</td>
-<td>Row-based / statement-based / mixed</td>
-</tr>
-<tr>
-<td>PostgreSQL</td>
-<td>Write-Ahead Log (WAL)</td>
-<td>Logical decoding</td>
-</tr>
-<tr>
-<td>MongoDB</td>
-<td>Oplog</td>
-<td>BSON documents</td>
-</tr>
-<tr>
-<td>Oracle</td>
-<td>Redo log</td>
-<td>LogMiner / XStream</td>
-</tr>
-</tbody></table>
-<h3>Event Types</h3>
-<p>Each captured change carries a payload:</p>
-<ul>
-<li><strong>INSERT</strong> → <code>{"op": "c", "after": {...}}</code></li>
-<li><strong>UPDATE</strong> → <code>{"op": "u", "before": {...}, "after": {...}}</code></li>
-<li><strong>DELETE</strong> → <code>{"op": "d", "before": {...}}</code></li>
-</ul>
-<h3>Schema Handling</h3>
-<p>CDC connectors must handle schema evolution:</p>
-<ul>
-<li><strong>Automated detection</strong> — connector infers current schema from the database (used by Flink CDC at Grab)</li>
-<li><strong>Schema registry</strong> — store schemas in a registry (Confluent Schema Registry); connector references by version</li>
-<li><strong>Manual DTO mapping</strong> — brittle; requires code changes on schema update (legacy Sprinkler approach at Grab)</li>
-</ul>
-<h2>Benefits</h2>
-<table><thead><tr>
-<th>Benefit</th>
-<th>Description</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>Low latency</strong></td>
-<td>Changes propagate in seconds, not hours (batch)</td>
-</tr>
-<tr>
-<td><strong>Minimal source impact</strong></td>
-<td>Reading the transaction log doesn't add query load to the source DB</td>
-</tr>
-<tr>
-<td><strong>Full fidelity</strong></td>
-<td>Captures deletes and intermediate states that batch snapshots miss</td>
-</tr>
-<tr>
-<td><strong>Exactly-once semantics</strong></td>
-<td>When paired with checkpointing (Flink), ensures no duplicates or data loss</td>
-</tr>
-</tbody></table>
-<h2>Implementations</h2>
-<h3>Flink CDC</h3>
-<p>Grab's Hugo platform uses Flink CDC connectors to read MySQL binlog directly → S3 → Hive. Key advantages:</p>
-<ul>
-<li><strong>No Kafka intermediary</strong> — Flink reads binlog directly, eliminating Kafka Connect + Kafka broker + topics</li>
-<li><strong>Automated schema detection</strong> — no manual DTO mapping</li>
-<li><strong>Exactly-once</strong> — Flink checkpoints provide end-to-end guarantees</li>
-<li><strong>3-minute onboarding</strong> — down from days with the previous Kafka Connect pipeline</li>
-</ul>
-<p>→ See <a href="apache-flink.html" class="wiki-link">apache-flink</a> for Flink details.</p>
-<h3>Kafka Connect (Debezium)</h3>
-<p>The previous generation (and still widely used):</p>
-<pre><code>MySQL binlog → Debezium connector (Kafka Connect) → Kafka topic → Consumer</code></pre>
-<p>More moving parts but battle-tested. Grab migrated away from this.</p>
-<h3>Other CDC Tools</h3>
-<table><thead><tr>
-<th>Tool</th>
-<th>Approach</th>
-<th>Best For</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>Debezium</strong> (Kafka Connect)</td>
-<td>Kafka-native CDC</td>
-<td>Kafka-centric ecosystems</td>
-</tr>
-<tr>
-<td><strong>Flink CDC</strong></td>
-<td>Stream processing engine</td>
-<td>Low-latency, stateful pipelines</td>
-</tr>
-<tr>
-<td><strong>AWS DMS</strong></td>
-<td>Managed service</td>
-<td>AWS ecosystems</td>
-</tr>
-<tr>
-<td><strong>Airbyte</strong></td>
-<td>Open-source ELT</td>
-<td>SaaS/API sources</td>
-</tr>
-<tr>
-<td><strong>Fivetran</strong></td>
-<td>Managed SaaS</td>
-<td>Hands-off CDC</td>
-</tr>
-<tr>
-<td><strong>pglogical</strong></td>
-<td>PostgreSQL-native</td>
-<td>Pg-to-pg replication</td>
-</tr>
-</tbody></table>
-<h2>ClickHouse CDF (Delta Lake)</h2>
-<p><a href="clickhouse.html" class="wiki-link">ClickHouse</a> 25.12+ exposes Delta Lake's Change Data Feed through the <code>deltaLake()</code> table function, powered by the <a href="delta-kernel.html" class="wiki-link">Rust Delta Kernel</a>:</p>
-<pre><code class="language-sql">SELECT *
-FROM deltaLake(&#x27;s3://path/to/table&#x27;)
-SETTINGS
-    delta_lake_snapshot_start_version = 5,
-    delta_lake_snapshot_end_version = 10;</code></pre>
-<p>Results include metadata columns: <code>_change_type</code>, <code>_commit_version</code>, <code>_commit_timestamp</code>. This provides the foundation for <strong>ClickPipes</strong> — ClickHouse's managed CDC ingestion tool that will consume row-level changes from Delta tables for incremental pipelines.</p>
-<h2>Common Challenges</h2>
-<table><thead><tr>
-<th>Challenge</th>
-<th>Mitigation</th>
-</tr></thead><tbody>
 <tr>
 <td><strong>Schema evolution</strong></td>
-<td>Automated schema detection (Flink); schema registry with compatibility checks</td>
+<td>Exposes both logical schema (user-facing) and physical schema (Parquet files); provides schema transformation metadata per file</td>
 </tr>
 <tr>
-<td><strong>Initial snapshot</strong></td>
-<td>Full table scan on first run; then switch to incremental CDC</td>
+<td><strong>Write coordination</strong></td>
+<td>Manages transactional writes at the log level (Parquet files written by engine)</td>
 </tr>
 <tr>
-<td><strong>Binlog retention</strong></td>
-<td>Configure sufficient binlog retention to survive connector downtime</td>
-</tr>
-<tr>
-<td><strong>DDL changes</strong> (ALTER TABLE)</td>
-<td>Some connectors pause on DDL; require manual intervention</td>
-</tr>
-<tr>
-<td><strong>Large transactions</strong></td>
-<td>Batch large events to avoid overwhelming downstream sinks</td>
+<td><strong>CDF (Change Data Feed)</strong></td>
+<td>Exposes row-level changes (inserts, updates, deletes) as event streams</td>
 </tr>
 </tbody></table>
+<h2>Engine APIs</h2>
+<p>The Kernel is designed with a clear separation:</p>
+<ul>
+<li><strong>Engine provides</strong>: Parquet file reading, object storage access (S3, HDFS, etc.)</li>
+<li><strong>Kernel provides</strong>: Everything else — metadata, statistics, schema reconciliation, deletion vectors, snapshot management</li>
+</ul>
+<p>This means engines can retain their heavily optimized I/O paths (e.g., ClickHouse's Parquet reader) while offloading protocol complexity.</p>
+<h2>Adoption by ClickHouse</h2>
+<p>ClickHouse moved from a native Delta protocol implementation to the Delta Kernel because:</p>
+<table><thead><tr>
+<th>Before (Native)</th>
+<th>After (Kernel)</th>
+</tr></thead><tbody>
+<tr>
+<td>Full protocol implementation from scratch</td>
+<td>Shared implementation; offload to Kernel</td>
+</tr>
+<tr>
+<td>Each feature required independent work</td>
+<td>Features inherited from Kernel updates</td>
+</tr>
+<tr>
+<td>Hard to keep pace with evolving spec</td>
+<td>Kernel tracks spec changes</td>
+</tr>
+<tr>
+<td>Maintenance burden on ClickHouse team</td>
+<td>Maintenance shared across ecosystem</td>
+</tr>
+</tbody></table>
+<p>The Kernel integration unlocked: writes, schema evolution, time travel, partition pruning, statistics-based pruning, and CDF — much faster than would have been possible with native implementation.</p>
+<h2>Upstream Contributions</h2>
+<p>ClickHouse contributed improvements to <code>delta-kernel-rs</code> found through production workloads:</p>
+<ul>
+<li><strong>Dynamic logging configuration</strong> (<a href="https://github.com/delta-io/delta-kernel-rs/pull/1111" target="_blank" rel="noopener">PR #1111</a>) — replaced static logging init with runtime-configurable logging for debugging</li>
+<li><strong>Asynchronous metadata processing</strong> (<a href="https://github.com/delta-io/delta-kernel-rs/pull/1827" target="_blank" rel="noopener">PR #1827</a>) — modified FFI to pass handles instead of references, enabling parallelized metadata reads</li>
+</ul>
+<h2>Current Limitations</h2>
+<ul>
+<li><strong>Cannot create empty tables</strong> — the Kernel can attach to existing Delta tables but cannot initialize new ones (planned contribution)</li>
+<li><strong>OpenSSL dependency</strong> — deep in dependency graph (<code>openssl</code> crate), conflicting with some build requirements</li>
+<li><strong>MSAN builds disabled</strong> — <code>ring</code> crate (nested dependency) has issues with memory sanitizer</li>
+</ul>
   </div>
 </section>
 
@@ -271,40 +195,20 @@ SETTINGS
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="apache-flink.html">
-      <span class="connection-type related">Related</span>
-      <h4>Apache Flink</h4>
-      <p>Flink CDC connector is the production implementation at Grab</p>
-    </a>
-    <a class="connection-card" href="data-ingestion.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Data Ingestion</h4>
-      <p>CDC is one of the two primary ingestion patterns (alongside Kafka)</p>
-    </a>
-    <a class="connection-card" href="apache-kafka.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Apache Kafka</h4>
-      <p>Kafka + Debezium is the legacy CDC approach that Flink CDC replaces</p>
-    </a>
-    <a class="connection-card" href="materialized-views.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Materialized Views</h4>
-      <p>CDC is a common mechanism to feed [[incremental-view-maintenance]]</p>
-    </a>
-    <a class="connection-card" href="hugo-data-ingestion-platform-flink.html">
-      <span class="connection-type related">Related</span>
-      <h4>The Hugo Evolution: Engineering Grab's Unified, One-Click Data Ingestion Platform with Apache Flink</h4>
-      <p>Grab's migration from Kafka Connect CDC to Flink CDC</p>
-    </a>
     <a class="connection-card" href="clickhouse.html">
-      <span class="connection-type related">Used by</span>
+      <span class="connection-type related">Related</span>
       <h4>ClickHouse</h4>
-      <p>ClickHouse reads Delta Lake CDF via `deltaLake()` table function; foundation for ClickPipes</p>
+      <p>ClickHouse uses `delta-kernel-rs` for Delta Lake protocol handling via FFI</p>
     </a>
     <a class="connection-card" href="delta-lake.html">
       <span class="connection-type related">Related</span>
       <h4>Delta Lake</h4>
-      <p>Delta's CDF provides row-level change events that CDC tools consume</p>
+      <p>the Kernel is the protocol abstraction layer for Delta Lake</p>
+    </a>
+    <a class="connection-card" href="integrating-rust-delta-kernel-clickhouse.html">
+      <span class="connection-type related">Related</span>
+      <h4>Integrating the Rust Delta Kernel into ClickHouse</h4>
+      <p>ClickHouse's upstream PRs and build integration story</p>
     </a>
   </div>
 </section>

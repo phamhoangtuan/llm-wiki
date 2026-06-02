@@ -83,8 +83,8 @@
     </a>
     <div class="hero-badge">Concept</div>
     <h1>Delta Lake<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">table-formats</span><span class="tag">data-lake</span><span class="tag">delta-lake</span><span class="tag">lakehouse</span><span class="tag">duckdb</span><span class="tag">data-engineering</span></div>
-    <p class="hero-meta">Source: delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables · Updated: 2026-05-31</p>
+    <div class="hero-tags"><span class="tag">table-formats</span><span class="tag">data-lake</span><span class="tag">delta-lake</span><span class="tag">lakehouse</span><span class="tag">duckdb</span><span class="tag">data-engineering</span><span class="tag">clickhouse</span></div>
+    <p class="hero-meta">Source: delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering · Updated: 2026-06-02</p>
   </div>
 </div>
 <section>
@@ -124,7 +124,29 @@
 <td><strong>Z-ordering</strong></td>
 <td>Multi-dimensional clustering for faster queries on multiple columns</td>
 </tr>
+<tr>
+<td><strong>Liquid Clustering</strong></td>
+<td>Modern data layout (GA 2024) — incremental, multi-dimensional, no cardinality constraints</td>
+</tr>
+<tr>
+<td><strong>Change Data Feed (CDF)</strong></td>
+<td>Row-level change tracking between versions (inserts, updates, deletes)</td>
+</tr>
 </tbody></table>
+<h2>Delta Kernel</h2>
+<p>The <strong>Delta Kernel</strong> (<code>delta-kernel-rs</code>) is a Rust library that provides a shared abstraction layer for the Delta protocol. Instead of each engine implementing the protocol from scratch, the Kernel centralizes protocol handling (transaction log parsing, snapshot resolution, data skipping, schema reconciliation, write coordination) and exposes Engine APIs for plugging in custom Parquet readers and file access.</p>
+<p>→ See <a href="delta-kernel.html" class="wiki-link">delta-kernel</a> for architecture details, Engine APIs, and adoption by <a href="clickhouse.html" class="wiki-link">ClickHouse</a>.</p>
+<h2>Liquid Clustering</h2>
+<p><strong>Liquid Clustering</strong> (Databricks, GA 2024) is the recommended data layout for Delta tables, replacing Hive-style partitioning. Unlike partitioning — which fixes a physical directory hierarchy at table creation — Liquid treats clustering keys as flexible hints:</p>
+<ul>
+<li>Keys can be changed anytime without full table rewrites</li>
+<li>No cardinality constraints (high-cardinality columns don't cause tiny files)</li>
+<li>Multi-dimensional clustering (cluster on multiple columns simultaneously)</li>
+<li>Incremental clustering at write time (no periodic <code>OPTIMIZE ZORDER BY</code>)</li>
+<li>Row-level concurrency (writers updating different rows don't conflict)</li>
+<li>Produces standard <a href="apache-parquet.html" class="wiki-link">Parquet</a> with min/max stats — any reader benefits</li>
+</ul>
+<p>→ See <a href="liquid-clustering.html" class="wiki-link">liquid-clustering</a> for comparison with partitioning, Z-Ordering, and production benchmarks.</p>
 <h2>Architecture</h2>
 <p>A Delta table is a directory of Parquet files plus a transaction log:</p>
 <pre><code>my_table/
@@ -175,6 +197,14 @@ ATTACH &#x27;./my_table&#x27; AS my_table_snapped (TYPE delta, PIN_SNAPSHOT);</c
 </tr>
 </tbody></table>
 <p>Multiple INSERTs in a <code>BEGIN</code>/<code>COMMIT</code> block create a single atomic Delta version.</p>
+<h2>Change Data Feed (CDF)</h2>
+<p>Delta's CDF exposes row-level changes between versions as an event stream. Each change includes <code>_change_type</code> (insert/update/delete), <code>_commit_version</code>, and <code>_commit_timestamp</code>. <a href="clickhouse.html" class="wiki-link">ClickHouse</a> 25.12+ exposes CDF through the <code>deltaLake()</code> table function:</p>
+<pre><code class="language-sql">SELECT *
+FROM deltaLake(&#x27;s3://path/to/table&#x27;)
+SETTINGS
+    delta_lake_snapshot_start_version = 5,
+    delta_lake_snapshot_end_version = 10;</code></pre>
+<p>→ See <a href="change-data-capture.html" class="wiki-link">change-data-capture</a> for CDC patterns and ClickPipes integration.</p>
 <h2>Delta vs Iceberg vs Hudi</h2>
 <table><thead><tr>
 <th>Feature</th>
@@ -366,10 +396,25 @@ TBLPROPERTIES (&#x27;delta.feature.catalogManaged&#x27; = &#x27;supported&#x27;)
       <h4>DuckDB</h4>
       <p>DuckDB's Delta extension supports reads, writes, and time travel (stable as of 2026-05)</p>
     </a>
+    <a class="connection-card" href="clickhouse.html">
+      <span class="connection-type related">Related</span>
+      <h4>ClickHouse</h4>
+      <p>ClickHouse uses `deltaLake()` table function with Delta Kernel for reads, writes, and CDF</p>
+    </a>
     <a class="connection-card" href="unity-catalog.html">
       <span class="connection-type related">Related</span>
       <h4>Unity Catalog</h4>
       <p>UC provides catalog management and concurrent write coordination for Delta tables</p>
+    </a>
+    <a class="connection-card" href="delta-kernel.html">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Kernel</h4>
+      <p>Rust library that handles Delta protocol so engines don't have to</p>
+    </a>
+    <a class="connection-card" href="liquid-clustering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Liquid Clustering</h4>
+      <p>modern data layout replacing Hive-style partitioning; incremental, multi-dimensional</p>
     </a>
     <a class="connection-card" href="delta-grows-up-writes-unity-catalog.html">
       <span class="connection-type related">Related</span>
@@ -380,6 +425,16 @@ TBLPROPERTIES (&#x27;delta.feature.catalogManaged&#x27; = &#x27;supported&#x27;)
       <span class="connection-type related">Related</span>
       <h4>The Next Evolution of Delta — Catalog-Managed Tables</h4>
       <p>architectural shift from filesystem-managed to catalog-managed tables (Delta 4.1.0)</p>
+    </a>
+    <a class="connection-card" href="integrating-rust-delta-kernel-clickhouse.html">
+      <span class="connection-type related">Related</span>
+      <h4>Integrating the Rust Delta Kernel into ClickHouse</h4>
+      <p>ClickHouse's Delta Kernel integration and CDF support</p>
+    </a>
+    <a class="connection-card" href="change-data-capture.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>Delta CDF enables CDC workflows via ClickPipes and other CDC tools</p>
     </a>
   </div>
 </section>

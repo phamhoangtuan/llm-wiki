@@ -189,3 +189,14 @@
 - Added lakehouse tag to apache-iceberg
 - Updated dates on all modified concept pages
 - No new pages created
+
+## [2026-06-02] ingest | Integrating the Rust Delta Kernel into ClickHouse + Debunking 8 Data Layout Myths
+
+- Source 1: "Integrating the Rust Delta Kernel into ClickHouse" by Melvyn Peignon, Kseniia Sumarokova, Raul Marin (delta.io, 2026-05-18)
+- Source 2: "Debunking 8 Data Layout Myths: Why Liquid Clustering Outperforms Partitioning" by Jeffrey Gong, Yu Xu, Rahul Mahadev (Databricks, 2026-06-01)
+- Created sources/integrating-rust-delta-kernel-clickhouse.md
+- Created sources/debunking-data-layout-myths-liquid-clustering.md
+- New concepts: clickhouse, delta-kernel, liquid-clustering
+- Updated concepts: delta-lake (Delta Kernel, Liquid Clustering, CDF sections), apache-iceberg (Liquid Clustering note), change-data-capture (ClickHouse CDF/ClickPipes), apache-parquet (file statistics, data skipping context)
+- Updated index.md: +3 concept entries, +2 source entries
+- Total pages: 78 (63 concepts + 15 sources)

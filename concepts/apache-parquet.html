@@ -83,8 +83,8 @@
     </a>
     <div class="hero-badge">Concept</div>
     <h1>Apache Parquet<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">file-formats</span><span class="tag">columnar</span><span class="tag">big-data</span><span class="tag">data-engineering</span></div>
-    <p class="hero-meta">Source: benchmarking-vortex-file-format · Updated: 2026-05-26</p>
+    <div class="hero-tags"><span class="tag">file-formats</span><span class="tag">columnar</span><span class="tag">big-data</span><span class="tag">data-engineering</span><span class="tag">delta-lake</span></div>
+    <p class="hero-meta">Source: benchmarking-vortex-file-format, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering · Updated: 2026-06-02</p>
   </div>
 </div>
 <section>
@@ -123,6 +123,7 @@
 <ul>
 <li><strong>Columnar storage</strong> — values of the same column stored contiguously, enabling high compression (run-length, dictionary, delta encoding)</li>
 <li><strong>Predicate pushdown</strong> — filter conditions pushed to storage layer; only matching row groups are read</li>
+<li><strong>File-level statistics</strong> — each Parquet file stores per-column min/max values and row counts, enabling engines to skip entire files without reading them (data skipping). This is the foundation for partition pruning and statistics-based pruning in <a href="delta-lake.html" class="wiki-link">Delta Lake</a> and <a href="apache-iceberg.html" class="wiki-link">Iceberg</a>.</li>
 <li><strong>Schema evolution</strong> — add/remove columns without rewriting entire datasets</li>
 <li><strong>Nested data</strong> — supports complex types (structs, lists, maps)</li>
 <li><strong>Splittable</strong> — files can be split for parallel processing across distributed workers</li>
@@ -180,6 +181,11 @@
       <h4>Apache DataFusion</h4>
       <p>DataFusion reads Parquet natively (0.370s benchmark)</p>
     </a>
+    <a class="connection-card" href="clickhouse.html">
+      <span class="connection-type related">Used by</span>
+      <h4>ClickHouse</h4>
+      <p>ClickHouse writes Parquet for Delta Lake tables (Kernel handles metadata)</p>
+    </a>
     <a class="connection-card" href="vortex-file-format.html">
       <span class="connection-type related">Related</span>
       <h4>Vortex File Format</h4>
@@ -189,6 +195,16 @@
       <span class="connection-type related">Related to</span>
       <h4>Vectorized Execution</h4>
       <p>columnar storage enables vectorized query execution</p>
+    </a>
+    <a class="connection-card" href="delta-lake.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Delta Lake</h4>
+      <p>Delta tables store data as Parquet files with min/max stats for data skipping</p>
+    </a>
+    <a class="connection-card" href="liquid-clustering.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Liquid Clustering</h4>
+      <p>Liquid produces standard Parquet files with statistics, enabling reader-agnostic pruning</p>
     </a>
     <a class="connection-card" href="benchmarking-vortex-file-format.html">
       <span class="connection-type related">Related</span>

@@ -1,10 +1,10 @@
 ---
 title: "Apache Parquet"
 type: concept
-tags: [file-formats, columnar, big-data, data-engineering]
+tags: [file-formats, columnar, big-data, data-engineering, delta-lake]
 created: 2026-05-26
-updated: 2026-05-26
-sources: [benchmarking-vortex-file-format]
+updated: 2026-06-02
+sources: [benchmarking-vortex-file-format, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering]
 ---
 
 ## Summary
@@ -26,6 +26,7 @@ In Daniel Beach's benchmarks, switching from CSV to Parquet yielded a **~200× s
 
 - **Columnar storage** — values of the same column stored contiguously, enabling high compression (run-length, dictionary, delta encoding)
 - **Predicate pushdown** — filter conditions pushed to storage layer; only matching row groups are read
+- **File-level statistics** — each Parquet file stores per-column min/max values and row counts, enabling engines to skip entire files without reading them (data skipping). This is the foundation for partition pruning and statistics-based pruning in [[delta-lake|Delta Lake]] and [[apache-iceberg|Iceberg]].
 - **Schema evolution** — add/remove columns without rewriting entire datasets
 - **Nested data** — supports complex types (structs, lists, maps)
 - **Splittable** — files can be split for parallel processing across distributed workers
@@ -53,6 +54,9 @@ Despite challengers, Parquet remains the **incumbent standard** with the broades
 - Used by [[duckdb]] — DuckDB reads/writes Parquet natively with excellent performance
 - Used by [[polars]] — Polars supports Parquet via `read_parquet()` / `scan_parquet()`
 - Used by [[apache-datafusion]] — DataFusion reads Parquet natively (0.370s benchmark)
+- Used by [[clickhouse]] — ClickHouse writes Parquet for Delta Lake tables (Kernel handles metadata)
 - Competes with [[vortex-file-format]] — Vortex aims to replace Parquet as the columnar standard
 - Related to [[vectorized-execution]] — columnar storage enables vectorized query execution
+- Foundation for [[delta-lake]] — Delta tables store data as Parquet files with min/max stats for data skipping
+- Foundation for [[liquid-clustering]] — Liquid produces standard Parquet files with statistics, enabling reader-agnostic pruning
 - Benchmark source: [[benchmarking-vortex-file-format]] — 0.125s DuckDB-on-Parquet, the baseline to beat

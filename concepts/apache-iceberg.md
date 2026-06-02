@@ -3,8 +3,8 @@ title: "Apache Iceberg"
 type: concept
 tags: [table-formats, data-lake, iceberg, data-engineering, lakehouse]
 created: 2026-05-26
-updated: 2026-05-31
-sources: [hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog]
+updated: 2026-06-02
+sources: [hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog, debunking-data-layout-myths-liquid-clustering]
 ---
 
 ## Summary
@@ -40,9 +40,14 @@ Hugo currently writes to Hive tables (with Spark compaction). Iceberg would addr
 
 → See [[data-ingestion]] for Hugo's current architecture and [[apache-flink]] for Flink's Iceberg sink connector.
 
+## Liquid Clustering Support
+
+On Databricks, Iceberg tables in Unity Catalog support **[[liquid-clustering|Liquid Clustering]]** — the same modern data layout available for Delta tables. Liquid Clustering is a write-side optimization that produces standard Parquet files with min/max statistics, so any Iceberg-compatible reader benefits from data skipping regardless of whether it runs on Databricks.
+
 > **Note**: This page is a stub — Iceberg was mentioned as a future direction in the Hugo article but not evaluated in depth. A dedicated source would add substance.
 ---
 - Related to [[data-ingestion]] — Iceberg is the planned next-gen table format for Hugo's data lake
 - Integrates with [[apache-flink]] — Flink has an Iceberg sink connector for writing streaming data to Iceberg tables
 - Reference: [[hugo-data-ingestion-platform-flink]] — mentioned as Hugo's future table format to replace Hive
 - Competes with [[delta-lake]] — Iceberg and Delta are the two dominant open table formats; Iceberg has partition evolution, Delta has deeper Databricks integration
+- Optimized by [[liquid-clustering]] — modern data layout available for Iceberg tables on Databricks; write-side optimization

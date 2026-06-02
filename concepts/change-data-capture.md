@@ -1,10 +1,10 @@
 ---
 title: "Change Data Capture (CDC)"
 type: concept
-tags: [data-engineering, cdc, streaming, databases, data-lake]
+tags: [data-engineering, cdc, streaming, databases, data-lake, delta-lake, clickhouse]
 created: 2026-05-26
-updated: 2026-05-26
-sources: [hugo-data-ingestion-platform-flink]
+updated: 2026-06-02
+sources: [hugo-data-ingestion-platform-flink, integrating-rust-delta-kernel-clickhouse]
 aliases: [CDC]
 ---
 
@@ -91,6 +91,20 @@ More moving parts but battle-tested. Grab migrated away from this.
 | **Fivetran** | Managed SaaS | Hands-off CDC |
 | **pglogical** | PostgreSQL-native | Pg-to-pg replication |
 
+## ClickHouse CDF (Delta Lake)
+
+[[clickhouse|ClickHouse]] 25.12+ exposes Delta Lake's Change Data Feed through the `deltaLake()` table function, powered by the [[delta-kernel|Rust Delta Kernel]]:
+
+```sql
+SELECT *
+FROM deltaLake('s3://path/to/table')
+SETTINGS
+    delta_lake_snapshot_start_version = 5,
+    delta_lake_snapshot_end_version = 10;
+```
+
+Results include metadata columns: `_change_type`, `_commit_version`, `_commit_timestamp`. This provides the foundation for **ClickPipes** — ClickHouse's managed CDC ingestion tool that will consume row-level changes from Delta tables for incremental pipelines.
+
 ## Common Challenges
 
 | Challenge | Mitigation |
@@ -106,3 +120,5 @@ More moving parts but battle-tested. Grab migrated away from this.
 - Related to [[apache-kafka]] — Kafka + Debezium is the legacy CDC approach that Flink CDC replaces
 - Related to [[materialized-views]] — CDC is a common mechanism to feed [[incremental-view-maintenance]]
 - Benchmark source: [[hugo-data-ingestion-platform-flink]] — Grab's migration from Kafka Connect CDC to Flink CDC
+- Used by [[clickhouse]] — ClickHouse reads Delta Lake CDF via `deltaLake()` table function; foundation for ClickPipes
+- Built on [[delta-lake]] — Delta's CDF provides row-level change events that CDC tools consume

@@ -1,10 +1,10 @@
 ---
 title: "Delta Lake"
 type: concept
-tags: [table-formats, data-lake, delta-lake, lakehouse, duckdb, data-engineering]
+tags: [table-formats, data-lake, delta-lake, lakehouse, duckdb, data-engineering, clickhouse]
 created: 2026-05-28
-updated: 2026-05-31
-sources: [delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables]
+updated: 2026-06-02
+sources: [delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering]
 aliases: [Delta]
 ---
 
@@ -23,6 +23,27 @@ aliases: [Delta]
 | **Compaction (OPTIMIZE)** | Merge small files into larger ones for better query performance |
 | **File skipping** | Statistics in the transaction log let engines skip irrelevant files via filter pushdown |
 | **Z-ordering** | Multi-dimensional clustering for faster queries on multiple columns |
+| **Liquid Clustering** | Modern data layout (GA 2024) — incremental, multi-dimensional, no cardinality constraints |
+| **Change Data Feed (CDF)** | Row-level change tracking between versions (inserts, updates, deletes) |
+
+## Delta Kernel
+
+The **Delta Kernel** (`delta-kernel-rs`) is a Rust library that provides a shared abstraction layer for the Delta protocol. Instead of each engine implementing the protocol from scratch, the Kernel centralizes protocol handling (transaction log parsing, snapshot resolution, data skipping, schema reconciliation, write coordination) and exposes Engine APIs for plugging in custom Parquet readers and file access.
+
+→ See [[delta-kernel]] for architecture details, Engine APIs, and adoption by [[clickhouse|ClickHouse]].
+
+## Liquid Clustering
+
+**Liquid Clustering** (Databricks, GA 2024) is the recommended data layout for Delta tables, replacing Hive-style partitioning. Unlike partitioning — which fixes a physical directory hierarchy at table creation — Liquid treats clustering keys as flexible hints:
+
+- Keys can be changed anytime without full table rewrites
+- No cardinality constraints (high-cardinality columns don't cause tiny files)
+- Multi-dimensional clustering (cluster on multiple columns simultaneously)
+- Incremental clustering at write time (no periodic `OPTIMIZE ZORDER BY`)
+- Row-level concurrency (writers updating different rows don't conflict)
+- Produces standard [[apache-parquet|Parquet]] with min/max stats — any reader benefits
+
+→ See [[liquid-clustering]] for comparison with partitioning, Z-Ordering, and production benchmarks.
 
 ## Architecture
 
@@ -71,6 +92,20 @@ As of 2026-05, DuckDB's Delta extension is **stable** (no longer experimental):
 | Multi-table atomic writes | 🔮 Future |
 
 Multiple INSERTs in a `BEGIN`/`COMMIT` block create a single atomic Delta version.
+
+## Change Data Feed (CDF)
+
+Delta's CDF exposes row-level changes between versions as an event stream. Each change includes `_change_type` (insert/update/delete), `_commit_version`, and `_commit_timestamp`. [[clickhouse|ClickHouse]] 25.12+ exposes CDF through the `deltaLake()` table function:
+
+```sql
+SELECT *
+FROM deltaLake('s3://path/to/table')
+SETTINGS
+    delta_lake_snapshot_start_version = 5,
+    delta_lake_snapshot_end_version = 10;
+```
+
+→ See [[change-data-capture]] for CDC patterns and ClickPipes integration.
 
 ## Delta vs Iceberg vs Hudi
 
@@ -162,6 +197,11 @@ Delta's catalog-managed design closely resembles [[apache-iceberg|Iceberg]]'s ca
 - Competes with [[apache-iceberg]] — both are open table formats for lakehouse architectures; Iceberg has partition evolution, Delta has deeper Databricks integration
 - Stores data as [[apache-parquet]] — Delta tables are Parquet files + transaction log
 - Integrates with [[duckdb]] — DuckDB's Delta extension supports reads, writes, and time travel (stable as of 2026-05)
-- governed by [[unity-catalog]] — UC provides catalog management and concurrent write coordination for Delta tables
+- Integrates with [[clickhouse]] — ClickHouse uses `deltaLake()` table function with Delta Kernel for reads, writes, and CDF
+- Governed by [[unity-catalog]] — UC provides catalog management and concurrent write coordination for Delta tables
+- Abstracted by [[delta-kernel]] — Rust library that handles Delta protocol so engines don't have to
+- Optimized by [[liquid-clustering]] — modern data layout replacing Hive-style partitioning; incremental, multi-dimensional
 - Benchmark source: [[delta-grows-up-writes-unity-catalog]] — DuckDB Labs announces stable Delta writes, time travel, and UC support
 - Powered by [[delta-catalog-managed-tables]] — architectural shift from filesystem-managed to catalog-managed tables (Delta 4.1.0)
+- Benchmark source: [[integrating-rust-delta-kernel-clickhouse]] — ClickHouse's Delta Kernel integration and CDF support
+- Related to [[change-data-capture]] — Delta CDF enables CDC workflows via ClickPipes and other CDC tools

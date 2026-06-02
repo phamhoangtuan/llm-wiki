@@ -84,7 +84,7 @@
     <div class="hero-badge">Concept</div>
     <h1>Apache Iceberg<span>.</span></h1>
     <div class="hero-tags"><span class="tag">table-formats</span><span class="tag">data-lake</span><span class="tag">iceberg</span><span class="tag">data-engineering</span><span class="tag">lakehouse</span></div>
-    <p class="hero-meta">Source: hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog · Updated: 2026-05-31</p>
+    <p class="hero-meta">Source: hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog, debunking-data-layout-myths-liquid-clustering · Updated: 2026-06-02</p>
   </div>
 </div>
 <section>
@@ -159,6 +159,8 @@
 <li><strong>Schema evolution</strong> — current Hive schema changes require manual intervention; Iceberg supports online, non-blocking schema changes</li>
 </ul>
 <p>→ See <a href="data-ingestion.html" class="wiki-link">data-ingestion</a> for Hugo's current architecture and <a href="apache-flink.html" class="wiki-link">apache-flink</a> for Flink's Iceberg sink connector.</p>
+<h2>Liquid Clustering Support</h2>
+<p>On Databricks, Iceberg tables in Unity Catalog support <strong><a href="liquid-clustering.html" class="wiki-link">Liquid Clustering</a></strong> — the same modern data layout available for Delta tables. Liquid Clustering is a write-side optimization that produces standard Parquet files with min/max statistics, so any Iceberg-compatible reader benefits from data skipping regardless of whether it runs on Databricks.</p>
 <blockquote><strong>Note</strong>: This page is a stub — Iceberg was mentioned as a future direction in the Hugo article but not evaluated in depth. A dedicated source would add substance.</blockquote>
   </div>
 </section>
@@ -186,6 +188,11 @@
       <span class="connection-type related">Related</span>
       <h4>Delta Lake</h4>
       <p>Iceberg and Delta are the two dominant open table formats; Iceberg has partition evolution, Delta has deeper Databricks integration</p>
+    </a>
+    <a class="connection-card" href="liquid-clustering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Liquid Clustering</h4>
+      <p>modern data layout available for Iceberg tables on Databricks; write-side optimization</p>
     </a>
   </div>
 </section>

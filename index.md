@@ -67,6 +67,9 @@
 - [Composition Root](concepts/composition-root.html) — Single centralized location where object graphs are wired; Pure DI vs DI Containers
 - [SOLID Principles](concepts/solid-principles.html) — SRP, OCP, LSP, ISP, DIP — the foundation for effective Dependency Injection
 - [Harness Engineering](concepts/harness-engineering.html) — Closed-loop systems for reliable AI agents; 4 primitives, 5-phase workflow, verification-first design
+- [ClickHouse](concepts/clickhouse.html) — High-performance column-oriented OLAP DBMS; data lake ready with Delta Lake and Iceberg support
+- [Delta Kernel](concepts/delta-kernel.html) — Rust abstraction layer for Delta Lake protocol; handles transaction logs, snapshots, schema evolution
+- [Liquid Clustering](concepts/liquid-clustering.html) — Modern data layout for Delta/Iceberg tables; replaces Hive-style partitioning with incremental, multi-dimensional clustering
 
 ## Sources
 
@@ -83,6 +86,8 @@
 - [Delta Grows Up: Writes, Unity Catalog and Time Travel](sources/delta-grows-up-writes-unity-catalog.html) — DuckDB Labs announces stable Delta extension with writes, time travel, and Unity Catalog integration
 - [The Next Evolution of Delta — Catalog-Managed Tables](sources/delta-catalog-managed-tables.html) — Delta 4.1.0 + UC 0.4.0: catalog becomes authority for table state, inline commits, convergence with Iceberg
 - [Learn Harness Engineering](sources/learn-harness-engineering.html) — walkinglabs' guide: closed-loop AI agent systems, 4 primitives, 5-phase workflow, verification-first design
+- [Integrating the Rust Delta Kernel into ClickHouse](sources/integrating-rust-delta-kernel-clickhouse.html) — ClickHouse's journey from native Delta protocol to Rust Kernel; FFI build challenges, CDF support
+- [Debunking 8 Data Layout Myths](sources/debunking-data-layout-myths-liquid-clustering.html) — Databricks' case for Liquid Clustering over partitioning; PB-scale benchmarks, 8 myths debunked
 
 ## Syntheses
 
@@ -90,5 +95,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-05-31*
-*Pages: 73 (60 concepts + 13 sources)*
+*Last updated: 2026-06-02*
+*Pages: 78 (63 concepts + 15 sources)*
