@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fail Fast — LLM Wiki</title>
+<title>Goroutines — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,29 +82,62 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Fail Fast<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">design-principles</span><span class="tag">error-handling</span><span class="tag">reliability</span><span class="tag">tdd</span></div>
-    <p class="hero-meta">Source: contieri-clean-code-cookbook, tdd-python-percival · Updated: 2026-06-03</p>
+    <h1>Goroutines<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">go</span><span class="tag">golang</span><span class="tag">concurrency</span><span class="tag">goroutines</span><span class="tag">performance</span></div>
+    <p class="hero-meta">Source: go-web-programming · Updated: 2026-06-03</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>The system should stop execution immediately when an error is detected, rather than letting the error propagate silently. This makes debugging easier — the error occurs near its root cause.</p>
-<h2>The Principle</h2>
-<blockquote>"The system should stop execution as soon as an error is detected, rather than letting the error continue to propagate."</blockquote>
-<h2>Benefits</h2>
+<p>Goroutines are Go's lightweight concurrency primitive — functions that run concurrently with other goroutines. Managed by the Go runtime (not the OS), they enable handling hundreds of thousands of concurrent tasks with minimal overhead. Every incoming HTTP request in a Go web server is handled in its own goroutine by default.</p>
+<h2>Concurrency vs Parallelism</h2>
+<blockquote>"Concurrency is about dealing with lots of things at once; parallelism is about doing lots of things at once." — Rob Pike</blockquote>
+<table><thead><tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Analogy</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Concurrency</strong></td>
+<td>Managing multiple tasks simultaneously (may not run in parallel)</td>
+<td>One chef handling 10 orders: cooks dish A, preps dish B while waiting for water to boil</td>
+</tr>
+<tr>
+<td><strong>Parallelism</strong></td>
+<td>Executing multiple tasks truly at the same time (requires multiple CPU cores)</td>
+<td>10 chefs, each cooking one order simultaneously</td>
+</tr>
+</tbody></table>
+<p>Concurrency is a <strong>design property</strong>; parallelism is a <strong>runtime behavior</strong>.</p>
+<h2>How Goroutines Work</h2>
 <ul>
-<li><strong>Easier debugging</strong>: Error occurs close to root cause</li>
-<li><strong>No silent corruption</strong>: Errors don't manifest hours later in a batch job</li>
-<li><strong>Clear contracts</strong>: Invalid input is rejected at the boundary</li>
+<li><strong>Stack size</strong>: ~2KB initial stack (vs ~1MB for OS threads) — grows and shrinks as needed.</li>
+<li><strong>Multiplexing</strong>: Go runtime schedules goroutines onto a small pool of OS threads (M:N scheduling).</li>
+<li><strong>Cost</strong>: Spawning a goroutine is extremely cheap — like allocating a small object.</li>
+<li><strong>Scale</strong>: One OS thread can schedule hundreds of thousands of goroutines.</li>
 </ul>
-<h2>Anti-pattern: Silent Failure</h2>
-<pre><code>// ❌ Auto-corrects invalid data → hides the error
-LocalDate date = LocalDate.of(2024, 11, 31); // Silently becomes Dec 1</code></pre>
-<h2>Correct: Fail Fast</h2>
-<pre><code>// ✅ Throws exception immediately
-LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
+<pre><code>go func() {
+    logAnalytics(r) // Runs concurrently, doesn&#x27;t block the response
+}()
+
+// Main logic continues immediately
+fmt.Fprint(w, &quot;Response sent!&quot;)</code></pre>
+<h2>Benefits for Web Applications</h2>
+<ul>
+<li><strong>Vertical scaling</strong>: Handle more concurrent requests on the same hardware.</li>
+<li><strong>Non-blocking I/O</strong>: Goroutines yield during I/O waits, letting others run.</li>
+<li><strong>Simpler than threads</strong>: No manual thread management, no callback hell.</li>
+<li><strong>Built-in</strong>: Every <code>http.Handler</code> invocation runs in its own goroutine — no extra code needed.</li>
+</ul>
+<h2>When to Use</h2>
+<ul>
+<li>Background tasks (analytics, logging, notification sending) that shouldn't block the response.</li>
+<li>Concurrent I/O (multiple API calls, database queries) — fire them in parallel with goroutines + channels.</li>
+<li>Long-polling or WebSocket connections — each connection gets its own lightweight goroutine.</li>
+</ul>
+<h2>Caution</h2>
+<p>Goroutines are not free. Profile before optimizing — <code>pprof</code> helps identify goroutine leaks and contention points.</p>
   </div>
 </section>
 
@@ -112,40 +145,15 @@ LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="immutability.html">
-      <span class="connection-type extends">Enforced by</span>
-      <h4>Immutability of Essence</h4>
-      <p>immutable objects fail fast on invalid construction</p>
+    <a class="connection-card" href="go-web-ecosystem.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Go Web Ecosystem</h4>
+      <p>goroutines are the engine behind Go's web scalability</p>
     </a>
-    <a class="connection-card" href="bijection.html">
-      <span class="connection-type drives">Prevents</span>
-      <h4>Bijection</h4>
-      <p>violations — implicit transformations hide errors</p>
-    </a>
-    <a class="connection-card" href="rich-domain-model.html">
+    <a class="connection-card" href="go-http-handlers.html">
       <span class="connection-type related">Related to</span>
-      <h4>Rich Domain Model</h4>
-      <p>rich objects validate their own state</p>
-    </a>
-    <a class="connection-card" href="essential-accidental-complexity.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Essential vs Accidental Complexity</h4>
-      <p>silent failures add accidental complexity</p>
-    </a>
-    <a class="connection-card" href="harness-engineering.html">
-      <span class="connection-type related">Related</span>
-      <h4>Harness Engineering</h4>
-      <p>harnesses prevent AI agents from declaring victory before verification</p>
-    </a>
-    <a class="connection-card" href="tdd-methodology.html">
-      <span class="connection-type related">Related</span>
-      <h4>TDD Methodology</h4>
-      <p>write a failing test before code (Red phase) to fail fast on missing behavior</p>
-    </a>
-    <a class="connection-card" href="functional-testing.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Functional Testing</h4>
-      <p>functional tests fail fast at the user level when integration breaks</p>
+      <h4>Go HTTP Handlers</h4>
+      <p>each HTTP handler runs in its own goroutine</p>
     </a>
   </div>
 </section>

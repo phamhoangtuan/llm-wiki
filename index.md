@@ -70,6 +70,12 @@
 - [ClickHouse](concepts/clickhouse.html) — High-performance column-oriented OLAP DBMS; data lake ready with Delta Lake and Iceberg support
 - [Delta Kernel](concepts/delta-kernel.html) — Rust abstraction layer for Delta Lake protocol; handles transaction logs, snapshots, schema evolution
 - [Liquid Clustering](concepts/liquid-clustering.html) — Modern data layout for Delta/Iceberg tables; replaces Hive-style partitioning with incremental, multi-dimensional clustering
+- [Goroutines](concepts/goroutines.html) — Go's lightweight concurrency primitive; concurrency vs parallelism distinction — handles 100K+ concurrent tasks
+- [Go HTTP Handlers](concepts/go-http-handlers.html) — Handler interface, HandlerFunc, ServeMux routing, and middleware chaining — the building blocks of Go web apps
+- [Go Template Escaping](concepts/go-template-escaping.html) — Context-aware HTML escaping in `html/template`; XSS protection by default — understands HTML/JS/CSS contexts
+- [Go Web Ecosystem](concepts/go-web-ecosystem.html) — Go's philosophy: standard library over frameworks, static binary deployment, built-in testing, implicit interfaces
+- [TDD Methodology](concepts/tdd-methodology.html) — Red-Green-Refactor cycle, Outside-In TDD (Double Loop), YAGNI, the Testing Goat discipline
+- [Functional Testing](concepts/functional-testing.html) — User-perspective testing via Selenium/HTTP client; outer loop of TDD; test behavior not constants
 
 ## Sources
 
@@ -88,6 +94,8 @@
 - [Learn Harness Engineering](sources/learn-harness-engineering.html) — walkinglabs' guide: closed-loop AI agent systems, 4 primitives, 5-phase workflow, verification-first design
 - [Integrating the Rust Delta Kernel into ClickHouse](sources/integrating-rust-delta-kernel-clickhouse.html) — ClickHouse's journey from native Delta protocol to Rust Kernel; FFI build challenges, CDF support
 - [Debunking 8 Data Layout Myths](sources/debunking-data-layout-myths-liquid-clustering.html) — Databricks' case for Liquid Clustering over partitioning; PB-scale benchmarks, 8 myths debunked
+- [Go Web Programming](sources/go-web-programming.html) — Sau Sheong Chang's guide to building web apps with Go's standard library — 314 pages
+- [Test-Driven Development with Python](sources/tdd-python-percival.html) — Harry Percival's hands-on journey through TDD with Django and Selenium — 662 pages
 
 ## Syntheses
 
@@ -95,5 +103,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-02*
-*Pages: 78 (63 concepts + 15 sources)*
+*Last updated: 2026-06-03*
+*Pages: 87 (69 concepts + 17 sources)*

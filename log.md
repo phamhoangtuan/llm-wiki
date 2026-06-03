@@ -200,3 +200,15 @@
 - Updated concepts: delta-lake (Delta Kernel, Liquid Clustering, CDF sections), apache-iceberg (Liquid Clustering note), change-data-capture (ClickHouse CDF/ClickPipes), apache-parquet (file statistics, data skipping context)
 - Updated index.md: +3 concept entries, +2 source entries
 - Total pages: 78 (63 concepts + 15 sources)
+
+## [2026-06-03] ingest | Go Web Programming (Sau Sheong Chang) + Test-Driven Development with Python, 2nd Ed. (Harry Percival)
+
+- Source 1: "Go Web Programming" by Sau Sheong Chang (ebook, 314 pages, finished 2026-06-02)
+- Source 2: "Test-Driven Development with Python, 2nd Edition" by Harry J.W. Percival (ebook, 662 pages, finished 2026-06-03)
+- Copied to: raw/articles/go-web-programming.md, raw/articles/tdd-python-percival.md
+- Created sources/go-web-programming.md
+- Created sources/tdd-python-percival.md
+- New concepts: goroutines, go-http-handlers, go-template-escaping, go-web-ecosystem, tdd-methodology, functional-testing
+- Updated concepts: testing-strategy (added TDD/functional testing refs + source), fail-fast (added TDD fail-early connection + source)
+- Updated index.md: +6 concept entries, +2 source entries
+- Total pages: 87 (69 concepts + 17 sources)

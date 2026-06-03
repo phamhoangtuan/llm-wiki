@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fail Fast — LLM Wiki</title>
+<title>Go Web Ecosystem — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,29 +82,101 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Fail Fast<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">design-principles</span><span class="tag">error-handling</span><span class="tag">reliability</span><span class="tag">tdd</span></div>
-    <p class="hero-meta">Source: contieri-clean-code-cookbook, tdd-python-percival · Updated: 2026-06-03</p>
+    <h1>Go Web Ecosystem<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">go</span><span class="tag">golang</span><span class="tag">web</span><span class="tag">deployment</span><span class="tag">architecture</span><span class="tag">stdlib</span></div>
+    <p class="hero-meta">Source: go-web-programming · Updated: 2026-06-03</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>The system should stop execution immediately when an error is detected, rather than letting the error propagate silently. This makes debugging easier — the error occurs near its root cause.</p>
-<h2>The Principle</h2>
-<blockquote>"The system should stop execution as soon as an error is detected, rather than letting the error continue to propagate."</blockquote>
-<h2>Benefits</h2>
+<p>Go's web ecosystem is built on the principle that the <strong>standard library is sufficient</strong> for most web applications. Rather than relying on heavy frameworks with deep abstraction layers, Go provides modular building blocks — HTTP, templates, routing, testing — that compose into production systems. The result: simpler deployment, faster performance, and code you actually understand.</p>
+<h2>Core Philosophy: Simplicity as Superpower</h2>
+<blockquote>"The beauty of Go lies in its simplicity. By relying on powerful standard libraries, you avoid the cargo cult confusion of heavy frameworks."</blockquote>
+<p>Go rejects "Cargo Cult Programming" — the practice of adopting patterns and frameworks without understanding the underlying plumbing. Instead, developers learn HTTP from the ground up through the standard library.</p>
+<h2>Integrated Server Model</h2>
+<p>Go's deployment model eliminates the traditional app server:</p>
+<table><thead><tr>
+<th>Traditional</th>
+<th>Go</th>
+</tr></thead><tbody>
+<tr>
+<td>App (WAR/JAR) → Deploy to Tomcat → Configure → Start</td>
+<td><code>go build</code> → single static binary → <code>./myapp</code> → Running</td>
+</tr>
+</tbody></table>
+<p><strong>Benefits of static binary deployment:</strong></p>
 <ul>
-<li><strong>Easier debugging</strong>: Error occurs close to root cause</li>
-<li><strong>No silent corruption</strong>: Errors don't manifest hours later in a batch job</li>
-<li><strong>Clear contracts</strong>: Invalid input is rejected at the boundary</li>
+<li><strong>No "works on my machine"</strong>: identical binary in dev, staging, production.</li>
+<li><strong>No version drift</strong>: no separate app server to patch or mismatch.</li>
+<li><strong>Smaller attack surface</strong>: no standalone app server to secure.</li>
+<li><strong>Instant startup</strong>: fast auto-scaling, quick disaster recovery.</li>
+<li><strong>Zero-dependency deployment</strong>: copy the binary, run it — done.</li>
 </ul>
-<h2>Anti-pattern: Silent Failure</h2>
-<pre><code>// ❌ Auto-corrects invalid data → hides the error
-LocalDate date = LocalDate.of(2024, 11, 31); // Silently becomes Dec 1</code></pre>
-<h2>Correct: Fail Fast</h2>
-<pre><code>// ✅ Throws exception immediately
-LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
+<h2>HTTPS + HTTP/2 Native</h2>
+<pre><code>http.ListenAndServeTLS(&quot;:443&quot;, &quot;cert.pem&quot;, &quot;key.pem&quot;, nil)</code></pre>
+<p>HTTP/2 benefits (auto-enabled with TLS in Go 1.6+):</p>
+<ul>
+<li>Binary framing — efficient parsing</li>
+<li>Header compression (HPACK) — less bandwidth</li>
+<li>Multiplexed streams — multiple requests on one TCP connection</li>
+<li>Server push — proactively send assets</li>
+</ul>
+<h2>Testing Built-In</h2>
+<ul>
+<li><code>httptest</code>: Record responses without a live server — no third-party framework needed.</li>
+<li><code>go test</code>: Unit, integration, benchmark, and coverage — all built into the toolchain.</li>
+<li>Fast feedback loop — tests compile and run in seconds.</li>
+</ul>
+<h2>The Four Pillars for Enterprise Backend</h2>
+<table><thead><tr>
+<th>Pillar</th>
+<th>Go Advantage</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Goroutines + static binary → easy vertical and horizontal scaling</td>
+</tr>
+<tr>
+<td><strong>Modularity</strong></td>
+<td>Implicit interfaces → interchangeable components, microservices-friendly</td>
+</tr>
+<tr>
+<td><strong>Maintainability</strong></td>
+<td><code>gofmt</code>, <code>godoc</code>, <code>gotest</code> built-in → uniform code, auto-generated docs</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Compiles to native code, no VM overhead → C-level speed</td>
+</tr>
+</tbody></table>
+<h2>Deployment Flexibility</h2>
+<table><thead><tr>
+<th>Environment</th>
+<th>Approach</th>
+<th>Benefit</th>
+</tr></thead><tbody>
+<tr>
+<td>Standalone</td>
+<td><code>./myapp</code></td>
+<td>Simple, full control, no orchestration overhead</td>
+</tr>
+<tr>
+<td>Docker/K8s</td>
+<td>Dockerize binary → deploy pod</td>
+<td>Consistent env, auto-scaling, self-healing</td>
+</tr>
+<tr>
+<td>Cloud</td>
+<td>Heroku, GAE, AWS Lambda</td>
+<td>Managed infra, pay-per-use</td>
+</tr>
+</tbody></table>
+<h2>When to Use a Framework</h2>
+<ul>
+<li>Start with the standard library. It handles routing, templates, middleware, and testing.</li>
+<li>Add a framework only when the standard library genuinely becomes a bottleneck — and you'll understand <strong>why</strong> you need it.</li>
+</ul>
   </div>
 </section>
 
@@ -112,40 +184,25 @@ LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="immutability.html">
-      <span class="connection-type extends">Enforced by</span>
-      <h4>Immutability of Essence</h4>
-      <p>immutable objects fail fast on invalid construction</p>
-    </a>
-    <a class="connection-card" href="bijection.html">
-      <span class="connection-type drives">Prevents</span>
-      <h4>Bijection</h4>
-      <p>violations — implicit transformations hide errors</p>
-    </a>
-    <a class="connection-card" href="rich-domain-model.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Rich Domain Model</h4>
-      <p>rich objects validate their own state</p>
-    </a>
-    <a class="connection-card" href="essential-accidental-complexity.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Essential vs Accidental Complexity</h4>
-      <p>silent failures add accidental complexity</p>
-    </a>
-    <a class="connection-card" href="harness-engineering.html">
+    <a class="connection-card" href="goroutines.html">
       <span class="connection-type related">Related</span>
-      <h4>Harness Engineering</h4>
-      <p>harnesses prevent AI agents from declaring victory before verification</p>
+      <h4>Goroutines</h4>
+      <p>concurrency model enables vertical scaling</p>
     </a>
-    <a class="connection-card" href="tdd-methodology.html">
+    <a class="connection-card" href="go-http-handlers.html">
       <span class="connection-type related">Related</span>
-      <h4>TDD Methodology</h4>
-      <p>write a failing test before code (Red phase) to fail fast on missing behavior</p>
+      <h4>Go HTTP Handlers</h4>
+      <p>handler pattern is the core building block</p>
     </a>
-    <a class="connection-card" href="functional-testing.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Functional Testing</h4>
-      <p>functional tests fail fast at the user level when integration breaks</p>
+    <a class="connection-card" href="go-template-escaping.html">
+      <span class="connection-type related">Related</span>
+      <h4>Go Template Escaping</h4>
+      <p>security-first templating</p>
+    </a>
+    <a class="connection-card" href="dependency-injection.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Dependency Injection</h4>
+      <p>DI patterns are implemented naturally through Go interfaces (implicit satisfaction)</p>
     </a>
   </div>
 </section>

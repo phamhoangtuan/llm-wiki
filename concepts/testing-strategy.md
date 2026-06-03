@@ -1,10 +1,10 @@
 ---
 title: "Testing Strategy"
 type: concept
-tags: [python, testing, strategy, architecture]
+tags: [python, testing, strategy, architecture, tdd]
 created: 2026-05-23
-updated: 2026-05-31
-sources: [okken-python-testing-pytest]
+updated: 2026-06-03
+sources: [okken-python-testing-pytest, tdd-python-percival]
 ---
 
 ## Summary
@@ -30,4 +30,6 @@ A professional testing strategy focuses effort where it matters most — the API
 - Drives [[pytest-mocking]] — usage — mocking isolates API from external deps
 - Drives [[pytest-plugins]] — usage — coverage and parallel execution for CI
 - Enabled by [[dependency-injection]] — DI provides the loose coupling that makes testing practical
+- Informed by [[tdd-methodology]] — TDD provides the Red-Green-Refactor discipline and Outside-In workflow
+- Guided by [[functional-testing]] — functional tests form the outer verification loop for end-to-end correctness
 - Related to [[harness-engineering]] — harness engineering's closed-loop verification applies rigorous testing to AI agents

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fail Fast — LLM Wiki</title>
+<title>Go HTTP Handlers — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,29 +82,89 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Fail Fast<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">design-principles</span><span class="tag">error-handling</span><span class="tag">reliability</span><span class="tag">tdd</span></div>
-    <p class="hero-meta">Source: contieri-clean-code-cookbook, tdd-python-percival · Updated: 2026-06-03</p>
+    <h1>Go HTTP Handlers<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">go</span><span class="tag">golang</span><span class="tag">http</span><span class="tag">handlers</span><span class="tag">middleware</span><span class="tag">web</span></div>
+    <p class="hero-meta">Source: go-web-programming · Updated: 2026-06-03</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>The system should stop execution immediately when an error is detected, rather than letting the error propagate silently. This makes debugging easier — the error occurs near its root cause.</p>
-<h2>The Principle</h2>
-<blockquote>"The system should stop execution as soon as an error is detected, rather than letting the error continue to propagate."</blockquote>
-<h2>Benefits</h2>
+<p>In Go's standard library, HTTP handlers are the core abstraction for processing web requests. A handler receives a request, executes business logic, and writes a response. Combined with <code>ServeMux</code> (the router) and middleware chaining, handlers form a clean, modular alternative to heavyweight MVC frameworks.</p>
+<h2>Handler vs HandlerFunc</h2>
+<p>Go provides two ways to define request handlers:</p>
+<table><thead><tr>
+<th>Type</th>
+<th>Definition</th>
+<th>Use When</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Handler</strong> (interface)</td>
+<td>Type with method <code>ServeHTTP(w ResponseWriter, r *Request)</code></td>
+<td>Need custom handler with state (e.g., database handle)</td>
+</tr>
+<tr>
+<td><strong>HandlerFunc</strong> (function)</td>
+<td>Function with signature <code>func(w ResponseWriter, r *Request)</code></td>
+<td>Simple handler, no internal state needed</td>
+</tr>
+</tbody></table>
+<pre><code>// HandlerFunc — simple, convenient
+http.HandleFunc(&quot;/hello&quot;, func(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprint(w, &quot;Hello, World!&quot;)
+})
+
+// Handler interface — when you need state/dependencies
+type MyHandler struct {
+    db *sql.DB
+}
+func (h *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+    // Access h.db here
+}</code></pre>
+<h2>ServeMux — The Router</h2>
+<p><code>ServeMux</code> inspects incoming request URLs and dispatches to the correct handler.</p>
+<table><thead><tr>
+<th>Pattern</th>
+<th>Matching Behavior</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/login</code></td>
+<td><strong>Exact match</strong> — only <code>/login</code></td>
+</tr>
+<tr>
+<td><code>/thread/</code></td>
+<td><strong>Subtree match</strong> — <code>/thread/123</code>, <code>/thread/456/edit</code>, etc.</td>
+</tr>
+</tbody></table>
+<pre><code>mux := http.NewServeMux()
+mux.HandleFunc(&quot;/login&quot;, loginHandler)
+mux.HandleFunc(&quot;/thread/&quot;, threadHandler)</code></pre>
+<h2>The 3 Core Handler Responsibilities</h2>
+<ol>
+<li><strong>Receive & Process</strong>: Unpack the HTTP request, perform business logic.</li>
+<li><strong>Call Template Engine</strong>: Pass data to generate HTML output.</li>
+<li><strong>Bundle Response</strong>: Wrap HTML into HTTP response and send.</li>
+</ol>
+<h2>Middleware Chaining</h2>
+<p>Middleware wraps handlers in layers — like Lego bricks — for cross-cutting concerns:</p>
+<pre><code>func protect(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        if !isValidSession(r) {
+            http.Redirect(w, r, &quot;/login&quot;, http.StatusSeeOther)
+            return
+        }
+        next.ServeHTTP(w, r)
+    })
+}
+
+mux.Handle(&quot;/dashboard&quot;, protect(dashboardHandler))
+mux.Handle(&quot;/profile&quot;, protect(logRequests(profileHandler)))</code></pre>
+<p><strong>Benefits</strong>:</p>
 <ul>
-<li><strong>Easier debugging</strong>: Error occurs close to root cause</li>
-<li><strong>No silent corruption</strong>: Errors don't manifest hours later in a batch job</li>
-<li><strong>Clear contracts</strong>: Invalid input is rejected at the boundary</li>
+<li>Business logic stays clean — not polluted by auth/logging code.</li>
+<li>Middleware is reusable — DRY, consistent security across endpoints.</li>
+<li>Easy to test each layer independently.</li>
 </ul>
-<h2>Anti-pattern: Silent Failure</h2>
-<pre><code>// ❌ Auto-corrects invalid data → hides the error
-LocalDate date = LocalDate.of(2024, 11, 31); // Silently becomes Dec 1</code></pre>
-<h2>Correct: Fail Fast</h2>
-<pre><code>// ✅ Throws exception immediately
-LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
   </div>
 </section>
 
@@ -112,40 +172,20 @@ LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="immutability.html">
-      <span class="connection-type extends">Enforced by</span>
-      <h4>Immutability of Essence</h4>
-      <p>immutable objects fail fast on invalid construction</p>
-    </a>
-    <a class="connection-card" href="bijection.html">
-      <span class="connection-type drives">Prevents</span>
-      <h4>Bijection</h4>
-      <p>violations — implicit transformations hide errors</p>
-    </a>
-    <a class="connection-card" href="rich-domain-model.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Rich Domain Model</h4>
-      <p>rich objects validate their own state</p>
-    </a>
-    <a class="connection-card" href="essential-accidental-complexity.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Essential vs Accidental Complexity</h4>
-      <p>silent failures add accidental complexity</p>
-    </a>
-    <a class="connection-card" href="harness-engineering.html">
+    <a class="connection-card" href="goroutines.html">
       <span class="connection-type related">Related</span>
-      <h4>Harness Engineering</h4>
-      <p>harnesses prevent AI agents from declaring victory before verification</p>
+      <h4>Goroutines</h4>
+      <p>each handler invocation runs in its own goroutine</p>
     </a>
-    <a class="connection-card" href="tdd-methodology.html">
-      <span class="connection-type related">Related</span>
-      <h4>TDD Methodology</h4>
-      <p>write a failing test before code (Red phase) to fail fast on missing behavior</p>
+    <a class="connection-card" href="go-web-ecosystem.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Go Web Ecosystem</h4>
+      <p>handlers are the building blocks of Go web apps</p>
     </a>
-    <a class="connection-card" href="functional-testing.html">
+    <a class="connection-card" href="dependency-injection.html">
       <span class="connection-type related">Related to</span>
-      <h4>Functional Testing</h4>
-      <p>functional tests fail fast at the user level when integration breaks</p>
+      <h4>Dependency Injection</h4>
+      <p>handlers get dependencies injected (e.g., db handle) for testability</p>
     </a>
   </div>
 </section>

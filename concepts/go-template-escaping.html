@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fail Fast — LLM Wiki</title>
+<title>Go Template Escaping — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,29 +82,80 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Fail Fast<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">design-principles</span><span class="tag">error-handling</span><span class="tag">reliability</span><span class="tag">tdd</span></div>
-    <p class="hero-meta">Source: contieri-clean-code-cookbook, tdd-python-percival · Updated: 2026-06-03</p>
+    <h1>Go Template Escaping<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">go</span><span class="tag">golang</span><span class="tag">templates</span><span class="tag">security</span><span class="tag">xss</span><span class="tag">html</span></div>
+    <p class="hero-meta">Source: go-web-programming · Updated: 2026-06-03</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>The system should stop execution immediately when an error is detected, rather than letting the error propagate silently. This makes debugging easier — the error occurs near its root cause.</p>
-<h2>The Principle</h2>
-<blockquote>"The system should stop execution as soon as an error is detected, rather than letting the error continue to propagate."</blockquote>
-<h2>Benefits</h2>
+<p>Go's <code>html/template</code> package provides <strong>context-aware escaping</strong> — it automatically escapes output based on where the data appears in the HTML document (element content, attribute value, JavaScript block, CSS). This makes XSS (Cross-Site Scripting) protection a default, not an afterthought. Unlike <code>text/template</code>, which treats all output as plain text, <code>html/template</code> understands HTML structure.</p>
+<h2>Context-Aware Escaping</h2>
+<p>The engine knows the <strong>context</strong> where data is inserted and applies appropriate escaping:</p>
+<table><thead><tr>
+<th>Context</th>
+<th>Raw Input</th>
+<th>Escaped Output</th>
+</tr></thead><tbody>
+<tr>
+<td>HTML body</td>
+<td><code><script>alert('xss')</script></code></td>
+<td><code>&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;</code></td>
+</tr>
+<tr>
+<td>HTML attribute <code>href</code></td>
+<td><code>javascript:evil()</code></td>
+<td><code>#ZgotmplZ</code> (rejected entirely)</td>
+</tr>
+<tr>
+<td>JavaScript block</td>
+<td><code>"; alert('xss');"</code></td>
+<td><code>\"; alert(\'xss\');\"</code></td>
+</tr>
+</tbody></table>
+<h2>text/template vs html/template</h2>
+<pre><code>// ❌ text/template — no context awareness, vulnerable to XSS
+import &quot;text/template&quot;
+t := template.New(&quot;user&quot;).Parse(&quot;Hello {{.Name}}&quot;)
+// Input: &lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;
+// Output: Hello &lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt; ← DANGER
+
+// ✅ html/template — automatic escaping per context
+import &quot;html/template&quot;
+t := template.New(&quot;user&quot;).Parse(&quot;Hello {{.Name}}&quot;)
+// Input: &lt;script&gt;alert(&#x27;xss&#x27;)&lt;/script&gt;
+// Output: Hello &amp;lt;script&amp;gt;alert(&amp;#39;xss&amp;#39;)&amp;lt;/script&amp;gt; ← SAFE</code></pre>
+<h2>Static vs Active Templates</h2>
+<table><thead><tr>
+<th>Type</th>
+<th>Description</th>
+<th>Examples</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Static (Logic-less)</strong></td>
+<td>HTML + placeholders, engine swaps tokens with data</td>
+<td>Mustache, CTemplate</td>
+</tr>
+<tr>
+<td><strong>Active Templates</strong></td>
+<td>HTML + programming constructs (if, range, variables)</td>
+<td>Go <code>html/template</code>, JSP, ERB</td>
+</tr>
+</tbody></table>
+<p>Go's <code>html/template</code> is an <strong>active template engine</strong> — supports conditionals, loops, and variables — while maintaining security through context-aware escaping.</p>
+<h2>Security Model</h2>
 <ul>
-<li><strong>Easier debugging</strong>: Error occurs close to root cause</li>
-<li><strong>No silent corruption</strong>: Errors don't manifest hours later in a batch job</li>
-<li><strong>Clear contracts</strong>: Invalid input is rejected at the boundary</li>
+<li><strong>Defense in depth</strong>: Even if a developer forgets to escape, the engine does it automatically.</li>
+<li><strong>Whitelist approach</strong>: Only known-safe output is allowed in sensitive contexts (e.g., URLs in <code>href</code>).</li>
+<li><strong>Template nesting</strong>: Escaping is applied correctly even when templates include other templates.</li>
 </ul>
-<h2>Anti-pattern: Silent Failure</h2>
-<pre><code>// ❌ Auto-corrects invalid data → hides the error
-LocalDate date = LocalDate.of(2024, 11, 31); // Silently becomes Dec 1</code></pre>
-<h2>Correct: Fail Fast</h2>
-<pre><code>// ✅ Throws exception immediately
-LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
+<h2>Best Practices</h2>
+<ul>
+<li><strong>Always</strong> use <code>html/template</code> for web output, never <code>text/template</code>.</li>
+<li>Don't bypass escaping with <code>template.HTML</code> unless the content is proven safe.</li>
+<li>Let the template engine handle context — don't pre-escape data before passing it.</li>
+</ul>
   </div>
 </section>
 
@@ -112,40 +163,15 @@ LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="immutability.html">
-      <span class="connection-type extends">Enforced by</span>
-      <h4>Immutability of Essence</h4>
-      <p>immutable objects fail fast on invalid construction</p>
+    <a class="connection-card" href="go-web-ecosystem.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Go Web Ecosystem</h4>
+      <p>security-first templating is a pillar of Go web development</p>
     </a>
-    <a class="connection-card" href="bijection.html">
-      <span class="connection-type drives">Prevents</span>
-      <h4>Bijection</h4>
-      <p>violations — implicit transformations hide errors</p>
-    </a>
-    <a class="connection-card" href="rich-domain-model.html">
+    <a class="connection-card" href="go-http-handlers.html">
       <span class="connection-type related">Related to</span>
-      <h4>Rich Domain Model</h4>
-      <p>rich objects validate their own state</p>
-    </a>
-    <a class="connection-card" href="essential-accidental-complexity.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Essential vs Accidental Complexity</h4>
-      <p>silent failures add accidental complexity</p>
-    </a>
-    <a class="connection-card" href="harness-engineering.html">
-      <span class="connection-type related">Related</span>
-      <h4>Harness Engineering</h4>
-      <p>harnesses prevent AI agents from declaring victory before verification</p>
-    </a>
-    <a class="connection-card" href="tdd-methodology.html">
-      <span class="connection-type related">Related</span>
-      <h4>TDD Methodology</h4>
-      <p>write a failing test before code (Red phase) to fail fast on missing behavior</p>
-    </a>
-    <a class="connection-card" href="functional-testing.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Functional Testing</h4>
-      <p>functional tests fail fast at the user level when integration breaks</p>
+      <h4>Go HTTP Handlers</h4>
+      <p>handlers pass data to templates for rendering</p>
     </a>
   </div>
 </section>

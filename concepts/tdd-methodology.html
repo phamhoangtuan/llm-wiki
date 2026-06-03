@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fail Fast — LLM Wiki</title>
+<title>TDD Methodology — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,29 +82,94 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Fail Fast<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">design-principles</span><span class="tag">error-handling</span><span class="tag">reliability</span><span class="tag">tdd</span></div>
-    <p class="hero-meta">Source: contieri-clean-code-cookbook, tdd-python-percival · Updated: 2026-06-03</p>
+    <h1>TDD Methodology<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">tdd</span><span class="tag">testing</span><span class="tag">methodology</span><span class="tag">design</span><span class="tag">python</span><span class="tag">clean-code</span></div>
+    <p class="hero-meta">Source: tdd-python-percival · Updated: 2026-06-03</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>The system should stop execution immediately when an error is detected, rather than letting the error propagate silently. This makes debugging easier — the error occurs near its root cause.</p>
-<h2>The Principle</h2>
-<blockquote>"The system should stop execution as soon as an error is detected, rather than letting the error continue to propagate."</blockquote>
-<h2>Benefits</h2>
+<p>Test-Driven Development (TDD) is a software discipline where you <strong>write a failing test before writing any application code</strong>. The cycle — Red, Green, Refactor — drives design from the outside in, ensuring every line of code exists to satisfy a verified requirement. TDD is not primarily about testing; it's a <strong>design methodology</strong> that produces loosely coupled, testable code by default.</p>
+<h2>The Testing Goat</h2>
+<blockquote>"Do nothing until you have a test."</blockquote>
+<p>The "Testing Goat" is a metaphor for stubborn discipline: no application code is written without a failing test demanding it. This isn't about tools — it's about engineering humility. We can't hold all the complexity in our heads, so tests become external memory that keeps us safe.</p>
+<h2>The Red-Green-Refactor Cycle</h2>
+<p>The heartbeat of TDD:</p>
+<table><thead><tr>
+<th>Phase</th>
+<th>Action</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Red</strong> 🔴</td>
+<td>Write a failing test</td>
+<td>Define desired behavior before implementation</td>
+</tr>
+<tr>
+<td><strong>Green</strong> 🟢</td>
+<td>Write minimal code to pass</td>
+<td>Satisfy the test — no more, no less</td>
+</tr>
+<tr>
+<td><strong>Refactor</strong> 🔵</td>
+<td>Clean up code, reduce duplication</td>
+<td>Improve design without changing behavior</td>
+</tr>
+</tbody></table>
+<p>Key rules:</p>
 <ul>
-<li><strong>Easier debugging</strong>: Error occurs close to root cause</li>
-<li><strong>No silent corruption</strong>: Errors don't manifest hours later in a batch job</li>
-<li><strong>Clear contracts</strong>: Invalid input is rejected at the boundary</li>
+<li>Write the <strong>minimal code</strong> to pass — resist the urge to over-engineer.</li>
+<li>Refactor is <strong>mandatory</strong>, not optional. The test safety net enables fearless cleanup.</li>
+<li>Each cycle should take <strong>seconds to minutes</strong> — fast feedback is essential.</li>
 </ul>
-<h2>Anti-pattern: Silent Failure</h2>
-<pre><code>// ❌ Auto-corrects invalid data → hides the error
-LocalDate date = LocalDate.of(2024, 11, 31); // Silently becomes Dec 1</code></pre>
-<h2>Correct: Fail Fast</h2>
-<pre><code>// ✅ Throws exception immediately
-LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
+<h2>Outside-In TDD (Double Loop)</h2>
+<pre><code>                ┌──────────────────────────┐
+   Big Loop ───►│  Functional Test (fail)   │  ← User story perspective
+                └──────────┬───────────────┘
+                           │
+                ┌──────────▼───────────────┐
+   Small Loop ─►│  Unit Tests (R-G-R cycle) │  ← Code design perspective
+                └──────────────────────────┘</code></pre>
+<ol>
+<li>Write a <strong>functional test</strong> describing a user story (fails because nothing exists).</li>
+<li>To make it pass, drop into the <strong>inner loop</strong>: write unit tests to drive each piece of logic.</li>
+<li>When unit tests are green, the functional test should pass — confirming the feature works from the user's perspective.</li>
+</ol>
+<h2>YAGNI (You Ain't Gonna Need It)</h2>
+<ul>
+<li>Build only what <strong>today's tests</strong> demand.</li>
+<li>Don't predict future requirements — speculative code adds complexity with zero current value.</li>
+<li><strong>Rule of Three Strikes</strong>: if you write similar code 3 times before seeing a pattern, then refactor. Not before.</li>
+</ul>
+<h2>Hacking vs Engineering</h2>
+<table><thead><tr>
+<th>Hacking (No Tests)</th>
+<th>Engineering (TDD)</th>
+</tr></thead><tbody>
+<tr>
+<td>Fear of refactoring</td>
+<td>Confidence — tests catch regressions</td>
+</tr>
+<tr>
+<td>Code complexity grows unchecked</td>
+<td>Decoupled, clean design</td>
+</tr>
+<tr>
+<td>Manual verification, slow</td>
+<td>Automated regression, fast</td>
+</tr>
+<tr>
+<td>Productivity decreases as project grows</td>
+<td>High velocity regardless of scale</td>
+</tr>
+</tbody></table>
+<h2>Psychological Benefits</h2>
+<ul>
+<li><strong>Psychological safety</strong>: freely refactor, knowing tests will catch mistakes.</li>
+<li><strong>Flow state protection</strong>: fast unit tests keep you in the zone; slow tests break focus ("Hot Lava" — developers avoid running them).</li>
+<li><strong>"Thanks, tests" moments</strong>: when a test catches a regression you would never have predicted.</li>
+</ul>
   </div>
 </section>
 
@@ -112,40 +177,25 @@ LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="immutability.html">
-      <span class="connection-type extends">Enforced by</span>
-      <h4>Immutability of Essence</h4>
-      <p>immutable objects fail fast on invalid construction</p>
-    </a>
-    <a class="connection-card" href="bijection.html">
-      <span class="connection-type drives">Prevents</span>
-      <h4>Bijection</h4>
-      <p>violations — implicit transformations hide errors</p>
-    </a>
-    <a class="connection-card" href="rich-domain-model.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Rich Domain Model</h4>
-      <p>rich objects validate their own state</p>
-    </a>
-    <a class="connection-card" href="essential-accidental-complexity.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Essential vs Accidental Complexity</h4>
-      <p>silent failures add accidental complexity</p>
-    </a>
-    <a class="connection-card" href="harness-engineering.html">
-      <span class="connection-type related">Related</span>
-      <h4>Harness Engineering</h4>
-      <p>harnesses prevent AI agents from declaring victory before verification</p>
-    </a>
-    <a class="connection-card" href="tdd-methodology.html">
-      <span class="connection-type related">Related</span>
-      <h4>TDD Methodology</h4>
-      <p>write a failing test before code (Red phase) to fail fast on missing behavior</p>
-    </a>
     <a class="connection-card" href="functional-testing.html">
-      <span class="connection-type related">Related to</span>
+      <span class="connection-type related">Informs</span>
       <h4>Functional Testing</h4>
-      <p>functional tests fail fast at the user level when integration breaks</p>
+      <p>functional tests form the outer loop of Outside-In TDD</p>
+    </a>
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Testing Strategy</h4>
+      <p>TDD provides the methodology; testing strategy selects what to test</p>
+    </a>
+    <a class="connection-card" href="pytest-basics.html">
+      <span class="connection-type related">Related</span>
+      <h4>pytest Basics</h4>
+      <p>pytest is the tool that makes the Red-Green-Refactor cycle fast in Python</p>
+    </a>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fail Fast</h4>
+      <p>both principles advocate catching problems at the earliest possible point</p>
     </a>
   </div>
 </section>
