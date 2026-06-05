@@ -51,4 +51,4 @@ Takes a fundamentally different approach rooted in **Digital Signal Processing**
 - Foundation for [[timely-dataflow]] — timestamp notification model — one of three IVM approaches
 - Foundation for [[differential-dataflow]] — versioned incremental computation on top of Timely Dataflow
 - Foundation for [[dbsp]] — signal-processing formalism — functionally complete for SQL
-- Related to [[materialized-views-quick-insights]] — Vu Trinh's article covering IVM theory
+- Related to [[sources/materialized-views-quick-insights]] — Vu Trinh's article covering IVM theory

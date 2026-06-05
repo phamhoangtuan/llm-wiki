@@ -71,4 +71,4 @@ Polars can read Vortex files via the Arrow bridge (`VortexFile.to_polars()`) —
 - Competes with [[apache-datafusion]] — both are Rust-based Arrow-native query engines, but DataFusion accepts SQL
 - Related to [[vortex-file-format]] — Polars can read Vortex files via PyArrow bridge (0.114s benchmark)
 - Related to [[apache-parquet]] — Polars reads Parquet natively with strong performance (0.193s)
-- Benchmark source: [[benchmarking-vortex-file-format]] — independent performance evaluation showing OOM on CSV
+- Benchmark source: [[sources/benchmarking-vortex-file-format]] — independent performance evaluation showing OOM on CSV

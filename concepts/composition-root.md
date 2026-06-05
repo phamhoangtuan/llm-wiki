@@ -98,4 +98,4 @@ The critical rule: **never inject a shorter-lived dependency into a longer-lived
 ---
 - Implements [[dependency-injection]] — the Composition Root is where all DI wiring happens
 - Related to [[solid-principles]] — SRP applied to infrastructure: one place, one responsibility
-- Benchmark source: [[dependency-injection-principles-patterns]] — van Deursen & Seemann's 643-page definitive guide
+- Benchmark source: [[sources/dependency-injection-principles-patterns]] — van Deursen & Seemann's 643-page definitive guide

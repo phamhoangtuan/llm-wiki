@@ -129,3 +129,4 @@ The AI engineer's role is not prompt whisperer — it's **environment designer**
 - Related to [[fail-fast]] — shared philosophy: prevention over cure; catch issues before they compound
 - Related to [[composition-root]] — both centralize control: Composition Root centralizes dependency wiring; harness centralizes agent behavior rules
 - Implements [[technological-centaur]] — harness engineering provides the structural enforcement that makes the human+AI centaur model reliable
+- Benchmark source: [[sources/learn-harness-engineering]] — walkinglabs' guide to closed-loop AI agent systems

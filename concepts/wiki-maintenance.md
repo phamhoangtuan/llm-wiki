@@ -9,7 +9,7 @@ sources: [sample-article]
 
 ## Summary
 
-Wiki Maintenance describes the operational model of this LLM-maintained knowledge base. The core insight (from [[sample-article|sources/sample-article]]) is that the LLM handles all bookkeeping — updating cross-references, integrating new sources, flagging contradictions — so the human can focus on curation and thinking.
+Wiki Maintenance describes the operational model of this LLM-maintained knowledge base. The core insight (from [[sources/sample-article|sample-article]]) is that the LLM handles all bookkeeping — updating cross-references, integrating new sources, flagging contradictions — so the human can focus on curation and thinking.
 
 ## Key Ideas
 

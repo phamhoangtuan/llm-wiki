@@ -21,3 +21,4 @@ sources: [contieri-clean-code-cookbook]
 ---
 - Protects [[bijection]] — the object represents the real entity's behavior
 - Related to [[immutability]] — telling an object to act is safer than mutating its state from outside
+- Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

@@ -57,3 +57,4 @@ public class Order {
 - Enforced by [[bijection]] — anemic objects are a bijection violation
 - Supported by [[tell-dont-ask]] — the behavioral principle
 - Related to [[immutability]] — rich objects protect essential attributes
+- Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

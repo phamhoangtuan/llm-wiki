@@ -212,3 +212,24 @@
 - Updated concepts: testing-strategy (added TDD/functional testing refs + source), fail-fast (added TDD fail-early connection + source)
 - Updated index.md: +6 concept entries, +2 source entries
 - Total pages: 87 (69 concepts + 17 sources)
+
+## [2026-06-05] ingest | Apache Iceberg 1.11.0 Release
+
+- Source: Apache Iceberg PMC blog post (2026-05-19)
+- URL: https://iceberg.apache.org/blog/apache-iceberg-1.11.0-release/
+- Created sources/apache-iceberg-1.11.0-release.md
+- Updated concepts: apache-iceberg (major rewrite: V3 spec stabilization, table encryption, File Format API, server-side scan planning, SQL UDFs, engine support matrix), apache-flink (DynamicIcebergSink, Flink 2.1, post-commit maintenance, branch compaction, type support)
+- Updated index.md: +1 source entry, updated 2 concept summaries
+- Total pages: 88 (69 concepts + 18 sources)
+
+## [2026-06-05] lint | Comprehensive health check + fix pass
+
+- Scanned all 87 wiki pages across 5 lint dimensions (wikilinks, orphans, frontmatter, contradictions, stubs)
+- Fixed 13 broken wikilinks: added `sources/` prefix to source references across 19 concept files (apache-flink, apache-iceberg, apache-datafusion, liquid-clustering, delta-lake, composition-root, duckdb, clickhouse, dbsp, analytics-engineer, database-sharding, delta-kernel, apache-kafka, change-data-capture, data-ingestion, vortex-file-format, polars, apache-parquet, unity-catalog)
+- Fixed inverted wikilink syntax in wiki-maintenance.md: `[[sample-article|sources/sample-article]]` → `[[sources/sample-article|sample-article]]`
+- Added backlinks from 20 concept pages to their 5 orphan source pages (contieri-clean-code-cookbook, okken-python-testing-pytest, go-web-programming, learn-harness-engineering, tdd-python-percival)
+- Fixed broken markdown table in testing-strategy.md: split merged 4 Pillars and Layer tables with proper separator
+- Added missing `iceberg` extension row to duckdb.md's ecosystem extension table
+- Fixed Deletion Vectors misattribution in apache-iceberg.md comparison table: Delta changed from ✅ to ❌ (file rewriting) to distinguish from Iceberg's Roaring-bitmap mechanism
+- HTML regenerated via convert-to-html.py
+- No new pages created

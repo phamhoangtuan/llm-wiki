@@ -37,3 +37,4 @@ def test_is_adult(name, age, expected):
 ---
 - Complements [[pytest-fixtures]] — indirect parametrization offloads setup to fixtures
 - Related to [[testing-strategy]] — enables thorough API testing with minimal code
+- Benchmark source: [[sources/okken-python-testing-pytest]] — Okken's comprehensive pytest guide

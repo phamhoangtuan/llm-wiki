@@ -88,4 +88,4 @@ ClickHouse contributed improvements to `delta-kernel-rs` found through productio
 - Adopted by [[clickhouse]] — ClickHouse uses `delta-kernel-rs` for Delta Lake protocol handling via FFI
 - Built on [[delta-lake]] — the Kernel is the protocol abstraction layer for Delta Lake
 - Contrasts with native protocol implementations — Engines previously had to implement Delta specification directly
-- Contributed to via [[integrating-rust-delta-kernel-clickhouse]] — ClickHouse's upstream PRs and build integration story
+- Contributed to via [[sources/integrating-rust-delta-kernel-clickhouse]] — ClickHouse's upstream PRs and build integration story

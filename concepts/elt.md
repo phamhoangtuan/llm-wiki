@@ -103,4 +103,4 @@ dbt is the **canonical "T" tool** in the modern ELT stack:
 - Powers [[dbt]] — dbt was designed specifically for the ELT paradigm's "Transform" step
 - Defines [[analytics-engineer]] — the role that owns the transform layer in ELT
 - Related to [[data-ingestion]] — ELT describes the full pipeline; ingestion handles the "EL" portion
-- Benchmark source: [[unlocking-dbt-design-deploy-transformations]] — Cyr & Dorsey's book explains why ELT beats ETL
+- Benchmark source: [[sources/unlocking-dbt-design-deploy-transformations]] — Cyr & Dorsey's book explains why ELT beats ETL

@@ -52,4 +52,4 @@ Original paper: *DBSP: A Language for Incremental View Maintenance* — [SIGMOD 
 - Contrasts with [[differential-dataflow]] — different formalism — stream operators vs versioned diffs
 - Supports [[incremental-view-maintenance]] — one of three theoretical IVM approaches
 - Related to [[materialized-views]] — DBSP can automatically convert any SQL query to incremental form
-- Related to [[materialized-views-quick-insights]] — Vu Trinh's article introducing DBSP as IVM approach
+- Related to [[sources/materialized-views-quick-insights]] — Vu Trinh's article introducing DBSP as IVM approach

@@ -62,3 +62,4 @@ Each functional test should verify **one user story or workflow**. When a functi
 - Driven by [[tdd-methodology]] — functional tests are the outer loop of Outside-In TDD
 - Foundation for [[testing-strategy]] — functional tests are the 20-30% integration/E2E effort in the test pyramid
 - Related to [[pytest-basics]] — pytest can drive functional tests via fixtures and Selenium integration
+- Benchmark source: [[sources/tdd-python-percival]] — Percival's functional testing with Django and Selenium

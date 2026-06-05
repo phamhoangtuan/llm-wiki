@@ -43,3 +43,4 @@ Prevents "green tests that mask real bugs" — a major risk when refactoring lar
 ---
 - Complements [[pytest-fixtures]] — mocks are often provided as fixture return values
 - Related to [[testing-strategy]] — essential for API layer isolation
+- Benchmark source: [[sources/okken-python-testing-pytest]] — Okken's comprehensive pytest guide

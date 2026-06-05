@@ -77,3 +77,4 @@ HTTP/2 benefits (auto-enabled with TLS in Go 1.6+):
 - Built on [[go-http-handlers]] — handler pattern is the core building block
 - Built on [[go-template-escaping]] — security-first templating
 - Contrasts with [[dependency-injection]] — DI patterns are implemented naturally through Go interfaces (implicit satisfaction)
+- Benchmark source: [[sources/go-web-programming]] — Sau Sheong Chang's guide to Go web apps

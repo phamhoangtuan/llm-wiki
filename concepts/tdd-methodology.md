@@ -73,4 +73,5 @@ Key rules:
 - Informs [[functional-testing]] — functional tests form the outer loop of Outside-In TDD
 - Foundation for [[testing-strategy]] — TDD provides the methodology; testing strategy selects what to test
 - Enabled by [[pytest-basics]] — pytest is the tool that makes the Red-Green-Refactor cycle fast in Python
+- Benchmark source: [[sources/tdd-python-percival]] — Percival's hands-on TDD with Django and Selenium
 - Related to [[fail-fast]] — both principles advocate catching problems at the earliest possible point

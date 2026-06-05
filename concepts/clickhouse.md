@@ -77,4 +77,4 @@ ClickPipes is ClickHouse's managed CDC ingestion tool. The CDF support in the De
 - Related to [[duckdb]] — both are columnar analytical databases; DuckDB is embedded, ClickHouse is distributed
 - Powered by [[vectorized-execution]] — columnar architecture enables SIMD-based query processing
 - Uses [[apache-parquet]] — underlying file format for Delta table storage
-- Benchmark source: [[integrating-rust-delta-kernel-clickhouse]] — detailed FFI integration and feature coverage
+- Benchmark source: [[sources/integrating-rust-delta-kernel-clickhouse]] — detailed FFI integration and feature coverage

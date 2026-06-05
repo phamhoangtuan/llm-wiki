@@ -56,4 +56,4 @@ MVs are not just a batch/database concept — they are a first-class primitive i
 - Foundation for [[timely-dataflow]] — timestamp-based notification model underlying IVM
 - Foundation for [[differential-dataflow]] — versioned incremental computation built on Timely Dataflow
 - Foundation for [[dbsp]] — signal-processing formalism for incremental computation
-- Related to [[materialized-views-quick-insights]] — Vu Trinh's article on MVs, IVM, and streaming
+- Related to [[sources/materialized-views-quick-insights]] — Vu Trinh's article on MVs, IVM, and streaming

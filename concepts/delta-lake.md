@@ -201,7 +201,7 @@ Delta's catalog-managed design closely resembles [[apache-iceberg|Iceberg]]'s ca
 - Governed by [[unity-catalog]] — UC provides catalog management and concurrent write coordination for Delta tables
 - Abstracted by [[delta-kernel]] — Rust library that handles Delta protocol so engines don't have to
 - Optimized by [[liquid-clustering]] — modern data layout replacing Hive-style partitioning; incremental, multi-dimensional
-- Benchmark source: [[delta-grows-up-writes-unity-catalog]] — DuckDB Labs announces stable Delta writes, time travel, and UC support
-- Powered by [[delta-catalog-managed-tables]] — architectural shift from filesystem-managed to catalog-managed tables (Delta 4.1.0)
-- Benchmark source: [[integrating-rust-delta-kernel-clickhouse]] — ClickHouse's Delta Kernel integration and CDF support
+- Benchmark source: [[sources/delta-grows-up-writes-unity-catalog]] — DuckDB Labs announces stable Delta writes, time travel, and UC support
+- Powered by [[sources/delta-catalog-managed-tables]] — architectural shift from filesystem-managed to catalog-managed tables (Delta 4.1.0)
+- Benchmark source: [[sources/integrating-rust-delta-kernel-clickhouse]] — ClickHouse's Delta Kernel integration and CDF support
 - Related to [[change-data-capture]] — Delta CDF enables CDC workflows via ClickPipes and other CDC tools

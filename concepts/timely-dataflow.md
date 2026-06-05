@@ -41,4 +41,4 @@ Original paper: *The Naiad Project* — [ACM Digital Library](https://dl.acm.org
 - Foundation for [[differential-dataflow]] — versioned incremental computation built on TD's notification guarantee
 - Supports [[incremental-view-maintenance]] — one of three theoretical IVM approaches
 - Related to [[materialized-views]] — TD provides the completeness notification MV refresh needs
-- Related to [[materialized-views-quick-insights]] — Vu Trinh's article introducing TD as an IVM approach
+- Related to [[sources/materialized-views-quick-insights]] — Vu Trinh's article introducing TD as an IVM approach

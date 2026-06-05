@@ -172,4 +172,4 @@ If your platform "speaks SQL", there's almost certainly a dbt adapter.
 - Related to [[data-ingestion]] — dbt handles the transform step; ingestion tools handle extract/load
 - Related to [[materialized-views]] — dbt supports materialized views as a materialization strategy
 - Integrates with [[duckdb]] — DuckDB has a community dbt adapter for local development
-- Benchmark source: [[unlocking-dbt-design-deploy-transformations]] — Cameron Cyr & Dustin Dorsey's 351-page guide
+- Benchmark source: [[sources/unlocking-dbt-design-deploy-transformations]] — Cameron Cyr & Dustin Dorsey's 351-page guide

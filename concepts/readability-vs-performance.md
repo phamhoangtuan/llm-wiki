@@ -33,3 +33,4 @@ Many teams fall into the trap of premature optimization — sacrificing readabil
 - Supports [[software-as-simulation]] — readable code is a better simulation
 - Related to [[technological-centaur]] — clean code enables effective human-AI collaboration
 - Related to [[essential-accidental-complexity]] — premature optimization adds accidental complexity
+- Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

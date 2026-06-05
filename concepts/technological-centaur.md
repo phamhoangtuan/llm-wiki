@@ -40,3 +40,4 @@ The "Technological Centaur" is the model of human architect + AI coding assistan
 - Depends on [[bijection]] — awareness to catch semantic errors AI introduces
 - Related to [[readability-vs-performance]] — clean code enables effective AI collaboration
 - Implemented via [[harness-engineering]] — structural enforcement makes the centaur model reliable at scale
+- Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

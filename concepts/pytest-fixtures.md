@@ -40,3 +40,4 @@ def test_query(db_connection):
 - Used by [[pytest-mocking]] — mock objects often provided as fixtures
 - Related to [[testing-strategy]] — fixtures enable clean API layer testing
 - Implements [[dependency-injection]] — pytest's fixture system is DI applied to test setup and teardown
+- Benchmark source: [[sources/okken-python-testing-pytest]] — Okken's comprehensive pytest guide

@@ -120,6 +120,6 @@ Hugo unified two previously siloed ingestion patterns under one platform:
 - Implements [[change-data-capture]] — CDC is the primary pattern for database ingestion
 - Integrates with [[apache-kafka]] — Kafka is both a source (topic ingestion) and was the legacy intermediary (replaced by direct CDC)
 - Related to [[apache-iceberg]] — Iceberg is Hugo's future table format for improved SLA and cost
-- Benchmark source: [[hugo-data-ingestion-platform-flink]] — Grab's platform evolution case study
+- Benchmark source: [[sources/hugo-data-ingestion-platform-flink]] — Grab's platform evolution case study
 - Related to [[elt]] — data ingestion provides the "EL" (Extract-Load); dbt handles the "T" (Transform)
 - Feeds [[dbt]] — ingested raw data is the input for dbt's transformation models

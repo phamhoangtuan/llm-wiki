@@ -148,4 +148,4 @@ DI works because of [[solid-principles|SOLID principles]]:
 - Built on [[solid-principles]] — DI is enabled by SRP, OCP, LSP, ISP, DIP
 - Related to [[fail-fast]] — guard clauses in constructors (`throw new ArgumentNullException`) enforce valid state
 - Related to [[immutability]] — readonly fields in injected classes prevent accidental mutation
-- Benchmark source: [[dependency-injection-principles-patterns]] — van Deursen & Seemann's 643-page definitive guide
+- Benchmark source: [[sources/dependency-injection-principles-patterns]] — van Deursen & Seemann's 643-page definitive guide

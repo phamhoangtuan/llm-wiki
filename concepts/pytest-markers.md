@@ -28,3 +28,4 @@ Markers categorize tests and control which ones run. Built-in markers handle com
 ---
 - Extends [[pytest-basics]] — adds selective execution to discovery
 - Related to [[testing-strategy]] — enables fast feedback loops in CI
+- Benchmark source: [[sources/okken-python-testing-pytest]] — Okken's comprehensive pytest guide

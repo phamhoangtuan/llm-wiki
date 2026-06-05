@@ -106,4 +106,4 @@ SOLID is guidance, not dogma:
 - Related to [[rich-domain-model]] — SOLID enables rich domain objects with injected dependencies
 - Related to [[fail-fast]] — guard clauses in constructors enforce valid state at creation time
 - Related to [[immutability]] — readonly fields prevent accidental mutation of injected dependencies
-- Benchmark source: [[dependency-injection-principles-patterns]] — van Deursen & Seemann's definitive guide
+- Benchmark source: [[sources/dependency-injection-principles-patterns]] — van Deursen & Seemann's definitive guide

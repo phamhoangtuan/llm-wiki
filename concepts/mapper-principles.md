@@ -26,3 +26,4 @@ MAPPER is an acronym for 6 principles that define the "software as simulation" p
 - Enforced by [[bijection]] — the 1-1 mapping is the concrete implementation of Model + Reality
 - Supports [[rich-domain-model]] — Abstract + Explaining encourage behavioral objects
 - Related to [[tell-dont-ask]] — Explaining principle guides naming and behavior revelation
+- Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

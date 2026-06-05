@@ -89,4 +89,4 @@ Kafka Connect is a framework for connecting Kafka with external systems via pre-
 - Integrates with [[apache-flink]] — Flink is a first-class Kafka consumer/producer; replaces Kafka Connect
 - Powers [[data-ingestion]] — Kafka is a primary source in Hugo's unified ingestion platform
 - Related to [[change-data-capture]] — Kafka + Debezium was Grab's legacy CDC approach (now replaced by Flink CDC)
-- Benchmark source: [[hugo-data-ingestion-platform-flink]] — Grab's migration away from Kafka Connect toward Flink
+- Benchmark source: [[sources/hugo-data-ingestion-platform-flink]] — Grab's migration away from Kafka Connect toward Flink

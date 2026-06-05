@@ -68,4 +68,4 @@ With the Analytics Engineer:
 - Defined by [[dbt]] — the Analytics Engineer role emerged from the dbt ecosystem and tooling
 - Related to [[elt]] — Analytics Engineers own the "T" (Transform) step in the ELT pipeline
 - Related to [[data-ingestion]] — Analytics Engineers consume ingested data to build downstream models
-- Benchmark source: [[unlocking-dbt-design-deploy-transformations]] — Cyr & Dorsey's book formalizing the role
+- Benchmark source: [[sources/unlocking-dbt-design-deploy-transformations]] — Cyr & Dorsey's book formalizing the role

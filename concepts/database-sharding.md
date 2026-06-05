@@ -47,4 +47,4 @@ aliases: [sharding]
 - Contrasts with [[database-replication]] — replication copies data; sharding partitions data
 - Related to [[scalable-architecture]] — sharding is a horizontal scaling technique for databases
 - Related to [[cache-strategy]] — caching reduces read load; sharding handles write load
-- Benchmark source: [[system-design-interview-xu]] — Alex Xu's system design guide
+- Benchmark source: [[sources/system-design-interview-xu]] — Alex Xu's system design guide

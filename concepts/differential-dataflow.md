@@ -33,4 +33,4 @@ Original paper: *Differential Dataflow* — [CIDR 2013](https://www.cidrdb.org/c
 - Supports [[incremental-view-maintenance]] — one of three theoretical IVM approaches
 - Related to [[materialized-views]] — DD computes minimal diffs for MV refresh
 - Alternative [[dbsp]] — a different IVM formalism based on signal processing
-- Related to [[materialized-views-quick-insights]] — Vu Trinh's article comparing IVM approaches
+- Related to [[sources/materialized-views-quick-insights]] — Vu Trinh's article comparing IVM approaches

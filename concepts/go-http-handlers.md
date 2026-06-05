@@ -84,3 +84,4 @@ mux.Handle("/profile", protect(logRequests(profileHandler)))
 - Built on [[goroutines]] — each handler invocation runs in its own goroutine
 - Foundation for [[go-web-ecosystem]] — handlers are the building blocks of Go web apps
 - Related to [[dependency-injection]] — handlers get dependencies injected (e.g., db handle) for testability
+- Benchmark source: [[sources/go-web-programming]] — Sau Sheong Chang's guide to Go web apps

@@ -90,4 +90,4 @@ Databricks is introducing a new `ALTER TABLE ... REPLACE PARTITIONED BY WITH CLU
 - Produces [[apache-parquet]] — output files are standard Parquet with min/max statistics
 - Compatible with [[duckdb]] — any Parquet reader benefits from Liquid's file-level statistics
 - Related to [[change-data-capture]] — row-level concurrency enables high-throughput CDC pipelines
-- Benchmark source: [[debunking-data-layout-myths-liquid-clustering]] — 8 myths debunked, success stories at scale
+- Benchmark source: [[sources/debunking-data-layout-myths-liquid-clustering]] — 8 myths debunked, success stories at scale

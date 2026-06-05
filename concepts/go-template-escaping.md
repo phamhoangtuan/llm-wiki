@@ -61,3 +61,4 @@ Go's `html/template` is an **active template engine** — supports conditionals,
 ---
 - Foundation for [[go-web-ecosystem]] — security-first templating is a pillar of Go web development
 - Related to [[go-http-handlers]] — handlers pass data to templates for rendering
+- Benchmark source: [[sources/go-web-programming]] — Sau Sheong Chang's guide to Go web apps

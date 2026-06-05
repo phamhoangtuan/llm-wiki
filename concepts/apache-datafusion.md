@@ -61,4 +61,4 @@ DataFusion sits between DuckDB (batteries-included database) and Apache Spark (d
 - Related to [[vortex-file-format]] — Vortex's architecture was modeled after DataFusion's extensible approach
 - Utilizes [[vectorized-execution]] — columnar batch processing for analytical queries
 - Related to [[apache-parquet]] — DataFusion reads Parquet natively (0.370s in benchmarks)
-- Benchmark source: [[benchmarking-vortex-file-format]] — 5.106s CSV scan, best-in-class for raw CSV
+- Benchmark source: [[sources/benchmarking-vortex-file-format]] — 5.106s CSV scan, best-in-class for raw CSV

@@ -51,11 +51,11 @@
 - [Apache DataFusion](concepts/apache-datafusion.html) — Rust-native embeddable SQL query engine; fastest CSV scan in benchmarks (5.1s vs 25.5s DuckDB)
 - [Apache Parquet](concepts/apache-parquet.html) — Dominant columnar storage format for data lakes; ~200× faster than CSV for analytics
 - [Lance File Format](concepts/lance-file-format.html) — Columnar format optimized for ML/AI workloads; random access, versioning
-- [Apache Flink](concepts/apache-flink.html) — Distributed stream processing engine with exactly-once semantics; Flink CDC for database ingestion
+- [Apache Flink](concepts/apache-flink.html) — Distributed stream processing engine with exactly-once semantics; Flink 2.1 + DynamicIcebergSink (1.11.0) for multi-table routing and auto-schema evolution
 - [Change Data Capture (CDC)](concepts/change-data-capture.html) — Capturing row-level DB changes from transaction logs for real-time data sync
 - [Data Ingestion](concepts/data-ingestion.html) — Moving data from sources to data lake; self-service platforms, batch vs streaming patterns
 - [Apache Kafka](concepts/apache-kafka.html) — Distributed event streaming platform; persistent log, high throughput, schema registry
-- [Apache Iceberg](concepts/apache-iceberg.html) — Open table format for data lakes with ACID transactions, schema evolution, time travel
+- [Apache Iceberg](concepts/apache-iceberg.html) — Open table format; V3 spec stabilized (1.11.0) with deletion vectors, table encryption, pluggable File Format API, server-side scan planning
 - [dbt (data build tool)](concepts/dbt.html) — SQL transformation framework for ELT; compute-neutral, declarative, with built-in testing and docs
 - [Analytics Engineer](concepts/analytics-engineer.html) — Bridge role between Data Engineer and Analyst; owns the transformation layer
 - [ELT (Extract-Load-Transform)](concepts/elt.html) — Modern data paradigm: load raw first, transform in-warehouse; dbt handles the "T"
@@ -96,6 +96,7 @@
 - [Debunking 8 Data Layout Myths](sources/debunking-data-layout-myths-liquid-clustering.html) — Databricks' case for Liquid Clustering over partitioning; PB-scale benchmarks, 8 myths debunked
 - [Go Web Programming](sources/go-web-programming.html) — Sau Sheong Chang's guide to building web apps with Go's standard library — 314 pages
 - [Test-Driven Development with Python](sources/tdd-python-percival.html) — Harry Percival's hands-on journey through TDD with Django and Selenium — 662 pages
+- [Apache Iceberg 1.11.0 Release](sources/apache-iceberg-1.11.0-release.html) — Major release: V3 spec stabilization, table encryption, File Format API, server-side scan planning, SQL UDFs
 
 ## Syntheses
 
@@ -103,5 +104,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-03*
-*Pages: 87 (69 concepts + 17 sources)*
+*Last updated: 2026-06-05*
+*Pages: 88 (69 concepts + 18 sources)*

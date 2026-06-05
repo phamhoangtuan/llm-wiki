@@ -39,3 +39,4 @@ pytest is a command-line testing framework for Python that automatically discove
 - Related to [[pytest-assertions]] — the assert rewriting mechanism
 - Related to [[pytest-configuration]] — pyproject.toml and pytest.ini setup
 - Related to [[pytest-test-results]] — result symbols: PASSED, FAILED, SKIPPED, XFAIL, XPASS, ERROR
+- Benchmark source: [[sources/okken-python-testing-pytest]] — Okken's comprehensive pytest guide

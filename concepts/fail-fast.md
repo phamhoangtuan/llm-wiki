@@ -41,3 +41,4 @@ LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException
 - Applied in [[harness-engineering]] — harnesses prevent AI agents from declaring victory before verification
 - Embodied by [[tdd-methodology]] — write a failing test before code (Red phase) to fail fast on missing behavior
 - Related to [[functional-testing]] — functional tests fail fast at the user level when integration breaks
+- Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

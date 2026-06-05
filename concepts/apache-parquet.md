@@ -59,4 +59,4 @@ Despite challengers, Parquet remains the **incumbent standard** with the broades
 - Related to [[vectorized-execution]] — columnar storage enables vectorized query execution
 - Foundation for [[delta-lake]] — Delta tables store data as Parquet files with min/max stats for data skipping
 - Foundation for [[liquid-clustering]] — Liquid produces standard Parquet files with statistics, enabling reader-agnostic pruning
-- Benchmark source: [[benchmarking-vortex-file-format]] — 0.125s DuckDB-on-Parquet, the baseline to beat
+- Benchmark source: [[sources/benchmarking-vortex-file-format]] — 0.125s DuckDB-on-Parquet, the baseline to beat

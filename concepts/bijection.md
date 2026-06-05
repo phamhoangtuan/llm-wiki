@@ -37,3 +37,4 @@ Reality: [10 meters]          ↔  Code: [new Length(10, Unit.METERS)]
 - Prevents [[rich-domain-model]] — violations — anemic objects are a bijection failure
 - Enforced by [[immutability]] — mutable essence attributes break the 1-1 mapping
 - Related to [[mapper-principles]] — Model and Reality principles
+- Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

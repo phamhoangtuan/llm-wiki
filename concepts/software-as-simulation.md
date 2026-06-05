@@ -26,3 +26,4 @@ Code does not just run — it **explains** the business domain. A well-designed 
 
 ---
 - Foundation for [[mapper-principles]] — the 6 principles that operationalize this philosophy
+- Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

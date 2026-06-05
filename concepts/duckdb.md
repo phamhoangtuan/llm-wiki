@@ -88,6 +88,7 @@ print(result.df())
 | `spatial` | Geospatial data types and functions |
 | `json` | Advanced JSON parsing and querying |
 | `icu` | Unicode and locale-aware string operations |
+| `iceberg` | Read/write [[apache-iceberg|Apache Iceberg]] tables with time travel (✅ stable, 2026-06) |
 | `vortex` | Read/write [[vortex-file-format|Vortex]] files (⚠️ early-stage, reported OOM crashes on multi-file reads as of 2026-05) |
 | `delta` | Read/write [[delta-lake|Delta Lake]] tables with time travel (✅ stable, 2026-05) |
 | `unity_catalog` | Query and write through [[unity-catalog|Unity Catalog]] — governed lakehouse access (✅ stable, 2026-05) |
@@ -98,8 +99,8 @@ print(result.df())
 ---
 - Powered by [[vectorized-execution]] — one of DuckDB's four architectural pillars
 - Implements [[in-process-olap]] — DuckDB is the canonical example of in-process OLAP
-- Related to [[duckdb-up-and-running]] — Wei-Meng Lee's practical guide
-- Related to [[benchmarking-vortex-file-format]] — benchmark against Vortex, Polars, DataFusion (Backblaze dataset)
+- Related to [[sources/duckdb-up-and-running]] — Wei-Meng Lee's practical guide
+- Related to [[sources/benchmarking-vortex-file-format]] — benchmark against Vortex, Polars, DataFusion (Backblaze dataset)
 - Competes with [[polars]] — both target Python data engineering; DuckDB uses SQL, Polars uses DataFrame API
 - Integrates with [[delta-lake]] — DuckDB's Delta extension supports reads, writes, and time travel (stable)
 - Integrates with [[unity-catalog]] — DuckDB's UC extension queries and writes through governed catalogs (stable)

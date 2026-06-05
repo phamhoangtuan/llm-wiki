@@ -119,6 +119,6 @@ Results include metadata columns: `_change_type`, `_commit_version`, `_commit_ti
 - Core to [[data-ingestion]] — CDC is one of the two primary ingestion patterns (alongside Kafka)
 - Related to [[apache-kafka]] — Kafka + Debezium is the legacy CDC approach that Flink CDC replaces
 - Related to [[materialized-views]] — CDC is a common mechanism to feed [[incremental-view-maintenance]]
-- Benchmark source: [[hugo-data-ingestion-platform-flink]] — Grab's migration from Kafka Connect CDC to Flink CDC
+- Benchmark source: [[sources/hugo-data-ingestion-platform-flink]] — Grab's migration from Kafka Connect CDC to Flink CDC
 - Used by [[clickhouse]] — ClickHouse reads Delta Lake CDF via `deltaLake()` table function; foundation for ClickPipes
 - Built on [[delta-lake]] — Delta's CDF provides row-level change events that CDC tools consume

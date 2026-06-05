@@ -19,7 +19,9 @@ A professional testing strategy focuses effort where it matters most — the API
 | **Rapid** | Start in seconds — minimize friction in dev cycle |
 | **Effective** | Tight feedback loop — actionable failure info, reduce MTTR |
 | **Scalable** | From single script to multi-layer enterprise system |
+
 | Layer | Recommendation | Why |
+| --- | --- | --- |
 | UI/CLI Tests | ❌ Avoid | Brittle, slow, break on UI changes |
 | API Tests | ✅ 70-80% effort | Validate core logic, stable interface, fast |
 | DB Tests | ❌ Avoid | Implementation-specific, hard to maintain |
@@ -33,3 +35,5 @@ A professional testing strategy focuses effort where it matters most — the API
 - Informed by [[tdd-methodology]] — TDD provides the Red-Green-Refactor discipline and Outside-In workflow
 - Guided by [[functional-testing]] — functional tests form the outer verification loop for end-to-end correctness
 - Related to [[harness-engineering]] — harness engineering's closed-loop verification applies rigorous testing to AI agents
+- Benchmark source: [[sources/okken-python-testing-pytest]] — Okken's comprehensive pytest guide
+- Benchmark source: [[sources/tdd-python-percival]] — Percival's TDD with Django and Selenium

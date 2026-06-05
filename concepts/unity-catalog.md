@@ -145,5 +145,5 @@ Once enabled, DuckDB INSERTs automatically route through UC's commit staging.
 - Governs [[delta-lake]] — UC is the native catalog for Delta tables; Catalog Commits coordinate concurrent writes
 - Integrates with [[duckdb]] — DuckDB's UC extension (stable) supports reads and writes through UC-managed catalogs
 - Related to [[apache-iceberg]] — UC can catalog Iceberg tables too; Iceberg also has its own catalog ecosystem (REST catalog, Hive, Glue)
-- Benchmark source: [[delta-grows-up-writes-unity-catalog]] — DuckDB Labs announces stable UC extension with Catalog Commits
-- Benchmark source: [[delta-catalog-managed-tables]] — architectural shift: filesystem-managed → catalog-managed (Delta 4.1.0 + UC 0.4.0)
+- Benchmark source: [[sources/delta-grows-up-writes-unity-catalog]] — DuckDB Labs announces stable UC extension with Catalog Commits
+- Benchmark source: [[sources/delta-catalog-managed-tables]] — architectural shift: filesystem-managed → catalog-managed (Delta 4.1.0 + UC 0.4.0)
