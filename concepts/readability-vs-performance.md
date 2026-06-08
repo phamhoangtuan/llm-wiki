@@ -3,8 +3,8 @@ title: "Readability vs Performance"
 type: concept
 tags: [design-principles, optimization, clean-code]
 created: 2026-05-23
-updated: 2026-05-23
-sources: [contieri-clean-code-cookbook]
+updated: 2026-06-08
+sources: [contieri-clean-code-cookbook, good-code-bad-code, seriously-good-software]
 ---
 
 ## Summary
@@ -33,4 +33,6 @@ Many teams fall into the trap of premature optimization — sacrificing readabil
 - Supports [[software-as-simulation]] — readable code is a better simulation
 - Related to [[technological-centaur]] — clean code enables effective human-AI collaboration
 - Related to [[essential-accidental-complexity]] — premature optimization adds accidental complexity
+- Informed by [[code-quality-pillars]] — pillar 1 (readable code) is the baseline before any optimization
+- Central to [[software-quality-dimensions]] — the Efficiency/Readability trade-off is a core quality tension
 - Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

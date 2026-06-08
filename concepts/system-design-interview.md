@@ -3,7 +3,7 @@ title: "System Design Interview"
 type: concept
 tags: [system-design, interview, methodology, architecture]
 created: 2026-05-24
-updated: 2026-05-24
+updated: 2026-06-08
 sources: [system-design-interview-xu]
 aliases: [system-design-interview-framework]
 ---
@@ -42,3 +42,4 @@ The canonical 4S framework for system design interviews:
 - Related to [[database-replication]] — a scaling choice you must explain
 - Related to [[cache-strategy]] — a performance optimization to discuss
 - Related to [[observability]] — metrics to monitor the designed system
+- Complementary to [[technical-interview]] — system design tests architecture/scale, technical interviews test algorithms/PoC

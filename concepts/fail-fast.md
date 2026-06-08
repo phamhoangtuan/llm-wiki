@@ -3,8 +3,8 @@ title: "Fail Fast"
 type: concept
 tags: [design-principles, error-handling, reliability, tdd]
 created: 2026-05-23
-updated: 2026-06-03
-sources: [contieri-clean-code-cookbook, tdd-python-percival]
+updated: 2026-06-08
+sources: [contieri-clean-code-cookbook, tdd-python-percival, good-code-bad-code]
 ---
 
 ## Summary
@@ -41,4 +41,6 @@ LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException
 - Applied in [[harness-engineering]] — harnesses prevent AI agents from declaring victory before verification
 - Embodied by [[tdd-methodology]] — write a failing test before code (Red phase) to fail fast on missing behavior
 - Related to [[functional-testing]] — functional tests fail fast at the user level when integration breaks
+- Embraced by [[code-quality-pillars]] — pillar 2 (no surprises) and pillar 3 (hard to misuse) both align with fail-fast philosophy
+- Related to [[software-quality-dimensions]] — choosing robustness (fail fast) over silent efficiency is a deliberate trade-off
 - Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

@@ -76,6 +76,9 @@
 - [Go Web Ecosystem](concepts/go-web-ecosystem.html) — Go's philosophy: standard library over frameworks, static binary deployment, built-in testing, implicit interfaces
 - [TDD Methodology](concepts/tdd-methodology.html) — Red-Green-Refactor cycle, Outside-In TDD (Double Loop), YAGNI, the Testing Goat discipline
 - [Functional Testing](concepts/functional-testing.html) — User-perspective testing via Selenium/HTTP client; outer loop of TDD; test behavior not constants
+- [Technical Interview](concepts/technical-interview.html) — Philosophy of coding interviews: relative evaluation, false positives/negatives, company cultures, BUD optimization, Talk Aloud
+- [Code Quality Pillars](concepts/code-quality-pillars.html) — Engineering vs Coding distinction, 4 goals and 6 tactical pillars for maintainable software
+- [Software Quality Dimensions](concepts/software-quality-dimensions.html) — Multi-dimensional quality spectrum, four core trade-offs, YAGNI, analyzability, abstraction costs
 
 ## Sources
 
@@ -97,6 +100,9 @@
 - [Go Web Programming](sources/go-web-programming.html) — Sau Sheong Chang's guide to building web apps with Go's standard library — 314 pages
 - [Test-Driven Development with Python](sources/tdd-python-percival.html) — Harry Percival's hands-on journey through TDD with Django and Selenium — 662 pages
 - [Apache Iceberg 1.11.0 Release](sources/apache-iceberg-1.11.0-release.html) — Major release: V3 spec stabilization, table encryption, File Format API, server-side scan planning, SQL UDFs
+- [Cracking the Coding Interview](sources/cracking-the-coding-interview.html) — McDowell's 708-page guide to technical interview philosophy, company cultures, and problem-solving strategies
+- [Good Code, Bad Code](sources/good-code-bad-code.html) — Tom Long's 338-page guide: 4 goals, 6 pillars, and the engineering mindset
+- [Seriously Good Software](sources/seriously-good-software.html) — Marco Faella's 330-page deep dive: quality spectrum, trade-offs, YAGNI, and abstraction costs
 
 ## Syntheses
 
@@ -104,5 +110,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-05*
-*Pages: 88 (69 concepts + 18 sources)*
+*Last updated: 2026-06-08*
+*Pages: 94 (72 concepts + 21 sources)*

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Readability vs Performance — LLM Wiki</title>
+<title>Software Quality Dimensions — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,30 +82,141 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Readability vs Performance<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">design-principles</span><span class="tag">optimization</span><span class="tag">clean-code</span></div>
-    <p class="hero-meta">Source: contieri-clean-code-cookbook, good-code-bad-code, seriously-good-software · Updated: 2026-06-08</p>
+    <h1>Software Quality Dimensions<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">design-principles</span><span class="tag">architecture</span><span class="tag">engineering</span><span class="tag">optimization</span></div>
+    <p class="hero-meta">Source: seriously-good-software · Updated: 2026-06-08</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Many teams fall into the trap of premature optimization — sacrificing readability to chase performance gains that aren't significant. The correct priority: clean, readable code first, then measure and optimize bottlenecks.</p>
-<h2>The Pareto Strategy</h2>
-<ol>
-<li>Write clean, readable code first</li>
-<li>Cover with tests to ensure correctness</li>
-<li>Measure actual performance (profiling)</li>
-<li>Apply Pareto: optimize the 20% of bottlenecks causing 80% of problems</li>
-</ol>
-<h2>Why This Works</h2>
-<blockquote>Clean code makes it easier to identify true bottlenecks. Code that's a tangled mess is hard to profile even if you try.</blockquote>
-<h2>Linguistic Relativity in Code (Sapir-Whorf Hypothesis)</h2>
-<blockquote>"The language you use shapes how you perceive the world."</blockquote>
+<p>Software quality is a multi-criteria optimization problem, not a binary toggle. Every line of code is a trade-off between competing dimensions. There is no "perfect" implementation in a vacuum — only code optimized correctly for a specific context: balancing machine performance against developer sanity.</p>
+<h2>The 2D Quality Spectrum</h2>
+<p>Quality is measured across two independent axes:</p>
+<h3>Axis 1: Internal vs External</h3>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Who Experiences It</th>
+<th>Examples</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>External</strong></td>
+<td>End users interacting with the system</td>
+<td>Correctness, Robustness, Efficiency (speed), Usability</td>
+</tr>
+<tr>
+<td><strong>Internal</strong></td>
+<td>Developers inspecting source code</td>
+<td>Readability, Maintainability, Testability, Analyzability</td>
+</tr>
+</tbody></table>
+<h3>Axis 2: Functional vs Non-functional</h3>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Question It Answers</th>
+<th>Note</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Functional</strong></td>
+<td>What does the software do?</td>
+<td>All functional qualities are External by definition</td>
+</tr>
+<tr>
+<td><strong>Non-functional</strong></td>
+<td>How does the software do it?</td>
+<td>Can be Internal (Readability) or External (Efficiency)</td>
+</tr>
+</tbody></table>
+<blockquote><strong>Critical insight</strong>: "Internal Functional" is an oxymoron. If software "does something" (functional), its effects are ultimately visible to users (external).</blockquote>
+<h3>The Trap</h3>
+<p>Focusing exclusively on "External Functional" (does it work?) while ignoring "Internal Non-functional" (is it maintainable?) accumulates technical debt that eventually harms users through slow bug fixes and fragile releases.</p>
+<h2>The Four Core Trade-offs</h2>
+<table><thead><tr>
+<th>Trade-off</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Time vs Space</strong></td>
+<td>Faster computation often uses more memory</td>
+<td>Doubly linked list enables O(1) deletion but stores extra "previous" pointer</td>
+</tr>
+<tr>
+<td><strong>Efficiency vs Readability</strong></td>
+<td>Optimized code is often harder to understand</td>
+<td>Using primitive types instead of objects saves RAM but becomes low-level and unmaintainable</td>
+</tr>
+<tr>
+<td><strong>Robustness vs Efficiency</strong></td>
+<td>Thorough input validation slows programs</td>
+<td>Validating every input → CPU overhead. Skipping it → fast but crash-prone</td>
+</tr>
+<tr>
+<td><strong>Development Time vs Quality</strong></td>
+<td>Business wants speed, quality needs time</td>
+<td>"Less haste, more speed" — doing it right the first time avoids costly rewrites</td>
+</tr>
+</tbody></table>
+<h2>YAGNI: You Ain't Gonna Need It</h2>
+<p>Don't store data or add features "just in case." Every unnecessary field is technical debt from birth — it must be tested, documented, and maintained.</p>
+<p><strong>Example</strong>: If the spec doesn't require <code>disconnectFrom()</code> on water containers, don't store individual pipe connections. Over-engineering breeds subtle bugs.</p>
+<blockquote>YAGNI is protection, not laziness.</blockquote>
+<h2>Analyzability: Beyond Readability</h2>
+<p>The ISO standard calls it <strong>Analyzability</strong> — the ability to analyze code for maintenance purposes.</p>
 <ul>
-<li>If your language only has <code>int</code> and <code>String</code>, you'll think of domain objects as "data holders"</li>
-<li>If your language supports value objects, immutability, type safety, you'll naturally build rich behavioral models</li>
+<li>A professional doesn't name a group <code>g</code> if a mafia boss gave them 60 seconds to hack into a system</li>
+<li>Meaningful naming is rule #1 of analyzability</li>
+<li>Magic numbers are the enemy of analyzability</li>
 </ul>
+<h2>The Hidden Cost of Abstractions (The 108-Byte Tax)</h2>
+<p>In a 64-bit JVM, a single container object using <code>HashSet</code> for grouping costs ~108 bytes:</p>
+<table><thead><tr>
+<th>Component</th>
+<th>Size</th>
+</tr></thead><tbody>
+<tr>
+<td>Object Header (GC, reflection)</td>
+<td>12 bytes</td>
+</tr>
+<tr>
+<td>Data field (<code>double amount</code>)</td>
+<td>8 bytes</td>
+</tr>
+<tr>
+<td>Reference to <code>Set</code> (compressed OOPs)</td>
+<td>4 bytes</td>
+</tr>
+<tr>
+<td><code>HashSet</code> instance overhead</td>
+<td>52 bytes</td>
+</tr>
+<tr>
+<td><code>HashMap$Node</code> entry</td>
+<td>32 bytes</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>108 bytes</strong></td>
+</tr>
+</tbody></table>
+<blockquote><strong>Compressed OOPs caveat</strong>: JVM uses 32-bit references on 64-bit machines to save RAM, but each address access requires a shift operation to map 32→64 bits. Saving bytes costs a small time penalty.</blockquote>
+<p><strong>Lesson</strong>: Every abstraction has a tax. <code>HashSet</code>, objects, interfaces — all cost memory and performance. Calculate these costs when scaling to production.</p>
+<h2>Programming to an Interface</h2>
+<p>Declare variables using the most abstract type that satisfies requirements:</p>
+<pre><code>// ✅ Professional: Program to interface
+Set&lt;Container&gt; group = new HashSet&lt;&gt;();
+
+// ❌ Novice: Lock into implementation
+HashSet&lt;Container&gt; group = new HashSet&lt;&gt;();</code></pre>
+<p>This allows swapping implementations later without changing dependent code.</p>
+<h2>Context is King</h2>
+<p>There is no "one best way" to write code — much like how the book <em>Exercises in Style</em> tells the same story 99 different ways. The best approach depends on project constraints:</p>
+<ul>
+<li>Need raw speed? Optimize for machine.</li>
+<li>Need maintainable code? Optimize for developer sanity.</li>
+<li>Need to scale to millions? Calculate memory footprints.</li>
+</ul>
+<p>The architect's role: choose the right "style" for the context.</p>
   </div>
 </section>
 
@@ -113,35 +224,45 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="software-as-simulation.html">
-      <span class="connection-type extends">Supports</span>
-      <h4>Software as Simulation</h4>
-      <p>readable code is a better simulation</p>
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Related</span>
+      <h4>Code Quality Pillars</h4>
+      <p>dimensions (analytical framework) vs pillars (tactical checklist)</p>
     </a>
-    <a class="connection-card" href="technological-centaur.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Technological Centaur</h4>
-      <p>clean code enables effective human-AI collaboration</p>
+    <a class="connection-card" href="readability-vs-performance.html">
+      <span class="connection-type related">Informs</span>
+      <h4>Readability vs Performance</h4>
+      <p>the Efficiency/Readability trade-off is a core tension</p>
     </a>
     <a class="connection-card" href="essential-accidental-complexity.html">
       <span class="connection-type related">Related to</span>
       <h4>Essential vs Accidental Complexity</h4>
-      <p>premature optimization adds accidental complexity</p>
+      <p>YAGNI prevents accidental complexity from over-engineering</p>
     </a>
-    <a class="connection-card" href="code-quality-pillars.html">
+    <a class="connection-card" href="immutability.html">
       <span class="connection-type related">Related</span>
-      <h4>Code Quality Pillars</h4>
-      <p>pillar 1 (readable code) is the baseline before any optimization</p>
+      <h4>Immutability of Essence</h4>
+      <p>immutable objects trade memory (new instances) for correctness and simplicity</p>
     </a>
-    <a class="connection-card" href="software-quality-dimensions.html">
-      <span class="connection-type related">Related</span>
-      <h4>Software Quality Dimensions</h4>
-      <p>the Efficiency/Readability trade-off is a core quality tension</p>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fail Fast</h4>
+      <p>choosing robustness over silent efficiency</p>
     </a>
-    <a class="connection-card" href="../sources/contieri-clean-code-cookbook.html">
+    <a class="connection-card" href="dependency-injection.html">
       <span class="connection-type related">Related</span>
-      <h4>Clean Code Cookbook (Maximiliano Contieri)</h4>
-      <p>Contieri's Clean Code Cookbook</p>
+      <h4>Dependency Injection</h4>
+      <p>programming to interfaces enables context-appropriate implementations</p>
+    </a>
+    <a class="connection-card" href="rich-domain-model.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Rich Domain Model</h4>
+      <p>rich objects encapsulate behavior that balances multiple quality dimensions</p>
+    </a>
+    <a class="connection-card" href="../sources/seriously-good-software.html">
+      <span class="connection-type related">Related</span>
+      <h4>Seriously Good Software</h4>
+      <p>Marco Faella's 330-page guide</p>
     </a>
   </div>
 </section>

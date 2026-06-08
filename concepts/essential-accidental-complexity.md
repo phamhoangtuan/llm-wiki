@@ -3,8 +3,8 @@ title: "Essential vs Accidental Complexity"
 type: concept
 tags: [architecture, complexity, design-principles]
 created: 2026-05-23
-updated: 2026-05-23
-sources: [contieri-clean-code-cookbook]
+updated: 2026-06-08
+sources: [contieri-clean-code-cookbook, good-code-bad-code, seriously-good-software]
 ---
 
 ## Summary
@@ -21,3 +21,5 @@ Fred Brooks distinguished two types of complexity in software. Understanding the
 - Managed by [[immutability]] — eliminates accidental complexity from mutable state
 - Reduced by [[rich-domain-model]] — eliminates scattered logic
 - Related to [[bijection]] — bijection violations create accidental complexity
+- Managed by [[code-quality-pillars]] — well-designed abstraction layers prevent accidental complexity from leaking
+- Prevented by [[software-quality-dimensions]] — YAGNI avoids accidental complexity introduced by over-engineering

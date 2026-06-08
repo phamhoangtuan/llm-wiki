@@ -3,8 +3,8 @@ title: "Testing Strategy"
 type: concept
 tags: [python, testing, strategy, architecture, tdd]
 created: 2026-05-23
-updated: 2026-06-03
-sources: [okken-python-testing-pytest, tdd-python-percival]
+updated: 2026-06-08
+sources: [okken-python-testing-pytest, tdd-python-percival, good-code-bad-code]
 ---
 
 ## Summary
@@ -35,5 +35,6 @@ A professional testing strategy focuses effort where it matters most — the API
 - Informed by [[tdd-methodology]] — TDD provides the Red-Green-Refactor discipline and Outside-In workflow
 - Guided by [[functional-testing]] — functional tests form the outer verification loop for end-to-end correctness
 - Related to [[harness-engineering]] — harness engineering's closed-loop verification applies rigorous testing to AI agents
+- Informs [[code-quality-pillars]] — pillar 6 (testable) structures testing into 3 levels: unit, integration, E2E
 - Benchmark source: [[sources/okken-python-testing-pytest]] — Okken's comprehensive pytest guide
 - Benchmark source: [[sources/tdd-python-percival]] — Percival's TDD with Django and Selenium

@@ -233,3 +233,15 @@
 - Fixed Deletion Vectors misattribution in apache-iceberg.md comparison table: Delta changed from ✅ to ❌ (file rewriting) to distinguish from Iceberg's Roaring-bitmap mechanism
 - HTML regenerated via convert-to-html.py
 - No new pages created
+
+## [2026-06-08] ingest | Cracking the Coding Interview, Good Code Bad Code, Seriously Good Software
+
+- Source 1: "Cracking the Coding Interview, 6th Edition" by Gayle Laakmann McDowell (ebook, 708 pages, finished 2026-05-16)
+- Source 2: "Good Code, Bad Code" by Tom Long (ebook, 338 pages, finished 2026-05-13)
+- Source 3: "Seriously Good Software" by Marco Faella (ebook, 330 pages, finished 2026-05-15)
+- Copied to: raw/articles/cracking-the-coding-interview.md, raw/articles/good-code-bad-code.md, raw/articles/seriously-good-software.md
+- Created sources/cracking-the-coding-interview.md, sources/good-code-bad-code.md, sources/seriously-good-software.md
+- New concepts: technical-interview, code-quality-pillars, software-quality-dimensions
+- Updated concepts: readability-vs-performance (added quality pillars + dimensions refs), testing-strategy (added quality pillars ref), essential-accidental-complexity (added YAGNI + abstraction refs), fail-fast (added no-surprises/hard-to-misuse refs), system-design-interview (added technical-interview complementary link)
+- Updated index.md: +3 concept entries, +3 source entries
+- Total pages: 94 (72 concepts + 21 sources)
