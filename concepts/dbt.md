@@ -3,8 +3,8 @@ title: "dbt (data build tool)"
 type: concept
 tags: [dbt, data-engineering, analytics, elt, sql, data-modeling]
 created: 2026-05-28
-updated: 2026-05-28
-sources: [unlocking-dbt-design-deploy-transformations]
+updated: 2026-06-08
+sources: [unlocking-dbt-design-deploy-transformations, data-engineering-with-dbt]
 aliases: [data-build-tool]
 ---
 
@@ -172,4 +172,5 @@ If your platform "speaks SQL", there's almost certainly a dbt adapter.
 - Related to [[data-ingestion]] — dbt handles the transform step; ingestion tools handle extract/load
 - Related to [[materialized-views]] — dbt supports materialized views as a materialization strategy
 - Integrates with [[duckdb]] — DuckDB has a community dbt adapter for local development
+- Enabled by [[dataops]] — dbt is the canonical tool that makes DataOps practical for SQL transformations
 - Benchmark source: [[sources/unlocking-dbt-design-deploy-transformations]] — Cameron Cyr & Dustin Dorsey's 351-page guide

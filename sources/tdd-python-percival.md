@@ -6,6 +6,8 @@ author: "Harry J.W. Percival"
 url: ""
 source_date: 2017-01-01
 ingested: 2026-06-03
+created: 2026-06-03
+updated: 2026-06-03
 tags: [python, tdd, testing, django, selenium, ci-cd]
 concepts: [tdd-methodology, functional-testing, testing-strategy]
 ---

@@ -45,3 +45,4 @@ Observability is the ability to understand a system's internal state by examinin
 - Related to [[cache-strategy]] — hit rate and eviction rate reveal cache health
 - Related to [[database-replication]] — replication lag must be monitored
 - Related to [[load-balancer]] — tracks backend health and traffic distribution
+- Required by [[kubernetes-operator]] — production operators export Prometheus metrics, structured logs, and OpenTelemetry traces

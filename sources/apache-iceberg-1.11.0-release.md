@@ -6,6 +6,8 @@ author: "Apache Iceberg PMC"
 url: "https://iceberg.apache.org/blog/apache-iceberg-1.11.0-release/"
 source_date: 2026-05-19
 ingested: 2026-06-05
+created: 2026-06-05
+updated: 2026-06-05
 tags: [iceberg, table-formats, data-lake, release-notes]
 concepts: [apache-iceberg, apache-flink, apache-parquet]
 ---

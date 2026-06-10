@@ -3,8 +3,9 @@ title: "Clean Code Cookbook (Maximiliano Contieri)"
 type: source
 tags: [clean-code, architecture, design-principles, oop]
 created: 2026-05-24
+updated: 2026-05-24
 author: "Maximiliano Contieri"
-source_type: notes
+source_type: book
 source_date: 2026-05-18
 ingested: 2026-05-23
 url: ""

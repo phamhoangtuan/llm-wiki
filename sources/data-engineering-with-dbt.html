@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Python Testing with pytest (Brian Okken) — LLM Wiki</title>
+<title>Data Engineering with dbt — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -68,76 +68,34 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Source</div>
-    <h1>Python Testing with pytest (Brian Okken)<span>.</span></h1>
-    <p class="hero-sub">Brian Okken · book · 2026-05-22</p>
-    <div class="hero-tags"><span class="tag">python</span><span class="tag">testing</span><span class="tag">pytest</span><span class="tag">tdd</span></div>
-    <p class="hero-meta">Ingested: 2026-05-23</p>
+    <h1>Data Engineering with dbt<span>.</span></h1>
+    <p class="hero-sub">Roberto Zagni · book · 2023-01-01</p>
+    <div class="hero-tags"><span class="tag">dbt</span><span class="tag">data-engineering</span><span class="tag">analytics</span><span class="tag">elt</span><span class="tag">dataops</span></div>
+    <p class="hero-meta">Ingested: 2026-06-08</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Personal notes on <strong>Python Testing with pytest (Second Edition)</strong> by Brian Okken — a 398-page book covering pytest from beginner to enterprise level. The notes are written in Vietnamese and cover the full pytest lifecycle: setup, test discovery, assertions, fixtures, parametrization, markers, mocking, plugins, CI integration, and testing strategy.</p>
+<p>A 603-page deep dive into dbt as the core of the Modern Data Stack. Goes beyond tool tutorials to cover the strategic transformation from siloed data operations to collaborative DataOps: the analytics engineer role, Jinja-powered declarative SQL, the 3-tier modeling journey (Conceptual → Logical → Physical), soft boundaries in cloud warehousing, and the pragmatic path to production-grade data platforms.</p>
+<h2>Core Message</h2>
+<blockquote>dbt is not just a tool — it's a mindset shift: transforming data engineering into software engineering, analysts into analytics engineers, and data pipelines into trusted information refineries.</blockquote>
 <h2>Key Takeaways</h2>
-<ul>
-<li><strong>Philosophy</strong>: "Tests are easy to read" — pytest prioritizes readability and simplicity over boilerplate</li>
-<li><strong>Convention over configuration</strong>: Naming conventions (<code>test_<em>.py</code>, <code>test_</em>()</code>, <code>Test*</code>) enable automatic discovery</li>
-<li><strong>Assert rewriting</strong>: pytest intercepts <code>assert</code> statements at runtime to generate rich diffs — no need for <code>assertEqual()</code>, <code>assertTrue()</code>, etc.</li>
-<li><strong>API layer is the sweet spot</strong>: 70-80% effort on API tests, 20-30% on integration/E2E, avoid brittle UI tests</li>
-<li><strong>Fixtures > setup code</strong>: Reusable, composable, clean separation of concerns via <code>@pytest.fixture</code></li>
-<li><strong>Mock with autospec</strong>: <code>create_autospec()</code> prevents "green tests that mask real bugs" when refactoring</li>
-<li><strong>CI integration is mandatory</strong>: Use <code>tox</code>, <code>pytest-cov</code>, GitHub Actions for quality at scale</li>
-</ul>
-<h2>Case Study: Cards App</h2>
-<p>The book uses a task-tracking app called <strong>Cards</strong> with 3 layers:</p>
-<ul>
-<li>CLI Layer (Typer + Rich)</li>
-<li>API Layer (core business logic — test here first)</li>
-<li>DB Layer (TinyDB for persistence)</li>
-</ul>
-<p>Key design insight: <code>@dataclass</code> with <code>compare=False</code> on the <code>id</code> field allows comparing Card objects by content without database-generated IDs interfering.</p>
-<h2>Quotes</h2>
-<blockquote>"Teams need to be able to trust the tests being run by the continuous integration servers to tell them if they can trust their software enough to release it."</blockquote>
-<blockquote>"Testing không phải là 'thuế năng suất' bạn phải trả. Khi dùng đúng công cụ, nó trở thành niềm vui."</blockquote>
+<ol>
+<li><strong>Analytics Engineer is the keystone role</strong>: Bridge between data plumbing and business storytelling; owns the transformation layer</li>
+<li><strong>SQL + Jinja = Superpower</strong>: Declarative logic describes "what"; dbt handles "how" — DRY macros, <code>ref()</code> for DAGs</li>
+<li><strong>DataOps is mandatory</strong>: Version control + automated testing + modularity = maintainable, scalable data platforms</li>
+<li><strong>Soft boundaries > Strong boundaries</strong>: Cloud warehouse + dbt enables flexible data organization without rigid database constraints</li>
+<li><strong>Modeling is a 3-tier journey</strong>: Conceptual → Logical → Physical ensures technical implementation aligns with business goals</li>
+<li><strong>"Copy and paste kills your future self"</strong>: Maintainability is the only success metric — don't trade short-term speed for long-term technical debt</li>
+</ol>
+<h2>Companion Concepts</h2>
+<p>→ <a href="../concepts/dataops.html" class="wiki-link">dataops</a> — the DataOps practice framework</p>
+<p>→ <a href="../concepts/dbt.html" class="wiki-link">dbt</a> — the tool itself</p>
+<p>→ <a href="../concepts/analytics-engineer.html" class="wiki-link">analytics-engineer</a> — the role dbt enables</p>
   </div>
 </section>
 
-<section>
-  <div class="section-label">Knowledge Graph</div>
-  <h2 class="section-title">Connections</h2>
-  <div class="connections-grid">
-    <a class="connection-card" href="../concepts/pytest-basics.html">
-      <span class="connection-type core">Core to</span>
-      <h4>pytest Basics</h4>
-      <p>test discovery, naming conventions</p>
-    </a>
-    <a class="connection-card" href="../concepts/pytest-fixtures.html">
-      <span class="connection-type related">Related to</span>
-      <h4>pytest Fixtures</h4>
-      <p>setup/teardown via dependency injection</p>
-    </a>
-    <a class="connection-card" href="../concepts/pytest-parametrization.html">
-      <span class="connection-type related">Related to</span>
-      <h4>pytest Parametrization</h4>
-      <p>run one test with multiple data sets</p>
-    </a>
-    <a class="connection-card" href="../concepts/pytest-markers.html">
-      <span class="connection-type related">Related to</span>
-      <h4>pytest Markers</h4>
-      <p>tag tests for selective execution</p>
-    </a>
-    <a class="connection-card" href="../concepts/pytest-mocking.html">
-      <span class="connection-type related">Related to</span>
-      <h4>pytest Mocking</h4>
-      <p>isolate external dependencies</p>
-    </a>
-    <a class="connection-card" href="../concepts/testing-strategy.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Testing Strategy</h4>
-      <p>API-first testing, test pyramid</p>
-    </a>
-  </div>
-</section>
 <footer>
   <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
   <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>

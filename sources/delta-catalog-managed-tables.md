@@ -6,6 +6,8 @@ author: "Benjamin Mathew, Scott Sandre, Scott Haines"
 url: "https://delta.io/blog/2026-02-02-delta-catalog-managed-tables/"
 source_date: 2026-02-02
 ingested: 2026-05-31
+created: 2026-05-31
+updated: 2026-05-31
 tags: [delta-lake, unity-catalog, catalog-managed-tables, lakehouse, data-governance]
 concepts: [delta-lake, unity-catalog]
 ---

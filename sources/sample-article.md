@@ -3,6 +3,7 @@ title: "The LLM Wiki Pattern"
 type: source
 tags: [meta, architecture, llm, knowledge-management]
 created: 2026-05-24
+updated: 2026-05-24
 author: "Andrej Karpathy"
 source_type: article
 source_date: 2026-04-04

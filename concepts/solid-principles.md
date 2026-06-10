@@ -3,8 +3,8 @@ title: "SOLID Principles"
 type: concept
 tags: [design-principles, architecture, solid, oop, clean-code]
 created: 2026-05-31
-updated: 2026-05-31
-sources: [dependency-injection-principles-patterns, contieri-clean-code-cookbook]
+updated: 2026-06-08
+sources: [dependency-injection-principles-patterns, contieri-clean-code-cookbook, practical-object-oriented-design]
 ---
 
 ## Summary
@@ -106,4 +106,5 @@ SOLID is guidance, not dogma:
 - Related to [[rich-domain-model]] — SOLID enables rich domain objects with injected dependencies
 - Related to [[fail-fast]] — guard clauses in constructors enforce valid state at creation time
 - Related to [[immutability]] — readonly fields prevent accidental mutation of injected dependencies
+- Foundation for [[object-oriented-design]] — SRP anchors the TRUE framework; OCP/LSP/ISP/DIP enable practical, change-tolerant design
 - Benchmark source: [[sources/dependency-injection-principles-patterns]] — van Deursen & Seemann's definitive guide

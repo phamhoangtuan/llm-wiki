@@ -5,6 +5,8 @@ source_type: book
 author: "Steven van Deursen & Mark Seemann"
 source_date: 2019-01-01
 ingested: 2026-05-31
+created: 2026-05-31
+updated: 2026-05-31
 url: ""
 tags: [dependency-injection, design-patterns, solid, architecture, testing]
 concepts: [dependency-injection, composition-root, solid-principles]

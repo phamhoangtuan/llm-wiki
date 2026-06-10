@@ -6,6 +6,8 @@ author: "Jeffrey Gong, Yu Xu, Rahul Mahadev"
 url: "https://www.databricks.com/blog/debunking-8-data-layout-myths-why-liquid-clustering-outperforms-partitioning"
 source_date: 2026-06-01
 ingested: 2026-06-02
+created: 2026-06-02
+updated: 2026-06-02
 tags: [liquid-clustering, delta-lake, iceberg, data-layout, partitioning, z-ordering, databricks]
 concepts: [liquid-clustering, delta-lake, apache-iceberg]
 ---

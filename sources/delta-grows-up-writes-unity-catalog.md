@@ -6,6 +6,8 @@ author: "Ben Fleis (DuckDB Labs)"
 url: "https://delta.io/blog/2026-05-06-delta-grows-up-writes-time-travel-and-unity-catalog/"
 source_date: 2026-05-06
 ingested: 2026-05-28
+created: 2026-05-28
+updated: 2026-05-28
 tags: [delta-lake, unity-catalog, duckdb, time-travel, data-lake, lakehouse]
 concepts: [delta-lake, unity-catalog, duckdb, apache-iceberg]
 ---

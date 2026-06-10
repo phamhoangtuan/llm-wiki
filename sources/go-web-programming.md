@@ -6,6 +6,8 @@ author: "Sau Sheong Chang"
 url: ""
 source_date: 2015-01-01
 ingested: 2026-06-03
+created: 2026-06-03
+updated: 2026-06-03
 tags: [go, web, golang, http, backend, concurrency]
 concepts: [goroutines, go-http-handlers, go-template-escaping, go-web-ecosystem, middleware-pattern]
 ---

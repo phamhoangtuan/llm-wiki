@@ -5,6 +5,8 @@ source_type: book
 author: "Tom Long"
 source_date: 2021-01-01
 ingested: 2026-06-08
+created: 2026-06-08
+updated: 2026-06-08
 url: ""
 tags: [clean-code, engineering, design-principles, maintainability]
 concepts: [code-quality-pillars]

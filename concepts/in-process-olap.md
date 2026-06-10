@@ -64,4 +64,4 @@ Production Deployment
 ---
 - Core to [[duckdb]] — "SQLite for analytics" — the reference implementation
 - Enabled by [[vectorized-execution]] — makes in-process analytical performance practical
-- Related to [[duckdb-up-and-running]] — Wei-Meng Lee's guide covers the in-process architecture
+- Related to [[sources/duckdb-up-and-running]] — Wei-Meng Lee's guide covers the in-process architecture

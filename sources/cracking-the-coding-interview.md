@@ -5,6 +5,8 @@ source_type: book
 author: "Gayle Laakmann McDowell"
 source_date: 2015-01-01
 ingested: 2026-06-08
+created: 2026-06-08
+updated: 2026-06-08
 url: ""
 tags: [interview, algorithms, problem-solving, career]
 concepts: [technical-interview]

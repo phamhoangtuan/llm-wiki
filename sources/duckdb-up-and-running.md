@@ -3,8 +3,9 @@ title: "DuckDB: Up and Running"
 type: source
 tags: [duckdb, olap, analytics, python, data-engineering]
 created: 2026-05-24
+updated: 2026-05-24
 author: "Wei-Meng Lee"
-source_type: ebook
+source_type: book
 source_date: 2024-05-24
 ingested: 2026-05-24
 url: ""

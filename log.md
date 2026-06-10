@@ -245,3 +245,27 @@
 - Updated concepts: readability-vs-performance (added quality pillars + dimensions refs), testing-strategy (added quality pillars ref), essential-accidental-complexity (added YAGNI + abstraction refs), fail-fast (added no-surprises/hard-to-misuse refs), system-design-interview (added technical-interview complementary link)
 - Updated index.md: +3 concept entries, +3 source entries
 - Total pages: 94 (72 concepts + 21 sources)
+
+## [2026-06-08] ingest | Data Engineering with dbt, Practical Object-Oriented Design, Programming Kubernetes
+
+- Source 1: "Data Engineering with dbt" by Roberto Zagni (ebook, 603 pages, finished 2026-05-08)
+- Source 2: "Practical Object-Oriented Design, 2nd Edition" by Sandi Metz (ebook, 334 pages, finished 2026-05-09)
+- Source 3: "Programming Kubernetes" by Stefan Schimanski & Michael Hausenblas (ebook, 244 pages, finished 2026-05-07)
+- Copied to: raw/articles/data-engineering-with-dbt.md, raw/articles/practical-object-oriented-design.md, raw/articles/programming-kubernetes.md
+- Created sources/data-engineering-with-dbt.md, sources/practical-object-oriented-design.md, sources/programming-kubernetes.md
+- New concepts: dataops, object-oriented-design, kubernetes-operator
+- Updated concepts: dbt (added DataOps backlink + source), analytics-engineer (added DataOps backlink + source), solid-principles (added OO-design foundation backlink), tell-dont-ask (added OO-design messages backlink), code-quality-pillars (added TRUE/DataOps connections), software-quality-dimensions (added design-as-discovery connection), elt (added source), go-web-ecosystem (added K8s operator link), goroutines (added K8s controller concurrency link), observability (added operator metrics/traces link)
+- Updated index.md: +3 concept entries, +3 source entries
+- Total pages: 100 (75 concepts + 24 sources)
+
+## [2026-06-08] lint | Comprehensive health check + fix pass
+
+- Scanned all 100 wiki pages across 5 lint dimensions (broken wikilinks, orphans, frontmatter, contradictions, knowledge gaps)
+- Fixed 3 broken wikilinks: added `sources/` prefix to `lance-file-format.md`, `vectorized-execution.md`, `in-process-olap.md`
+- Fixed 4 invalid `source_type` values: `notes`/`ebook` → `book` across contieri-clean-code-cookbook, okken-python-testing-pytest, duckdb-up-and-running, system-design-interview-xu
+- Added missing `created`/`updated` frontmatter fields to all 24 source files
+- Created concepts/middleware-pattern.md — gap: declared in go-web-programming.md source frontmatter but no concept page existed
+- Orphans: 4 concept pages (apache-arrow, database-sharding, go-template-escaping, knowledge-graph) + 10 source pages with only 1 inbound link — low priority, no 0-count orphans
+- Contradictions: 0 found after systematic examination of 30+ concept page pairs
+- Updated index.md: +1 concept entry
+- Total pages: 101 (76 concepts + 24 sources)

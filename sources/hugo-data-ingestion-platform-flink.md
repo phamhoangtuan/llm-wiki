@@ -6,6 +6,8 @@ author: "Shuguang Xiang, Hung Nguyen, Hung Tran Viet, Shi Kai Ng"
 url: "https://engineering.grab.com/one-click-data-ingestion-platform-with-apache-flink"
 source_date: 2026-05-22
 ingested: 2026-05-26
+created: 2026-05-26
+updated: 2026-05-26
 tags: [data-ingestion, apache-flink, cdc, kafka, data-lake, grab, data-engineering]
 concepts: [apache-flink, change-data-capture, data-ingestion, apache-kafka, apache-iceberg]
 ---

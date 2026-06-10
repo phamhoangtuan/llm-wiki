@@ -5,6 +5,8 @@ source_type: book
 author: "Cameron Cyr & Dustin Dorsey"
 source_date: 2025-01-01
 ingested: 2026-05-28
+created: 2026-05-28
+updated: 2026-05-28
 url: ""
 tags: [dbt, data-engineering, analytics, elt, data-modeling, sql]
 concepts: [dbt, analytics-engineer, elt]

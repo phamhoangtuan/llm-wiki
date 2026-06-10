@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Python Testing with pytest (Brian Okken) — LLM Wiki</title>
+<title>Practical Object-Oriented Design, 2nd Edition — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -68,76 +68,33 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Source</div>
-    <h1>Python Testing with pytest (Brian Okken)<span>.</span></h1>
-    <p class="hero-sub">Brian Okken · book · 2026-05-22</p>
-    <div class="hero-tags"><span class="tag">python</span><span class="tag">testing</span><span class="tag">pytest</span><span class="tag">tdd</span></div>
-    <p class="hero-meta">Ingested: 2026-05-23</p>
+    <h1>Practical Object-Oriented Design, 2nd Edition<span>.</span></h1>
+    <p class="hero-sub">Sandi Metz · book · 2018-01-01</p>
+    <div class="hero-tags"><span class="tag">oop</span><span class="tag">design-principles</span><span class="tag">ruby</span><span class="tag">maintainability</span><span class="tag">agile</span></div>
+    <p class="hero-meta">Ingested: 2026-06-08</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Personal notes on <strong>Python Testing with pytest (Second Edition)</strong> by Brian Okken — a 398-page book covering pytest from beginner to enterprise level. The notes are written in Vietnamese and cover the full pytest lifecycle: setup, test discovery, assertions, fixtures, parametrization, markers, mocking, plugins, CI integration, and testing strategy.</p>
+<p>A 334-page field guide to practical object-oriented design. Rejects big-up-front-design in favor of design-as-discovery, introduces the TRUE standard (Transparent, Reasonable, Usable, Exemplary) for measuring design quality, and roots OOP in message-passing between objects rather than class hierarchies. SRP is treated as the foundational principle — classes should do the smallest possible useful thing.</p>
+<h2>Core Message</h2>
+<blockquote>Design is not a luxury for perfect projects. It's a survival requirement for managing change — the one thing guaranteed to happen over a software system's lifetime. The purpose of design is to allow you to do design later.</blockquote>
 <h2>Key Takeaways</h2>
-<ul>
-<li><strong>Philosophy</strong>: "Tests are easy to read" — pytest prioritizes readability and simplicity over boilerplate</li>
-<li><strong>Convention over configuration</strong>: Naming conventions (<code>test_<em>.py</code>, <code>test_</em>()</code>, <code>Test*</code>) enable automatic discovery</li>
-<li><strong>Assert rewriting</strong>: pytest intercepts <code>assert</code> statements at runtime to generate rich diffs — no need for <code>assertEqual()</code>, <code>assertTrue()</code>, etc.</li>
-<li><strong>API layer is the sweet spot</strong>: 70-80% effort on API tests, 20-30% on integration/E2E, avoid brittle UI tests</li>
-<li><strong>Fixtures > setup code</strong>: Reusable, composable, clean separation of concerns via <code>@pytest.fixture</code></li>
-<li><strong>Mock with autospec</strong>: <code>create_autospec()</code> prevents "green tests that mask real bugs" when refactoring</li>
-<li><strong>CI integration is mandatory</strong>: Use <code>tox</code>, <code>pytest-cov</code>, GitHub Actions for quality at scale</li>
-</ul>
-<h2>Case Study: Cards App</h2>
-<p>The book uses a task-tracking app called <strong>Cards</strong> with 3 layers:</p>
-<ul>
-<li>CLI Layer (Typer + Rich)</li>
-<li>API Layer (core business logic — test here first)</li>
-<li>DB Layer (TinyDB for persistence)</li>
-</ul>
-<p>Key design insight: <code>@dataclass</code> with <code>compare=False</code> on the <code>id</code> field allows comparing Card objects by content without database-generated IDs interfering.</p>
-<h2>Quotes</h2>
-<blockquote>"Teams need to be able to trust the tests being run by the continuous integration servers to tell them if they can trust their software enough to release it."</blockquote>
-<blockquote>"Testing không phải là 'thuế năng suất' bạn phải trả. Khi dùng đúng công cụ, nó trở thành niềm vui."</blockquote>
+<ol>
+<li><strong>Change is King</strong>: Design exists to manage change, not to achieve upfront perfection</li>
+<li><strong>TRUE Standard</strong>: Code should be Transparent (consequences clear), Reasonable (cost proportional), Usable (reusable), Exemplary (encourages others to follow)</li>
+<li><strong>No BUFD</strong>: Big Up Front Design is an illusion — design is continuous discovery alongside coding</li>
+<li><strong>Technical Debt</strong>: Choosing speed over design borrows time from the future — you pay with interest</li>
+<li><strong>Messages > Methods</strong>: OOP is about objects sending messages, not calling functions — think communication, not execution</li>
+<li><strong>SRP as Foundation</strong>: Smallest possible useful thing — isolate change by giving each class one reason to change</li>
+</ol>
+<h2>Companion Concepts</h2>
+<p>→ <a href="../concepts/object-oriented-design.html" class="wiki-link">object-oriented-design</a> — the TRUE framework and design philosophy</p>
+<p>→ <a href="../concepts/solid-principles.html" class="wiki-link">solid-principles</a> — SRP, OCP, LSP, ISP, DIP — the formal foundation POOD builds on</p>
   </div>
 </section>
 
-<section>
-  <div class="section-label">Knowledge Graph</div>
-  <h2 class="section-title">Connections</h2>
-  <div class="connections-grid">
-    <a class="connection-card" href="../concepts/pytest-basics.html">
-      <span class="connection-type core">Core to</span>
-      <h4>pytest Basics</h4>
-      <p>test discovery, naming conventions</p>
-    </a>
-    <a class="connection-card" href="../concepts/pytest-fixtures.html">
-      <span class="connection-type related">Related to</span>
-      <h4>pytest Fixtures</h4>
-      <p>setup/teardown via dependency injection</p>
-    </a>
-    <a class="connection-card" href="../concepts/pytest-parametrization.html">
-      <span class="connection-type related">Related to</span>
-      <h4>pytest Parametrization</h4>
-      <p>run one test with multiple data sets</p>
-    </a>
-    <a class="connection-card" href="../concepts/pytest-markers.html">
-      <span class="connection-type related">Related to</span>
-      <h4>pytest Markers</h4>
-      <p>tag tests for selective execution</p>
-    </a>
-    <a class="connection-card" href="../concepts/pytest-mocking.html">
-      <span class="connection-type related">Related to</span>
-      <h4>pytest Mocking</h4>
-      <p>isolate external dependencies</p>
-    </a>
-    <a class="connection-card" href="../concepts/testing-strategy.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Testing Strategy</h4>
-      <p>API-first testing, test pyramid</p>
-    </a>
-  </div>
-</section>
 <footer>
   <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
   <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>

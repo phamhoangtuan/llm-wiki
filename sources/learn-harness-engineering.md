@@ -6,6 +6,8 @@ author: "walkinglabs"
 url: "https://walkinglabs.github.io/learn-harness-engineering/en/"
 source_date: 2025-01-01
 ingested: 2026-05-31
+created: 2026-05-31
+updated: 2026-05-31
 tags: [ai-engineering, agents, harness, verification, reliability]
 concepts: [harness-engineering]
 ---

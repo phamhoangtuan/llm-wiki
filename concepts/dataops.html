@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Observability — LLM Wiki</title>
+<title>DataOps — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,82 +82,120 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Observability<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">system-design</span><span class="tag">monitoring</span><span class="tag">metrics</span><span class="tag">reliability</span><span class="tag">devops</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu · Updated: 2026-05-24</p>
+    <h1>DataOps<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">data-engineering</span><span class="tag">devops</span><span class="tag">dbt</span><span class="tag">analytics</span><span class="tag">methodology</span></div>
+    <p class="hero-meta">Source: data-engineering-with-dbt · Updated: 2026-06-08</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Observability is the ability to understand a system's internal state by examining its outputs — metrics, logs, and traces. In distributed systems, observability is not optional: without it, you cannot detect failures, debug issues, or make informed scaling decisions.</p>
-<h2>The Three Pillars</h2>
+<p>DataOps applies software engineering best practices — version control, automated testing, modularity, CI/CD — to data pipelines and transformations. It represents the shift from ad-hoc data wrangling to disciplined, collaborative data platform engineering, with dbt serving as the canonical transformation-layer catalyst.</p>
+<h2>The Mindset Shift</h2>
+<table><thead><tr>
+<th>Old Way</th>
+<th>DataOps Way</th>
+</tr></thead><tbody>
+<tr>
+<td>Data silos: engineers and analysts work separately</td>
+<td>[[analytics-engineer</td>
+<td>Analytics Engineer]] bridges both worlds</td>
+</tr>
+<tr>
+<td>Business logic hidden in spreadsheets, stored procedures</td>
+<td>Logic transparent in version-controlled SQL + YAML</td>
+</tr>
+<tr>
+<td>Brittle pipelines, manual testing, tribal knowledge</td>
+<td>Automated tests, documented lineage, reusable models</td>
+</tr>
+<tr>
+<td>Reactive firefighting when dashboards break</td>
+<td>Proactive quality gates catch issues before stakeholders see them</td>
+</tr>
+</tbody></table>
+<blockquote>"Copy and paste kills your future self." — The DataOps philosophy: maintainability is the only success metric.</blockquote>
+<h2>Three Pillars of DataOps with dbt</h2>
 <table><thead><tr>
 <th>Pillar</th>
-<th>What It Captures</th>
-<th>Example</th>
+<th>Practice</th>
+<th>Benefit</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Metrics</strong></td>
-<td>Numeric data over time</td>
-<td>CPU usage, request latency, error rate</td>
+<td><strong>Version Control</strong> 📦</td>
+<td>Every model, test, and config in Git (PRs, code review)</td>
+<td>Track changes, collaborate, roll back confidently</td>
 </tr>
 <tr>
-<td><strong>Logs</strong></td>
-<td>Discrete events</td>
-<td>"User login failed: wrong password", "DB connection timeout"</td>
+<td><strong>Quality Assurance</strong> 🧪</td>
+<td>Automated tests: <code>unique</code>, <code>not_null</code>, <code>relationships</code>, custom SQL tests</td>
+<td>Catch data issues at the source, not in dashboards</td>
 </tr>
 <tr>
-<td><strong>Traces</strong></td>
-<td>Request path through services</td>
-<td><code>GET /api/users</code> → LB → Web → DB → Cache</td>
+<td><strong>Modularity</strong> 🧱</td>
+<td>Break monolithic scripts into reusable models + macros</td>
+<td>Reduce technical debt, easier onboarding, faster iteration</td>
 </tr>
 </tbody></table>
-<h2>Monitoring Levels</h2>
+<h2>The 3-Tier Modeling Journey</h2>
+<p>Zagni's Pragmatic Data Platform (PDP) framework ensures technical implementation aligns with business reality:</p>
+<pre><code>1. Conceptual Model → &quot;What are the business entities?&quot;
+   (Customer, Order, Product, Revenue)
+
+2. Logical Model → &quot;How do they relate?&quot;
+   (Customer 1→N Orders, Order N→M Products)
+
+3. Physical Model → &quot;How to implement in the warehouse?&quot;
+   (dim_customers, fct_orders, bridge_order_products)</code></pre>
 <table><thead><tr>
-<th>Level</th>
-<th>Metrics</th>
-<th>Purpose</th>
+<th>Skip This</th>
+<th>Consequence</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Host-level</strong></td>
-<td>CPU, memory, disk I/O, network</td>
-<td>Detect server overload or hardware failure</td>
+<td>Conceptual</td>
+<td>Misalignment between tech and business → rework</td>
 </tr>
 <tr>
-<td><strong>Aggregated-level</strong></td>
-<td>DB query latency, cache hit rate, queue length</td>
-<td>Evaluate health of each tier</td>
+<td>Logical</td>
+<td>Vague relationships → incorrect analytics</td>
 </tr>
 <tr>
-<td><strong>Business-level</strong></td>
-<td>DAU, conversion rate, revenue</td>
-<td>Measure real-world system impact</td>
+<td>Jump straight to Physical</td>
+<td>Technically correct model nobody understands or uses</td>
 </tr>
 </tbody></table>
-<h2>Key Metrics to Track</h2>
+<h2>Soft Boundaries in Cloud Warehousing</h2>
+<p>Cloud data platforms enable a fundamental reorganization:</p>
 <table><thead><tr>
-<th>Metric</th>
-<th>Why It Matters</th>
+<th>Old (On-Prem PostgreSQL)</th>
+<th>New (Cloud + dbt)</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Latency</strong></td>
-<td>p50, p95, p99 response times — users feel p95, not average</td>
+<td>Database = rigid "strong boundary"</td>
+<td>Database/schema = flexible "soft folders"</td>
 </tr>
 <tr>
-<td><strong>Throughput</strong></td>
-<td>Requests per second — capacity planning</td>
+<td>Manual security, complex access management</td>
+<td>dbt automation + hierarchical RBAC</td>
 </tr>
 <tr>
-<td><strong>Error rate</strong></td>
-<td>4xx/5xx percentage — reliability indicator</td>
-</tr>
-<tr>
-<td><strong>Saturation</strong></td>
-<td>How "full" a resource is (CPU > 80%? Queue depth?)</td>
+<td>Vertical scaling only</td>
+<td>Horizontal scaling on-demand</td>
 </tr>
 </tbody></table>
-<blockquote><strong>Principle</strong>: You can't scale what you can't measure. Manual operations don't scale — automate monitoring, alerting, and remediation.</blockquote>
+<p><strong>Project structure reflects business domains</strong>, not database constraints:</p>
+<pre><code>models/
+├── staging/       # Raw → cleaned (soft boundary: staging schema)
+├── intermediate/  # Business logic (soft boundary: intermediate schema)
+└── marts/         # Business-ready (soft boundary: analytics schema)
+    ├── finance/
+    ├── marketing/
+    └── product/</code></pre>
+<h2>The Modern Data Stack Ecosystem</h2>
+<p>dbt is the core of a larger ecosystem:</p>
+<pre><code>Ingestion (Fivetran, Airbyte) → Storage (Snowflake, BigQuery) → Transformation (dbt)
+→ Orchestration (Airflow, Dagster) → BI (Looker, Metabase)</code></pre>
+<p>DataOps ensures each layer is versioned, tested, and maintainable.</p>
   </div>
 </section>
 
@@ -165,35 +203,35 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>essential for operating distributed systems</p>
-    </a>
-    <a class="connection-card" href="message-queue.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Message Queue</h4>
-      <p>queue depth and consumer lag are critical signals</p>
-    </a>
-    <a class="connection-card" href="cache-strategy.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Cache Strategy</h4>
-      <p>hit rate and eviction rate reveal cache health</p>
-    </a>
-    <a class="connection-card" href="database-replication.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Database Replication</h4>
-      <p>replication lag must be monitored</p>
-    </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>tracks backend health and traffic distribution</p>
-    </a>
-    <a class="connection-card" href="kubernetes-operator.html">
+    <a class="connection-card" href="dbt.html">
       <span class="connection-type related">Related</span>
-      <h4>Kubernetes Operator</h4>
-      <p>production operators export Prometheus metrics, structured logs, and OpenTelemetry traces</p>
+      <h4>dbt (data build tool)</h4>
+      <p>dbt is the canonical tool that makes DataOps practical for SQL transformations</p>
+    </a>
+    <a class="connection-card" href="analytics-engineer.html">
+      <span class="connection-type related">Related</span>
+      <h4>Analytics Engineer</h4>
+      <p>the role that practices DataOps daily</p>
+    </a>
+    <a class="connection-card" href="elt.html">
+      <span class="connection-type related">Related to</span>
+      <h4>ELT (Extract-Load-Transform)</h4>
+      <p>DataOps governs the transformation (T) step with engineering discipline</p>
+    </a>
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Ingestion</h4>
+      <p>ingested data flows into DataOps-managed transformation pipelines</p>
+    </a>
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Informs</span>
+      <h4>Code Quality Pillars</h4>
+      <p>DataOps applies the same modularity, testing, and reuse principles to data</p>
+    </a>
+    <a class="connection-card" href="../sources/data-engineering-with-dbt.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineering with dbt</h4>
+      <p>Roberto Zagni's 603-page guide</p>
     </a>
   </div>
 </section>

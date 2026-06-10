@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Observability — LLM Wiki</title>
+<title>Middleware Pattern — LLM Wiki</title>
 <style>
   :root {
     --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
@@ -82,82 +82,104 @@
       Back to Wiki Index
     </a>
     <div class="hero-badge">Concept</div>
-    <h1>Observability<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">system-design</span><span class="tag">monitoring</span><span class="tag">metrics</span><span class="tag">reliability</span><span class="tag">devops</span></div>
-    <p class="hero-meta">Source: system-design-interview-xu · Updated: 2026-05-24</p>
+    <h1>Middleware Pattern<span>.</span></h1>
+    <div class="hero-tags"><span class="tag">go</span><span class="tag">golang</span><span class="tag">http</span><span class="tag">middleware</span><span class="tag">web</span><span class="tag">design-patterns</span></div>
+    <p class="hero-meta">Source: go-web-programming · Updated: 2026-06-08</p>
   </div>
 </div>
 <section>
   <div class="content-area">
 <h2>Summary</h2>
-<p>Observability is the ability to understand a system's internal state by examining its outputs — metrics, logs, and traces. In distributed systems, observability is not optional: without it, you cannot detect failures, debug issues, or make informed scaling decisions.</p>
-<h2>The Three Pillars</h2>
+<p>The Middleware Pattern wraps HTTP handlers with composable layers of cross-cutting behavior — authentication, logging, rate limiting, compression. Each middleware is a function that takes a handler and returns a handler, forming chains like <code>protect(logRequests(handler))</code>. This pattern keeps business logic clean by separating orthogonal concerns into reusable, stackable components.</p>
+<h2>How It Works</h2>
+<p>Each middleware is a higher-order function:</p>
+<pre><code class="language-go">func logRequests(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        log.Printf(&quot;%s %s&quot;, r.Method, r.URL.Path)
+        next.ServeHTTP(w, r)
+    })
+}
+
+func protect(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        if !isAuthenticated(r) {
+            http.Error(w, &quot;Unauthorized&quot;, 401)
+            return
+        }
+        next.ServeHTTP(w, r)
+    })
+}</code></pre>
+<p><strong>Chaining</strong>: <code>protect(logRequests(handler))</code> — requests pass through <code>protect</code> (auth check) → <code>logRequests</code> (logging) → the core handler. Like Lego bricks — each middleware adds one responsibility without touching the others.</p>
+<h2>Why This Pattern</h2>
 <table><thead><tr>
-<th>Pillar</th>
-<th>What It Captures</th>
-<th>Example</th>
+<th>Problem</th>
+<th>Middleware Solution</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Metrics</strong></td>
-<td>Numeric data over time</td>
-<td>CPU usage, request latency, error rate</td>
+<td>Cross-cutting concerns mixed into handlers</td>
+<td>Separate auth, logging, CORS into middleware</td>
 </tr>
 <tr>
-<td><strong>Logs</strong></td>
-<td>Discrete events</td>
-<td>"User login failed: wrong password", "DB connection timeout"</td>
+<td>Repeated boilerplate in every handler</td>
+<td>Write once, stack everywhere</td>
 </tr>
 <tr>
-<td><strong>Traces</strong></td>
-<td>Request path through services</td>
-<td><code>GET /api/users</code> → LB → Web → DB → Cache</td>
+<td>Hard to add/remove orthogonal behavior</td>
+<td>Add or drop middleware without changing handlers</td>
+</tr>
+<tr>
+<td>Testing concerns in isolation</td>
+<td>Test each middleware independently</td>
 </tr>
 </tbody></table>
-<h2>Monitoring Levels</h2>
+<h2>The Three Middleware Rules</h2>
+<ol>
+<li><strong>Middleware wraps a handler</strong> — takes <code>http.Handler</code>, returns <code>http.Handler</code></li>
+<li><strong>Order matters</strong> — outer middleware runs first (e.g., auth before logging)</li>
+<li><strong>Middleware is stateless</strong> — each request gets a fresh chain</li>
+</ol>
+<h2>In Go's Standard Library</h2>
+<p>Go's <code>net/http</code> supports middleware natively through the <code>http.Handler</code> interface. No framework required:</p>
+<pre><code class="language-go">mux := http.NewServeMux()
+mux.HandleFunc(&quot;/api/data&quot;, dataHandler)
+
+// Stack middleware from outside-in:
+handler := protect(logRequests(recoverPanic(mux)))
+http.ListenAndServe(&quot;:8080&quot;, handler)</code></pre>
+<h2>Common Middleware Examples</h2>
 <table><thead><tr>
-<th>Level</th>
-<th>Metrics</th>
+<th>Middleware</th>
 <th>Purpose</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Host-level</strong></td>
-<td>CPU, memory, disk I/O, network</td>
-<td>Detect server overload or hardware failure</td>
+<td><strong>Auth</strong></td>
+<td>Validate tokens/sessions; reject unauthorized requests</td>
 </tr>
 <tr>
-<td><strong>Aggregated-level</strong></td>
-<td>DB query latency, cache hit rate, queue length</td>
-<td>Evaluate health of each tier</td>
+<td><strong>Logging</strong></td>
+<td>Record method, path, duration, status code</td>
 </tr>
 <tr>
-<td><strong>Business-level</strong></td>
-<td>DAU, conversion rate, revenue</td>
-<td>Measure real-world system impact</td>
+<td><strong>Recovery</strong></td>
+<td>Catch panics, return 500 instead of crashing</td>
+</tr>
+<tr>
+<td><strong>CORS</strong></td>
+<td>Set cross-origin headers for browser access</td>
+</tr>
+<tr>
+<td><strong>Rate Limiting</strong></td>
+<td>Throttle requests per IP/user</td>
+</tr>
+<tr>
+<td><strong>Compression</strong></td>
+<td>Gzip response bodies for bandwidth savings</td>
+</tr>
+<tr>
+<td><strong>Tracing</strong></td>
+<td>Inject trace IDs for distributed observability</td>
 </tr>
 </tbody></table>
-<h2>Key Metrics to Track</h2>
-<table><thead><tr>
-<th>Metric</th>
-<th>Why It Matters</th>
-</tr></thead><tbody>
-<tr>
-<td><strong>Latency</strong></td>
-<td>p50, p95, p99 response times — users feel p95, not average</td>
-</tr>
-<tr>
-<td><strong>Throughput</strong></td>
-<td>Requests per second — capacity planning</td>
-</tr>
-<tr>
-<td><strong>Error rate</strong></td>
-<td>4xx/5xx percentage — reliability indicator</td>
-</tr>
-<tr>
-<td><strong>Saturation</strong></td>
-<td>How "full" a resource is (CPU > 80%? Queue depth?)</td>
-</tr>
-</tbody></table>
-<blockquote><strong>Principle</strong>: You can't scale what you can't measure. Manual operations don't scale — automate monitoring, alerting, and remediation.</blockquote>
   </div>
 </section>
 
@@ -165,35 +187,20 @@
   <div class="section-label">Knowledge Graph</div>
   <h2 class="section-title">Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Scalable Architecture</h4>
-      <p>essential for operating distributed systems</p>
-    </a>
-    <a class="connection-card" href="message-queue.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Message Queue</h4>
-      <p>queue depth and consumer lag are critical signals</p>
-    </a>
-    <a class="connection-card" href="cache-strategy.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Cache Strategy</h4>
-      <p>hit rate and eviction rate reveal cache health</p>
-    </a>
-    <a class="connection-card" href="database-replication.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Database Replication</h4>
-      <p>replication lag must be monitored</p>
-    </a>
-    <a class="connection-card" href="load-balancer.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>tracks backend health and traffic distribution</p>
-    </a>
-    <a class="connection-card" href="kubernetes-operator.html">
+    <a class="connection-card" href="go-http-handlers.html">
       <span class="connection-type related">Related</span>
-      <h4>Kubernetes Operator</h4>
-      <p>production operators export Prometheus metrics, structured logs, and OpenTelemetry traces</p>
+      <h4>Go HTTP Handlers</h4>
+      <p>middleware operates on the `http.Handler` interface</p>
+    </a>
+    <a class="connection-card" href="go-web-ecosystem.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Go Web Ecosystem</h4>
+      <p>middleware chains embody Go's standard-library-first philosophy</p>
+    </a>
+    <a class="connection-card" href="../sources/go-web-programming.html">
+      <span class="connection-type related">Related</span>
+      <h4>Go Web Programming</h4>
+      <p>Sau Sheong Chang's guide to Go web apps</p>
     </a>
   </div>
 </section>

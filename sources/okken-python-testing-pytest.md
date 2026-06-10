@@ -3,8 +3,9 @@ title: "Python Testing with pytest (Brian Okken)"
 type: source
 tags: [python, testing, pytest, tdd]
 created: 2026-05-24
+updated: 2026-05-24
 author: "Brian Okken"
-source_type: notes
+source_type: book
 source_date: 2026-05-22
 ingested: 2026-05-23
 url: ""

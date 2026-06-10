@@ -45,4 +45,4 @@ In DuckDB, the vectorized engine works hand-in-hand with **columnar storage**: d
 ---
 - Used by [[duckdb]] — one of four architectural pillars of DuckDB's performance
 - Supports [[in-process-olap]] — vectorized execution makes laptop-scale analytics practical
-- Related to [[duckdb-up-and-running]] — Wei-Meng Lee's guide on DuckDB architecture
+- Related to [[sources/duckdb-up-and-running]] — Wei-Meng Lee's guide on DuckDB architecture

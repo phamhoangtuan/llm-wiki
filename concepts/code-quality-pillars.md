@@ -4,7 +4,7 @@ type: concept
 tags: [design-principles, clean-code, engineering, maintainability]
 created: 2026-06-08
 updated: 2026-06-08
-sources: [good-code-bad-code]
+sources: [good-code-bad-code, practical-object-oriented-design]
 aliases: [six-pillars-of-code-quality]
 ---
 
@@ -124,4 +124,6 @@ Code Change → Code Review (proofreading) → Commit → Pre-submit Checks (aut
 - Related to [[immutability]] — immutability makes code harder to misuse (pillar 3)
 - Related to [[rich-domain-model]] — cohesive classes embody rich behavior (pillar 4)
 - Contrasted with [[software-quality-dimensions]] — complementary framework: pillars (tactical) vs dimensions (analytical)
+- Complements [[object-oriented-design]] — TRUE (Transparent/Reasonable) aligns with readability and modularity pillars
+- Informs [[dataops]] — DataOps applies the same modularity, testing, and reuse pillars to data pipelines
 - Benchmark source: [[sources/good-code-bad-code]] — Tom Long's 338-page guide

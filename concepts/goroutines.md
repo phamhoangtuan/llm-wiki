@@ -58,4 +58,5 @@ Goroutines are not free. Profile before optimizing — `pprof` helps identify go
 ---
 - Foundation for [[go-web-ecosystem]] — goroutines are the engine behind Go's web scalability
 - Related to [[go-http-handlers]] — each HTTP handler runs in its own goroutine
+- Enables [[kubernetes-operator]] — K8s controllers leverage goroutines for watch loops and parallel reconciliation
 - Benchmark source: [[sources/go-web-programming]] — Sau Sheong Chang's guide to Go web apps

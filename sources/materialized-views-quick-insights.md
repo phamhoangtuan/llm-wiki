@@ -3,6 +3,7 @@ title: "Quick Insights on Materialized Views"
 type: source
 tags: [materialized-views, streaming, databases, data-engineering]
 created: 2026-05-24
+updated: 2026-05-24
 author: "Vu Trinh"
 source_type: article
 source_date: 2026-05-21

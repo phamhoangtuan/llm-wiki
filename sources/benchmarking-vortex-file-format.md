@@ -6,6 +6,8 @@ author: "Daniel Beach"
 url: "https://dataengineeringcentral.substack.com/p/benchmarking-vortex-file-format-vs"
 source_date: 2026-05-25
 ingested: 2026-05-26
+created: 2026-05-26
+updated: 2026-05-26
 tags: [file-formats, benchmarking, vortex, parquet, duckdb, polars, datafusion]
 concepts: [vortex-file-format, polars, apache-datafusion, duckdb, apache-parquet, lance-file-format]
 ---

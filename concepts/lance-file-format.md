@@ -33,4 +33,4 @@ Lance competes in the same space as other "next-generation" columnar formats aim
 ---
 - Competes with [[apache-parquet]] — Lance is another next-gen columnar format targeting Parquet's dominance
 - Related to [[vortex-file-format]] — both are modern columnar formats seeking to replace Parquet for specific workloads
-- Reference: [[benchmarking-vortex-file-format]] — mentioned as a comparison target (not tested)
+- Reference: [[sources/benchmarking-vortex-file-format]] — mentioned as a comparison target (not tested)

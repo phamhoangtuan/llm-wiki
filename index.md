@@ -79,6 +79,10 @@
 - [Technical Interview](concepts/technical-interview.html) — Philosophy of coding interviews: relative evaluation, false positives/negatives, company cultures, BUD optimization, Talk Aloud
 - [Code Quality Pillars](concepts/code-quality-pillars.html) — Engineering vs Coding distinction, 4 goals and 6 tactical pillars for maintainable software
 - [Software Quality Dimensions](concepts/software-quality-dimensions.html) — Multi-dimensional quality spectrum, four core trade-offs, YAGNI, analyzability, abstraction costs
+- [DataOps](concepts/dataops.html) — Applying software engineering practices (version control, testing, modularity) to data pipelines and transformations
+- [Object-Oriented Design](concepts/object-oriented-design.html) — Practical OO design: TRUE standard, design as discovery, messages over methods, SRP as foundation
+- [Kubernetes Operator](concepts/kubernetes-operator.html) — Control loop pattern (READ → CHANGE → UPDATE), CRDs, extension patterns, Go ecosystem for K8s-native apps
+- [Middleware Pattern](concepts/middleware-pattern.html) — Composable HTTP handler wrapping for cross-cutting concerns; Go's standard-library middleware chaining
 
 ## Sources
 
@@ -103,6 +107,9 @@
 - [Cracking the Coding Interview](sources/cracking-the-coding-interview.html) — McDowell's 708-page guide to technical interview philosophy, company cultures, and problem-solving strategies
 - [Good Code, Bad Code](sources/good-code-bad-code.html) — Tom Long's 338-page guide: 4 goals, 6 pillars, and the engineering mindset
 - [Seriously Good Software](sources/seriously-good-software.html) — Marco Faella's 330-page deep dive: quality spectrum, trade-offs, YAGNI, and abstraction costs
+- [Data Engineering with dbt](sources/data-engineering-with-dbt.html) — Roberto Zagni's 603-page guide: DataOps mindset, 3-tier modeling, soft boundaries, Jinja-powered SQL
+- [Practical Object-Oriented Design](sources/practical-object-oriented-design.html) — Sandi Metz's 334-page guide: TRUE standard, design as discovery, messages in OOP
+- [Programming Kubernetes](sources/programming-kubernetes.html) — Schimanski & Hausenblas's 244-page guide: control loops, operators, CRDs, Go ecosystem for K8s-native development
 
 ## Syntheses
 
@@ -111,4 +118,4 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 *Last updated: 2026-06-08*
-*Pages: 94 (72 concepts + 21 sources)*
+*Pages: 101 (76 concepts + 24 sources)*
