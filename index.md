@@ -83,6 +83,7 @@
 - [Object-Oriented Design](concepts/object-oriented-design.html) — Practical OO design: TRUE standard, design as discovery, messages over methods, SRP as foundation
 - [Kubernetes Operator](concepts/kubernetes-operator.html) — Control loop pattern (READ → CHANGE → UPDATE), CRDs, extension patterns, Go ecosystem for K8s-native apps
 - [Middleware Pattern](concepts/middleware-pattern.html) — Composable HTTP handler wrapping for cross-cutting concerns; Go's standard-library middleware chaining
+- [Data Engineer](concepts/data-engineer.html) — Specialized SWE role: builds data infrastructure, pipelines, and platforms; bridges SWE and DA/DS
 
 ## Sources
 
@@ -110,6 +111,7 @@
 - [Data Engineering with dbt](sources/data-engineering-with-dbt.html) — Roberto Zagni's 603-page guide: DataOps mindset, 3-tier modeling, soft boundaries, Jinja-powered SQL
 - [Practical Object-Oriented Design](sources/practical-object-oriented-design.html) — Sandi Metz's 334-page guide: TRUE standard, design as discovery, messages in OOP
 - [Programming Kubernetes](sources/programming-kubernetes.html) — Schimanski & Hausenblas's 244-page guide: control loops, operators, CRDs, Go ecosystem for K8s-native development
+- [Data Engineer Role — Data Engineering Handbook](sources/data-engineer-role-handbook.html) — Vietnamese DE Handbook: role definition, differentiation from SWE/DA/DS, daily workflow, best practices
 
 ## Syntheses
 
@@ -118,4 +120,4 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 *Last updated: 2026-06-08*
-*Pages: 101 (76 concepts + 24 sources)*
+*Pages: 102 (77 concepts + 25 sources)*

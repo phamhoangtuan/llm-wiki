@@ -269,3 +269,13 @@
 - Contradictions: 0 found after systematic examination of 30+ concept page pairs
 - Updated index.md: +1 concept entry
 - Total pages: 101 (76 concepts + 24 sources)
+
+## [2026-06-08] ingest | Data Engineer Role — Data Engineering Handbook
+
+- Source: "Data Engineer Role" from Data Engineering Handbook (kythuatdulieu.github.io)
+- URL: https://kythuatdulieu.github.io/concepts/foundation/data-engineer-role/
+- Copied to: raw/articles/data-engineer-role.md
+- Created sources/data-engineer-role-handbook.md
+- New concepts: data-engineer
+- Updated index.md: +1 concept entry, +1 source entry
+- Total pages: 102 (77 concepts + 25 sources)
