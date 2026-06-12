@@ -21,4 +21,5 @@ Essential attributes of a domain object should never change. If a change is need
 - Protects [[bijection]] — mutable essence breaks the 1-1 mapping
 - Supports [[fail-fast]] — immutable objects fail fast on invalid construction
 - Related to [[essential-accidental-complexity]] — immutability eliminates accidental complexity
+- Implemented via [[python-standard-library]] — namedtuple provides immutable data structures in Python
 - Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

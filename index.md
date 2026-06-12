@@ -88,6 +88,12 @@
 - [Staff Engineering](concepts/staff-engineering.html) — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
 - [Apache Spark](concepts/apache-spark.html) — Distributed data processing engine; internals, shuffle optimization, join strategies, data skew mitigation
 - [Case Interview](concepts/case-interview.html) — Consulting case interview methodology: MECE, Pyramid Principle, SCORE framework, 9-Step Math
+- [Python Professional Practices](concepts/python-professional-practices.html) — Transition from "code that runs" to production-grade Python via automated quality control
+- [Python Static Analysis](concepts/python-static-analysis.html) — Black + Flake8 + Mypy trifecta for automated code quality gates
+- [Python Debugging with PDB](concepts/python-debugging-pdb.html) — Interactive debugging via breakpoint() and PDB: surgical state inspection over print()
+- [Python Standard Library](concepts/python-standard-library.html) — Batteries-included: collections (defaultdict, namedtuple) and sqlite3
+- [Python Concurrency](concepts/python-concurrency.html) — Threads vs Processes, GIL, race condition dangers, and when to use concurrency
+- [Python REPL](concepts/python-repl.html) — Interactive console as a living laboratory: repr, dir(), help(), __mro__ for object exploration
 
 ## Sources
 
@@ -123,6 +129,7 @@
 - [De-Coding the Technical Interview Process](sources/de-coding-technical-interview.html) — Emma Bostian's 138-page guide: 5-stage interview lifecycle, 5-step problem-solving cycle
 - [High Performance Spark](sources/high-performance-spark.html) — Karau & Warren's 356-page optimization guide: shuffles, joins, skew, Catalyst, Tungsten
 - [The 1%: Conquer Your Consulting Case Interview](sources/the-1-percent-case-interview.html) — Smeritschnig's 294-page insider's guide: MECE, SCORE, Pyramid Principle
+- [Intuitive Python](sources/intuitive-python.html) — David Muller's 137-page guide to professional Python: static analysis, PDB debugging, standard library, concurrency
 
 ## Syntheses
 
@@ -130,7 +137,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-08*
-*Last updated: 2026-06-08*
-*Last updated: 2026-06-08*
-*Pages: 106 (81 concepts + 32 sources)*
+*Last updated: 2026-06-12*
+*Pages: 112 (87 concepts + 33 sources)*

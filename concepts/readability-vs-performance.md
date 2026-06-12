@@ -35,4 +35,5 @@ Many teams fall into the trap of premature optimization — sacrificing readabil
 - Related to [[essential-accidental-complexity]] — premature optimization adds accidental complexity
 - Informed by [[code-quality-pillars]] — pillar 1 (readable code) is the baseline before any optimization
 - Central to [[software-quality-dimensions]] — the Efficiency/Readability trade-off is a core quality tension
+- Aligned with [[python-concurrency]] — safety over perceived speed; don't introduce concurrency until profiling proves it's needed
 - Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

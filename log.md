@@ -330,3 +330,13 @@
 - Updated concepts: technical-interview (added De-Coding TTIP source + case-interview contrast)
 - Updated index.md: +2 concept entries, +3 source entries
 - Total pages: 106 (81 concepts + 32 sources)
+
+## [2026-06-12] ingest | Intuitive Python (David Muller)
+
+- Source: "Intuitive Python" by David Muller (ebook, 137 pages, finished 2026-06-12)
+- Copied to: raw/articles/intuitive-python.md (Vietnamese notes)
+- Created sources/intuitive-python.md
+- New concepts: python-professional-practices, python-static-analysis, python-debugging-pdb, python-standard-library, python-concurrency, python-repl
+- Updated concepts: immutability (added namedtuple cross-ref), fail-fast (added static analysis cross-ref), readability-vs-performance (added concurrency safety cross-ref)
+- Updated index.md: +6 concept entries, +1 source entry
+- Total pages: 101 (87 concepts + 33 sources)

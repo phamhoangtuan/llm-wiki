@@ -42,5 +42,6 @@ LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException
 - Embodied by [[tdd-methodology]] — write a failing test before code (Red phase) to fail fast on missing behavior
 - Related to [[functional-testing]] — functional tests fail fast at the user level when integration breaks
 - Embraced by [[code-quality-pillars]] — pillar 2 (no surprises) and pillar 3 (hard to misuse) both align with fail-fast philosophy
+- Enforced by [[python-static-analysis]] — Flake8 catches undefined names (F821), duplicate dict keys (F601), and mutable defaults (B006) before runtime
 - Related to [[software-quality-dimensions]] — choosing robustness (fail fast) over silent efficiency is a deliberate trade-off
 - Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

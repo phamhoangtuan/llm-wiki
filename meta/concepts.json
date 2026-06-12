@@ -90,6 +90,19 @@
         "delta-lake"
       ]
     },
+    "apache-spark": {
+      "title": "Apache Spark",
+      "category": "Data Engineering",
+      "url": "concepts/apache-spark.html",
+      "definition": "Apache Spark is a distributed data processing engine designed for large-scale analytics. While Spark's high-level APIs (DataFrames, Spark SQL) make it accessible, writing high-performance Spark requir",
+      "tags": [
+        "apache-spark",
+        "data-engineering",
+        "big-data",
+        "performance",
+        "optimization"
+      ]
+    },
     "bijection": {
       "title": "Bijection",
       "category": "System Architecture",
@@ -111,6 +124,19 @@
         "performance",
         "caching",
         "scalability"
+      ]
+    },
+    "case-interview": {
+      "title": "Case Interview",
+      "category": "Career & Growth",
+      "url": "concepts/case-interview.html",
+      "definition": "The consulting case interview is a structured problem-solving conversation that simulates a real client engagement. Unlike technical interviews that test coding ability, case interviews test analytica",
+      "tags": [
+        "interview",
+        "consulting",
+        "case-interview",
+        "problem-solving",
+        "career"
       ]
     },
     "cdn": {
@@ -741,6 +767,70 @@
         "testing",
         "pytest",
         "output"
+      ]
+    },
+    "python-concurrency": {
+      "title": "Python Concurrency",
+      "category": "Python & Tools",
+      "url": "concepts/python-concurrency.html",
+      "definition": "Python's concurrency model, constrained by the Global Interpreter Lock (GIL), offers two distinct paradigms — threads and processes — each suited to different workloads. The professional instinct is t",
+      "tags": [
+        "python",
+        "concurrency",
+        "gil"
+      ]
+    },
+    "python-debugging-pdb": {
+      "title": "Python Debugging with PDB",
+      "category": "Python & Tools",
+      "url": "concepts/python-debugging-pdb.html",
+      "definition": "Interactive debugging using Python's built-in debugger (PDB) as a surgical tool, replacing the reactive and limited `print()`-based debugging approach. The debugger transforms debugging from guessing ",
+      "tags": [
+        "python",
+        "debugging",
+        "pdb"
+      ]
+    },
+    "python-professional-practices": {
+      "title": "Python Professional Practices",
+      "category": "Python & Tools",
+      "url": "concepts/python-professional-practices.html",
+      "definition": "The transition from writing \"code that runs\" to building production-grade software in Python. The core insight: professionalism isn't about knowing obscure syntax — it's about replacing **guessing** w",
+      "tags": [
+        "python",
+        "software-engineering"
+      ]
+    },
+    "python-repl": {
+      "title": "Python REPL",
+      "category": "Python & Tools",
+      "url": "concepts/python-repl.html",
+      "definition": "The Read-Eval-Print Loop (REPL) is Python's interactive console — a zero-cost sandbox for exploring code, inspecting objects, and testing ideas without creating files. Professional developers treat th",
+      "tags": [
+        "python",
+        "repl",
+        "exploration"
+      ]
+    },
+    "python-standard-library": {
+      "title": "Python Standard Library",
+      "category": "Python & Tools",
+      "url": "concepts/python-standard-library.html",
+      "definition": "Python's \"batteries-included\" philosophy: a rich set of built-in modules that solve common problems without external dependencies. Professional Python developers reach for standard library tools befor",
+      "tags": [
+        "python",
+        "standard-library"
+      ]
+    },
+    "python-static-analysis": {
+      "title": "Python Static Analysis",
+      "category": "Python & Tools",
+      "url": "concepts/python-static-analysis.html",
+      "definition": "Automated tools that inspect source code without executing it, catching errors, inconsistencies, and structural problems before they reach runtime or code review. The Python ecosystem's \"quality trife",
+      "tags": [
+        "python",
+        "static-analysis",
+        "code-quality"
       ]
     },
     "readability-vs-performance": {

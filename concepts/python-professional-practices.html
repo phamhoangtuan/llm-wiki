@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Professional Practices — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-python">Python</a> <span class="sep">/</span>
+  <span>Python Professional Practices</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Python Professional Practices</h1>
+  <div class="page-meta"><span>Source: intuitive-python</span><span>Updated: 2026-06-12</span></div>
+  <div class="page-tags"><span class="tag">python</span><span class="tag">software-engineering</span></div>
+</div>
+<div class="content-area concept">
+<p># Python Professional Practices</p>
+<p>The transition from writing "code that runs" to building production-grade software in Python. The core insight: professionalism isn't about knowing obscure syntax — it's about replacing <strong>guessing</strong> with <strong>grounded intuition</strong> by using the right tools already available in Python's batteries-included ecosystem.</p>
+<h2 id="the-professional-mindset">The Professional Mindset</h2>
+<p>Professional code is not error-free code. Professional code is <strong>consistent</strong> and <strong>automatically quality-controlled</strong>. The goal is to eliminate unnecessary friction — formatting debates, guessing at runtime state, manually checking for common mistakes.</p>
+<p>Three pillars of professional Python development:</p>
+<ol>
+<li><strong>Readability</strong> — Code is a communication medium between humans first, machines second</li>
+<li><strong>Accessibility</strong> — Code must be approachable for non-specialists (researchers, engineers across domains)</li>
+<li><strong>Batteries-Included</strong> — Leverage standard library to minimize error-prone boilerplate</li>
+</ol>
+<h2 id="the-quality-trifecta">The Quality Trifecta</h2>
+<p>The foundation of professional Python quality control rests on three automated tools integrated into CI/CD:</p>
+<ul>
+<li><strong><a href="python-static-analysis.html" class="wiki-link">Black</a></strong> — Opinionated formatter (zero config, no debates)</li>
+<li><strong><a href="python-static-analysis.html" class="wiki-link">Flake8</a></strong> — Logic/lint error detection  </li>
+<li><strong><a href="python-static-analysis.html" class="wiki-link">Mypy</a></strong> — Gradual type checking</li>
+</ul>
+<p>Together they act as a "friend looking over your shoulder" — catching problems before code review, not after.</p>
+<h2 id="debugging-philosophy">Debugging Philosophy</h2>
+<p>Professional developers debug like surgeons, not with a sledgehammer. The key shift is from <strong>reactive</strong> <code>print()</code> debugging to <strong>proactive</strong> interactive debugging via <code>breakpoint()</code> and PDB. See <a href="python-debugging-pdb.html" class="wiki-link">Python Debugging with PDB</a>.</p>
+<h2 id="environment-reproducibility">Environment Reproducibility</h2>
+<p>"Works on my machine" is eliminated through Docker containerization, combined with Python version management. A single <code>docker run</code> command creates a side-effect-free sandbox for testing across Python versions without polluting the host system.</p>
+<h2 id="the-self-reflection-question">The Self-Reflection Question</h2>
+<blockquote>"Are you writing code for the machine to execute, or for your teammates (and yourself in 6 months) to read, understand, and maintain?"</blockquote>
+<p>This question drives every decision — from variable naming to concurrency choices to tool selection.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="python-static-analysis.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Python Static Analysis</h4>
+      <p>the quality trifecta tools</p>
+    </a>
+    <a class="connection-card" href="python-debugging-pdb.html">
+      <span class="connection-type related">Related</span>
+      <h4>Python Debugging with PDB</h4>
+      <p>professional debugging workflow</p>
+    </a>
+    <a class="connection-card" href="python-standard-library.html">
+      <span class="connection-type related">Related</span>
+      <h4>Python Standard Library</h4>
+      <p>batteries-included philosophy</p>
+    </a>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fail Fast</h4>
+      <p>static analysis catches errors before runtime</p>
+    </a>
+    <a class="connection-card" href="readability-vs-performance.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Readability vs Performance</h4>
+      <p>safety over premature optimization</p>
+    </a>
+    <a class="connection-card" href="python-concurrency.html">
+      <span class="connection-type related">Related</span>
+      <h4>Python Concurrency</h4>
+      <p>knowing when (and when not) to use concurrency</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="python-debugging-pdb.html" class="prev">← Python Debugging with PDB</a><a href="python-repl.html" class="next">Python REPL →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

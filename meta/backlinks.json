@@ -22,6 +22,7 @@
     "apache-iceberg",
     "apache-kafka",
     "apache-kafka",
+    "apache-spark",
     "change-data-capture",
     "change-data-capture",
     "data-engineer",
@@ -168,6 +169,7 @@
     "apache-flink",
     "apache-flink",
     "apache-kafka",
+    "apache-spark",
     "data-engineer",
     "data-ingestion",
     "data-ingestion",
@@ -189,6 +191,7 @@
   "apache-iceberg": [
     "apache-flink",
     "apache-parquet",
+    "apache-spark",
     "clickhouse",
     "data-ingestion",
     "data-ingestion",
@@ -266,12 +269,24 @@
     "delta-lake",
     "integrating-rust-delta-kernel-clickhouse"
   ],
+  "data-engineer": [
+    "apache-spark",
+    "data-engineer-role-handbook",
+    "data-engineering-handbook"
+  ],
+  "sources/high-performance-spark": [
+    "apache-spark"
+  ],
   "fail-fast": [
     "bijection",
     "code-quality-pillars",
     "dependency-injection",
     "harness-engineering",
     "immutability",
+    "python-concurrency",
+    "python-debugging-pdb",
+    "python-professional-practices",
+    "python-static-analysis",
     "software-quality-dimensions",
     "solid-principles",
     "solid-principles",
@@ -297,6 +312,7 @@
     "dependency-injection",
     "essential-accidental-complexity",
     "fail-fast",
+    "python-standard-library",
     "rich-domain-model",
     "software-quality-dimensions",
     "solid-principles",
@@ -362,6 +378,20 @@
     "system-design-interview",
     "system-design-interview-xu"
   ],
+  "technical-interview": [
+    "case-interview",
+    "staff-engineering",
+    "system-design-interview",
+    "cracking-the-coding-interview",
+    "de-coding-technical-interview"
+  ],
+  "staff-engineering": [
+    "case-interview",
+    "senior-to-staff-engineer"
+  ],
+  "sources/the-1-percent-case-interview": [
+    "case-interview"
+  ],
   "cache-strategy": [
     "cdn",
     "database-replication",
@@ -415,6 +445,8 @@
   ],
   "readability-vs-performance": [
     "code-quality-pillars",
+    "python-concurrency",
+    "python-professional-practices",
     "software-quality-dimensions",
     "technological-centaur",
     "contieri-clean-code-cookbook"
@@ -428,6 +460,8 @@
     "pytest-mocking",
     "pytest-parametrization",
     "pytest-plugins",
+    "python-debugging-pdb",
+    "python-static-analysis",
     "tdd-methodology",
     "okken-python-testing-pytest"
   ],
@@ -494,9 +528,6 @@
     "dependency-injection",
     "solid-principles"
   ],
-  "apache-airflow": [
-    "data-engineer"
-  ],
   "analytics-engineer": [
     "data-engineer",
     "dataops",
@@ -528,6 +559,8 @@
     "essential-accidental-complexity",
     "fail-fast",
     "object-oriented-design",
+    "python-standard-library",
+    "python-static-analysis",
     "readability-vs-performance",
     "software-quality-dimensions",
     "staff-engineering",
@@ -630,6 +663,13 @@
     "tdd-methodology",
     "testing-strategy"
   ],
+  "python-static-analysis": [
+    "fail-fast",
+    "python-professional-practices",
+    "python-professional-practices",
+    "python-professional-practices",
+    "python-professional-practices"
+  ],
   "pytest-basics": [
     "functional-testing",
     "pytest-assertions",
@@ -688,6 +728,11 @@
   ],
   "sources/learn-harness-engineering": [
     "harness-engineering"
+  ],
+  "python-standard-library": [
+    "immutability",
+    "python-professional-practices",
+    "python-repl"
   ],
   "wiki-maintenance": [
     "knowledge-graph",
@@ -768,6 +813,25 @@
     "testing-strategy",
     "okken-python-testing-pytest"
   ],
+  "python-professional-practices": [
+    "python-concurrency",
+    "python-debugging-pdb",
+    "python-repl",
+    "python-standard-library",
+    "python-static-analysis"
+  ],
+  "python-repl": [
+    "python-debugging-pdb"
+  ],
+  "python-debugging-pdb": [
+    "python-professional-practices",
+    "python-professional-practices",
+    "python-repl"
+  ],
+  "python-concurrency": [
+    "python-professional-practices",
+    "readability-vs-performance"
+  ],
   "system-design-interview": [
     "scalable-architecture",
     "technical-interview",
@@ -779,15 +843,17 @@
   "sources/seriously-good-software": [
     "software-quality-dimensions"
   ],
-  "technical-interview": [
-    "staff-engineering",
-    "system-design-interview",
-    "cracking-the-coding-interview"
-  ],
   "sources/senior-to-staff-engineer": [
     "staff-engineering"
   ],
+  "case-interview": [
+    "technical-interview",
+    "the-1-percent-case-interview"
+  ],
   "sources/cracking-the-coding-interview": [
+    "technical-interview"
+  ],
+  "sources/de-coding-technical-interview": [
     "technical-interview"
   ],
   "apache-arrow": [
@@ -800,11 +866,7 @@
     "wiki-maintenance",
     "wiki-maintenance"
   ],
-  "data-engineer": [
-    "data-engineer-role-handbook",
-    "data-engineering-handbook"
-  ],
-  "staff-engineering": [
-    "senior-to-staff-engineer"
+  "apache-spark": [
+    "high-performance-spark"
   ]
 }

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Debugging with PDB — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-python">Python</a> <span class="sep">/</span>
+  <span>Python Debugging with PDB</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Python Debugging with PDB</h1>
+  <div class="page-meta"><span>Source: intuitive-python</span><span>Updated: 2026-06-12</span></div>
+  <div class="page-tags"><span class="tag">python</span><span class="tag">debugging</span><span class="tag">pdb</span></div>
+</div>
+<div class="content-area concept">
+<p># Python Debugging with PDB</p>
+<p>Interactive debugging using Python's built-in debugger (PDB) as a surgical tool, replacing the reactive and limited <code>print()</code>-based debugging approach. The debugger transforms debugging from guessing to <strong>systematic state exploration</strong>.</p>
+<h2 id="breakpoint-vs-print">breakpoint() vs print()</h2>
+<p>From Python 3.7+, <code>breakpoint()</code> is the standard entry point (replaces <code>import pdb; pdb.set_trace()</code>):</p>
+<table><thead><tr>
+<th>Dimension</th>
+<th>print()</th>
+<th>breakpoint()/PDB</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Proactivity</strong></td>
+<td>Must predict what to inspect in advance</td>
+<td>Explore any state without knowing in advance</td>
+</tr>
+<tr>
+<td><strong>Interaction</strong></td>
+<td>None — fire and read output</td>
+<td>Full interactive session: query variables, test expressions, modify state</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>Add prints → restart → remove prints → restart</td>
+<td>Pause execution at exact line, inspect, then continue</td>
+</tr>
+<tr>
+<td><strong>Nested Data</strong></td>
+<td>Unreadable for dicts/lists</td>
+<td><code>pp</code> (pretty print) with indentation and sorted keys</td>
+</tr>
+</tbody></table>
+<h2 id="essential-pdb-commands">Essential PDB Commands</h2>
+<p>Once inside a PDB session, these commands enable surgical navigation:</p>
+<table><thead><tr>
+<th>Command</th>
+<th>Short</th>
+<th>Effect</th>
+</tr></thead><tbody>
+<tr>
+<td><code>next</code></td>
+<td><code>n</code></td>
+<td>Execute current line, stop at next line in same function (don't enter called functions)</td>
+</tr>
+<tr>
+<td><code>step</code></td>
+<td><code>s</code></td>
+<td>Step <strong>into</strong> the called function to inspect internal logic</td>
+</tr>
+<tr>
+<td><code>pp</code></td>
+<td>—</td>
+<td><strong>Pretty-print</strong> — game-changer for nested dicts/lists with proper indentation and sorted keys</td>
+</tr>
+<tr>
+<td><code>where</code></td>
+<td><code>w</code></td>
+<td>Print full stack trace showing the exact call path that led to this point</td>
+</tr>
+<tr>
+<td><code>continue</code></td>
+<td><code>c</code></td>
+<td>Resume normal execution until next breakpoint</td>
+</tr>
+<tr>
+<td><code>list</code></td>
+<td><code>l</code></td>
+<td>Show source code around current line</td>
+</tr>
+<tr>
+<td><code>args</code></td>
+<td><code>a</code></td>
+<td>Print arguments of the current function</td>
+</tr>
+</tbody></table>
+<h2 id="workflow-pattern">Workflow Pattern</h2>
+<p>Instead of:</p>
+<pre><code class="language-python"># ❌ Reactive print debugging
+print(user_data)
+print(type(user_data))
+print(user_data.keys())</code></pre>
+<p>Use:</p>
+<pre><code class="language-python"># ✅ Proactive interactive debugging
+breakpoint()
+# In PDB: pp user_data
+# In PDB: type(user_data)
+# In PDB: dir(user_data)</code></pre>
+<p>The debugger lets you inspect <strong>without knowing what to ask in advance</strong> — you explore the actual runtime state interactively.</p>
+<h2 id="advanced-post-mortem-debugging">Advanced: Post-Mortem Debugging</h2>
+<p>PDB can also inspect crashes after they happen:</p>
+<pre><code class="language-python">import pdb; pdb.pm()  # Post-mortem: inspect the last traceback</code></pre>
+<p>This is useful for understanding unexpected crashes in production-like scenarios without reproducing them.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="python-professional-practices.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Python Professional Practices</h4>
+      <p>professional debugging workflow</p>
+    </a>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fail Fast</h4>
+      <p>interactive inspection of failure states</p>
+    </a>
+    <a class="connection-card" href="python-repl.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Python REPL</h4>
+      <p>REPL shares the interactive exploration mindset</p>
+    </a>
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Testing Strategy</h4>
+      <p>debugging tests that fail unexpectedly</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="python-concurrency.html" class="prev">← Python Concurrency</a><a href="python-professional-practices.html" class="next">Python Professional Practices →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>
