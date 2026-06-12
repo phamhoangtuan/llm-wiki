@@ -318,3 +318,15 @@
 - Fixed index.html merge conflict artifacts
 - Added synthesis template (converter now iterates syntheses/ directory)
 - No pages added — structural/UX changes only
+
+## [2026-06-08] ingest | De-Coding the Technical Interview, High Performance Spark, The 1% Case Interview
+
+- Source 1: "De-Coding the Technical Interview Process" by Emma Bostian (ebook, 138 pages, finished 2026-05-04)
+- Source 2: "High Performance Spark" by Holden Karau & Rachel Warren (ebook, 356 pages, finished 2026-05-01)
+- Source 3: "The 1%: Conquer Your Consulting Case Interview" by Florian Smeritschnig (ebook, 294 pages, finished 2026-05-02)
+- Copied to: raw/articles/de-coding-technical-interview.md, raw/articles/high-performance-spark.md, raw/articles/the-1-percent-case-interview.md
+- Created sources/de-coding-technical-interview.md, sources/high-performance-spark.md, sources/the-1-percent-case-interview.md
+- New concepts: apache-spark, case-interview
+- Updated concepts: technical-interview (added De-Coding TTIP source + case-interview contrast)
+- Updated index.md: +2 concept entries, +3 source entries
+- Total pages: 106 (81 concepts + 32 sources)

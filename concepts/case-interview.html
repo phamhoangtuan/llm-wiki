@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case Interview — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-interview">Interview</a> <span class="sep">/</span>
+  <span>Case Interview</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Case Interview</h1>
+  <div class="page-meta"><span>Source: the-1-percent-case-interview</span><span>Updated: 2026-06-08</span></div>
+  <div class="page-tags"><span class="tag">interview</span><span class="tag">consulting</span><span class="tag">case-interview</span><span class="tag">problem-solving</span><span class="tag">career</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>The consulting case interview is a structured problem-solving conversation that simulates a real client engagement. Unlike technical interviews that test coding ability, case interviews test analytical thinking, structured communication, and business judgment. Only ~1% of applicants receive offers from top firms (McKinsey, BCG, Bain) — the difference is not knowledge but how you think, structure, and communicate.</p>
+<h2 id="first-principles--frameworks">First Principles > Frameworks</h2>
+<p>The old approach — memorize 50 frameworks and apply the "right" one — no longer works. Modern firms test whether you can deconstruct novel problems from scratch:</p>
+<table><thead><tr>
+<th>Old Way</th>
+<th>New Way (The 1%)</th>
+</tr></thead><tbody>
+<tr>
+<td>Apply Profitability Framework to profit problems</td>
+<td>MECE deconstruction: Revenue ↓? Cost ↑? Drill into each</td>
+</tr>
+<tr>
+<td>Apply Market Entry Framework to market questions</td>
+<td>First Principles: What makes this market attractive? What are our capabilities?</td>
+</tr>
+<tr>
+<td>Memorize 3Cs, 4Ps, Porter's Five Forces</td>
+<td>Use frameworks as vocabulary, not crutches</td>
+</tr>
+</tbody></table>
+<blockquote><strong>MECE</strong>: Mutually Exclusive, Collectively Exhaustive — branches don't overlap, and together they cover the entire problem space.</blockquote>
+<h2 id="core-methodologies">Core Methodologies</h2>
+<h3 id="pyramid-principle-communicate-top-down">Pyramid Principle: Communicate Top-Down</h3>
+<pre><code>❌ Traditional storytelling: &quot;The context was... we analyzed... discovered... so we recommend A&quot;
+✅ Pyramid Principle: &quot;We recommend A. Three reasons: 1) ..., 2) ..., 3) ...&quot;</code></pre>
+<p>Start with the answer, then provide supporting arguments. This is how executives communicate — and how interviewers expect you to communicate.</p>
+<h3 id="score-framework-for-fit-interviews">SCORE Framework for Fit Interviews</h3>
+<table><thead><tr>
+<th>Component</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>S</strong> - Situation</td>
+<td>Set the context</td>
+</tr>
+<tr>
+<td><strong>C</strong> - Complication</td>
+<td>The challenge that arose</td>
+</tr>
+<tr>
+<td><strong>O</strong> - Outcome expectation</td>
+<td>What success looked like</td>
+</tr>
+<tr>
+<td><strong>R</strong> - Remedial action</td>
+<td>What you specifically did</td>
+</tr>
+<tr>
+<td><strong>E</strong> - End result</td>
+<td>Quantifiable impact</td>
+</tr>
+</tbody></table>
+<blockquote>Fit interviews matter as much as case interviews. The "airport test": would the interviewer want to be stuck with you for 3 hours?</blockquote>
+<h3 id="9-step-math-approach">9-Step Math Approach</h3>
+<ol>
+<li>Listen carefully to the question</li>
+<li>Clarify what exactly needs calculation</li>
+<li>Structure the approach</li>
+<li>Round numbers intelligently (1.98M → 2M)</li>
+<li>Calculate step-by-step, verbalizing</li>
+<li>Sanity check</li>
+<li>Interpret in case context</li>
+<li>State answer clearly</li>
+<li>Recommend next steps</li>
+</ol>
+<blockquote>Directionally correct matters more than perfectly precise. Show you can reason with numbers, not just compute them.</blockquote>
+<h2 id="8020-preparation-strategy">80/20 Preparation Strategy</h2>
+<table><thead><tr>
+<th>Activity</th>
+<th>Time Allocation</th>
+<th>Rationale</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Individual drills</strong></td>
+<td>80-90%</td>
+<td>Exposure to diverse problems, fast self-correction</td>
+</tr>
+<tr>
+<td><strong>Peer mock interviews</strong></td>
+<td>10-20%</td>
+<td>Practice real-time dynamics, but avoid echo chambers</td>
+</tr>
+</tbody></table>
+<blockquote>Pro tip: Mock interview with mentors/coaches who have actual consulting experience — not just peers at your level.</blockquote>
+<h2 id="mckinsey-specific-formats">McKinsey-Specific Formats</h2>
+<table><thead><tr>
+<th>Format</th>
+<th>Style</th>
+<th>Preparation</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Problem Solving Interview</strong></td>
+<td>Interviewer-led — they guide, you follow</td>
+<td>Focus on logic, not driving the case</td>
+</tr>
+<tr>
+<td><strong>Personal Experience Interview (PEI)</strong></td>
+<td>Deep dive into past experiences</td>
+<td>Use SCORE framework, prepare 5-7 stories</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="technical-interview.html">
+      <span class="connection-type related">Related</span>
+      <h4>Technical Interview</h4>
+      <p>case interviews test business judgment and structured thinking; technical interviews test coding and algorithms</p>
+    </a>
+    <a class="connection-card" href="staff-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Staff Engineering</h4>
+      <p>consulting-style structured communication is a key Staff-level skill</p>
+    </a>
+    <a class="connection-card" href="../sources/the-1-percent-case-interview.html">
+      <span class="connection-type related">Related</span>
+      <h4>The 1%: Conquer Your Consulting Case Interview</h4>
+      <p>Smeritschnig's 294-page insider's guide</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="cache-strategy.html" class="prev">← Cache Strategy</a><a href="cdn.html" class="next">CDN →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

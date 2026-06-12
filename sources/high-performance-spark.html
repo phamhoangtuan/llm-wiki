@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>High Performance Spark — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-apache-spark">Apache Spark</a> <span class="sep">/</span>
+  <span>High Performance Spark</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge source">Source</div>
+  <h1>High Performance Spark</h1>
+  <div class="page-meta"><span>By Holden Karau &amp; Rachel Warren</span><span>book</span><span>2017-01-01</span><span>Ingested: 2026-06-08</span></div>
+  <div class="page-tags"><span class="tag">apache-spark</span><span class="tag">data-engineering</span><span class="tag">performance</span><span class="tag">optimization</span><span class="tag">big-data</span></div>
+</div>
+<div class="content-area source">
+<h2 id="summary">Summary</h2>
+<p>A 356-page deep dive into Apache Spark performance optimization. Covers Spark internals (lazy evaluation, DAG scheduler, RDD immutability), the Catalyst optimizer and Tungsten engine, narrow vs wide dependencies (shuffle costs), join strategies (broadcast hash join), groupByKey vs reduceByKey, data skew mitigation, caching and checkpointing, Scala vs Python trade-offs, Spark ML vs MLlib, Structured Streaming, and automated testing with spark-testing-base.</p>
+<h2 id="core-message">Core Message</h2>
+<blockquote>Writing Spark code that runs is easy. Writing Spark code that runs 100× faster requires understanding internals — how data is distributed and processed across the cluster.</blockquote>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><strong>Spark SQL is king</strong>: Use DataFrames/Datasets to leverage Catalyst optimizer and Tungsten engine</li>
+<li><strong>Avoid shuffle</strong>: Wide dependencies (groupByKey, sort) are the biggest bottleneck — minimize them</li>
+<li><strong>Broadcast joins</strong>: For small tables, broadcast to all workers to avoid shuffle entirely</li>
+<li><strong>reduceByKey > groupByKey</strong>: Map-side reduction before shuffle dramatically reduces network I/O</li>
+<li><strong>Handle data skew</strong>: Add "junk" to keys to spread data evenly, avoid straggler tasks</li>
+<li><strong>Cache strategically</strong>: Persist reused datasets, but don't cache everything — memory is finite</li>
+<li><strong>Test your optimizations</strong>: Use spark-testing-base to ensure performance improvements don't break logic</li>
+</ol>
+<h2 id="companion-concept">Companion Concept</h2>
+<p>→ <a href="../concepts/apache-spark.html" class="wiki-link">apache-spark</a></p>
+</div>
+
+<nav class="pagination"><a href="good-code-bad-code.html" class="prev">← Good Code, Bad Code</a><a href="hugo-data-ingestion-platform-flink.html" class="next">The Hugo Evolution: Engineering Grab's Unified, One-Click Data Ingestion Platform with Apache Flink →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

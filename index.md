@@ -86,6 +86,8 @@
 - [Data Engineer](concepts/data-engineer.html) — Specialized SWE role: builds data infrastructure, pipelines, and platforms; bridges SWE and DA/DS
 - [Semantic Layer](concepts/semantic-layer.html) — Unified context layer standardizing metrics and business logic for AI agents across dbt, BI, docs, and query patterns
 - [Staff Engineering](concepts/staff-engineering.html) — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
+- [Apache Spark](concepts/apache-spark.html) — Distributed data processing engine; internals, shuffle optimization, join strategies, data skew mitigation
+- [Case Interview](concepts/case-interview.html) — Consulting case interview methodology: MECE, Pyramid Principle, SCORE framework, 9-Step Math
 
 ## Sources
 
@@ -118,6 +120,9 @@
 - [How to Grow From Senior to Staff Engineer](sources/senior-to-staff-engineer.html) — Jordan Cutler's Pinterest case study: 3 dimensions of Staff-level impact in the AI era
 - [Databricks Zerobus — Event Streams + Lake House](sources/databricks-zerobus.html) — Daniel Beach explores serverless streaming into Delta Lake without Kafka infrastructure
 - [Data Engineering — Data Engineering Handbook](sources/data-engineering-handbook.html) — Vietnamese DE Handbook: discipline overview, four pillars, pipeline flow, best practices
+- [De-Coding the Technical Interview Process](sources/de-coding-technical-interview.html) — Emma Bostian's 138-page guide: 5-stage interview lifecycle, 5-step problem-solving cycle
+- [High Performance Spark](sources/high-performance-spark.html) — Karau & Warren's 356-page optimization guide: shuffles, joins, skew, Catalyst, Tungsten
+- [The 1%: Conquer Your Consulting Case Interview](sources/the-1-percent-case-interview.html) — Smeritschnig's 294-page insider's guide: MECE, SCORE, Pyramid Principle
 
 ## Syntheses
 
@@ -127,4 +132,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 *Last updated: 2026-06-08*
 *Last updated: 2026-06-08*
-*Pages: 104 (79 concepts + 29 sources)*
+*Last updated: 2026-06-08*
+*Pages: 106 (81 concepts + 32 sources)*

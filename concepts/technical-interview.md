@@ -4,7 +4,7 @@ type: concept
 tags: [interview, algorithms, problem-solving, career]
 created: 2026-06-08
 updated: 2026-06-08
-sources: [cracking-the-coding-interview]
+sources: [cracking-the-coding-interview, de-coding-technical-interview]
 aliases: [coding-interview, technical-interview-philosophy]
 ---
 
@@ -82,4 +82,6 @@ Whiteboarding isn't "unrealistic." It's a deliberate abstraction that:
 ---
 
 - Complementary to [[system-design-interview]] — technical interviews test algorithms/PoC, system design tests architecture/scale
+- Contrasted with [[case-interview]] — technical interviews test coding and algorithms; case interviews test business judgment and structured thinking
 - Benchmark source: [[sources/cracking-the-coding-interview]] — McDowell's 708-page guide
+- Benchmark source: [[sources/de-coding-technical-interview]] — Bostian's 138-page guide with 5-step problem-solving cycle

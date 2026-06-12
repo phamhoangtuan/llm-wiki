@@ -39,7 +39,7 @@ The role emerged around the 2010s when organizations realized a painful truth: *
 | **Architecture Design** | Choose batch vs streaming, define table structures (dimensional modeling) |
 | **Pipeline Coding** | Python/Scala scripts extracting from REST APIs, Kafka, relational DBs |
 | **Transformation** | SQL models in [[dbt]] to clean, join, and create business metrics |
-| **Orchestration** | Schedule automated pipeline runs via [[apache-airflow|Airflow]] (e.g., nightly) |
+| **Orchestration** | Schedule automated pipeline runs via Airflow (e.g., nightly) |
 | **Maintenance & Optimization** | Tune slow queries, handle schema changes, optimize cloud costs |
 
 ## The Four Pillars of Data Engineering
