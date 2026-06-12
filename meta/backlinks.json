@@ -1,0 +1,810 @@
+{
+  "dbt": [
+    "analytics-engineer",
+    "analytics-engineer",
+    "analytics-engineer",
+    "data-engineer",
+    "data-engineer",
+    "data-engineer",
+    "data-ingestion",
+    "data-ingestion",
+    "dataops",
+    "elt",
+    "elt",
+    "elt",
+    "elt",
+    "semantic-layer",
+    "data-engineering-with-dbt"
+  ],
+  "apache-flink": [
+    "analytics-engineer",
+    "apache-iceberg",
+    "apache-iceberg",
+    "apache-kafka",
+    "apache-kafka",
+    "change-data-capture",
+    "change-data-capture",
+    "data-engineer",
+    "data-ingestion",
+    "data-ingestion",
+    "data-ingestion",
+    "dbt"
+  ],
+  "elt": [
+    "analytics-engineer",
+    "data-engineer",
+    "data-ingestion",
+    "data-ingestion",
+    "dataops",
+    "dbt",
+    "dbt",
+    "unlocking-dbt-design-deploy-transformations"
+  ],
+  "data-ingestion": [
+    "analytics-engineer",
+    "apache-flink",
+    "apache-iceberg",
+    "apache-iceberg",
+    "apache-kafka",
+    "change-data-capture",
+    "data-engineer",
+    "dataops",
+    "dbt",
+    "elt"
+  ],
+  "dataops": [
+    "analytics-engineer",
+    "code-quality-pillars",
+    "data-engineer",
+    "data-engineer",
+    "dbt",
+    "semantic-layer",
+    "data-engineering-with-dbt"
+  ],
+  "sources/unlocking-dbt-design-deploy-transformations": [
+    "analytics-engineer",
+    "dbt",
+    "elt"
+  ],
+  "polars": [
+    "apache-arrow",
+    "apache-arrow",
+    "apache-arrow",
+    "apache-parquet",
+    "apache-parquet",
+    "duckdb",
+    "vortex-file-format",
+    "vortex-file-format"
+  ],
+  "apache-datafusion": [
+    "apache-arrow",
+    "apache-arrow",
+    "apache-arrow",
+    "apache-parquet",
+    "apache-parquet",
+    "duckdb",
+    "polars",
+    "polars",
+    "vortex-file-format"
+  ],
+  "vortex-file-format": [
+    "apache-arrow",
+    "apache-arrow",
+    "apache-arrow",
+    "apache-datafusion",
+    "apache-datafusion",
+    "apache-parquet",
+    "apache-parquet",
+    "duckdb",
+    "lance-file-format",
+    "lance-file-format",
+    "lance-file-format",
+    "polars"
+  ],
+  "duckdb": [
+    "apache-arrow",
+    "apache-datafusion",
+    "apache-datafusion",
+    "apache-parquet",
+    "apache-parquet",
+    "clickhouse",
+    "clickhouse",
+    "dbt",
+    "dbt",
+    "delta-lake",
+    "delta-lake",
+    "in-process-olap",
+    "in-process-olap",
+    "liquid-clustering",
+    "liquid-clustering",
+    "polars",
+    "polars",
+    "unity-catalog",
+    "vectorized-execution",
+    "vectorized-execution",
+    "vortex-file-format",
+    "duckdb-up-and-running",
+    "unlocking-dbt-design-deploy-transformations"
+  ],
+  "apache-parquet": [
+    "apache-arrow",
+    "apache-datafusion",
+    "clickhouse",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "lance-file-format",
+    "lance-file-format",
+    "lance-file-format",
+    "liquid-clustering",
+    "liquid-clustering",
+    "polars",
+    "vortex-file-format",
+    "vortex-file-format",
+    "vortex-file-format"
+  ],
+  "vectorized-execution": [
+    "apache-datafusion",
+    "apache-datafusion",
+    "apache-parquet",
+    "clickhouse",
+    "clickhouse",
+    "duckdb",
+    "duckdb",
+    "duckdb",
+    "in-process-olap",
+    "duckdb-up-and-running",
+    "duckdb-up-and-running"
+  ],
+  "sources/benchmarking-vortex-file-format": [
+    "apache-datafusion",
+    "apache-parquet",
+    "duckdb",
+    "lance-file-format",
+    "polars",
+    "vortex-file-format"
+  ],
+  "change-data-capture": [
+    "apache-flink",
+    "apache-flink",
+    "apache-kafka",
+    "data-engineer",
+    "data-ingestion",
+    "data-ingestion",
+    "delta-lake",
+    "delta-lake",
+    "liquid-clustering",
+    "integrating-rust-delta-kernel-clickhouse"
+  ],
+  "apache-kafka": [
+    "apache-flink",
+    "change-data-capture",
+    "data-engineer",
+    "data-ingestion",
+    "data-ingestion",
+    "message-queue",
+    "message-queue",
+    "databricks-zerobus"
+  ],
+  "apache-iceberg": [
+    "apache-flink",
+    "apache-parquet",
+    "clickhouse",
+    "data-ingestion",
+    "data-ingestion",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "duckdb",
+    "liquid-clustering",
+    "liquid-clustering",
+    "unity-catalog",
+    "unity-catalog",
+    "debunking-data-layout-myths-liquid-clustering"
+  ],
+  "sources/hugo-data-ingestion-platform-flink": [
+    "apache-flink",
+    "apache-kafka",
+    "change-data-capture",
+    "data-ingestion"
+  ],
+  "sources/apache-iceberg-1.11.0-release": [
+    "apache-flink",
+    "apache-iceberg"
+  ],
+  "liquid-clustering": [
+    "apache-iceberg",
+    "apache-iceberg",
+    "apache-parquet",
+    "delta-lake",
+    "delta-lake",
+    "debunking-data-layout-myths-liquid-clustering"
+  ],
+  "delta-lake": [
+    "apache-iceberg",
+    "apache-parquet",
+    "apache-parquet",
+    "change-data-capture",
+    "clickhouse",
+    "clickhouse",
+    "delta-kernel",
+    "delta-kernel",
+    "duckdb",
+    "duckdb",
+    "liquid-clustering",
+    "liquid-clustering",
+    "unity-catalog",
+    "databricks-zerobus",
+    "debunking-data-layout-myths-liquid-clustering",
+    "integrating-rust-delta-kernel-clickhouse"
+  ],
+  "message-queue": [
+    "apache-kafka",
+    "apache-kafka",
+    "cdn",
+    "observability",
+    "scalable-architecture",
+    "system-design-interview-xu"
+  ],
+  "sources/databricks-zerobus": [
+    "apache-kafka",
+    "delta-lake"
+  ],
+  "lance-file-format": [
+    "apache-parquet",
+    "vortex-file-format"
+  ],
+  "clickhouse": [
+    "apache-parquet",
+    "change-data-capture",
+    "change-data-capture",
+    "delta-kernel",
+    "delta-kernel",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "integrating-rust-delta-kernel-clickhouse"
+  ],
+  "fail-fast": [
+    "bijection",
+    "code-quality-pillars",
+    "dependency-injection",
+    "harness-engineering",
+    "immutability",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "tdd-methodology",
+    "contieri-clean-code-cookbook"
+  ],
+  "rich-domain-model": [
+    "bijection",
+    "code-quality-pillars",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "mapper-principles",
+    "object-oriented-design",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "technological-centaur",
+    "contieri-clean-code-cookbook"
+  ],
+  "immutability": [
+    "bijection",
+    "code-quality-pillars",
+    "dependency-injection",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "rich-domain-model",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "tell-dont-ask",
+    "contieri-clean-code-cookbook"
+  ],
+  "mapper-principles": [
+    "bijection",
+    "software-as-simulation",
+    "solid-principles",
+    "solid-principles",
+    "contieri-clean-code-cookbook"
+  ],
+  "sources/contieri-clean-code-cookbook": [
+    "bijection",
+    "fail-fast",
+    "immutability",
+    "mapper-principles",
+    "readability-vs-performance",
+    "rich-domain-model",
+    "software-as-simulation",
+    "technological-centaur",
+    "tell-dont-ask"
+  ],
+  "scalable-architecture": [
+    "cache-strategy",
+    "cdn",
+    "database-replication",
+    "database-sharding",
+    "load-balancer",
+    "message-queue",
+    "observability",
+    "stateless-architecture",
+    "system-design-interview",
+    "system-design-interview-xu"
+  ],
+  "database-replication": [
+    "cache-strategy",
+    "database-sharding",
+    "database-sharding",
+    "load-balancer",
+    "observability",
+    "scalable-architecture",
+    "stateless-architecture",
+    "system-design-interview",
+    "system-design-interview-xu"
+  ],
+  "cdn": [
+    "cache-strategy",
+    "load-balancer",
+    "scalable-architecture",
+    "system-design-interview-xu"
+  ],
+  "load-balancer": [
+    "cache-strategy",
+    "cdn",
+    "database-replication",
+    "message-queue",
+    "observability",
+    "scalable-architecture",
+    "stateless-architecture",
+    "system-design-interview",
+    "system-design-interview-xu"
+  ],
+  "cache-strategy": [
+    "cdn",
+    "database-replication",
+    "database-sharding",
+    "load-balancer",
+    "observability",
+    "scalable-architecture",
+    "stateless-architecture",
+    "system-design-interview",
+    "system-design-interview-xu"
+  ],
+  "delta-kernel": [
+    "change-data-capture",
+    "clickhouse",
+    "clickhouse",
+    "delta-lake",
+    "delta-lake",
+    "integrating-rust-delta-kernel-clickhouse"
+  ],
+  "materialized-views": [
+    "change-data-capture",
+    "dbsp",
+    "dbt",
+    "differential-dataflow",
+    "incremental-view-maintenance",
+    "incremental-view-maintenance",
+    "timely-dataflow",
+    "materialized-views-quick-insights"
+  ],
+  "incremental-view-maintenance": [
+    "change-data-capture",
+    "dbsp",
+    "differential-dataflow",
+    "differential-dataflow",
+    "materialized-views",
+    "materialized-views",
+    "materialized-views",
+    "timely-dataflow",
+    "materialized-views-quick-insights"
+  ],
+  "in-process-olap": [
+    "clickhouse",
+    "duckdb",
+    "vectorized-execution",
+    "duckdb-up-and-running"
+  ],
+  "sources/integrating-rust-delta-kernel-clickhouse": [
+    "clickhouse",
+    "delta-kernel",
+    "delta-lake"
+  ],
+  "readability-vs-performance": [
+    "code-quality-pillars",
+    "software-quality-dimensions",
+    "technological-centaur",
+    "contieri-clean-code-cookbook"
+  ],
+  "testing-strategy": [
+    "code-quality-pillars",
+    "functional-testing",
+    "harness-engineering",
+    "pytest-fixtures",
+    "pytest-markers",
+    "pytest-mocking",
+    "pytest-parametrization",
+    "pytest-plugins",
+    "tdd-methodology",
+    "okken-python-testing-pytest"
+  ],
+  "essential-accidental-complexity": [
+    "code-quality-pillars",
+    "fail-fast",
+    "immutability",
+    "readability-vs-performance",
+    "software-quality-dimensions"
+  ],
+  "dependency-injection": [
+    "code-quality-pillars",
+    "composition-root",
+    "composition-root",
+    "composition-root",
+    "go-http-handlers",
+    "go-web-ecosystem",
+    "object-oriented-design",
+    "pytest-fixtures",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "testing-strategy"
+  ],
+  "solid-principles": [
+    "code-quality-pillars",
+    "composition-root",
+    "dependency-injection",
+    "dependency-injection",
+    "object-oriented-design",
+    "dependency-injection-principles-patterns",
+    "practical-object-oriented-design"
+  ],
+  "tell-dont-ask": [
+    "code-quality-pillars",
+    "mapper-principles",
+    "object-oriented-design",
+    "rich-domain-model",
+    "solid-principles",
+    "solid-principles",
+    "contieri-clean-code-cookbook"
+  ],
+  "software-quality-dimensions": [
+    "code-quality-pillars",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "object-oriented-design",
+    "readability-vs-performance",
+    "staff-engineering",
+    "seriously-good-software"
+  ],
+  "object-oriented-design": [
+    "code-quality-pillars",
+    "software-quality-dimensions",
+    "solid-principles",
+    "tell-dont-ask",
+    "practical-object-oriented-design"
+  ],
+  "sources/good-code-bad-code": [
+    "code-quality-pillars"
+  ],
+  "sources/dependency-injection-principles-patterns": [
+    "composition-root",
+    "dependency-injection",
+    "solid-principles"
+  ],
+  "apache-airflow": [
+    "data-engineer"
+  ],
+  "analytics-engineer": [
+    "data-engineer",
+    "dataops",
+    "dataops",
+    "dbt",
+    "elt",
+    "semantic-layer",
+    "data-engineering-with-dbt",
+    "unlocking-dbt-design-deploy-transformations"
+  ],
+  "semantic-layer": [
+    "data-engineer",
+    "semantic-layers-for-ai"
+  ],
+  "sources/data-engineer-role-handbook": [
+    "data-engineer"
+  ],
+  "sources/data-engineering-handbook": [
+    "data-engineer"
+  ],
+  "database-sharding": [
+    "database-replication"
+  ],
+  "sources/system-design-interview-xu": [
+    "database-sharding"
+  ],
+  "code-quality-pillars": [
+    "dataops",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "object-oriented-design",
+    "readability-vs-performance",
+    "software-quality-dimensions",
+    "staff-engineering",
+    "testing-strategy",
+    "good-code-bad-code"
+  ],
+  "sources/data-engineering-with-dbt": [
+    "dataops"
+  ],
+  "timely-dataflow": [
+    "dbsp",
+    "dbsp",
+    "differential-dataflow",
+    "differential-dataflow",
+    "incremental-view-maintenance",
+    "incremental-view-maintenance",
+    "materialized-views",
+    "materialized-views-quick-insights",
+    "materialized-views-quick-insights"
+  ],
+  "differential-dataflow": [
+    "dbsp",
+    "dbsp",
+    "incremental-view-maintenance",
+    "incremental-view-maintenance",
+    "materialized-views",
+    "timely-dataflow",
+    "timely-dataflow",
+    "materialized-views-quick-insights",
+    "materialized-views-quick-insights"
+  ],
+  "sources/materialized-views-quick-insights": [
+    "dbsp",
+    "differential-dataflow",
+    "incremental-view-maintenance",
+    "materialized-views",
+    "timely-dataflow"
+  ],
+  "unity-catalog": [
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "duckdb",
+    "duckdb"
+  ],
+  "sources/delta-grows-up-writes-unity-catalog": [
+    "delta-lake",
+    "unity-catalog"
+  ],
+  "sources/delta-catalog-managed-tables": [
+    "delta-lake",
+    "unity-catalog"
+  ],
+  "composition-root": [
+    "dependency-injection",
+    "dependency-injection",
+    "dependency-injection",
+    "dependency-injection",
+    "harness-engineering",
+    "solid-principles",
+    "solid-principles"
+  ],
+  "dbsp": [
+    "differential-dataflow",
+    "incremental-view-maintenance",
+    "incremental-view-maintenance",
+    "materialized-views",
+    "materialized-views-quick-insights",
+    "materialized-views-quick-insights"
+  ],
+  "sources/duckdb-up-and-running": [
+    "duckdb",
+    "in-process-olap",
+    "vectorized-execution"
+  ],
+  "bijection": [
+    "essential-accidental-complexity",
+    "fail-fast",
+    "immutability",
+    "mapper-principles",
+    "object-oriented-design",
+    "rich-domain-model",
+    "technological-centaur",
+    "tell-dont-ask",
+    "contieri-clean-code-cookbook"
+  ],
+  "harness-engineering": [
+    "fail-fast",
+    "semantic-layer",
+    "technological-centaur",
+    "testing-strategy"
+  ],
+  "tdd-methodology": [
+    "fail-fast",
+    "functional-testing",
+    "testing-strategy"
+  ],
+  "functional-testing": [
+    "fail-fast",
+    "tdd-methodology",
+    "testing-strategy"
+  ],
+  "pytest-basics": [
+    "functional-testing",
+    "pytest-assertions",
+    "pytest-configuration",
+    "pytest-fixtures",
+    "pytest-markers",
+    "pytest-plugins",
+    "pytest-test-results",
+    "tdd-methodology",
+    "testing-strategy",
+    "okken-python-testing-pytest"
+  ],
+  "sources/tdd-python-percival": [
+    "functional-testing",
+    "tdd-methodology",
+    "testing-strategy"
+  ],
+  "goroutines": [
+    "go-http-handlers",
+    "go-web-ecosystem",
+    "kubernetes-operator"
+  ],
+  "go-web-ecosystem": [
+    "go-http-handlers",
+    "go-template-escaping",
+    "goroutines",
+    "kubernetes-operator",
+    "middleware-pattern"
+  ],
+  "sources/go-web-programming": [
+    "go-http-handlers",
+    "go-template-escaping",
+    "go-web-ecosystem",
+    "goroutines",
+    "middleware-pattern"
+  ],
+  "go-http-handlers": [
+    "go-template-escaping",
+    "go-web-ecosystem",
+    "goroutines",
+    "middleware-pattern"
+  ],
+  "go-template-escaping": [
+    "go-web-ecosystem"
+  ],
+  "kubernetes-operator": [
+    "go-web-ecosystem",
+    "goroutines",
+    "observability",
+    "programming-kubernetes"
+  ],
+  "technological-centaur": [
+    "harness-engineering",
+    "readability-vs-performance",
+    "contieri-clean-code-cookbook"
+  ],
+  "sources/learn-harness-engineering": [
+    "harness-engineering"
+  ],
+  "wiki-maintenance": [
+    "knowledge-graph",
+    "sample-article"
+  ],
+  "observability": [
+    "kubernetes-operator",
+    "message-queue",
+    "scalable-architecture",
+    "system-design-interview",
+    "system-design-interview-xu"
+  ],
+  "sources/programming-kubernetes": [
+    "kubernetes-operator"
+  ],
+  "sources/debunking-data-layout-myths-liquid-clustering": [
+    "liquid-clustering"
+  ],
+  "stateless-architecture": [
+    "load-balancer",
+    "message-queue",
+    "scalable-architecture",
+    "system-design-interview-xu"
+  ],
+  "software-as-simulation": [
+    "mapper-principles",
+    "readability-vs-performance",
+    "technological-centaur",
+    "contieri-clean-code-cookbook"
+  ],
+  "sources/practical-object-oriented-design": [
+    "object-oriented-design"
+  ],
+  "pytest-test-results": [
+    "pytest-assertions",
+    "pytest-basics"
+  ],
+  "pytest-fixtures": [
+    "pytest-basics",
+    "pytest-mocking",
+    "pytest-parametrization",
+    "testing-strategy",
+    "okken-python-testing-pytest"
+  ],
+  "pytest-parametrization": [
+    "pytest-basics",
+    "pytest-fixtures",
+    "okken-python-testing-pytest"
+  ],
+  "pytest-markers": [
+    "pytest-basics",
+    "pytest-configuration",
+    "pytest-test-results",
+    "okken-python-testing-pytest"
+  ],
+  "pytest-assertions": [
+    "pytest-basics",
+    "pytest-test-results"
+  ],
+  "pytest-configuration": [
+    "pytest-basics",
+    "pytest-plugins"
+  ],
+  "sources/okken-python-testing-pytest": [
+    "pytest-basics",
+    "pytest-fixtures",
+    "pytest-markers",
+    "pytest-mocking",
+    "pytest-parametrization",
+    "testing-strategy"
+  ],
+  "pytest-plugins": [
+    "pytest-configuration",
+    "testing-strategy"
+  ],
+  "pytest-mocking": [
+    "pytest-fixtures",
+    "testing-strategy",
+    "okken-python-testing-pytest"
+  ],
+  "system-design-interview": [
+    "scalable-architecture",
+    "technical-interview",
+    "system-design-interview-xu"
+  ],
+  "sources/semantic-layers-for-ai": [
+    "semantic-layer"
+  ],
+  "sources/seriously-good-software": [
+    "software-quality-dimensions"
+  ],
+  "technical-interview": [
+    "staff-engineering",
+    "system-design-interview",
+    "cracking-the-coding-interview"
+  ],
+  "sources/senior-to-staff-engineer": [
+    "staff-engineering"
+  ],
+  "sources/cracking-the-coding-interview": [
+    "technical-interview"
+  ],
+  "apache-arrow": [
+    "vortex-file-format"
+  ],
+  "sources/sample-article": [
+    "wiki-maintenance"
+  ],
+  "knowledge-graph": [
+    "wiki-maintenance",
+    "wiki-maintenance"
+  ],
+  "data-engineer": [
+    "data-engineer-role-handbook",
+    "data-engineering-handbook"
+  ],
+  "staff-engineering": [
+    "senior-to-staff-engineer"
+  ]
+}

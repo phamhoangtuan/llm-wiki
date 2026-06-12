@@ -279,3 +279,42 @@
 - New concepts: data-engineer
 - Updated index.md: +1 concept entry, +1 source entry
 - Total pages: 102 (77 concepts + 25 sources)
+
+## [2026-06-08] ingest | Semantic Layers (Madison Mae), Senior→Staff Engineer (Jordan Cutler), Databricks Zerobus (Daniel Beach)
+
+- Source 1: "I was wrong about semantic layers" by Madison Mae (Learn Analytics Engineering, 2026-06-11)
+- Source 2: "How to Grow From Senior to Staff Engineer in the AI Era" by Jordan Cutler & Gregor Ojstersek (Engineering Leadership, 2026-06-07)
+- Source 3: "Databricks Zerobus — Event Streams + Lake House" by Daniel Beach (Data Engineering Central, 2026-06-01)
+- Created sources/semantic-layers-for-ai.md, sources/senior-to-staff-engineer.md, sources/databricks-zerobus.md
+- New concepts: semantic-layer, staff-engineering
+- Updated index.md: +2 concept entries, +3 source entries
+- Total pages: 104 (79 concepts + 28 sources)
+
+## [2026-06-08] ingest | Data Engineering — Data Engineering Handbook
+
+- Source: "Data Engineering" from Data Engineering Handbook (kythuatdulieu.github.io)
+- URL: https://kythuatdulieu.github.io/concepts/foundation/data-engineering/
+- Created sources/data-engineering-handbook.md
+- Updated concepts: data-engineer (added four pillars, 6-step pipeline flow, idempotency/IaC/testing best practices, trade-offs, common mistakes)
+- Updated index.md: +1 source entry
+- Total pages: 104 (79 concepts + 29 sources)
+
+## [2026-06-08] redesign | Complete wiki UX overhaul — sidebar, MOC table, search, popovers, theme
+
+- Extracted shared CSS to styles/main.css (350 lines, eliminates ~32KB×108 pages of inline CSS duplication)
+- Created scripts/js/{theme,sidebar,focus,toc,popovers}.js for client-side interactivity
+- Rewrote convert-to-html.py templates: new three-panel layout with sticky header, left sidebar, right TOC
+- Added breadcrumbs (Home / Category / Page) with MOC anchor links on every page
+- Added prev/next pagination in footer for sequential browsing
+- Added left sidebar with collapsible category tree populated from auto-generated meta/concepts.json
+- Replaced old Browse Wiki grid with MOC table: tag→category mapping groups 79 concepts into 11 broad categories
+- Added Tippy.js popover previews on wikilinks (hover to see definition)
+- Added Pagefind full-text search (press / to search, fully static)
+- Added focus mode toggle (hides sidebars for reading)
+- Added resizable sidebar with drag handle (width persisted to localStorage)
+- Added theme toggle button with manual dark/light switching + localStorage persistence
+- Added right sidebar with auto-generated Table of Contents (H2/H3 headings)
+- Auto-generates meta/concepts.json and meta/backlinks.json during conversion
+- Fixed index.html merge conflict artifacts
+- Added synthesis template (converter now iterates syntheses/ directory)
+- No pages added — structural/UX changes only

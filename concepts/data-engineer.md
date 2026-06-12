@@ -4,7 +4,7 @@ type: concept
 tags: [data-engineering, roles, career, infrastructure]
 created: 2026-06-08
 updated: 2026-06-08
-sources: [data-engineer-role-handbook]
+sources: [data-engineer-role-handbook, data-engineering-handbook]
 aliases: [de, data-engineering-role]
 ---
 
@@ -42,17 +42,50 @@ The role emerged around the 2010s when organizations realized a painful truth: *
 | **Orchestration** | Schedule automated pipeline runs via [[apache-airflow|Airflow]] (e.g., nightly) |
 | **Maintenance & Optimization** | Tune slow queries, handle schema changes, optimize cloud costs |
 
+## The Four Pillars of Data Engineering
+
+Every DE system rests on four foundational capabilities:
+
+| Pillar | Description | Examples |
+|---|---|---|
+| **Ingestion** | Pulling data from sources — batch or streaming | REST APIs, Kafka, Fivetran, Airbyte |
+| **Storage** | Choosing where and how data lives | Data Warehouse, Data Lake, Lakehouse |
+| **Processing & Transformation** | Cleaning, normalizing, aggregating | SQL, Spark, [[dbt]], Python |
+| **Orchestration** | Scheduling and dependency management | Airflow, Dagster, Prefect |
+
+## The Data Pipeline Flow (6 Steps)
+
+```
+1. Survey needs → 2. Build connections → 3. Load to staging
+→ 4. Transform (business rules) → 5. Serve to consumers → 6. Monitor & alert
+```
+
 ## Best Practices
 
 - **Master the fundamentals**: SQL, Python, Bash, distributed computing thinking. Tools change — these don't.
 - **Business acumen**: Understand what data means to the business to design accurate, intuitive models.
 - **Apply SWE discipline**: Git version control, automated data testing, CI/CD for pipelines — this is [[dataops|DataOps]] in practice.
 - **Build self-service**: Invest in architectures where analysts can self-serve, rather than becoming a "SQL writer for others."
+- **Design for idempotency**: Pipelines must produce the same result no matter how many times they run — use UPSERT/MERGE or delete-write patterns to prevent duplicates on retry.
+- **Infrastructure as Code (IaC)**: Define cloud resources (servers, databases) via Terraform — version-controlled, reproducible, disaster-recoverable.
+- **Automated quality testing**: Integrate data quality checks (null checks, uniqueness, referential integrity) via Great Expectations or dbt tests — catch issues before stakeholders do.
+- **Decouple storage and compute**: Scale them independently to optimize costs — store cheaply, compute on-demand.
 
 ## Common Mistakes
 
 - **Tool-driven**: Chasing every new technology (Spark, Flink, Kafka) while forgetting the core goal: reliable, quality data.
 - **Becoming a report factory**: Writing ad-hoc SQL extracts for every department instead of building self-service data platforms.
+- **No alerting**: Silent pipeline failures — stakeholders view stale data for days without knowing.
+- **Over-engineering**: Deploying Kafka, Spark, Kubernetes for workloads a simple cron job + SQL script could handle.
+- **Ignoring data governance**: Building pipelines without metadata, data dictionaries, or lineage → data swamp.
+
+## Trade-offs
+
+| Advantage | Challenge |
+|---|---|
+| Reliable foundation for all analytics and AI/ML | High upfront cloud infra and specialist personnel cost |
+| Automation eliminates manual reporting labor | Long initial build time; indirect ROI hard to measure immediately |
+| Single source of truth across the organization | Fragile when source systems change schemas unexpectedly |
 
 ## Pros & Cons
 
@@ -82,4 +115,6 @@ The role emerged around the 2010s when organizations realized a painful truth: *
 - Related to [[apache-flink]] — Flink handles streaming workloads in DE architectures
 - Related to [[apache-kafka]] — Kafka is the event backbone many DE pipelines consume from
 - Related to [[change-data-capture]] — CDC is a key ingestion pattern for DEs
-- Benchmark source: [[sources/data-engineer-role-handbook]] — Data Engineering Handbook
+- Related to [[semantic-layer]] — semantic layers are the emerging bridge between DE infrastructure and AI agent consumption
+- Benchmark source: [[sources/data-engineer-role-handbook]] — Data Engineering Handbook (role definition)
+- Benchmark source: [[sources/data-engineering-handbook]] — Data Engineering Handbook (discipline overview)

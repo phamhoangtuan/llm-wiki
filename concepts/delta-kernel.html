@@ -1,97 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Delta Kernel — LLM Wiki</title>
-<style>
-  :root {
-    --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
-    --text: #e4e6f0; --text-dim: #8b8fa8; --accent: #f0b429; --accent-dim: #b8860b;
-    --accent-glow: rgba(240, 180, 41, 0.15); --green: #4ade80; --blue: #60a5fa;
-    --rose: #fb7185; --purple: #a78bfa; --teal: #2dd4bf; --radius: 12px;
-    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  .hero { min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 50%, rgba(96,165,250,0.08) 0%, transparent 70%), radial-gradient(ellipse 500px 500px at 70% 30%, rgba(240,180,41,0.06) 0%, transparent 70%), radial-gradient(ellipse 400px 400px at 50% 80%, rgba(167,139,250,0.04) 0%, transparent 70%); z-index: 0; }
-  .hero-content { position: relative; z-index: 1; max-width: 720px; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.25); color: var(--blue); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
-  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }
-  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
-  .hero h1 span { color: var(--blue); }
-  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 2rem; }
-  .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
-  .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
-  .hero-back { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.5rem; transition: opacity 0.2s; }
-  .hero-back:hover { opacity: 0.8; }
-  .hero-back svg { width: 16px; height: 16px; }
-  section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
-  .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
-  .section-desc { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem; }
-  .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--blue); }
-  .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
-  .content-area h2:first-child { margin-top: 0; }
-  .content-area h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--text); }
-  .content-area p { margin-bottom: 1rem; line-height: 1.7; }
-  .content-area ul, .content-area ol { margin: 0.5rem 0 1rem 1.5rem; }
-  .content-area li { margin-bottom: 0.4rem; line-height: 1.6; }
-  .content-area blockquote { margin: 1rem 0; padding: 1rem 1.25rem; background: var(--surface-2); border-radius: 8px; border-left: 3px solid var(--accent); font-style: italic; color: var(--text-dim); }
-  .content-area pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1rem 0; }
-  .content-area pre code { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }
-  .content-area code { font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }
-  .content-area pre code { background: none; padding: 0; color: var(--text); }
-  .content-area table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-  .content-area th, .content-area td { border: 1px solid var(--border); padding: 0.6rem 0.75rem; text-align: left; font-size: 0.9rem; }
-  .content-area th { background: var(--surface-2); font-weight: 600; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-  .content-area td code { font-size: 0.82rem; }
-  .content-area strong { color: var(--text); }
-  .wiki-link { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }
-  .wiki-link:hover { border-color: var(--blue); }
-  .connections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-  .connection-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
-  .connection-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
-  .connection-card h4 { font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }
-  .connection-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
-  .connection-type { font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; display: inline-block; }
-  .connection-type.core { background: rgba(240,180,41,0.12); color: var(--accent); }
-  .connection-type.related { background: rgba(167,139,250,0.12); color: var(--purple); }
-  .connection-type.extends { background: rgba(96,165,250,0.12); color: var(--blue); }
-  .connection-type.drives { background: rgba(45,212,191,0.12); color: var(--teal); }
-  footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
-  footer a { color: var(--accent); text-decoration: none; }
-  @media (max-width: 768px) { section { padding: 2.5rem 1.25rem; } .content-area { padding: 1.5rem; } }
-  @media (prefers-color-scheme: light) {
-    :root { --bg: #f8f9fb; --surface: #ffffff; --surface-2: #f0f1f5; --border: #e2e4ec; --text: #1a1d27; --text-dim: #6b7089; }
-  }
-</style>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
 </head>
 <body>
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <a href="../index.html" class="hero-back">
-      <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Back to Wiki Index
-    </a>
-    <div class="hero-badge">Concept</div>
-    <h1>Delta Kernel<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">delta-lake</span><span class="tag">delta-kernel</span><span class="tag">rust</span><span class="tag">table-formats</span><span class="tag">data-engineering</span></div>
-    <p class="hero-meta">Source: integrating-rust-delta-kernel-clickhouse · Updated: 2026-06-02</p>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
   </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-delta-lake">Delta Lake</a> <span class="sep">/</span>
+  <span>Delta Kernel</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Delta Kernel</h1>
+  <div class="page-meta"><span>Source: integrating-rust-delta-kernel-clickhouse</span><span>Updated: 2026-06-02</span></div>
+  <div class="page-tags"><span class="tag">delta-lake</span><span class="tag">delta-kernel</span><span class="tag">rust</span><span class="tag">table-formats</span><span class="tag">data-engineering</span></div>
 </div>
-<section>
-  <div class="content-area">
-<h2>Summary</h2>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
 <p>The <strong>Delta Kernel</strong> (specifically <code>delta-kernel-rs</code>) is a Rust library that provides a shared, maintained abstraction layer for the <a href="delta-lake.html" class="wiki-link">Delta Lake</a> protocol. Instead of each query engine implementing the Delta protocol from scratch, the Kernel centralizes protocol handling and exposes well-defined Engine APIs. Engines like <a href="clickhouse.html" class="wiki-link">ClickHouse</a> plug in their own optimized Parquet readers and file access while the Kernel handles everything else.</p>
-<h2>Architecture</h2>
+<h2 id="architecture">Architecture</h2>
 <pre><code>┌──────────────────────────────────────────┐
 │            QUERY ENGINE (e.g. ClickHouse) │
 │  ┌────────────────────────────────────┐  │
@@ -114,7 +64,7 @@
 │          DELTA TABLE FILES                │
 │  _delta_log/  +  *.parquet               │
 └──────────────────────────────────────────┘</code></pre>
-<h2>What the Kernel Abstracts</h2>
+<h2 id="what-the-kernel-abstracts">What the Kernel Abstracts</h2>
 <p>Instead of each engine independently implementing the <a href="https://github.com/delta-io/delta/blob/master/PROTOCOL.md" target="_blank" rel="noopener">Delta protocol</a>, the Kernel handles:</p>
 <table><thead><tr>
 <th>Responsibility</th>
@@ -145,14 +95,14 @@
 <td>Exposes row-level changes (inserts, updates, deletes) as event streams</td>
 </tr>
 </tbody></table>
-<h2>Engine APIs</h2>
+<h2 id="engine-apis">Engine APIs</h2>
 <p>The Kernel is designed with a clear separation:</p>
 <ul>
 <li><strong>Engine provides</strong>: Parquet file reading, object storage access (S3, HDFS, etc.)</li>
 <li><strong>Kernel provides</strong>: Everything else — metadata, statistics, schema reconciliation, deletion vectors, snapshot management</li>
 </ul>
 <p>This means engines can retain their heavily optimized I/O paths (e.g., ClickHouse's Parquet reader) while offloading protocol complexity.</p>
-<h2>Adoption by ClickHouse</h2>
+<h2 id="adoption-by-clickhouse">Adoption by ClickHouse</h2>
 <p>ClickHouse moved from a native Delta protocol implementation to the Delta Kernel because:</p>
 <table><thead><tr>
 <th>Before (Native)</th>
@@ -176,24 +126,21 @@
 </tr>
 </tbody></table>
 <p>The Kernel integration unlocked: writes, schema evolution, time travel, partition pruning, statistics-based pruning, and CDF — much faster than would have been possible with native implementation.</p>
-<h2>Upstream Contributions</h2>
+<h2 id="upstream-contributions">Upstream Contributions</h2>
 <p>ClickHouse contributed improvements to <code>delta-kernel-rs</code> found through production workloads:</p>
 <ul>
 <li><strong>Dynamic logging configuration</strong> (<a href="https://github.com/delta-io/delta-kernel-rs/pull/1111" target="_blank" rel="noopener">PR #1111</a>) — replaced static logging init with runtime-configurable logging for debugging</li>
 <li><strong>Asynchronous metadata processing</strong> (<a href="https://github.com/delta-io/delta-kernel-rs/pull/1827" target="_blank" rel="noopener">PR #1827</a>) — modified FFI to pass handles instead of references, enabling parallelized metadata reads</li>
 </ul>
-<h2>Current Limitations</h2>
+<h2 id="current-limitations">Current Limitations</h2>
 <ul>
 <li><strong>Cannot create empty tables</strong> — the Kernel can attach to existing Delta tables but cannot initialize new ones (planned contribution)</li>
 <li><strong>OpenSSL dependency</strong> — deep in dependency graph (<code>openssl</code> crate), conflicting with some build requirements</li>
 <li><strong>MSAN builds disabled</strong> — <code>ring</code> crate (nested dependency) has issues with memory sanitizer</li>
 </ul>
-  </div>
-</section>
-
-<section>
-  <div class="section-label">Knowledge Graph</div>
-  <h2 class="section-title">Connections</h2>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
   <div class="connections-grid">
     <a class="connection-card" href="clickhouse.html">
       <span class="connection-type related">Related</span>
@@ -212,19 +159,24 @@
     </a>
   </div>
 </section>
-<footer>
-  <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
-  <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>
-</footer>
-<script>
-  if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.style.setProperty('--bg', '#f8f9fb');
-    document.documentElement.style.setProperty('--surface', '#ffffff');
-    document.documentElement.style.setProperty('--surface-2', '#f0f1f5');
-    document.documentElement.style.setProperty('--border', '#e2e4ec');
-    document.documentElement.style.setProperty('--text', '#1a1d27');
-    document.documentElement.style.setProperty('--text-dim', '#6b7089');
-  }
-</script>
+<nav class="pagination"><a href="dbt.html" class="prev">← dbt (data build tool)</a><a href="delta-lake.html" class="next">Delta Lake →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
 </body>
 </html>

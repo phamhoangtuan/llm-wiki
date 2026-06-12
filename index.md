@@ -84,6 +84,8 @@
 - [Kubernetes Operator](concepts/kubernetes-operator.html) — Control loop pattern (READ → CHANGE → UPDATE), CRDs, extension patterns, Go ecosystem for K8s-native apps
 - [Middleware Pattern](concepts/middleware-pattern.html) — Composable HTTP handler wrapping for cross-cutting concerns; Go's standard-library middleware chaining
 - [Data Engineer](concepts/data-engineer.html) — Specialized SWE role: builds data infrastructure, pipelines, and platforms; bridges SWE and DA/DS
+- [Semantic Layer](concepts/semantic-layer.html) — Unified context layer standardizing metrics and business logic for AI agents across dbt, BI, docs, and query patterns
+- [Staff Engineering](concepts/staff-engineering.html) — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
 
 ## Sources
 
@@ -112,6 +114,10 @@
 - [Practical Object-Oriented Design](sources/practical-object-oriented-design.html) — Sandi Metz's 334-page guide: TRUE standard, design as discovery, messages in OOP
 - [Programming Kubernetes](sources/programming-kubernetes.html) — Schimanski & Hausenblas's 244-page guide: control loops, operators, CRDs, Go ecosystem for K8s-native development
 - [Data Engineer Role — Data Engineering Handbook](sources/data-engineer-role-handbook.html) — Vietnamese DE Handbook: role definition, differentiation from SWE/DA/DS, daily workflow, best practices
+- [Semantic Layers Are Now for AI](sources/semantic-layers-for-ai.html) — Madison Mae on why semantic layers are critical for AI agents, testing ktx open-source context layer
+- [How to Grow From Senior to Staff Engineer](sources/senior-to-staff-engineer.html) — Jordan Cutler's Pinterest case study: 3 dimensions of Staff-level impact in the AI era
+- [Databricks Zerobus — Event Streams + Lake House](sources/databricks-zerobus.html) — Daniel Beach explores serverless streaming into Delta Lake without Kafka infrastructure
+- [Data Engineering — Data Engineering Handbook](sources/data-engineering-handbook.html) — Vietnamese DE Handbook: discipline overview, four pillars, pipeline flow, best practices
 
 ## Syntheses
 
@@ -120,4 +126,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 *Last updated: 2026-06-08*
-*Pages: 102 (77 concepts + 25 sources)*
+*Last updated: 2026-06-08*
+*Pages: 104 (79 concepts + 29 sources)*

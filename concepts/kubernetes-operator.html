@@ -1,97 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Kubernetes Operator — LLM Wiki</title>
-<style>
-  :root {
-    --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
-    --text: #e4e6f0; --text-dim: #8b8fa8; --accent: #f0b429; --accent-dim: #b8860b;
-    --accent-glow: rgba(240, 180, 41, 0.15); --green: #4ade80; --blue: #60a5fa;
-    --rose: #fb7185; --purple: #a78bfa; --teal: #2dd4bf; --radius: 12px;
-    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  .hero { min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 50%, rgba(96,165,250,0.08) 0%, transparent 70%), radial-gradient(ellipse 500px 500px at 70% 30%, rgba(240,180,41,0.06) 0%, transparent 70%), radial-gradient(ellipse 400px 400px at 50% 80%, rgba(167,139,250,0.04) 0%, transparent 70%); z-index: 0; }
-  .hero-content { position: relative; z-index: 1; max-width: 720px; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.25); color: var(--blue); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
-  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }
-  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
-  .hero h1 span { color: var(--blue); }
-  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 2rem; }
-  .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
-  .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
-  .hero-back { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.5rem; transition: opacity 0.2s; }
-  .hero-back:hover { opacity: 0.8; }
-  .hero-back svg { width: 16px; height: 16px; }
-  section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
-  .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
-  .section-desc { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem; }
-  .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--blue); }
-  .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
-  .content-area h2:first-child { margin-top: 0; }
-  .content-area h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--text); }
-  .content-area p { margin-bottom: 1rem; line-height: 1.7; }
-  .content-area ul, .content-area ol { margin: 0.5rem 0 1rem 1.5rem; }
-  .content-area li { margin-bottom: 0.4rem; line-height: 1.6; }
-  .content-area blockquote { margin: 1rem 0; padding: 1rem 1.25rem; background: var(--surface-2); border-radius: 8px; border-left: 3px solid var(--accent); font-style: italic; color: var(--text-dim); }
-  .content-area pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1rem 0; }
-  .content-area pre code { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }
-  .content-area code { font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }
-  .content-area pre code { background: none; padding: 0; color: var(--text); }
-  .content-area table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-  .content-area th, .content-area td { border: 1px solid var(--border); padding: 0.6rem 0.75rem; text-align: left; font-size: 0.9rem; }
-  .content-area th { background: var(--surface-2); font-weight: 600; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-  .content-area td code { font-size: 0.82rem; }
-  .content-area strong { color: var(--text); }
-  .wiki-link { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }
-  .wiki-link:hover { border-color: var(--blue); }
-  .connections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-  .connection-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
-  .connection-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
-  .connection-card h4 { font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }
-  .connection-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
-  .connection-type { font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; display: inline-block; }
-  .connection-type.core { background: rgba(240,180,41,0.12); color: var(--accent); }
-  .connection-type.related { background: rgba(167,139,250,0.12); color: var(--purple); }
-  .connection-type.extends { background: rgba(96,165,250,0.12); color: var(--blue); }
-  .connection-type.drives { background: rgba(45,212,191,0.12); color: var(--teal); }
-  footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
-  footer a { color: var(--accent); text-decoration: none; }
-  @media (max-width: 768px) { section { padding: 2.5rem 1.25rem; } .content-area { padding: 1.5rem; } }
-  @media (prefers-color-scheme: light) {
-    :root { --bg: #f8f9fb; --surface: #ffffff; --surface-2: #f0f1f5; --border: #e2e4ec; --text: #1a1d27; --text-dim: #6b7089; }
-  }
-</style>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
 </head>
 <body>
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <a href="../index.html" class="hero-back">
-      <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Back to Wiki Index
-    </a>
-    <div class="hero-badge">Concept</div>
-    <h1>Kubernetes Operator<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">kubernetes</span><span class="tag">operators</span><span class="tag">controllers</span><span class="tag">cloud-native</span><span class="tag">golang</span><span class="tag">automation</span></div>
-    <p class="hero-meta">Source: programming-kubernetes · Updated: 2026-06-08</p>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
   </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-kubernetes">Kubernetes</a> <span class="sep">/</span>
+  <span>Kubernetes Operator</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Kubernetes Operator</h1>
+  <div class="page-meta"><span>Source: programming-kubernetes</span><span>Updated: 2026-06-08</span></div>
+  <div class="page-tags"><span class="tag">kubernetes</span><span class="tag">operators</span><span class="tag">controllers</span><span class="tag">cloud-native</span><span class="tag">golang</span><span class="tag">automation</span></div>
 </div>
-<section>
-  <div class="content-area">
-<h2>Summary</h2>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
 <p>A Kubernetes Operator is a software extension that encodes domain-specific operational knowledge into automated controllers. Built on the control loop pattern (READ → CHANGE → UPDATE), operators watch custom resources and reconcile actual state toward desired state — turning manual SRE procedures into version-controlled, testable code. Operators are the mechanism that makes Kubernetes self-healing and self-managing.</p>
-<h2>Running on K8s vs Programming K8s</h2>
+<h2 id="running-on-k8s-vs-programming-k8s">Running on K8s vs Programming K8s</h2>
 <table><thead><tr>
 <th>Approach</th>
 <th>Description</th>
@@ -109,7 +59,7 @@
 </tr>
 </tbody></table>
 <blockquote>One is a tenant. The other is a builder who reads the building's blueprints.</blockquote>
-<h2>The Control Loop: READ → CHANGE → UPDATE</h2>
+<h2 id="the-control-loop-read--change--update">The Control Loop: READ → CHANGE → UPDATE</h2>
 <p>Every Kubernetes controller and operator follows this universal pattern:</p>
 <pre><code>┌────────────────────────┐
 │ 1. READ: Observe state  │ → Watch API events, detect drift from desired state
@@ -123,7 +73,7 @@
 │ 3. UPDATE: Report       │ → Update .status in the API, emit logs, export metrics
 └────────────────────────┘</code></pre>
 <p><strong>Analogy</strong>: A thermostat — reads temperature (READ), turns AC on/off (CHANGE), updates the display (UPDATE).</p>
-<h2>Operator = CRD + Custom Controller</h2>
+<h2 id="operator--crd--custom-controller">Operator = CRD + Custom Controller</h2>
 <p>An operator has two components:</p>
 <table><thead><tr>
 <th>Component</th>
@@ -152,7 +102,7 @@ spec:
   backupSchedule: &quot;0 2 * * *&quot;</code></pre>
 <p>→ The operator handles everything: provisioning, scaling, backup, recovery, upgrade.</p>
 <blockquote>Operators turn tribal SRE knowledge into code that can be version-controlled, tested, and reused.</blockquote>
-<h2>The Go Ecosystem</h2>
+<h2 id="the-go-ecosystem">The Go Ecosystem</h2>
 <p>Kubernetes is written in Go, and the ecosystem mirrors that:</p>
 <table><thead><tr>
 <th>Library</th>
@@ -168,25 +118,25 @@ spec:
 </tr>
 </tbody></table>
 <p><strong>Pro tip</strong>: Always use informers and caches from <code>client-go</code> instead of polling the API directly — reduces load on the API server.</p>
-<h2>Extension Patterns</h2>
+<h2 id="extension-patterns">Extension Patterns</h2>
 <p>Three ways to extend Kubernetes, in order of complexity:</p>
-<h3>1. Custom Resource Definitions (CRDs) — Most Common</h3>
+<h3 id="1-custom-resource-definitions-crds--most">1. Custom Resource Definitions (CRDs) — Most Common</h3>
 <ul>
 <li><strong>When</strong>: Adding a new resource type with custom schema</li>
 <li><strong>Pros</strong>: Easy to implement, integrates with <code>kubectl</code>, RBAC, validation</li>
 <li><strong>Cons</strong>: Performance may be limited at extreme scale</li>
 </ul>
-<h3>2. Custom API Servers — For Edge Cases</h3>
+<h3 id="2-custom-api-servers--for-edge-cases">2. Custom API Servers — For Edge Cases</h3>
 <ul>
 <li><strong>When</strong>: CRDs are too limiting — need custom storage backend, subresources, or high performance</li>
 <li><strong>Trade-off</strong>: Significantly more complex to build and maintain</li>
 </ul>
-<h3>3. Webhooks — Dynamic Admission Control</h3>
+<h3 id="3-webhooks--dynamic-admission-control">3. Webhooks — Dynamic Admission Control</h3>
 <ul>
 <li><strong>Mutating Webhook</strong>: Modify requests before etcd persistence (e.g., inject sidecar)</li>
 <li><strong>Validating Webhook</strong>: Reject invalid requests (e.g., block images from untrusted registries)</li>
 </ul>
-<h2>Production-Ready Operators</h2>
+<h2 id="production-ready-operators">Production-Ready Operators</h2>
 <p>Three pillars for deploying operators to production:</p>
 <table><thead><tr>
 <th>Pillar</th>
@@ -212,12 +162,9 @@ spec:
 <pre><code class="language-go">// Export metrics for controller health
 reconciliationsTotal.WithLabelValues(controllerName, result).Inc()
 reconcileDuration.WithLabelValues(controllerName).Observe(duration.Seconds())</code></pre>
-  </div>
-</section>
-
-<section>
-  <div class="section-label">Knowledge Graph</div>
-  <h2 class="section-title">Connections</h2>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
   <div class="connections-grid">
     <a class="connection-card" href="go-web-ecosystem.html">
       <span class="connection-type related">Related to</span>
@@ -241,19 +188,24 @@ reconcileDuration.WithLabelValues(controllerName).Observe(duration.Seconds())</c
     </a>
   </div>
 </section>
-<footer>
-  <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
-  <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>
-</footer>
-<script>
-  if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.style.setProperty('--bg', '#f8f9fb');
-    document.documentElement.style.setProperty('--surface', '#ffffff');
-    document.documentElement.style.setProperty('--surface-2', '#f0f1f5');
-    document.documentElement.style.setProperty('--border', '#e2e4ec');
-    document.documentElement.style.setProperty('--text', '#1a1d27');
-    document.documentElement.style.setProperty('--text-dim', '#6b7089');
-  }
-</script>
+<nav class="pagination"><a href="knowledge-graph.html" class="prev">← Knowledge Graph</a><a href="lance-file-format.html" class="next">Lance File Format →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
 </body>
 </html>

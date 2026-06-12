@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Semantic Layers Are Now for AI, Not Just Humans — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-semantic-layer">Semantic Layer</a> <span class="sep">/</span>
+  <span>Semantic Layers Are Now for AI, Not Just Humans</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge source">Source</div>
+  <h1>Semantic Layers Are Now for AI, Not Just Humans</h1>
+  <div class="page-meta"><span>By Madison Mae</span><span>article</span><span>2026-06-11</span><span>Ingested: 2026-06-08</span></div>
+  <div class="page-tags"><span class="tag">semantic-layer</span><span class="tag">analytics-engineering</span><span class="tag">ai</span><span class="tag">dbt</span><span class="tag">data-modeling</span></div>
+</div>
+<div class="content-area source">
+<h2 id="summary">Summary</h2>
+<p>Madison Mae re-evaluates her stance on semantic layers — once dismissed as high-effort/low-reward, now seen as critical infrastructure for AI-enabled analytics. The key shift: semantic layers were built for human stakeholders who never used them; now they serve AI agents that will. She tests <strong>ktx</strong>, an open-source tool that builds context layers from dbt, query history, Notion, Slack, and BI tools, and shares her hands-on experience.</p>
+<h2 id="core-message">Core Message</h2>
+<blockquote>Semantic layers aren't for humans anymore — they're for AI agents. And unlike humans, AI agents will actually use them. Without a unified context layer pulling from dbt, BI definitions, query patterns, and business docs, AI keeps guessing metric definitions wrong.</blockquote>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><strong>Old problem</strong>: AI agents struggle with business questions because metric definitions live scattered across BI tools, dbt, docs, and tribal knowledge</li>
+<li><strong>New user</strong>: Semantic layers built for AI agents (not human stakeholders) — guaranteed adoption because the AI needs them to function</li>
+<li><strong>Anthropic benchmark</strong>: 95% accuracy by combining strong data foundations + sources of truth (semantic layer, lineage, business context) + validation</li>
+<li><strong>ktx tool</strong>: Open-source context layer ingesting from dbt, query history, Notion, Slack, BI tools — version-controlled via Git</li>
+<li><strong>Beyond dbt alone</strong>: Query pattern metadata (which tables join, common filters) and business docs (Notion) carry context lost in pure dbt documentation</li>
+</ol>
+<h2 id="companion-concept">Companion Concept</h2>
+<p>→ <a href="../concepts/semantic-layer.html" class="wiki-link">semantic-layer</a></p>
+</div>
+
+<nav class="pagination"><a href="sample-article.html" class="prev">← The LLM Wiki Pattern</a><a href="senior-to-staff-engineer.html" class="next">How to Grow From Senior to Staff Engineer in the AI Era →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

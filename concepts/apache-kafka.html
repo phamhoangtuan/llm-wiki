@@ -1,97 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Apache Kafka — LLM Wiki</title>
-<style>
-  :root {
-    --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
-    --text: #e4e6f0; --text-dim: #8b8fa8; --accent: #f0b429; --accent-dim: #b8860b;
-    --accent-glow: rgba(240, 180, 41, 0.15); --green: #4ade80; --blue: #60a5fa;
-    --rose: #fb7185; --purple: #a78bfa; --teal: #2dd4bf; --radius: 12px;
-    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
-  ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  .hero { min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }
-  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 50%, rgba(96,165,250,0.08) 0%, transparent 70%), radial-gradient(ellipse 500px 500px at 70% 30%, rgba(240,180,41,0.06) 0%, transparent 70%), radial-gradient(ellipse 400px 400px at 50% 80%, rgba(167,139,250,0.04) 0%, transparent 70%); z-index: 0; }
-  .hero-content { position: relative; z-index: 1; max-width: 720px; }
-  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.25); color: var(--blue); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }
-  .hero-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }
-  .hero h1 { font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }
-  .hero h1 span { color: var(--blue); }
-  .hero-sub { font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 2rem; }
-  .hero-tags { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
-  .tag { font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }
-  .hero-meta { font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }
-  .hero-back { display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.5rem; transition: opacity 0.2s; }
-  .hero-back:hover { opacity: 0.8; }
-  .hero-back svg { width: 16px; height: 16px; }
-  section { padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }
-  .section-label { display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
-  .section-title { font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }
-  .section-desc { color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem; }
-  .content-area { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--blue); }
-  .content-area h2 { font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }
-  .content-area h2:first-child { margin-top: 0; }
-  .content-area h3 { font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--text); }
-  .content-area p { margin-bottom: 1rem; line-height: 1.7; }
-  .content-area ul, .content-area ol { margin: 0.5rem 0 1rem 1.5rem; }
-  .content-area li { margin-bottom: 0.4rem; line-height: 1.6; }
-  .content-area blockquote { margin: 1rem 0; padding: 1rem 1.25rem; background: var(--surface-2); border-radius: 8px; border-left: 3px solid var(--accent); font-style: italic; color: var(--text-dim); }
-  .content-area pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1rem 0; }
-  .content-area pre code { font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }
-  .content-area code { font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }
-  .content-area pre code { background: none; padding: 0; color: var(--text); }
-  .content-area table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
-  .content-area th, .content-area td { border: 1px solid var(--border); padding: 0.6rem 0.75rem; text-align: left; font-size: 0.9rem; }
-  .content-area th { background: var(--surface-2); font-weight: 600; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
-  .content-area td code { font-size: 0.82rem; }
-  .content-area strong { color: var(--text); }
-  .wiki-link { color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }
-  .wiki-link:hover { border-color: var(--blue); }
-  .connections-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-  .connection-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }
-  .connection-card:hover { border-color: var(--accent-dim); transform: translateY(-2px); }
-  .connection-card h4 { font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }
-  .connection-card p { font-size: 0.82rem; color: var(--text-dim); margin: 0; }
-  .connection-type { font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; display: inline-block; }
-  .connection-type.core { background: rgba(240,180,41,0.12); color: var(--accent); }
-  .connection-type.related { background: rgba(167,139,250,0.12); color: var(--purple); }
-  .connection-type.extends { background: rgba(96,165,250,0.12); color: var(--blue); }
-  .connection-type.drives { background: rgba(45,212,191,0.12); color: var(--teal); }
-  footer { text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }
-  footer a { color: var(--accent); text-decoration: none; }
-  @media (max-width: 768px) { section { padding: 2.5rem 1.25rem; } .content-area { padding: 1.5rem; } }
-  @media (prefers-color-scheme: light) {
-    :root { --bg: #f8f9fb; --surface: #ffffff; --surface-2: #f0f1f5; --border: #e2e4ec; --text: #1a1d27; --text-dim: #6b7089; }
-  }
-</style>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
 </head>
 <body>
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <a href="../index.html" class="hero-back">
-      <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Back to Wiki Index
-    </a>
-    <div class="hero-badge">Concept</div>
-    <h1>Apache Kafka<span>.</span></h1>
-    <div class="hero-tags"><span class="tag">streaming</span><span class="tag">messaging</span><span class="tag">kafka</span><span class="tag">data-engineering</span><span class="tag">event-driven</span></div>
-    <p class="hero-meta">Source: hugo-data-ingestion-platform-flink · Updated: 2026-05-26</p>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
   </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-streaming">Streaming</a> <span class="sep">/</span>
+  <span>Apache Kafka</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Apache Kafka</h1>
+  <div class="page-meta"><span>Source: hugo-data-ingestion-platform-flink, databricks-zerobus</span><span>Updated: 2026-06-08</span></div>
+  <div class="page-tags"><span class="tag">streaming</span><span class="tag">messaging</span><span class="tag">kafka</span><span class="tag">data-engineering</span><span class="tag">event-driven</span></div>
 </div>
-<section>
-  <div class="content-area">
-<h2>Summary</h2>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
 <p><strong>Apache Kafka</strong> is an open-source distributed event streaming platform used for high-throughput, low-latency data pipelines, streaming analytics, and event-driven architectures. Unlike traditional <a href="message-queue.html" class="wiki-link">message queues</a>, Kafka is a <strong>distributed log</strong> — messages are persisted, ordered, and replayable. Kafka is central to Grab's data platform as both a data source (Kafka topic ingestion) and historically as the intermediary in their CDC pipelines (now replaced by Flink CDC).</p>
-<h2>Core Concepts</h2>
+<h2 id="core-concepts">Core Concepts</h2>
 <table><thead><tr>
 <th>Concept</th>
 <th>Description</th>
@@ -129,7 +79,7 @@
 <td>Kafka retains messages for a configurable duration (hours to years), not just until consumed</td>
 </tr>
 </tbody></table>
-<h2>Kafka vs Traditional Message Queues</h2>
+<h2 id="kafka-vs-traditional-message-queues">Kafka vs Traditional Message Queues</h2>
 <table><thead><tr>
 <th>Aspect</th>
 <th>Kafka</th>
@@ -171,14 +121,14 @@
 <td>Work distribution, RPC</td>
 </tr>
 </tbody></table>
-<h2>In Data Ingestion Pipelines</h2>
-<h3>Kafka as Source (Hugo's Current Pattern)</h3>
+<h2 id="in-data-ingestion-pipelines">In Data Ingestion Pipelines</h2>
+<h3 id="kafka-as-source-hugos-current-pattern">Kafka as Source (Hugo's Current Pattern)</h3>
 <pre><code>Application → Kafka topic → Flink Consumer → S3 → Hive</code></pre>
 <p>Kafka serves as the ingestion source for application-generated events. Hugo's Flink pipelines consume from Kafka topics, resolve Protobuf schemas dynamically from Confluent Schema Registry, and write to the data lake.</p>
-<h3>Kafka as CDC Intermediary (Hugo's Legacy Pattern)</h3>
+<h3 id="kafka-as-cdc-intermediary-hugos-legacy-p">Kafka as CDC Intermediary (Hugo's Legacy Pattern)</h3>
 <pre><code>MySQL binlog → Kafka Connect (Debezium) → Kafka topic → Consumer (Sprinkler) → S3</code></pre>
 <p>This was the previous architecture — Kafka acted as the buffer between the CDC connector and the S3 writer. Grab migrated away from this because it added operational complexity (more components to manage, coordinate, and debug). <a href="apache-flink.html" class="wiki-link">Flink CDC</a> reads binlog directly, eliminating the Kafka hop.</p>
-<h2>Schema Registry</h2>
+<h2 id="schema-registry">Schema Registry</h2>
 <p><strong>Confluent Schema Registry</strong> is a critical companion to Kafka in data pipelines. It stores and versions schemas (Avro, Protobuf, JSON Schema) outside of Kafka topics:</p>
 <ul>
 <li>Producers register schemas before publishing</li>
@@ -188,14 +138,14 @@
 <p>In Hugo's Flink pipelines:</p>
 <pre><code>CI pipeline → updates Protobuf schema → Schema Registry → Flink fetches at startup</code></pre>
 <p>This eliminates the need for hardcoded DTOs (the legacy Sprinkler approach). Schema changes still require a manual Flink pipeline restart as of 2026-05.</p>
-<h2>Kafka Connect (Legacy at Grab)</h2>
+<h2 id="kafka-connect-legacy-at-grab">Kafka Connect (Legacy at Grab)</h2>
 <p>Kafka Connect is a framework for connecting Kafka with external systems via pre-built connectors (source and sink). It was used at Grab for MySQL CDC (Debezium connector) but was retired in favor of Flink CDC because:</p>
 <ul>
 <li>Added an extra component to manage and monitor</li>
 <li>Required users to configure jobs across multiple platforms (Kafka Connect + Hugo)</li>
 <li>Schema mapping between systems was manual and error-prone</li>
 </ul>
-<h2>When to Use Kafka</h2>
+<h2 id="when-to-use-kafka">When to Use Kafka</h2>
 <table><thead><tr>
 <th>✅ Use Kafka</th>
 <th>❌ Don't Use Kafka</th>
@@ -221,12 +171,9 @@
 <td></td>
 </tr>
 </tbody></table>
-  </div>
-</section>
-
-<section>
-  <div class="section-label">Knowledge Graph</div>
-  <h2 class="section-title">Connections</h2>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
   <div class="connections-grid">
     <a class="connection-card" href="message-queue.html">
       <span class="connection-type extends">Extends</span>
@@ -248,6 +195,11 @@
       <h4>Change Data Capture (CDC)</h4>
       <p>Kafka + Debezium was Grab's legacy CDC approach (now replaced by Flink CDC)</p>
     </a>
+    <a class="connection-card" href="../sources/databricks-zerobus.html">
+      <span class="connection-type related">Related</span>
+      <h4>Databricks Zerobus — Event Streams + Lake House</h4>
+      <p>Databricks Zerobus is an API-based streaming alternative for Lake House use cases, removing Kafka's operational overhead</p>
+    </a>
     <a class="connection-card" href="../sources/hugo-data-ingestion-platform-flink.html">
       <span class="connection-type related">Related</span>
       <h4>The Hugo Evolution: Engineering Grab's Unified, One-Click Data Ingestion Platform with Apache Flink</h4>
@@ -255,19 +207,24 @@
     </a>
   </div>
 </section>
-<footer>
-  <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
-  <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>
-</footer>
-<script>
-  if (window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.style.setProperty('--bg', '#f8f9fb');
-    document.documentElement.style.setProperty('--surface', '#ffffff');
-    document.documentElement.style.setProperty('--surface-2', '#f0f1f5');
-    document.documentElement.style.setProperty('--border', '#e2e4ec');
-    document.documentElement.style.setProperty('--text', '#1a1d27');
-    document.documentElement.style.setProperty('--text-dim', '#6b7089');
-  }
-</script>
+<nav class="pagination"><a href="apache-iceberg.html" class="prev">← Apache Iceberg</a><a href="apache-parquet.html" class="next">Apache Parquet →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
 </body>
 </html>

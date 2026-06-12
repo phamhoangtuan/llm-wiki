@@ -1,21 +1,66 @@
 #!/usr/bin/env python3
-"""Convert wiki markdown files to HTML using the unified template."""
+"""Convert wiki markdown files to HTML with sidebar, breadcrumbs, pagination."""
 
 import re
 import yaml
 import html
+import json
 from pathlib import Path
+from collections import defaultdict
 
 WIKI_ROOT = Path(__file__).parent.parent
 CONCEPTS_DIR = WIKI_ROOT / "concepts"
 SOURCES_DIR = WIKI_ROOT / "sources"
 SYNTHESES_DIR = WIKI_ROOT / "syntheses"
+STYLES_DIR = WIKI_ROOT / "styles"
+SCRIPTS_DIR = WIKI_ROOT / "scripts/js"
+META_DIR = WIKI_ROOT / "meta"
 
-# Build a slug-to-title map from all existing MD files
 SLUG_MAP = {}
 
+CATEGORY_MAP = {
+    'data-engineering': 'Data Engineering',
+    'dbt': 'Data Engineering', 'analytics': 'Data Engineering', 'elt': 'Data Engineering',
+    'data-modeling': 'Data Engineering', 'etl': 'Data Engineering', 'streaming': 'Data Engineering',
+    'data-lake': 'Data Engineering', 'lakehouse': 'Data Engineering', 'data-governance': 'Data Engineering',
+    'clickhouse': 'Data Engineering', 'orchestration': 'Data Engineering',
+    'data-layout': 'Data Engineering', 'delta-lake': 'Data Engineering',
+    'file-formats': 'Data Engineering', 'columnar': 'Data Engineering', 'table-formats': 'Data Engineering',
+    'in-memory': 'Data Engineering', 'duckdb': 'Data Engineering', 'dataframes': 'Data Engineering',
+    'query-engines': 'Data Engineering', 'ingestion': 'Data Engineering', 'apache': 'Data Engineering',
+    'metrics': 'Data Engineering', 'dataops': 'Data Engineering', 'sql': 'Data Engineering',
+    'roles': 'Data Engineering', 'database-architecture': 'Data Engineering',
+    'design-principles': 'Software Design',
+    'clean-code': 'Software Design', 'oop': 'Software Design', 'solid': 'Software Design',
+    'design-patterns': 'Software Design', 'error-handling': 'Software Design',
+    'reliability': 'Software Design', 'maintainability': 'Software Design',
+    'engineering': 'Software Design', 'optimization': 'Software Design',
+    'complexity': 'Software Design', 'encapsulation': 'Software Design',
+    'testing': 'Testing', 'tdd': 'Testing', 'pytest': 'Testing', 'strategy': 'Testing',
+    'system-design': 'System Architecture', 'architecture': 'System Architecture',
+    'distributed-systems': 'System Architecture', 'scalability': 'System Architecture',
+    'go': 'Go & Web', 'golang': 'Go & Web', 'http': 'Go & Web', 'middleware': 'Go & Web',
+    'web': 'Go & Web', 'kubernetes': 'Go & Web', 'cloud-native': 'Go & Web',
+    'operators': 'Go & Web', 'controllers': 'Go & Web', 'automation': 'Go & Web',
+    'career': 'Career & Growth', 'interview': 'Career & Growth',
+    'career-growth': 'Career & Growth', 'engineering-leadership': 'Career & Growth',
+    'growth': 'Career & Growth', 'senior-to-staff': 'Career & Growth',
+    'staff-engineering': 'Career & Growth', 'leadership': 'Career & Growth',
+    'problem-solving': 'Career & Growth', 'algorithms': 'Career & Growth',
+    'ai': 'AI & Agents', 'ai-engineering': 'AI & Agents', 'llm': 'AI & Agents',
+    'knowledge-management': 'AI & Agents', 'harness': 'AI & Agents',
+    'python': 'Python & Tools', 'bash': 'Python & Tools',
+    'stream-processing': 'Stream Processing', 'batch-processing': 'Stream Processing',
+    'cdc': 'Stream Processing', 'infrastructure': 'Infrastructure',
+    'deployment': 'Infrastructure', 'databases': 'Infrastructure',
+    'meta': 'Meta',
+}
+
+CAT_ORDER = ['Data Engineering', 'Software Design', 'Testing', 'System Architecture',
+             'Go & Web', 'Stream Processing', 'Infrastructure', 'Career & Growth',
+             'Python & Tools', 'AI & Agents', 'Meta']
+
 def load_slug_map():
-    """Scan all MD files to build slug -> title mapping."""
     for d in [CONCEPTS_DIR, SOURCES_DIR, SYNTHESES_DIR]:
         if not d.exists():
             continue
@@ -27,20 +72,18 @@ def load_slug_map():
                     fm = yaml.safe_load(m.group(1))
                     title = fm.get("title", f.stem)
                     ptype = fm.get("type", "concept")
-                    # Determine the relative path
                     if d == CONCEPTS_DIR:
                         rel = f"concepts/{f.stem}"
                     elif d == SOURCES_DIR:
                         rel = f"sources/{f.stem}"
                     else:
                         rel = f"syntheses/{f.stem}"
-                    SLUG_MAP[rel] = {"title": title, "type": ptype}
-                    SLUG_MAP[f.stem] = {"title": title, "type": ptype}
+                    SLUG_MAP[rel] = {"title": title, "type": ptype, "tags": fm.get("tags", []), "sources": fm.get("sources", []), "concepts": fm.get("concepts", [])}
+                    SLUG_MAP[f.stem] = {"title": title, "type": ptype, "tags": fm.get("tags", []), "sources": fm.get("sources", []), "concepts": fm.get("concepts", [])}
                 except:
                     pass
 
 def convert_wikilinks(text, output_dir):
-    """Convert [[wikilinks]] and [[wikilinks|display]] to HTML anchor tags."""
     is_concept = (output_dir == CONCEPTS_DIR)
     is_source = (output_dir == SOURCES_DIR)
 
@@ -51,7 +94,6 @@ def convert_wikilinks(text, output_dir):
         else:
             target = full
             display = full
-
         target = target.strip()
         display = display.strip()
 
@@ -78,13 +120,11 @@ def convert_wikilinks(text, output_dir):
                 href = f"../syntheses/{target}.html"
             else:
                 href = f"{target}.html"
-
         return f'<a href="{href}" class="wiki-link">{display}</a>'
 
     return re.sub(r'\[\[(.*?)\]\]', replace_link, text)
 
 def md_to_html(text, output_dir):
-    """Simple markdown to HTML converter."""
     lines = text.split('\n')
     html_lines = []
     in_code_block = False
@@ -111,7 +151,6 @@ def md_to_html(text, output_dir):
             code_lang = ""
 
     for line in lines:
-        # Code blocks
         if line.startswith('```'):
             if in_code_block:
                 close_code()
@@ -120,22 +159,20 @@ def md_to_html(text, output_dir):
                 in_code_block = True
                 code_lang = line[3:].strip()
             continue
-
         if in_code_block:
             code_content.append(line)
             continue
 
-        # Headings
         heading_match = re.match(r'^(#{2,6})\s+(.*)', line)
         if heading_match:
             close_list()
             level = len(heading_match.group(1))
             content = convert_wikilinks(heading_match.group(2), output_dir)
             content = inline_format(content)
-            html_lines.append(f'<h{level}>{content}</h{level}>')
+            slug = re.sub(r'[^a-z0-9-]', '', heading_match.group(2).lower().replace(' ', '-'))[:40]
+            html_lines.append(f'<h{level} id="{slug}">{content}</h{level}>')
             continue
 
-        # Blockquotes
         if line.startswith('> '):
             close_list()
             content = convert_wikilinks(line[2:], output_dir)
@@ -143,11 +180,9 @@ def md_to_html(text, output_dir):
             html_lines.append(f'<blockquote>{content}</blockquote>')
             continue
 
-        # Tables
         if '|' in line and line.strip().startswith('|'):
             close_list()
             cells = [c.strip() for c in line.split('|')[1:-1]]
-            # Check if it's a separator line
             if all(set(c.strip()) <= set('-|: ') for c in cells):
                 continue
             if not in_table:
@@ -165,12 +200,10 @@ def md_to_html(text, output_dir):
                 html_lines.append('</tr>')
             continue
 
-        # Close table if we were in one
         if in_table:
             in_table = False
             html_lines.append('</tbody></table>')
 
-        # Unordered lists
         if re.match(r'^[-*]\s+', line):
             if not in_list:
                 in_list = True
@@ -182,7 +215,6 @@ def md_to_html(text, output_dir):
             html_lines.append(f'<li>{content}</li>')
             continue
 
-        # Ordered lists
         if re.match(r'^\d+\.\s+', line):
             if not in_list:
                 in_list = True
@@ -194,17 +226,14 @@ def md_to_html(text, output_dir):
             html_lines.append(f'<li>{content}</li>')
             continue
 
-        # Horizontal rule — stop body rendering (connections follow)
         if line.strip() == '---' and not in_code_block:
             close_list()
             break
 
-        # Empty line
         if not line.strip():
             close_list()
             continue
 
-        # Regular paragraph
         close_list()
         content = convert_wikilinks(line, output_dir)
         content = inline_format(content)
@@ -212,242 +241,82 @@ def md_to_html(text, output_dir):
 
     close_list()
     close_code()
-
-    # Close any open table
     result = '\n'.join(html_lines)
     if '<table>' in result and '</table>' not in result:
         result += '</tbody></table>'
-
     return result
 
 def inline_format(text):
-    """Apply inline markdown formatting."""
-    # Markdown links [text](url)
     text = re.sub(r'\[([^\]]+)\]\(([^)]+)\)', r'<a href="\2" target="_blank" rel="noopener">\1</a>', text)
-    # Bold
     text = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', text)
-    # Italic
     text = re.sub(r'\*(.+?)\*', r'<em>\1</em>', text)
-    # Inline code
     text = re.sub(r'`(.+?)`', r'<code>\1</code>', text)
     return text
 
-CONCEPT_TEMPLATE = '''<!DOCTYPE html>
-<html lang="en">
+PAGE_HEAD = '''<!DOCTYPE html>
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} — LLM Wiki</title>
-<style>
-  :root {{
-    --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
-    --text: #e4e6f0; --text-dim: #8b8fa8; --accent: #f0b429; --accent-dim: #b8860b;
-    --accent-glow: rgba(240, 180, 41, 0.15); --green: #4ade80; --blue: #60a5fa;
-    --rose: #fb7185; --purple: #a78bfa; --teal: #2dd4bf; --radius: 12px;
-    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-  }}
-  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-  body {{ font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }}
-  ::-webkit-scrollbar {{ width: 6px; }}
-  ::-webkit-scrollbar-track {{ background: var(--bg); }}
-  ::-webkit-scrollbar-thumb {{ background: var(--border); border-radius: 3px; }}
-  .hero {{ min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }}
-  .hero-bg {{ position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 50%, rgba(96,165,250,0.08) 0%, transparent 70%), radial-gradient(ellipse 500px 500px at 70% 30%, rgba(240,180,41,0.06) 0%, transparent 70%), radial-gradient(ellipse 400px 400px at 50% 80%, rgba(167,139,250,0.04) 0%, transparent 70%); z-index: 0; }}
-  .hero-content {{ position: relative; z-index: 1; max-width: 720px; }}
-  .hero-badge {{ display: inline-flex; align-items: center; gap: 6px; background: rgba(96,165,250,0.12); border: 1px solid rgba(96,165,250,0.25); color: var(--blue); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }}
-  .hero-badge::before {{ content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }}
-  .hero h1 {{ font-size: clamp(2.5rem, 6vw, 4rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }}
-  .hero h1 span {{ color: var(--blue); }}
-  .hero-sub {{ font-size: clamp(1rem, 2vw, 1.2rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 2rem; }}
-  .hero-tags {{ display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }}
-  .tag {{ font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }}
-  .hero-meta {{ font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }}
-  .hero-back {{ display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.5rem; transition: opacity 0.2s; }}
-  .hero-back:hover {{ opacity: 0.8; }}
-  .hero-back svg {{ width: 16px; height: 16px; }}
-  section {{ padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }}
-  .section-label {{ display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }}
-  .section-title {{ font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }}
-  .section-desc {{ color: var(--text-dim); font-size: 1.05rem; margin-bottom: 2rem; }}
-  .content-area {{ background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--blue); }}
-  .content-area h2 {{ font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }}
-  .content-area h2:first-child {{ margin-top: 0; }}
-  .content-area h3 {{ font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--text); }}
-  .content-area p {{ margin-bottom: 1rem; line-height: 1.7; }}
-  .content-area ul, .content-area ol {{ margin: 0.5rem 0 1rem 1.5rem; }}
-  .content-area li {{ margin-bottom: 0.4rem; line-height: 1.6; }}
-  .content-area blockquote {{ margin: 1rem 0; padding: 1rem 1.25rem; background: var(--surface-2); border-radius: 8px; border-left: 3px solid var(--accent); font-style: italic; color: var(--text-dim); }}
-  .content-area pre {{ background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1rem 0; }}
-  .content-area pre code {{ font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }}
-  .content-area code {{ font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }}
-  .content-area pre code {{ background: none; padding: 0; color: var(--text); }}
-  .content-area table {{ width: 100%; border-collapse: collapse; margin: 1rem 0; }}
-  .content-area th, .content-area td {{ border: 1px solid var(--border); padding: 0.6rem 0.75rem; text-align: left; font-size: 0.9rem; }}
-  .content-area th {{ background: var(--surface-2); font-weight: 600; color: var(--text-dim); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }}
-  .content-area td code {{ font-size: 0.82rem; }}
-  .content-area strong {{ color: var(--text); }}
-  .wiki-link {{ color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }}
-  .wiki-link:hover {{ border-color: var(--blue); }}
-  .connections-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }}
-  .connection-card {{ background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }}
-  .connection-card:hover {{ border-color: var(--accent-dim); transform: translateY(-2px); }}
-  .connection-card h4 {{ font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }}
-  .connection-card p {{ font-size: 0.82rem; color: var(--text-dim); margin: 0; }}
-  .connection-type {{ font-size: 0.68rem; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 0.5rem; display: inline-block; }}
-  .connection-type.core {{ background: rgba(240,180,41,0.12); color: var(--accent); }}
-  .connection-type.related {{ background: rgba(167,139,250,0.12); color: var(--purple); }}
-  .connection-type.extends {{ background: rgba(96,165,250,0.12); color: var(--blue); }}
-  .connection-type.drives {{ background: rgba(45,212,191,0.12); color: var(--teal); }}
-  footer {{ text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }}
-  footer a {{ color: var(--accent); text-decoration: none; }}
-  @media (max-width: 768px) {{ section {{ padding: 2.5rem 1.25rem; }} .content-area {{ padding: 1.5rem; }} }}
-  @media (prefers-color-scheme: light) {{
-    :root {{ --bg: #f8f9fb; --surface: #ffffff; --surface-2: #f0f1f5; --border: #e2e4ec; --text: #1a1d27; --text-dim: #6b7089; }}
-  }}
-</style>
+<link rel="stylesheet" href="{css_href}">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
 </head>
 <body>
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <a href="../index.html" class="hero-back">
-      <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Back to Wiki Index
-    </a>
-    <div class="hero-badge">Concept</div>
-    <h1>{title}<span>.</span></h1>
-    <div class="hero-tags">{tags_html}</div>
-    <p class="hero-meta">Source: {source_name} · Updated: {updated}</p>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="{index_href}" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
   </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">'''
+
+PAGE_FOOT = '''</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
 </div>
-<section>
-  <div class="content-area">
-{body_html}
-  </div>
-</section>
-{connections_section}
-<footer>
-  <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
-  <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>
-</footer>
-<script>
-  if (window.matchMedia('(prefers-color-scheme: light)').matches) {{
-    document.documentElement.style.setProperty('--bg', '#f8f9fb');
-    document.documentElement.style.setProperty('--surface', '#ffffff');
-    document.documentElement.style.setProperty('--surface-2', '#f0f1f5');
-    document.documentElement.style.setProperty('--border', '#e2e4ec');
-    document.documentElement.style.setProperty('--text', '#1a1d27');
-    document.documentElement.style.setProperty('--text-dim', '#6b7089');
-  }}
-</script>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="{scripts_href}/theme.js"></script>
+<script src="{scripts_href}/sidebar.js"></script>
+<script src="{scripts_href}/focus.js"></script>
+<script src="{scripts_href}/toc.js"></script>
+<script src="{scripts_href}/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){{if(window.PagefindUI)new PagefindUI({{element:'#search',showImages:false}});}});</script>
 </body>
 </html>'''
 
-SOURCE_TEMPLATE = '''<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>{title} — LLM Wiki</title>
-<style>
-  :root {{
-    --bg: #0f1117; --surface: #1a1d27; --surface-2: #242736; --border: #2a2d3e;
-    --text: #e4e6f0; --text-dim: #8b8fa8; --accent: #f0b429; --accent-dim: #b8860b;
-    --accent-glow: rgba(240, 180, 41, 0.15); --green: #4ade80; --blue: #60a5fa;
-    --rose: #fb7185; --purple: #a78bfa; --teal: #2dd4bf; --radius: 12px;
-    --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    --mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
-  }}
-  * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-  body {{ font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }}
-  ::-webkit-scrollbar {{ width: 6px; }} ::-webkit-scrollbar-track {{ background: var(--bg); }} ::-webkit-scrollbar-thumb {{ background: var(--border); border-radius: 3px; }}
-  .hero {{ min-height: 50vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 2rem; position: relative; overflow: hidden; }}
-  .hero-bg {{ position: absolute; inset: 0; background: radial-gradient(ellipse 600px 400px at 30% 50%, rgba(45,212,191,0.08) 0%, transparent 70%), radial-gradient(ellipse 500px 500px at 70% 30%, rgba(240,180,41,0.06) 0%, transparent 70%); z-index: 0; }}
-  .hero-content {{ position: relative; z-index: 1; max-width: 720px; }}
-  .hero-badge {{ display: inline-flex; align-items: center; gap: 6px; background: rgba(45,212,191,0.12); border: 1px solid rgba(45,212,191,0.25); color: var(--teal); font-size: 0.8rem; font-weight: 600; padding: 6px 14px; border-radius: 100px; letter-spacing: 0.5px; margin-bottom: 1.5rem; }}
-  .hero-badge::before {{ content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); }}
-  .hero h1 {{ font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; letter-spacing: -2px; line-height: 1.1; margin-bottom: 1rem; }}
-  .hero h1 span {{ color: var(--teal); }}
-  .hero-sub {{ font-size: clamp(0.9rem, 1.5vw, 1.1rem); color: var(--text-dim); max-width: 580px; margin: 0 auto 1.5rem; }}
-  .hero-tags {{ display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }}
-  .tag {{ font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 6px; background: var(--surface); border: 1px solid var(--border); color: var(--text-dim); }}
-  .hero-meta {{ font-size: 0.78rem; color: var(--text-dim); opacity: 0.7; }}
-  .hero-back {{ display: inline-flex; align-items: center; gap: 8px; color: var(--accent); font-size: 0.85rem; font-weight: 600; text-decoration: none; margin-bottom: 1.5rem; transition: opacity 0.2s; }}
-  .hero-back:hover {{ opacity: 0.8; }}
-  .hero-back svg {{ width: 16px; height: 16px; }}
-  section {{ padding: 4rem 2rem; max-width: 900px; margin: 0 auto; }}
-  .section-label {{ display: inline-block; font-size: 0.7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }}
-  .section-title {{ font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; margin-bottom: 1rem; }}
-  .content-area {{ background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2.5rem; margin-bottom: 3rem; border-left: 3px solid var(--teal); }}
-  .content-area h2 {{ font-size: 1.3rem; margin: 2rem 0 1rem; color: var(--text); }}
-  .content-area h2:first-child {{ margin-top: 0; }}
-  .content-area h3 {{ font-size: 1.1rem; margin: 1.5rem 0 0.75rem; color: var(--text); }}
-  .content-area p {{ margin-bottom: 1rem; line-height: 1.7; }}
-  .content-area ul, .content-area ol {{ margin: 0.5rem 0 1rem 1.5rem; }}
-  .content-area li {{ margin-bottom: 0.4rem; line-height: 1.6; }}
-  .content-area blockquote {{ margin: 1rem 0; padding: 1rem 1.25rem; background: var(--surface-2); border-radius: 8px; border-left: 3px solid var(--accent); font-style: italic; color: var(--text-dim); }}
-  .content-area pre {{ background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 1.25rem; overflow-x: auto; margin: 1rem 0; }}
-  .content-area pre code {{ font-family: var(--mono); font-size: 0.85rem; line-height: 1.6; color: var(--text); }}
-  .content-area code {{ font-family: var(--mono); font-size: 0.85rem; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; color: var(--rose); }}
-  .content-area pre code {{ background: none; padding: 0; color: var(--text); }}
-  .content-area strong {{ color: var(--text); }}
-  .wiki-link {{ color: var(--blue); text-decoration: none; border-bottom: 1px solid rgba(96,165,250,0.3); transition: border-color 0.2s; }}
-  .wiki-link:hover {{ border-color: var(--blue); }}
-  .connections-grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }}
-  .connection-card {{ background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; text-decoration: none; color: inherit; transition: border-color 0.2s, transform 0.2s; }}
-  .connection-card:hover {{ border-color: var(--accent-dim); transform: translateY(-2px); }}
-  .connection-card h4 {{ font-size: 0.88rem; color: var(--blue); margin-bottom: 0.4rem; }}
-  .connection-card p {{ font-size: 0.82rem; color: var(--text-dim); margin: 0; }}
-  footer {{ text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.85rem; }}
-  footer a {{ color: var(--accent); text-decoration: none; }}
-  @media (max-width: 768px) {{ section {{ padding: 2.5rem 1.25rem; }} .content-area {{ padding: 1.5rem; }} }}
-  @media (prefers-color-scheme: light) {{ :root {{ --bg: #f8f9fb; --surface: #ffffff; --surface-2: #f0f1f5; --border: #e2e4ec; --text: #1a1d27; --text-dim: #6b7089; }} }}
-</style>
-</head>
-<body>
-<div class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-content">
-    <a href="../index.html" class="hero-back">
-      <svg viewBox="0 0 16 16" fill="none"><path d="M13 8H3M7 4L3 8l4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      Back to Wiki Index
-    </a>
-    <div class="hero-badge">Source</div>
-    <h1>{title}<span>.</span></h1>
-    <p class="hero-sub">{author} · {source_type} · {source_date}</p>
-    <div class="hero-tags">{tags_html}</div>
-    <p class="hero-meta">Ingested: {ingested}</p>
-  </div>
-</div>
-<section>
-  <div class="content-area">
-{body_html}
-  </div>
-</section>
-{connections_section}
-<footer>
-  <p>Part of the <a href="../index.html">LLM Wiki</a> · Based on <a href="https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f" target="_blank">Karpathy's LLM Wiki</a> pattern</p>
-  <p style="margin-top:0.5rem;font-size:0.78rem;">All markdown. Zero lock-in.</p>
-</footer>
-<script>
-  if (window.matchMedia('(prefers-color-scheme: light)').matches) {{
-    document.documentElement.style.setProperty('--bg', '#f8f9fb');
-    document.documentElement.style.setProperty('--surface', '#ffffff');
-    document.documentElement.style.setProperty('--surface-2', '#f0f1f5');
-    document.documentElement.style.setProperty('--border', '#e2e4ec');
-    document.documentElement.style.setProperty('--text', '#1a1d27');
-    document.documentElement.style.setProperty('--text-dim', '#6b7089');
-  }}
-</script>
-</body>
-</html>'''
+def build_page_head(title, depth):
+    css_href = "../styles/main.css" if depth == 1 else "../../styles/main.css"
+    scripts_href = "../scripts/js" if depth == 1 else "../../scripts/js"
+    index_href = "../index.html" if depth == 1 else "../../index.html"
+    return PAGE_HEAD.format(title=title, css_href=css_href, index_href=index_href, scripts_href=scripts_href)
+
+def build_page_tail(depth):
+    scripts_href = "../scripts/js" if depth == 1 else "../../scripts/js"
+    return PAGE_FOOT.format(scripts_href=scripts_href)
 
 def build_connections_section(connections, output_dir):
-    """Build the connections section HTML."""
     if not connections:
         return ""
-
     conn_items = []
     for line in connections:
         line = line.strip()
@@ -465,13 +334,11 @@ def build_connections_section(connections, output_dir):
                 target = m2.group(1).strip()
                 desc = m2.group(2).strip().lstrip('—').strip()
                 conn_items.append({"type": "Related", "target": target, "desc": desc})
-
     if not conn_items:
         return ""
 
     is_concept = (output_dir == CONCEPTS_DIR)
     is_source = (output_dir == SOURCES_DIR)
-
     cards_html = ""
     for c in conn_items:
         target = c["target"]
@@ -497,50 +364,66 @@ def build_connections_section(connections, output_dir):
             type_class = "drives"
 
         title = SLUG_MAP.get(target, {}).get("title", target)
+        cards_html += f'\n    <a class="connection-card" href="{href}">\n      <span class="connection-type {type_class}">{c["type"]}</span>\n      <h4>{title}</h4>\n      <p>{c["desc"]}</p>\n    </a>'
 
-        cards_html += f'''
-    <a class="connection-card" href="{href}">
-      <span class="connection-type {type_class}">{c["type"]}</span>
-      <h4>{title}</h4>
-      <p>{c["desc"]}</p>
-    </a>'''
-
-    return f'''
-<section>
-  <div class="section-label">Knowledge Graph</div>
-  <h2 class="section-title">Connections</h2>
+    return f'''<section class="connections-section">
+  <h2>Connections</h2>
   <div class="connections-grid">{cards_html}
   </div>
 </section>'''
 
-def convert_file(md_path, output_dir, template, is_source=False):
-    """Convert a single MD file to HTML."""
-    content = md_path.read_text()
+def build_breadcrumb(tags, ptype, page_title, depth):
+    cat = tags[0].replace('-', ' ').title() if tags else 'Uncategorized'
+    index_href = "../index.html" if depth == 1 else "../../index.html"
+    return f'''<nav class="breadcrumb">
+  <a href="{index_href}">Home</a> <span class="sep">/</span>
+  <a href="{index_href}#cat-{tags[0] if tags else 'uncategorized'}">{cat}</a> <span class="sep">/</span>
+  <span>{page_title}</span>
+</nav>'''
 
-    # Extract frontmatter
+def build_pagination(md_files, current_slug, output_dir, depth):
+    slugs = [f.stem for f in sorted(md_files)]
+    try:
+        idx = slugs.index(current_slug)
+    except ValueError:
+        return ""
+    prev_html = ""
+    next_html = ""
+    prefix = "" if depth == 1 else "../"
+    if idx > 0:
+        prev_slug = slugs[idx - 1]
+        prev_entry = SLUG_MAP.get(prev_slug, {})
+        prev_title = prev_entry.get("title", prev_slug)
+        prev_html = f'<a href="{prefix}{prev_slug}.html" class="prev">← {prev_title}</a>'
+    if idx < len(slugs) - 1:
+        next_slug = slugs[idx + 1]
+        next_entry = SLUG_MAP.get(next_slug, {})
+        next_title = next_entry.get("title", next_slug)
+        next_html = f'<a href="{prefix}{next_slug}.html" class="next">{next_title} →</a>'
+    if not prev_html and not next_html:
+        return ""
+    return f'<nav class="pagination">{prev_html}{next_html}</nav>'
+
+def convert_file(md_path, output_dir, ptype, depth=1):
+    content = md_path.read_text()
     m = re.match(r'^---\n(.*?)\n---\n(.*)', content, re.DOTALL)
     if not m:
-        print(f"  Skipping {md_path.name} (no frontmatter)")
         return
     fm = yaml.safe_load(m.group(1))
     body_md = m.group(2).strip()
 
-    title = fm.get("title", md_path.stem)
+    title = html.escape(str(fm.get("title", md_path.stem)))
     tags = fm.get("tags", [])
     updated = fm.get("updated", "2026-05-23")
     sources = fm.get("sources", [])
-    concepts = fm.get("concepts", [])
 
-    # Tags HTML
     tags_html = "".join(f'<span class="tag">{t}</span>' for t in tags)
+    badge_class = "concept" if ptype == "concept" else ("source" if ptype == "source" else "synthesis")
+    badge_label = "Concept" if ptype == "concept" else ("Source" if ptype == "source" else "Synthesis")
 
-    # Source name
-    source_name = ", ".join(sources) if sources else "Unknown"
-
-    # Convert body
     body_html = md_to_html(body_md, output_dir)
+    content_class = badge_class
 
-    # Connections — only scan lines after --- separator
     connections = []
     parts = body_md.split('\n---\n')
     after_separator = parts[-1] if len(parts) > 1 else ""
@@ -548,145 +431,164 @@ def convert_file(md_path, output_dir, template, is_source=False):
         line = line.strip()
         if line.startswith('- ') and ('[[' in line):
             connections.append(line[2:])
-
     connections_html = build_connections_section(connections, output_dir)
 
-    # Format template
-    if is_source:
+    breadcrumb = build_breadcrumb(tags, ptype, title, depth)
+    pagination = build_pagination(sorted(output_dir.glob("*.md")), md_path.stem, output_dir, depth)
+
+    if ptype == "source":
         author = fm.get("author", "Unknown")
         source_type = fm.get("source_type", "article")
         source_date = fm.get("source_date", "Unknown")
         ingested = fm.get("ingested", "Unknown")
-        html_content = template.format(
-            title=html.escape(str(title)),
-            author=html.escape(str(author)),
-            source_type=html.escape(str(source_type)),
-            source_date=html.escape(str(source_date)),
-            ingested=html.escape(str(ingested)),
-            tags_html=tags_html,
-            body_html=body_html,
-            connections_section=connections_html,
-        )
+        meta_html = f'<span>By {html.escape(str(author))}</span><span>{html.escape(str(source_type))}</span><span>{html.escape(str(source_date))}</span><span>Ingested: {html.escape(str(ingested))}</span>'
+    elif ptype == "synthesis":
+        sources_list = ", ".join(sources) if sources else "Unknown"
+        created = fm.get("created", "2026-06-08")
+        meta_html = f'<span>Created: {html.escape(str(created))}</span><span>Updated: {html.escape(str(updated))}</span>'
     else:
-        html_content = template.format(
-            title=html.escape(str(title)),
-            tags_html=tags_html,
-            source_name=html.escape(str(source_name)),
-            updated=html.escape(str(updated)),
-            body_html=body_html,
-            connections_section=connections_html,
-        )
+        source_name = ", ".join(sources) if sources else "Unknown"
+        meta_html = f'<span>Source: {html.escape(str(source_name))}</span><span>Updated: {html.escape(str(updated))}</span>'
 
-    # Write output
+    head = build_page_head(title, depth)
+    page = f'''{head}
+<div class="breadcrumb-wrapper">{breadcrumb}</div>
+<div class="page-hero">
+  <div class="page-type-badge {badge_class}">{badge_label}</div>
+  <h1>{title}</h1>
+  <div class="page-meta">{meta_html}</div>
+  <div class="page-tags">{tags_html}</div>
+</div>
+<div class="content-area {content_class}">
+{body_html}
+</div>
+{connections_html}
+{pagination}
+{build_page_tail(depth)}'''
+
     output_path = output_dir / f"{md_path.stem}.html"
-    output_path.write_text(html_content)
-    print(f"  → {output_path.name}")
+    output_path.write_text(page)
 
-def generate_browse_section():
-    """Generate the Browse Wiki section for index.html from existing HTML files."""
-    concept_cards = []
-    source_cards = []
+def generate_concepts_json():
+    concepts = {}
+    if CONCEPTS_DIR.exists():
+        for f in sorted(CONCEPTS_DIR.glob("*.md")):
+            content = f.read_text()
+            m = re.match(r'^---\n(.*?)\n---\n(.*)', content, re.DOTALL)
+            if not m:
+                continue
+            fm = yaml.safe_load(m.group(1))
+            body = m.group(2).strip()
+            title = fm.get("title", f.stem)
+            tags = fm.get("tags", [])
+            cat = 'Meta'
+            for t in tags:
+                if t in CATEGORY_MAP:
+                    cat = CATEGORY_MAP[t]
+                    break
+            parts = body.split('\n---\n')
+            main = parts[0]
+            first_p = ""
+            for line in main.split('\n'):
+                line = line.strip()
+                if line and not line.startswith('#') and not line.startswith('|') and not line.startswith('```') and not line.startswith('>'):
+                    first_p = line[:200]
+                    break
+            concepts[f.stem] = {
+                "title": title,
+                "category": cat,
+                "url": f"concepts/{f.stem}.html",
+                "definition": first_p,
+                "tags": tags,
+            }
+    META_DIR.mkdir(exist_ok=True)
+    out = {"concepts": concepts}
+    (META_DIR / "concepts.json").write_text(json.dumps(out, ensure_ascii=False, indent=2))
 
-    for d, card_list in [(CONCEPTS_DIR, concept_cards), (SOURCES_DIR, source_cards)]:
+def generate_backlinks_json():
+    links = defaultdict(list)
+    for d in [CONCEPTS_DIR, SOURCES_DIR, SYNTHESES_DIR]:
         if not d.exists():
             continue
-        for html_file in sorted(d.glob("*.html")):
-            content = html_file.read_text()
-            # Extract title from <h1> tag
-            m = re.search(r'<h1[^>]*>(.*?)<span', content, re.DOTALL)
-            title = m.group(1).strip() if m else html_file.stem
-            # Extract first paragraph after content-area as description
-            m2 = re.search(r'<div class="content-area">\s*<p>(.*?)</p>', content, re.DOTALL)
-            desc = m2.group(1).strip() if m2 else ""
-            # Strip HTML tags from description
-            desc = re.sub(r'<[^>]+>', '', desc)
-            # Truncate if too long
-            if len(desc) > 120:
-                desc = desc[:117] + "..."
-            href = f"{d.name}/{html_file.name}"
-            card_type = "concept" if d == CONCEPTS_DIR else "source"
-            card_list.append((title, desc, href, card_type))
+        for f in sorted(d.glob("*.md")):
+            content = f.read_text()
+            for match in re.finditer(r'\[\[([^\]]+)\]\]', content):
+                target = match.group(1).split('|')[0].strip()
+                links[target].append(f.stem)
+    META_DIR.mkdir(exist_ok=True)
+    (META_DIR / "backlinks.json").write_text(json.dumps(dict(links), ensure_ascii=False, indent=2))
 
-    # Build HTML
-    concept_html = ""
-    for title, desc, href, _ in concept_cards:
-        concept_html += f'''
-      <a class="browse-card" href="{href}">
-        <div class="browse-card-title"><span class="dot concept"></span>{html.escape(title)}</div>
-        <div class="browse-card-desc">{html.escape(desc)}</div>
-      </a>'''
+def generate_moc_table():
+    concepts = {}
+    if CONCEPTS_DIR.exists():
+        for f in sorted(CONCEPTS_DIR.glob("*.md")):
+            content = f.read_text()
+            m = re.match(r'^---\n(.*?)\n---', content, re.DOTALL)
+            if not m:
+                continue
+            fm = yaml.safe_load(m.group(1))
+            tags = fm.get("tags", [])
+            cat = 'Meta'
+            for t in tags:
+                if t in CATEGORY_MAP:
+                    cat = CATEGORY_MAP[t]
+                    break
+            if cat not in concepts:
+                concepts[cat] = []
+            concepts[cat].append((fm.get("title", f.stem), f.stem))
 
-    source_html = ""
-    for title, desc, href, _ in source_cards:
-        source_html += f'''
-      <a class="browse-card" href="{href}">
-        <div class="browse-card-title"><span class="dot source"></span>{html.escape(title)}</div>
-        <div class="browse-card-desc">{html.escape(desc)}</div>
-      </a>'''
+    sorted_cats = sorted(concepts.items(), key=lambda x: CAT_ORDER.index(x[0]) if x[0] in CAT_ORDER else 99)
+    rows = ""
+    for cat, items in sorted_cats:
+        cat_slug = cat.lower().replace(' & ', '-').replace(' ', '-')
+        links = ""
+        for i, (title, slug) in enumerate(items):
+            comma = '<span class="comma">, </span>' if i < len(items) - 1 else ''
+            links += f'<span class="concept-item-wrapper"><a href="concepts/{slug}.html" class="concept-tag">{title}</a>{comma}</span>'
+        rows += f'<tr id="row-{cat_slug}"><td class="cat-cell"><strong>{cat}</strong></td><td class="concepts-cell"><div class="concepts-list">{links}</div></td></tr>'
+    return rows
 
-    n_concepts = len(concept_cards)
-    n_sources = len(source_cards)
-
-    return f'''
-<!-- ─── BROWSE WIKI ─── -->
-<section id="browse">
-  <div class="section-label">Knowledge Base</div>
-  <h2 class="section-title">Browse the Wiki</h2>
-  <p class="section-desc">
-    {n_concepts + n_sources} pages of compiled knowledge. Click any card to open the styled HTML page.
-  </p>
-
-  <!-- Concepts -->
-  <div class="browse-section">
-    <div class="browse-subtitle">
-      Concepts <span class="browse-count concept">{n_concepts} pages</span>
-    </div>
-    <div class="browse-grid">{concept_html}
-    </div>
-  </div>
-
-  <!-- Sources -->
-  <div class="browse-section">
-    <div class="browse-subtitle">
-      Sources <span class="browse-count source">{n_sources} pages</span>
-    </div>
-    <div class="browse-grid">{source_html}
-    </div>
-  </div>
-</section>
-'''
+    return rows
 
 def update_index_html():
-    """Update the Browse Wiki section in index.html."""
     index_path = WIKI_ROOT / "index.html"
     if not index_path.exists():
-        print("  index.html not found, skipping browse section update")
         return
-
     content = index_path.read_text()
-    new_section = generate_browse_section()
+    rows = generate_moc_table()
+    n_concepts = len(list(CONCEPTS_DIR.glob("*.md"))) if CONCEPTS_DIR.exists() else 0
+    n_cats = rows.count('<tr id="row-')
+    desc = f'{n_concepts} concepts across {n_cats} categories.'
 
-    pattern = r'<!-- ─── BROWSE WIKI ─── -->.*?<!-- ─── QUICKSTART ─── -->'
-    replacement = new_section.rstrip() + '\n\n<!-- ─── QUICKSTART ─── -->'
-    new_content = re.sub(pattern, replacement, content, flags=re.DOTALL)
-
-    if new_content != content:
-        index_path.write_text(new_content)
-        print("  → Updated Browse Wiki section in index.html")
-    else:
-        print("  → Browse section in index.html is up to date")
+    content = content.replace('<!-- MOC_DESC -->', '<!-- MOC_DESC -->' + desc)
+    content = content.replace('<!-- MOC_TABLE -->', rows)
+    index_path.write_text(content)
 
 def main():
     load_slug_map()
-    print("Converting concept pages...")
+
+    print("Generating concepts.json...")
+    generate_concepts_json()
+    print("Generating backlinks.json...")
+    generate_backlinks_json()
+
+    print("\nConverting concept pages...")
     for md_file in sorted(CONCEPTS_DIR.glob("*.md")):
-        convert_file(md_file, CONCEPTS_DIR, CONCEPT_TEMPLATE, is_source=False)
+        print(f"  → {md_file.stem}.html")
+        convert_file(md_file, CONCEPTS_DIR, "concept", depth=1)
 
     print("\nConverting source pages...")
     for md_file in sorted(SOURCES_DIR.glob("*.md")):
-        convert_file(md_file, SOURCES_DIR, SOURCE_TEMPLATE, is_source=True)
+        print(f"  → {md_file.stem}.html")
+        convert_file(md_file, SOURCES_DIR, "source", depth=1)
 
-    print("\nUpdating Browse Wiki section in index.html...")
+    if SYNTHESES_DIR.exists():
+        print("\nConverting synthesis pages...")
+        for md_file in sorted(SYNTHESES_DIR.glob("*.md")):
+            print(f"  → {md_file.stem}.html")
+            convert_file(md_file, SYNTHESES_DIR, "synthesis", depth=1)
+
+    print("\nUpdating index.html MOC table...")
     update_index_html()
 
     print("\nDone!")
