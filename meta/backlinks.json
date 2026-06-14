@@ -1,4 +1,53 @@
 {
+  "harness-engineering": [
+    "agent-quality-optimization",
+    "domain-driven-design",
+    "fail-fast",
+    "semantic-layer",
+    "technological-centaur",
+    "testing-strategy"
+  ],
+  "technological-centaur": [
+    "agent-quality-optimization",
+    "harness-engineering",
+    "readability-vs-performance",
+    "contieri-clean-code-cookbook"
+  ],
+  "fail-fast": [
+    "agent-quality-optimization",
+    "bijection",
+    "code-quality-pillars",
+    "dependency-injection",
+    "harness-engineering",
+    "immutability",
+    "python-concurrency",
+    "python-debugging-pdb",
+    "python-professional-practices",
+    "python-static-analysis",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "tdd-methodology",
+    "contieri-clean-code-cookbook"
+  ],
+  "testing-strategy": [
+    "agent-quality-optimization",
+    "code-quality-pillars",
+    "functional-testing",
+    "harness-engineering",
+    "pytest-fixtures",
+    "pytest-markers",
+    "pytest-mocking",
+    "pytest-parametrization",
+    "pytest-plugins",
+    "python-debugging-pdb",
+    "python-static-analysis",
+    "tdd-methodology",
+    "okken-python-testing-pytest"
+  ],
+  "sources/agent-quality-token-optimization": [
+    "agent-quality-optimization"
+  ],
   "dbt": [
     "analytics-engineer",
     "analytics-engineer",
@@ -49,6 +98,8 @@
     "apache-kafka",
     "change-data-capture",
     "data-engineer",
+    "data-governance",
+    "data-lifecycle",
     "dataops",
     "dbt",
     "elt"
@@ -58,6 +109,7 @@
     "code-quality-pillars",
     "data-engineer",
     "data-engineer",
+    "data-governance",
     "dbt",
     "semantic-layer",
     "data-engineering-with-dbt"
@@ -271,31 +323,18 @@
   ],
   "data-engineer": [
     "apache-spark",
+    "data-governance",
+    "data-lifecycle",
     "data-engineer-role-handbook",
     "data-engineering-handbook"
   ],
   "sources/high-performance-spark": [
     "apache-spark"
   ],
-  "fail-fast": [
-    "bijection",
-    "code-quality-pillars",
-    "dependency-injection",
-    "harness-engineering",
-    "immutability",
-    "python-concurrency",
-    "python-debugging-pdb",
-    "python-professional-practices",
-    "python-static-analysis",
-    "software-quality-dimensions",
-    "solid-principles",
-    "solid-principles",
-    "tdd-methodology",
-    "contieri-clean-code-cookbook"
-  ],
   "rich-domain-model": [
     "bijection",
     "code-quality-pillars",
+    "domain-driven-design",
     "essential-accidental-complexity",
     "fail-fast",
     "mapper-principles",
@@ -322,6 +361,7 @@
   ],
   "mapper-principles": [
     "bijection",
+    "domain-driven-design",
     "software-as-simulation",
     "solid-principles",
     "solid-principles",
@@ -451,20 +491,6 @@
     "technological-centaur",
     "contieri-clean-code-cookbook"
   ],
-  "testing-strategy": [
-    "code-quality-pillars",
-    "functional-testing",
-    "harness-engineering",
-    "pytest-fixtures",
-    "pytest-markers",
-    "pytest-mocking",
-    "pytest-parametrization",
-    "pytest-plugins",
-    "python-debugging-pdb",
-    "python-static-analysis",
-    "tdd-methodology",
-    "okken-python-testing-pytest"
-  ],
   "essential-accidental-complexity": [
     "code-quality-pillars",
     "fail-fast",
@@ -497,6 +523,7 @@
   ],
   "tell-dont-ask": [
     "code-quality-pillars",
+    "domain-driven-design",
     "mapper-principles",
     "object-oriented-design",
     "rich-domain-model",
@@ -515,6 +542,7 @@
   ],
   "object-oriented-design": [
     "code-quality-pillars",
+    "domain-driven-design",
     "software-quality-dimensions",
     "solid-principles",
     "tell-dont-ask",
@@ -546,7 +574,29 @@
     "data-engineer"
   ],
   "sources/data-engineering-handbook": [
-    "data-engineer"
+    "data-engineer",
+    "data-governance",
+    "data-lifecycle"
+  ],
+  "sources/data-lifecycle-handbook": [
+    "data-governance",
+    "data-governance",
+    "data-lifecycle"
+  ],
+  "data-lifecycle": [
+    "data-governance",
+    "data-lifecycle-handbook"
+  ],
+  "unity-catalog": [
+    "data-governance",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "duckdb",
+    "duckdb"
+  ],
+  "data-governance": [
+    "data-lifecycle"
   ],
   "database-sharding": [
     "database-replication"
@@ -599,13 +649,6 @@
     "materialized-views",
     "timely-dataflow"
   ],
-  "unity-catalog": [
-    "delta-lake",
-    "delta-lake",
-    "delta-lake",
-    "duckdb",
-    "duckdb"
-  ],
   "sources/delta-grows-up-writes-unity-catalog": [
     "delta-lake",
     "unity-catalog"
@@ -631,12 +674,15 @@
     "materialized-views-quick-insights",
     "materialized-views-quick-insights"
   ],
-  "sources/duckdb-up-and-running": [
-    "duckdb",
-    "in-process-olap",
-    "vectorized-execution"
+  "software-as-simulation": [
+    "domain-driven-design",
+    "mapper-principles",
+    "readability-vs-performance",
+    "technological-centaur",
+    "contieri-clean-code-cookbook"
   ],
   "bijection": [
+    "domain-driven-design",
     "essential-accidental-complexity",
     "fail-fast",
     "immutability",
@@ -647,11 +693,13 @@
     "tell-dont-ask",
     "contieri-clean-code-cookbook"
   ],
-  "harness-engineering": [
-    "fail-fast",
-    "semantic-layer",
-    "technological-centaur",
-    "testing-strategy"
+  "sources/learning-domain-driven-design": [
+    "domain-driven-design"
+  ],
+  "sources/duckdb-up-and-running": [
+    "duckdb",
+    "in-process-olap",
+    "vectorized-execution"
   ],
   "tdd-methodology": [
     "fail-fast",
@@ -721,11 +769,6 @@
     "observability",
     "programming-kubernetes"
   ],
-  "technological-centaur": [
-    "harness-engineering",
-    "readability-vs-performance",
-    "contieri-clean-code-cookbook"
-  ],
   "sources/learn-harness-engineering": [
     "harness-engineering"
   ],
@@ -756,12 +799,6 @@
     "message-queue",
     "scalable-architecture",
     "system-design-interview-xu"
-  ],
-  "software-as-simulation": [
-    "mapper-principles",
-    "readability-vs-performance",
-    "technological-centaur",
-    "contieri-clean-code-cookbook"
   ],
   "sources/practical-object-oriented-design": [
     "object-oriented-design"
@@ -866,7 +903,13 @@
     "wiki-maintenance",
     "wiki-maintenance"
   ],
+  "agent-quality-optimization": [
+    "agent-quality-token-optimization"
+  ],
   "apache-spark": [
     "high-performance-spark"
+  ],
+  "domain-driven-design": [
+    "learning-domain-driven-design"
   ]
 }

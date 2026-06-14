@@ -6,6 +6,8 @@ author: "David Muller"
 url: ""
 source_date: 2024-01-01
 ingested: 2026-06-12
+created: 2026-06-12
+updated: 2026-06-12
 tags: [python, software-engineering, static-analysis, debugging, concurrency]
 concepts: [python-static-analysis, python-debugging-pdb, python-standard-library, python-concurrency, python-repl, python-professional-practices]
 ---

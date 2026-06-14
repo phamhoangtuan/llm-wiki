@@ -340,3 +340,47 @@
 - Updated concepts: immutability (added namedtuple cross-ref), fail-fast (added static analysis cross-ref), readability-vs-performance (added concurrency safety cross-ref)
 - Updated index.md: +6 concept entries, +1 source entry
 - Total pages: 101 (87 concepts + 33 sources)
+
+## [2026-06-14] ingest | Data Lifecycle — Data Engineering Handbook
+
+- Source: Vietnamese Data Engineering Handbook, concept page about Vòng đời Dữ liệu (Data Lifecycle)
+- URL: https://kythuatdulieu.github.io/concepts/foundation/data-lifecycle/
+- Created sources/data-lifecycle-handbook.md
+- Created concepts/data-lifecycle.md
+- New concepts: data-lifecycle
+- Updated index.md: +1 concept entry, +1 source entry
+- Total pages: 103 (88 concepts + 34 sources)
+
+## [2026-06-14] ingest | Agent Quality & Token Optimization — GitHub Workshop
+
+- Source: "Agent Quality & Token Optimization" workshop by Felix Gozali & Lakshya Tyagi (GitHub)
+- URL: https://staticassets.goldcast.io/public_images/organization/4bbeac0f-e176-4d6f-85a7-ac3397470d44/lsQlOCxTfKqVMqgFOVUA_Agent_Quality_and_Token_Optimization_(customer-facing_workshop).pdf
+- Copied to: raw/assets/agent-quality-token-optimization-workshop.pdf
+- Created sources/agent-quality-token-optimization.md
+- Created concepts/agent-quality-optimization.md
+- New concepts: agent-quality-optimization
+- Related concepts: harness-engineering, technological-centaur, fail-fast, testing-strategy
+- Updated index.md: +1 concept entry, +1 source entry
+- Total pages: 105 (89 concepts + 35 sources)
+
+## [2026-06-14] ingest | Learning Domain-Driven Design (Vlad Khononov)
+
+- Source: "Learning Domain-Driven Design" by Vlad Khononov (ebook, 340 pages, finished 2026-06-14)
+- Copied to: raw/articles/learning-domain-driven-design.md (Vietnamese notes)
+- Created sources/learning-domain-driven-design.md
+- Created concepts/domain-driven-design.md
+- New concepts: domain-driven-design
+- Related concepts: software-as-simulation, mapper-principles, bijection, rich-domain-model, tell-dont-ask, object-oriented-design, harness-engineering
+- Updated index.md: +1 concept entry, +1 source entry
+- Total pages: 118 (90 concepts + 36 sources)
+
+## [2026-06-14] lint | Health check + fix pass
+
+- Scanned 126 pages (90 concepts + 36 sources) across 6 lint dimensions (broken wikilinks, orphans, frontmatter, contradictions, stubs, gaps)
+- Fixed 1 broken wikilink: created concepts/data-governance.md (linked from data-lifecycle.md)
+- Fixed 1 frontmatter issue: added missing `created`/`updated` fields to sources/intuitive-python.md
+- Verified: domain-driven-design wikilink now resolves (concept page created by DDD ingest)
+- Empty URLs: 18 book sources have `url: ""` — acceptable for books without canonical URLs (consistent with past lint)
+- Contradictions: 0 found
+- Orphans: not checked systematically (deferred)
+- Total pages: 119 (91 concepts + 36 sources)

@@ -53,7 +53,10 @@
 - [Lance File Format](concepts/lance-file-format.html) — Columnar format optimized for ML/AI workloads; random access, versioning
 - [Apache Flink](concepts/apache-flink.html) — Distributed stream processing engine with exactly-once semantics; Flink 2.1 + DynamicIcebergSink (1.11.0) for multi-table routing and auto-schema evolution
 - [Change Data Capture (CDC)](concepts/change-data-capture.html) — Capturing row-level DB changes from transaction logs for real-time data sync
+- [Data Governance](concepts/data-governance.html) — Framework of policies, standards, and accountability for data as a strategic asset; access control, classification, retention, lineage, compliance
 - [Data Ingestion](concepts/data-ingestion.html) — Moving data from sources to data lake; self-service platforms, batch vs streaming patterns
+- [Data Lifecycle](concepts/data-lifecycle.html) — Six-stage data journey (Generation→Storage→Processing→Usage→Archival→Destruction); Hot vs Cold data, GDPR compliance, cloud lifecycle automation
+- [Domain-Driven Design](concepts/domain-driven-design.html) — Strategic software design discipline aligning code with business reality via Ubiquitous Language, Bounded Contexts, and subdomain classification
 - [Apache Kafka](concepts/apache-kafka.html) — Distributed event streaming platform; persistent log, high throughput, schema registry
 - [Apache Iceberg](concepts/apache-iceberg.html) — Open table format; V3 spec stabilized (1.11.0) with deletion vectors, table encryption, pluggable File Format API, server-side scan planning
 - [dbt (data build tool)](concepts/dbt.html) — SQL transformation framework for ELT; compute-neutral, declarative, with built-in testing and docs
@@ -67,6 +70,7 @@
 - [Composition Root](concepts/composition-root.html) — Single centralized location where object graphs are wired; Pure DI vs DI Containers
 - [SOLID Principles](concepts/solid-principles.html) — SRP, OCP, LSP, ISP, DIP — the foundation for effective Dependency Injection
 - [Harness Engineering](concepts/harness-engineering.html) — Closed-loop systems for reliable AI agents; 4 primitives, 5-phase workflow, verification-first design
+- [Agent Quality Optimization](concepts/agent-quality-optimization.html) — Agent ROI over token counting; compound error, model selection, context engineering, Research-Plan-Implement workflow
 - [ClickHouse](concepts/clickhouse.html) — High-performance column-oriented OLAP DBMS; data lake ready with Delta Lake and Iceberg support
 - [Delta Kernel](concepts/delta-kernel.html) — Rust abstraction layer for Delta Lake protocol; handles transaction logs, snapshots, schema evolution
 - [Liquid Clustering](concepts/liquid-clustering.html) — Modern data layout for Delta/Iceberg tables; replaces Hive-style partitioning with incremental, multi-dimensional clustering
@@ -110,6 +114,7 @@
 - [Delta Grows Up: Writes, Unity Catalog and Time Travel](sources/delta-grows-up-writes-unity-catalog.html) — DuckDB Labs announces stable Delta extension with writes, time travel, and Unity Catalog integration
 - [The Next Evolution of Delta — Catalog-Managed Tables](sources/delta-catalog-managed-tables.html) — Delta 4.1.0 + UC 0.4.0: catalog becomes authority for table state, inline commits, convergence with Iceberg
 - [Learn Harness Engineering](sources/learn-harness-engineering.html) — walkinglabs' guide: closed-loop AI agent systems, 4 primitives, 5-phase workflow, verification-first design
+- [Agent Quality & Token Optimization — GitHub Workshop](sources/agent-quality-token-optimization.html) — Felix Gozali, Lakshya Tyagi: agent ROI, compound error, model selection, context engineering, deterministic guardrails
 - [Integrating the Rust Delta Kernel into ClickHouse](sources/integrating-rust-delta-kernel-clickhouse.html) — ClickHouse's journey from native Delta protocol to Rust Kernel; FFI build challenges, CDF support
 - [Debunking 8 Data Layout Myths](sources/debunking-data-layout-myths-liquid-clustering.html) — Databricks' case for Liquid Clustering over partitioning; PB-scale benchmarks, 8 myths debunked
 - [Go Web Programming](sources/go-web-programming.html) — Sau Sheong Chang's guide to building web apps with Go's standard library — 314 pages
@@ -126,10 +131,12 @@
 - [How to Grow From Senior to Staff Engineer](sources/senior-to-staff-engineer.html) — Jordan Cutler's Pinterest case study: 3 dimensions of Staff-level impact in the AI era
 - [Databricks Zerobus — Event Streams + Lake House](sources/databricks-zerobus.html) — Daniel Beach explores serverless streaming into Delta Lake without Kafka infrastructure
 - [Data Engineering — Data Engineering Handbook](sources/data-engineering-handbook.html) — Vietnamese DE Handbook: discipline overview, four pillars, pipeline flow, best practices
+- [Data Lifecycle — Data Engineering Handbook](sources/data-lifecycle-handbook.html) — Vietnamese DE Handbook: six lifecycle stages, Hot/Cold data, GDPR right-to-be-forgotten, cloud automation
 - [De-Coding the Technical Interview Process](sources/de-coding-technical-interview.html) — Emma Bostian's 138-page guide: 5-stage interview lifecycle, 5-step problem-solving cycle
 - [High Performance Spark](sources/high-performance-spark.html) — Karau & Warren's 356-page optimization guide: shuffles, joins, skew, Catalyst, Tungsten
 - [The 1%: Conquer Your Consulting Case Interview](sources/the-1-percent-case-interview.html) — Smeritschnig's 294-page insider's guide: MECE, SCORE, Pyramid Principle
 - [Intuitive Python](sources/intuitive-python.html) — David Muller's 137-page guide to professional Python: static analysis, PDB debugging, standard library, concurrency
+- [Learning Domain-Driven Design](sources/learning-domain-driven-design.html) — Vlad Khononov's 340-page guide to strategic DDD: subdomain classification, Ubiquitous Language, Bounded Contexts
 
 ## Syntheses
 
@@ -137,5 +144,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-12*
-*Pages: 112 (87 concepts + 33 sources)*
+*Last updated: 2026-06-14*
+*Pages: 119 (91 concepts + 36 sources)*

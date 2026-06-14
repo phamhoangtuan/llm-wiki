@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Lifecycle — Data Engineering Handbook — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-engineering">Data Engineering</a> <span class="sep">/</span>
+  <span>Data Lifecycle — Data Engineering Handbook</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge source">Source</div>
+  <h1>Data Lifecycle — Data Engineering Handbook</h1>
+  <div class="page-meta"><span>By Data Engineering Handbook (kythuatdulieu.github.io)</span><span>article</span><span>2026-06-07</span><span>Ingested: 2026-06-14</span></div>
+  <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">foundation</span><span class="tag">data-lifecycle</span><span class="tag">governance</span><span class="tag">best-practices</span></div>
+</div>
+<div class="content-area source">
+<h2 id="summary">Summary</h2>
+<p>A comprehensive guide to the Data Lifecycle from the Vietnamese Data Engineering Handbook. Defines the six stages every piece of data traverses — from generation to destruction — and explains why lifecycle management is a critical part of Data Governance strategy. Covers the Hot Data vs Cold Data distinction, the three business drivers (cost optimization, GDPR compliance, security attack surface reduction), automation via cloud lifecycle rules (AWS S3 JSON policy example), best practices (classify data at source, full automation, encrypt archives), and common pitfalls (data hoarding, forgetting backups during deletion). Includes interview Q&A on GDPR's Right to be Forgotten (anonymization + crypto-shredding), BigQuery partition expiration, and Snowflake Time Travel.</p>
+<h2 id="core-message">Core Message</h2>
+<blockquote>Data Lifecycle Management ensures that data — like any asset — is treated appropriately at every stage, from creation to destruction. Without it, data becomes a financial and legal liability rather than a strategic resource.</blockquote>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li><strong>Six lifecycle stages</strong>: Generation → Storage → Processing → Usage/Analytics → Archival → Destruction — each demands distinct handling</li>
+<li><strong>Hot vs Cold data</strong>: Hot data lives on SSD for real-time access; Cold data migrates to cheaper storage (HDD, Glacier) as access frequency drops</li>
+<li><strong>Three business drivers</strong>: Cost optimization (cheap storage for old data), compliance (GDPR right-to-be-forgotten), and security (reduce attack surface by destroying stale data)</li>
+<li><strong>Automation is mandatory</strong>: Manual lifecycle management fails at scale — cloud rules (AWS S3 Lifecycle, BigQuery partition expiration, Snowflake Time Travel) handle transitions and deletion automatically</li>
+<li><strong>GDPR Right to be Forgotten</strong>: Requires complete data purging across ALL systems including backups — solved via anonymization (replace PII with random strings) or crypto-shredding (delete encryption keys, rendering data unreadable)</li>
+<li><strong>Data hoarding is the #1 pitfall</strong>: "Keep it all — might need it someday" turns Data Lakes into Data Swamps, exploding cloud costs</li>
+<li><strong>Backup oversight</strong>: Deleting data from production DBs but forgetting backup copies still constitutes legal non-compliance under GDPR</li>
+<li><strong>Lifecycle = cost lever</strong>: Lifecycle policies can cut storage costs 50–90% by moving data through storage classes (STANDARD → STANDARD_IA → GLACIER → DELETE)</li>
+</ol>
+<h2 id="companion-concept">Companion Concept</h2>
+<p>→ <a href="../concepts/data-lifecycle.html" class="wiki-link">data-lifecycle</a></p>
+</div>
+
+<nav class="pagination"><a href="data-engineering-with-dbt.html" class="prev">← Data Engineering with dbt</a><a href="databricks-zerobus.html" class="next">Databricks Zerobus — Event Streams + Lake House →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

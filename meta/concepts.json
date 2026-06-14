@@ -1,5 +1,18 @@
 {
   "concepts": {
+    "agent-quality-optimization": {
+      "title": "Agent Quality Optimization",
+      "category": "AI & Agents",
+      "url": "concepts/agent-quality-optimization.html",
+      "definition": "**Agent Quality Optimization** is the discipline of maximizing the return on investment from AI agents by engineering output quality rather than minimizing token count. It treats agent reliability as ",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "token-optimization",
+        "llm",
+        "reliability"
+      ]
+    },
     "analytics-engineer": {
       "title": "Analytics Engineer",
       "category": "Data Engineering",
@@ -216,6 +229,19 @@
         "infrastructure"
       ]
     },
+    "data-governance": {
+      "title": "Data Governance",
+      "category": "Data Engineering",
+      "url": "concepts/data-governance.html",
+      "definition": "**Data Governance** is the framework of policies, standards, and accountability structures that ensures data is managed as a strategic organizational asset. It defines who can take what action, on wha",
+      "tags": [
+        "data-governance",
+        "compliance",
+        "security",
+        "metadata",
+        "data-quality"
+      ]
+    },
     "data-ingestion": {
       "title": "Data Ingestion",
       "category": "Data Engineering",
@@ -227,6 +253,18 @@
         "etl",
         "streaming",
         "data-lake"
+      ]
+    },
+    "data-lifecycle": {
+      "title": "Data Lifecycle",
+      "category": "Data Engineering",
+      "url": "concepts/data-lifecycle.html",
+      "definition": "The **Data Lifecycle** is the sequence of stages data traverses from initial creation to final destruction. It is a core pillar of [[data-governance|Data Governance]] that ensures data is treated as a",
+      "tags": [
+        "data-engineering",
+        "data-lifecycle",
+        "governance",
+        "infrastructure"
       ]
     },
     "database-replication": {
@@ -341,6 +379,19 @@
         "distributed-systems",
         "stream-processing",
         "incremental-computation"
+      ]
+    },
+    "domain-driven-design": {
+      "title": "Domain-Driven Design",
+      "category": "Meta",
+      "url": "concepts/domain-driven-design.html",
+      "definition": "**Domain-Driven Design (DDD)** is a strategic software design discipline that aligns code with business reality. It treats software as a simulation of the business domain — not a mechanical translatio",
+      "tags": [
+        "domain-driven-design",
+        "software-architecture",
+        "strategic-design",
+        "modeling",
+        "business-strategy"
       ]
     },
     "duckdb": {
