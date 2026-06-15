@@ -18,7 +18,7 @@ You are the **wiki maintainer** for this knowledge base. Your job is to read sou
 | `index.md` | UPDATE on every ingest. Content catalog — every page listed with link + one-line summary. |
 | `log.md` | APPEND on every operation. Dated entries with consistent prefixes. |
 | `meta/` | UPDATE on lint passes. Auto-generated indexes. |
-| `scripts/convert-to-html.py` | RUN after creating MD files to preview locally. CI auto-deploys to GitHub Pages on every push to main via `gh-pages` branch. HTML files are `.gitignore`d on main — never commit them. |
+| `scripts/convert-to-html.py` | RUN after creating MD files to preview locally. CI auto-deploys to GitHub Pages on every push to main. HTML files are committed to main — the script produces deterministic output (no more merge conflicts). |
 | `pyproject.toml` | Python project config. Dependencies: `pyyaml`. |
 | `uv.lock` | Lock file — do not hand-edit. Regenerate with `uv lock`. |
 
@@ -171,8 +171,8 @@ Steps:
 - **ALWAYS** append to `log.md` after every operation.
 - **ALWAYS** use YYYY-MM-DD date format.
 - **ALWAYS** ask before destructive operations.
-- **ALWAYS** regenerate HTML after editing markdown — run `uv run scripts/convert-to-html.py` for local preview
-- **NEVER** commit `.html` files — they are `.gitignore`d on main. CI deploys them to the `gh-pages` branch automatically.
+- **ALWAYS** regenerate HTML after editing markdown — run `uv run scripts/convert-to-html.py`
+- Commit HTML normally — the script produces deterministic output; CI deploys to gh-pages as backup. No more merge conflicts.
 - **PREFER `[[wikilinks]]`** for cross-references — they work in both Obsidian and HTML output.
 
 ---
