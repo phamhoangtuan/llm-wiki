@@ -101,8 +101,7 @@ def convert_wikilinks(text, output_dir):
             slug = target.replace("concepts/", "")
             href = f"../concepts/{slug}.html" if is_source else f"{slug}.html"
         elif target.startswith("sources/"):
-            slug = target.replace("sources/", "")
-            href = f"../sources/{slug}.html" if is_concept else f"{slug}.html"
+            return f'<span class="wiki-link source-ref">{display}</span>'
         elif target.startswith("syntheses/"):
             slug = target.replace("syntheses/", "")
             href = f"../syntheses/{slug}.html"
@@ -115,7 +114,7 @@ def convert_wikilinks(text, output_dir):
         else:
             entry = SLUG_MAP.get(target)
             if entry and entry["type"] == "source":
-                href = f"../sources/{target}.html"
+                return f'<span class="wiki-link source-ref">{display}</span>'
             elif entry and entry["type"] == "synthesis":
                 href = f"../syntheses/{target}.html"
             else:
@@ -346,11 +345,15 @@ def build_connections_section(connections, output_dir):
             slug = target.replace("concepts/", "")
             href = f"../concepts/{slug}.html" if is_source else f"{slug}.html"
         elif target.startswith("sources/"):
-            slug = target.replace("sources/", "")
-            href = f"../sources/{slug}.html" if is_concept else f"{slug}.html"
+            cards_html += f'\n    <div class="connection-card text-ref">\n      <span class="connection-type related">{c["type"]}</span>\n      <h4>{title}</h4>\n      <p>{c["desc"]}</p>\n    </div>'
+            continue
         elif is_source:
             href = f"../concepts/{target}.html"
         elif is_concept:
+            entry = SLUG_MAP.get(target)
+            if entry and entry["type"] == "source":
+                cards_html += f'\n    <div class="connection-card text-ref">\n      <span class="connection-type related">{c["type"]}</span>\n      <h4>{title}</h4>\n      <p>{c["desc"]}</p>\n    </div>'
+                continue
             href = f"{target}.html"
         else:
             href = f"{target}.html"
@@ -577,10 +580,12 @@ def main():
         print(f"  → {md_file.stem}.html")
         convert_file(md_file, CONCEPTS_DIR, "concept", depth=1)
 
-    print("\nConverting source pages...")
-    for md_file in sorted(SOURCES_DIR.glob("*.md")):
-        print(f"  → {md_file.stem}.html")
-        convert_file(md_file, SOURCES_DIR, "source", depth=1)
+    # Source HTML pages are intentionally not generated — sources only exist as
+    # canonical markdown in the repo, not on the public website.
+    # print("\nConverting source pages...")
+    # for md_file in sorted(SOURCES_DIR.glob("*.md")):
+    #     print(f"  → {md_file.stem}.html")
+    #     convert_file(md_file, SOURCES_DIR, "source", depth=1)
 
     if SYNTHESES_DIR.exists():
         print("\nConverting synthesis pages...")

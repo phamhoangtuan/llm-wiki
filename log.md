@@ -460,3 +460,11 @@
 - Cross-referenced orphans: middleware-pattern (from go-http-handlers), intuitive-python (from python-static-analysis)
 - Bulk-updated stale `updated` dates on 84 pages to 2026-06-15
 - Regenerated HTML, updated index.md (100 concepts + 39 sources = 139 pages)
+
+## [2026-06-15] site | Remove sources from public website
+
+- Modified scripts/convert-to-html.py: skip HTML generation for sources/
+- Source wikilinks now render as plain text (`source-ref` class) instead of broken links
+- Source connection cards render as non-clickable text (`text-ref` class)
+- Deleted 39 existing source HTML files from sources/
+- Website now shows only concepts (100 pages) — sources remain as canonical .md in repo
