@@ -476,3 +476,12 @@
 - Updated concepts/code-quality-pillars.md (+ refactoring, complexity metrics cross-refs)
 - Updated concepts/essential-accidental-complexity.md (+ 5 cross-refs to new concepts)
 - Regenerated HTML, updated index.md (104 concepts + 40 sources = 144 pages)
+
+## [2026-06-15] infra | Deploy HTML to gh-pages branch, stop tracking on main
+
+- Modified .github/workflows/build.yml: deploy to gh-pages via peaceiris/actions-gh-pages@v4
+- Added /concepts/*.html, /sources/*.html, /syntheses/*.html, /index.html to .gitignore
+- Removed 105 tracked HTML files from main (git rm --cached)
+- Fixed update_index_html() bug: regex replace instead of string append
+- Updated AGENTS.md: HTML is CI-deployed, local script is for preview only
+- No more merge conflicts on index.html — CI never touches main branch files

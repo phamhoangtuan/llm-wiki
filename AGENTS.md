@@ -18,7 +18,7 @@ You are the **wiki maintainer** for this knowledge base. Your job is to read sou
 | `index.md` | UPDATE on every ingest. Content catalog — every page listed with link + one-line summary. |
 | `log.md` | APPEND on every operation. Dated entries with consistent prefixes. |
 | `meta/` | UPDATE on lint passes. Auto-generated indexes. |
-| `scripts/convert-to-html.py` | RUN after creating MD files to generate HTML: `uv run scripts/convert-to-html.py`. Dependencies managed by `uv` (see `pyproject.toml`). |
+| `scripts/convert-to-html.py` | RUN after creating MD files to preview locally. CI auto-deploys to GitHub Pages on every push to main via `gh-pages` branch. HTML files are `.gitignore`d on main — never commit them. |
 | `pyproject.toml` | Python project config. Dependencies: `pyyaml`. |
 | `uv.lock` | Lock file — do not hand-edit. Regenerate with `uv lock`. |
 
@@ -125,7 +125,7 @@ Steps:
 5. For each concept identified:
    - If `concepts/<concept>.md` exists → read it, update with new info, note contradictions.
    - If not → create it with summary + backlinks to source.
-6. Run `uv run scripts/convert-to-html.py` to regenerate HTML files (this syncs index.html too).
+6. Run `uv run scripts/convert-to-html.py` to preview locally (CI deploys to gh-pages automatically on push).
 7. Update `index.md` — add/update entries for all changed pages.
 8. Append to `log.md` with prefix: `## [YYYY-MM-DD] ingest | Title`.
 
@@ -171,8 +171,8 @@ Steps:
 - **ALWAYS** append to `log.md` after every operation.
 - **ALWAYS** use YYYY-MM-DD date format.
 - **ALWAYS** ask before destructive operations.
-- **ALWAYS** regenerate HTML after editing markdown — run `uv run scripts/convert-to-html.py`.
-- **NEVER** hand-edit `.html` files — they are auto-generated from `.md`.
+- **ALWAYS** regenerate HTML after editing markdown — run `uv run scripts/convert-to-html.py` for local preview
+- **NEVER** commit `.html` files — they are `.gitignore`d on main. CI deploys them to the `gh-pages` branch automatically.
 - **PREFER `[[wikilinks]]`** for cross-references — they work in both Obsidian and HTML output.
 
 ---

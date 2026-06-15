@@ -16,3 +16,9 @@ __pycache__/
 # Temp
 *.tmp
 *.swp
+
+# Auto-generated HTML (deployed to gh-pages by CI, not tracked on main)
+/concepts/*.html
+/sources/*.html
+/syntheses/*.html
+/index.html

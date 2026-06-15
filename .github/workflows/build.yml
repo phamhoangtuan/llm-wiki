@@ -1,4 +1,4 @@
-name: Build HTML from Markdown
+name: Build & Deploy to GitHub Pages
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -23,8 +23,10 @@ jobs:
       - name: Regenerate HTML from markdown
         run: uv run scripts/convert-to-html.py
 
-      - name: Commit changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          commit_message: "[auto] regenerate .html from .md"
-          file_pattern: "**/*.html index.html"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          enable_jekyll: false
+          force_orphan: true
