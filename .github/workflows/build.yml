@@ -30,3 +30,4 @@ jobs:
           publish_dir: ./
           enable_jekyll: false
           force_orphan: true
+          exclude_assets: '.github,.gitignore,.sisyphus'
