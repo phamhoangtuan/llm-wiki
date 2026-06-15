@@ -7,7 +7,7 @@ url: "https://newsletter.eng-leadership.com/p/how-to-grow-from-senior-to-staff"
 source_date: 2026-06-07
 ingested: 2026-06-08
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 tags: [career, engineering-leadership, staff-engineering, career-growth]
 concepts: [staff-engineering]
 ---

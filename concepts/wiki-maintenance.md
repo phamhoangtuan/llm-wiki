@@ -3,7 +3,7 @@ title: "Wiki Maintenance"
 type: concept
 tags: [meta, workflow, agents]
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-06-15
 sources: [sample-article]
 ---
 
@@ -25,3 +25,4 @@ Wiki Maintenance describes the operational model of this LLM-maintained knowledg
 
 ---
 - Related to [[knowledge-graph]] — cross-references compiled at write time, not re-derived at query time
+- Benchmark source: [[sources/sample-article]] — the original article describing the LLM wiki maintenance pattern

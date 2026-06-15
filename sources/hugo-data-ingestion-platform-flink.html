@@ -40,10 +40,10 @@
 </div>
 <div class="content-area source">
 <h2 id="summary">Summary</h2>
-<p>Grab Engineering's "Hugo" platform evolved from a siloed, multi-platform ingestion workflow into a unified self-service platform powered by <strong>Apache Flink</strong>. The new architecture retired two in-house components (Kafka Connect and Sprinkler) and collapsed what was a days-long, multi-team onboarding process into a one-click, minutes-long experience.</p>
+<p>Grab Engineering's "Hugo" platform evolved from a siloed, multi-platform <a href="../concepts/data-ingestion.html" class="wiki-link">ingestion</a> workflow into a unified self-service platform powered by <strong><a href="../concepts/apache-flink.html" class="wiki-link">Apache Flink</a></strong>. The new architecture retired two in-house components (<a href="../concepts/apache-kafka.html" class="wiki-link">Kafka</a> Connect and Sprinkler) and collapsed what was a days-long, multi-team onboarding process into a one-click, minutes-long experience.</p>
 <h2 id="architecture-evolution">Architecture Evolution</h2>
 <h3 id="before-siloed">Before (Siloed)</h3>
-<p>For MySQL CDC pipelines:</p>
+<p>For MySQL <a href="../concepts/change-data-capture.html" class="wiki-link">CDC</a> pipelines:</p>
 <pre><code>MySQL binlog → Kafka Connect → Kafka topics → Sprinkler (Go S3 writer) → Spark → Hive table</code></pre>
 <p><strong>4 disparate components</strong>, each with separate configuration, monitoring, and operational semantics.</p>
 <p>For Kafka ingestion:</p>
@@ -100,7 +100,7 @@
 </ul>
 <h2 id="future-direction">Future Direction</h2>
 <ul>
-<li><strong>Apache Iceberg</strong> as the data lake table format (improve SLA, reduce costs)</li>
+<li><strong><a href="../concepts/apache-iceberg.html" class="wiki-link">Apache Iceberg</a></strong> as the data lake table format (improve SLA, reduce costs)</li>
 <li><strong>Zero-touch schema evolution</strong> — auto-detect schema changes, validate compatibility, update tables without manual intervention</li>
 </ul>
 <h2 id="links">Links</h2>
@@ -110,7 +110,36 @@
 <li><a href="https://ververica.github.io/flink-cdc-connectors/" target="_blank" rel="noopener">Flink CDC Connectors</a></li>
 </ul>
 </div>
-
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="../concepts/apache-flink.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Flink</h4>
+      <p>Flink CDC connector reads MySQL binlog directly, enabling 3-minute CDC onboarding</p>
+    </a>
+    <a class="connection-card" href="../concepts/change-data-capture.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>CDC is the core ingestion pattern that Hugo platform automates</p>
+    </a>
+    <a class="connection-card" href="../concepts/data-ingestion.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Ingestion</h4>
+      <p>Hugo is a unified, one-click data ingestion platform for Grab's data lake</p>
+    </a>
+    <a class="connection-card" href="../concepts/apache-kafka.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Kafka</h4>
+      <p>Kafka Connect and Sprinkler were retired in favor of Flink-native ingestion</p>
+    </a>
+    <a class="connection-card" href="../concepts/apache-iceberg.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Iceberg</h4>
+      <p>planned as the future data lake table format for improved SLA and reduced costs</p>
+    </a>
+  </div>
+</section>
 <nav class="pagination"><a href="high-performance-spark.html" class="prev">← High Performance Spark</a><a href="integrating-rust-delta-kernel-clickhouse.html" class="next">Integrating the Rust Delta Kernel into ClickHouse →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">

@@ -3,7 +3,7 @@ title: "Functional Testing"
 type: concept
 tags: [testing, tdd, selenium, e2e, quality, python]
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-15
 sources: [tdd-python-percival]
 ---
 

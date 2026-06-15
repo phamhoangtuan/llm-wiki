@@ -3,7 +3,7 @@ title: "Bijection"
 type: concept
 tags: [architecture, design-principles, domain-modeling]
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-06-15
 sources: [contieri-clean-code-cookbook]
 ---
 
@@ -36,5 +36,6 @@ Reality: [10 meters]          ↔  Code: [new Length(10, Unit.METERS)]
 ---
 - Prevents [[rich-domain-model]] — violations — anemic objects are a bijection failure
 - Enforced by [[immutability]] — mutable essence attributes break the 1-1 mapping
+- Related to [[fail-fast]] — implicit transformations that hide errors (e.g., Nov 31 → Dec 1) violate fail-fast principles
 - Related to [[mapper-principles]] — Model and Reality principles
 - Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook

@@ -3,7 +3,7 @@ title: "DuckDB"
 type: concept
 tags: [databases, olap, analytics, python, data-engineering]
 created: 2026-05-24
-updated: 2026-05-28
+updated: 2026-06-15
 sources: [duckdb-up-and-running, benchmarking-vortex-file-format, delta-grows-up-writes-unity-catalog]
 ---
 
@@ -104,3 +104,6 @@ print(result.df())
 - Competes with [[polars]] — both target Python data engineering; DuckDB uses SQL, Polars uses DataFrame API
 - Integrates with [[delta-lake]] — DuckDB's Delta extension supports reads, writes, and time travel (stable)
 - Integrates with [[unity-catalog]] — DuckDB's UC extension queries and writes through governed catalogs (stable)
+- Integrates with [[apache-datafusion]] — DataFusion is ~5× faster on raw CSV, but DuckDB wins on Parquet
+- Integrates with [[apache-iceberg]] — DuckDB's `iceberg` extension reads/writes Iceberg tables with time travel (stable)
+- Integrates with [[vortex-file-format]] — DuckDB's `vortex` extension reads/writes Vortex files (early-stage, reported OOM)

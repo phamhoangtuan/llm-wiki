@@ -3,7 +3,7 @@ title: "Materialized Views"
 type: concept
 tags: [databases, data-engineering, streaming, caching]
 created: 2026-05-24
-updated: 2026-05-24
+updated: 2026-06-15
 sources: [materialized-views-quick-insights]
 ---
 

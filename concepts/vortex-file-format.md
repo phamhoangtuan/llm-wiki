@@ -3,7 +3,7 @@ title: "Vortex File Format"
 type: concept
 tags: [file-formats, columnar, rust, data-engineering]
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-06-15
 sources: [benchmarking-vortex-file-format]
 ---
 
@@ -71,3 +71,4 @@ Promising but not yet production-ready for Python-heavy data engineering workflo
 - Related to [[apache-datafusion]] — Vortex modeled after DataFusion's extensible approach
 - Competes with [[lance-file-format]] — both are next-gen columnar formats targeting Parquet's dominance
 - Benchmark source: [[sources/benchmarking-vortex-file-format]] — Daniel Beach's independent performance evaluation
+- Competes with [[apache-arrow]] — Vortex claims faster processing than Arrow; provides zero-copy Arrow compatibility

@@ -3,7 +3,7 @@ title: "Staff Engineering"
 type: concept
 tags: [career, engineering-leadership, growth, senior-to-staff]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [senior-to-staff-engineer]
 aliases: [staff-plus, staff-engineer-role, senior-to-staff]
 ---

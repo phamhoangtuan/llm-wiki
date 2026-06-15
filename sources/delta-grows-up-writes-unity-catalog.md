@@ -7,14 +7,14 @@ url: "https://delta.io/blog/2026-05-06-delta-grows-up-writes-time-travel-and-uni
 source_date: 2026-05-06
 ingested: 2026-05-28
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-15
 tags: [delta-lake, unity-catalog, duckdb, time-travel, data-lake, lakehouse]
 concepts: [delta-lake, unity-catalog, duckdb, apache-iceberg]
 ---
 
 ## Summary
 
-DuckDB's Delta and Unity Catalog extensions have graduated from experimental status. The blog (republished from DuckDB's own blog) announces three major capabilities: **write support** (INSERT into Delta tables), **time travel** (query Delta tables at any historical version), and **Unity Catalog integration** including **Catalog Managed Tables** with concurrent write coordination.
+[[duckdb|DuckDB]]'s [[delta-lake|Delta]] and [[unity-catalog|Unity Catalog]] extensions have graduated from experimental status. The blog (republished from DuckDB's own blog) announces three major capabilities: **write support** (INSERT into Delta tables), **time travel** (query Delta tables at any historical version), and **Unity Catalog integration** including **Catalog Managed Tables** with concurrent write coordination.
 
 ## Key Announcements
 
@@ -94,3 +94,10 @@ The combination of **Delta** (open storage), **Unity Catalog** (governance + coo
 - [Playground Docker image](https://github.com/benfleis/duckdb-unitycatalog-playground/)
 - [OSS Unity Catalog](https://unitycatalog.io/)
 - [Delta Lake](https://delta.io/)
+
+---
+
+- Related to [[delta-lake]] — DuckDB's Delta extension graduates to stable writes and time travel
+- Related to [[unity-catalog]] — DuckDB's UC extension enables governed reads/writes through Catalog Managed Tables
+- Related to [[duckdb]] — DuckDB is now a full participant in the Delta ecosystem (reads + writes)
+- Related to [[apache-iceberg]] — Delta's catalog-managed model converges with Iceberg's catalog design

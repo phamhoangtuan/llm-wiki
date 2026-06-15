@@ -3,7 +3,7 @@ title: "Goroutines"
 type: concept
 tags: [go, golang, concurrency, goroutines, performance]
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-15
 sources: [go-web-programming]
 ---
 

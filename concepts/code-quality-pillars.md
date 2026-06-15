@@ -3,7 +3,7 @@ title: "Code Quality Pillars"
 type: concept
 tags: [design-principles, clean-code, engineering, maintainability]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [good-code-bad-code, practical-object-oriented-design]
 aliases: [six-pillars-of-code-quality]
 ---

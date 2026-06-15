@@ -3,7 +3,7 @@ title: "Rich Domain Model"
 type: concept
 tags: [oop, architecture, domain-driven-design]
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-06-15
 sources: [contieri-clean-code-cookbook]
 ---
 

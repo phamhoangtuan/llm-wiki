@@ -3,7 +3,7 @@ title: "Data Engineer"
 type: concept
 tags: [data-engineering, roles, career, infrastructure]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [data-engineer-role-handbook, data-engineering-handbook]
 aliases: [de, data-engineering-role]
 ---
@@ -62,9 +62,10 @@ Every DE system rests on four foundational capabilities:
 
 ## Best Practices
 
-- **Master the fundamentals**: SQL, Python, Bash, distributed computing thinking. Tools change — these don't.
+- **Master the fundamentals**: SQL, Python, Bash, distributed computing thinking. Tools change — these don't. In 2026, these [[data-engineering-fundamentals|fundamentals]] are more critical than ever — they're what let you distinguish AI-generated garbage from viable solutions.
+- **Develop glue technical skills**: Docker, file format wrangling, legacy protocol integration, infrastructure setup. These "in-between" skills — picked up through struggle — give you intuition about when AI output is directionally correct vs dangerously wrong.
 - **Business acumen**: Understand what data means to the business to design accurate, intuitive models.
-- **Apply SWE discipline**: Git version control, automated data testing, CI/CD for pipelines — this is [[dataops|DataOps]] in practice.
+- **Apply SWE discipline**: Git version control, automated data testing, CI/CD for pipelines — this is [[dataops|DataOps]] in practice. See [[cicd-data-pipelines]] for concrete tool recommendations (Ruff, SQLFluff, SQLMesh, Great Expectations).
 - **Build self-service**: Invest in architectures where analysts can self-serve, rather than becoming a "SQL writer for others."
 - **Design for idempotency**: Pipelines must produce the same result no matter how many times they run — use UPSERT/MERGE or delete-write patterns to prevent duplicates on retry.
 - **Infrastructure as Code (IaC)**: Define cloud resources (servers, databases) via Terraform — version-controlled, reproducible, disaster-recoverable.
@@ -108,6 +109,7 @@ Every DE system rests on four foundational capabilities:
 ---
 
 - Sub-role of [[analytics-engineer]] — Analytics Engineers specialize in the transformation layer within the DE domain
+- Built on [[data-engineering-fundamentals]] — the enduring skills (SQL, Python, data modeling, glue skills) that underpin all DE work
 - Practiced via [[dataops]] — applying SWE discipline to data pipelines
 - Related to [[data-ingestion]] — ingesting raw data from sources is a core DE responsibility
 - Implements [[elt]] — ELT is the modern paradigm DEs use for cloud warehouses
@@ -116,5 +118,6 @@ Every DE system rests on four foundational capabilities:
 - Related to [[apache-kafka]] — Kafka is the event backbone many DE pipelines consume from
 - Related to [[change-data-capture]] — CDC is a key ingestion pattern for DEs
 - Related to [[semantic-layer]] — semantic layers are the emerging bridge between DE infrastructure and AI agent consumption
+- Related to [[cicd-data-pipelines]] — CI/CD discipline applied to pipeline code (linting, testing, deployment automation)
 - Benchmark source: [[sources/data-engineer-role-handbook]] — Data Engineering Handbook (role definition)
 - Benchmark source: [[sources/data-engineering-handbook]] — Data Engineering Handbook (discipline overview)

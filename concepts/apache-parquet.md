@@ -3,7 +3,7 @@ title: "Apache Parquet"
 type: concept
 tags: [file-formats, columnar, big-data, data-engineering, delta-lake]
 created: 2026-05-26
-updated: 2026-06-02
+updated: 2026-06-15
 sources: [benchmarking-vortex-file-format, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering]
 ---
 
@@ -60,3 +60,5 @@ Despite challengers, Parquet remains the **incumbent standard** with the broades
 - Foundation for [[delta-lake]] — Delta tables store data as Parquet files with min/max stats for data skipping
 - Foundation for [[liquid-clustering]] — Liquid produces standard Parquet files with statistics, enabling reader-agnostic pruning
 - Benchmark source: [[sources/benchmarking-vortex-file-format]] — 0.125s DuckDB-on-Parquet, the baseline to beat
+- Foundation for [[apache-iceberg]] — Iceberg tables store data as Parquet files with file-level statistics for data skipping
+- Competes with [[lance-file-format]] — Lance is a next-gen columnar format optimized for ML/AI workloads and random access

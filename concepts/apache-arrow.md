@@ -3,7 +3,7 @@ title: "Apache Arrow"
 type: concept
 tags: [data-engineering, columnar, apache, in-memory]
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-15
 sources: [benchmarking-vortex-file-format]
 ---
 
@@ -39,3 +39,4 @@ Tools that use Arrow as their memory model:
 - Used by [[apache-datafusion]] — DataFusion is Arrow-native for zero-copy interop
 - Integrates with [[vortex-file-format]] — Vortex claims zero-copy compatibility with Arrow
 - Related to [[apache-parquet]] — Arrow is the in-memory format; Parquet is the on-disk format
+- Used by [[duckdb]] — DuckDB can export query results to Arrow tables for zero-copy interop

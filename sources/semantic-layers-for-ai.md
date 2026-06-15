@@ -5,9 +5,9 @@ source_type: article
 author: "Madison Mae"
 url: "https://learnanalyticsengineering.substack.com/p/i-was-wrong-about-semantic-layers"
 source_date: 2026-06-11
-ingested: 2026-06-08
+ingested: 2026-06-11
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 tags: [semantic-layer, analytics-engineering, ai, dbt, data-modeling]
 concepts: [semantic-layer]
 ---

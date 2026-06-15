@@ -3,7 +3,7 @@ title: "Readability vs Performance"
 type: concept
 tags: [design-principles, optimization, clean-code]
 created: 2026-05-23
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [contieri-clean-code-cookbook, good-code-bad-code, seriously-good-software]
 ---
 

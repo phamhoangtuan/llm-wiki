@@ -3,7 +3,7 @@ title: "Unity Catalog"
 type: concept
 tags: [data-governance, catalog, unity-catalog, delta-lake, lakehouse, duckdb]
 created: 2026-05-28
-updated: 2026-05-31
+updated: 2026-06-15
 sources: [delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables]
 aliases: [UC]
 ---

@@ -3,7 +3,7 @@ title: "Fail Fast"
 type: concept
 tags: [design-principles, error-handling, reliability, tdd]
 created: 2026-05-23
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [contieri-clean-code-cookbook, tdd-python-percival, good-code-bad-code]
 ---
 

@@ -3,7 +3,7 @@ title: "Apache DataFusion"
 type: concept
 tags: [query-engines, rust, apache, sql, data-engineering]
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-06-15
 sources: [benchmarking-vortex-file-format]
 ---
 

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Overload — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Code Overload</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Code Overload</h1>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">software-engineering</span><span class="tag">technical-debt</span><span class="tag">quality</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Code Overload</strong> is a term coined by the <em>New York Times</em> (April 2026) describing the phenomenon where AI-assisted engineering teams produce code so rapidly that it becomes unmanageable — code churn, security vulnerabilities, and technical debt accumulate faster than human review processes can handle. It is the predictable outcome of AI code generation without the four core practices of <a href="ai-native-engineering.html" class="wiki-link">ai-native-engineering</a>.</p>
+<h2 id="the-paradox">The Paradox</h2>
+<p>AI tools dramatically accelerate code generation, but:</p>
+<ul>
+<li><strong>More code ≠ more productivity</strong>: Often it means more bugs, more incidents, more technical debt</li>
+<li><strong>Review bandwidth is fixed</strong>: Human reviewers cannot keep pace with AI generation speed</li>
+<li><strong>Security debt compounds</strong>: ~45% of AI-generated code contains security flaws</li>
+</ul>
+<h2 id="root-causes">Root Causes</h2>
+<table><thead><tr>
+<th>Cause</th>
+<th>Effect</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>No specification discipline</strong></td>
+<td>Agents generate code that drifts from intent</td>
+</tr>
+<tr>
+<td><strong>No verification gates</strong></td>
+<td>Bugs pass through unreviewed</td>
+</tr>
+<tr>
+<td><strong>No problem decomposition</strong></td>
+<td>Agents tackle problems too large for their context, producing slop</td>
+</tr>
+<tr>
+<td><strong>No context engineering</strong></td>
+<td>Agents lack project-specific knowledge, hallucinate patterns</td>
+</tr>
+</tbody></table>
+<h2 id="the-vibe-coding-connection">The Vibe Coding Connection</h2>
+<p>When professional engineers adopt <a href="vibe-coding.html" class="wiki-link">vibe-coding</a> habits — generating code through AI without specification, verification, or decomposition — code overload is the inevitable result. The NYT documented teams "drowning in code churn and security holes" despite rebuilding their workflows around AI agents.</p>
+<h2 id="prevention">Prevention</h2>
+<p>Code overload is prevented by the four core practices of <a href="ai-native-engineering.html" class="wiki-link">ai-native-engineering</a>:</p>
+<ol>
+<li><a href="context-engineering.html" class="wiki-link">context-engineering</a> — curated, persistent knowledge layers</li>
+<li><a href="specification-driven-development.html" class="wiki-link">specification-driven-development</a> — define before build</li>
+<li>Critical verification — <a href="harness-engineering.html" class="wiki-link">structural enforcement</a> with automated gates</li>
+<li>Problem decomposition — AI-manageable chunks with clear boundaries</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>AI-Native Engineering</h4>
+      <p>is designed to prevent</p>
+    </a>
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>AI-Native Engineering</h4>
+      <p>code overload is what happens when you skip the four core practices</p>
+    </a>
+    <a class="connection-card" href="vibe-coding.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Vibe Coding</h4>
+      <p>professional teams that adopt vibe coding patterns trigger code overload</p>
+    </a>
+    <a class="connection-card" href="harness-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Harness Engineering</h4>
+      <p>structural verification gates are the primary defense</p>
+    </a>
+    <a class="connection-card" href="../sources/practical-guide-ai-native-engineer.html">
+      <span class="connection-type related">Related</span>
+      <h4>A Practical Guide to Becoming an AI-Native Engineer</h4>
+      <p>Shah Rahman on ByteByteGo</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="clickhouse.html" class="prev">← ClickHouse</a><a href="code-quality-pillars.html" class="next">Code Quality Pillars →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

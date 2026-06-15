@@ -6,7 +6,7 @@ author: "Cameron Cyr & Dustin Dorsey"
 source_date: 2025-01-01
 ingested: 2026-05-28
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-15
 url: ""
 tags: [dbt, data-engineering, analytics, elt, data-modeling, sql]
 concepts: [dbt, analytics-engineer, elt]
@@ -104,3 +104,9 @@ dbt connects via an adapter plugin system:
 - **Vendor supported**: Databricks, Oracle, ClickHouse, Teradata
 - **Community supported**: MySQL, SQL Server, [[duckdb|DuckDB]], SQLite
 - **Custom**: Any SQL engine via custom adapter
+
+---
+
+- Related to [[dbt]] — the sole focus of this 351-page guide: architecture, modeling, testing, deployment
+- Related to [[analytics-engineer]] — the role formalized by dbt; bridge between DE and DA
+- Related to [[elt]] — dbt is the canonical "T" (Transform) in the modern ELT paradigm

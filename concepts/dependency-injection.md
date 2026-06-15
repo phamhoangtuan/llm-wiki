@@ -3,7 +3,7 @@ title: "Dependency Injection"
 type: concept
 tags: [design-patterns, architecture, testing, di, solid]
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-15
 sources: [dependency-injection-principles-patterns]
 aliases: [DI]
 ---

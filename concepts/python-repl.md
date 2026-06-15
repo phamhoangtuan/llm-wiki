@@ -3,7 +3,7 @@ title: "Python REPL"
 type: concept
 tags: [python, repl, exploration]
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-06-15
 sources: [intuitive-python]
 aliases: [Python interactive console, Python shell]
 ---
@@ -71,3 +71,4 @@ This exploration loop — `dir()` → `help()` → `type()` → `__dict__` — l
 - Related to [[python-debugging-pdb]] — shares the interactive exploration mindset
 - Related to [[python-professional-practices]] — professional exploration workflow
 - Related to [[python-standard-library]] — the `inspect` module is the production equivalent of REPL exploration
+- Covered by [[sources/intuitive-python]] — David Muller's guide to leveraging the REPL as a discovery tool

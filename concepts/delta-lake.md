@@ -3,7 +3,7 @@ title: "Delta Lake"
 type: concept
 tags: [table-formats, data-lake, delta-lake, lakehouse, duckdb, data-engineering, clickhouse]
 created: 2026-05-28
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering, databricks-zerobus]
 aliases: [Delta]
 ---

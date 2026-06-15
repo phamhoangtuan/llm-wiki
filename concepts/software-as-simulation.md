@@ -3,7 +3,7 @@ title: "Software as Simulation"
 type: concept
 tags: [architecture, philosophy, domain-modeling]
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-06-15
 sources: [contieri-clean-code-cookbook]
 ---
 

@@ -3,7 +3,7 @@ title: "Case Interview"
 type: concept
 tags: [interview, consulting, case-interview, problem-solving, career]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [the-1-percent-case-interview]
 aliases: [consulting-interview, case-study-interview]
 ---

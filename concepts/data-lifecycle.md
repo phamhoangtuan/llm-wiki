@@ -3,7 +3,7 @@ title: "Data Lifecycle"
 type: concept
 tags: [data-engineering, data-lifecycle, governance, infrastructure]
 created: 2026-06-14
-updated: 2026-06-14
+updated: 2026-06-15
 sources: [data-lifecycle-handbook, data-engineering-handbook]
 aliases: [data-lifecycle-management, dlm]
 ---
@@ -151,3 +151,4 @@ Two key techniques:
 - Related to data pipeline operations — lifecycle management directly reduces cloud storage costs by migrating data to cheaper tiers
 - Benchmark source: [[sources/data-lifecycle-handbook]] — Data Engineering Handbook (data lifecycle)
 - Benchmark source: [[sources/data-engineering-handbook]] — Data Engineering Handbook (discipline overview)
+- Core to [[data-governance]] — lifecycle management is a foundational pillar of data governance (retention, deletion, compliance)

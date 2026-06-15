@@ -7,7 +7,7 @@ url: ""
 source_date: 2015-01-01
 ingested: 2026-06-03
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-15
 tags: [go, web, golang, http, backend, concurrency]
 concepts: [goroutines, go-http-handlers, go-template-escaping, go-web-ecosystem, middleware-pattern]
 ---
@@ -26,18 +26,18 @@ concepts: [goroutines, go-http-handlers, go-template-escaping, go-web-ecosystem,
 
 ### Handlers & ServeMux
 
-- `ServeMux` acts as a "traffic cop" — inspects URL and routes to the correct handler.
+- `ServeMux` acts as a "traffic cop" — inspects URL and routes to the correct [[go-http-handlers|handler]].
 - `/path` = exact match; `/path/` = subtree match (captures all sub-paths).
 - `Handler` (interface with `ServeHTTP`) vs `HandlerFunc` (convenience function) — choose based on whether you need state.
 
 ### Template Engine & Security
 
-- Go's `html/template` provides **context-aware escaping**: understands whether data lands in HTML, attributes, or JavaScript — escapes accordingly for XSS protection by default.
+- Go's `html/template` provides **context-aware escaping**: understands whether data lands in HTML, attributes, or JavaScript — escapes accordingly for XSS protection by default. This is the core of [[go-template-escaping|Go's template security model]].
 - `text/template` lacks this safety — use `html/template` for web output.
 
 ### Concurrency with Goroutines
 
-- Goroutines: ~2KB stack vs ~1MB for OS threads — hundreds of thousands on one machine.
+- [[goroutines|Goroutines]]: ~2KB stack vs ~1MB for OS threads — hundreds of thousands on one machine.
 - Concurrency ≠ Parallelism: concurrency is dealing with many things at once; parallelism is doing many things at once.
 - Each incoming HTTP request is handled in its own goroutine by default.
 
@@ -59,3 +59,11 @@ concepts: [goroutines, go-http-handlers, go-template-escaping, go-web-ecosystem,
 > "The beauty of Go lies in its simplicity. By relying on powerful standard libraries, you avoid the cargo cult confusion of heavy frameworks."
 
 > "Concurrency is about dealing with lots of things at once; parallelism is about doing lots of things at once." — Rob Pike
+
+---
+
+- Related to [[goroutines]] — lightweight concurrent functions (~2KB stack) that handle HTTP requests
+- Related to [[go-http-handlers]] — `ServeMux` routing, `Handler` interface, and `HandlerFunc` patterns
+- Related to [[go-template-escaping]] — context-aware XSS protection via `html/template`
+- Related to [[go-web-ecosystem]] — standard-library-first approach to web development without frameworks
+- Related to [[middleware-pattern]] — composable handler wrapping (auth, logging as cross-cutting concerns)

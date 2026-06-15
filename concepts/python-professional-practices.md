@@ -3,7 +3,7 @@ title: "Python Professional Practices"
 type: concept
 tags: [python, software-engineering]
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-06-15
 sources: [intuitive-python]
 aliases: []
 ---
@@ -53,3 +53,4 @@ This question drives every decision — from variable naming to concurrency choi
 - Related to [[fail-fast]] — static analysis catches errors before runtime
 - Related to [[readability-vs-performance]] — safety over premature optimization
 - Enables [[python-concurrency]] — knowing when (and when not) to use concurrency
+- Covered by [[sources/intuitive-python]] — David Muller's guide to professional Python development (the quality trifecta)

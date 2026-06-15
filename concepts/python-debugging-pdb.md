@@ -3,7 +3,7 @@ title: "Python Debugging with PDB"
 type: concept
 tags: [python, debugging, pdb]
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-06-15
 sources: [intuitive-python]
 aliases: [breakpoint, PDB, Python debugger]
 ---
@@ -74,3 +74,4 @@ This is useful for understanding unexpected crashes in production-like scenarios
 - Related to [[fail-fast]] — interactive inspection of failure states
 - Related to [[python-repl]] — REPL shares the interactive exploration mindset
 - Related to [[testing-strategy]] — debugging tests that fail unexpectedly
+- Covered by [[sources/intuitive-python]] — David Muller's guide to systematic debugging with PDB

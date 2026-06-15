@@ -3,7 +3,7 @@ title: "Change Data Capture (CDC)"
 type: concept
 tags: [data-engineering, cdc, streaming, databases, data-lake, delta-lake, clickhouse]
 created: 2026-05-26
-updated: 2026-06-02
+updated: 2026-06-15
 sources: [hugo-data-ingestion-platform-flink, integrating-rust-delta-kernel-clickhouse]
 aliases: [CDC]
 ---
@@ -122,3 +122,4 @@ Results include metadata columns: `_change_type`, `_commit_version`, `_commit_ti
 - Benchmark source: [[sources/hugo-data-ingestion-platform-flink]] — Grab's migration from Kafka Connect CDC to Flink CDC
 - Used by [[clickhouse]] — ClickHouse reads Delta Lake CDF via `deltaLake()` table function; foundation for ClickPipes
 - Built on [[delta-lake]] — Delta's CDF provides row-level change events that CDC tools consume
+- Powered by [[delta-kernel]] — the Rust Delta Kernel enables CDF access in ClickHouse via `deltaLake()` table function

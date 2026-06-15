@@ -40,7 +40,7 @@
 </div>
 <div class="content-area source">
 <h2 id="summary">Summary</h2>
-<p>DuckDB's Delta and Unity Catalog extensions have graduated from experimental status. The blog (republished from DuckDB's own blog) announces three major capabilities: <strong>write support</strong> (INSERT into Delta tables), <strong>time travel</strong> (query Delta tables at any historical version), and <strong>Unity Catalog integration</strong> including <strong>Catalog Managed Tables</strong> with concurrent write coordination.</p>
+<p><a href="../concepts/duckdb.html" class="wiki-link">DuckDB</a>'s <a href="../concepts/delta-lake.html" class="wiki-link">Delta</a> and <a href="../concepts/unity-catalog.html" class="wiki-link">Unity Catalog</a> extensions have graduated from experimental status. The blog (republished from DuckDB's own blog) announces three major capabilities: <strong>write support</strong> (INSERT into Delta tables), <strong>time travel</strong> (query Delta tables at any historical version), and <strong>Unity Catalog integration</strong> including <strong>Catalog Managed Tables</strong> with concurrent write coordination.</p>
 <h2 id="key-announcements">Key Announcements</h2>
 <h3 id="1-delta-writes-insert">1. Delta Writes (INSERT)</h3>
 <p>DuckDB can now write to Delta tables — not just read them:</p>
@@ -127,7 +127,31 @@ INSERT INTO my_catalog.pets ...;  -- Writes through UC!</code></pre>
 <li><a href="https://delta.io/" target="_blank" rel="noopener">Delta Lake</a></li>
 </ul>
 </div>
-
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="../concepts/delta-lake.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Delta Lake</h4>
+      <p>DuckDB's Delta extension graduates to stable writes and time travel</p>
+    </a>
+    <a class="connection-card" href="../concepts/unity-catalog.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Unity Catalog</h4>
+      <p>DuckDB's UC extension enables governed reads/writes through Catalog Managed Tables</p>
+    </a>
+    <a class="connection-card" href="../concepts/duckdb.html">
+      <span class="connection-type related">Related to</span>
+      <h4>DuckDB</h4>
+      <p>DuckDB is now a full participant in the Delta ecosystem (reads + writes)</p>
+    </a>
+    <a class="connection-card" href="../concepts/apache-iceberg.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Iceberg</h4>
+      <p>Delta's catalog-managed model converges with Iceberg's catalog design</p>
+    </a>
+  </div>
+</section>
 <nav class="pagination"><a href="delta-catalog-managed-tables.html" class="prev">← The Next Evolution of Delta — Catalog-Managed Tables</a><a href="dependency-injection-principles-patterns.html" class="next">Dependency Injection Principles, Practices, and Patterns →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">

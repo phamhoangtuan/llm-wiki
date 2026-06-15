@@ -3,7 +3,7 @@ title: "Immutability of Essence"
 type: concept
 tags: [design-principles, immutability, domain-modeling]
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-06-15
 sources: [contieri-clean-code-cookbook]
 ---
 

@@ -3,7 +3,7 @@ title: "Data Ingestion"
 type: concept
 tags: [data-engineering, ingestion, etl, streaming, data-lake]
 created: 2026-05-26
-updated: 2026-05-28
+updated: 2026-06-15
 sources: [hugo-data-ingestion-platform-flink, unlocking-dbt-design-deploy-transformations]
 aliases: [data-onboarding, data-pipeline-onboarding]
 ---

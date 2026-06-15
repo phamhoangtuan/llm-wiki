@@ -3,7 +3,7 @@ title: "Analytics Engineer"
 type: concept
 tags: [data-engineering, analytics, roles, dbt, data-modeling]
 created: 2026-05-28
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [unlocking-dbt-design-deploy-transformations, data-engineering-with-dbt]
 ---
 
@@ -70,3 +70,4 @@ With the Analytics Engineer:
 - Related to [[data-ingestion]] — Analytics Engineers consume ingested data to build downstream models
 - Practices [[dataops]] — Analytics Engineers are the practitioners who apply DataOps daily to the transformation layer
 - Benchmark source: [[sources/unlocking-dbt-design-deploy-transformations]] — Cyr & Dorsey's book formalizing the role
+- Related to [[apache-flink]] — Flink handles the streaming infrastructure that Analytics Engineers consume transformed data from

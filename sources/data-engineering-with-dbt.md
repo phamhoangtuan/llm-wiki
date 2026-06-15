@@ -6,7 +6,7 @@ author: "Roberto Zagni"
 source_date: 2023-01-01
 ingested: 2026-06-08
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 url: ""
 tags: [dbt, data-engineering, analytics, elt, dataops]
 concepts: [dataops, dbt, analytics-engineer]

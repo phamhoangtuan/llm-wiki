@@ -1,20 +1,32 @@
 {
   "harness-engineering": [
     "agent-quality-optimization",
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "ai-native-engineering",
+    "code-overload",
+    "code-overload",
+    "context-engineering",
     "domain-driven-design",
     "fail-fast",
     "semantic-layer",
     "technological-centaur",
-    "testing-strategy"
+    "testing-strategy",
+    "learn-harness-engineering",
+    "learn-harness-engineering",
+    "practical-guide-ai-native-engineer"
   ],
   "technological-centaur": [
     "agent-quality-optimization",
+    "ai-native-engineering",
     "harness-engineering",
     "readability-vs-performance",
+    "vibe-coding",
     "contieri-clean-code-cookbook"
   ],
   "fail-fast": [
     "agent-quality-optimization",
+    "bijection",
     "bijection",
     "code-quality-pillars",
     "dependency-injection",
@@ -32,6 +44,7 @@
   ],
   "testing-strategy": [
     "agent-quality-optimization",
+    "cicd-data-pipelines",
     "code-quality-pillars",
     "functional-testing",
     "harness-engineering",
@@ -43,10 +56,85 @@
     "python-debugging-pdb",
     "python-static-analysis",
     "tdd-methodology",
-    "okken-python-testing-pytest"
+    "okken-python-testing-pytest",
+    "tdd-python-percival",
+    "tdd-python-percival"
+  ],
+  "context-engineering": [
+    "agent-quality-optimization",
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "ai-native-engineering",
+    "code-overload",
+    "harness-engineering",
+    "specification-driven-development",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "ai-native-engineering": [
+    "agent-quality-optimization",
+    "agentic-development-life-cycle",
+    "code-overload",
+    "code-overload",
+    "code-overload",
+    "code-overload",
+    "context-engineering",
+    "data-engineering-fundamentals",
+    "harness-engineering",
+    "specification-driven-development",
+    "vibe-coding",
+    "vibe-coding",
+    "vibe-coding",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
   ],
   "sources/agent-quality-token-optimization": [
-    "agent-quality-optimization"
+    "agent-quality-optimization",
+    "context-engineering"
+  ],
+  "specification-driven-development": [
+    "agentic-development-life-cycle",
+    "code-overload"
+  ],
+  "tdd-methodology": [
+    "agentic-development-life-cycle",
+    "fail-fast",
+    "functional-testing",
+    "testing-strategy",
+    "tdd-python-percival",
+    "tdd-python-percival"
+  ],
+  "sources/practical-guide-ai-native-engineer": [
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "code-overload",
+    "context-engineering",
+    "specification-driven-development",
+    "vibe-coding"
+  ],
+  "vibe-coding": [
+    "ai-native-engineering",
+    "ai-native-engineering",
+    "code-overload",
+    "code-overload",
+    "context-engineering",
+    "specification-driven-development",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "agentic-development-life-cycle": [
+    "ai-native-engineering",
+    "harness-engineering",
+    "specification-driven-development",
+    "specification-driven-development",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "agent-quality-optimization": [
+    "ai-native-engineering",
+    "context-engineering",
+    "agent-quality-token-optimization",
+    "practical-guide-ai-native-engineer"
   ],
   "dbt": [
     "analytics-engineer",
@@ -57,15 +145,18 @@
     "data-engineer",
     "data-ingestion",
     "data-ingestion",
+    "data-modeling",
     "dataops",
     "elt",
     "elt",
     "elt",
     "elt",
     "semantic-layer",
-    "data-engineering-with-dbt"
+    "data-engineering-with-dbt",
+    "unlocking-dbt-design-deploy-transformations"
   ],
   "apache-flink": [
+    "analytics-engineer",
     "analytics-engineer",
     "apache-iceberg",
     "apache-iceberg",
@@ -78,7 +169,10 @@
     "data-ingestion",
     "data-ingestion",
     "data-ingestion",
-    "dbt"
+    "dbt",
+    "dbt",
+    "hugo-data-ingestion-platform-flink",
+    "hugo-data-ingestion-platform-flink"
   ],
   "elt": [
     "analytics-engineer",
@@ -88,6 +182,7 @@
     "dataops",
     "dbt",
     "dbt",
+    "unlocking-dbt-design-deploy-transformations",
     "unlocking-dbt-design-deploy-transformations"
   ],
   "data-ingestion": [
@@ -102,17 +197,26 @@
     "data-lifecycle",
     "dataops",
     "dbt",
-    "elt"
+    "elt",
+    "hugo-data-ingestion-platform-flink",
+    "hugo-data-ingestion-platform-flink"
   ],
   "dataops": [
     "analytics-engineer",
+    "cicd-data-pipelines",
+    "cicd-data-pipelines",
     "code-quality-pillars",
     "data-engineer",
     "data-engineer",
+    "data-engineering-fundamentals",
     "data-governance",
     "dbt",
     "semantic-layer",
-    "data-engineering-with-dbt"
+    "data-engineering-with-dbt",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026",
+    "reddit-cicd-tips-data-engineering",
+    "reddit-cicd-tips-data-engineering"
   ],
   "sources/unlocking-dbt-design-deploy-transformations": [
     "analytics-engineer",
@@ -127,7 +231,9 @@
     "apache-parquet",
     "duckdb",
     "vortex-file-format",
-    "vortex-file-format"
+    "vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format"
   ],
   "apache-datafusion": [
     "apache-arrow",
@@ -136,9 +242,12 @@
     "apache-parquet",
     "apache-parquet",
     "duckdb",
+    "duckdb",
     "polars",
     "polars",
-    "vortex-file-format"
+    "vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format"
   ],
   "vortex-file-format": [
     "apache-arrow",
@@ -149,12 +258,16 @@
     "apache-parquet",
     "apache-parquet",
     "duckdb",
+    "duckdb",
     "lance-file-format",
     "lance-file-format",
     "lance-file-format",
-    "polars"
+    "polars",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format"
   ],
   "duckdb": [
+    "apache-arrow",
     "apache-arrow",
     "apache-datafusion",
     "apache-datafusion",
@@ -176,6 +289,10 @@
     "vectorized-execution",
     "vectorized-execution",
     "vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "delta-grows-up-writes-unity-catalog",
+    "delta-grows-up-writes-unity-catalog",
     "duckdb-up-and-running",
     "unlocking-dbt-design-deploy-transformations"
   ],
@@ -194,7 +311,9 @@
     "polars",
     "vortex-file-format",
     "vortex-file-format",
-    "vortex-file-format"
+    "vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format"
   ],
   "vectorized-execution": [
     "apache-datafusion",
@@ -228,6 +347,8 @@
     "delta-lake",
     "delta-lake",
     "liquid-clustering",
+    "hugo-data-ingestion-platform-flink",
+    "hugo-data-ingestion-platform-flink",
     "integrating-rust-delta-kernel-clickhouse"
   ],
   "apache-kafka": [
@@ -238,12 +359,16 @@
     "data-ingestion",
     "message-queue",
     "message-queue",
-    "databricks-zerobus"
+    "databricks-zerobus",
+    "hugo-data-ingestion-platform-flink",
+    "hugo-data-ingestion-platform-flink"
   ],
   "apache-iceberg": [
     "apache-flink",
     "apache-parquet",
+    "apache-parquet",
     "apache-spark",
+    "clickhouse",
     "clickhouse",
     "data-ingestion",
     "data-ingestion",
@@ -252,11 +377,17 @@
     "delta-lake",
     "delta-lake",
     "duckdb",
+    "duckdb",
     "liquid-clustering",
     "liquid-clustering",
     "unity-catalog",
     "unity-catalog",
-    "debunking-data-layout-myths-liquid-clustering"
+    "debunking-data-layout-myths-liquid-clustering",
+    "delta-catalog-managed-tables",
+    "delta-catalog-managed-tables",
+    "delta-grows-up-writes-unity-catalog",
+    "hugo-data-ingestion-platform-flink",
+    "hugo-data-ingestion-platform-flink"
   ],
   "sources/hugo-data-ingestion-platform-flink": [
     "apache-flink",
@@ -292,6 +423,10 @@
     "unity-catalog",
     "databricks-zerobus",
     "debunking-data-layout-myths-liquid-clustering",
+    "delta-catalog-managed-tables",
+    "delta-catalog-managed-tables",
+    "delta-grows-up-writes-unity-catalog",
+    "delta-grows-up-writes-unity-catalog",
     "integrating-rust-delta-kernel-clickhouse"
   ],
   "message-queue": [
@@ -308,7 +443,10 @@
   ],
   "lance-file-format": [
     "apache-parquet",
-    "vortex-file-format"
+    "apache-parquet",
+    "vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format"
   ],
   "clickhouse": [
     "apache-parquet",
@@ -323,10 +461,16 @@
   ],
   "data-engineer": [
     "apache-spark",
+    "cicd-data-pipelines",
+    "data-engineering-fundamentals",
     "data-governance",
     "data-lifecycle",
     "data-engineer-role-handbook",
-    "data-engineering-handbook"
+    "data-engineering-handbook",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026",
+    "reddit-cicd-tips-data-engineering",
+    "reddit-cicd-tips-data-engineering"
   ],
   "sources/high-performance-spark": [
     "apache-spark"
@@ -445,6 +589,7 @@
   ],
   "delta-kernel": [
     "change-data-capture",
+    "change-data-capture",
     "clickhouse",
     "clickhouse",
     "delta-lake",
@@ -472,7 +617,19 @@
     "timely-dataflow",
     "materialized-views-quick-insights"
   ],
+  "data-governance": [
+    "cicd-data-pipelines",
+    "data-lifecycle",
+    "data-lifecycle",
+    "data-modeling",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026"
+  ],
+  "sources/reddit-cicd-tips-data-engineering": [
+    "cicd-data-pipelines"
+  ],
   "in-process-olap": [
+    "clickhouse",
     "clickhouse",
     "duckdb",
     "vectorized-execution",
@@ -556,14 +713,34 @@
     "dependency-injection",
     "solid-principles"
   ],
+  "data-engineering-fundamentals": [
+    "data-engineer",
+    "data-engineer",
+    "data-governance",
+    "data-modeling",
+    "data-modeling",
+    "dataops",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026"
+  ],
+  "cicd-data-pipelines": [
+    "data-engineer",
+    "data-engineer",
+    "data-governance",
+    "dataops",
+    "reddit-cicd-tips-data-engineering",
+    "reddit-cicd-tips-data-engineering"
+  ],
   "analytics-engineer": [
     "data-engineer",
+    "data-modeling",
     "dataops",
     "dataops",
     "dbt",
     "elt",
     "semantic-layer",
     "data-engineering-with-dbt",
+    "unlocking-dbt-design-deploy-transformations",
     "unlocking-dbt-design-deploy-transformations"
   ],
   "semantic-layer": [
@@ -571,12 +748,22 @@
     "semantic-layers-for-ai"
   ],
   "sources/data-engineer-role-handbook": [
-    "data-engineer"
+    "data-engineer",
+    "data-engineering-fundamentals"
   ],
   "sources/data-engineering-handbook": [
     "data-engineer",
     "data-governance",
-    "data-lifecycle"
+    "data-lifecycle",
+    "data-modeling"
+  ],
+  "data-modeling": [
+    "data-engineering-fundamentals",
+    "data-engineering-fundamentals"
+  ],
+  "sources/data-fundamentals-matter-2026": [
+    "data-engineering-fundamentals",
+    "data-modeling"
   ],
   "sources/data-lifecycle-handbook": [
     "data-governance",
@@ -593,10 +780,11 @@
     "delta-lake",
     "delta-lake",
     "duckdb",
-    "duckdb"
-  ],
-  "data-governance": [
-    "data-lifecycle"
+    "duckdb",
+    "delta-catalog-managed-tables",
+    "delta-catalog-managed-tables",
+    "delta-grows-up-writes-unity-catalog",
+    "delta-grows-up-writes-unity-catalog"
   ],
   "database-sharding": [
     "database-replication"
@@ -701,15 +889,12 @@
     "in-process-olap",
     "vectorized-execution"
   ],
-  "tdd-methodology": [
-    "fail-fast",
-    "functional-testing",
-    "testing-strategy"
-  ],
   "functional-testing": [
     "fail-fast",
     "tdd-methodology",
-    "testing-strategy"
+    "testing-strategy",
+    "tdd-python-percival",
+    "tdd-python-percival"
   ],
   "python-static-analysis": [
     "fail-fast",
@@ -738,14 +923,21 @@
   "goroutines": [
     "go-http-handlers",
     "go-web-ecosystem",
-    "kubernetes-operator"
+    "kubernetes-operator",
+    "go-web-programming",
+    "go-web-programming"
   ],
   "go-web-ecosystem": [
     "go-http-handlers",
     "go-template-escaping",
     "goroutines",
     "kubernetes-operator",
-    "middleware-pattern"
+    "middleware-pattern",
+    "go-web-programming"
+  ],
+  "middleware-pattern": [
+    "go-http-handlers",
+    "go-web-programming"
   ],
   "sources/go-web-programming": [
     "go-http-handlers",
@@ -758,10 +950,14 @@
     "go-template-escaping",
     "go-web-ecosystem",
     "goroutines",
-    "middleware-pattern"
+    "middleware-pattern",
+    "go-web-programming",
+    "go-web-programming"
   ],
   "go-template-escaping": [
-    "go-web-ecosystem"
+    "go-web-ecosystem",
+    "go-web-programming",
+    "go-web-programming"
   ],
   "kubernetes-operator": [
     "go-web-ecosystem",
@@ -857,6 +1053,14 @@
     "python-standard-library",
     "python-static-analysis"
   ],
+  "sources/intuitive-python": [
+    "python-concurrency",
+    "python-debugging-pdb",
+    "python-professional-practices",
+    "python-repl",
+    "python-standard-library",
+    "python-static-analysis"
+  ],
   "python-repl": [
     "python-debugging-pdb"
   ],
@@ -893,18 +1097,21 @@
   "sources/de-coding-technical-interview": [
     "technical-interview"
   ],
+  "code-overload": [
+    "vibe-coding",
+    "vibe-coding"
+  ],
   "apache-arrow": [
+    "vortex-file-format",
     "vortex-file-format"
   ],
   "sources/sample-article": [
+    "wiki-maintenance",
     "wiki-maintenance"
   ],
   "knowledge-graph": [
     "wiki-maintenance",
     "wiki-maintenance"
-  ],
-  "agent-quality-optimization": [
-    "agent-quality-token-optimization"
   ],
   "apache-spark": [
     "high-performance-spark"

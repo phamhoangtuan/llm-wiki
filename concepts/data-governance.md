@@ -33,6 +33,7 @@ Without governance:
 - **Legal Risk**: GDPR "right to be forgotten" becomes nearly impossible without knowing where user data lives.
 - **Trust Erosion**: Analysts make decisions on data they can't verify — lineage gaps destroy confidence.
 - **Security**: Unclassified data means sensitive information may sit unprotected in dev environments.
+- **Agent Sprawl** (2026): Without governance, AI agents produce minor data inconsistencies that compound into indecision and leadership pushback — the LLM-era equivalent of dashboard sprawl.
 
 ## Governance in Practice
 
@@ -49,5 +50,7 @@ Data Engineers implement governance through:
 - Related to [[dataops]] — DataOps applies software engineering discipline to governance enforcement
 - Related to [[data-ingestion]] — Governance classification should begin at ingestion, not as an afterthought
 - Related to [[unity-catalog]] — Unity Catalog is a catalog-centric governance implementation for Delta Lake
+- Related to [[cicd-data-pipelines]] — CI/CD gates enforce governance rules (schema contracts, data quality thresholds) at deployment time
+- Informed by [[data-engineering-fundamentals]] — the messy data reality (2026) makes governance more critical, not less
 - Benchmark source: [[sources/data-lifecycle-handbook]] — Data Engineering Handbook (data lifecycle)
 - Benchmark source: [[sources/data-engineering-handbook]] — Data Engineering Handbook (discipline overview)

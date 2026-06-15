@@ -3,7 +3,7 @@ title: "Vectorized Execution"
 type: concept
 tags: [olap, query-optimization, database-engines]
 created: 2026-05-24
-updated: 2026-05-24
+updated: 2026-06-15
 sources: [duckdb-up-and-running]
 ---
 

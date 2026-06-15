@@ -3,7 +3,7 @@ title: "Delta Kernel"
 type: concept
 tags: [delta-lake, delta-kernel, rust, table-formats, data-engineering]
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-15
 sources: [integrating-rust-delta-kernel-clickhouse]
 aliases: [delta-kernel-rs, Rust Delta Kernel]
 ---

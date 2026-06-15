@@ -40,7 +40,7 @@
 </div>
 <div class="content-area source">
 <h2 id="summary">Summary</h2>
-<p>Daniel Beach benchmarks the <strong>Vortex file format</strong> (a Rust-based next-generation columnar format) against CSV, Parquet, and (briefly) Lance, using DuckDB, Polars, and DataFusion as query engines. The dataset is Backblaze's open-source hard drive failure data — ~24 GB across 184 CSV files.</p>
+<p>Daniel Beach benchmarks the <strong><a href="../concepts/vortex-file-format.html" class="wiki-link">Vortex</a> file format</strong> (a Rust-based next-generation columnar format) against CSV, <a href="../concepts/apache-parquet.html" class="wiki-link">Parquet</a>, and (briefly) <a href="../concepts/lance-file-format.html" class="wiki-link">Lance</a>, using <a href="../concepts/duckdb.html" class="wiki-link">DuckDB</a>, <a href="../concepts/polars.html" class="wiki-link">Polars</a>, and <a href="../concepts/apache-datafusion.html" class="wiki-link">DataFusion</a> as query engines. The dataset is Backblaze's open-source hard drive failure data — ~24 GB across 184 CSV files.</p>
 <h2 id="benchmark-results">Benchmark Results</h2>
 <table><thead><tr>
 <th>Format + Engine</th>
@@ -112,7 +112,41 @@
 <li><a href="https://dataengineeringcentral.substack.com/p/why-im-replacing-polars-with-duckdb" target="_blank" rel="noopener">Author's earlier article on replacing Polars with DuckDB</a></li>
 </ul>
 </div>
-
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="../concepts/vortex-file-format.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Vortex File Format</h4>
+      <p>the columnar file format under benchmark evaluation</p>
+    </a>
+    <a class="connection-card" href="../concepts/polars.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Polars</h4>
+      <p>DataFrame library tested; OOM'd on CSV, competitive on Parquet/Vortex</p>
+    </a>
+    <a class="connection-card" href="../concepts/apache-datafusion.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache DataFusion</h4>
+      <p>fastest CSV parser in the benchmark (5.106s)</p>
+    </a>
+    <a class="connection-card" href="../concepts/duckdb.html">
+      <span class="connection-type related">Related to</span>
+      <h4>DuckDB</h4>
+      <p>fastest Parquet engine (0.125s); vortex extension OOM'd</p>
+    </a>
+    <a class="connection-card" href="../concepts/apache-parquet.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Parquet</h4>
+      <p>the incumbent format to beat</p>
+    </a>
+    <a class="connection-card" href="../concepts/lance-file-format.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Lance File Format</h4>
+      <p>another next-gen columnar format, briefly mentioned</p>
+    </a>
+  </div>
+</section>
 <nav class="pagination"><a href="apache-iceberg-1.11.0-release.html" class="prev">← Apache Iceberg 1.11.0 Release</a><a href="contieri-clean-code-cookbook.html" class="next">Clean Code Cookbook (Maximiliano Contieri) →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">

@@ -7,7 +7,7 @@ url: ""
 source_date: 2026-05-17
 ingested: 2026-05-24
 created: 2026-05-24
-updated: 2026-05-24
+updated: 2026-06-15
 tags: [system-design, scalability, architecture, distributed-systems, interview]
 concepts: [system-design-interview, scalable-architecture, load-balancer, database-replication, cache-strategy, cdn, stateless-architecture, message-queue, observability]
 ---

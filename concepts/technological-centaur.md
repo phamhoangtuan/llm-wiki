@@ -3,7 +3,7 @@ title: "Technological Centaur"
 type: concept
 tags: [ai, architecture, developer-role]
 created: 2026-05-23
-updated: 2026-05-31
+updated: 2026-06-15
 sources: [contieri-clean-code-cookbook]
 ---
 

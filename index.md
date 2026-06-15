@@ -98,6 +98,15 @@
 - [Python Standard Library](concepts/python-standard-library.html) — Batteries-included: collections (defaultdict, namedtuple) and sqlite3
 - [Python Concurrency](concepts/python-concurrency.html) — Threads vs Processes, GIL, race condition dangers, and when to use concurrency
 - [Python REPL](concepts/python-repl.html) — Interactive console as a living laboratory: repr, dir(), help(), __mro__ for object exploration
+- [AI-Native Engineering](concepts/ai-native-engineering.html) — Engineers as AI agent orchestrators; four core practices, code overload, individual-to-team transformation
+- [Context Engineering](concepts/context-engineering.html) — Systematic curation of project-specific info into AI working memory; supersedes prompt engineering
+- [Agentic Development Life Cycle (ADLC)](concepts/agentic-development-life-cycle.html) — Redefinition of SDLC for agent-human collaboration: Plan→Build→Test→Review→Document
+- [Vibe Coding](concepts/vibe-coding.html) — Non-engineer AI-assisted coding vs professional AI-native engineering; where it adds value and where it fails
+- [Data Engineering Fundamentals](concepts/data-engineering-fundamentals.html) — Enduring skills (SQL, Python, data modeling, glue skills) that matter more than ever in 2026
+- [CI/CD for Data Pipelines](concepts/cicd-data-pipelines.html) — Linting, testing, and deployment automation for data engineering; tools, notebooks-vs-scripts debate
+- [Specification-Driven Development](concepts/specification-driven-development.html) — Define before build; antidote to random prompting in AI-native workflows
+- [Data Modeling](concepts/data-modeling.html) — Designing data structure, relationships, and constraints; the most enduring DE fundamental
+- [Code Overload](concepts/code-overload.html) — NYT term: AI-generated code exceeding review capacity; more bugs, more debt
 
 ## Sources
 
@@ -137,6 +146,9 @@
 - [The 1%: Conquer Your Consulting Case Interview](sources/the-1-percent-case-interview.html) — Smeritschnig's 294-page insider's guide: MECE, SCORE, Pyramid Principle
 - [Intuitive Python](sources/intuitive-python.html) — David Muller's 137-page guide to professional Python: static analysis, PDB debugging, standard library, concurrency
 - [Learning Domain-Driven Design](sources/learning-domain-driven-design.html) — Vlad Khononov's 340-page guide to strategic DDD: subdomain classification, Ubiquitous Language, Bounded Contexts
+- [A Practical Guide to Becoming an AI-Native Engineer](sources/practical-guide-ai-native-engineer.html) — Shah Rahman (Meta) on AI-native engineering: orchestrator model, context engineering, ADLC, security guardrails
+- [In 2026 The Data Fundamentals Matter More Than Ever](sources/data-fundamentals-matter-2026.html) — SeattleDataGuy: SQL/Python/data modeling still critical, glue skills, messy data reality
+- [CI/CD Tips — r/dataengineering](sources/reddit-cicd-tips-data-engineering.html) — Community discussion: Ruff, SQLFluff, SQLMesh, notebooks-vs-scripts debate, testing philosophy
 
 ## Syntheses
 
@@ -144,5 +156,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-14*
-*Pages: 119 (91 concepts + 36 sources)*
+*Last updated: 2026-06-15*
+*Pages: 139 (100 concepts + 39 sources)*

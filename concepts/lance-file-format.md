@@ -3,7 +3,7 @@ title: "Lance File Format"
 type: concept
 tags: [file-formats, columnar, ml, data-engineering]
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-06-15
 sources: [benchmarking-vortex-file-format]
 ---
 

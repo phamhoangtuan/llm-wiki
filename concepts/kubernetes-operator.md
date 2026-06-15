@@ -3,7 +3,7 @@ title: "Kubernetes Operator"
 type: concept
 tags: [kubernetes, operators, controllers, cloud-native, golang, automation]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [programming-kubernetes]
 aliases: [k8s-operator, kubernetes-controller]
 ---

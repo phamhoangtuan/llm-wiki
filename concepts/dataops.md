@@ -3,7 +3,7 @@ title: "DataOps"
 type: concept
 tags: [data-engineering, devops, dbt, analytics, methodology]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [data-engineering-with-dbt]
 aliases: [data-operations, data-devops]
 ---
@@ -90,4 +90,6 @@ DataOps ensures each layer is versioned, tested, and maintainable.
 - Related to [[elt]] — DataOps governs the transformation (T) step with engineering discipline
 - Related to [[data-ingestion]] — ingested data flows into DataOps-managed transformation pipelines
 - Informs [[code-quality-pillars]] — DataOps applies the same modularity, testing, and reuse principles to data
+- Operationalized by [[cicd-data-pipelines]] — CI/CD is the practical implementation of DataOps in the deployment pipeline (Ruff, SQLFluff, SQLMesh, Great Expectations)
+- Related to [[data-engineering-fundamentals]] — DataOps applies software engineering rigor to the fundamental DE skills
 - Benchmark source: [[sources/data-engineering-with-dbt]] — Roberto Zagni's 603-page guide

@@ -13,6 +13,31 @@
         "reliability"
       ]
     },
+    "agentic-development-life-cycle": {
+      "title": "Agentic Development Life Cycle",
+      "category": "AI & Agents",
+      "url": "concepts/agentic-development-life-cycle.html",
+      "definition": "The **Agentic Development Life Cycle (ADLC)** is a redefinition of the traditional Software Development Life Cycle for environments where AI agents collaborate with humans to produce software. Traditi",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "sdlc",
+        "methodology",
+        "process"
+      ]
+    },
+    "ai-native-engineering": {
+      "title": "AI-Native Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/ai-native-engineering.html",
+      "definition": "**AI-Native Engineering** is a professional engineering discipline where developers operate as orchestrators of AI agents rather than manual coders. It fundamentally differs from [[vibe-coding]] — whi",
+      "tags": [
+        "ai-engineering",
+        "software-engineering",
+        "agents",
+        "methodology"
+      ]
+    },
     "analytics-engineer": {
       "title": "Analytics Engineer",
       "category": "Data Engineering",
@@ -179,6 +204,19 @@
         "clickhouse"
       ]
     },
+    "cicd-data-pipelines": {
+      "title": "CI/CD for Data Pipelines",
+      "category": "Data Engineering",
+      "url": "concepts/cicd-data-pipelines.html",
+      "definition": "**CI/CD for Data Pipelines** applies continuous integration and continuous deployment practices — linting, automated testing, quality gates, and deployment automation — to data engineering workflows. ",
+      "tags": [
+        "data-engineering",
+        "cicd",
+        "devops",
+        "testing",
+        "linting"
+      ]
+    },
     "clickhouse": {
       "title": "ClickHouse",
       "category": "Infrastructure",
@@ -191,6 +229,18 @@
         "clickhouse",
         "data-engineering",
         "delta-lake"
+      ]
+    },
+    "code-overload": {
+      "title": "Code Overload",
+      "category": "AI & Agents",
+      "url": "concepts/code-overload.html",
+      "definition": "**Code Overload** is a term coined by the *New York Times* (April 2026) describing the phenomenon where AI-assisted engineering teams produce code so rapidly that it becomes unmanageable — code churn,",
+      "tags": [
+        "ai-engineering",
+        "software-engineering",
+        "technical-debt",
+        "quality"
       ]
     },
     "code-quality-pillars": {
@@ -217,6 +267,19 @@
         "composition-root"
       ]
     },
+    "context-engineering": {
+      "title": "Context Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/context-engineering.html",
+      "definition": "**Context Engineering** is the systematic discipline of curating and injecting project-specific information into AI agent working memory to maximize output quality. It is the next evolution beyond pro",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "prompt-engineering",
+        "llm",
+        "knowledge-management"
+      ]
+    },
     "data-engineer": {
       "title": "Data Engineer",
       "category": "Data Engineering",
@@ -227,6 +290,20 @@
         "roles",
         "career",
         "infrastructure"
+      ]
+    },
+    "data-engineering-fundamentals": {
+      "title": "Data Engineering Fundamentals",
+      "category": "Data Engineering",
+      "url": "concepts/data-engineering-fundamentals.html",
+      "definition": "**Data Engineering Fundamentals** are the enduring technical skills — SQL, Python, data modeling, and \"glue technical skills\" — that remain essential regardless of tool evolution or AI adoption. As th",
+      "tags": [
+        "data-engineering",
+        "fundamentals",
+        "sql",
+        "python",
+        "data-modeling",
+        "career"
       ]
     },
     "data-governance": {
@@ -265,6 +342,18 @@
         "data-lifecycle",
         "governance",
         "infrastructure"
+      ]
+    },
+    "data-modeling": {
+      "title": "Data Modeling",
+      "category": "Data Engineering",
+      "url": "concepts/data-modeling.html",
+      "definition": "**Data Modeling** is the practice of designing the structure, relationships, and constraints of data within a storage system. It determines whether queries are fast or impossible, whether analytics ar",
+      "tags": [
+        "data-engineering",
+        "data-modeling",
+        "sql",
+        "database-design"
       ]
     },
     "database-replication": {
@@ -967,6 +1056,18 @@
         "clean-code"
       ]
     },
+    "specification-driven-development": {
+      "title": "Specification-Driven Development",
+      "category": "AI & Agents",
+      "url": "concepts/specification-driven-development.html",
+      "definition": "**Specification-Driven Development** is the discipline of defining what you want *before* asking AI (or humans) to build it. In the AI-native era, it's the antidote to random prompting and vibe coding",
+      "tags": [
+        "ai-engineering",
+        "software-engineering",
+        "methodology",
+        "requirements"
+      ]
+    },
     "staff-engineering": {
       "title": "Staff Engineering",
       "category": "Career & Growth",
@@ -1098,6 +1199,18 @@
         "olap",
         "query-optimization",
         "database-engines"
+      ]
+    },
+    "vibe-coding": {
+      "title": "Vibe Coding",
+      "category": "AI & Agents",
+      "url": "concepts/vibe-coding.html",
+      "definition": "**Vibe Coding** is a term coined by Andrej Karpathy in early 2025 to describe the practice of non-engineers building functional software by describing what they want to AI agents — without understandi",
+      "tags": [
+        "ai-engineering",
+        "coding",
+        "methodology",
+        "terminology"
       ]
     },
     "vortex-file-format": {

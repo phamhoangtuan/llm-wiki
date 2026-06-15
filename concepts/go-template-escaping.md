@@ -3,7 +3,7 @@ title: "Go Template Escaping"
 type: concept
 tags: [go, golang, templates, security, xss, html]
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-15
 sources: [go-web-programming]
 ---
 

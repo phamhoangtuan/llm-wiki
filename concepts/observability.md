@@ -3,7 +3,7 @@ title: "Observability"
 type: concept
 tags: [system-design, monitoring, metrics, reliability, devops]
 created: 2026-05-24
-updated: 2026-05-24
+updated: 2026-06-15
 sources: [system-design-interview-xu]
 aliases: [monitoring, telemetry, system-observability]
 ---

@@ -3,7 +3,7 @@ title: "SOLID Principles"
 type: concept
 tags: [design-principles, architecture, solid, oop, clean-code]
 created: 2026-05-31
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [dependency-injection-principles-patterns, contieri-clean-code-cookbook, practical-object-oriented-design]
 ---
 

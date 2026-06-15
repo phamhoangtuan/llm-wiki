@@ -3,7 +3,7 @@ title: "Python Concurrency"
 type: concept
 tags: [python, concurrency, gil]
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-06-15
 sources: [intuitive-python]
 aliases: [GIL, Python threading, Python multiprocessing]
 ---
@@ -58,3 +58,4 @@ The **GIL** (Global Interpreter Lock) prevents true parallel execution of Python
 - Core to [[python-professional-practices]] — professional judgment on when to use concurrency
 - Related to [[readability-vs-performance]] — safety over premature optimization
 - Related to [[fail-fast]] — race conditions as silent, intermittent failures
+- Covered by [[sources/intuitive-python]] — David Muller's guide to Python concurrency (threads, processes, GIL)

@@ -3,7 +3,7 @@ title: "Timely Dataflow"
 type: concept
 tags: [distributed-systems, stream-processing, incremental-computation]
 created: 2026-05-24
-updated: 2026-05-24
+updated: 2026-06-15
 sources: [materialized-views-quick-insights]
 ---
 

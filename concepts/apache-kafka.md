@@ -3,7 +3,7 @@ title: "Apache Kafka"
 type: concept
 tags: [streaming, messaging, kafka, data-engineering, event-driven]
 created: 2026-05-26
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [hugo-data-ingestion-platform-flink, databricks-zerobus]
 ---
 

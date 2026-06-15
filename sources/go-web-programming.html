@@ -50,18 +50,18 @@
 </ul>
 <h3 id="handlers--servemux">Handlers & ServeMux</h3>
 <ul>
-<li><code>ServeMux</code> acts as a "traffic cop" — inspects URL and routes to the correct handler.</li>
+<li><code>ServeMux</code> acts as a "traffic cop" — inspects URL and routes to the correct <a href="../concepts/go-http-handlers.html" class="wiki-link">handler</a>.</li>
 <li><code>/path</code> = exact match; <code>/path/</code> = subtree match (captures all sub-paths).</li>
 <li><code>Handler</code> (interface with <code>ServeHTTP</code>) vs <code>HandlerFunc</code> (convenience function) — choose based on whether you need state.</li>
 </ul>
 <h3 id="template-engine--security">Template Engine & Security</h3>
 <ul>
-<li>Go's <code>html/template</code> provides <strong>context-aware escaping</strong>: understands whether data lands in HTML, attributes, or JavaScript — escapes accordingly for XSS protection by default.</li>
+<li>Go's <code>html/template</code> provides <strong>context-aware escaping</strong>: understands whether data lands in HTML, attributes, or JavaScript — escapes accordingly for XSS protection by default. This is the core of <a href="../concepts/go-template-escaping.html" class="wiki-link">Go's template security model</a>.</li>
 <li><code>text/template</code> lacks this safety — use <code>html/template</code> for web output.</li>
 </ul>
 <h3 id="concurrency-with-goroutines">Concurrency with Goroutines</h3>
 <ul>
-<li>Goroutines: ~2KB stack vs ~1MB for OS threads — hundreds of thousands on one machine.</li>
+<li><a href="../concepts/goroutines.html" class="wiki-link">Goroutines</a>: ~2KB stack vs ~1MB for OS threads — hundreds of thousands on one machine.</li>
 <li>Concurrency ≠ Parallelism: concurrency is dealing with many things at once; parallelism is doing many things at once.</li>
 <li>Each incoming HTTP request is handled in its own goroutine by default.</li>
 </ul>
@@ -81,7 +81,36 @@
 <blockquote>"The beauty of Go lies in its simplicity. By relying on powerful standard libraries, you avoid the cargo cult confusion of heavy frameworks."</blockquote>
 <blockquote>"Concurrency is about dealing with lots of things at once; parallelism is about doing lots of things at once." — Rob Pike</blockquote>
 </div>
-
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="../concepts/goroutines.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Goroutines</h4>
+      <p>lightweight concurrent functions (~2KB stack) that handle HTTP requests</p>
+    </a>
+    <a class="connection-card" href="../concepts/go-http-handlers.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Go HTTP Handlers</h4>
+      <p>`ServeMux` routing, `Handler` interface, and `HandlerFunc` patterns</p>
+    </a>
+    <a class="connection-card" href="../concepts/go-template-escaping.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Go Template Escaping</h4>
+      <p>context-aware XSS protection via `html/template`</p>
+    </a>
+    <a class="connection-card" href="../concepts/go-web-ecosystem.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Go Web Ecosystem</h4>
+      <p>standard-library-first approach to web development without frameworks</p>
+    </a>
+    <a class="connection-card" href="../concepts/middleware-pattern.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Middleware Pattern</h4>
+      <p>composable handler wrapping (auth, logging as cross-cutting concerns)</p>
+    </a>
+  </div>
+</section>
 <nav class="pagination"><a href="duckdb-up-and-running.html" class="prev">← DuckDB: Up and Running</a><a href="good-code-bad-code.html" class="next">Good Code, Bad Code →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">

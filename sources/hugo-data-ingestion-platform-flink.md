@@ -7,20 +7,20 @@ url: "https://engineering.grab.com/one-click-data-ingestion-platform-with-apache
 source_date: 2026-05-22
 ingested: 2026-05-26
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-06-15
 tags: [data-ingestion, apache-flink, cdc, kafka, data-lake, grab, data-engineering]
 concepts: [apache-flink, change-data-capture, data-ingestion, apache-kafka, apache-iceberg]
 ---
 
 ## Summary
 
-Grab Engineering's "Hugo" platform evolved from a siloed, multi-platform ingestion workflow into a unified self-service platform powered by **Apache Flink**. The new architecture retired two in-house components (Kafka Connect and Sprinkler) and collapsed what was a days-long, multi-team onboarding process into a one-click, minutes-long experience.
+Grab Engineering's "Hugo" platform evolved from a siloed, multi-platform [[data-ingestion|ingestion]] workflow into a unified self-service platform powered by **[[apache-flink|Apache Flink]]**. The new architecture retired two in-house components ([[apache-kafka|Kafka]] Connect and Sprinkler) and collapsed what was a days-long, multi-team onboarding process into a one-click, minutes-long experience.
 
 ## Architecture Evolution
 
 ### Before (Siloed)
 
-For MySQL CDC pipelines:
+For MySQL [[change-data-capture|CDC]] pipelines:
 ```
 MySQL binlog → Kafka Connect → Kafka topics → Sprinkler (Go S3 writer) → Spark → Hive table
 ```
@@ -72,7 +72,7 @@ No hardcoded DTOs. Schema updates via CI pipeline → Schema Registry.
 
 ## Future Direction
 
-- **Apache Iceberg** as the data lake table format (improve SLA, reduce costs)
+- **[[apache-iceberg|Apache Iceberg]]** as the data lake table format (improve SLA, reduce costs)
 - **Zero-touch schema evolution** — auto-detect schema changes, validate compatibility, update tables without manual intervention
 
 ## Links
@@ -80,3 +80,11 @@ No hardcoded DTOs. Schema updates via CI pipeline → Schema Registry.
 - [Grab Engineering blog](https://engineering.grab.com/)
 - [Apache Flink](https://flink.apache.org/)
 - [Flink CDC Connectors](https://ververica.github.io/flink-cdc-connectors/)
+
+---
+
+- Related to [[apache-flink]] — Flink CDC connector reads MySQL binlog directly, enabling 3-minute CDC onboarding
+- Related to [[change-data-capture]] — CDC is the core ingestion pattern that Hugo platform automates
+- Related to [[data-ingestion]] — Hugo is a unified, one-click data ingestion platform for Grab's data lake
+- Related to [[apache-kafka]] — Kafka Connect and Sprinkler were retired in favor of Flink-native ingestion
+- Related to [[apache-iceberg]] — planned as the future data lake table format for improved SLA and reduced costs

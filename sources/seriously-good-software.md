@@ -6,7 +6,7 @@ author: "Marco Faella"
 source_date: 2020-01-01
 ingested: 2026-06-08
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 url: ""
 tags: [design-principles, architecture, engineering, optimization]
 concepts: [software-quality-dimensions]

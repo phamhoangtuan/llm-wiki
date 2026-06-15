@@ -3,7 +3,7 @@ title: "Harness Engineering"
 type: concept
 tags: [ai-engineering, agents, reliability, testing, workflow]
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-15
 sources: [learn-harness-engineering]
 ---
 
@@ -129,4 +129,7 @@ The AI engineer's role is not prompt whisperer — it's **environment designer**
 - Related to [[fail-fast]] — shared philosophy: prevention over cure; catch issues before they compound
 - Related to [[composition-root]] — both centralize control: Composition Root centralizes dependency wiring; harness centralizes agent behavior rules
 - Implements [[technological-centaur]] — harness engineering provides the structural enforcement that makes the human+AI centaur model reliable
+- Core to [[ai-native-engineering]] — harness primitives (AGENTS.md, feature_list.json, verification loops) are the structural enforcement layer for AI-native workflows
+- Provides verification gates for [[agentic-development-life-cycle]] — each ADLC phase (Planning, Building, Testing, Review) uses harness primitives as checkpoints
+- Related to [[context-engineering]] — AGENTS.md and context files are both harness primitives and context engineering artifacts; the disciplines overlap at the configuration layer
 - Benchmark source: [[sources/learn-harness-engineering]] — walkinglabs' guide to closed-loop AI agent systems

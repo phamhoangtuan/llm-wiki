@@ -7,7 +7,7 @@ url: "https://kythuatdulieu.github.io/concepts/foundation/data-engineering/"
 source_date: 2026-06-07
 ingested: 2026-06-08
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 tags: [data-engineering, foundation, best-practices, pipeline]
 concepts: [data-engineer]
 ---

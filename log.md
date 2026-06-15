@@ -384,3 +384,79 @@
 - Contradictions: 0 found
 - Orphans: not checked systematically (deferred)
 - Total pages: 119 (91 concepts + 36 sources)
+
+## [2026-06-15] ingest | A Practical Guide to Becoming an AI-Native Engineer (ByteByteGo)
+
+- Created sources/practical-guide-ai-native-engineer.md (Shah Rahman, Meta)
+- New concepts: ai-native-engineering, context-engineering, agentic-development-life-cycle, vibe-coding
+- Updated concepts/agent-quality-optimization.md (+ context-engineering, ai-native-engineering cross-refs)
+- Updated concepts/harness-engineering.md (+ ADLC, ai-native-engineering cross-refs)
+
+## [2026-06-15] ingest | In 2026 The Data Fundamentals Matter More Than Ever (SeattleDataGuy)
+
+- Created sources/data-fundamentals-matter-2026.md (Ben Rogojan)
+- New concepts: data-engineering-fundamentals
+- Updated concepts/data-engineer.md (+ fundamentals, glue skills, CI/CD cross-refs)
+- Updated concepts/data-governance.md (+ agent sprawl mention)
+- Updated concepts/dataops.md (+ CI/CD tools, fundamentals cross-ref)
+
+## [2026-06-15] ingest | CI/CD Tips — r/dataengineering Discussion
+
+- Created sources/reddit-cicd-tips-data-engineering.md (community discussion)
+- New concepts: cicd-data-pipelines
+- Updated concepts/data-engineer.md (+ CI/CD link)
+- Updated concepts/dataops.md (+ cicd-data-pipelines link)
+- Updated concepts/data-governance.md (+ cicd cross-ref)
+
+## [2026-06-15] post-ingest | HTML regeneration + index update
+
+- Ran `uv run scripts/convert-to-html.py` — regenerated all .html files
+- Updated index.md with 6 new concept entries + 3 new source entries
+- Total pages: 136 (97 concepts + 39 sources)
+
+## [2026-06-15] lint | Dead-end sources & connection card fixes
+
+### Part 1: Fixed 10 dead-end sources (added wikilinks + connection cards)
+- sources/benchmarking-vortex-file-format.md — added inline wikilinks + connection cards for 6 concepts
+- sources/data-fundamentals-matter-2026.md — added inline wikilinks + connection cards for 4 concepts
+- sources/delta-catalog-managed-tables.md — added inline wikilinks + connection cards for 2 concepts
+- sources/delta-grows-up-writes-unity-catalog.md — added inline wikilinks + connection cards for 4 concepts
+- sources/go-web-programming.md — added inline wikilinks + connection cards for 5 concepts
+- sources/hugo-data-ingestion-platform-flink.md — added inline wikilinks + connection cards for 5 concepts
+- sources/learn-harness-engineering.md — added inline wikilinks + connection cards for 1 concept
+- sources/practical-guide-ai-native-engineer.md — added inline wikilinks + connection cards for 6 concepts
+- sources/reddit-cicd-tips-data-engineering.md — added inline wikilinks + connection cards for 3 concepts
+- sources/tdd-python-percival.md — added inline wikilinks + connection cards for 3 concepts
+
+### Part 2: Fixed 12 connection card inconsistencies
+- concepts/bijection.md — added [[fail-fast]] to connections
+- concepts/duckdb.md — added [[apache-datafusion]], [[apache-iceberg]], [[vortex-file-format]] to connections
+- concepts/apache-arrow.md — added [[duckdb]] to connections
+- concepts/change-data-capture.md — added [[delta-kernel]] to connections
+- concepts/data-lifecycle.md — added [[data-governance]] to connections
+- concepts/clickhouse.md — added [[apache-iceberg]], [[in-process-olap]] to connections
+- concepts/vortex-file-format.md — added [[apache-arrow]] to connections
+- concepts/dbt.md — added [[apache-flink]] to connections
+- concepts/analytics-engineer.md — added [[apache-flink]] to connections
+- concepts/wiki-maintenance.md — added [[sources/sample-article]] to connections
+- concepts/apache-parquet.md — added [[apache-iceberg]], [[lance-file-format]] to connections
+- sources/unlocking-dbt-design-deploy-transformations.md — added connection cards section with [[analytics-engineer]], [[elt]]
+
+### Part 3: Added backlinks from 5 Python concept pages to intuitive-python
+- concepts/python-debugging-pdb.md — added [[sources/intuitive-python]] backlink
+- concepts/python-standard-library.md — added [[sources/intuitive-python]] backlink
+- concepts/python-concurrency.md — added [[sources/intuitive-python]] backlink
+- concepts/python-repl.md — added [[sources/intuitive-python]] backlink
+- concepts/python-professional-practices.md — added [[sources/intuitive-python]] backlink
+
+- Regenerated HTML via `uv run scripts/convert-to-html.py`
+- All dates bumped to 2026-06-15 on modified files
+
+## [2026-06-15] lint | Fix broken wikilinks, orphans, frontmatter
+
+- Created 3 stub concept pages for broken wikilinks: specification-driven-development, data-modeling, code-overload
+- Fixed sources/semantic-layers-for-ai.md: ingested date 2026-06-08 → 2026-06-11 (was before source_date)
+- Added created/updated fields to 3 new source pages (data-fundamentals-matter-2026, practical-guide-ai-native-engineer, reddit-cicd-tips-data-engineering)
+- Cross-referenced orphans: middleware-pattern (from go-http-handlers), intuitive-python (from python-static-analysis)
+- Bulk-updated stale `updated` dates on 84 pages to 2026-06-15
+- Regenerated HTML, updated index.md (100 concepts + 39 sources = 139 pages)

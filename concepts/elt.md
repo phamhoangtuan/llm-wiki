@@ -3,7 +3,7 @@ title: "ELT (Extract-Load-Transform)"
 type: concept
 tags: [data-engineering, elt, etl, data-warehouse, architecture]
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-15
 sources: [unlocking-dbt-design-deploy-transformations, data-engineering-with-dbt]
 aliases: [Extract-Load-Transform]
 ---

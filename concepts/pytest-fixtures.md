@@ -3,7 +3,7 @@ title: "pytest Fixtures"
 type: concept
 tags: [python, testing, pytest, dependency-injection]
 created: 2026-05-23
-updated: 2026-05-31
+updated: 2026-06-15
 sources: [okken-python-testing-pytest]
 ---
 

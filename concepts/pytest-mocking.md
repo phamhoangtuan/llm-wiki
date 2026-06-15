@@ -3,7 +3,7 @@ title: "pytest Mocking"
 type: concept
 tags: [python, testing, pytest, mocking, isolation]
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-06-15
 sources: [okken-python-testing-pytest]
 ---
 

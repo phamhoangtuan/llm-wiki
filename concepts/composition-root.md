@@ -3,7 +3,7 @@ title: "Composition Root"
 type: concept
 tags: [design-patterns, architecture, di, composition-root]
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-15
 sources: [dependency-injection-principles-patterns]
 ---
 

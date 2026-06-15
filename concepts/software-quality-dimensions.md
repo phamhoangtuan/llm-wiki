@@ -3,7 +3,7 @@ title: "Software Quality Dimensions"
 type: concept
 tags: [design-principles, architecture, engineering, optimization]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [seriously-good-software, practical-object-oriented-design]
 aliases: [quality-spectrum, 2d-quality-model]
 ---

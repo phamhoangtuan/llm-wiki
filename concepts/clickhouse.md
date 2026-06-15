@@ -3,7 +3,7 @@ title: "ClickHouse"
 type: concept
 tags: [olap, databases, columnar, clickhouse, data-engineering, delta-lake]
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-15
 sources: [integrating-rust-delta-kernel-clickhouse]
 aliases: []
 ---
@@ -78,3 +78,5 @@ ClickPipes is ClickHouse's managed CDC ingestion tool. The CDF support in the De
 - Powered by [[vectorized-execution]] — columnar architecture enables SIMD-based query processing
 - Uses [[apache-parquet]] — underlying file format for Delta table storage
 - Benchmark source: [[sources/integrating-rust-delta-kernel-clickhouse]] — detailed FFI integration and feature coverage
+- Supports [[apache-iceberg]] — `iceberg()` table function for reading Iceberg tables as a first-class table format
+- Related to [[in-process-olap]] — DuckDB is the canonical example; ClickHouse is the distributed alternative

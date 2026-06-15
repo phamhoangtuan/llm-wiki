@@ -161,4 +161,6 @@ The workshop identified traits that will distinguish effective agent engineers o
 - Related to [[technological-centaur]] — both disciplines shift the human role from "better prompter" to "environment designer": quality optimization through context engineering and model strategy, harness engineering through structural primitives
 - Related to [[fail-fast]] — deterministic guardrails (tests, linters, CI/CD) catch agent errors before they compound, directly implementing the fail-fast philosophy in agentic workflows
 - Related to [[testing-strategy]] — unit tests serve as deterministic controls for agentic workflows; independent quality gates that operate regardless of model reliability
+- Related to [[context-engineering]] — the Context Engineering section covers the same principles (lost in the middle, recency bias, minimum necessary context) formalized as a standalone discipline
+- Core to [[ai-native-engineering]] — quality optimization governs model selection, compound error prevention, and context strategy within AI-native workflows
 - Benchmark source: [[sources/agent-quality-token-optimization]] — GitHub workshop on agent quality and token optimization by Felix Gozali and Lakshya Tyagi

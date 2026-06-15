@@ -6,7 +6,7 @@ author: "Stefan Schimanski & Michael Hausenblas"
 source_date: 2019-01-01
 ingested: 2026-06-08
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 url: ""
 tags: [kubernetes, golang, operators, controllers, cloud-native]
 concepts: [kubernetes-operator]

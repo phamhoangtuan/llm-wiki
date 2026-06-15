@@ -7,7 +7,7 @@ url: "https://dataengineeringcentral.substack.com/p/databricks-zerobus-event-str
 source_date: 2026-06-01
 ingested: 2026-06-08
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 tags: [streaming, delta-lake, databricks, kafka, lakehouse]
 concepts: [delta-lake, apache-kafka]
 ---

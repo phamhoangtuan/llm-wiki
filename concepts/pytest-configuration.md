@@ -3,7 +3,7 @@ title: "pytest Configuration"
 type: concept
 tags: [python, testing, pytest, configuration]
 created: 2026-05-23
-updated: 2026-05-23
+updated: 2026-06-15
 sources: [okken-python-testing-pytest]
 ---
 

@@ -3,7 +3,7 @@ title: "TDD Methodology"
 type: concept
 tags: [tdd, testing, methodology, design, python, clean-code]
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-15
 sources: [tdd-python-percival]
 ---
 

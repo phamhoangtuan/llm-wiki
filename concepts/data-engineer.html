@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Engineer</h1>
-  <div class="page-meta"><span>Source: data-engineer-role-handbook, data-engineering-handbook</span><span>Updated: 2026-06-08</span></div>
+  <div class="page-meta"><span>Source: data-engineer-role-handbook, data-engineering-handbook</span><span>Updated: 2026-06-15</span></div>
   <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">roles</span><span class="tag">career</span><span class="tag">infrastructure</span></div>
 </div>
 <div class="content-area concept">
@@ -134,9 +134,10 @@
 → 4. Transform (business rules) → 5. Serve to consumers → 6. Monitor &amp; alert</code></pre>
 <h2 id="best-practices">Best Practices</h2>
 <ul>
-<li><strong>Master the fundamentals</strong>: SQL, Python, Bash, distributed computing thinking. Tools change — these don't.</li>
+<li><strong>Master the fundamentals</strong>: SQL, Python, Bash, distributed computing thinking. Tools change — these don't. In 2026, these <a href="data-engineering-fundamentals.html" class="wiki-link">fundamentals</a> are more critical than ever — they're what let you distinguish AI-generated garbage from viable solutions.</li>
+<li><strong>Develop glue technical skills</strong>: Docker, file format wrangling, legacy protocol integration, infrastructure setup. These "in-between" skills — picked up through struggle — give you intuition about when AI output is directionally correct vs dangerously wrong.</li>
 <li><strong>Business acumen</strong>: Understand what data means to the business to design accurate, intuitive models.</li>
-<li><strong>Apply SWE discipline</strong>: Git version control, automated data testing, CI/CD for pipelines — this is <a href="dataops.html" class="wiki-link">DataOps</a> in practice.</li>
+<li><strong>Apply SWE discipline</strong>: Git version control, automated data testing, CI/CD for pipelines — this is <a href="dataops.html" class="wiki-link">DataOps</a> in practice. See <a href="cicd-data-pipelines.html" class="wiki-link">cicd-data-pipelines</a> for concrete tool recommendations (Ruff, SQLFluff, SQLMesh, Great Expectations).</li>
 <li><strong>Build self-service</strong>: Invest in architectures where analysts can self-serve, rather than becoming a "SQL writer for others."</li>
 <li><strong>Design for idempotency</strong>: Pipelines must produce the same result no matter how many times they run — use UPSERT/MERGE or delete-write patterns to prevent duplicates on retry.</li>
 <li><strong>Infrastructure as Code (IaC)</strong>: Define cloud resources (servers, databases) via Terraform — version-controlled, reproducible, disaster-recoverable.</li>
@@ -207,6 +208,11 @@
       <h4>Analytics Engineer</h4>
       <p>Analytics Engineers specialize in the transformation layer within the DE domain</p>
     </a>
+    <a class="connection-card" href="data-engineering-fundamentals.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineering Fundamentals</h4>
+      <p>the enduring skills (SQL, Python, data modeling, glue skills) that underpin all DE work</p>
+    </a>
     <a class="connection-card" href="dataops.html">
       <span class="connection-type related">Related</span>
       <h4>DataOps</h4>
@@ -247,6 +253,11 @@
       <h4>Semantic Layer</h4>
       <p>semantic layers are the emerging bridge between DE infrastructure and AI agent consumption</p>
     </a>
+    <a class="connection-card" href="cicd-data-pipelines.html">
+      <span class="connection-type related">Related to</span>
+      <h4>CI/CD for Data Pipelines</h4>
+      <p>CI/CD discipline applied to pipeline code (linting, testing, deployment automation)</p>
+    </a>
     <a class="connection-card" href="../sources/data-engineer-role-handbook.html">
       <span class="connection-type related">Related</span>
       <h4>Data Engineer Role — Data Engineering Handbook</h4>
@@ -259,7 +270,7 @@
     </a>
   </div>
 </section>
-<nav class="pagination"><a href="composition-root.html" class="prev">← Composition Root</a><a href="data-governance.html" class="next">Data Governance →</a></nav>
+<nav class="pagination"><a href="context-engineering.html" class="prev">← Context Engineering</a><a href="data-engineering-fundamentals.html" class="next">Data Engineering Fundamentals →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

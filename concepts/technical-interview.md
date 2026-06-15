@@ -3,7 +3,7 @@ title: "Technical Interview"
 type: concept
 tags: [interview, algorithms, problem-solving, career]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [cracking-the-coding-interview, de-coding-technical-interview]
 aliases: [coding-interview, technical-interview-philosophy]
 ---

@@ -6,7 +6,7 @@ author: "Florian Smeritschnig"
 source_date: 2023-01-01
 ingested: 2026-06-08
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 url: ""
 tags: [interview, consulting, case-interview, problem-solving, career]
 concepts: [case-interview]

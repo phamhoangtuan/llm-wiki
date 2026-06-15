@@ -3,7 +3,7 @@ title: "Liquid Clustering"
 type: concept
 tags: [data-layout, liquid-clustering, delta-lake, iceberg, partitioning, databricks, data-engineering]
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-15
 sources: [debunking-data-layout-myths-liquid-clustering]
 aliases: [Liquid]
 ---

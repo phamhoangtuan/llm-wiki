@@ -3,7 +3,7 @@ title: "In-Process OLAP"
 type: concept
 tags: [database-architecture, olap, analytics, embedded-database]
 created: 2026-05-24
-updated: 2026-05-24
+updated: 2026-06-15
 sources: [duckdb-up-and-running]
 ---
 

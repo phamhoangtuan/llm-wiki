@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>DuckDB</h1>
-  <div class="page-meta"><span>Source: duckdb-up-and-running, benchmarking-vortex-file-format, delta-grows-up-writes-unity-catalog</span><span>Updated: 2026-05-28</span></div>
+  <div class="page-meta"><span>Source: duckdb-up-and-running, benchmarking-vortex-file-format, delta-grows-up-writes-unity-catalog</span><span>Updated: 2026-06-15</span></div>
   <div class="page-tags"><span class="tag">databases</span><span class="tag">olap</span><span class="tag">analytics</span><span class="tag">python</span><span class="tag">data-engineering</span></div>
 </div>
 <div class="content-area concept">
@@ -218,6 +218,21 @@ print(result.df())
       <span class="connection-type related">Related</span>
       <h4>Unity Catalog</h4>
       <p>DuckDB's UC extension queries and writes through governed catalogs (stable)</p>
+    </a>
+    <a class="connection-card" href="apache-datafusion.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache DataFusion</h4>
+      <p>DataFusion is ~5× faster on raw CSV, but DuckDB wins on Parquet</p>
+    </a>
+    <a class="connection-card" href="apache-iceberg.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Iceberg</h4>
+      <p>DuckDB's `iceberg` extension reads/writes Iceberg tables with time travel (stable)</p>
+    </a>
+    <a class="connection-card" href="vortex-file-format.html">
+      <span class="connection-type related">Related</span>
+      <h4>Vortex File Format</h4>
+      <p>DuckDB's `vortex` extension reads/writes Vortex files (early-stage, reported OOM)</p>
     </a>
   </div>
 </section>

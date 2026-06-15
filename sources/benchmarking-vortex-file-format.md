@@ -7,14 +7,14 @@ url: "https://dataengineeringcentral.substack.com/p/benchmarking-vortex-file-for
 source_date: 2026-05-25
 ingested: 2026-05-26
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-06-15
 tags: [file-formats, benchmarking, vortex, parquet, duckdb, polars, datafusion]
 concepts: [vortex-file-format, polars, apache-datafusion, duckdb, apache-parquet, lance-file-format]
 ---
 
 ## Summary
 
-Daniel Beach benchmarks the **Vortex file format** (a Rust-based next-generation columnar format) against CSV, Parquet, and (briefly) Lance, using DuckDB, Polars, and DataFusion as query engines. The dataset is Backblaze's open-source hard drive failure data — ~24 GB across 184 CSV files.
+Daniel Beach benchmarks the **[[vortex-file-format|Vortex]] file format** (a Rust-based next-generation columnar format) against CSV, [[apache-parquet|Parquet]], and (briefly) [[lance-file-format|Lance]], using [[duckdb|DuckDB]], [[polars|Polars]], and [[apache-datafusion|DataFusion]] as query engines. The dataset is Backblaze's open-source hard drive failure data — ~24 GB across 184 CSV files.
 
 ## Benchmark Results
 
@@ -49,3 +49,12 @@ The performance lift over Parquet may not justify the hassle of immature Python 
 - [Vortex GitHub repository](https://github.com/vortex-data/vortex)
 - [Backblaze hard drive dataset](https://www.backblaze.com/cloud-storage/resources/hard-drive-test-data)
 - [Author's earlier article on replacing Polars with DuckDB](https://dataengineeringcentral.substack.com/p/why-im-replacing-polars-with-duckdb)
+
+---
+
+- Related to [[vortex-file-format]] — the columnar file format under benchmark evaluation
+- Related to [[polars]] — DataFrame library tested; OOM'd on CSV, competitive on Parquet/Vortex
+- Related to [[apache-datafusion]] — fastest CSV parser in the benchmark (5.106s)
+- Related to [[duckdb]] — fastest Parquet engine (0.125s); vortex extension OOM'd
+- Related to [[apache-parquet]] — the incumbent format to beat
+- Related to [[lance-file-format]] — another next-gen columnar format, briefly mentioned

@@ -3,7 +3,7 @@ title: "Middleware Pattern"
 type: concept
 tags: [go, golang, http, middleware, web, design-patterns]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [go-web-programming]
 aliases: [middleware-chaining, handler-wrapping]
 ---

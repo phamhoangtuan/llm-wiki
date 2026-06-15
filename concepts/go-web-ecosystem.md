@@ -3,7 +3,7 @@ title: "Go Web Ecosystem"
 type: concept
 tags: [go, golang, web, deployment, architecture, stdlib]
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-15
 sources: [go-web-programming]
 ---
 

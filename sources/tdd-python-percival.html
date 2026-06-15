@@ -40,7 +40,7 @@
 </div>
 <div class="content-area source">
 <h2 id="summary">Summary</h2>
-<p><em>Test-Driven Development with Python (2nd Edition)</em> by Harry J.W. Percival (662 pages) is a hands-on guide that teaches building a Django web application entirely through TDD. The book's central metaphor is the <strong>Testing Goat</strong> — a stubborn, disciplined companion that demands: "Do nothing until you have a test."</p>
+<p><em>Test-Driven Development with Python (2nd Edition)</em> by Harry J.W. Percival (662 pages) is a hands-on guide that teaches building a Django web application entirely through <a href="../concepts/tdd-methodology.html" class="wiki-link">TDD</a>. The book's central metaphor is the <strong>Testing Goat</strong> — a stubborn, disciplined companion that demands: "Do nothing until you have a test."</p>
 <p>The journey moves the developer from "hacking" (writing code quickly without tests, then fearing changes) to "engineering" (disciplined, test-driven, confident refactoring).</p>
 <h2 id="key-topics">Key Topics</h2>
 <h3 id="the-testing-goat-philosophy">The Testing Goat Philosophy</h3>
@@ -90,7 +90,7 @@
 </ol>
 <h3 id="outside-in-tdd">Outside-In TDD</h3>
 <ul>
-<li>Big loop: Write a <strong>functional test</strong> describing a user story (fails).</li>
+<li>Big loop: Write a <strong><a href="../concepts/functional-testing.html" class="wiki-link">functional test</a></strong> describing a user story (fails).</li>
 <li>Small loop: Write <strong>unit tests</strong> to build each piece needed to pass the functional test.</li>
 <li>This ensures code is always driven by user requirements, not speculative architecture.</li>
 </ul>
@@ -103,7 +103,7 @@
 <ul>
 <li>Mock external dependencies (APIs, email, databases) for fast, focused unit tests.</li>
 <li>Warning: over-mocking creates a "false sense of safety" — test passes but integration fails.</li>
-<li>Listen to your tests: if a test needs many complex mocks, it signals tight coupling — refactor.</li>
+<li>Listen to your tests: if a test needs many complex mocks, it signals tight coupling — refactor. This is a core <a href="../concepts/testing-strategy.html" class="wiki-link">testing-strategy</a> insight.</li>
 </ul>
 <h3 id="cicd--staging">CI/CD & Staging</h3>
 <ul>
@@ -116,7 +116,26 @@
 <blockquote>"Obey the Testing Goat! Do nothing until you have a test."</blockquote>
 <blockquote>"Testing is not about tools. It's about the humility of the engineer. We're not smart enough to hold all the complexity in our heads. Tests are our external memory that keeps us safe."</blockquote>
 </div>
-
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="../concepts/tdd-methodology.html">
+      <span class="connection-type related">Related to</span>
+      <h4>TDD Methodology</h4>
+      <p>the Red-Green-Refactor cycle and the Testing Goat philosophy</p>
+    </a>
+    <a class="connection-card" href="../concepts/functional-testing.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Functional Testing</h4>
+      <p>the outer TDD loop: Selenium tests from the user's perspective</p>
+    </a>
+    <a class="connection-card" href="../concepts/testing-strategy.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Testing Strategy</h4>
+      <p>double-loop TDD, mocking discipline, and CI/CD integration</p>
+    </a>
+  </div>
+</section>
 <nav class="pagination"><a href="system-design-interview-xu.html" class="prev">← System Design Interview – An Insider's Guide (Alex Xu)</a><a href="the-1-percent-case-interview.html" class="next">The 1%: Conquer Your Consulting Case Interview →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">

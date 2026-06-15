@@ -67,3 +67,4 @@ Type annotations serve dual purpose: static error detection AND living documenta
 - Related to [[fail-fast]] — catches errors before they reach runtime
 - Related to [[testing-strategy]] — complements testing with automated gates
 - Related to [[code-quality-pillars]] — static analysis as automated quality enforcement
+- Covered by [[sources/intuitive-python]] — David Muller's guide to the Black + Flake8 + Mypy trifecta

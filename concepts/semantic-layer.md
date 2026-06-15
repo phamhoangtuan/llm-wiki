@@ -3,7 +3,7 @@ title: "Semantic Layer"
 type: concept
 tags: [data-engineering, analytics, ai, dbt, metrics]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [semantic-layers-for-ai]
 aliases: [context-layer, metrics-layer, semantic-context]
 ---

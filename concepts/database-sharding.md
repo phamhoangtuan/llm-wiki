@@ -3,7 +3,7 @@ title: "Database Sharding"
 type: concept
 tags: [system-design, databases, scalability, partitioning]
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-06-15
 sources: [system-design-interview-xu]
 aliases: [sharding]
 ---

@@ -3,7 +3,7 @@ title: "Python Standard Library"
 type: concept
 tags: [python, standard-library]
 created: 2026-06-12
-updated: 2026-06-12
+updated: 2026-06-15
 sources: [intuitive-python]
 aliases: []
 ---
@@ -70,3 +70,4 @@ The professional Python developer's first question: **"Does the standard library
 - Core to [[python-professional-practices]] — batteries-included philosophy
 - Related to [[immutability]] — namedtuple provides immutable data structures
 - Related to [[code-quality-pillars]] — standard library reduces error-prone patterns
+- Covered by [[sources/intuitive-python]] — David Muller's guide to Python's batteries-included philosophy

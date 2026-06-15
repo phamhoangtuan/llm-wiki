@@ -3,7 +3,7 @@ title: "Object-Oriented Design"
 type: concept
 tags: [oop, design-principles, maintainability, agile]
 created: 2026-06-08
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [practical-object-oriented-design]
 aliases: [pood, oo-design, practical-design]
 ---

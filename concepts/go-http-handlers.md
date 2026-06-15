@@ -3,7 +3,7 @@ title: "Go HTTP Handlers"
 type: concept
 tags: [go, golang, http, handlers, middleware, web]
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-06-15
 sources: [go-web-programming]
 ---
 
@@ -84,4 +84,5 @@ mux.Handle("/profile", protect(logRequests(profileHandler)))
 - Built on [[goroutines]] — each handler invocation runs in its own goroutine
 - Foundation for [[go-web-ecosystem]] — handlers are the building blocks of Go web apps
 - Related to [[dependency-injection]] — handlers get dependencies injected (e.g., db handle) for testability
+- Extended by [[middleware-pattern]] — middleware wraps handlers for cross-cutting concerns (auth, logging, CORS)
 - Benchmark source: [[sources/go-web-programming]] — Sau Sheong Chang's guide to Go web apps

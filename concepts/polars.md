@@ -3,7 +3,7 @@ title: "Polars"
 type: concept
 tags: [dataframes, query-engines, rust, python, data-engineering]
 created: 2026-05-26
-updated: 2026-05-26
+updated: 2026-06-15
 sources: [benchmarking-vortex-file-format]
 ---
 

@@ -7,14 +7,14 @@ url: "https://walkinglabs.github.io/learn-harness-engineering/en/"
 source_date: 2025-01-01
 ingested: 2026-05-31
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-15
 tags: [ai-engineering, agents, harness, verification, reliability]
 concepts: [harness-engineering]
 ---
 
 ## Summary
 
-An open guide to **Harness Engineering** — a discipline for building reliable, closed-loop systems that constrain and verify AI agent behavior. Rather than trying to make models "smarter," harness engineering focuses on structural enforcement: explicit rules, state management, granular verification, and systematic feedback loops that turn intelligent-but-unpredictable agents into trustworthy engineering collaborators.
+An open guide to **[[harness-engineering|Harness Engineering]]** — a discipline for building reliable, closed-loop systems that constrain and verify AI agent behavior. Rather than trying to make models "smarter," harness engineering focuses on structural enforcement: explicit rules, state management, granular verification, and systematic feedback loops that turn intelligent-but-unpredictable agents into trustworthy engineering collaborators.
 
 ## Core Message
 
@@ -70,3 +70,7 @@ Agent cannot proceed to Phase 5 until test suite returns "Passed." Verification 
 ## The Role Shift
 
 From "Prompt Whisperer" to "Environment Designer." The engineer's job is not to craft better prompts — it's to design better systems.
+
+---
+
+- Related to [[harness-engineering]] — the source book defining the four-primitive harness model (AGENTS.md, init.sh, feature_list.json, claude-progress.md)

@@ -3,7 +3,7 @@ title: "Tell, Don't Ask"
 type: concept
 tags: [oop, design-principles, encapsulation]
 created: 2026-05-23
-updated: 2026-06-08
+updated: 2026-06-15
 sources: [contieri-clean-code-cookbook, practical-object-oriented-design]
 ---
 

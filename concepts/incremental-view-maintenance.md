@@ -3,7 +3,7 @@ title: "Incremental View Maintenance"
 type: concept
 tags: [databases, incremental-computation, streaming]
 created: 2026-05-24
-updated: 2026-05-24
+updated: 2026-06-15
 sources: [materialized-views-quick-insights]
 ---
 

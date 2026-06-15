@@ -7,14 +7,14 @@ url: "https://delta.io/blog/2026-02-02-delta-catalog-managed-tables/"
 source_date: 2026-02-02
 ingested: 2026-05-31
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-06-15
 tags: [delta-lake, unity-catalog, catalog-managed-tables, lakehouse, data-governance]
 concepts: [delta-lake, unity-catalog]
 ---
 
 ## Summary
 
-With **Delta Lake 4.1.0** and **Unity Catalog 0.4.0**, Delta introduces **catalog-managed tables** — a fundamental shift where the catalog (not the filesystem) becomes the authority for table identity, discovery, authorization, and commit coordination. This moves Delta toward the catalog-managed model pioneered by Iceberg and creates a shared foundation for interoperable lakehouse tables.
+With **[[delta-lake|Delta Lake]] 4.1.0** and **[[unity-catalog|Unity Catalog]] 0.4.0**, Delta introduces **catalog-managed tables** — a fundamental shift where the catalog (not the filesystem) becomes the authority for table identity, discovery, authorization, and commit coordination. This moves Delta toward the catalog-managed model pioneered by [[apache-iceberg|Iceberg]] and creates a shared foundation for interoperable lakehouse tables.
 
 ## Before: Filesystem-Managed Delta (Legacy)
 
@@ -75,7 +75,7 @@ The `delta.feature.catalogManaged` property opts the table into catalog-managed 
 
 ## Convergence with Iceberg
 
-Delta's catalog-managed design closely resembles Iceberg's catalog model. This convergence means:
+Delta's catalog-managed design closely resembles [[apache-iceberg|Iceberg]]'s catalog model. This convergence means:
 - **Consistent governance** across Delta and Iceberg tables
 - **Multi-engine interoperability** — any engine that speaks the catalog API can access either format
 - **Single catalog** for discovery and authorization regardless of underlying table format
@@ -86,3 +86,8 @@ Delta's catalog-managed design closely resembles Iceberg's catalog model. This c
 - [Unity Catalog 0.4.0 release](https://github.com/unitycatalog/unitycatalog/releases/tag/v0.4.0)
 - [Catalog-Managed Tables protocol (RFC)](https://github.com/delta-io/delta/blob/master/PROTOCOL.md#catalog-managed-tables)
 - [Unity Catalog Playground (Docker)](https://github.com/newfront/unitycatalog-playground/)
+
+---
+
+- Related to [[delta-lake]] — Delta 4.1.0 introduces catalog-managed tables via the `delta.feature.catalogManaged` property
+- Related to [[unity-catalog]] — UC 0.4.0 serves as the catalog authority for commit coordination and access control

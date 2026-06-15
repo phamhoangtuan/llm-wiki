@@ -7,7 +7,7 @@ url: "https://delta.io/blog/2026-05-18-integrating-the-rust-delta-kernel-into-cl
 source_date: 2026-05-18
 ingested: 2026-06-02
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-06-15
 tags: [clickhouse, delta-lake, delta-kernel, rust, olap, table-formats]
 concepts: [clickhouse, delta-kernel, delta-lake, change-data-capture]
 ---
