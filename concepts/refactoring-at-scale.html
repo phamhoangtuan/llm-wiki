@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Refactoring at Scale — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-refactoring">Refactoring</a> <span class="sep">/</span>
+  <span>Refactoring at Scale</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Refactoring at Scale</h1>
+  <div class="page-meta"><span>Source: refactoring-at-scale-lemaire</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">refactoring</span><span class="tag">software-design</span><span class="tag">code-quality</span><span class="tag">technical-debt</span><span class="tag">engineering</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Refactoring at Scale</strong> is the disciplined practice of restructuring large codebases safely — improving internal structure without changing external behavior — when the system is too large for any one developer to hold in their head. It's not about cleaning up "bad code"; it's about adapting systems to new environments, requirements, and scale while preserving business continuity.</p>
+<blockquote>"Stop treating your codebase like a museum and start treating it like an excavation site."</blockquote>
+<h2 id="the-core-philosophy">The Core Philosophy</h2>
+<table><thead><tr>
+<th>Wrong Mindset</th>
+<th>Right Mindset</th>
+</tr></thead><tbody>
+<tr>
+<td>Refactoring = fixing past mistakes</td>
+<td>Refactoring = adapting to new context</td>
+</tr>
+<tr>
+<td>Code rots because developers are lazy</td>
+<td>Code rots because the world changes around it</td>
+</tr>
+<tr>
+<td>Must design perfectly upfront</td>
+<td>Write the simplest solution for today, refactor when needed</td>
+</tr>
+<tr>
+<td>Avoid touching legacy code</td>
+<td>Master the ability to change safely</td>
+</tr>
+</tbody></table>
+<h2 id="the-three-enemies-of-refactoring">The Three Enemies of Refactoring</h2>
+<h3 id="1-the-drive-by-refactorer">1. The Drive-By Refactorer</h3>
+<p>Senior engineers who rewrite code they don't maintain. Destroys the mental model of the actual maintainer, erodes trust, and slows incident response. Rule: if you won't be the one debugging it at 3 AM, don't refactor it. Always talk 1-on-1 with the original author first.</p>
+<h3 id="2-the-brownie-effect">2. The Brownie Effect</h3>
+<p>Scope creep: "just a small tweak" → touching 30 libraries. Counter with the <strong>50% Scoping Rule</strong>: if the refactor can't finish in 50% of allocated time, subdivide or abandon.</p>
+<h3 id="3-the-boolean-flag-curse">3. The Boolean Flag Curse</h3>
+<p>Functions accumulate boolean parameters (<code>isPNG</code>, <code>isGIF</code>, <code>isJPG</code>, <code>isAnimated</code>...) creating maze-like branching logic. By the third flag, split into focused, single-responsibility functions.</p>
+<h2 id="strategic-rollout-modes">Strategic Rollout Modes</h2>
+<table><thead><tr>
+<th>Mode</th>
+<th>Description</th>
+<th>When to Use</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Backfill</strong></td>
+<td>Prepare infrastructure + migrate data, don't switch logic yet</td>
+<td>Big changes without risking downtime</td>
+</tr>
+<tr>
+<td><strong>Dark/Light</strong></td>
+<td>Run refactored code in background (Dark), compare outputs, flip switch (Light) when confident</td>
+<td>Validate before exposing to users</td>
+</tr>
+<tr>
+<td><strong>Sunset</strong></td>
+<td>Monitor legacy path for zero traffic before decommissioning</td>
+<td>Ensure no "code in limbo" state</td>
+</tr>
+</tbody></table>
+<h2 id="building-the-business-case">Building the Business Case</h2>
+<p>Refactoring is an investment, not a cost. Measure with <a href="complexity-metrics.html" class="wiki-link">complexity-metrics</a>:</p>
+<ul>
+<li><strong>Halstead</strong>: Cognitive load to understand code</li>
+<li><strong>Cyclomatic Complexity</strong>: Minimum test cases needed</li>
+<li><strong>NPath Complexity</strong>: True psychological complexity</li>
+</ul>
+<p>Translate to business: faster onboarding, reduced bug fix time, higher feature velocity, lower developer turnover.</p>
+<h2 id="decision-framework">Decision Framework</h2>
+<table><thead><tr>
+<th>🟢 Green Light — Act Now</th>
+<th>🔴 Red Light — Stop</th>
+</tr></thead><tbody>
+<tr>
+<td>Small scope, high test coverage</td>
+<td>Boredom / experimenting with "cool" new patterns</td>
+</tr>
+<tr>
+<td>Requirements fundamentally unsupported by current design</td>
+<td>Future-proofing for hypothetical features</td>
+</tr>
+<tr>
+<td>Structural performance bottlenecks</td>
+<td>No time to finish in current cycle</td>
+</tr>
+<tr>
+<td>>30% bugs trace to this module</td>
+<td>No metrics to justify to leadership</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Code Quality Pillars</h4>
+      <p>refactoring is the practice that maintains code quality over time</p>
+    </a>
+    <a class="connection-card" href="complexity-metrics.html">
+      <span class="connection-type related">Related</span>
+      <h4>Complexity Metrics</h4>
+      <p>quantitative measurement to scope and justify refactoring efforts</p>
+    </a>
+    <a class="connection-card" href="code-archaeology.html">
+      <span class="connection-type related">Related</span>
+      <h4>Code Archaeology</h4>
+      <p>understanding the "initial good" before restructuring</p>
+    </a>
+    <a class="connection-card" href="software-rot.html">
+      <span class="connection-type related">Related</span>
+      <h4>Software Rot</h4>
+      <p>the inevitable degradation that refactoring counteracts</p>
+    </a>
+    <a class="connection-card" href="essential-accidental-complexity.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Essential vs Accidental Complexity</h4>
+      <p>refactoring reduces accidental complexity while preserving essential complexity</p>
+    </a>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fail Fast</h4>
+      <p>safe refactoring requires test coverage that catches regressions immediately</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Fail Fast</h4>
+      <p>Maude Lemaire's 245-page guide</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="readability-vs-performance.html" class="prev">← Readability vs Performance</a><a href="rich-domain-model.html" class="next">Rich Domain Model →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -107,6 +107,10 @@
 - [Specification-Driven Development](concepts/specification-driven-development.html) — Define before build; antidote to random prompting in AI-native workflows
 - [Data Modeling](concepts/data-modeling.html) — Designing data structure, relationships, and constraints; the most enduring DE fundamental
 - [Code Overload](concepts/code-overload.html) — NYT term: AI-generated code exceeding review capacity; more bugs, more debt
+- [Refactoring at Scale](concepts/refactoring-at-scale.html) — Safe restructuring of large codebases; drive-by refactorer, Brownie effect, rollout modes
+- [Software Rot](concepts/software-rot.html) — Inevitable code degradation from environmental change and requirement shifts
+- [Complexity Metrics](concepts/complexity-metrics.html) — Halstead, Cyclomatic, NPath — quantitative measurement for refactoring business cases
+- [Code Archaeology](concepts/code-archaeology.html) — Investigating historical context before refactoring; finding the "initial good"
 
 ## Sources
 
@@ -149,6 +153,7 @@
 - [A Practical Guide to Becoming an AI-Native Engineer](sources/practical-guide-ai-native-engineer.html) — Shah Rahman (Meta) on AI-native engineering: orchestrator model, context engineering, ADLC, security guardrails
 - [In 2026 The Data Fundamentals Matter More Than Ever](sources/data-fundamentals-matter-2026.html) — SeattleDataGuy: SQL/Python/data modeling still critical, glue skills, messy data reality
 - [CI/CD Tips — r/dataengineering](sources/reddit-cicd-tips-data-engineering.html) — Community discussion: Ruff, SQLFluff, SQLMesh, notebooks-vs-scripts debate, testing philosophy
+- [Refactoring at Scale](sources/refactoring-at-scale-lemaire.html) — Maude Lemaire's 245-page guide: strategic refactoring, code rot, complexity metrics, code archaeology
 
 ## Syntheses
 
@@ -157,4 +162,4 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 *Last updated: 2026-06-15*
-*Pages: 139 (100 concepts + 39 sources)*
+*Pages: 144 (104 concepts + 40 sources)*

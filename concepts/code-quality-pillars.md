@@ -126,4 +126,6 @@ Code Change → Code Review (proofreading) → Commit → Pre-submit Checks (aut
 - Contrasted with [[software-quality-dimensions]] — complementary framework: pillars (tactical) vs dimensions (analytical)
 - Complements [[object-oriented-design]] — TRUE (Transparent/Reasonable) aligns with readability and modularity pillars
 - Informs [[dataops]] — DataOps applies the same modularity, testing, and reuse pillars to data pipelines
+- Maintained by [[refactoring-at-scale]] — refactoring is the practice that preserves code quality over time against [[software-rot]]
+- Measured by [[complexity-metrics]] — quantitative quality enforcement via Halstead, Cyclomatic, NPath
 - Benchmark source: [[sources/good-code-bad-code]] — Tom Long's 338-page guide

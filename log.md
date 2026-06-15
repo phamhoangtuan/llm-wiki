@@ -468,3 +468,11 @@
 - Source connection cards render as non-clickable text (`text-ref` class)
 - Deleted 39 existing source HTML files from sources/
 - Website now shows only concepts (100 pages) — sources remain as canonical .md in repo
+
+## [2026-06-15] ingest | Refactoring at Scale (Maude Lemaire)
+
+- Created sources/refactoring-at-scale-lemaire.md (245-page book, notes in Vietnamese)
+- New concepts: refactoring-at-scale, software-rot, complexity-metrics, code-archaeology
+- Updated concepts/code-quality-pillars.md (+ refactoring, complexity metrics cross-refs)
+- Updated concepts/essential-accidental-complexity.md (+ 5 cross-refs to new concepts)
+- Regenerated HTML, updated index.md (104 concepts + 40 sources = 144 pages)

@@ -231,6 +231,19 @@
         "delta-lake"
       ]
     },
+    "code-archaeology": {
+      "title": "Code Archaeology",
+      "category": "Meta",
+      "url": "concepts/code-archaeology.html",
+      "definition": "**Code Archaeology** is the practice of investigating the historical context of existing code before modifying it — understanding why it was written, under what constraints, and what \"initial good\" it",
+      "tags": [
+        "software-design",
+        "refactoring",
+        "maintenance",
+        "code-quality",
+        "engineering-culture"
+      ]
+    },
     "code-overload": {
       "title": "Code Overload",
       "category": "AI & Agents",
@@ -253,6 +266,19 @@
         "clean-code",
         "engineering",
         "maintainability"
+      ]
+    },
+    "complexity-metrics": {
+      "title": "Complexity Metrics",
+      "category": "Data Engineering",
+      "url": "concepts/complexity-metrics.html",
+      "definition": "**Complexity Metrics** are quantitative measurements of code difficulty — how hard it is to understand, test, and modify a piece of software. They transform subjective developer frustration (\"this cod",
+      "tags": [
+        "software-design",
+        "code-quality",
+        "metrics",
+        "refactoring",
+        "static-analysis"
       ]
     },
     "composition-root": {
@@ -984,6 +1010,19 @@
         "clean-code"
       ]
     },
+    "refactoring-at-scale": {
+      "title": "Refactoring at Scale",
+      "category": "Software Design",
+      "url": "concepts/refactoring-at-scale.html",
+      "definition": "**Refactoring at Scale** is the disciplined practice of restructuring large codebases safely — improving internal structure without changing external behavior — when the system is too large for any on",
+      "tags": [
+        "refactoring",
+        "software-design",
+        "code-quality",
+        "technical-debt",
+        "engineering"
+      ]
+    },
     "rich-domain-model": {
       "title": "Rich Domain Model",
       "category": "Software Design",
@@ -1041,6 +1080,18 @@
         "architecture",
         "engineering",
         "optimization"
+      ]
+    },
+    "software-rot": {
+      "title": "Software Rot",
+      "category": "Meta",
+      "url": "concepts/software-rot.html",
+      "definition": "**Software Rot** is the inevitable degradation of code quality over time — even when no one touches the code. It occurs because the environment evolves around static code: hardware changes, security v",
+      "tags": [
+        "software-design",
+        "technical-debt",
+        "maintenance",
+        "code-quality"
       ]
     },
     "solid-principles": {

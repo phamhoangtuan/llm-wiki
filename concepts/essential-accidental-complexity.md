@@ -23,3 +23,7 @@ Fred Brooks distinguished two types of complexity in software. Understanding the
 - Related to [[bijection]] — bijection violations create accidental complexity
 - Managed by [[code-quality-pillars]] — well-designed abstraction layers prevent accidental complexity from leaking
 - Prevented by [[software-quality-dimensions]] — YAGNI avoids accidental complexity introduced by over-engineering
+- Quantified by [[complexity-metrics]] — Halstead, Cyclomatic, and NPath metrics measure accidental complexity growth
+- Addressed by [[refactoring-at-scale]] — refactoring systematically reduces accidental complexity while preserving essential complexity
+- Related to [[software-rot]] — rot primarily manifests as growing accidental complexity over time
+- Informed by [[code-archaeology]] — archaeology distinguishes intentional (essential) complexity from accumulated (accidental) cruft

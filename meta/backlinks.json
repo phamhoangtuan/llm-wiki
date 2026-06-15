@@ -36,6 +36,7 @@
     "python-debugging-pdb",
     "python-professional-practices",
     "python-static-analysis",
+    "refactoring-at-scale",
     "software-quality-dimensions",
     "solid-principles",
     "solid-principles",
@@ -640,6 +641,65 @@
     "delta-kernel",
     "delta-lake"
   ],
+  "complexity-metrics": [
+    "code-archaeology",
+    "code-quality-pillars",
+    "essential-accidental-complexity",
+    "refactoring-at-scale",
+    "refactoring-at-scale",
+    "software-rot",
+    "software-rot"
+  ],
+  "refactoring-at-scale": [
+    "code-archaeology",
+    "code-quality-pillars",
+    "complexity-metrics",
+    "complexity-metrics",
+    "essential-accidental-complexity",
+    "software-rot",
+    "software-rot"
+  ],
+  "software-rot": [
+    "code-archaeology",
+    "code-quality-pillars",
+    "complexity-metrics",
+    "essential-accidental-complexity",
+    "refactoring-at-scale"
+  ],
+  "essential-accidental-complexity": [
+    "code-archaeology",
+    "code-quality-pillars",
+    "complexity-metrics",
+    "fail-fast",
+    "immutability",
+    "readability-vs-performance",
+    "refactoring-at-scale",
+    "software-quality-dimensions",
+    "software-rot"
+  ],
+  "code-quality-pillars": [
+    "code-archaeology",
+    "complexity-metrics",
+    "dataops",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "object-oriented-design",
+    "python-standard-library",
+    "python-static-analysis",
+    "readability-vs-performance",
+    "refactoring-at-scale",
+    "software-quality-dimensions",
+    "software-rot",
+    "staff-engineering",
+    "testing-strategy",
+    "good-code-bad-code"
+  ],
+  "sources/refactoring-at-scale-lemaire": [
+    "code-archaeology",
+    "complexity-metrics",
+    "refactoring-at-scale",
+    "software-rot"
+  ],
   "readability-vs-performance": [
     "code-quality-pillars",
     "python-concurrency",
@@ -647,13 +707,6 @@
     "software-quality-dimensions",
     "technological-centaur",
     "contieri-clean-code-cookbook"
-  ],
-  "essential-accidental-complexity": [
-    "code-quality-pillars",
-    "fail-fast",
-    "immutability",
-    "readability-vs-performance",
-    "software-quality-dimensions"
   ],
   "dependency-injection": [
     "code-quality-pillars",
@@ -792,19 +845,6 @@
   "sources/system-design-interview-xu": [
     "database-sharding"
   ],
-  "code-quality-pillars": [
-    "dataops",
-    "essential-accidental-complexity",
-    "fail-fast",
-    "object-oriented-design",
-    "python-standard-library",
-    "python-static-analysis",
-    "readability-vs-performance",
-    "software-quality-dimensions",
-    "staff-engineering",
-    "testing-strategy",
-    "good-code-bad-code"
-  ],
   "sources/data-engineering-with-dbt": [
     "dataops"
   ],
@@ -888,6 +928,11 @@
     "duckdb",
     "in-process-olap",
     "vectorized-execution"
+  ],
+  "code-archaeology": [
+    "essential-accidental-complexity",
+    "refactoring-at-scale",
+    "software-rot"
   ],
   "functional-testing": [
     "fail-fast",
