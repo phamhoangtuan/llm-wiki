@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>pytest Test Results — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-python">Python</a> <span class="sep">/</span>
+  <span>pytest Test Results</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>pytest Test Results</h1>
+  <div class="page-meta"><span>Source: okken-python-testing-pytest</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">python</span><span class="tag">testing</span><span class="tag">pytest</span><span class="tag">output</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>pytest provides a rich symbol system for understanding test suite status at a glance — beyond simple pass/fail.</p>
+<h2 id="result-symbols">Result Symbols</h2>
+<table><thead><tr>
+<th>Symbol</th>
+<th>Name</th>
+<th>Meaning</th>
+<th>When</th>
+</tr></thead><tbody>
+<tr>
+<td><code>.</code></td>
+<td>PASSED</td>
+<td>Test succeeded</td>
+<td>Logic correct, assertion passes</td>
+</tr>
+<tr>
+<td><code>F</code></td>
+<td>FAILED</td>
+<td>AssertionError</td>
+<td>Logic wrong, data mismatch</td>
+</tr>
+<tr>
+<td><code>s</code></td>
+<td>SKIPPED</td>
+<td>Intentionally skipped</td>
+<td><code>@pytest.mark.skip()</code> or <code>skipif</code></td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>XFAIL</td>
+<td>Expected failure</td>
+<td><code>@pytest.mark.xfail()</code> for known issues</td>
+</tr>
+<tr>
+<td><code>X</code></td>
+<td>XPASS</td>
+<td>Unexpected pass</td>
+<td>Marked xfail but passed — review needed</td>
+</tr>
+<tr>
+<td><code>E</code></td>
+<td>ERROR</td>
+<td>Exception outside test</td>
+<td>Fixture/hook failure — infrastructure problem</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="pytest-basics.html">
+      <span class="connection-type related">Related to</span>
+      <h4>pytest Basics</h4>
+      <p>understanding output is essential for reading test results</p>
+    </a>
+    <a class="connection-card" href="pytest-markers.html">
+      <span class="connection-type related">Related to</span>
+      <h4>pytest Markers</h4>
+      <p>skip and xfail are marker-driven results</p>
+    </a>
+    <a class="connection-card" href="pytest-assertions.html">
+      <span class="connection-type related">Related to</span>
+      <h4>pytest Assertions</h4>
+      <p>assertion failures produce FAILED results with rich diffs</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="pytest-plugins.html" class="prev">← pytest Plugins</a><a href="python-concurrency.html" class="next">Python Concurrency →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

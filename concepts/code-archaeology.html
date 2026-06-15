@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Archaeology — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-software-design">Software Design</a> <span class="sep">/</span>
+  <span>Code Archaeology</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Code Archaeology</h1>
+  <div class="page-meta"><span>Source: refactoring-at-scale-lemaire</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">software-design</span><span class="tag">refactoring</span><span class="tag">maintenance</span><span class="tag">code-quality</span><span class="tag">engineering-culture</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Code Archaeology</strong> is the practice of investigating the historical context of existing code before modifying it — understanding why it was written, under what constraints, and what "initial good" it served. It shifts the refactoring mindset from "fixing past mistakes" to "adapting for a new context," treating the codebase as an excavation site rather than a museum.</p>
+<blockquote>"Stop treating your codebase like a museum and start treating it like an excavation site."</blockquote>
+<h2 id="the-three-questions">The Three Questions</h2>
+<p>Before touching any code you didn't write, answer:</p>
+<ol>
+<li><strong>What was the "initial good"?</strong> — What problem did this code solve at the time it was written?</li>
+<li><strong>What were the constraints?</strong> — Tight deadline? Limited hardware? Unclear requirements? Small team?</li>
+<li><strong>What has changed?</strong> — User load 50x higher? New compliance requirements? Different device landscape?</li>
+</ol>
+<h2 id="why-it-matters">Why It Matters</h2>
+<h3 id="without-archaeology-rookie-response">Without Archaeology (Rookie Response)</h3>
+<pre><code>Find 200-line function with 7-level nested if-else
+→ &quot;This code is terrible! Refactor immediately!&quot;
+→ Destroys hidden workarounds for edge cases
+→ Breaks undocumented integrations
+→ Alienates the original author</code></pre>
+<h3 id="with-archaeology-professional-response">With Archaeology (Professional Response)</h3>
+<pre><code>Find 200-line function with 7-level nested if-else
+→ Check git history: Written in 48-hour hackathon to ship feature
+→ Check old requirements: Only needed 3 browsers, no accessibility
+→ Check current needs: 10 browsers + WCAG 2.1 + mobile responsive
+→ Conclusion: Code was a monumental success — it kept the company alive
+→ Now: Refactor for new context, not to &quot;fix&quot; the past</code></pre>
+<h2 id="the-bad-code-reframe">The "Bad Code" Reframe</h2>
+<blockquote>"'Bad code' is often a clever response to specific constraints of time, money, or requirements at the time it was written."</blockquote>
+<p>Archaeology transforms judgment ("this developer was incompetent") into understanding ("this developer solved a hard problem with the tools and time available"). This shift:</p>
+<ul>
+<li><strong>Builds trust</strong> between current and past team members</li>
+<li><strong>Prevents regressions</strong> by understanding hidden constraints</li>
+<li><strong>Informs better refactoring</strong> by knowing what the code actually needs to do</li>
+</ul>
+<h2 id="practical-techniques">Practical Techniques</h2>
+<ul>
+<li><strong>Git blame/log</strong>: Trace the commit history — what ticket/incident prompted this code?</li>
+<li><strong>1-on-1 conversations</strong>: Talk to the original author before refactoring — ask about constraints</li>
+<li><strong>Commit messages as artifacts</strong>: Good commit messages are archaeological records; treat them as primary sources</li>
+<li><strong>Complexity metrics as carbon dating</strong>: <a href="complexity-metrics.html" class="wiki-link">Metrics trends</a> over time reveal when and why degradation began</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="refactoring-at-scale.html">
+      <span class="connection-type related">Related</span>
+      <h4>Refactoring at Scale</h4>
+      <p>archaeology is the first step before any strategic refactoring</p>
+    </a>
+    <a class="connection-card" href="software-rot.html">
+      <span class="connection-type related">Related</span>
+      <h4>Software Rot</h4>
+      <p>understanding when and why rot began informs how to address it</p>
+    </a>
+    <a class="connection-card" href="essential-accidental-complexity.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Essential vs Accidental Complexity</h4>
+      <p>archaeology distinguishes intentional complexity (essential) from accumulated cruft (accidental)</p>
+    </a>
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Code Quality Pillars</h4>
+      <p>maintaining code quality requires understanding its history, not just its current state</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Code Quality Pillars</h4>
+      <p>Maude Lemaire's code archaeology framework</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="clickhouse.html" class="prev">← ClickHouse</a><a href="code-overload.html" class="next">Code Overload →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

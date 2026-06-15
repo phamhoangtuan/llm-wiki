@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Quality Dimensions — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-design-principles">Design Principles</a> <span class="sep">/</span>
+  <span>Software Quality Dimensions</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Software Quality Dimensions</h1>
+  <div class="page-meta"><span>Source: seriously-good-software, practical-object-oriented-design</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">design-principles</span><span class="tag">architecture</span><span class="tag">engineering</span><span class="tag">optimization</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>Software quality is a multi-criteria optimization problem, not a binary toggle. Every line of code is a trade-off between competing dimensions. There is no "perfect" implementation in a vacuum — only code optimized correctly for a specific context: balancing machine performance against developer sanity.</p>
+<h2 id="the-2d-quality-spectrum">The 2D Quality Spectrum</h2>
+<p>Quality is measured across two independent axes:</p>
+<h3 id="axis-1-internal-vs-external">Axis 1: Internal vs External</h3>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Who Experiences It</th>
+<th>Examples</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>External</strong></td>
+<td>End users interacting with the system</td>
+<td>Correctness, Robustness, Efficiency (speed), Usability</td>
+</tr>
+<tr>
+<td><strong>Internal</strong></td>
+<td>Developers inspecting source code</td>
+<td>Readability, Maintainability, Testability, Analyzability</td>
+</tr>
+</tbody></table>
+<h3 id="axis-2-functional-vs-non-functional">Axis 2: Functional vs Non-functional</h3>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Question It Answers</th>
+<th>Note</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Functional</strong></td>
+<td>What does the software do?</td>
+<td>All functional qualities are External by definition</td>
+</tr>
+<tr>
+<td><strong>Non-functional</strong></td>
+<td>How does the software do it?</td>
+<td>Can be Internal (Readability) or External (Efficiency)</td>
+</tr>
+</tbody></table>
+<blockquote><strong>Critical insight</strong>: "Internal Functional" is an oxymoron. If software "does something" (functional), its effects are ultimately visible to users (external).</blockquote>
+<h3 id="the-trap">The Trap</h3>
+<p>Focusing exclusively on "External Functional" (does it work?) while ignoring "Internal Non-functional" (is it maintainable?) accumulates technical debt that eventually harms users through slow bug fixes and fragile releases.</p>
+<h2 id="the-four-core-trade-offs">The Four Core Trade-offs</h2>
+<table><thead><tr>
+<th>Trade-off</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Time vs Space</strong></td>
+<td>Faster computation often uses more memory</td>
+<td>Doubly linked list enables O(1) deletion but stores extra "previous" pointer</td>
+</tr>
+<tr>
+<td><strong>Efficiency vs Readability</strong></td>
+<td>Optimized code is often harder to understand</td>
+<td>Using primitive types instead of objects saves RAM but becomes low-level and unmaintainable</td>
+</tr>
+<tr>
+<td><strong>Robustness vs Efficiency</strong></td>
+<td>Thorough input validation slows programs</td>
+<td>Validating every input → CPU overhead. Skipping it → fast but crash-prone</td>
+</tr>
+<tr>
+<td><strong>Development Time vs Quality</strong></td>
+<td>Business wants speed, quality needs time</td>
+<td>"Less haste, more speed" — doing it right the first time avoids costly rewrites</td>
+</tr>
+</tbody></table>
+<h2 id="yagni-you-aint-gonna-need-it">YAGNI: You Ain't Gonna Need It</h2>
+<p>Don't store data or add features "just in case." Every unnecessary field is technical debt from birth — it must be tested, documented, and maintained.</p>
+<p><strong>Example</strong>: If the spec doesn't require <code>disconnectFrom()</code> on water containers, don't store individual pipe connections. Over-engineering breeds subtle bugs.</p>
+<blockquote>YAGNI is protection, not laziness.</blockquote>
+<h2 id="analyzability-beyond-readability">Analyzability: Beyond Readability</h2>
+<p>The ISO standard calls it <strong>Analyzability</strong> — the ability to analyze code for maintenance purposes.</p>
+<ul>
+<li>A professional doesn't name a group <code>g</code> if a mafia boss gave them 60 seconds to hack into a system</li>
+<li>Meaningful naming is rule #1 of analyzability</li>
+<li>Magic numbers are the enemy of analyzability</li>
+</ul>
+<h2 id="the-hidden-cost-of-abstractions-the-108-">The Hidden Cost of Abstractions (The 108-Byte Tax)</h2>
+<p>In a 64-bit JVM, a single container object using <code>HashSet</code> for grouping costs ~108 bytes:</p>
+<table><thead><tr>
+<th>Component</th>
+<th>Size</th>
+</tr></thead><tbody>
+<tr>
+<td>Object Header (GC, reflection)</td>
+<td>12 bytes</td>
+</tr>
+<tr>
+<td>Data field (<code>double amount</code>)</td>
+<td>8 bytes</td>
+</tr>
+<tr>
+<td>Reference to <code>Set</code> (compressed OOPs)</td>
+<td>4 bytes</td>
+</tr>
+<tr>
+<td><code>HashSet</code> instance overhead</td>
+<td>52 bytes</td>
+</tr>
+<tr>
+<td><code>HashMap$Node</code> entry</td>
+<td>32 bytes</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>108 bytes</strong></td>
+</tr>
+</tbody></table>
+<blockquote><strong>Compressed OOPs caveat</strong>: JVM uses 32-bit references on 64-bit machines to save RAM, but each address access requires a shift operation to map 32→64 bits. Saving bytes costs a small time penalty.</blockquote>
+<p><strong>Lesson</strong>: Every abstraction has a tax. <code>HashSet</code>, objects, interfaces — all cost memory and performance. Calculate these costs when scaling to production.</p>
+<h2 id="programming-to-an-interface">Programming to an Interface</h2>
+<p>Declare variables using the most abstract type that satisfies requirements:</p>
+<pre><code>// ✅ Professional: Program to interface
+Set&lt;Container&gt; group = new HashSet&lt;&gt;();
+
+// ❌ Novice: Lock into implementation
+HashSet&lt;Container&gt; group = new HashSet&lt;&gt;();</code></pre>
+<p>This allows swapping implementations later without changing dependent code.</p>
+<h2 id="context-is-king">Context is King</h2>
+<p>There is no "one best way" to write code — much like how the book <em>Exercises in Style</em> tells the same story 99 different ways. The best approach depends on project constraints:</p>
+<ul>
+<li>Need raw speed? Optimize for machine.</li>
+<li>Need maintainable code? Optimize for developer sanity.</li>
+<li>Need to scale to millions? Calculate memory footprints.</li>
+</ul>
+<p>The architect's role: choose the right "style" for the context.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Related</span>
+      <h4>Code Quality Pillars</h4>
+      <p>dimensions (analytical framework) vs pillars (tactical checklist)</p>
+    </a>
+    <a class="connection-card" href="readability-vs-performance.html">
+      <span class="connection-type related">Informs</span>
+      <h4>Readability vs Performance</h4>
+      <p>the Efficiency/Readability trade-off is a core tension</p>
+    </a>
+    <a class="connection-card" href="essential-accidental-complexity.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Essential vs Accidental Complexity</h4>
+      <p>YAGNI prevents accidental complexity from over-engineering</p>
+    </a>
+    <a class="connection-card" href="immutability.html">
+      <span class="connection-type related">Related</span>
+      <h4>Immutability of Essence</h4>
+      <p>immutable objects trade memory (new instances) for correctness and simplicity</p>
+    </a>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fail Fast</h4>
+      <p>choosing robustness over silent efficiency</p>
+    </a>
+    <a class="connection-card" href="dependency-injection.html">
+      <span class="connection-type related">Related</span>
+      <h4>Dependency Injection</h4>
+      <p>programming to interfaces enables context-appropriate implementations</p>
+    </a>
+    <a class="connection-card" href="rich-domain-model.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Rich Domain Model</h4>
+      <p>rich objects encapsulate behavior that balances multiple quality dimensions</p>
+    </a>
+    <a class="connection-card" href="object-oriented-design.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Object-Oriented Design</h4>
+      <p>design as discovery embraces the context-driven, trade-off-aware philosophy of quality dimensions</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Object-Oriented Design</h4>
+      <p>Marco Faella's 330-page guide</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="software-as-simulation.html" class="prev">← Software as Simulation</a><a href="software-rot.html" class="next">Software Rot →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scalable Architecture — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-system-design">System Design</a> <span class="sep">/</span>
+  <span>Scalable Architecture</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Scalable Architecture</h1>
+  <div class="page-meta"><span>Source: system-design-interview-xu</span><span>Updated: 2026-05-24</span></div>
+  <div class="page-tags"><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">architecture</span><span class="tag">distributed-systems</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>A scalable architecture is a system design that can handle growing load by adding resources rather than requiring complete redesign. The canonical evolution path: single server → separated tiers → vertical scaling → horizontal scaling with distributed components.</p>
+<h2 id="the-evolution-path">The Evolution Path</h2>
+<h3 id="stage-1-single-server">Stage 1: Single Server</h3>
+<pre><code>User → DNS → [Web Server + Database + Cache] → Response</code></pre>
+<p>Everything runs on one machine. Simple, but has a hard ceiling.</p>
+<h3 id="stage-2-separation-of-tiers">Stage 2: Separation of Tiers</h3>
+<p>Split web tier and data tier onto separate servers so each can scale independently.</p>
+<h3 id="stage-3-vertical-scaling-scale-up">Stage 3: Vertical Scaling (Scale Up)</h3>
+<p>Add CPU/RAM to existing servers. Simple but hits hardware limits, creates SPOF, requires downtime.</p>
+<h3 id="stage-4-horizontal-scaling-scale-out">Stage 4: Horizontal Scaling (Scale Out)</h3>
+<p>Add more servers to a pool. Theoretically unlimited, enables high availability and fault tolerance — but requires load balancers, stateless design, and data consistency solutions.</p>
+<h2 id="scaling-strategies-compared">Scaling Strategies Compared</h2>
+<table><thead><tr>
+<th>Strategy</th>
+<th>Definition</th>
+<th>Pros</th>
+<th>Cons</th>
+</tr></thead><tbody>
+<tr>
+<td>Vertical</td>
+<td>More CPU/RAM per server</td>
+<td>Simple, no architecture changes</td>
+<td>Hardware ceiling, SPOF, downtime</td>
+</tr>
+<tr>
+<td>Horizontal</td>
+<td>More servers in pool</td>
+<td>Unlimited theoretically, HA, fault tolerance</td>
+<td>Complex: LB, state, consistency</td>
+</tr>
+</tbody></table>
+<blockquote><strong>Lesson</strong>: Horizontal scaling is the only path to massive scale. But it demands solving new problems: load balancing, state management, and data consistency.</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type core">Core to</span>
+      <h4>System Design Interview</h4>
+      <p>the target output of the interview</p>
+    </a>
+    <a class="connection-card" href="load-balancer.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Load Balancer</h4>
+      <p>required for horizontal scaling</p>
+    </a>
+    <a class="connection-card" href="database-replication.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Database Replication</h4>
+      <p>scales the data tier</p>
+    </a>
+    <a class="connection-card" href="stateless-architecture.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Stateless Architecture</h4>
+      <p>prerequisite for horizontal scaling</p>
+    </a>
+    <a class="connection-card" href="cache-strategy.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Cache Strategy</h4>
+      <p>caching reduces backend load as you scale</p>
+    </a>
+    <a class="connection-card" href="cdn.html">
+      <span class="connection-type related">Related to</span>
+      <h4>CDN</h4>
+      <p>global distribution at scale</p>
+    </a>
+    <a class="connection-card" href="message-queue.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Message Queue</h4>
+      <p>decouples components for independent scaling</p>
+    </a>
+    <a class="connection-card" href="observability.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Observability</h4>
+      <p>monitor everything as complexity grows</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="rich-domain-model.html" class="prev">← Rich Domain Model</a><a href="semantic-layer.html" class="next">Semantic Layer →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

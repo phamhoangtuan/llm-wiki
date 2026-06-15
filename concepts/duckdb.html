@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DuckDB — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-databases">Databases</a> <span class="sep">/</span>
+  <span>DuckDB</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>DuckDB</h1>
+  <div class="page-meta"><span>Source: duckdb-up-and-running, benchmarking-vortex-file-format, delta-grows-up-writes-unity-catalog</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">databases</span><span class="tag">olap</span><span class="tag">analytics</span><span class="tag">python</span><span class="tag">data-engineering</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>DuckDB</strong> is an open-source (MIT), in-process OLAP database management system — often described as "SQLite for analytics." It runs as an embedded library inside your application (Python, R, Node.js, C++, etc.), requiring zero server setup. Its performance comes from four architectural pillars: <strong>columnar storage</strong>, <a href="vectorized-execution.html" class="wiki-link">vectorized execution</a>, <strong>parallel execution</strong>, and <strong>late materialization</strong>.</p>
+<h2 id="identity-sqlite-for-analytics">Identity: "SQLite for Analytics"</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>SQLite</th>
+<th>DuckDB</th>
+</tr></thead><tbody>
+<tr>
+<td>Workload</td>
+<td>OLTP (transactions)</td>
+<td>OLAP (analytics)</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>Row-based</td>
+<td>Columnar</td>
+</tr>
+<tr>
+<td>Execution</td>
+<td>Row-at-a-time</td>
+<td>Vectorized (chunk-at-a-time)</td>
+</tr>
+<tr>
+<td>Embedding</td>
+<td>Yes (in-process)</td>
+<td>Yes (in-process)</td>
+</tr>
+<tr>
+<td>License</td>
+<td>Public domain</td>
+<td>MIT</td>
+</tr>
+</tbody></table>
+<h2 id="architectural-pillars">Architectural Pillars</h2>
+<h3 id="1-columnar-storage">1. Columnar Storage</h3>
+<p>Data is stored by column, not by row. Analytical queries typically need only a few columns across many rows — DuckDB reads only what's needed, dramatically reducing I/O.</p>
+<h3 id="2-vectorized-execution">2. Vectorized Execution</h3>
+<p>Processes data in "vectors" (chunks of 1K–64K rows) instead of row-by-row. Reduces CPU instruction overhead, improves cache efficiency, and leverages SIMD instructions. → See <a href="vectorized-execution.html" class="wiki-link">vectorized-execution</a></p>
+<h3 id="3-parallel-execution">3. Parallel Execution</h3>
+<p>Automatically splits queries across available CPU cores. No configuration required — a laptop can achieve throughput that previously required distributed clusters.</p>
+<h3 id="4-late-materialization">4. Late Materialization</h3>
+<p>Postpones fetching full row data until absolutely necessary. Works with column indices and metadata first, minimizing data movement in memory.</p>
+<h2 id="key-capabilities">Key Capabilities</h2>
+<ul>
+<li><strong>Query data in place</strong>: Run SQL directly on CSV, Parquet, JSON, Excel files without loading them first. <code>SELECT AVG(price) FROM read_csv_auto('data.csv')</code></li>
+<li><strong>Zero-copy DataFrame integration</strong>: Run SQL on pandas/Polars DataFrames without copying data.</li>
+<li><strong>Larger-than-memory</strong>: Streams data in chunks; 5.8M-row flight dataset uses ~280MB vs. pandas' 4.2GB.</li>
+<li><strong>Remote file access</strong>: Query files over HTTP/S, S3, GitHub, Hugging Face via the <code>httpfs</code> extension.</li>
+<li><strong>Full SQL</strong>: Standard analytical SQL including window functions, advanced aggregations, CTEs.</li>
+<li><strong>Python UDFs</strong>: Define custom functions in Python and call them from SQL.</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<pre><code># Install
+pip install duckdb
+
+# In Python
+import duckdb
+
+# Query a CSV directly — no loading needed
+result = duckdb.query(&quot;&quot;&quot;
+    SELECT category, AVG(price) as avg_price
+    FROM read_csv_auto(&#x27;products.csv&#x27;)
+    GROUP BY category
+    ORDER BY avg_price DESC
+&quot;&quot;&quot;)
+
+# Convert to pandas DataFrame
+print(result.df())
+</code></pre>
+<h2 id="when-to-use--when-not-to-use">When to Use / When Not to Use</h2>
+<table><thead><tr>
+<th>✅ Use DuckDB</th>
+<th>❌ Don't Use DuckDB</th>
+</tr></thead><tbody>
+<tr>
+<td>Exploratory analysis on CSV/Parquet</td>
+<td>High-volume OLTP (use PostgreSQL/MySQL)</td>
+</tr>
+<tr>
+<td>Prototyping analytics pipelines</td>
+<td>Multi-user concurrent writes (single-writer)</td>
+</tr>
+<tr>
+<td>Embedding SQL in Python/R apps</td>
+<td>Real-time streaming ingestion (use Kafka + Flink)</td>
+</tr>
+<tr>
+<td>Local dev and testing of data workflows</td>
+<td>Need full client-server multi-tenancy</td>
+</tr>
+<tr>
+<td>"Larger-than-memory" datasets on a laptop</td>
+<td>Fastest raw CSV parsing ([[apache-datafusion</td>
+<td>DataFusion]] ~5× faster on CSV, but DuckDB wins on Parquet)</td>
+</tr>
+</tbody></table>
+<h2 id="ecosystem--extensions">Ecosystem & Extensions</h2>
+<table><thead><tr>
+<th>Extension</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><code>httpfs</code></td>
+<td>Query remote files over HTTP/S (S3, GitHub, Hugging Face)</td>
+</tr>
+<tr>
+<td><code>spatial</code></td>
+<td>Geospatial data types and functions</td>
+</tr>
+<tr>
+<td><code>json</code></td>
+<td>Advanced JSON parsing and querying</td>
+</tr>
+<tr>
+<td><code>icu</code></td>
+<td>Unicode and locale-aware string operations</td>
+</tr>
+<tr>
+<td><code>iceberg</code></td>
+<td>Read/write [[apache-iceberg</td>
+<td>Apache Iceberg]] tables with time travel (✅ stable, 2026-06)</td>
+</tr>
+<tr>
+<td><code>vortex</code></td>
+<td>Read/write [[vortex-file-format</td>
+<td>Vortex]] files (⚠️ early-stage, reported OOM crashes on multi-file reads as of 2026-05)</td>
+</tr>
+<tr>
+<td><code>delta</code></td>
+<td>Read/write [[delta-lake</td>
+<td>Delta Lake]] tables with time travel (✅ stable, 2026-05)</td>
+</tr>
+<tr>
+<td><code>unity_catalog</code></td>
+<td>Query and write through [[unity-catalog</td>
+<td>Unity Catalog]] — governed lakehouse access (✅ stable, 2026-05)</td>
+</tr>
+</tbody></table>
+<p><strong>Languages</strong>: Python, R, Julia, C/C++, Java, Go, Rust, Node.js.</p>
+<p><strong>MotherDuck</strong>: A managed SaaS platform built around DuckDB that enables hybrid queries — joining local data with cloud tables in a single SQL statement.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="vectorized-execution.html">
+      <span class="connection-type related">Related</span>
+      <h4>Vectorized Execution</h4>
+      <p>one of DuckDB's four architectural pillars</p>
+    </a>
+    <a class="connection-card" href="in-process-olap.html">
+      <span class="connection-type related">Related</span>
+      <h4>In-Process OLAP</h4>
+      <p>DuckDB is the canonical example of in-process OLAP</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related to</span>
+      <h4>In-Process OLAP</h4>
+      <p>Wei-Meng Lee's practical guide</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related to</span>
+      <h4>In-Process OLAP</h4>
+      <p>benchmark against Vortex, Polars, DataFusion (Backblaze dataset)</p>
+    </div>
+    <a class="connection-card" href="polars.html">
+      <span class="connection-type related">Related</span>
+      <h4>Polars</h4>
+      <p>both target Python data engineering; DuckDB uses SQL, Polars uses DataFrame API</p>
+    </a>
+    <a class="connection-card" href="delta-lake.html">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Lake</h4>
+      <p>DuckDB's Delta extension supports reads, writes, and time travel (stable)</p>
+    </a>
+    <a class="connection-card" href="unity-catalog.html">
+      <span class="connection-type related">Related</span>
+      <h4>Unity Catalog</h4>
+      <p>DuckDB's UC extension queries and writes through governed catalogs (stable)</p>
+    </a>
+    <a class="connection-card" href="apache-datafusion.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache DataFusion</h4>
+      <p>DataFusion is ~5× faster on raw CSV, but DuckDB wins on Parquet</p>
+    </a>
+    <a class="connection-card" href="apache-iceberg.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Iceberg</h4>
+      <p>DuckDB's `iceberg` extension reads/writes Iceberg tables with time travel (stable)</p>
+    </a>
+    <a class="connection-card" href="vortex-file-format.html">
+      <span class="connection-type related">Related</span>
+      <h4>Vortex File Format</h4>
+      <p>DuckDB's `vortex` extension reads/writes Vortex files (early-stage, reported OOM)</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="domain-driven-design.html" class="prev">← Domain-Driven Design</a><a href="elt.html" class="next">ELT (Extract-Load-Transform) →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

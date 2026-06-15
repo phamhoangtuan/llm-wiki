@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apache Spark — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-apache-spark">Apache Spark</a> <span class="sep">/</span>
+  <span>Apache Spark</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Apache Spark</h1>
+  <div class="page-meta"><span>Source: high-performance-spark</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">apache-spark</span><span class="tag">data-engineering</span><span class="tag">big-data</span><span class="tag">performance</span><span class="tag">optimization</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>Apache Spark is a distributed data processing engine designed for large-scale analytics. While Spark's high-level APIs (DataFrames, Spark SQL) make it accessible, writing high-performance Spark requires understanding its internals — lazy evaluation, the DAG scheduler, shuffle mechanics, and memory management. A well-optimized Spark job can run 100× faster than a naive implementation.</p>
+<h2 id="core-internals">Core Internals</h2>
+<table><thead><tr>
+<th>Concept</th>
+<th>What It Means</th>
+<th>Why It Matters</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Lazy Evaluation</strong></td>
+<td>Transformations (map, filter) don't execute until an action (collect, save) triggers them</td>
+<td>Allows the DAG Scheduler to optimize the execution plan, combining operations and minimizing data scans</td>
+</tr>
+<tr>
+<td><strong>RDD</strong></td>
+<td>Resilient Distributed Dataset — immutable, partitioned collection with lineage tracking</td>
+<td>Immutability + lineage = built-in fault tolerance: lost partitions can be recomputed</td>
+</tr>
+<tr>
+<td><strong>Catalyst Optimizer</strong></td>
+<td>Spark SQL's query optimizer — rewrites logical plans into optimized physical plans</td>
+<td>Automatic optimization: predicate pushdown, constant folding, join reordering</td>
+</tr>
+<tr>
+<td><strong>Tungsten</strong></td>
+<td>Memory management at byte level + code generation</td>
+<td>Eliminates JVM overhead — significantly faster than RDD-based processing</td>
+</tr>
+</tbody></table>
+<h2 id="shuffles-the-1-bottleneck">Shuffles: The #1 Bottleneck</h2>
+<p>Shuffles occur when data must be redistributed across partitions — the most expensive operation in Spark:</p>
+<table><thead><tr>
+<th>Dependency Type</th>
+<th>Examples</th>
+<th>Shuffle?</th>
+<th>Cost</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Narrow</strong></td>
+<td><code>map</code>, <code>filter</code>, <code>flatMap</code>, <code>mapPartitions</code></td>
+<td>No</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Wide</strong></td>
+<td><code>groupByKey</code>, <code>sort</code>, <code>join</code> (non-broadcast), <code>repartition</code></td>
+<td>Yes</td>
+<td>High (network + disk I/O)</td>
+</tr>
+</tbody></table>
+<blockquote><strong>Rule</strong>: Minimize wide dependencies. Every shuffle doubles the I/O cost.</blockquote>
+<h2 id="join-optimization">Join Optimization</h2>
+<table><thead><tr>
+<th>Strategy</th>
+<th>When to Use</th>
+<th>Benefit</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Broadcast Hash Join</strong></td>
+<td>One table is small (< 10MB default)</td>
+<td>No shuffle — small table sent to all workers</td>
+</tr>
+<tr>
+<td><strong>Shuffled Hash Join</strong></td>
+<td>Both tables large</td>
+<td>Full shuffle — most expensive</td>
+</tr>
+<tr>
+<td><strong>Sort Merge Join</strong></td>
+<td>Both tables large, pre-sorted on join key</td>
+<td>Efficient for sorted data</td>
+</tr>
+</tbody></table>
+<pre><code class="language-python">from pyspark.sql.functions import broadcast
+df_large.join(broadcast(df_small), &quot;key&quot;)  # Forces broadcast join</code></pre>
+<h2 id="groupbykey-vs-reducebykey">groupByKey vs reduceByKey</h2>
+<table><thead><tr>
+<th>Operation</th>
+<th>Behavior</th>
+<th>Risk</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>groupByKey</strong></td>
+<td>Collects ALL values for a key on one executor</td>
+<td>High OOM risk — no pre-aggregation</td>
+</tr>
+<tr>
+<td><strong>reduceByKey</strong></td>
+<td>Reduces values locally (map-side) before shuffle</td>
+<td>Dramatically less data transferred</td>
+</tr>
+</tbody></table>
+<blockquote><strong>Always prefer reduceByKey / aggregateByKey over groupByKey.</strong></blockquote>
+<h2 id="data-skew">Data Skew</h2>
+<p>When some keys have disproportionately more data, causing straggler tasks:</p>
+<ul>
+<li><strong>Symptom</strong>: One task takes 10× longer than others</li>
+<li><strong>Fix</strong>: Add random "salt" (junk) to skewed keys to spread data across partitions, then aggregate back</li>
+</ul>
+<h2 id="caching--checkpointing">Caching & Checkpointing</h2>
+<table><thead><tr>
+<th>Strategy</th>
+<th>What It Does</th>
+<th>When to Use</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>persist() / cache()</strong></td>
+<td>Keeps dataset in memory for reuse</td>
+<td>Repeated access to same dataset (multiple actions)</td>
+</tr>
+<tr>
+<td><strong>checkpoint()</strong></td>
+<td>Writes to stable storage, truncates lineage</td>
+<td>Long lineage chains (stack overflow risk), failure recovery</td>
+</tr>
+</tbody></table>
+<blockquote>Cache only what you reuse. Unnecessary caching wastes memory and can degrade performance.</blockquote>
+<h2 id="scala-vs-python-pyspark">Scala vs Python (PySpark)</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Scala</th>
+<th>Python (PySpark)</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Native JVM — fastest</td>
+<td>JVM↔Python bridge overhead</td>
+</tr>
+<tr>
+<td><strong>Spark SQL parity</strong></td>
+<td>Identical</td>
+<td>Identical (data stays in JVM for SQL operations)</td>
+</tr>
+<tr>
+<td><strong>UDF overhead</strong></td>
+<td>Minimal</td>
+<td>Higher — data must cross JVM↔Python boundary</td>
+</tr>
+<tr>
+<td><strong>Ecosystem</strong></td>
+<td>Full Spark API</td>
+<td>Full Spark API via PySpark</td>
+</tr>
+</tbody></table>
+<blockquote>For most workloads, the gap is negligible due to Spark SQL's dominance. Use whatever language your team knows best.</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-engineer.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Engineer</h4>
+      <p>Spark is the workhorse of distributed batch processing in modern DE stacks</p>
+    </a>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Flink</h4>
+      <p>Flink handles streaming where Spark handles batch; both are distributed processing engines</p>
+    </a>
+    <a class="connection-card" href="apache-iceberg.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Iceberg</h4>
+      <p>Spark is a primary engine for reading/writing Iceberg tables</p>
+    </a>
+    <a class="connection-card" href="change-data-capture.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>Spark Streaming can consume CDC feeds</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>Karau & Warren's 356-page optimization guide</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="apache-parquet.html" class="prev">← Apache Parquet</a><a href="bijection.html" class="next">Bijection →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

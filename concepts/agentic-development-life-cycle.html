@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic Development Life Cycle — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Agentic Development Life Cycle</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Agentic Development Life Cycle</h1>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">sdlc</span><span class="tag">methodology</span><span class="tag">process</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>The <strong>Agentic Development Life Cycle (ADLC)</strong> is a redefinition of the traditional Software Development Life Cycle for environments where AI agents collaborate with humans to produce software. Traditional SDLC — even extreme agile — falls short because it was designed for human-only development. ADLC reimagines each phase for agent-human collaboration.</p>
+<h2 id="the-five-phases">The Five Phases</h2>
+<pre><code>Planning → Building → Testing → Review → Documentation
+    ↑                                            │
+    └──────── Codify ADLC (continuous) ←────────┘</code></pre>
+<h3 id="1-planning">1. Planning</h3>
+<p>The most critical phase. Uses deep research and planning modes with multiple agents for parallel exploration. Agents explore the codebase, flag ambiguities, decompose tasks, estimate difficulty, and create roadmaps with version milestones. A planning agent synthesizes findings from multiple exploration agents into a coherent implementation strategy.</p>
+<h3 id="2-building">2. Building</h3>
+<p>AI agents handle end-to-end feature implementation at a junior-to-mid-level engineer capacity. The human acts as tech lead, orchestrating multiple agents rather than coding directly. Sequential or parallel execution models depend on the roadmap. Tools: Claude Code, Cursor Composer, GitHub Copilot Agent Mode, OpenAI Codex.</p>
+<h3 id="3-testing">3. Testing</h3>
+<p>TDD reincarnated for the agentic era. Agents write test plans first, then implement code. All tests should fail at the beginning and incrementally pass. Three levels: unit (atomic), integration (cross-feature), end-to-end (cross-system). Critical insight: <strong>don't overindex on unit testing at the expense of integration or system testing</strong>.</p>
+<h3 id="4-review">4. Review</h3>
+<p>Agent swarms specialize in distinct review dimensions: functionality, quality, scalability, performance, reliability, security, privacy. Agents take the first pass and produce reports; humans review each report. When one agent discovers an issue (e.g., injection vulnerability), apply the <strong>generalization principle</strong>: if one instance exists, others likely do too.</p>
+<p><strong>Pro pattern</strong>: Separate planning, building, testing, and review agents. Each swarm develops a distinct perspective on the codebase. Planning agents challenge building agents who take shortcuts; testing agents catch coverage gaps; review agents catch incorrect implementations that appear correct.</p>
+<h3 id="5-documentation">5. Documentation</h3>
+<p>Shift from post-facto documentation to continuous generation. AI agents generate summaries, key design decisions, architectural diagrams, and changelogs in real time. This feeds into API documentation, feature collateral, and customer-facing content — finally solving the stale documentation problem.</p>
+<h3 id="codify-adlc">Codify ADLC</h3>
+<p>Encode Layer-1 (individual) and Layer-2 (team) practices into maintained, self-evolving context files, skills libraries, and MCP tools. This ensures ADLC adoption scales across the organization rather than remaining tribal knowledge.</p>
+<h2 id="why-traditional-sdlc-falls-short">Why Traditional SDLC Falls Short</h2>
+<table><thead><tr>
+<th>Traditional SDLC</th>
+<th>ADLC</th>
+</tr></thead><tbody>
+<tr>
+<td>Human writes code, human reviews</td>
+<td>Agent writes code, agent + human review</td>
+</tr>
+<tr>
+<td>One developer per feature</td>
+<td>Multiple specialized agents per feature</td>
+</tr>
+<tr>
+<td>Documentation as afterthought</td>
+<td>Documentation as continuous byproduct</td>
+</tr>
+<tr>
+<td>Review bottlenecked by human bandwidth</td>
+<td>Agent first pass → human final review</td>
+</tr>
+<tr>
+<td>Planning by lead engineer</td>
+<td>Planning by agent swarm with human oversight</td>
+</tr>
+</tbody></table>
+<h2 id="the-learning-loop">The Learning Loop</h2>
+<p>AI compresses the build step dramatically, but compression value depends on execution quality throughout the remaining cycle. Faster building without robust user observation and scope discipline produces faster divergence from product goals.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>AI-Native Engineering</h4>
+      <p>ADLC is the operational framework that AI-native engineers execute</p>
+    </a>
+    <a class="connection-card" href="context-engineering.html">
+      <span class="connection-type related">Depends on</span>
+      <h4>Context Engineering</h4>
+      <p>each ADLC phase shares a curated context layer</p>
+    </a>
+    <a class="connection-card" href="harness-engineering.html">
+      <span class="connection-type extends">Enforced by</span>
+      <h4>Harness Engineering</h4>
+      <p>harness primitives (AGENTS.md, feature_list.json) provide structural enforcement within ADLC</p>
+    </a>
+    <a class="connection-card" href="specification-driven-development.html">
+      <span class="connection-type related">Related</span>
+      <h4>Specification-Driven Development</h4>
+      <p>the Planning phase is specification-driven development at scale</p>
+    </a>
+    <a class="connection-card" href="tdd-methodology.html">
+      <span class="connection-type related">Related to</span>
+      <h4>TDD Methodology</h4>
+      <p>ADLC's Testing phase is TDD adapted for agentic workflows</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>TDD Methodology</h4>
+      <p>Shah Rahman's ADLC framework</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="agent-quality-optimization.html" class="prev">← Agent Quality Optimization</a><a href="ai-native-engineering.html" class="next">AI-Native Engineering →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

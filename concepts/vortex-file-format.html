@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vortex File Format — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-file-formats">File Formats</a> <span class="sep">/</span>
+  <span>Vortex File Format</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Vortex File Format</h1>
+  <div class="page-meta"><span>Source: benchmarking-vortex-file-format</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">file-formats</span><span class="tag">columnar</span><span class="tag">rust</span><span class="tag">data-engineering</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Vortex</strong> is a next-generation columnar file format and toolkit written in Rust, designed for high-performance data processing on object storage (S3, GCS, etc.). It claims significant speed improvements over <a href="apache-parquet.html" class="wiki-link">Apache Parquet</a>: 100× faster random access, 10–20× faster scans, 5× faster writes, with similar compression ratios.</p>
+<h2 id="design--architecture">Design & Architecture</h2>
+<ul>
+<li><strong>Written in Rust</strong> — performance-first language with memory safety</li>
+<li><strong>Zero-copy compatibility with Apache Arrow</strong> — can interoperate with the Arrow ecosystem without data copying</li>
+<li><strong>Modeled after Apache DataFusion's extensible approach</strong> — modular, pluggable design</li>
+<li><strong>Supports major engines</strong>: Arrow, DataFusion, DuckDB, Spark, Pandas, <a href="polars.html" class="wiki-link">Polars</a></li>
+<li><strong>Filter pushdown</strong> — predicates pushed to scan level, minimizing data read</li>
+</ul>
+<h2 id="performance-claims-from-vortex-team">Performance Claims (from Vortex team)</h2>
+<table><thead><tr>
+<th>Claim</th>
+<th>vs Parquet</th>
+</tr></thead><tbody>
+<tr>
+<td>Random access</td>
+<td>100× faster</td>
+</tr>
+<tr>
+<td>Scan</td>
+<td>10–20× faster</td>
+</tr>
+<tr>
+<td>Writes</td>
+<td>5× faster</td>
+</tr>
+<tr>
+<td>Compression</td>
+<td>Similar</td>
+</tr>
+</tbody></table>
+<h2 id="benchmarked-reality-2026-05">Benchmarked Reality (2026-05)</h2>
+<p>Daniel Beach's independent benchmarks using Backblaze hard drive data (~24 GB, 184 CSV files) found more modest gains:</p>
+<table><thead><tr>
+<th>Scenario</th>
+<th>Best Time</th>
+<th>Engine</th>
+</tr></thead><tbody>
+<tr>
+<td>CSV (baseline)</td>
+<td>25.465s</td>
+<td>DuckDB</td>
+</tr>
+<tr>
+<td>Parquet</td>
+<td>0.125s</td>
+<td>DuckDB</td>
+</tr>
+<tr>
+<td>Vortex (native scan)</td>
+<td>0.111s</td>
+<td>Vortex pure</td>
+</tr>
+<tr>
+<td>Vortex (via bridge)</td>
+<td>0.114s</td>
+<td>Polars via PyArrow</td>
+</tr>
+</tbody></table>
+<p>The jump from CSV to any columnar format (~200×) dwarfs Vortex's marginal advantage over Parquet (~11%). The claimed 10–20× scan advantage was <strong>not observed</strong> at this data scale (~24 GB).</p>
+<h2 id="python-ecosystem-maturity-2026-05">Python Ecosystem Maturity (2026-05)</h2>
+<p>The Python integration story is immature:</p>
+<table><thead><tr>
+<th>Integration</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>DuckDB vortex extension</strong></td>
+<td>OOM crashes on multi-file reads; requires PyArrow bridge workaround</td>
+</tr>
+<tr>
+<td><strong>Polars</strong></td>
+<td>Per-file loading only (no globbing); converts to PyArrow immediately</td>
+</tr>
+<tr>
+<td><strong>DataFusion</strong></td>
+<td>Works via PyArrow bridge</td>
+</tr>
+<tr>
+<td><strong>Pure Vortex</strong></td>
+<td>Fastest, but limited ecosystem support</td>
+</tr>
+</tbody></table>
+<p>Most practical usage requires converting to PyArrow first — losing any potential zero-copy benefits.</p>
+<h2 id="positioning">Positioning</h2>
+<p>Vortex appears to be competing directly with <a href="apache-parquet.html" class="wiki-link">Apache Parquet</a> as the dominant columnar format for data lakes and object-storage-based analytics. It also positions itself as an alternative to <a href="apache-arrow.html" class="wiki-link">Apache Arrow</a>, with claims of faster processing. However, as of mid-2026, it remains <strong>early-stage</strong> with immature Python integrations and unproven claims at production scale.</p>
+<h2 id="when-to-watch">When to Watch</h2>
+<p>Promising but not yet production-ready for Python-heavy data engineering workflows. Worth revisiting as integrations mature, especially for:</p>
+<ul>
+<li>Rust-native data pipelines</li>
+<li>High-performance object-storage analytics</li>
+<li>Workloads bottlenecked on Parquet scan/random-access performance at petabyte scale</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="apache-parquet.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Parquet</h4>
+      <p>Vortex positions itself as a Parquet alternative for object storage</p>
+    </a>
+    <a class="connection-card" href="polars.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Polars</h4>
+      <p>Vortex provides a Polars bridge via `to_polars()` LazyFrame</p>
+    </a>
+    <a class="connection-card" href="duckdb.html">
+      <span class="connection-type related">Related to</span>
+      <h4>DuckDB</h4>
+      <p>DuckDB has a vortex extension (currently buggy) and a PyArrow bridge workaround</p>
+    </a>
+    <a class="connection-card" href="apache-datafusion.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache DataFusion</h4>
+      <p>Vortex modeled after DataFusion's extensible approach</p>
+    </a>
+    <a class="connection-card" href="lance-file-format.html">
+      <span class="connection-type related">Related</span>
+      <h4>Lance File Format</h4>
+      <p>both are next-gen columnar formats targeting Parquet's dominance</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Lance File Format</h4>
+      <p>Daniel Beach's independent performance evaluation</p>
+    </div>
+    <a class="connection-card" href="apache-arrow.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Arrow</h4>
+      <p>Vortex claims faster processing than Arrow; provides zero-copy Arrow compatibility</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="vibe-coding.html" class="prev">← Vibe Coding</a><a href="wiki-maintenance.html" class="next">Wiki Maintenance →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

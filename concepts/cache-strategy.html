@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cache Strategy — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-system-design">System Design</a> <span class="sep">/</span>
+  <span>Cache Strategy</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Cache Strategy</h1>
+  <div class="page-meta"><span>Source: system-design-interview-xu</span><span>Updated: 2026-05-24</span></div>
+  <div class="page-tags"><span class="tag">system-design</span><span class="tag">performance</span><span class="tag">caching</span><span class="tag">scalability</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>A cache is temporary in-memory storage for frequently accessed data. Proper caching can reduce database load by 90%+ and cut response times from hundreds of milliseconds to single-digit milliseconds. But caching introduces complexity: stale data, invalidation, and consistency challenges.</p>
+<h2 id="read-through-cache-pattern">Read-Through Cache Pattern</h2>
+<pre><code>1. Web server checks cache
+2. Hit? → Return immediately
+3. Miss? → Query database → Save result to cache → Return to client</code></pre>
+<h2 id="key-considerations">Key Considerations</h2>
+<table><thead><tr>
+<th>Concern</th>
+<th>Solution</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Expiration</strong></td>
+<td>Set TTL: too long → stale data; too short → constant DB load</td>
+</tr>
+<tr>
+<td><strong>Consistency</strong></td>
+<td>Hard to sync cache and DB, especially across multiple regions</td>
+</tr>
+<tr>
+<td><strong>Eviction</strong></td>
+<td>When cache is full: LRU (Least Recently Used), LFU (Least Frequently Used), or FIFO</td>
+</tr>
+<tr>
+<td><strong>SPOF</strong></td>
+<td>Use multiple cache servers across data centers; overprovision memory</td>
+</tr>
+</tbody></table>
+<h2 id="cache-invalidation-strategies">Cache Invalidation Strategies</h2>
+<table><thead><tr>
+<th>Strategy</th>
+<th>How It Works</th>
+<th>Trade-off</th>
+</tr></thead><tbody>
+<tr>
+<td>TTL expiration</td>
+<td>Data expires after set time</td>
+<td>Simple but may serve stale data</td>
+</tr>
+<tr>
+<td>Active invalidation</td>
+<td>Application deletes cache entry on write</td>
+<td>More consistent but adds complexity</td>
+</tr>
+<tr>
+<td>Versioned URLs</td>
+<td><code>image.jpg?v=2</code> forces fetch of new version</td>
+<td>CDN-friendly but requires URL management</td>
+</tr>
+</tbody></table>
+<blockquote><strong>Hard problems in computer science</strong>: Cache invalidation, naming things, and off-by-one errors.</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="scalable-architecture.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Scalable Architecture</h4>
+      <p>reduces database load dramatically</p>
+    </a>
+    <a class="connection-card" href="database-replication.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Database Replication</h4>
+      <p>cache + replication = massive read scaling</p>
+    </a>
+    <a class="connection-card" href="cdn.html">
+      <span class="connection-type related">Related to</span>
+      <h4>CDN</h4>
+      <p>CDN is a specialized geographic cache for static content</p>
+    </a>
+    <a class="connection-card" href="load-balancer.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Load Balancer</h4>
+      <p>cache deployed behind load balancer</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="bijection.html" class="prev">← Bijection</a><a href="case-interview.html" class="next">Case Interview →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

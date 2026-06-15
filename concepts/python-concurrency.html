@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Concurrency — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-python">Python</a> <span class="sep">/</span>
+  <span>Python Concurrency</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Python Concurrency</h1>
+  <div class="page-meta"><span>Source: intuitive-python</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">python</span><span class="tag">concurrency</span><span class="tag">gil</span></div>
+</div>
+<div class="content-area concept">
+<p># Python Concurrency</p>
+<p>Python's concurrency model, constrained by the Global Interpreter Lock (GIL), offers two distinct paradigms — threads and processes — each suited to different workloads. The professional instinct is to <strong>prioritize safety over perceived speed</strong>.</p>
+<h2 id="the-race-condition-trap">The Race Condition Trap</h2>
+<p>Classic illustration of why concurrency is dangerous without proper synchronization:</p>
+<pre><code>Account balance: $8. Two processes run simultaneously:
+1. Process A reads balance: $8
+2. Process B reads balance: $8
+3. A withdraws $6 → writes $2
+4. B withdraws $7 → had read $8, allows transaction → writes $1
+→ Result: $13 withdrawn from an $8 account</code></pre>
+<p>Race conditions are <strong>non-deterministic</strong> — they may pass tests 99% of the time and fail in production under specific timing conditions.</p>
+<h2 id="threads-vs-processes">Threads vs Processes</h2>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Threads (<code>threading</code>)</th>
+<th>Processes (<code>multiprocessing</code>)</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Shared Memory</strong></td>
+<td>Yes — all threads share the same memory space</td>
+<td>No — each process has independent memory</td>
+</tr>
+<tr>
+<td><strong>GIL Bound</strong></td>
+<td>Yes — only one thread executes Python at a time</td>
+<td>No — each process has its own GIL</td>
+</tr>
+<tr>
+<td><strong>Overhead</strong></td>
+<td>Low — lightweight, quick to spawn</td>
+<td>High — separate interpreter per process, serialization cost</td>
+</tr>
+<tr>
+<td><strong>Data Sharing</strong></td>
+<td>Easy — shared variables (but needs locks)</td>
+<td>Hard — must serialize via <code>Queue</code> or <code>Pipe</code></td>
+</tr>
+<tr>
+<td><strong>Best For</strong></td>
+<td><strong>I/O-bound</strong> work: API calls, file reads, network requests</td>
+<td><strong>CPU-bound</strong> work: heavy computation, large data processing</td>
+</tr>
+</tbody></table>
+<h2 id="when-to-use-concurrency">When to Use Concurrency</h2>
+<p>The senior developer's decision tree:</p>
+<ol>
+<li><strong>Can this be solved without concurrency?</strong> — Single-threaded code is always simpler, safer, and easier to debug</li>
+<li><strong>Is it I/O-bound?</strong> — Threads (<code>threading</code> or <code>asyncio</code>) let other work proceed while waiting</li>
+<li><strong>Is it CPU-bound?</strong> — Processes (<code>multiprocessing</code>) bypass the GIL for true parallelism</li>
+<li><strong>Must it be fast AND correct?</strong> — Only then introduce concurrency, with rigorous testing</li>
+</ol>
+<h2 id="python-specific-considerations">Python-Specific Considerations</h2>
+<p>The <strong>GIL</strong> (Global Interpreter Lock) prevents true parallel execution of Python bytecode within a single process. This means:</p>
+<ul>
+<li>Threads are <strong>not</strong> suitable for CPU-heavy work (no speed gain)</li>
+<li>Threads <strong>are</strong> suitable for I/O work (the GIL is released during I/O operations)</li>
+<li>For CPU-bound parallelism, use <code>multiprocessing</code> or external libraries (NumPy, C extensions)</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="python-professional-practices.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Python Professional Practices</h4>
+      <p>professional judgment on when to use concurrency</p>
+    </a>
+    <a class="connection-card" href="readability-vs-performance.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Readability vs Performance</h4>
+      <p>safety over premature optimization</p>
+    </a>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fail Fast</h4>
+      <p>race conditions as silent, intermittent failures</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Fail Fast</h4>
+      <p>David Muller's guide to Python concurrency (threads, processes, GIL)</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="pytest-test-results.html" class="prev">← pytest Test Results</a><a href="python-debugging-pdb.html" class="next">Python Debugging with PDB →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

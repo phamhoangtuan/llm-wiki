@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Observability — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-system-design">System Design</a> <span class="sep">/</span>
+  <span>Observability</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Observability</h1>
+  <div class="page-meta"><span>Source: system-design-interview-xu</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">system-design</span><span class="tag">monitoring</span><span class="tag">metrics</span><span class="tag">reliability</span><span class="tag">devops</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>Observability is the ability to understand a system's internal state by examining its outputs — metrics, logs, and traces. In distributed systems, observability is not optional: without it, you cannot detect failures, debug issues, or make informed scaling decisions.</p>
+<h2 id="the-three-pillars">The Three Pillars</h2>
+<table><thead><tr>
+<th>Pillar</th>
+<th>What It Captures</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Metrics</strong></td>
+<td>Numeric data over time</td>
+<td>CPU usage, request latency, error rate</td>
+</tr>
+<tr>
+<td><strong>Logs</strong></td>
+<td>Discrete events</td>
+<td>"User login failed: wrong password", "DB connection timeout"</td>
+</tr>
+<tr>
+<td><strong>Traces</strong></td>
+<td>Request path through services</td>
+<td><code>GET /api/users</code> → LB → Web → DB → Cache</td>
+</tr>
+</tbody></table>
+<h2 id="monitoring-levels">Monitoring Levels</h2>
+<table><thead><tr>
+<th>Level</th>
+<th>Metrics</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Host-level</strong></td>
+<td>CPU, memory, disk I/O, network</td>
+<td>Detect server overload or hardware failure</td>
+</tr>
+<tr>
+<td><strong>Aggregated-level</strong></td>
+<td>DB query latency, cache hit rate, queue length</td>
+<td>Evaluate health of each tier</td>
+</tr>
+<tr>
+<td><strong>Business-level</strong></td>
+<td>DAU, conversion rate, revenue</td>
+<td>Measure real-world system impact</td>
+</tr>
+</tbody></table>
+<h2 id="key-metrics-to-track">Key Metrics to Track</h2>
+<table><thead><tr>
+<th>Metric</th>
+<th>Why It Matters</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Latency</strong></td>
+<td>p50, p95, p99 response times — users feel p95, not average</td>
+</tr>
+<tr>
+<td><strong>Throughput</strong></td>
+<td>Requests per second — capacity planning</td>
+</tr>
+<tr>
+<td><strong>Error rate</strong></td>
+<td>4xx/5xx percentage — reliability indicator</td>
+</tr>
+<tr>
+<td><strong>Saturation</strong></td>
+<td>How "full" a resource is (CPU > 80%? Queue depth?)</td>
+</tr>
+</tbody></table>
+<blockquote><strong>Principle</strong>: You can't scale what you can't measure. Manual operations don't scale — automate monitoring, alerting, and remediation.</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="scalable-architecture.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Scalable Architecture</h4>
+      <p>essential for operating distributed systems</p>
+    </a>
+    <a class="connection-card" href="message-queue.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Message Queue</h4>
+      <p>queue depth and consumer lag are critical signals</p>
+    </a>
+    <a class="connection-card" href="cache-strategy.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Cache Strategy</h4>
+      <p>hit rate and eviction rate reveal cache health</p>
+    </a>
+    <a class="connection-card" href="database-replication.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Database Replication</h4>
+      <p>replication lag must be monitored</p>
+    </a>
+    <a class="connection-card" href="load-balancer.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Load Balancer</h4>
+      <p>tracks backend health and traffic distribution</p>
+    </a>
+    <a class="connection-card" href="kubernetes-operator.html">
+      <span class="connection-type related">Related</span>
+      <h4>Kubernetes Operator</h4>
+      <p>production operators export Prometheus metrics, structured logs, and OpenTelemetry traces</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="object-oriented-design.html" class="prev">← Object-Oriented Design</a><a href="polars.html" class="next">Polars →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

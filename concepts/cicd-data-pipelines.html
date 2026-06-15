@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CI/CD for Data Pipelines — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-engineering">Data Engineering</a> <span class="sep">/</span>
+  <span>CI/CD for Data Pipelines</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>CI/CD for Data Pipelines</h1>
+  <div class="page-meta"><span>Source: reddit-cicd-tips-data-engineering</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">cicd</span><span class="tag">devops</span><span class="tag">testing</span><span class="tag">linting</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>CI/CD for Data Pipelines</strong> applies continuous integration and continuous deployment practices — linting, automated testing, quality gates, and deployment automation — to data engineering workflows. It represents the operationalization of <a href="dataops.html" class="wiki-link">DataOps</a> principles, ensuring that pipeline code is versioned, tested, and deployed with the same rigor as application code.</p>
+<h2 id="ci-pipeline-what-to-run-on-every-pr">CI Pipeline: What to Run on Every PR</h2>
+<h3 id="linting--static-analysis">Linting & Static Analysis</h3>
+<table><thead><tr>
+<th>Language</th>
+<th>Tool</th>
+<th>Notes</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Python</strong></td>
+<td>Ruff</td>
+<td>Fast, comprehensive — preferred over flake8/black combos</td>
+</tr>
+<tr>
+<td><strong>SQL</strong></td>
+<td>SQLFluff</td>
+<td>Template-aware; some find it tedious for simple pipelines</td>
+</tr>
+<tr>
+<td><strong>Docker</strong></td>
+<td>Hadolint</td>
+<td>Dockerfile best-practice enforcement</td>
+</tr>
+<tr>
+<td><strong>GitHub Actions</strong></td>
+<td>zizmor, actionlint</td>
+<td>Workflow file validation</td>
+</tr>
+</tbody></table>
+<h3 id="pre-commit-hooks">Pre-Commit Hooks</h3>
+<p>Run linting locally before commits via <code>pre-commit</code> or <code>prek</code>. Catch issues before they reach CI.</p>
+<h3 id="code-validity-smoke-testing">Code Validity (Smoke Testing)</h3>
+<p>For pipeline code, start with smoke tests rather than deep unit tests:</p>
+<ul>
+<li><strong>Airflow</strong>: Check DAG bag has no import errors, validate external sensor references</li>
+<li><strong>dbt</strong>: <code>dbt compile</code> to verify all models parse</li>
+<li><strong>SQLMesh</strong>: <code>sqlmesh plan</code> compiles the entire pipeline with audits</li>
+</ul>
+<h3 id="the-testing-philosophy">The Testing Philosophy</h3>
+<table><thead><tr>
+<th>Test Type</th>
+<th>Data Pipeline Approach</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Unit tests</strong></td>
+<td>Don't over-focus. Validate critical business logic; skip for simple pass-through transforms</td>
+</tr>
+<tr>
+<td><strong>Integration tests</strong></td>
+<td>More valuable: SLA checks, lineage validation, schema drift detection</td>
+</tr>
+<tr>
+<td><strong>Data quality tests</strong></td>
+<td>Great Expectations, dbt tests, built-in platform validations</td>
+</tr>
+</tbody></table>
+<blockquote>"Don't try to catch everything in CI" — balance between necessity and over-engineering.</blockquote>
+<h2 id="type-checking-debate">Type Checking Debate</h2>
+<p>A nuanced divide:</p>
+<ul>
+<li><strong>Type hints</strong> are universally recommended for code comprehension and IDE support</li>
+<li><strong>Static type checking</strong> (mypy/pyright in CI) is more controversial — valuable for libraries and application code, but can produce <code># type: ignore</code> sprawl in pipeline code that interacts with loosely-typed libraries</li>
+</ul>
+<h2 id="notebooks-vs-scripts-in-production">Notebooks vs Scripts in Production</h2>
+<p>A sharp community divide on whether notebooks belong in production pipelines:</p>
+<table><thead><tr>
+<th>Notebooks</th>
+<th>Scripts (.py)</th>
+</tr></thead><tbody>
+<tr>
+<td>Great for exploration and prototyping</td>
+<td>Production standard: versioned, tested, parameterized</td>
+</tr>
+<tr>
+<td>Microsoft Fabric pushes notebook-first workflows</td>
+<td>Enterprise best practice: notebooks call scripts, not the reverse</td>
+</tr>
+<tr>
+<td>Risk: hidden state, non-linear execution, hard to review</td>
+<td>Risk: steeper learning curve, less visual for exploration</td>
+</tr>
+</tbody></table>
+<p><strong>Pragmatic middle ground</strong>: Bundle reusable logic into <code>.py</code> packages. Use notebooks only as thin controllers that call into tested, versioned Python modules.</p>
+<h2 id="sqlmesh-cicd-for-transformations">SQLMesh: CI/CD for Transformations</h2>
+<p>SQLMesh represents "the closest DE can get to real CI/CD":</p>
+<ul>
+<li>Compiles the entire transformation pipeline</li>
+<li>Runs audits and tests only on <strong>changed</strong> models (not the entire DAG)</li>
+<li>Detects breaking changes before deployment</li>
+<li>Recently donated to the Linux Foundation by Fivetran, being revitalized</li>
+</ul>
+<h2 id="cd-pipeline-deployment-automation">CD Pipeline: Deployment Automation</h2>
+<ul>
+<li><strong>GitHub Actions</strong> or <strong>Azure DevOps</strong> as the execution platform</li>
+<li>Deploy with <code>gitflow</code> strategy: feature → dev → staging → production branches</li>
+<li>Package Python code separately from business logic notebooks</li>
+<li>Infrastructure as Code (Terraform, Bicep) for reproducible environments</li>
+</ul>
+<h2 id="getting-started">Getting Started</h2>
+<ol>
+<li>Start with pre-commit hooks (Ruff for Python, SQLFluff for SQL)</li>
+<li>Add GitHub Actions CI on <code>pull_request</code> trigger</li>
+<li>Begin with smoke tests (code validity)</li>
+<li>Add data quality checks incrementally — driven by real production issues, not theoretical concerns</li>
+<li>Graduate to integration tests and schema validation as the pipeline matures</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type related">Operationalizes</span>
+      <h4>DataOps</h4>
+      <p>CI/CD is the practical implementation of DataOps principles in the deployment pipeline</p>
+    </a>
+    <a class="connection-card" href="data-engineer.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineer</h4>
+      <p>professional DEs apply CI/CD discipline to pipeline code</p>
+    </a>
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Testing Strategy</h4>
+      <p>pipeline CI/CD extends testing strategy to data-specific concerns (schema drift, data quality)</p>
+    </a>
+    <a class="connection-card" href="data-governance.html">
+      <span class="connection-type related">Informs</span>
+      <h4>Data Governance</h4>
+      <p>CI/CD gates enforce governance rules (schema contracts, data quality thresholds) at deployment time</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Governance</h4>
+      <p>Community discussion on CI/CD for data pipelines</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="change-data-capture.html" class="prev">← Change Data Capture (CDC)</a><a href="clickhouse.html" class="next">ClickHouse →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

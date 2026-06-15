@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apache Arrow — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-engineering">Data Engineering</a> <span class="sep">/</span>
+  <span>Apache Arrow</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Apache Arrow</h1>
+  <div class="page-meta"><span>Source: benchmarking-vortex-file-format</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">columnar</span><span class="tag">apache</span><span class="tag">in-memory</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Apache Arrow</strong> is an open-source, language-agnostic columnar in-memory format designed for efficient data interchange between systems. It provides zero-copy data sharing across languages (Python, C++, Java, Rust) and serves as the memory model for many modern data tools including <a href="polars.html" class="wiki-link">Polars</a>, <a href="apache-datafusion.html" class="wiki-link">Apache DataFusion</a>, and <a href="vortex-file-format.html" class="wiki-link">Vortex</a>.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>Columnar in-memory format</strong> — data stored column-by-column for vectorized processing</li>
+<li><strong>Zero-copy interop</strong> — pass data between Python, R, C++, Java without serialization</li>
+<li><strong>Language-agnostic</strong> — native implementations in 12+ languages</li>
+<li><strong>SIMD-optimized</strong> — leverages modern CPU instructions for analytics</li>
+</ul>
+<h2 id="role-in-the-ecosystem">Role in the Ecosystem</h2>
+<p>Arrow serves as the universal memory representation that enables fast data interchange between compute engines:</p>
+<pre><code>Source → Arrow (in-memory) → DuckDB / Polars / DataFusion / Vortex</code></pre>
+<p>Tools that use Arrow as their memory model:</p>
+<ul>
+<li><a href="polars.html" class="wiki-link">Polars</a> — Rust DataFrame library</li>
+<li><a href="apache-datafusion.html" class="wiki-link">Apache DataFusion</a> — Rust query engine</li>
+<li><a href="vortex-file-format.html" class="wiki-link">Vortex</a> — integrates via zero-copy Arrow compatibility</li>
+<li>PySpark — pandas UDFs use Arrow for data transfer</li>
+<li><a href="duckdb.html" class="wiki-link">DuckDB</a> — can export to Arrow tables</li>
+</ul>
+<blockquote><strong>Note</strong>: This page is a stub. Arrow is referenced by multiple wiki pages (vortex-file-format, polars, duckdb) but was not the subject of any single ingested source.</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="polars.html">
+      <span class="connection-type related">Used by</span>
+      <h4>Polars</h4>
+      <p>Polars uses Apache Arrow as its in-memory columnar format</p>
+    </a>
+    <a class="connection-card" href="apache-datafusion.html">
+      <span class="connection-type related">Used by</span>
+      <h4>Apache DataFusion</h4>
+      <p>DataFusion is Arrow-native for zero-copy interop</p>
+    </a>
+    <a class="connection-card" href="vortex-file-format.html">
+      <span class="connection-type related">Related</span>
+      <h4>Vortex File Format</h4>
+      <p>Vortex claims zero-copy compatibility with Arrow</p>
+    </a>
+    <a class="connection-card" href="apache-parquet.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Parquet</h4>
+      <p>Arrow is the in-memory format; Parquet is the on-disk format</p>
+    </a>
+    <a class="connection-card" href="duckdb.html">
+      <span class="connection-type related">Used by</span>
+      <h4>DuckDB</h4>
+      <p>DuckDB can export query results to Arrow tables for zero-copy interop</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="analytics-engineer.html" class="prev">← Analytics Engineer</a><a href="apache-datafusion.html" class="next">Apache DataFusion →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

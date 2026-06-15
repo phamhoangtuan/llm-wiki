@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>In-Process OLAP — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-database-architecture">Database Architecture</a> <span class="sep">/</span>
+  <span>In-Process OLAP</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>In-Process OLAP</h1>
+  <div class="page-meta"><span>Source: duckdb-up-and-running</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">database-architecture</span><span class="tag">olap</span><span class="tag">analytics</span><span class="tag">embedded-database</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>In-process OLAP</strong> is an architectural pattern where an analytical database runs as an <strong>embedded library</strong> inside the application process — no separate server, no network communication, no infrastructure overhead. It is the OLAP analog of SQLite for OLTP. <a href="duckdb.html" class="wiki-link">DuckDB</a> is the canonical implementation.</p>
+<h2 id="in-process-vs-client-server">In-Process vs. Client-Server</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>In-Process OLAP (DuckDB)</th>
+<th>Client-Server OLAP (Snowflake, BigQuery)</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Setup</strong></td>
+<td><code>pip install duckdb</code></td>
+<td>Provision cluster, configure networking</td>
+</tr>
+<tr>
+<td><strong>Communication</strong></td>
+<td>Direct function calls</td>
+<td>Network (TCP/TLS, driver protocol)</td>
+</tr>
+<tr>
+<td><strong>Latency</strong></td>
+<td>Zero — no network hop</td>
+<td>Network latency per query (ms)</td>
+</tr>
+<tr>
+<td><strong>Data locality</strong></td>
+<td>Data can be local files (CSV, Parquet)</td>
+<td>Data must be loaded into warehouse storage</td>
+</tr>
+<tr>
+<td><strong>Multi-user</strong></td>
+<td>Single-writer (embedded)</td>
+<td>Multi-user, concurrent reads/writes</td>
+</tr>
+<tr>
+<td><strong>Scaling</strong></td>
+<td>Vertical (one machine's cores)</td>
+<td>Horizontal (add more nodes)</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Free (open-source, runs on your hardware)</td>
+<td>Pay per query / storage / compute</td>
+</tr>
+</tbody></table>
+<h2 id="why-in-process-matters-for-analytics">Why In-Process Matters for Analytics</h2>
+<ul>
+<li><strong>Zero "infrastructure tax"</strong>: No server config, no permission management, no networking setup. Focus on analysis, not administration.</li>
+<li><strong>Query data in place</strong>: Run SQL directly on local CSV, Parquet, or pandas DataFrames. Skip the traditional ELT "Load" step — just point and query.</li>
+<li><strong>Development velocity</strong>: Fast iteration loop — prototype locally with real SQL, then scale to cloud warehouses when collaboration demands it.</li>
+<li><strong>Hybrid workflows</strong>: With <a href="https://motherduck.com" target="_blank" rel="noopener">MotherDuck</a>, join local data with cloud tables in a single query, keeping sensitive data local.</li>
+</ul>
+<h2 id="the-pattern-local--cloud-gradient">The Pattern: Local → Cloud Gradient</h2>
+<pre><code>Local Exploration (In-Process OLAP)
+    ↓
+    Fast iteration on laptop
+    DuckDB: query CSV/Parquet/pandas directly
+    
+Cloud Warehousing (Client-Server OLAP)
+    ↓
+    Scale for team/enterprise
+    Snowflake/BigQuery: shared data, concurrent access
+    
+Production Deployment
+    ↓
+    Embed analytics in apps
+    DuckDB: ship analytical SQL inside your application
+</code></pre>
+<h2 id="related-patterns">Related Patterns</h2>
+<ul>
+<li><strong>In-process OLTP</strong>: SQLite — the same embedded-library approach but for transactional (row-based) workloads.</li>
+<li><strong>Embedded analytical engines</strong>: Apache DataFusion (Rust), Velox (C++, Meta) — in-process query engines without a full database.</li>
+<li><strong>Hybrid cloud</strong>: MotherDuck, TileDB — keep local data local, share aggregated results in the cloud.</li>
+</ul>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li><strong>Single-writer</strong>: Not designed for concurrent write transactions (use client-server for that).</li>
+<li><strong>Vertical scaling only</strong>: Limited to one machine's CPU cores and memory — can't horizontally scale across nodes.</li>
+<li><strong>Process lifecycle</strong>: Database lives and dies with the application process (or is persisted to disk).</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="duckdb.html">
+      <span class="connection-type core">Core to</span>
+      <h4>DuckDB</h4>
+      <p>"SQLite for analytics" — the reference implementation</p>
+    </a>
+    <a class="connection-card" href="vectorized-execution.html">
+      <span class="connection-type related">Related</span>
+      <h4>Vectorized Execution</h4>
+      <p>makes in-process analytical performance practical</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related to</span>
+      <h4>Vectorized Execution</h4>
+      <p>Wei-Meng Lee's guide covers the in-process architecture</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="immutability.html" class="prev">← Immutability of Essence</a><a href="incremental-view-maintenance.html" class="next">Incremental View Maintenance →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

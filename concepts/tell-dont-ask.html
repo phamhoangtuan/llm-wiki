@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tell, Don&#x27;t Ask — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-oop">Oop</a> <span class="sep">/</span>
+  <span>Tell, Don&#x27;t Ask</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Tell, Don&#x27;t Ask</h1>
+  <div class="page-meta"><span>Source: contieri-clean-code-cookbook, practical-object-oriented-design</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">oop</span><span class="tag">design-principles</span><span class="tag">encapsulation</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>"Don't ask an object for data to process logic outside it. Tell the object to perform its behavior." This principle protects encapsulation and localizes change.</p>
+<h2 id="the-principle">The Principle</h2>
+<table><thead><tr>
+<th>Old Way (Ask)</th>
+<th>New Way (Tell)</th>
+</tr></thead><tbody>
+<tr>
+<td><code>if (order.getAmount() > 100) { order.setStatus("PREMIUM"); }</code></td>
+<td><code>order.applyPremiumDiscount();</code></td>
+</tr>
+<tr>
+<td>Logic outside object</td>
+<td>Logic inside object</td>
+</tr>
+<tr>
+<td>Ripple effect on requirement changes</td>
+<td>Change localized in object</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="bijection.html">
+      <span class="connection-type drives">Protects</span>
+      <h4>Bijection</h4>
+      <p>the object represents the real entity's behavior</p>
+    </a>
+    <a class="connection-card" href="immutability.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Immutability of Essence</h4>
+      <p>telling an object to act is safer than mutating its state from outside</p>
+    </a>
+    <a class="connection-card" href="object-oriented-design.html">
+      <span class="connection-type related">Related</span>
+      <h4>Object-Oriented Design</h4>
+      <p>telling objects via messages, not asking for data, is the essence of OOP</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Object-Oriented Design</h4>
+      <p>Contieri's Clean Code Cookbook</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="technological-centaur.html" class="prev">← Technological Centaur</a><a href="testing-strategy.html" class="next">Testing Strategy →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

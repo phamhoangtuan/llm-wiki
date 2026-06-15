@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go HTTP Handlers — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-go">Go</a> <span class="sep">/</span>
+  <span>Go HTTP Handlers</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Go HTTP Handlers</h1>
+  <div class="page-meta"><span>Source: go-web-programming</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">go</span><span class="tag">golang</span><span class="tag">http</span><span class="tag">handlers</span><span class="tag">middleware</span><span class="tag">web</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>In Go's standard library, HTTP handlers are the core abstraction for processing web requests. A handler receives a request, executes business logic, and writes a response. Combined with <code>ServeMux</code> (the router) and middleware chaining, handlers form a clean, modular alternative to heavyweight MVC frameworks.</p>
+<h2 id="handler-vs-handlerfunc">Handler vs HandlerFunc</h2>
+<p>Go provides two ways to define request handlers:</p>
+<table><thead><tr>
+<th>Type</th>
+<th>Definition</th>
+<th>Use When</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Handler</strong> (interface)</td>
+<td>Type with method <code>ServeHTTP(w ResponseWriter, r *Request)</code></td>
+<td>Need custom handler with state (e.g., database handle)</td>
+</tr>
+<tr>
+<td><strong>HandlerFunc</strong> (function)</td>
+<td>Function with signature <code>func(w ResponseWriter, r *Request)</code></td>
+<td>Simple handler, no internal state needed</td>
+</tr>
+</tbody></table>
+<pre><code>// HandlerFunc — simple, convenient
+http.HandleFunc(&quot;/hello&quot;, func(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprint(w, &quot;Hello, World!&quot;)
+})
+
+// Handler interface — when you need state/dependencies
+type MyHandler struct {
+    db *sql.DB
+}
+func (h *MyHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+    // Access h.db here
+}</code></pre>
+<h2 id="servemux--the-router">ServeMux — The Router</h2>
+<p><code>ServeMux</code> inspects incoming request URLs and dispatches to the correct handler.</p>
+<table><thead><tr>
+<th>Pattern</th>
+<th>Matching Behavior</th>
+</tr></thead><tbody>
+<tr>
+<td><code>/login</code></td>
+<td><strong>Exact match</strong> — only <code>/login</code></td>
+</tr>
+<tr>
+<td><code>/thread/</code></td>
+<td><strong>Subtree match</strong> — <code>/thread/123</code>, <code>/thread/456/edit</code>, etc.</td>
+</tr>
+</tbody></table>
+<pre><code>mux := http.NewServeMux()
+mux.HandleFunc(&quot;/login&quot;, loginHandler)
+mux.HandleFunc(&quot;/thread/&quot;, threadHandler)</code></pre>
+<h2 id="the-3-core-handler-responsibilities">The 3 Core Handler Responsibilities</h2>
+<ol>
+<li><strong>Receive & Process</strong>: Unpack the HTTP request, perform business logic.</li>
+<li><strong>Call Template Engine</strong>: Pass data to generate HTML output.</li>
+<li><strong>Bundle Response</strong>: Wrap HTML into HTTP response and send.</li>
+</ol>
+<h2 id="middleware-chaining">Middleware Chaining</h2>
+<p>Middleware wraps handlers in layers — like Lego bricks — for cross-cutting concerns:</p>
+<pre><code>func protect(next http.Handler) http.Handler {
+    return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+        if !isValidSession(r) {
+            http.Redirect(w, r, &quot;/login&quot;, http.StatusSeeOther)
+            return
+        }
+        next.ServeHTTP(w, r)
+    })
+}
+
+mux.Handle(&quot;/dashboard&quot;, protect(dashboardHandler))
+mux.Handle(&quot;/profile&quot;, protect(logRequests(profileHandler)))</code></pre>
+<p><strong>Benefits</strong>:</p>
+<ul>
+<li>Business logic stays clean — not polluted by auth/logging code.</li>
+<li>Middleware is reusable — DRY, consistent security across endpoints.</li>
+<li>Easy to test each layer independently.</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="goroutines.html">
+      <span class="connection-type related">Related</span>
+      <h4>Goroutines</h4>
+      <p>each handler invocation runs in its own goroutine</p>
+    </a>
+    <a class="connection-card" href="go-web-ecosystem.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Go Web Ecosystem</h4>
+      <p>handlers are the building blocks of Go web apps</p>
+    </a>
+    <a class="connection-card" href="dependency-injection.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Dependency Injection</h4>
+      <p>handlers get dependencies injected (e.g., db handle) for testability</p>
+    </a>
+    <a class="connection-card" href="middleware-pattern.html">
+      <span class="connection-type related">Related</span>
+      <h4>Middleware Pattern</h4>
+      <p>middleware wraps handlers for cross-cutting concerns (auth, logging, CORS)</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Middleware Pattern</h4>
+      <p>Sau Sheong Chang's guide to Go web apps</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="functional-testing.html" class="prev">← Functional Testing</a><a href="go-template-escaping.html" class="next">Go Template Escaping →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

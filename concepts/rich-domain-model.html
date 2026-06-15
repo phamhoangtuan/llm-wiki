@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rich Domain Model — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-oop">Oop</a> <span class="sep">/</span>
+  <span>Rich Domain Model</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Rich Domain Model</h1>
+  <div class="page-meta"><span>Source: contieri-clean-code-cookbook</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">oop</span><span class="tag">architecture</span><span class="tag">domain-driven-design</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>Rich domain models encapsulate both data and behavior within objects. The alternative — <strong>Anemic Domain Model</strong> — is a data holder with only getters/setters, which is procedural programming in disguise.</p>
+<h2 id="anemic-model-anti-pattern">Anemic Model (Anti-pattern)</h2>
+<pre><code>// ❌ Object is just a data bag
+public class Order {
+    private double amount;
+    private String status;
+    public double getAmount() { return amount; }
+    public void setAmount(double amount) { this.amount = amount; }
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+}
+
+// Logic lives outside → procedural programming
+if (order.getAmount() &gt; 100) {
+    order.setStatus(&quot;PREMIUM&quot;);
+}</code></pre>
+<p><strong>Problems</strong>: Violates encapsulation, logic scattered across codebase, object has no responsibility.</p>
+<h2 id="rich-model-correct">Rich Model (Correct)</h2>
+<pre><code>// ✅ Object encapsulates data AND behavior
+public class Order {
+    private final Money amount;       // Value Object, immutable
+    private OrderStatus status;
+
+    public void applyPremiumDiscount() {
+        if (amount.isGreaterThan(Money.of(100))) {
+            this.status = OrderStatus.PREMIUM;
+            this.amount = this.amount.multiply(0.9);
+        }
+    }
+}</code></pre>
+<h2 id="key-benefits">Key Benefits</h2>
+<ul>
+<li>Change localization: when business rules change, fix one place (inside the class)</li>
+<li>Encapsulation: internal state is protected</li>
+<li>Objects have responsibility — they are active behavioral entities</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="bijection.html">
+      <span class="connection-type extends">Enforced by</span>
+      <h4>Bijection</h4>
+      <p>anemic objects are a bijection violation</p>
+    </a>
+    <a class="connection-card" href="tell-dont-ask.html">
+      <span class="connection-type related">Supported by</span>
+      <h4>Tell, Don't Ask</h4>
+      <p>the behavioral principle</p>
+    </a>
+    <a class="connection-card" href="immutability.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Immutability of Essence</h4>
+      <p>rich objects protect essential attributes</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Immutability of Essence</h4>
+      <p>Contieri's Clean Code Cookbook</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="refactoring-at-scale.html" class="prev">← Refactoring at Scale</a><a href="scalable-architecture.html" class="next">Scalable Architecture →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

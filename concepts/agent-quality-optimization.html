@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Quality Optimization — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Agent Quality Optimization</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Agent Quality Optimization</h1>
+  <div class="page-meta"><span>Source: agent-quality-token-optimization</span><span>Updated: 2026-06-14</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">token-optimization</span><span class="tag">llm</span><span class="tag">reliability</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Agent Quality Optimization</strong> is the discipline of maximizing the return on investment from AI agents by engineering output quality rather than minimizing token count. It treats agent reliability as a system-level property — governed by context strategy, model selection, workflow design, and deterministic guardrails — rather than a prompt engineering problem. The goal is not "cheaper tokens" but "higher-value, more reliable agent outputs."</p>
+<blockquote>Quality is not about counting tokens — it's not about counting tokens at all. It's about maximizing value.</blockquote>
+<h2 id="the-roi-equation-quality-over-quantity">The ROI Equation: Quality Over Quantity</h2>
+<p>The fundamental framing: <strong>Agent ROI = Value of Output − Token Cost</strong></p>
+<table><thead><tr>
+<th>Variable</th>
+<th>What It Affects</th>
+<th>How to Improve</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Value of Output</strong></td>
+<td>Speed, autonomy, correctness — all dimensions of quality</td>
+<td>Better model selection, compound reliability, deterministic guardrails</td>
+</tr>
+<tr>
+<td><strong>Token Cost</strong></td>
+<td>One dimension: how much you pay</td>
+<td>Model choice, context strategy, session management</td>
+</tr>
+</tbody></table>
+<p>The key insight: <strong>quality amplifies value across multiple dimensions simultaneously</strong> — speed of delivery, degree of autonomy, correctness of results. Tokens only influence cost, a single dimension. Optimizing for token reduction at the expense of quality is net-negative ROI. A cheaper agent that produces wrong output is infinitely expensive.</p>
+<blockquote>Quality is an ROI-enhancing multiplier. Token cost is a linear subtractor. Optimize the multiplier.</blockquote>
+<h2 id="the-compound-error-problem">The Compound Error Problem</h2>
+<p>Agent workflows are multi-step. Each step has a probability of error. These errors compound multiplicatively, producing catastrophic degradation over chains of actions.</p>
+<table><thead><tr>
+<th>Per-Step Accuracy</th>
+<th>After 10 Steps</th>
+<th>After 50 Steps</th>
+</tr></thead><tbody>
+<tr>
+<td>95%</td>
+<td><strong>36%</strong></td>
+<td><strong>8%</strong></td>
+</tr>
+<tr>
+<td>99%</td>
+<td><strong>82%</strong></td>
+<td><strong>60%</strong></td>
+</tr>
+</tbody></table>
+<p>Even at 99% accuracy per step — which exceeds most current models on complex coding tasks — only 60% of chains survive 50 steps. At 95%, the agent is effectively useless beyond trivial workflows.</p>
+<p><strong>Implication</strong>: The difference between 95% and 99% per-step accuracy is not 4 percentage points — it's the difference between 60% and 8% compound reliability. Every fraction of a percent at the step level is magnified exponentially at the workflow level.</p>
+<p><strong>Countermeasure</strong>: Reduce the number of error-prone steps. Use precise, scoped tasks. Separate planning (high reasoning) from execution (deterministic implementation). The Research → Plan → Implement workflow pattern is designed specifically to minimize the number of compounding steps.</p>
+<h2 id="model-selection-strategy">Model Selection Strategy</h2>
+<p>Not all tasks require the same model. Matching model capability to task complexity is the single highest-leverage optimization.</p>
+<table><thead><tr>
+<th>Model Tier</th>
+<th>Use Case</th>
+<th>Examples</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Reasoning models</strong></td>
+<td>Synchronous planning, debugging, architecture decisions</td>
+<td>o3, Sonnet with thinking</td>
+</tr>
+<tr>
+<td><strong>Mid-tier models</strong></td>
+<td>Asynchronous implementation of known patterns</td>
+<td>Sonnet, GPT-4o</td>
+</tr>
+<tr>
+<td><strong>Low-tier models</strong></td>
+<td>Simple refactors, boilerplate, single-file changes</td>
+<td>Haiku, GPT-4o-mini</td>
+</tr>
+</tbody></table>
+<p><strong>Anti-pattern: "Auto" mode.</strong> Letting the platform choose the model automatically is a lazy default. Auto mode optimizes for availability and latency, not for task-appropriate capability. It frequently routes complex tasks to underpowered models and wastes expensive reasoning on trivial operations.</p>
+<p><strong>Heuristic</strong>: If you're syncing (watching), use a reasoning model. If you're async (fire-and-forget), use mid-tier. If you're doing mechanical refactoring, use low-tier. Manual model selection is table stakes for quality optimization.</p>
+<h2 id="context-engineering">Context Engineering</h2>
+<p>Context windows have grown dramatically (200K+ tokens), but <strong>attention is not uniform across the window</strong>. Two well-documented biases degrade agent performance:</p>
+<h3 id="lost-in-the-middle">Lost in the Middle</h3>
+<p>Information placed in the middle of a long context receives significantly less attention than information at the beginning or end. The model effectively "skims over" middle content. Critical instructions, constraints, and reference material must be positioned strategically — near the beginning (system prompt / AGENTS.md) or near the end (most recent messages).</p>
+<h3 id="recency-bias--context-rot">Recency Bias / Context Rot</h3>
+<p>As context grows, earlier information loses influence. The model increasingly weights recent messages over earlier ones. Stale context accumulates — old file contents, previous conversation turns, resolved issues — diluting the signal-to-noise ratio and causing the agent to "forget" constraints established early in the session.</p>
+<p><strong>Strategies</strong>:</p>
+<ul>
+<li><strong>Minimum necessary, maximum sufficient</strong>: Include only the context the task requires — no more, no less</li>
+<li><strong>Compact sessions cautiously</strong>: When context bloat is damaging quality, compact the session to remove irrelevant history</li>
+<li><strong>Use <code>/clear</code> for new tasks</strong>: Start fresh sessions for unrelated work. Don't let context from task A pollute task B</li>
+</ul>
+<blockquote>The goal is not to use less context. The goal is to use the <em>right</em> context.</blockquote>
+<h2 id="research--plan--implement">Research → Plan → Implement</h2>
+<p>A three-phase workflow pattern that prevents blind execution and minimizes compounding errors:</p>
+<pre><code>/research  →  /plan  →  /fleet (implement)
+   │             │            │
+   ▼             ▼            ▼
+Find relevant  Create spec   Execute precise
+files, patterns with reasoning tasks from plan
+in codebase    model          deterministically</code></pre>
+<p><strong>Phase 1 — Research</strong>: The agent searches the codebase for relevant files, patterns, and dependencies. No code changes. Pure information gathering. Uses <code>/research</code>.</p>
+<p><strong>Phase 2 — Plan</strong>: A reasoning model synthesizes the research findings into a concrete implementation plan — a spec with precise, scoped tasks. Uses <code>/plan</code> with a reasoning-tier model.</p>
+<p><strong>Phase 3 — Implement</strong>: Each task from the plan is executed individually. Tasks are small, precise, and independently verifiable. Uses <code>/fleet</code> to parallelize where possible.</p>
+<p><strong>Why it works</strong>: Separating planning (high reasoning, high token cost) from implementation (deterministic execution, lower cost) reduces the number of high-stakes steps where compounding errors can occur. The plan acts as a contract — implementation either matches the spec or it doesn't, making verification binary rather than judgment-based.</p>
+<h2 id="deterministic-guardrails">Deterministic Guardrails</h2>
+<p>AI agents make mistakes. The question is whether those mistakes are caught before they compound. Deterministic controls — unit tests, linters, CI/CD pipelines — serve as quality gates that operate independently of model reliability.</p>
+<pre><code>WITH tests:     Change → Test → FAIL → Correction → Test → PASS ✓
+WITHOUT tests:  Change → Buggy change → Buggy change → ... → Wasted cycles ✗</code></pre>
+<p><strong>Key principle</strong>: Deterministic guardrails shift failure detection left. A failing test catches an error at step N rather than letting it propagate through steps N+1, N+2, N+3. The cost of correction grows exponentially with each compounding step.</p>
+<p><strong>Practical applications</strong>:</p>
+<ul>
+<li><strong>Unit tests</strong>: Verify correctness of generated code before it becomes part of a larger system</li>
+<li><strong>Linters</strong>: Catch structural issues (unused imports, type errors) that models frequently produce</li>
+<li><strong>CI/CD</strong>: Automate the full verification pipeline so agents cannot "declare victory" without passing gates</li>
+<li><strong>Contract tests</strong>: Verify that agent outputs conform to expected interfaces before downstream consumption</li>
+</ul>
+<blockquote>Tests are not for the agent's benefit — they're for the system's reliability. The agent doesn't care if it's wrong. The harness does.</blockquote>
+<h2 id="agent-configuration-patterns">Agent Configuration Patterns</h2>
+<p>Agent quality is also a function of configuration infrastructure — how rules are defined, how capabilities are scoped, and how context is structured.</p>
+<table><thead><tr>
+<th>Configuration Mechanism</th>
+<th>Role</th>
+<th>Best Practice</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>AGENTS.md / copilot-instructions.md</strong></td>
+<td>Non-negotiable rules and constraints</td>
+<td>Define once; these are your constitution. Keep concise.</td>
+</tr>
+<tr>
+<td><strong>Custom agents</strong></td>
+<td>Specialized behavior for specific task categories</td>
+<td>One agent per domain (testing, refactoring, docs). Scoped instructions per agent.</td>
+</tr>
+<tr>
+<td><strong>Skills</strong></td>
+<td>Reusable instruction packs loaded on demand</td>
+<td>Domain-specific knowledge that doesn't belong in AGENTS.md. Load only when needed.</td>
+</tr>
+<tr>
+<td><strong>MCPs (Model Context Protocols)</strong></td>
+<td>Tool integrations (browser, CLI, APIs)</td>
+<td>Add tools the agent can invoke. Each MCP is a capability boundary — scope carefully.</td>
+</tr>
+<tr>
+<td><strong>Subagents</strong></td>
+<td>Parallel task execution with isolated context</td>
+<td>Decompose large tasks into independent sub-tasks. Each subagent gets only relevant context.</td>
+</tr>
+<tr>
+<td><strong>Scoped instructions</strong></td>
+<td>Task-specific guidance (prompt files)</td>
+<td>Create per-task instruction files that narrow the agent's focus to exactly what's needed.</td>
+</tr>
+</tbody></table>
+<p><strong>Anti-pattern</strong>: One giant instruction file. This causes instruction drift, competing priorities, and model confusion. Configuration primitives should be atomic, composable, and scoped to a single responsibility.</p>
+<h2 id="power-user-tips">Power User Tips</h2>
+<p>Practical optimizations from experienced agent engineers:</p>
+<ul>
+<li><strong>Think in code and scripts, not conversation</strong>: Express intent through executable artifacts (test files, type definitions, config schemas) rather than natural language descriptions. Code is precise; prose is ambiguous</li>
+<li><strong>CLI vs MCP trade-offs</strong>: CLI tools are fast, deterministic, and cacheable but limited to text I/O. MCPs provide richer context (browser DOM, structured API responses) at the cost of latency and token overhead. Choose based on the task: CLI for build/test cycles, MCP for research and verification</li>
+<li><strong>Reduce shell output</strong>: Verbose logs consume tokens without adding value. Pipe through filters, use <code>--quiet</code> flags, redirect to files when output is needed only on failure</li>
+<li><strong>Chronicle analysis</strong>: Periodically review agent session logs to identify patterns — recurring failures, context bloat, unnecessary tool calls. Treat sessions as data to be analyzed</li>
+<li><strong>Model-specific optimizations</strong>: Different models have different context utilization patterns, instruction-following fidelity, and failure modes. Optimize prompts for the specific model, not a generic "LLM"</li>
+</ul>
+<h2 id="long-term-traits">Long-Term Traits</h2>
+<p>The workshop identified traits that will distinguish effective agent engineers over the next 2–3 years:</p>
+<ul>
+<li><strong>Strong analytical skills over raw coding ability</strong>: Understanding systems, debugging failure chains, and reasoning about correctness matters more than writing syntax from scratch. The model can write code; the human must verify correctness</li>
+<li><strong>Good architecture for agent discoverability</strong>: Codebase structure directly impacts agent performance. DDD (Domain-Driven Design) and hexagonal architecture produce clear module boundaries, explicit interfaces, and predictable file layouts — all of which help agents navigate and understand the codebase</li>
+<li><strong>Iterate on prompts like you iterate on code</strong>: Prompts are engineering artifacts. Version them, test them, benchmark them against known inputs. A/B test prompt variations. The feedback loop for prompts should be as rigorous as the feedback loop for implementation</li>
+</ul>
+<h2 id="five-things-to-start-today">Five Things to Start Today</h2>
+<ol>
+<li><strong>Explore models manually</strong>: Understand the capability gradient across model tiers before delegating model selection to automation</li>
+<li><strong>Secure API access</strong>: Direct API access enables programmatic benchmarking, batch processing, and model-agnostic workflows that IDE integrations cannot provide</li>
+<li><strong>Install GitHub Copilot</strong>: The workshop's recommended entry point — copilot chat, copilot edits, and agent mode provide progressively deeper agent integration</li>
+<li><strong>Use <code>--cache</code> and <code>--resume</code> flags</strong>: Cache intermediate results to avoid re-computation; resume interrupted sessions to preserve context investment</li>
+<li><strong>Use <code>--thinking</code> flags</strong>: Enable extended reasoning for complex planning tasks. Close the feedback loop by comparing thinking traces against actual outcomes</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="harness-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Harness Engineering</h4>
+      <p>harness engineering provides the structural enforcement (AGENTS.md, verification loops, feature lists); quality optimization provides the token/context strategy and model selection framework</p>
+    </a>
+    <a class="connection-card" href="technological-centaur.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Technological Centaur</h4>
+      <p>both disciplines shift the human role from "better prompter" to "environment designer": quality optimization through context engineering and model strategy, harness engineering through structural primitives</p>
+    </a>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fail Fast</h4>
+      <p>deterministic guardrails (tests, linters, CI/CD) catch agent errors before they compound, directly implementing the fail-fast philosophy in agentic workflows</p>
+    </a>
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Testing Strategy</h4>
+      <p>unit tests serve as deterministic controls for agentic workflows; independent quality gates that operate regardless of model reliability</p>
+    </a>
+    <a class="connection-card" href="context-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Context Engineering</h4>
+      <p>the Context Engineering section covers the same principles (lost in the middle, recency bias, minimum necessary context) formalized as a standalone discipline</p>
+    </a>
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type core">Core to</span>
+      <h4>AI-Native Engineering</h4>
+      <p>quality optimization governs model selection, compound error prevention, and context strategy within AI-native workflows</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>AI-Native Engineering</h4>
+      <p>GitHub workshop on agent quality and token optimization by Felix Gozali and Lakshya Tyagi</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="agentic-development-life-cycle.html" class="next">Agentic Development Life Cycle →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

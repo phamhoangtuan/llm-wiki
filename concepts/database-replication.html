@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database Replication — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-databases">Databases</a> <span class="sep">/</span>
+  <span>Database Replication</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Database Replication</h1>
+  <div class="page-meta"><span>Source: system-design-interview-xu</span><span>Updated: 2026-05-24</span></div>
+  <div class="page-tags"><span class="tag">databases</span><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">data-consistency</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>Database replication is the process of copying data from a primary database (master) to one or more secondary databases (slaves/replicas). The master-slave pattern separates write operations from read operations, enabling horizontal scaling of read-heavy workloads.</p>
+<h2 id="master-slave-architecture">Master-Slave Architecture</h2>
+<table><thead><tr>
+<th>Component</th>
+<th>Responsibility</th>
+<th>Benefit</th>
+</tr></thead><tbody>
+<tr>
+<td>Master</td>
+<td>Handles all writes (INSERT, UPDATE, DELETE)</td>
+<td>Single source of truth for data consistency</td>
+</tr>
+<tr>
+<td>Slave(s)</td>
+<td>Receive data copies from master; handle reads</td>
+<td>Scale reads horizontally; parallel processing</td>
+</tr>
+</tbody></table>
+<h2 id="failover-scenarios">Failover Scenarios</h2>
+<table><thead><tr>
+<th>Failure</th>
+<th>Response</th>
+</tr></thead><tbody>
+<tr>
+<td>Slave dies</td>
+<td>Reads redirect to master or another healthy slave</td>
+</tr>
+<tr>
+<td>Master dies</td>
+<td>Promote a slave to master (may require data recovery if slave hasn't synced)</td>
+</tr>
+</tbody></table>
+<h2 id="trade-offs">Trade-offs</h2>
+<table><thead><tr>
+<th>Challenge</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Replication lag</strong></td>
+<td>Slave may not be fully up-to-date with master — application must handle eventual consistency</td>
+</tr>
+<tr>
+<td><strong>Write bottleneck</strong></td>
+<td>All writes go to a single master — master capacity is the write ceiling</td>
+</tr>
+<tr>
+<td><strong>Split-brain</strong></td>
+<td>If master and promoted slave both accept writes, data diverges</td>
+</tr>
+</tbody></table>
+<blockquote><strong>Rule of thumb</strong>: Start with a single database. Add replication when read load exceeds what one server can handle.</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="scalable-architecture.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Scalable Architecture</h4>
+      <p>scales the data tier</p>
+    </a>
+    <a class="connection-card" href="cache-strategy.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Cache Strategy</h4>
+      <p>cache sits in front of replicated reads for further scaling</p>
+    </a>
+    <a class="connection-card" href="load-balancer.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Load Balancer</h4>
+      <p>routes reads to available slaves</p>
+    </a>
+    <a class="connection-card" href="database-sharding.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Database Sharding</h4>
+      <p>replication copies data; sharding partitions data</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="data-modeling.html" class="prev">← Data Modeling</a><a href="database-sharding.html" class="next">Database Sharding →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

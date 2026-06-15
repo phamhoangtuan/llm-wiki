@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Complexity Metrics — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-software-design">Software Design</a> <span class="sep">/</span>
+  <span>Complexity Metrics</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Complexity Metrics</h1>
+  <div class="page-meta"><span>Source: refactoring-at-scale-lemaire</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">software-design</span><span class="tag">code-quality</span><span class="tag">metrics</span><span class="tag">refactoring</span><span class="tag">static-analysis</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Complexity Metrics</strong> are quantitative measurements of code difficulty — how hard it is to understand, test, and modify a piece of software. They transform subjective developer frustration ("this code is a mess") into objective data that can justify refactoring investment to leadership. The three core metrics — Halstead, Cyclomatic, and NPath — each capture a different dimension of complexity.</p>
+<h2 id="the-three-core-metrics">The Three Core Metrics</h2>
+<table><thead><tr>
+<th>Metric</th>
+<th>Measures</th>
+<th>Practical Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Halstead Volume</strong></td>
+<td>Information a reader must absorb (operators + operands)</td>
+<td>Cognitive load to understand this code</td>
+</tr>
+<tr>
+<td><strong>Halstead Difficulty</strong></td>
+<td>Mental effort to re-create the code from scratch</td>
+<td>How hard it would be to rewrite correctly</td>
+</tr>
+<tr>
+<td><strong>Cyclomatic Complexity</strong></td>
+<td>Number of independent execution paths</td>
+<td>Lower bound for test cases needed to cover logic</td>
+</tr>
+<tr>
+<td><strong>NPath Complexity</strong></td>
+<td>All possible execution paths including nested logic</td>
+<td>True "psychological complexity" — upper bound for testing</td>
+</tr>
+</tbody></table>
+<h2 id="why-they-matter">Why They Matter</h2>
+<h3 id="for-developers">For Developers</h3>
+<ul>
+<li><strong>Objective scoping</strong>: "This module scores 45 on cyclomatic (threshold: 10)" is more actionable than "this code feels messy"</li>
+<li><strong>Refactoring targets</strong>: Set measurable goals — "reduce cyclomatic from 45 to <15"</li>
+<li><strong>Finish line</strong>: Metrics provide a clear definition of "done" — prevents the <a href="refactoring-at-scale.html" class="wiki-link">Brownie Effect</a> of endless refactoring</li>
+</ul>
+<h3 id="for-leadership">For Leadership</h3>
+<ul>
+<li><strong>Risk quantification</strong>: "Every change to this module has a ~15% chance of introducing regression"</li>
+<li><strong>Onboarding cost</strong>: "A new developer takes ~3x longer to understand this module than average"</li>
+<li><strong>ROI calculation</strong>: "3 developer-weeks of refactoring → 40% faster feature development in this area"</li>
+</ul>
+<h2 id="practical-thresholds">Practical Thresholds</h2>
+<table><thead><tr>
+<th>Metric</th>
+<th>Healthy</th>
+<th>Warning</th>
+<th>Critical</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Cyclomatic Complexity</strong></td>
+<td>≤ 10</td>
+<td>11–20</td>
+<td>> 20</td>
+</tr>
+<tr>
+<td><strong>NPath Complexity</strong></td>
+<td>≤ 200</td>
+<td>201–1000</td>
+<td>> 1000</td>
+</tr>
+<tr>
+<td><strong>Halstead Difficulty</strong></td>
+<td>≤ 30</td>
+<td>31–60</td>
+<td>> 60</td>
+</tr>
+</tbody></table>
+<h2 id="business-translation-example">Business Translation Example</h2>
+<pre><code>File: payment_processor.py
+- Cyclomatic Complexity: 45 (warning threshold: &gt;10)
+- NPath Complexity: 12,847 possible paths
+- Halstead Difficulty: 89.2 (very hard to re-create)
+
+Translation:
+- Minimum 45 test cases needed for basic coverage
+- ~12,000 test cases for full path coverage
+- New developer takes ~3x longer to understand
+- Each change has ~15% regression risk (historical data)
+
+Refactoring proposal:
+- Target: Cyclomatic &lt; 15, NPath ~200
+- Effort: 3 developer-weeks
+- Expected ROI: 40% faster feature velocity in this module</code></pre>
+<h2 id="integration-with-cicd">Integration with CI/CD</h2>
+<p>Set automated gates in CI:</p>
+<ul>
+<li>Fail build if cyclomatic complexity increases beyond threshold</li>
+<li>Track metric trends over time — rot happens slowly, metrics catch it early</li>
+<li>Use Control Flow Graphs (CFGs) to visualize tangled paths for non-technical stakeholders</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="refactoring-at-scale.html">
+      <span class="connection-type related">Related</span>
+      <h4>Refactoring at Scale</h4>
+      <p>metrics scope, justify, and define "done" for refactoring efforts</p>
+    </a>
+    <a class="connection-card" href="software-rot.html">
+      <span class="connection-type related">Related</span>
+      <h4>Software Rot</h4>
+      <p>trending metrics reveal degradation before it becomes visible</p>
+    </a>
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Code Quality Pillars</h4>
+      <p>measurable quality enforcement</p>
+    </a>
+    <a class="connection-card" href="essential-accidental-complexity.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Essential vs Accidental Complexity</h4>
+      <p>metrics quantify accidental complexity growth</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Essential vs Accidental Complexity</h4>
+      <p>Lemaire's framework for complexity measurement</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="code-quality-pillars.html" class="prev">← Code Quality Pillars</a><a href="composition-root.html" class="next">Composition Root →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

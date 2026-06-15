@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apache Kafka — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-streaming">Streaming</a> <span class="sep">/</span>
+  <span>Apache Kafka</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Apache Kafka</h1>
+  <div class="page-meta"><span>Source: hugo-data-ingestion-platform-flink, databricks-zerobus</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">streaming</span><span class="tag">messaging</span><span class="tag">kafka</span><span class="tag">data-engineering</span><span class="tag">event-driven</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Apache Kafka</strong> is an open-source distributed event streaming platform used for high-throughput, low-latency data pipelines, streaming analytics, and event-driven architectures. Unlike traditional <a href="message-queue.html" class="wiki-link">message queues</a>, Kafka is a <strong>distributed log</strong> — messages are persisted, ordered, and replayable. Kafka is central to Grab's data platform as both a data source (Kafka topic ingestion) and historically as the intermediary in their CDC pipelines (now replaced by Flink CDC).</p>
+<h2 id="core-concepts">Core Concepts</h2>
+<table><thead><tr>
+<th>Concept</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Topic</strong></td>
+<td>A named channel (category) to which records are published</td>
+</tr>
+<tr>
+<td><strong>Partition</strong></td>
+<td>Topics are split into partitions for parallelism; messages within a partition are strictly ordered</td>
+</tr>
+<tr>
+<td><strong>Producer</strong></td>
+<td>Application that publishes records to a Kafka topic</td>
+</tr>
+<tr>
+<td><strong>Consumer</strong></td>
+<td>Application that subscribes to topics and processes records</td>
+</tr>
+<tr>
+<td><strong>Consumer Group</strong></td>
+<td>Set of consumers that cooperatively consume from a topic; each partition is consumed by exactly one consumer in the group</td>
+</tr>
+<tr>
+<td><strong>Broker</strong></td>
+<td>A Kafka server; a cluster is a group of brokers</td>
+</tr>
+<tr>
+<td><strong>Offset</strong></td>
+<td>Unique sequential ID for each record within a partition; consumers track their position via offsets</td>
+</tr>
+<tr>
+<td><strong>Retention</strong></td>
+<td>Kafka retains messages for a configurable duration (hours to years), not just until consumed</td>
+</tr>
+</tbody></table>
+<h2 id="kafka-vs-traditional-message-queues">Kafka vs Traditional Message Queues</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Kafka</th>
+<th>Traditional MQ (RabbitMQ, SQS)</th>
+</tr></thead><tbody>
+<tr>
+<td>Model</td>
+<td>Distributed log</td>
+<td>Queue</td>
+</tr>
+<tr>
+<td>Message persistence</td>
+<td>Long-term (retention-based)</td>
+<td>Until consumed</td>
+</tr>
+<tr>
+<td>Replay</td>
+<td>Yes (reset offset)</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Ordering</td>
+<td>Within partition</td>
+<td>Typically FIFO</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>Millions of messages/sec</td>
+<td>Thousands to tens of thousands</td>
+</tr>
+<tr>
+<td>Consumer model</td>
+<td>Pull-based</td>
+<td>Push-based</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Event streaming, data pipelines, CDC</td>
+<td>Work distribution, RPC</td>
+</tr>
+</tbody></table>
+<h2 id="in-data-ingestion-pipelines">In Data Ingestion Pipelines</h2>
+<h3 id="kafka-as-source-hugos-current-pattern">Kafka as Source (Hugo's Current Pattern)</h3>
+<pre><code>Application → Kafka topic → Flink Consumer → S3 → Hive</code></pre>
+<p>Kafka serves as the ingestion source for application-generated events. Hugo's Flink pipelines consume from Kafka topics, resolve Protobuf schemas dynamically from Confluent Schema Registry, and write to the data lake.</p>
+<h3 id="kafka-as-cdc-intermediary-hugos-legacy-p">Kafka as CDC Intermediary (Hugo's Legacy Pattern)</h3>
+<pre><code>MySQL binlog → Kafka Connect (Debezium) → Kafka topic → Consumer (Sprinkler) → S3</code></pre>
+<p>This was the previous architecture — Kafka acted as the buffer between the CDC connector and the S3 writer. Grab migrated away from this because it added operational complexity (more components to manage, coordinate, and debug). <a href="apache-flink.html" class="wiki-link">Flink CDC</a> reads binlog directly, eliminating the Kafka hop.</p>
+<h2 id="schema-registry">Schema Registry</h2>
+<p><strong>Confluent Schema Registry</strong> is a critical companion to Kafka in data pipelines. It stores and versions schemas (Avro, Protobuf, JSON Schema) outside of Kafka topics:</p>
+<ul>
+<li>Producers register schemas before publishing</li>
+<li>Consumers fetch schemas at runtime by schema ID embedded in the message</li>
+<li>Enables <strong>schema evolution</strong> with compatibility checks (backward, forward, full)</li>
+</ul>
+<p>In Hugo's Flink pipelines:</p>
+<pre><code>CI pipeline → updates Protobuf schema → Schema Registry → Flink fetches at startup</code></pre>
+<p>This eliminates the need for hardcoded DTOs (the legacy Sprinkler approach). Schema changes still require a manual Flink pipeline restart as of 2026-05.</p>
+<h2 id="kafka-connect-legacy-at-grab">Kafka Connect (Legacy at Grab)</h2>
+<p>Kafka Connect is a framework for connecting Kafka with external systems via pre-built connectors (source and sink). It was used at Grab for MySQL CDC (Debezium connector) but was retired in favor of Flink CDC because:</p>
+<ul>
+<li>Added an extra component to manage and monitor</li>
+<li>Required users to configure jobs across multiple platforms (Kafka Connect + Hugo)</li>
+<li>Schema mapping between systems was manual and error-prone</li>
+</ul>
+<h2 id="when-to-use-kafka">When to Use Kafka</h2>
+<table><thead><tr>
+<th>✅ Use Kafka</th>
+<th>❌ Don't Use Kafka</th>
+</tr></thead><tbody>
+<tr>
+<td>High-throughput event streaming</td>
+<td>Simple task queues (use RabbitMQ/SQS)</td>
+</tr>
+<tr>
+<td>Data pipelines with replay needs</td>
+<td>Request-response patterns (use REST/gRPC)</td>
+</tr>
+<tr>
+<td>Event sourcing / CQRS</td>
+<td>Small-scale messaging (overhead not worth it)</td>
+</tr>
+<tr>
+<td>Decoupling microservices</td>
+<td>Transient, fire-and-forget messages</td>
+</tr>
+<tr>
+<td>Log aggregation, metrics</td>
+<td></td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="message-queue.html">
+      <span class="connection-type extends">Extends</span>
+      <h4>Message Queue</h4>
+      <p>Kafka is a specific distributed log implementation with persistence and replay</p>
+    </a>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Flink</h4>
+      <p>Flink is a first-class Kafka consumer/producer; replaces Kafka Connect</p>
+    </a>
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Ingestion</h4>
+      <p>Kafka is a primary source in Hugo's unified ingestion platform</p>
+    </a>
+    <a class="connection-card" href="change-data-capture.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>Kafka + Debezium was Grab's legacy CDC approach (now replaced by Flink CDC)</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>Databricks Zerobus is an API-based streaming alternative for Lake House use cases, removing Kafka's operational overhead</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>Grab's migration away from Kafka Connect toward Flink</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="apache-iceberg.html" class="prev">← Apache Iceberg</a><a href="apache-parquet.html" class="next">Apache Parquet →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

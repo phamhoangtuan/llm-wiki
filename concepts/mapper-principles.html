@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAPPER Principles — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-architecture">Architecture</a> <span class="sep">/</span>
+  <span>MAPPER Principles</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>MAPPER Principles</h1>
+  <div class="page-meta"><span>Source: contieri-clean-code-cookbook</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">architecture</span><span class="tag">design-principles</span><span class="tag">clean-code</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>MAPPER is an acronym for 6 principles that define the "software as simulation" philosophy. Each letter represents a guideline for building faithful computational models of reality.</p>
+<h2 id="the-6-principles">The 6 Principles</h2>
+<table><thead><tr>
+<th>Letter</th>
+<th>Principle</th>
+<th>Meaning</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>M</strong></td>
+<td>Model</td>
+<td>Code is a "theory" about how the world works</td>
+<td><code>BankAccount</code> class simulates a real bank account</td>
+</tr>
+<tr>
+<td><strong>A</strong></td>
+<td>Abstract</td>
+<td>Focus on contracts & behavior, not implementation details</td>
+<td><code>PaymentProcessor</code> interface with <code>process()</code> — doesn't matter if it's Stripe or PayPal</td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td>Partial</td>
+<td>Only simulate what's relevant — not the entire reality</td>
+<td><code>User</code> class needs email and name, not shoe size (unless it's a shoe store)</td>
+</tr>
+<tr>
+<td><strong>P</strong></td>
+<td>Programmable</td>
+<td>The model must be executable to observe its evolution and response</td>
+<td>Code must compile and run, not just be theory on paper</td>
+</tr>
+<tr>
+<td><strong>E</strong></td>
+<td>Explaining</td>
+<td>Code should reveal "why" not just "what" — declarative naming</td>
+<td><code>isPremiumUser</code> is clearer than <code>flag1</code></td>
+</tr>
+<tr>
+<td><strong>R</strong></td>
+<td>Reality</td>
+<td>The observable world is the ultimate source of truth</td>
+<td>Units must be explicit: Newtons vs. pound-force — never ambiguous</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="software-as-simulation.html">
+      <span class="connection-type related">Operationalizes</span>
+      <h4>Software as Simulation</h4>
+      <p>turns philosophy into actionable guidelines</p>
+    </a>
+    <a class="connection-card" href="bijection.html">
+      <span class="connection-type extends">Enforced by</span>
+      <h4>Bijection</h4>
+      <p>the 1-1 mapping is the concrete implementation of Model + Reality</p>
+    </a>
+    <a class="connection-card" href="rich-domain-model.html">
+      <span class="connection-type extends">Supports</span>
+      <h4>Rich Domain Model</h4>
+      <p>Abstract + Explaining encourage behavioral objects</p>
+    </a>
+    <a class="connection-card" href="tell-dont-ask.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Tell, Don't Ask</h4>
+      <p>Explaining principle guides naming and behavior revelation</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Tell, Don't Ask</h4>
+      <p>Contieri's Clean Code Cookbook</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="load-balancer.html" class="prev">← Load Balancer</a><a href="materialized-views.html" class="next">Materialized Views →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

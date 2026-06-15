@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Readability vs Performance — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-design-principles">Design Principles</a> <span class="sep">/</span>
+  <span>Readability vs Performance</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Readability vs Performance</h1>
+  <div class="page-meta"><span>Source: contieri-clean-code-cookbook, good-code-bad-code, seriously-good-software</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">design-principles</span><span class="tag">optimization</span><span class="tag">clean-code</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>Many teams fall into the trap of premature optimization — sacrificing readability to chase performance gains that aren't significant. The correct priority: clean, readable code first, then measure and optimize bottlenecks.</p>
+<h2 id="the-pareto-strategy">The Pareto Strategy</h2>
+<ol>
+<li>Write clean, readable code first</li>
+<li>Cover with tests to ensure correctness</li>
+<li>Measure actual performance (profiling)</li>
+<li>Apply Pareto: optimize the 20% of bottlenecks causing 80% of problems</li>
+</ol>
+<h2 id="why-this-works">Why This Works</h2>
+<blockquote>Clean code makes it easier to identify true bottlenecks. Code that's a tangled mess is hard to profile even if you try.</blockquote>
+<h2 id="linguistic-relativity-in-code-sapir-whor">Linguistic Relativity in Code (Sapir-Whorf Hypothesis)</h2>
+<blockquote>"The language you use shapes how you perceive the world."</blockquote>
+<ul>
+<li>If your language only has <code>int</code> and <code>String</code>, you'll think of domain objects as "data holders"</li>
+<li>If your language supports value objects, immutability, type safety, you'll naturally build rich behavioral models</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="software-as-simulation.html">
+      <span class="connection-type extends">Supports</span>
+      <h4>Software as Simulation</h4>
+      <p>readable code is a better simulation</p>
+    </a>
+    <a class="connection-card" href="technological-centaur.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Technological Centaur</h4>
+      <p>clean code enables effective human-AI collaboration</p>
+    </a>
+    <a class="connection-card" href="essential-accidental-complexity.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Essential vs Accidental Complexity</h4>
+      <p>premature optimization adds accidental complexity</p>
+    </a>
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Related</span>
+      <h4>Code Quality Pillars</h4>
+      <p>pillar 1 (readable code) is the baseline before any optimization</p>
+    </a>
+    <a class="connection-card" href="software-quality-dimensions.html">
+      <span class="connection-type related">Related</span>
+      <h4>Software Quality Dimensions</h4>
+      <p>the Efficiency/Readability trade-off is a core quality tension</p>
+    </a>
+    <a class="connection-card" href="python-concurrency.html">
+      <span class="connection-type related">Related</span>
+      <h4>Python Concurrency</h4>
+      <p>safety over perceived speed; don't introduce concurrency until profiling proves it's needed</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Python Concurrency</h4>
+      <p>Contieri's Clean Code Cookbook</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="python-static-analysis.html" class="prev">← Python Static Analysis</a><a href="refactoring-at-scale.html" class="next">Refactoring at Scale →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

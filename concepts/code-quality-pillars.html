@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Code Quality Pillars — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-design-principles">Design Principles</a> <span class="sep">/</span>
+  <span>Code Quality Pillars</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Code Quality Pillars</h1>
+  <div class="page-meta"><span>Source: good-code-bad-code, practical-object-oriented-design</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">design-principles</span><span class="tag">clean-code</span><span class="tag">engineering</span><span class="tag">maintainability</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>Quality code isn't a matter of aesthetics — it's a practical necessity for business stability and user safety. Software engineering is distinct from mere coding: it produces code that lives for years, withstands modification by many developers, and carries real-world consequences if it fails.</p>
+<h2 id="engineering-vs-coding">Engineering vs Coding</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Coding</th>
+<th>Software Engineering</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Time horizon</strong></td>
+<td>Write and forget</td>
+<td>Code must survive years of change</td>
+</tr>
+<tr>
+<td><strong>Consequences</strong></td>
+<td>Personal project — fix mistakes easily</td>
+<td>Real systems (banking, healthcare) — bugs can ruin lives</td>
+</tr>
+<tr>
+<td><strong>Environment</strong></td>
+<td>Solitary work</td>
+<td>"Busy places" — many developers modify simultaneously</td>
+</tr>
+</tbody></table>
+<blockquote>Coding is writing a letter. Engineering is constructing a building — multiple builders, and it must stand through storms.</blockquote>
+<h2 id="the-4-goals-of-quality-code">The 4 Goals of Quality Code</h2>
+<p>Every code decision should advance these four measurable goals:</p>
+<table><thead><tr>
+<th>Goal</th>
+<th>Meaning</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>1. It should work</strong></td>
+<td>Solves the right problem, including performance, security, and privacy</td>
+</tr>
+<tr>
+<td><strong>2. It should keep working</strong></td>
+<td>Survives dependency changes, new features, evolving business logic</td>
+</tr>
+<tr>
+<td><strong>3. It should be adaptable</strong></td>
+<td>Requirements will change — code must bend without breaking</td>
+</tr>
+<tr>
+<td><strong>4. No reinventing the wheel</strong></td>
+<td>Leverage existing solutions; write code others can reuse</td>
+</tr>
+</tbody></table>
+<h2 id="the-6-pillars">The 6 Pillars</h2>
+<h3 id="1-make-code-readable">1. Make Code Readable</h3>
+<p>Code is written for humans, not just machines. Unreadable code is like a recipe with no title — future developers must reverse-engineer intent. Consequence: bugs slip through review, fixes introduce new bugs.</p>
+<p><strong>Practice</strong>: Meaningful variable/function names, clear logical structure.</p>
+<h3 id="2-avoid-surprises">2. Avoid Surprises</h3>
+<p>Functions must do exactly what their name promises — no hidden side effects.</p>
+<p><strong>Example</strong>: A function called <code>dialRestaurant()</code> that automatically calls a different restaurant when the first is busy. Well-intentioned, but a surprise. Result: customer orders Margarita pizza, receives Margarita cocktail from the bar next door.</p>
+<h3 id="3-make-code-hard-to-misuse">3. Make Code Hard to Misuse</h3>
+<p>Design to prevent errors at the source, like shaped ports on a TV that prevent plugging power into HDMI.</p>
+<p><strong>Practice</strong>: Use correct data types and interfaces so the compiler catches wrong parameters. Don't let callers "plug into the wrong port."</p>
+<h3 id="4-make-code-modular">4. Make Code Modular</h3>
+<p>Divide systems into small, independent components.</p>
+<table><thead><tr>
+<th>Modular (Lego)</th>
+<th>Stitched-Together</th>
+</tr></thead><tbody>
+<tr>
+<td>Easy to snap apart and replace blocks</td>
+<td>Must break everything to fix one part</td>
+</tr>
+<tr>
+<td>Reconfigurable, debuggable, replaceable</td>
+<td>Fragile, tightly coupled</td>
+</tr>
+</tbody></table>
+<h3 id="5-make-code-reusable--generalizable">5. Make Code Reusable & Generalizable</h3>
+<ul>
+<li><strong>Reusability</strong>: Same code solves multiple identical scenarios (a drill works on walls, floors, ceilings)</li>
+<li><strong>Generalizability</strong>: Code solves conceptually similar but different problems (drill accepts screwdriver attachment)</li>
+</ul>
+<p><strong>Benefit</strong>: Fewer total lines of code → smaller attack surface for bugs.</p>
+<h3 id="6-make-code-testable">6. Make Code Testable</h3>
+<p>Testing is the last line of defense before production. Three levels:</p>
+<table><thead><tr>
+<th>Level</th>
+<th>Scope</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Unit Tests</strong></td>
+<td>Individual functions/classes</td>
+</tr>
+<tr>
+<td><strong>Integration Tests</strong></td>
+<td>Components working together</td>
+</tr>
+<tr>
+<td><strong>End-to-End (E2E)</strong></td>
+<td>Complete user workflows</td>
+</tr>
+</tbody></table>
+<p>Modular code is inherently more testable because each component can be isolated.</p>
+<h2 id="abstraction-layers">Abstraction Layers</h2>
+<h3 id="api-vs-implementation-detail">API vs Implementation Detail</h3>
+<table><thead><tr>
+<th>Component</th>
+<th>Characteristic</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Public API</strong></td>
+<td>What callers see — high-level concepts</td>
+<td><code>user.save()</code></td>
+</tr>
+<tr>
+<td><strong>Implementation Detail</strong></td>
+<td>Internal "nuts and bolts" — must stay hidden</td>
+<td><code>INSERT INTO users...</code></td>
+</tr>
+</tbody></table>
+<h3 id="design-rules">Design Rules</h3>
+<ul>
+<li><strong>Small functions</strong>: One function, one job. If you can't describe it in one sentence, it's too complex.</li>
+<li><strong>Cohesive classes</strong>: Group related concepts. Avoid "MassiveClass" that does too much.</li>
+<li><strong>Layer thickness</strong>: Not too thick (mixing abstractions), not too thin (unnecessary boilerplate).</li>
+<li><strong>Interfaces</strong>: Create clear boundaries between layers. Depend on interfaces, not concrete classes.</li>
+</ul>
+<h2 id="the-standard-development-pipeline">The Standard Development Pipeline</h2>
+<pre><code>Code Change → Code Review (proofreading) → Commit → Pre-submit Checks (automated tests)
+→ Release (snapshot, QA) → Production (real users)</code></pre>
+<h2 id="less-haste-more-speed">Less Haste, More Speed</h2>
+<table><thead><tr>
+<th>Approach</th>
+<th>Short-term</th>
+<th>Long-term</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Hacky solutions</strong></td>
+<td>Save minutes (like gluing shelves to walls)</td>
+<td>Disaster later (shelves fall, rebuild everything)</td>
+</tr>
+<tr>
+<td><strong>High-quality code</strong></td>
+<td>Costs upfront thinking time</td>
+<td>Sustainable speed, avoids painful refactoring</td>
+</tr>
+</tbody></table>
+<blockquote>True speed lies in sustainability, not haste. Investment in readability, modularity, and testing prevents the codebase from becoming fragile chaos.</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="readability-vs-performance.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Readability vs Performance</h4>
+      <p>pillar 1 (readable) often perceived as conflicting with performance</p>
+    </a>
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type related">Informs</span>
+      <h4>Testing Strategy</h4>
+      <p>pillar 6 (testable) defines the 3 test levels</p>
+    </a>
+    <a class="connection-card" href="essential-accidental-complexity.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Essential vs Accidental Complexity</h4>
+      <p>well-abstracted code reduces accidental complexity</p>
+    </a>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related</span>
+      <h4>Fail Fast</h4>
+      <p>pillar 2 (no surprises) and pillar 3 (hard to misuse)</p>
+    </a>
+    <a class="connection-card" href="dependency-injection.html">
+      <span class="connection-type related">Related</span>
+      <h4>Dependency Injection</h4>
+      <p>interface-based design enables modularity (pillar 4)</p>
+    </a>
+    <a class="connection-card" href="solid-principles.html">
+      <span class="connection-type related">Related</span>
+      <h4>SOLID Principles</h4>
+      <p>SOLID is the foundation for reusable, modular code</p>
+    </a>
+    <a class="connection-card" href="tell-dont-ask.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Tell, Don't Ask</h4>
+      <p>good code tells objects to act rather than querying internals</p>
+    </a>
+    <a class="connection-card" href="immutability.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Immutability of Essence</h4>
+      <p>immutability makes code harder to misuse (pillar 3)</p>
+    </a>
+    <a class="connection-card" href="rich-domain-model.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Rich Domain Model</h4>
+      <p>cohesive classes embody rich behavior (pillar 4)</p>
+    </a>
+    <a class="connection-card" href="software-quality-dimensions.html">
+      <span class="connection-type related">Related</span>
+      <h4>Software Quality Dimensions</h4>
+      <p>complementary framework: pillars (tactical) vs dimensions (analytical)</p>
+    </a>
+    <a class="connection-card" href="object-oriented-design.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Object-Oriented Design</h4>
+      <p>TRUE (Transparent/Reasonable) aligns with readability and modularity pillars</p>
+    </a>
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type related">Informs</span>
+      <h4>DataOps</h4>
+      <p>DataOps applies the same modularity, testing, and reuse pillars to data pipelines</p>
+    </a>
+    <a class="connection-card" href="refactoring-at-scale.html">
+      <span class="connection-type related">Related</span>
+      <h4>Refactoring at Scale</h4>
+      <p>refactoring is the practice that preserves code quality over time against [[software-rot]]</p>
+    </a>
+    <a class="connection-card" href="complexity-metrics.html">
+      <span class="connection-type related">Related</span>
+      <h4>Complexity Metrics</h4>
+      <p>quantitative quality enforcement via Halstead, Cyclomatic, NPath</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Complexity Metrics</h4>
+      <p>Tom Long's 338-page guide</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="code-overload.html" class="prev">← Code Overload</a><a href="complexity-metrics.html" class="next">Complexity Metrics →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

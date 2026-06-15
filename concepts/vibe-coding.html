@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe Coding — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Vibe Coding</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Vibe Coding</h1>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">coding</span><span class="tag">methodology</span><span class="tag">terminology</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Vibe Coding</strong> is a term coined by Andrej Karpathy in early 2025 to describe the practice of non-engineers building functional software by describing what they want to AI agents — without understanding the underlying code. It represents the democratization of software creation, but it is categorically different from professional <a href="ai-native-engineering.html" class="wiki-link">ai-native-engineering</a>.</p>
+<h2 id="vibe-coding-vs-ai-native-engineering">Vibe Coding vs AI-Native Engineering</h2>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Vibe Coding</th>
+<th>AI-Native Engineering</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Who</strong></td>
+<td>Non-engineers, domain experts</td>
+<td>Professional software engineers</td>
+</tr>
+<tr>
+<td><strong>Requirement</strong></td>
+<td>Ability to describe desired behavior</td>
+<td>Deep coding knowledge + orchestration skills</td>
+</tr>
+<tr>
+<td><strong>Code understanding</strong></td>
+<td>Not required</td>
+<td>Essential — for verification, debugging, integration</td>
+</tr>
+<tr>
+<td><strong>Verification</strong></td>
+<td>"Looks like it works"</td>
+<td>Rigorous testing, security review, performance validation</td>
+</tr>
+<tr>
+<td><strong>Context</strong></td>
+<td>One-off prompts</td>
+<td>Persistent, curated context layers</td>
+</tr>
+<tr>
+<td><strong>Specifications</strong></td>
+<td>Ad-hoc descriptions</td>
+<td>Structured, milestone-based specs</td>
+</tr>
+<tr>
+<td><strong>Failure mode</strong></td>
+<td>Produces working demo that breaks at scale</td>
+<td>Produces production-grade, maintainable systems</td>
+</tr>
+</tbody></table>
+<blockquote>"Vibe coding has its place, but it's not engineering."</blockquote>
+<h2 id="where-vibe-coding-adds-value">Where Vibe Coding Adds Value</h2>
+<ul>
+<li><strong>Prototyping</strong>: Non-technical founders can validate ideas before hiring engineers</li>
+<li><strong>Internal tools</strong>: Domain experts can build simple automation without involving engineering teams</li>
+<li><strong>Learning</strong>: Beginners can explore programming concepts through experimentation</li>
+</ul>
+<h2 id="where-vibe-coding-fails">Where Vibe Coding Fails</h2>
+<ul>
+<li><strong>Production systems</strong>: Security, performance, and reliability require engineering rigor</li>
+<li><strong>Scale</strong>: Vibe-coded apps break under real load or edge cases</li>
+<li><strong>Maintainability</strong>: Without code understanding, bugs compound and technical debt becomes irreversible</li>
+<li><strong>Team collaboration</strong>: No shared standards, no version control discipline, no review process</li>
+</ul>
+<h2 id="the-code-overload-connection">The "Code Overload" Connection</h2>
+<p>When professional engineers operate in vibe coding mode — generating code through AI without the four core practices of <a href="ai-native-engineering.html" class="wiki-link">ai-native-engineering</a> — the result is <a href="code-overload.html" class="wiki-link">code-overload</a>: more code velocity, more bugs, more incidents, more technical debt. Vibe coding is not wrong; it's wrong for production engineering.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>AI-Native Engineering</h4>
+      <p>AI-native engineering is the professional discipline; vibe coding is the democratized subset</p>
+    </a>
+    <a class="connection-card" href="technological-centaur.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Technological Centaur</h4>
+      <p>vibe coding is pure AI reliance; the centaur model requires human expertise directing AI</p>
+    </a>
+    <a class="connection-card" href="code-overload.html">
+      <span class="connection-type related">Related</span>
+      <h4>Code Overload</h4>
+      <p>when professional teams adopt vibe coding practices, code overload follows</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Code Overload</h4>
+      <p>ByteByteGo article placing vibe coding in context</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="vectorized-execution.html" class="prev">← Vectorized Execution</a><a href="vortex-file-format.html" class="next">Vortex File Format →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

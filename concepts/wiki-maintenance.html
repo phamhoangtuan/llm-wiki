@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wiki Maintenance — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-meta">Meta</a> <span class="sep">/</span>
+  <span>Wiki Maintenance</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Wiki Maintenance</h1>
+  <div class="page-meta"><span>Source: sample-article</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">meta</span><span class="tag">workflow</span><span class="tag">agents</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>Wiki Maintenance describes the operational model of this LLM-maintained knowledge base. The core insight (from <span class="wiki-link source-ref">sample-article</span>) is that the LLM handles all bookkeeping — updating cross-references, integrating new sources, flagging contradictions — so the human can focus on curation and thinking.</p>
+<h2 id="key-ideas">Key Ideas</h2>
+<ul>
+<li><a href="knowledge-graph.html" class="wiki-link">Lightweight Knowledge Graph</a> — cross-references are compiled at write time via wikilinks, not re-derived at query time</li>
+<li><strong>Three-layer architecture</strong>: raw sources (immutable) → wiki (LLM-owned) → schema (co-evolved)</li>
+<li><strong>Compound knowledge</strong>: query answers get filed as permanent synthesis pages</li>
+</ul>
+<h2 id="operations">Operations</h2>
+<ul>
+<li><strong>Ingest</strong> — Drop a source → LLM reads, summarizes, updates all related concept pages, logs</li>
+<li><strong>Query</strong> — Ask → LLM reads index, synthesizes with citations, optionally files result</li>
+<li><strong>Lint</strong> — Health check: contradictions, orphans, stale claims, gaps</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="knowledge-graph.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Knowledge Graph</h4>
+      <p>cross-references compiled at write time, not re-derived at query time</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Knowledge Graph</h4>
+      <p>the original article describing the LLM wiki maintenance pattern</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="vortex-file-format.html" class="prev">← Vortex File Format</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

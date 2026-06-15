@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DataOps — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-engineering">Data Engineering</a> <span class="sep">/</span>
+  <span>DataOps</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>DataOps</h1>
+  <div class="page-meta"><span>Source: data-engineering-with-dbt</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">devops</span><span class="tag">dbt</span><span class="tag">analytics</span><span class="tag">methodology</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>DataOps applies software engineering best practices — version control, automated testing, modularity, CI/CD — to data pipelines and transformations. It represents the shift from ad-hoc data wrangling to disciplined, collaborative data platform engineering, with dbt serving as the canonical transformation-layer catalyst.</p>
+<h2 id="the-mindset-shift">The Mindset Shift</h2>
+<table><thead><tr>
+<th>Old Way</th>
+<th>DataOps Way</th>
+</tr></thead><tbody>
+<tr>
+<td>Data silos: engineers and analysts work separately</td>
+<td>[[analytics-engineer</td>
+<td>Analytics Engineer]] bridges both worlds</td>
+</tr>
+<tr>
+<td>Business logic hidden in spreadsheets, stored procedures</td>
+<td>Logic transparent in version-controlled SQL + YAML</td>
+</tr>
+<tr>
+<td>Brittle pipelines, manual testing, tribal knowledge</td>
+<td>Automated tests, documented lineage, reusable models</td>
+</tr>
+<tr>
+<td>Reactive firefighting when dashboards break</td>
+<td>Proactive quality gates catch issues before stakeholders see them</td>
+</tr>
+</tbody></table>
+<blockquote>"Copy and paste kills your future self." — The DataOps philosophy: maintainability is the only success metric.</blockquote>
+<h2 id="three-pillars-of-dataops-with-dbt">Three Pillars of DataOps with dbt</h2>
+<table><thead><tr>
+<th>Pillar</th>
+<th>Practice</th>
+<th>Benefit</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Version Control</strong> 📦</td>
+<td>Every model, test, and config in Git (PRs, code review)</td>
+<td>Track changes, collaborate, roll back confidently</td>
+</tr>
+<tr>
+<td><strong>Quality Assurance</strong> 🧪</td>
+<td>Automated tests: <code>unique</code>, <code>not_null</code>, <code>relationships</code>, custom SQL tests</td>
+<td>Catch data issues at the source, not in dashboards</td>
+</tr>
+<tr>
+<td><strong>Modularity</strong> 🧱</td>
+<td>Break monolithic scripts into reusable models + macros</td>
+<td>Reduce technical debt, easier onboarding, faster iteration</td>
+</tr>
+</tbody></table>
+<h2 id="the-3-tier-modeling-journey">The 3-Tier Modeling Journey</h2>
+<p>Zagni's Pragmatic Data Platform (PDP) framework ensures technical implementation aligns with business reality:</p>
+<pre><code>1. Conceptual Model → &quot;What are the business entities?&quot;
+   (Customer, Order, Product, Revenue)
+
+2. Logical Model → &quot;How do they relate?&quot;
+   (Customer 1→N Orders, Order N→M Products)
+
+3. Physical Model → &quot;How to implement in the warehouse?&quot;
+   (dim_customers, fct_orders, bridge_order_products)</code></pre>
+<table><thead><tr>
+<th>Skip This</th>
+<th>Consequence</th>
+</tr></thead><tbody>
+<tr>
+<td>Conceptual</td>
+<td>Misalignment between tech and business → rework</td>
+</tr>
+<tr>
+<td>Logical</td>
+<td>Vague relationships → incorrect analytics</td>
+</tr>
+<tr>
+<td>Jump straight to Physical</td>
+<td>Technically correct model nobody understands or uses</td>
+</tr>
+</tbody></table>
+<h2 id="soft-boundaries-in-cloud-warehousing">Soft Boundaries in Cloud Warehousing</h2>
+<p>Cloud data platforms enable a fundamental reorganization:</p>
+<table><thead><tr>
+<th>Old (On-Prem PostgreSQL)</th>
+<th>New (Cloud + dbt)</th>
+</tr></thead><tbody>
+<tr>
+<td>Database = rigid "strong boundary"</td>
+<td>Database/schema = flexible "soft folders"</td>
+</tr>
+<tr>
+<td>Manual security, complex access management</td>
+<td>dbt automation + hierarchical RBAC</td>
+</tr>
+<tr>
+<td>Vertical scaling only</td>
+<td>Horizontal scaling on-demand</td>
+</tr>
+</tbody></table>
+<p><strong>Project structure reflects business domains</strong>, not database constraints:</p>
+<pre><code>models/
+├── staging/       # Raw → cleaned (soft boundary: staging schema)
+├── intermediate/  # Business logic (soft boundary: intermediate schema)
+└── marts/         # Business-ready (soft boundary: analytics schema)
+    ├── finance/
+    ├── marketing/
+    └── product/</code></pre>
+<h2 id="the-modern-data-stack-ecosystem">The Modern Data Stack Ecosystem</h2>
+<p>dbt is the core of a larger ecosystem:</p>
+<pre><code>Ingestion (Fivetran, Airbyte) → Storage (Snowflake, BigQuery) → Transformation (dbt)
+→ Orchestration (Airflow, Dagster) → BI (Looker, Metabase)</code></pre>
+<p>DataOps ensures each layer is versioned, tested, and maintainable.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="dbt.html">
+      <span class="connection-type related">Related</span>
+      <h4>dbt (data build tool)</h4>
+      <p>dbt is the canonical tool that makes DataOps practical for SQL transformations</p>
+    </a>
+    <a class="connection-card" href="analytics-engineer.html">
+      <span class="connection-type related">Related</span>
+      <h4>Analytics Engineer</h4>
+      <p>the role that practices DataOps daily</p>
+    </a>
+    <a class="connection-card" href="elt.html">
+      <span class="connection-type related">Related to</span>
+      <h4>ELT (Extract-Load-Transform)</h4>
+      <p>DataOps governs the transformation (T) step with engineering discipline</p>
+    </a>
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Ingestion</h4>
+      <p>ingested data flows into DataOps-managed transformation pipelines</p>
+    </a>
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Informs</span>
+      <h4>Code Quality Pillars</h4>
+      <p>DataOps applies the same modularity, testing, and reuse principles to data</p>
+    </a>
+    <a class="connection-card" href="cicd-data-pipelines.html">
+      <span class="connection-type related">Related</span>
+      <h4>CI/CD for Data Pipelines</h4>
+      <p>CI/CD is the practical implementation of DataOps in the deployment pipeline (Ruff, SQLFluff, SQLMesh, Great Expectations)</p>
+    </a>
+    <a class="connection-card" href="data-engineering-fundamentals.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Engineering Fundamentals</h4>
+      <p>DataOps applies software engineering rigor to the fundamental DE skills</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineering Fundamentals</h4>
+      <p>Roberto Zagni's 603-page guide</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="database-sharding.html" class="prev">← Database Sharding</a><a href="dbsp.html" class="next">DBSP →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

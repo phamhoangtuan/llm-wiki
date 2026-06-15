@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python REPL — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-python">Python</a> <span class="sep">/</span>
+  <span>Python REPL</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Python REPL</h1>
+  <div class="page-meta"><span>Source: intuitive-python</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">python</span><span class="tag">repl</span><span class="tag">exploration</span></div>
+</div>
+<div class="content-area concept">
+<p># Python REPL</p>
+<p>The Read-Eval-Print Loop (REPL) is Python's interactive console — a zero-cost sandbox for exploring code, inspecting objects, and testing ideas without creating files. Professional developers treat the REPL as a <strong>living laboratory</strong> for discovery.</p>
+<h2 id="repr-vs-print-the-developers-secret-lang">repr vs print: The Developer's Secret Language</h2>
+<p>The most important REPL distinction:</p>
+<table><thead><tr>
+<th>Action</th>
+<th>Returns</th>
+<th>Target Audience</th>
+</tr></thead><tbody>
+<tr>
+<td><code>print(obj)</code></td>
+<td><code>str(obj)</code> — user-friendly, may hide type info</td>
+<td>End users</td>
+</tr>
+<tr>
+<td><code>obj</code> + Enter</td>
+<td><code>repr(obj)</code> — developer representation with exact type</td>
+<td>Developers</td>
+</tr>
+</tbody></table>
+<pre><code class="language-python">&gt;&gt;&gt; import datetime
+&gt;&gt;&gt; t = datetime.time(8, 12)
+&gt;&gt;&gt; print(t)
+08:12:00                    # Looks like a string
+&gt;&gt;&gt; t
+datetime.time(8, 12)        # Shows exact type and constructor</code></pre>
+<p><code>repr</code> reveals the object's true nature — critical when debugging unexpected behavior or exploring unfamiliar libraries.</p>
+<h2 id="four-x-ray-vision-tools">Four X-Ray Vision Tools</h2>
+<p>When encountering an unfamiliar object, these tools reveal its internal structure:</p>
+<table><thead><tr>
+<th>Tool</th>
+<th>Purpose</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong><code>help(obj)</code></strong></td>
+<td>Full documentation with argument details</td>
+<td><code>help(str.upper)</code></td>
+</tr>
+<tr>
+<td><strong><code>obj.__doc__</code></strong></td>
+<td>Quick docstring access</td>
+<td><code>print(str.upper.__doc__)</code></td>
+</tr>
+<tr>
+<td><strong><code>dir(obj)</code></strong></td>
+<td>List all attributes and methods</td>
+<td><code>dir([])</code> → all list methods</td>
+</tr>
+<tr>
+<td><strong><code>obj.__mro__</code></strong></td>
+<td>Method Resolution Order — inheritance hierarchy</td>
+<td><code>bool.__mro__</code> → <code>(bool, int, object)</code></td>
+</tr>
+</tbody></table>
+<h2 id="repl-as-discovery-tool">REPL as Discovery Tool</h2>
+<p>The REPL isn't just for running commands — it's for <strong>exploration</strong>:</p>
+<pre><code class="language-python">&gt;&gt;&gt; import requests  # Unfamiliar library
+&gt;&gt;&gt; dir(requests)     # What can it do?
+&gt;&gt;&gt; help(requests.get) # How do I use get()?
+&gt;&gt;&gt; resp = requests.get(&#x27;https://api.example.com&#x27;)
+&gt;&gt;&gt; type(resp)        # What did I get back?
+&gt;&gt;&gt; dir(resp)         # What methods does the response have?
+&gt;&gt;&gt; resp.__dict__     # What&#x27;s inside?</code></pre>
+<p>This exploration loop — <code>dir()</code> → <code>help()</code> → <code>type()</code> → <code>__dict__</code> — lets you understand any object or library without reading full documentation.</p>
+<h2 id="pro-tips">Pro Tips</h2>
+<ul>
+<li>Use <strong><code>ipython</code></strong> instead of the default console for tab-autocompletion, better multi-line editing, and magic commands (<code>%timeit</code>, <code>%debug</code>)</li>
+<li>When you see the <code>...</code> prompt, the REPL is waiting for you to complete multi-line logic (like a function definition or loop)</li>
+<li>For production code, use the <code>inspect</code> module instead of REPL exploration tools</li>
+<li>The REPL's zero-cost-of-failure makes it ideal for testing ideas before committing them to files</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="python-debugging-pdb.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Python Debugging with PDB</h4>
+      <p>shares the interactive exploration mindset</p>
+    </a>
+    <a class="connection-card" href="python-professional-practices.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Python Professional Practices</h4>
+      <p>professional exploration workflow</p>
+    </a>
+    <a class="connection-card" href="python-standard-library.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Python Standard Library</h4>
+      <p>the `inspect` module is the production equivalent of REPL exploration</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Python Standard Library</h4>
+      <p>David Muller's guide to leveraging the REPL as a discovery tool</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="python-professional-practices.html" class="prev">← Python Professional Practices</a><a href="python-standard-library.html" class="next">Python Standard Library →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

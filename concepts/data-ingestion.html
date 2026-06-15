@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Ingestion — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-engineering">Data Engineering</a> <span class="sep">/</span>
+  <span>Data Ingestion</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Data Ingestion</h1>
+  <div class="page-meta"><span>Source: hugo-data-ingestion-platform-flink, unlocking-dbt-design-deploy-transformations</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">ingestion</span><span class="tag">etl</span><span class="tag">streaming</span><span class="tag">data-lake</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Data ingestion</strong> is the process of moving data from source systems (databases, message queues, APIs, files) into a centralized destination (data lake, warehouse, or streaming platform) where it can be processed, analyzed, and served. In modern data platforms, ingestion is increasingly expected to be <strong>self-service, near-real-time, and low-code</strong> — as exemplified by Grab's Hugo platform.</p>
+<h2 id="ingestion-patterns">Ingestion Patterns</h2>
+<h3 id="batch-ingestion">Batch Ingestion</h3>
+<p>Data is extracted on a schedule (hourly, daily), typically as full snapshots or incremental dumps.</p>
+<table><thead><tr>
+<th>Characteristic</th>
+<th>Typical Values</th>
+</tr></thead><tbody>
+<tr>
+<td>Latency</td>
+<td>Hours to days</td>
+</tr>
+<tr>
+<td>Source impact</td>
+<td>Full table scans can load the source DB</td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Low (simple scheduled jobs)</td>
+</tr>
+<tr>
+<td>Example</td>
+<td><code>mysqldump</code> → S3 → Spark → Hive (Hugo's original design)</td>
+</tr>
+</tbody></table>
+<h3 id="streaming-real-time-ingestion">Streaming (Real-Time) Ingestion</h3>
+<p>Data is captured continuously as it changes, using CDC or event streams.</p>
+<table><thead><tr>
+<th>Characteristic</th>
+<th>Typical Values</th>
+</tr></thead><tbody>
+<tr>
+<td>Latency</td>
+<td>Seconds to minutes</td>
+</tr>
+<tr>
+<td>Source impact</td>
+<td>Minimal (reads transaction log, not source tables)</td>
+</tr>
+<tr>
+<td>Complexity</td>
+<td>Higher (stateful pipelines, checkpointing, schema evolution)</td>
+</tr>
+<tr>
+<td>Example</td>
+<td>MySQL binlog → [[apache-flink</td>
+<td>Flink CDC]] → S3 → Hive (Hugo's evolved design)</td>
+</tr>
+</tbody></table>
+<p>→ See <a href="change-data-capture.html" class="wiki-link">change-data-capture</a> for CDC specifically.</p>
+<h2 id="platform-maturity-model">Platform Maturity Model</h2>
+<p>Data ingestion platforms evolve through stages:</p>
+<table><thead><tr>
+<th>Stage</th>
+<th>Hallmarks</th>
+<th>Onboarding Time</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Stage 1: Manual</strong></td>
+<td>Engineers write custom scripts per pipeline; no platform</td>
+<td>Days to weeks</td>
+</tr>
+<tr>
+<td><strong>Stage 2: Siloed</strong></td>
+<td>Multiple platforms (Kafka Connect, custom apps, Spark); users coordinate across systems</td>
+<td>Days (multi-team tickets)</td>
+</tr>
+<tr>
+<td><strong>Stage 3: Unified</strong></td>
+<td>Single self-service platform; one-click onboarding; automated schema handling</td>
+<td>Minutes</td>
+</tr>
+</tbody></table>
+<p>Grab's Hugo evolved from Stage 2 (Kafka Connect + Sprinkler + Spark) to Stage 3 (Flink + automation layer + Spark compaction).</p>
+<h2 id="key-design-dimensions">Key Design Dimensions</h2>
+<h3 id="1-self-service-vs-central-team">1. Self-Service vs Central Team</h3>
+<table><thead><tr>
+<th>Self-Service</th>
+<th>Central Team</th>
+</tr></thead><tbody>
+<tr>
+<td>Source teams configure their own pipelines via UI/API</td>
+<td>Data platform team writes and maintains all pipelines</td>
+</tr>
+<tr>
+<td>Faster onboarding (minutes)</td>
+<td>Higher quality control</td>
+</tr>
+<tr>
+<td>Requires validation guardrails</td>
+<td>Bottleneck on team bandwidth</td>
+</tr>
+<tr>
+<td>Hugo approach: self-service with <strong>early validation</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="2-schema-handling">2. Schema Handling</h3>
+<p>The hardest part of ingestion is schema evolution:</p>
+<ul>
+<li><strong>Hardcoded DTOs</strong> — brittle; every schema change requires code change (Hugo's legacy Sprinkler)</li>
+<li><strong>Schema registry</strong> — schemas versioned in Confluent Schema Registry; pipelines fetch at runtime (Hugo's Flink approach)</li>
+<li><strong>Automated inference</strong> — connector reads schema from source at runtime (Flink CDC)</li>
+<li><strong>Zero-touch</strong> — auto-detect, validate compatibility, apply changes (Hugo's future goal)</li>
+</ul>
+<h3 id="3-validation-guardrails">3. Validation Guardrails</h3>
+<p>Hugo's onboarding UI validates prerequisites <strong>before</strong> pipeline creation, preventing wasted attempts:</p>
+<ul>
+<li>For Kafka: topic ownership verification, non-zero message volume, no duplicate table names</li>
+<li>For MySQL CDC: credential setup, binlog user config, binlog format (ROW required), binlog expiration settings</li>
+</ul>
+<h2 id="hugos-architecture-case-study">Hugo's Architecture (Case Study)</h2>
+<p>Hugo unified two previously siloed ingestion patterns under one platform:</p>
+<pre><code>┌─────────────────────────────────────────────────┐
+│                  Hugo Platform                     │
+│  ┌──────────┐  ┌──────────┐  ┌───────────────┐  │
+│  │  Kafka    │  │  MySQL   │  │  Validation   │  │
+│  │  Source   │  │  CDC     │  │  Guardrails   │  │
+│  └────┬─────┘  └────┬─────┘  └───────────────┘  │
+│       │             │                             │
+│  ┌────▼─────────────▼─────┐                      │
+│  │      Apache Flink       │  (streaming engine)  │
+│  └───────────┬────────────┘                      │
+│              │                                    │
+│  ┌───────────▼────────────┐                      │
+│  │    S3 (object store)    │                      │
+│  └───────────┬────────────┘                      │
+│              │                                    │
+│  ┌───────────▼────────────┐                      │
+│  │  Spark Compaction       │  (small-file merge)  │
+│  └───────────┬────────────┘                      │
+│              │                                    │
+│  ┌───────────▼────────────┐                      │
+│  │  Hive Tables (queryable)│                      │
+│  └────────────────────────┘                      │
+└─────────────────────────────────────────────────┘</code></pre>
+<h2 id="tooling-landscape">Tooling Landscape</h2>
+<table><thead><tr>
+<th>Category</th>
+<th>Tools</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Streaming engines</strong></td>
+<td>[[apache-flink</td>
+<td>Apache Flink]], Spark Streaming, Kafka Streams</td>
+</tr>
+<tr>
+<td><strong>CDC connectors</strong></td>
+<td>Flink CDC, Debezium (Kafka Connect), AWS DMS</td>
+</tr>
+<tr>
+<td>**Transformation (T in [[elt</td>
+<td>ELT]])**</td>
+<td>[[dbt</td>
+<td>dbt (data build tool)]], Apache Spark, Dataform</td>
+</tr>
+<tr>
+<td><strong>Message queues</strong></td>
+<td>[[apache-kafka</td>
+<td>Apache Kafka]], Amazon Kinesis, Google Pub/Sub</td>
+</tr>
+<tr>
+<td><strong>Schema registry</strong></td>
+<td>Confluent Schema Registry, AWS Glue Schema Registry</td>
+</tr>
+<tr>
+<td><strong>Table formats</strong></td>
+<td>Hive, [[apache-iceberg</td>
+<td>Apache Iceberg]], Delta Lake, Hudi</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Flink</h4>
+      <p>Flink is the streaming engine in Hugo's unified ingestion platform</p>
+    </a>
+    <a class="connection-card" href="change-data-capture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>CDC is the primary pattern for database ingestion</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Kafka</h4>
+      <p>Kafka is both a source (topic ingestion) and was the legacy intermediary (replaced by direct CDC)</p>
+    </a>
+    <a class="connection-card" href="apache-iceberg.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Iceberg</h4>
+      <p>Iceberg is Hugo's future table format for improved SLA and cost</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Iceberg</h4>
+      <p>Grab's platform evolution case study</p>
+    </div>
+    <a class="connection-card" href="elt.html">
+      <span class="connection-type related">Related to</span>
+      <h4>ELT (Extract-Load-Transform)</h4>
+      <p>data ingestion provides the "EL" (Extract-Load); dbt handles the "T" (Transform)</p>
+    </a>
+    <a class="connection-card" href="dbt.html">
+      <span class="connection-type related">Related</span>
+      <h4>dbt (data build tool)</h4>
+      <p>ingested raw data is the input for dbt's transformation models</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="data-governance.html" class="prev">← Data Governance</a><a href="data-lifecycle.html" class="next">Data Lifecycle →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

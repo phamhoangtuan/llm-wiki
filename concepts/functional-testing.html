@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Functional Testing — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-testing">Testing</a> <span class="sep">/</span>
+  <span>Functional Testing</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Functional Testing</h1>
+  <div class="page-meta"><span>Source: tdd-python-percival</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">testing</span><span class="tag">tdd</span><span class="tag">selenium</span><span class="tag">e2e</span><span class="tag">quality</span><span class="tag">python</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>Functional tests (also called end-to-end or acceptance tests) verify that an application works from the <strong>user's perspective</strong>. They simulate real user interactions — clicking buttons, filling forms, seeing results — through a real browser or HTTP client. Unlike unit tests, which validate individual code units in isolation, functional tests confirm that all pieces integrate correctly to deliver business value.</p>
+<h2 id="functional-tests-vs-unit-tests">Functional Tests vs Unit Tests</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Functional Tests</th>
+<th>Unit Tests</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Perspective</strong></td>
+<td>User's view</td>
+<td>Developer's view</td>
+</tr>
+<tr>
+<td><strong>Purpose</strong></td>
+<td>Verify app works correctly (delivers business value)</td>
+<td>Verify code is clean and logically correct</td>
+</tr>
+<tr>
+<td><strong>Tool</strong></td>
+<td>Selenium (browser), HTTP client</td>
+<td>unittest, pytest</td>
+</tr>
+<tr>
+<td><strong>Speed</strong></td>
+<td>Slow (seconds to minutes — renders UI, real network)</td>
+<td>Fast (milliseconds)</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Tests the whole stack</td>
+<td>Tests a single unit (function, class)</td>
+</tr>
+<tr>
+<td><strong>Role in TDD</strong></td>
+<td>Outer loop: defines user story</td>
+<td>Inner loop: drives detailed design</td>
+</tr>
+</tbody></table>
+<h2 id="the-double-loop-pattern">The Double Loop Pattern</h2>
+<p>Functional tests form the <strong>outer loop</strong> of Outside-In TDD:</p>
+<ol>
+<li>Write a functional test that describes what the user should see and do.</li>
+<li>The test fails (the feature doesn't exist yet).</li>
+<li>Use <strong>unit tests</strong> (inner loop) to build each piece needed.</li>
+<li>When unit tests pass, the functional test should also pass — confirming end-to-end correctness.</li>
+</ol>
+<h2 id="what-to-test-and-what-not-to">What to Test (and What Not To)</h2>
+<p><strong>Test behavior, not constants:</strong></p>
+<ul>
+<li>✅ Test: "User can add an item to a to-do list and see it appear."</li>
+<li>❌ Test: "The heading text is exactly 'My To-Do List'."</li>
+</ul>
+<p>Testing literal strings makes refactoring templates painful. Test <strong>actions and outcomes</strong>, not implementation details.</p>
+<h2 id="atomic-tests">Atomic Tests</h2>
+<p>Each functional test should verify <strong>one user story or workflow</strong>. When a functional test fails, you should immediately know what broke — not sift through a test that checks 15 different things.</p>
+<h2 id="cicd-integration">CI/CD Integration</h2>
+<ul>
+<li>Run functional tests in CI on every commit.</li>
+<li><strong>Green build is sacred</strong>: a failing functional test is treated as a site outage — fix before any new commits.</li>
+<li>Use <strong>headless browsers</strong> (Xvfb) in CI environments.</li>
+<li>Capture <strong>screenshots on failure</strong> — essential for debugging headless test failures.</li>
+</ul>
+<h2 id="speed-management">Speed Management</h2>
+<ul>
+<li>Functional tests are inherently slower than unit tests.</li>
+<li>Don't let them become "Hot Lava" — tests so slow developers avoid running them.</li>
+<li>Keep the functional test suite under <strong>a few minutes</strong>; parallelize if needed.</li>
+<li>Fresh database state per test run — no side effects between tests.</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="tdd-methodology.html">
+      <span class="connection-type related">Related</span>
+      <h4>TDD Methodology</h4>
+      <p>functional tests are the outer loop of Outside-In TDD</p>
+    </a>
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Testing Strategy</h4>
+      <p>functional tests are the 20-30% integration/E2E effort in the test pyramid</p>
+    </a>
+    <a class="connection-card" href="pytest-basics.html">
+      <span class="connection-type related">Related to</span>
+      <h4>pytest Basics</h4>
+      <p>pytest can drive functional tests via fixtures and Selenium integration</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>pytest Basics</h4>
+      <p>Percival's functional testing with Django and Selenium</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="fail-fast.html" class="prev">← Fail Fast</a><a href="go-http-handlers.html" class="next">Go HTTP Handlers →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>
