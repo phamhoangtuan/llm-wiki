@@ -192,6 +192,7 @@
     "apache-iceberg",
     "apache-iceberg",
     "apache-kafka",
+    "byzantine-fault-tolerance",
     "change-data-capture",
     "data-engineer",
     "data-governance",
@@ -342,6 +343,7 @@
     "apache-flink",
     "apache-kafka",
     "apache-spark",
+    "byzantine-fault-tolerance",
     "data-engineer",
     "data-ingestion",
     "data-ingestion",
@@ -354,6 +356,7 @@
   ],
   "apache-kafka": [
     "apache-flink",
+    "byzantine-fault-tolerance",
     "change-data-capture",
     "data-engineer",
     "data-ingestion",
@@ -523,6 +526,18 @@
     "technological-centaur",
     "tell-dont-ask"
   ],
+  "bft-data-engineering-handbook": [
+    "byzantine-fault-tolerance"
+  ],
+  "data-governance": [
+    "byzantine-fault-tolerance",
+    "cicd-data-pipelines",
+    "data-lifecycle",
+    "data-lifecycle",
+    "data-modeling",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026"
+  ],
   "scalable-architecture": [
     "cache-strategy",
     "cdn",
@@ -617,14 +632,6 @@
     "materialized-views",
     "timely-dataflow",
     "materialized-views-quick-insights"
-  ],
-  "data-governance": [
-    "cicd-data-pipelines",
-    "data-lifecycle",
-    "data-lifecycle",
-    "data-modeling",
-    "data-fundamentals-matter-2026",
-    "data-fundamentals-matter-2026"
   ],
   "sources/reddit-cicd-tips-data-engineering": [
     "cicd-data-pipelines"
@@ -1157,6 +1164,9 @@
   "knowledge-graph": [
     "wiki-maintenance",
     "wiki-maintenance"
+  ],
+  "byzantine-fault-tolerance": [
+    "bft-data-engineering-handbook"
   ],
   "apache-spark": [
     "high-performance-spark"

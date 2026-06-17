@@ -152,6 +152,18 @@
         "domain-modeling"
       ]
     },
+    "byzantine-fault-tolerance": {
+      "title": "Byzantine Fault Tolerance (BFT)",
+      "category": "System Architecture",
+      "url": "concepts/byzantine-fault-tolerance.html",
+      "definition": "**Byzantine Fault Tolerance (BFT)** is the property of a distributed system to maintain correct operation and reach consensus even when some of its components fail — not just by crashing, but by activ",
+      "tags": [
+        "distributed-systems",
+        "consensus",
+        "fault-tolerance",
+        "security"
+      ]
+    },
     "cache-strategy": {
       "title": "Cache Strategy",
       "category": "System Architecture",

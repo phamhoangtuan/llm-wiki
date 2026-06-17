@@ -485,3 +485,9 @@
 - Fixed update_index_html() bug: regex replace instead of string append
 - Updated AGENTS.md: HTML is CI-deployed, local script is for preview only
 - No more merge conflicts on index.html — CI never touches main branch files
+
+## [2026-06-17] ingest | Byzantine Fault Tolerance (BFT) — Data Engineering Handbook
+- Source: Vietnamese DE Handbook page on BFT (kythuatdulieu.github.io)
+- Created sources/bft-data-engineering-handbook.md
+- Created concepts/byzantine-fault-tolerance.md — Byzantine Generals Problem, 3f+1, PBFT, CFT vs BFT, DE applications (checksums, Merkle Trees, Zero-Trust Data Mesh)
+- Updated index.md (105 concepts, 41 sources)

@@ -111,6 +111,7 @@
 - [Software Rot](concepts/software-rot.html) — Inevitable code degradation from environmental change and requirement shifts
 - [Complexity Metrics](concepts/complexity-metrics.html) — Halstead, Cyclomatic, NPath — quantitative measurement for refactoring business cases
 - [Code Archaeology](concepts/code-archaeology.html) — Investigating historical context before refactoring; finding the "initial good"
+- [Byzantine Fault Tolerance (BFT)](concepts/byzantine-fault-tolerance.html) — Distributed consensus under adversarial node behavior; 3f+1 formula, PBFT protocol, CFT vs BFT trade-offs
 
 ## Sources
 
@@ -154,6 +155,7 @@
 - [In 2026 The Data Fundamentals Matter More Than Ever](sources/data-fundamentals-matter-2026.html) — SeattleDataGuy: SQL/Python/data modeling still critical, glue skills, messy data reality
 - [CI/CD Tips — r/dataengineering](sources/reddit-cicd-tips-data-engineering.html) — Community discussion: Ruff, SQLFluff, SQLMesh, notebooks-vs-scripts debate, testing philosophy
 - [Refactoring at Scale](sources/refactoring-at-scale-lemaire.html) — Maude Lemaire's 245-page guide: strategic refactoring, code rot, complexity metrics, code archaeology
+- [Byzantine Fault Tolerance (BFT) — Data Engineering Handbook](sources/bft-data-engineering-handbook.html) — Vietnamese DE Handbook: Byzantine Generals Problem, 3f+1 formula, PBFT protocol, BFT applications in data engineering
 
 ## Syntheses
 
@@ -161,5 +163,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-15*
-*Pages: 144 (104 concepts + 40 sources)*
+*Last updated: 2026-06-17*
+*Pages: 146 (105 concepts + 41 sources)*
