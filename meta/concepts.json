@@ -38,6 +38,19 @@
         "methodology"
       ]
     },
+    "ai-psychosis": {
+      "title": "AI Psychosis",
+      "category": "AI & Agents",
+      "url": "concepts/ai-psychosis.html",
+      "definition": "**AI Psychosis** is an organizational pathology where leadership becomes so fixated on AI — building it, adopting it, or optimizing for it — that they systematically destroy the engineering culture, o",
+      "tags": [
+        "ai",
+        "engineering-culture",
+        "leadership",
+        "organizational-behavior",
+        "risk"
+      ]
+    },
     "analytics-engineer": {
       "title": "Analytics Engineer",
       "category": "Data Engineering",
@@ -174,6 +187,19 @@
         "performance",
         "caching",
         "scalability"
+      ]
+    },
+    "cap-theorem": {
+      "title": "CAP Theorem",
+      "category": "System Architecture",
+      "url": "concepts/cap-theorem.html",
+      "definition": "**CAP Theorem** (also known as Brewer's Theorem) states that any distributed data store can provide at most two of three guarantees simultaneously: **Consistency**, **Availability**, and **Partition T",
+      "tags": [
+        "distributed-systems",
+        "consistency",
+        "availability",
+        "architecture",
+        "database-design"
       ]
     },
     "case-interview": {
@@ -392,6 +418,20 @@
         "data-modeling",
         "sql",
         "database-design"
+      ]
+    },
+    "data-quality-monitoring": {
+      "title": "Data Quality Monitoring",
+      "category": "Data Engineering",
+      "url": "concepts/data-quality-monitoring.html",
+      "definition": "**Data Quality Monitoring** is the practice of continuously detecting, tracking, and communicating data quality incidents across a data platform — going beyond simple test failures to provide end-to-e",
+      "tags": [
+        "data-quality",
+        "data-observability",
+        "lineage",
+        "monitoring",
+        "dbt",
+        "data-platform"
       ]
     },
     "database-replication": {

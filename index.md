@@ -99,6 +99,7 @@
 - [Python Concurrency](concepts/python-concurrency.html) — Threads vs Processes, GIL, race condition dangers, and when to use concurrency
 - [Python REPL](concepts/python-repl.html) — Interactive console as a living laboratory: repr, dir(), help(), __mro__ for object exploration
 - [AI-Native Engineering](concepts/ai-native-engineering.html) — Engineers as AI agent orchestrators; four core practices, code overload, individual-to-team transformation
+- [AI Psychosis](concepts/ai-psychosis.html) — Organizational pathology where leadership AI obsession destroys engineering culture; Meta case study, MTBF vs MTTR, profit center vs cost center
 - [Context Engineering](concepts/context-engineering.html) — Systematic curation of project-specific info into AI working memory; supersedes prompt engineering
 - [Agentic Development Life Cycle (ADLC)](concepts/agentic-development-life-cycle.html) — Redefinition of SDLC for agent-human collaboration: Plan→Build→Test→Review→Document
 - [Vibe Coding](concepts/vibe-coding.html) — Non-engineer AI-assisted coding vs professional AI-native engineering; where it adds value and where it fails
@@ -106,12 +107,14 @@
 - [CI/CD for Data Pipelines](concepts/cicd-data-pipelines.html) — Linting, testing, and deployment automation for data engineering; tools, notebooks-vs-scripts debate
 - [Specification-Driven Development](concepts/specification-driven-development.html) — Define before build; antidote to random prompting in AI-native workflows
 - [Data Modeling](concepts/data-modeling.html) — Designing data structure, relationships, and constraints; the most enduring DE fundamental
+- [Data Quality Monitoring](concepts/data-quality-monitoring.html) — Continuous detection, lineage, and trust signals for data quality; health badges, TimesFM anomaly detection, blast radius calculation
 - [Code Overload](concepts/code-overload.html) — NYT term: AI-generated code exceeding review capacity; more bugs, more debt
 - [Refactoring at Scale](concepts/refactoring-at-scale.html) — Safe restructuring of large codebases; drive-by refactorer, Brownie effect, rollout modes
 - [Software Rot](concepts/software-rot.html) — Inevitable code degradation from environmental change and requirement shifts
 - [Complexity Metrics](concepts/complexity-metrics.html) — Halstead, Cyclomatic, NPath — quantitative measurement for refactoring business cases
 - [Code Archaeology](concepts/code-archaeology.html) — Investigating historical context before refactoring; finding the "initial good"
 - [Byzantine Fault Tolerance (BFT)](concepts/byzantine-fault-tolerance.html) — Distributed consensus under adversarial node behavior; 3f+1 formula, PBFT protocol, CFT vs BFT trade-offs
+- [CAP Theorem](concepts/cap-theorem.html) — Distributed data stores can guarantee at most 2 of 3: Consistency, Availability, Partition Tolerance; CP vs AP architectures, quorum mechanics, PACELC extension
 
 ## Sources
 
@@ -156,6 +159,9 @@
 - [CI/CD Tips — r/dataengineering](sources/reddit-cicd-tips-data-engineering.html) — Community discussion: Ruff, SQLFluff, SQLMesh, notebooks-vs-scripts debate, testing philosophy
 - [Refactoring at Scale](sources/refactoring-at-scale-lemaire.html) — Maude Lemaire's 245-page guide: strategic refactoring, code rot, complexity metrics, code archaeology
 - [Byzantine Fault Tolerance (BFT) — Data Engineering Handbook](sources/bft-data-engineering-handbook.html) — Vietnamese DE Handbook: Byzantine Generals Problem, 3f+1 formula, PBFT protocol, BFT applications in data engineering
+- [CAP Theorem — Data Engineering Handbook](sources/cap-theorem-handbook.html) — Vietnamese DE Handbook: Brewer's theorem, CP vs AP architectures, quorum mechanics, PACELC extension, CAP-C vs ACID-C distinction
+- [Data Quality Traffic Lights — Robert Sahlin](sources/data-quality-traffic-lights-sahlin.html) — Nordnet's Data Quality Health Badge: 5 failure modes, dbt+Looker lineage, TimesFM anomaly detection, programmatic trust for agents and ML pipelines
+- [Why Is Meta Destroying Its Engineering Org? — Gergely Orosz](sources/meta-destroying-engineering-org-orosz.html) — Pragmatic Engineer investigation: forced data labeling, keystroke tracking, tokenmaxxing, Instagram takeover outage, AI psychosis case study
 
 ## Syntheses
 
@@ -164,4 +170,4 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 *Last updated: 2026-06-17*
-*Pages: 146 (105 concepts + 41 sources)*
+*Pages: 152 (108 concepts + 44 sources)*

@@ -75,6 +75,7 @@
   "ai-native-engineering": [
     "agent-quality-optimization",
     "agentic-development-life-cycle",
+    "ai-psychosis",
     "code-overload",
     "code-overload",
     "code-overload",
@@ -116,6 +117,7 @@
   "vibe-coding": [
     "ai-native-engineering",
     "ai-native-engineering",
+    "ai-psychosis",
     "code-overload",
     "code-overload",
     "context-engineering",
@@ -125,6 +127,7 @@
   ],
   "agentic-development-life-cycle": [
     "ai-native-engineering",
+    "ai-psychosis",
     "harness-engineering",
     "specification-driven-development",
     "specification-driven-development",
@@ -137,6 +140,27 @@
     "agent-quality-token-optimization",
     "practical-guide-ai-native-engineer"
   ],
+  "meta-destroying-engineering-org-orosz": [
+    "ai-psychosis"
+  ],
+  "code-overload": [
+    "ai-psychosis",
+    "vibe-coding",
+    "vibe-coding"
+  ],
+  "staff-engineering": [
+    "ai-psychosis",
+    "case-interview",
+    "senior-to-staff-engineer"
+  ],
+  "software-rot": [
+    "ai-psychosis",
+    "code-archaeology",
+    "code-quality-pillars",
+    "complexity-metrics",
+    "essential-accidental-complexity",
+    "refactoring-at-scale"
+  ],
   "dbt": [
     "analytics-engineer",
     "analytics-engineer",
@@ -147,6 +171,7 @@
     "data-ingestion",
     "data-ingestion",
     "data-modeling",
+    "data-quality-monitoring",
     "dataops",
     "elt",
     "elt",
@@ -212,6 +237,7 @@
     "data-engineer",
     "data-engineering-fundamentals",
     "data-governance",
+    "data-quality-monitoring",
     "dbt",
     "semantic-layer",
     "data-engineering-with-dbt",
@@ -436,6 +462,7 @@
   "message-queue": [
     "apache-kafka",
     "apache-kafka",
+    "cap-theorem",
     "cdn",
     "observability",
     "scalable-architecture",
@@ -535,11 +562,13 @@
     "data-lifecycle",
     "data-lifecycle",
     "data-modeling",
+    "data-quality-monitoring",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026"
   ],
   "scalable-architecture": [
     "cache-strategy",
+    "cap-theorem",
     "cdn",
     "database-replication",
     "database-sharding",
@@ -552,6 +581,7 @@
   ],
   "database-replication": [
     "cache-strategy",
+    "cap-theorem",
     "database-sharding",
     "database-sharding",
     "load-balancer",
@@ -578,21 +608,15 @@
     "system-design-interview",
     "system-design-interview-xu"
   ],
-  "technical-interview": [
-    "case-interview",
-    "staff-engineering",
-    "system-design-interview",
-    "cracking-the-coding-interview",
-    "de-coding-technical-interview"
+  "cap-theorem-handbook": [
+    "cap-theorem"
   ],
-  "staff-engineering": [
-    "case-interview",
-    "senior-to-staff-engineer"
-  ],
-  "sources/the-1-percent-case-interview": [
-    "case-interview"
+  "byzantine-fault-tolerance": [
+    "cap-theorem",
+    "bft-data-engineering-handbook"
   ],
   "cache-strategy": [
+    "cap-theorem",
     "cdn",
     "database-replication",
     "database-sharding",
@@ -602,6 +626,16 @@
     "stateless-architecture",
     "system-design-interview",
     "system-design-interview-xu"
+  ],
+  "technical-interview": [
+    "case-interview",
+    "staff-engineering",
+    "system-design-interview",
+    "cracking-the-coding-interview",
+    "de-coding-technical-interview"
+  ],
+  "sources/the-1-percent-case-interview": [
+    "case-interview"
   ],
   "delta-kernel": [
     "change-data-capture",
@@ -665,13 +699,6 @@
     "essential-accidental-complexity",
     "software-rot",
     "software-rot"
-  ],
-  "software-rot": [
-    "code-archaeology",
-    "code-quality-pillars",
-    "complexity-metrics",
-    "essential-accidental-complexity",
-    "refactoring-at-scale"
   ],
   "essential-accidental-complexity": [
     "code-archaeology",
@@ -787,6 +814,7 @@
     "data-engineer",
     "data-engineer",
     "data-governance",
+    "data-quality-monitoring",
     "dataops",
     "reddit-cicd-tips-data-engineering",
     "reddit-cicd-tips-data-engineering"
@@ -845,6 +873,9 @@
     "delta-catalog-managed-tables",
     "delta-grows-up-writes-unity-catalog",
     "delta-grows-up-writes-unity-catalog"
+  ],
+  "data-quality-traffic-lights-sahlin": [
+    "data-quality-monitoring"
   ],
   "database-sharding": [
     "database-replication"
@@ -1149,10 +1180,6 @@
   "sources/de-coding-technical-interview": [
     "technical-interview"
   ],
-  "code-overload": [
-    "vibe-coding",
-    "vibe-coding"
-  ],
   "apache-arrow": [
     "vortex-file-format",
     "vortex-file-format"
@@ -1165,13 +1192,19 @@
     "wiki-maintenance",
     "wiki-maintenance"
   ],
-  "byzantine-fault-tolerance": [
-    "bft-data-engineering-handbook"
+  "cap-theorem": [
+    "cap-theorem-handbook"
+  ],
+  "data-quality-monitoring": [
+    "data-quality-traffic-lights-sahlin"
   ],
   "apache-spark": [
     "high-performance-spark"
   ],
   "domain-driven-design": [
     "learning-domain-driven-design"
+  ],
+  "ai-psychosis": [
+    "meta-destroying-engineering-org-orosz"
   ]
 }

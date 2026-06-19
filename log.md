@@ -491,3 +491,16 @@
 - Created sources/bft-data-engineering-handbook.md
 - Created concepts/byzantine-fault-tolerance.md — Byzantine Generals Problem, 3f+1, PBFT, CFT vs BFT, DE applications (checksums, Merkle Trees, Zero-Trust Data Mesh)
 - Updated index.md (105 concepts, 41 sources)
+
+## [2026-06-17] ingest | CAP Theorem — Data Engineering Handbook
+- Source: Vietnamese DE Handbook page on CAP Theorem (kythuatdulieu.github.io)
+- Created sources/cap-theorem-handbook.md
+- Created concepts/cap-theorem.md — Brewer's theorem, CP vs AP architectures, CAP-C vs ACID-C distinction, quorum mechanics (R+W>N), split-brain resolution, PACELC extension, best practices for DE
+- Updated index.md (106 concepts, 42 sources)
+
+## [2026-06-17] ingest | Data Quality Traffic Lights (Robert Sahlin) + Meta Engineering Org (Gergely Orosz)
+- Sources: "Data quality traffic lights" (robertsahlin.substack.com) + "Why is Meta destroying its engineering organization?" (pragmaticengineer.com)
+- Created sources/data-quality-traffic-lights-sahlin.md, sources/meta-destroying-engineering-org-orosz.md
+- Created concepts/data-quality-monitoring.md — 3 pillars (detection, lineage, communication), 5 failure modes, TimesFM anomaly detection, programmatic trust for agents/ML
+- Created concepts/ai-psychosis.md — organizational pathology, Meta case study, MTBF vs MTTR lesson, profit center vs cost center, symptoms and resistance
+- Updated index.md (108 concepts, 44 sources)

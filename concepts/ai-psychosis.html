@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Psychosis — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai">Ai</a> <span class="sep">/</span>
+  <span>AI Psychosis</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>AI Psychosis</h1>
+  <div class="page-meta"><span>Source: meta-destroying-engineering-org-orosz</span><span>Updated: 2026-06-17</span></div>
+  <div class="page-tags"><span class="tag">ai</span><span class="tag">engineering-culture</span><span class="tag">leadership</span><span class="tag">organizational-behavior</span><span class="tag">risk</span></div>
+</div>
+<div class="content-area concept">
+<p><strong>AI Psychosis</strong> is an organizational pathology where leadership becomes so fixated on AI — building it, adopting it, or optimizing for it — that they systematically destroy the engineering culture, operational reliability, and human capital that made their company successful (source: <span class="wiki-link source-ref">meta-destroying-engineering-org-orosz</span>).</p>
+<p>Coined by Mitchell Hashimoto (founder of HashiCorp, creator of Ghostty), the term describes leaders who operate under an "almost absolute MTTR-is-all-you-need mentality" — believing AI agents will fix bugs so quickly and at such scale that traditional safeguards (testing, code review, resilient architecture) become obsolete.</p>
+<h2 id="symptoms">Symptoms</h2>
+<p>Organizations suffering from AI psychosis exhibit a recognizable pattern:</p>
+<ol>
+<li><strong>Forced AI adoption metrics</strong> — measuring and rewarding AI usage (token count, AI-generated commits) in performance reviews, incentivizing performative AI use over genuine engineering</li>
+<li><strong>Core engineering treated as cost center</strong> — reallocating the best engineers from business-critical systems to AI training/data labeling, signaling that shipping product matters less than training models</li>
+<li><strong>Gutted safety teams</strong> — cutting security, infra, and trust & safety headcount while pushing AI-generated code with AI-only review</li>
+<li><strong>Surveillance for training data</strong> — invasive monitoring (keystrokes, mouse clicks) of engineers to generate RLHF training data, with no opt-out</li>
+<li><strong>Catastrophic failures become normalized</strong> — outages caused by unreviewed AI-generated code are accepted as the cost of speed</li>
+<li><strong>Talent exodus</strong> — tenured engineers who built the company's systems leave en masse, replaced by those willing to optimize for token metrics</li>
+</ol>
+<h2 id="the-meta-case-study">The Meta Case Study</h2>
+<p>In 2026, Meta became the canonical example of AI psychosis in action:</p>
+<table><thead><tr>
+<th>Action</th>
+<th>Consequence</th>
+</tr></thead><tbody>
+<tr>
+<td>30-50% of core engineers reassigned to data labeling</td>
+<td>Infra/security teams gutted; institutional knowledge lost</td>
+</tr>
+<tr>
+<td>Keystroke/mouse tracking deployed with no opt-out</td>
+<td>Employee backlash; partial rollback after weeks of protest</td>
+</tr>
+<tr>
+<td>Token count measured in PSC (performance review)</td>
+<td>Engineers tokenmaxx — generate AI code for metrics, not quality</td>
+</tr>
+<tr>
+<td>Trust & Safety team cut 50%</td>
+<td>Instagram zero-auth password reset outage; CISO resignation</td>
+</tr>
+<tr>
+<td>10% layoffs announced with month-long waiting period</td>
+<td>Fear-based paralysis; everyone optimizing exit strategy</td>
+</tr>
+</tbody></table>
+<p>The result: Instagram suffered a zero-auth account takeover where an AI-powered support system handed password resets to any email address — a failure described as "the most unserious, 'almost too stupid to be true' security breach." The code was AI-generated and AI-reviewed with no human input. Meta's CISO resigned the next day.</p>
+<h2 id="the-infrastructure-lesson-mtbf-vs-mttr">The Infrastructure Lesson: MTBF vs MTTR</h2>
+<p>Hashimoto draws a parallel to the infrastructure industry's cloud transition, where similar debates played out:</p>
+<ul>
+<li><strong>MTBF</strong> (Mean Time Between Failures): Invest in preventing failures — resilient architecture, testing, redundancy</li>
+<li><strong>MTTR</strong> (Mean Time To Recovery): Invest in recovering quickly from failures — automation, rollback, monitoring</li>
+</ul>
+<p>The infrastructure industry learned that you "can automate yourself into a very resilient catastrophe machine" — systems appear healthy by local metrics while globally becoming incomprehensible. Bug reports go down while latent risk explodes. Test coverage rises while semantic understanding falls. Changes happen so fast that nobody notices architecture decaying.</p>
+<p>AI psychosis repeats this mistake at the software development level, but with higher stakes — because AI agents can generate and ship bad code at unprecedented scale.</p>
+<h2 id="engineering-as-profit-center-vs-cost-cen">Engineering as Profit Center vs Cost Center</h2>
+<p>A key dynamic in AI psychosis is leadership reclassifying engineering from <strong>profit center</strong> (builds products that generate revenue) to <strong>cost center</strong> (an expense to be optimized or repurposed for AI training).</p>
+<p>Meta's shift was visible in:</p>
+<ul>
+<li>Engineers moved from building products used by 2B+ people to repetitive data labeling</li>
+<li>The clear signal: "the next AI model matters more than you do"</li>
+<li>Retention equity packages offered to key engineers — but seen as golden handcuffs, not appreciation</li>
+</ul>
+<p>When engineers feel like cost centers, they optimize for personal metrics (token count) rather than business outcomes — a rational response to irrational incentives.</p>
+<h2 id="its-not-just-meta">"It's Not Just Meta"</h2>
+<p>Hashimoto notes he's seeing similar behavior across the industry: "There are entire companies right now under heavy AI psychosis and it's impossible to have rational conversations about it with them."</p>
+<p>The pattern extends beyond Meta:</p>
+<ul>
+<li>Founders over-index on AI's capabilities and under-index on its failure modes</li>
+<li>"It's fine to ship bugs because agents will fix them" becomes the operating assumption</li>
+<li>Traditional engineering values (testing, review, documentation) are dismissed as obsolete</li>
+<li>Engineers who raise concerns are labeled "not getting it" or "afraid of change"</li>
+</ul>
+<h2 id="how-to-recognize-and-resist">How to Recognize and Resist</h2>
+<p><strong>For leaders</strong>: Before making drastic org changes for AI-related reasons, examine Meta's outcome. Ask:</p>
+<ul>
+<li>Are we measuring AI usage in ways that incentivize performative behavior?</li>
+<li>Have we cut safety/security teams while increasing AI-generated code volume?</li>
+<li>Are our best engineers building products or training models?</li>
+<li>Would an AI-generated, AI-reviewed code change survive our outage postmortem?</li>
+</ul>
+<p><strong>For engineers</strong>: If your organization shows symptoms:</p>
+<ul>
+<li>Document concerns with specific examples, not abstract fears</li>
+<li>Frame arguments in terms of business risk, not engineering values</li>
+<li>Forward the Meta case study as additional context for leadership</li>
+<li>Build an exit strategy — the talent market rewards engineers who resisted AI psychosis</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>AI-Native Engineering</h4>
+      <p>Healthy AI-native engineering contrasts with AI psychosis: augmentation vs replacement, quality gates vs tokenmaxxing</p>
+    </a>
+    <a class="connection-card" href="vibe-coding.html">
+      <span class="connection-type related">Related</span>
+      <h4>Vibe Coding</h4>
+      <p>Vibe coding (non-engineer AI-assisted coding) shares the "ship it, AI will fix it" mentality; AI psychosis applies this at the organizational level</p>
+    </a>
+    <a class="connection-card" href="code-overload.html">
+      <span class="connection-type related">Related</span>
+      <h4>Code Overload</h4>
+      <p>AI psychosis accelerates code overload: more AI-generated code, less human review, compounding technical debt</p>
+    </a>
+    <a class="connection-card" href="agentic-development-life-cycle.html">
+      <span class="connection-type related">Related</span>
+      <h4>Agentic Development Life Cycle</h4>
+      <p>ADLC provides the structured framework that AI psychosis destroys: Plan→Build→Test→Review, not Generate→Ship→Pray</p>
+    </a>
+    <a class="connection-card" href="staff-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Staff Engineering</h4>
+      <p>Staff engineers are often the first to leave when AI psychosis hits; their role is expanding surface area, which becomes impossible when surface area is being destroyed</p>
+    </a>
+    <a class="connection-card" href="software-rot.html">
+      <span class="connection-type related">Related</span>
+      <h4>Software Rot</h4>
+      <p>AI psychosis accelerates software rot by removing the human review and intentional architecture that prevents decay</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="ai-native-engineering.html" class="prev">← AI-Native Engineering</a><a href="analytics-engineer.html" class="next">Analytics Engineer →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>
