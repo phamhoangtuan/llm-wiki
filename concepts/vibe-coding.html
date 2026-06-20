@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Vibe Coding</h1>
-  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, new-sdlc-vibe-coding</span><span>Updated: 2026-06-20</span></div>
   <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">coding</span><span class="tag">methodology</span><span class="tag">terminology</span></div>
 </div>
 <div class="content-area concept">
@@ -99,6 +99,63 @@
 </ul>
 <h2 id="the-code-overload-connection">The "Code Overload" Connection</h2>
 <p>When professional engineers operate in vibe coding mode — generating code through AI without the four core practices of <a href="ai-native-engineering.html" class="wiki-link">ai-native-engineering</a> — the result is <a href="code-overload.html" class="wiki-link">code-overload</a>: more code velocity, more bugs, more incidents, more technical debt. Vibe coding is not wrong; it's wrong for production engineering.</p>
+<h2 id="the-agentic-engineering-spectrum">The Agentic Engineering Spectrum</h2>
+<p>Software development now exists on a spectrum of discipline between two poles:</p>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Vibe Coding 🌊</th>
+<th>Agentic Engineering 🏗️</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Intent Specification</strong></td>
+<td>Casual natural language prompts</td>
+<td>Formal specs, architecture docs, memory files</td>
+</tr>
+<tr>
+<td><strong>Verification</strong></td>
+<td>Manual "Does it seem to work?" checks</td>
+<td>Automated test suites + LM Judges/Evals</td>
+</tr>
+<tr>
+<td><strong>Error Handling</strong></td>
+<td>Reactive copy-paste error messages</td>
+<td>Autonomous self-diagnosis within bounds</td>
+</tr>
+<tr>
+<td><strong>Risk Profile</strong></td>
+<td>🔴 High (fine for prototypes/hackathons)</td>
+<td>🟢 Low (systematic verification for production)</td>
+</tr>
+<tr>
+<td><strong>Token Economics</strong></td>
+<td>❌ High burn from trial-and-error loops</td>
+<td>✅ Optimized via high-signal context payloads</td>
+</tr>
+</tbody></table>
+<p><strong>Applied rule</strong>: "The higher the stakes, the tighter the harness." A weekend hackathon can be pure vibe coding. A production system handling financial transactions requires <a href="harness-engineering.html" class="wiki-link">agentic engineering</a>.</p>
+<h2 id="token-economics-the-hidden-interest-rate">Token Economics: The Hidden Interest Rate</h2>
+<p>Vibe coding appears cheap upfront but carries a "hidden interest rate" — the maintenance tax from trial-and-error loops, token burn, and accumulating technical debt:</p>
+<table><thead><tr>
+<th>Approach</th>
+<th>CapEx (Upfront)</th>
+<th>OpEx (Ongoing)</th>
+<th>Long-Term Viability</th>
+</tr></thead><tbody>
+<tr>
+<td>Vibe Coding 🌊</td>
+<td>🟢 Low (just subscription)</td>
+<td>🔴 High ("Maintenance Tax" + token burn)</td>
+<td>❌ 3-10x cost crossover point</td>
+</tr>
+<tr>
+<td>Agentic Engineering 🏗️</td>
+<td>🔴 High (system design, test suites)</td>
+<td>🟢 Low (sustainable marginal costs)</td>
+<td>✅ Scalable economic model</td>
+</tr>
+</tbody></table>
+<p>The financial insight: <strong>high-signal context payloads (precise AGENTS.md) prevent trial-and-error loops that drive up API costs.</strong> Investing in context engineering upfront pays for itself in reduced token burn and fewer wasted iterations.</p>
+<blockquote>"Vibe coding's low CapEx is a teaser rate. The real cost is in the OpEx."</blockquote>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -107,6 +164,16 @@
       <span class="connection-type related">Contrasts with</span>
       <h4>AI-Native Engineering</h4>
       <p>AI-native engineering is the professional discipline; vibe coding is the democratized subset</p>
+    </a>
+    <a class="connection-card" href="agent-loop.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Agent Loop</h4>
+      <p>vibe coding skips the Perceive-Plan-Act-Observe cycle; agentic engineering runs it systematically</p>
+    </a>
+    <a class="connection-card" href="agent-verification.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Agent Verification</h4>
+      <p>vibe coding relies on "seems to work"; agentic engineering verifies both output and trajectory</p>
     </a>
     <a class="connection-card" href="technological-centaur.html">
       <span class="connection-type related">Related to</span>
@@ -118,10 +185,20 @@
       <h4>Code Overload</h4>
       <p>when professional teams adopt vibe coding practices, code overload follows</p>
     </a>
+    <a class="connection-card" href="agent-quality-optimization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Quality Optimization</h4>
+      <p>token economics reveal vibe coding's hidden OpEx costs</p>
+    </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
-      <h4>Code Overload</h4>
+      <h4>Agent Quality Optimization</h4>
       <p>ByteByteGo article placing vibe coding in context</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Agent Quality Optimization</h4>
+      <p>spectrum comparison and token economics framework</p>
     </div>
   </div>
 </section>

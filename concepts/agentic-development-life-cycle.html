@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Agentic Development Life Cycle</h1>
-  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, new-sdlc-vibe-coding</span><span>Updated: 2026-06-20</span></div>
   <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">sdlc</span><span class="tag">methodology</span><span class="tag">process</span></div>
 </div>
 <div class="content-area concept">
@@ -86,6 +86,54 @@
 </tbody></table>
 <h2 id="the-learning-loop">The Learning Loop</h2>
 <p>AI compresses the build step dramatically, but compression value depends on execution quality throughout the remaining cycle. Faster building without robust user observation and scope discipline produces faster divergence from product goals.</p>
+<h2 id="implementation-roadmap-zero-to-productio">Implementation Roadmap: Zero to Production</h2>
+<p>A practical 4-phase, 7-week roadmap for teams transitioning to agentic development:</p>
+<h3 id="phase-1-foundation-week-1-2">Phase 1: Foundation (Week 1-2)</h3>
+<ul>
+<li>✅ Create AGENTS.md: 10 lines defining stack, rules, hard conventions</li>
+<li>✅ Setup basic harness: sandbox, guardrails, observability</li>
+<li>✅ Automate 1 repetitive workflow: weekly report, code review agent</li>
+</ul>
+<h3 id="phase-2-context-engineering-week-3-4">Phase 2: Context Engineering (Week 3-4)</h3>
+<ul>
+<li>✅ Implement static context: project conventions, architectural rules</li>
+<li>✅ Setup dynamic context: RAG for domain knowledge, agent skills pattern</li>
+<li>✅ Write evals first: Turn tests into primary mechanism for communicating intent</li>
+</ul>
+<h3 id="phase-3-orchestration-mode-week-5-6">Phase 3: Orchestration Mode (Week 5-6)</h3>
+<ul>
+<li>✅ Practice decomposition: Break features into agent-sized units</li>
+<li>✅ Setup multi-agent workflows: Specialist hand-offs, A2A protocol</li>
+<li>✅ Implement deterministic hooks: Security validations, format constraints</li>
+</ul>
+<h3 id="phase-4-scale--optimize-week-7">Phase 4: Scale & Optimize (Week 7+)</h3>
+<ul>
+<li>✅ Monitor token economics: Track burn rates, optimize context payloads</li>
+<li>✅ Benchmark agent performance: Terminal Bench, custom eval suites</li>
+<li>✅ Iterate harness configuration: Prompt/tool optimization based on failures</li>
+</ul>
+<h3 id="critical-standards-to-adopt">Critical Standards to Adopt</h3>
+<table><thead><tr>
+<th>Standard</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Google's Agents CLI & ADK</strong></td>
+<td>Scaffold projects, run evaluations, manage agent lifecycle</td>
+</tr>
+<tr>
+<td><strong>Model Context Protocol (MCP)</strong></td>
+<td>Standardize tool access, ensure interoperability</td>
+</tr>
+<tr>
+<td><strong>Agent-to-Agent (A2A) Protocol</strong></td>
+<td>Enable cross-agent delegation, collaborative workflows</td>
+</tr>
+<tr>
+<td><strong>Configuration Files (AGENTS.md)</strong></td>
+<td>Enforce versioned rule files as constitutional constraints</td>
+</tr>
+</tbody></table>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -115,14 +163,29 @@
       <h4>TDD Methodology</h4>
       <p>ADLC's Testing phase is TDD adapted for agentic workflows</p>
     </a>
+    <a class="connection-card" href="agent-loop.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Loop</h4>
+      <p>each ADLC phase triggers the Perceive-Plan-Act-Observe cycle at different scales</p>
+    </a>
+    <a class="connection-card" href="agent-verification.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Verification</h4>
+      <p>the Testing and Review phases implement trajectory + output verification</p>
+    </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
-      <h4>TDD Methodology</h4>
+      <h4>Agent Verification</h4>
       <p>Shah Rahman's ADLC framework</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Agent Verification</h4>
+      <p>4-phase implementation roadmap and critical standards</p>
     </div>
   </div>
 </section>
-<nav class="pagination"><a href="agent-quality-optimization.html" class="prev">← Agent Quality Optimization</a><a href="ai-native-engineering.html" class="next">AI-Native Engineering →</a></nav>
+<nav class="pagination"><a href="agent-verification.html" class="prev">← Agent Verification</a><a href="ai-native-engineering.html" class="next">AI-Native Engineering →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

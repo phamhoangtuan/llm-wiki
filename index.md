@@ -69,8 +69,11 @@
 - [Dependency Injection](concepts/dependency-injection.html) — Design discipline for loose coupling; constructor/method/property injection, lifetime management, anti-patterns
 - [Composition Root](concepts/composition-root.html) — Single centralized location where object graphs are wired; Pure DI vs DI Containers
 - [SOLID Principles](concepts/solid-principles.html) — SRP, OCP, LSP, ISP, DIP — the foundation for effective Dependency Injection
-- [Harness Engineering](concepts/harness-engineering.html) — Closed-loop systems for reliable AI agents; 4 primitives, 5-phase workflow, verification-first design
+- [Harness Engineering](concepts/harness-engineering.html) — Closed-loop systems for reliable AI agents; 4 primitives, 5-phase workflow, 90% rule, 6-component anatomy
 - [Agent Quality Optimization](concepts/agent-quality-optimization.html) — Agent ROI over token counting; compound error, model selection, context engineering, Research-Plan-Implement workflow
+- [Agent Components](concepts/agent-components.html) — 5 pillars of AI agent architecture: Model, Tools, Memory, Orchestration, Deployment
+- [Agent Loop](concepts/agent-loop.html) — Perceive-Plan-Act-Observe cycle with self-correction; the heartbeat of agent autonomy
+- [Agent Verification](concepts/agent-verification.html) — Output + trajectory verification for non-deterministic agents; deterministic hooks as final safety layer
 - [ClickHouse](concepts/clickhouse.html) — High-performance column-oriented OLAP DBMS; data lake ready with Delta Lake and Iceberg support
 - [Delta Kernel](concepts/delta-kernel.html) — Rust abstraction layer for Delta Lake protocol; handles transaction logs, snapshots, schema evolution
 - [Liquid Clustering](concepts/liquid-clustering.html) — Modern data layout for Delta/Iceberg tables; replaces Hive-style partitioning with incremental, multi-dimensional clustering
@@ -98,11 +101,11 @@
 - [Python Standard Library](concepts/python-standard-library.html) — Batteries-included: collections (defaultdict, namedtuple) and sqlite3
 - [Python Concurrency](concepts/python-concurrency.html) — Threads vs Processes, GIL, race condition dangers, and when to use concurrency
 - [Python REPL](concepts/python-repl.html) — Interactive console as a living laboratory: repr, dir(), help(), __mro__ for object exploration
-- [AI-Native Engineering](concepts/ai-native-engineering.html) — Engineers as AI agent orchestrators; four core practices, code overload, individual-to-team transformation
+- [AI-Native Engineering](concepts/ai-native-engineering.html) — Engineers as AI agent orchestrators; four core practices, Conductor vs Orchestrator modes, code overload
 - [AI Psychosis](concepts/ai-psychosis.html) — Organizational pathology where leadership AI obsession destroys engineering culture; Meta case study, MTBF vs MTTR, profit center vs cost center
-- [Context Engineering](concepts/context-engineering.html) — Systematic curation of project-specific info into AI working memory; supersedes prompt engineering
-- [Agentic Development Life Cycle (ADLC)](concepts/agentic-development-life-cycle.html) — Redefinition of SDLC for agent-human collaboration: Plan→Build→Test→Review→Document
-- [Vibe Coding](concepts/vibe-coding.html) — Non-engineer AI-assisted coding vs professional AI-native engineering; where it adds value and where it fails
+- [Context Engineering](concepts/context-engineering.html) — 6 dimensions of context, static vs dynamic, agent skills pattern; supersedes prompt engineering
+- [Agentic Development Life Cycle (ADLC)](concepts/agentic-development-life-cycle.html) — Redefinition of SDLC for agent-human collaboration; 4-phase implementation roadmap
+- [Vibe Coding](concepts/vibe-coding.html) — Ad-hoc AI-assisted coding vs professional AI-native engineering; Agentic Engineering spectrum, hidden token economics
 - [Data Engineering Fundamentals](concepts/data-engineering-fundamentals.html) — Enduring skills (SQL, Python, data modeling, glue skills) that matter more than ever in 2026
 - [CI/CD for Data Pipelines](concepts/cicd-data-pipelines.html) — Linting, testing, and deployment automation for data engineering; tools, notebooks-vs-scripts debate
 - [Specification-Driven Development](concepts/specification-driven-development.html) — Define before build; antidote to random prompting in AI-native workflows
@@ -162,6 +165,7 @@
 - [CAP Theorem — Data Engineering Handbook](sources/cap-theorem-handbook.html) — Vietnamese DE Handbook: Brewer's theorem, CP vs AP architectures, quorum mechanics, PACELC extension, CAP-C vs ACID-C distinction
 - [Data Quality Traffic Lights — Robert Sahlin](sources/data-quality-traffic-lights-sahlin.html) — Nordnet's Data Quality Health Badge: 5 failure modes, dbt+Looker lineage, TimesFM anomaly detection, programmatic trust for agents and ML pipelines
 - [Why Is Meta Destroying Its Engineering Org? — Gergely Orosz](sources/meta-destroying-engineering-org-orosz.html) — Pragmatic Engineer investigation: forced data labeling, keystroke tracking, tokenmaxxing, Instagram takeover outage, AI psychosis case study
+- [The New SDLC With Vibe Coding — Osmani, Saboo & Kartakis](sources/new-sdlc-vibe-coding.html) — 51-page ebook: 5-stage AI coding evolution, Agent Loop, 90% harness rule, vibe coding economics
 
 ## Syntheses
 
@@ -169,5 +173,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-17*
-*Pages: 152 (108 concepts + 44 sources)*
+*Last updated: 2026-06-20*
+*Pages: 156 (111 concepts + 45 sources)*

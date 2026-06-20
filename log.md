@@ -504,3 +504,13 @@
 - Created concepts/data-quality-monitoring.md — 3 pillars (detection, lineage, communication), 5 failure modes, TimesFM anomaly detection, programmatic trust for agents/ML
 - Created concepts/ai-psychosis.md — organizational pathology, Meta case study, MTBF vs MTTR lesson, profit center vs cost center, symptoms and resistance
 - Updated index.md (108 concepts, 44 sources)
+
+## [2026-06-20] ingest | The New SDLC With Vibe Coding — Osmani, Saboo & Kartakis
+
+- Source: "The New SDLC With Vibe Coding: From ad-hoc prompting to Agentic Engineering" by Addy Osmani, Shubham Saboo & Sokratis Kartakis (ebook, 51 pages, finished 2026-06-20)
+- Source file at: /Users/tuanpham/Downloads/ (needs to be moved to raw/)
+- Created sources/new-sdlc-vibe-coding.md
+- New concepts: agent-loop, agent-components, agent-verification
+- Updated concepts: vibe-coding (+ Agentic Engineering spectrum, token economics), harness-engineering (+ 90% rule, 6-component production anatomy), context-engineering (+ 6 dimensions, static vs dynamic, agent skills pattern), ai-native-engineering (+ Conductor vs Orchestrator modes, 4 orchestrator skills), agent-quality-optimization (+ CapEx vs OpEx token economics), agentic-development-life-cycle (+ 4-phase implementation roadmap)
+- Updated index.md: +3 concept entries, +1 source entry
+- Total pages: 156 (111 concepts + 45 sources)

@@ -3,8 +3,8 @@ title: "Context Engineering"
 type: concept
 tags: [ai-engineering, agents, prompt-engineering, llm, knowledge-management]
 created: 2026-06-15
-updated: 2026-06-15
-sources: [practical-guide-ai-native-engineer, agent-quality-token-optimization]
+updated: 2026-06-20
+sources: [practical-guide-ai-native-engineer, agent-quality-token-optimization, new-sdlc-vibe-coding]
 aliases: [context-curation, context-injection]
 ---
 
@@ -36,6 +36,43 @@ The context layer consists of reusable, standardized artifacts:
 | **Team conventions** | Shared practices and expectations | Branch naming, PR template, review checklist |
 | **Development workflows** | Step-by-step processes | "Plan → Research → Implement → Verify" |
 
+## Six Dimensions of Context
+
+Beyond static files, context engineering addresses six dimensions that feed the agent's working memory:
+
+1. **Instructions**: Role, mission objectives, operational guardrails
+2. **Knowledge**: Architectural diagrams, technical debt logs, domain schemas
+3. **Memory**: Short-term session logs + long-term project persistent state
+4. **Examples**: Few-shot demonstrations, gold-standard reference patterns
+5. **Tools**: Structured definitions for APIs, scripts, external service access
+6. **Guardrails**: Formatting requirements, safety validations, hard-coded constraints
+
+These six dimensions correspond to the Memory, Tools, and Orchestration components of the [[agent-components|agent architecture]]. Context engineering is the practice of curating and delivering the right information from each dimension.
+
+## Static vs Dynamic Context
+
+Context can be delivered in two modes — each with distinct trade-offs:
+
+| Feature | Static Context | Dynamic Context |
+|---|---|---|
+| **Definition** | Always loaded (AGENTS.md rules) | Loaded on demand (RAG results, skills) |
+| **Cost (Tokens)** | 🔴 High (paid in every interaction) | 🟢 Low (paid only when needed) |
+| **Reliability** | ✅ Excellent: Agent never forgets | ⚠️ Variable: Subject to retrieval misses |
+| **Use Case** | Core conventions, architectural rules | Task-specific knowledge, RAG retrieval |
+
+**The balance**: Static context ensures the agent never violates foundational rules. Dynamic context keeps token costs manageable by loading specialized knowledge only when relevant. Overloading static context causes context rot; relying entirely on dynamic context risks retrieval misses on critical constraints.
+
+## Agent Skills Pattern: Progressive Disclosure
+
+The Agent Skills pattern implements dynamic context through progressive disclosure:
+
+- ✅ Agent remains a **lightweight generalist** by default
+- ✅ When a task matches a skill trigger → load **deep procedural knowledge**
+- ✅ Optimizes token economics — prevents context rot from rarely-used instructions
+- ✅ Prevents the "one giant instruction file" anti-pattern
+
+This maps directly to the behavior files (AGENTS.md for static rules + skills loaded on demand for dynamic knowledge). The mental model: "What would a new team member need to know to contribute effectively, and how do I encode that knowledge in a form the AI can use?"
+
 ## Mechanics of Context Quality
 
 Two well-documented biases govern how models utilize context:
@@ -66,6 +103,8 @@ Teams practicing rigorous context engineering report **40-50% speed increases** 
 - Foundational to [[ai-native-engineering]] — context engineering is the first and most important of the four core practices
 - Related to [[agent-quality-optimization]] — agent quality optimization includes context strategy as a key dimension of ROI
 - Implements principles from [[harness-engineering]] — the AGENTS.md file is a harness primitive that acts as a context engineering artifact
+- Related to [[agent-components]] — the 6 dimensions of context map to Memory, Tools, and Orchestration components
 - Contrasts with simple [[vibe-coding]] — vibe coders give one-off prompts; AI-native engineers build persistent context layers
 - Benchmark source: [[sources/practical-guide-ai-native-engineer]] — ByteByteGo guide covering context engineering
 - Benchmark source: [[sources/agent-quality-token-optimization]] — GitHub workshop on context strategy
+- Benchmark source: [[sources/new-sdlc-vibe-coding]] — 6 dimensions, static vs dynamic context, agent skills pattern

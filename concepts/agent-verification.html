@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Verification — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Agent Verification</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Agent Verification</h1>
+  <div class="page-meta"><span>Source: new-sdlc-vibe-coding</span><span>Updated: 2026-06-20</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">testing</span><span class="tag">reliability</span><span class="tag">quality</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Agent Verification</strong> is the discipline of validating both the <em>output</em> and the <em>trajectory</em> of AI agents — going beyond traditional software testing to account for the non-deterministic, multi-step reasoning that agents employ. For non-deterministic agents, unit testing the final artifact is insufficient. Production verification must answer two questions: "Is the output correct?" AND "Was the path to that output sound?"</p>
+<blockquote>"Generation is solved. Verification, judgment, and direction are the new craft."</blockquote>
+<h2 id="two-dimensions-of-verification">Two Dimensions of Verification</h2>
+<h3 id="output-verification">Output Verification</h3>
+<p>The artifact itself — code, configuration, documentation. This is what traditional testing covers:</p>
+<ul>
+<li>Unit tests verify functional correctness</li>
+<li>Integration tests verify component interaction</li>
+<li>Linters verify structural compliance</li>
+<li>Security scans verify vulnerability absence</li>
+</ul>
+<h3 id="trajectory-verification">Trajectory Verification</h3>
+<p>The reasoning and tool sequence used to reach the output. This is unique to agents:</p>
+<ul>
+<li>Was the reasoning chain valid?</li>
+<li>Were tools invoked appropriately?</li>
+<li>Did the agent skip mandatory verification steps?</li>
+<li>Did the agent follow its AGENTS.md constraints?</li>
+<li>Were there unnecessary loops or wasteful tool calls?</li>
+</ul>
+<p>Trajectory verification catches failures that output verification misses — an agent can produce correct code through flawed reasoning, and that flawed reasoning will produce wrong code on the next task.</p>
+<h2 id="the-continuous-quality-flywheel">The Continuous Quality Flywheel</h2>
+<pre><code>1. Benchmark Evaluation
+   Test agents against gold-standard suites
+        ↓
+2. Failure Diagnosis
+   Cluster failures → identify root causes
+        ↓
+3. Prompt/Tool Optimization
+   Refine harness configs based on diagnosis
+        ↓
+4. Regression Verification
+   Ensure new optimizations don&#x27;t break existing behaviors
+        ↓
+   (back to 1)</code></pre>
+<p>This flywheel treats verification as an ongoing optimization cycle, not a one-time gate. Each iteration improves both the agent and the verification suite.</p>
+<h2 id="deterministic-hooks-the-final-safety-lay">Deterministic Hooks: The Final Safety Layer</h2>
+<p>Deterministic hooks are hard-coded guards that operate at the framework layer — independently of model reasoning. They intercept hazardous actions regardless of what the model "thinks":</p>
+<pre><code class="language-python"># Guardrail example: Block hardcoded credentials
+def validate_code_before_commit(code: str) -&gt; bool:
+    if re.search(r&#x27;password\s*=\s*[&quot;\&#x27;][^&quot;\&#x27;]+[&quot;\&#x27;]&#x27;, code):
+        raise SecurityError(&quot;Hardcoded credentials detected&quot;)
+    return True</code></pre>
+<p><strong>Key principle</strong>: Deterministic hooks are the last line of defense. They don't rely on the model being "smart enough" to avoid mistakes — they prevent mistakes categorically.</p>
+<p>Examples of deterministic hooks:</p>
+<ul>
+<li><strong>Security</strong>: Block hardcoded credentials, API keys, secrets in commits</li>
+<li><strong>Format</strong>: Enforce code style, file structure, naming conventions</li>
+<li><strong>Scope</strong>: Prevent agents from modifying files outside permitted directories</li>
+<li><strong>Safety</strong>: Block destructive commands (rm -rf, drop table) without explicit confirmation</li>
+</ul>
+<h2 id="economics-of-verification">Economics of Verification</h2>
+<p>Verification is not a cost center — it's an economic multiplier:</p>
+<table><thead><tr>
+<th>Approach</th>
+<th>Upfront Cost (CapEx)</th>
+<th>Ongoing Cost (OpEx)</th>
+<th>Long-Term Viability</th>
+</tr></thead><tbody>
+<tr>
+<td>No verification (vibe coding)</td>
+<td>Low</td>
+<td>High (bug fixes, incidents, rework)</td>
+<td>❌ Unsustainable</td>
+</tr>
+<tr>
+<td>Systematic verification</td>
+<td>High (test suites, hooks, benchmarks)</td>
+<td>Low (errors caught early)</td>
+<td>✅ Scalable</td>
+</tr>
+</tbody></table>
+<p>The cost of fixing a bug grows exponentially with each step it propagates. Verification shifts failure detection left — catching errors at step N rather than step N+10.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="harness-engineering.html">
+      <span class="connection-type extends">Extends</span>
+      <h4>Harness Engineering</h4>
+      <p>verification is the mandatory gate in harness workflows; deterministic hooks are harness primitives</p>
+    </a>
+    <a class="connection-card" href="agent-quality-optimization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Quality Optimization</h4>
+      <p>verification prevents compound errors by catching failures at each step</p>
+    </a>
+    <a class="connection-card" href="vibe-coding.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Vibe Coding</h4>
+      <p>vibe coding uses "seems to work"; agentic engineering uses systematic verification</p>
+    </a>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related</span>
+      <h4>Fail Fast</h4>
+      <p>deterministic hooks catch errors immediately before they propagate</p>
+    </a>
+    <a class="connection-card" href="agent-loop.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Agent Loop</h4>
+      <p>the Observe stage of the loop is verification in action</p>
+    </a>
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Testing Strategy</h4>
+      <p>agent verification extends traditional testing with trajectory analysis</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Testing Strategy</h4>
+      <p>Part 8: "Verification Framework & Economics"</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="agent-quality-optimization.html" class="prev">← Agent Quality Optimization</a><a href="agentic-development-life-cycle.html" class="next">Agentic Development Life Cycle →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

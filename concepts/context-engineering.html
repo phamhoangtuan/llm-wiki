@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Context Engineering</h1>
-  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, agent-quality-token-optimization</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, agent-quality-token-optimization, new-sdlc-vibe-coding</span><span>Updated: 2026-06-20</span></div>
   <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">prompt-engineering</span><span class="tag">llm</span><span class="tag">knowledge-management</span></div>
 </div>
 <div class="content-area concept">
@@ -102,6 +102,55 @@
 <td>"Plan → Research → Implement → Verify"</td>
 </tr>
 </tbody></table>
+<h2 id="six-dimensions-of-context">Six Dimensions of Context</h2>
+<p>Beyond static files, context engineering addresses six dimensions that feed the agent's working memory:</p>
+<ol>
+<li><strong>Instructions</strong>: Role, mission objectives, operational guardrails</li>
+<li><strong>Knowledge</strong>: Architectural diagrams, technical debt logs, domain schemas</li>
+<li><strong>Memory</strong>: Short-term session logs + long-term project persistent state</li>
+<li><strong>Examples</strong>: Few-shot demonstrations, gold-standard reference patterns</li>
+<li><strong>Tools</strong>: Structured definitions for APIs, scripts, external service access</li>
+<li><strong>Guardrails</strong>: Formatting requirements, safety validations, hard-coded constraints</li>
+</ol>
+<p>These six dimensions correspond to the Memory, Tools, and Orchestration components of the <a href="agent-components.html" class="wiki-link">agent architecture</a>. Context engineering is the practice of curating and delivering the right information from each dimension.</p>
+<h2 id="static-vs-dynamic-context">Static vs Dynamic Context</h2>
+<p>Context can be delivered in two modes — each with distinct trade-offs:</p>
+<table><thead><tr>
+<th>Feature</th>
+<th>Static Context</th>
+<th>Dynamic Context</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Definition</strong></td>
+<td>Always loaded (AGENTS.md rules)</td>
+<td>Loaded on demand (RAG results, skills)</td>
+</tr>
+<tr>
+<td><strong>Cost (Tokens)</strong></td>
+<td>🔴 High (paid in every interaction)</td>
+<td>🟢 Low (paid only when needed)</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>✅ Excellent: Agent never forgets</td>
+<td>⚠️ Variable: Subject to retrieval misses</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Core conventions, architectural rules</td>
+<td>Task-specific knowledge, RAG retrieval</td>
+</tr>
+</tbody></table>
+<p><strong>The balance</strong>: Static context ensures the agent never violates foundational rules. Dynamic context keeps token costs manageable by loading specialized knowledge only when relevant. Overloading static context causes context rot; relying entirely on dynamic context risks retrieval misses on critical constraints.</p>
+<h2 id="agent-skills-pattern-progressive-disclos">Agent Skills Pattern: Progressive Disclosure</h2>
+<p>The Agent Skills pattern implements dynamic context through progressive disclosure:</p>
+<ul>
+<li>✅ Agent remains a <strong>lightweight generalist</strong> by default</li>
+<li>✅ When a task matches a skill trigger → load <strong>deep procedural knowledge</strong></li>
+<li>✅ Optimizes token economics — prevents context rot from rarely-used instructions</li>
+<li>✅ Prevents the "one giant instruction file" anti-pattern</li>
+</ul>
+<p>This maps directly to the behavior files (AGENTS.md for static rules + skills loaded on demand for dynamic knowledge). The mental model: "What would a new team member need to know to contribute effectively, and how do I encode that knowledge in a form the AI can use?"</p>
 <h2 id="mechanics-of-context-quality">Mechanics of Context Quality</h2>
 <p>Two well-documented biases govern how models utilize context:</p>
 <h3 id="lost-in-the-middle">Lost in the Middle</h3>
@@ -138,6 +187,11 @@
       <h4>Harness Engineering</h4>
       <p>the AGENTS.md file is a harness primitive that acts as a context engineering artifact</p>
     </a>
+    <a class="connection-card" href="agent-components.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Components</h4>
+      <p>the 6 dimensions of context map to Memory, Tools, and Orchestration components</p>
+    </a>
     <a class="connection-card" href="vibe-coding.html">
       <span class="connection-type related">Related</span>
       <h4>Vibe Coding</h4>
@@ -152,6 +206,11 @@
       <span class="connection-type related">Related</span>
       <h4>Vibe Coding</h4>
       <p>GitHub workshop on context strategy</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Vibe Coding</h4>
+      <p>6 dimensions, static vs dynamic context, agent skills pattern</p>
     </div>
   </div>
 </section>

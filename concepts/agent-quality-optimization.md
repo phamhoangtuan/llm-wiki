@@ -3,8 +3,8 @@ title: "Agent Quality Optimization"
 type: concept
 tags: [ai-engineering, agents, token-optimization, llm, reliability]
 created: 2026-06-14
-updated: 2026-06-14
-sources: [agent-quality-token-optimization]
+updated: 2026-06-20
+sources: [agent-quality-token-optimization, new-sdlc-vibe-coding]
 ---
 
 ## Summary
@@ -25,6 +25,21 @@ The fundamental framing: **Agent ROI = Value of Output − Token Cost**
 The key insight: **quality amplifies value across multiple dimensions simultaneously** — speed of delivery, degree of autonomy, correctness of results. Tokens only influence cost, a single dimension. Optimizing for token reduction at the expense of quality is net-negative ROI. A cheaper agent that produces wrong output is infinitely expensive.
 
 > Quality is an ROI-enhancing multiplier. Token cost is a linear subtractor. Optimize the multiplier.
+
+## Token Economics: CapEx vs OpEx
+
+Agent quality optimization is fundamentally an economic decision — not just a technical one. Agentic systems have both upfront (CapEx) and ongoing (OpEx) costs:
+
+| Approach | CapEx (Upfront) | OpEx (Ongoing) | Long-Term Viability |
+|---|---|---|---|
+| **Vibe Coding** 🌊 | 🟢 Low (just subscription) | 🔴 High ("Maintenance Tax" + token burn) | ❌ 3-10x cost crossover point |
+| **Agentic Engineering** 🏗️ | 🔴 High (system design, test suites) | 🟢 Low (sustainable marginal costs) | ✅ Scalable economic model |
+
+**The financial insight**: High-signal context payloads (precise AGENTS.md rules, well-structured harness configuration) prevent trial-and-error loops that drive up API costs. The upfront investment in harness design, test suites, and context engineering pays for itself in reduced token burn and fewer wasted iterations.
+
+The cost crossover happens because vibe coding's OpEx grows with complexity — each additional feature requires more trial-and-error cycles, more token burn, and more bug fixes. Agentic engineering's OpEx stays flat because the harness absorbs complexity.
+
+> "Vibe coding's low CapEx is a teaser rate. The real cost is in the OpEx."
 
 ## The Compound Error Problem
 
@@ -162,5 +177,8 @@ The workshop identified traits that will distinguish effective agent engineers o
 - Related to [[fail-fast]] — deterministic guardrails (tests, linters, CI/CD) catch agent errors before they compound, directly implementing the fail-fast philosophy in agentic workflows
 - Related to [[testing-strategy]] — unit tests serve as deterministic controls for agentic workflows; independent quality gates that operate regardless of model reliability
 - Related to [[context-engineering]] — the Context Engineering section covers the same principles (lost in the middle, recency bias, minimum necessary context) formalized as a standalone discipline
+- Related to [[agent-verification]] — token economics show that verification investment (CapEx) reduces long-term costs (OpEx); trajectory verification catches compound errors
+- Related to [[vibe-coding]] — token economics explain why vibe coding's low CapEx is a teaser rate with unsustainable OpEx
 - Core to [[ai-native-engineering]] — quality optimization governs model selection, compound error prevention, and context strategy within AI-native workflows
 - Benchmark source: [[sources/agent-quality-token-optimization]] — GitHub workshop on agent quality and token optimization by Felix Gozali and Lakshya Tyagi
+- Benchmark source: [[sources/new-sdlc-vibe-coding]] — CapEx vs OpEx economics, vibe coding's hidden interest rate

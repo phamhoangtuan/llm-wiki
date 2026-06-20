@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agent Components — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Agent Components</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Agent Components</h1>
+  <div class="page-meta"><span>Source: new-sdlc-vibe-coding</span><span>Updated: 2026-06-20</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">architecture</span><span class="tag">llm</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>An AI agent is built from <strong>5 foundational components</strong> — Model, Tools, Memory, Orchestration, and Deployment. These components are static by themselves; they only gain value when set in motion by the <a href="agent-loop.html" class="wiki-link">agent-loop</a>. Together they form the complete architecture that transforms a raw reasoning engine into a production-grade autonomous system.</p>
+<blockquote>"The static components only have value when set in motion by the dynamic loop they power."</blockquote>
+<h2 id="the-5-pillars">The 5 Pillars</h2>
+<table><thead><tr>
+<th>Component</th>
+<th>Primary Function</th>
+<th>Human Analogy</th>
+<th>Real-World Examples</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Model</strong> 🧠</td>
+<td>Reasoning engine — decides the next thought or tool call</td>
+<td>The Brain: central logic and thinking processor</td>
+<td>Claude, GPT-4, Gemini as "core reasoning"</td>
+</tr>
+<tr>
+<td><strong>Tools</strong> 🛠️</td>
+<td>APIs, scripts, MCP servers to interact with the world</td>
+<td>The Hands: ability to execute tasks and manipulate objects</td>
+<td>File system access, database queries, terminal commands</td>
+</tr>
+<tr>
+<td><strong>Memory</strong> 📚</td>
+<td>Retains session logs + project-specific rules (AGENTS.md)</td>
+<td>The Experience: library of lessons from previous attempts</td>
+<td>Conversation history, project conventions, past failures</td>
+</tr>
+<tr>
+<td><strong>Orchestration</strong> 🎭</td>
+<td>Logic that assembles context and dispatches tool results</td>
+<td>The Nervous System: coordination connecting thought → action</td>
+<td>Routing between sub-agents, managing hand-offs</td>
+</tr>
+<tr>
+<td><strong>Deployment</strong> 🌐</td>
+<td>Hosting + observability infrastructure</td>
+<td>The Environment: stage/workspace where work happens</td>
+<td>Cloud sandbox, monitoring dashboards, cost tracking</td>
+</tr>
+</tbody></table>
+<h3 id="model--the-reasoning-engine">Model — The Reasoning Engine</h3>
+<p>The model is the core intelligence — it decides <em>what</em> to do next. But a raw model cannot "drive" a project alone. It needs the surrounding machinery (the harness) to translate reasoning into action. Model capability (GPT-4 vs Claude vs Gemini) matters far less than the quality of the harness around it. A well-configured harness with a mid-tier model outperforms a poorly-configured harness with a top-tier model.</p>
+<h3 id="tools--the-interface-to-reality">Tools — The Interface to Reality</h3>
+<p>Tools are what separate agents from chatbots. They give the model the ability to interact with external state: read/write files, query databases, execute commands, call APIs. The Model Context Protocol (MCP) standardizes this interface — described as "USB-C for AI." Tools need precise functional definitions with clear invocation parameters; ambiguous tool descriptions cause the model to misuse or avoid them.</p>
+<h3 id="memory--persistent-knowledge">Memory — Persistent Knowledge</h3>
+<p>Memory operates at two levels:</p>
+<ul>
+<li><strong>Short-term</strong>: Session logs, conversation history, recent actions</li>
+<li><strong>Long-term</strong>: Project conventions (AGENTS.md), coding standards, architectural rules, past failures and lessons</li>
+</ul>
+<p>Memory is what prevents agents from repeating mistakes and enables continuity across sessions. The repository — not chat history — is the System of Record for long-term memory.</p>
+<h3 id="orchestration--coordination-logic">Orchestration — Coordination Logic</h3>
+<p>Orchestration governs how the agent assembles context, routes between sub-agents, manages hand-offs, and decides delegation strategies. It includes:</p>
+<ul>
+<li>Deterministic rules for delegation and sub-agent spawning</li>
+<li>Inter-agent communication protocols (A2A)</li>
+<li>Context assembly: what information goes to which agent</li>
+<li>Loop control: when to re-plan, when to stop</li>
+</ul>
+<h3 id="deployment--the-production-environment">Deployment — The Production Environment</h3>
+<p>Deployment provides the isolated, monitored workspace where agents operate:</p>
+<ul>
+<li><strong>Sandboxes</strong>: Ephemeral, cloud-hosted runtimes with zero-trust scoped permissions</li>
+<li><strong>Observability</strong>: Comprehensive telemetry, granular traces, cost metering</li>
+<li><strong>Guardrails</strong>: Hard constraints enforced at the framework layer (never commit credentials)</li>
+</ul>
+<h2 id="components--system">Components → System</h2>
+<p>The 5 components are necessary but not sufficient. What makes them a <em>system</em> is the <a href="agent-loop.html" class="wiki-link">agent-loop</a> — the dynamic cycle that activates each component in sequence. Without the loop, you have expensive autocomplete. With the loop, you have an autonomous agent.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="agent-loop.html">
+      <span class="connection-type related">Related</span>
+      <h4>Agent Loop</h4>
+      <p>the loop is what animates these static components into a functioning system</p>
+    </a>
+    <a class="connection-card" href="harness-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Harness Engineering</h4>
+      <p>the harness organizes these components into a production-grade configuration</p>
+    </a>
+    <a class="connection-card" href="context-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Context Engineering</h4>
+      <p>Memory and Instructions are context engineering artifacts; tool definitions are context</p>
+    </a>
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type core">Core to</span>
+      <h4>AI-Native Engineering</h4>
+      <p>AI-native engineers design systems by composing and configuring these components</p>
+    </a>
+    <a class="connection-card" href="agent-verification.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Verification</h4>
+      <p>Deployment includes observability that enables trajectory verification</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Agent Verification</h4>
+      <p>Part 2: "Defining the Agent — 5 Pillars of Intelligence"</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="agent-loop.html" class="next">Agent Loop →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

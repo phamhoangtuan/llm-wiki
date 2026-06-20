@@ -3,8 +3,8 @@ title: "Agentic Development Life Cycle"
 type: concept
 tags: [ai-engineering, agents, sdlc, methodology, process]
 created: 2026-06-15
-updated: 2026-06-15
-sources: [practical-guide-ai-native-engineer]
+updated: 2026-06-20
+sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding]
 aliases: [ADLC, agentic-sdlc]
 ---
 
@@ -54,6 +54,39 @@ Encode Layer-1 (individual) and Layer-2 (team) practices into maintained, self-e
 
 AI compresses the build step dramatically, but compression value depends on execution quality throughout the remaining cycle. Faster building without robust user observation and scope discipline produces faster divergence from product goals.
 
+## Implementation Roadmap: Zero to Production
+
+A practical 4-phase, 7-week roadmap for teams transitioning to agentic development:
+
+### Phase 1: Foundation (Week 1-2)
+- ✅ Create AGENTS.md: 10 lines defining stack, rules, hard conventions
+- ✅ Setup basic harness: sandbox, guardrails, observability
+- ✅ Automate 1 repetitive workflow: weekly report, code review agent
+
+### Phase 2: Context Engineering (Week 3-4)
+- ✅ Implement static context: project conventions, architectural rules
+- ✅ Setup dynamic context: RAG for domain knowledge, agent skills pattern
+- ✅ Write evals first: Turn tests into primary mechanism for communicating intent
+
+### Phase 3: Orchestration Mode (Week 5-6)
+- ✅ Practice decomposition: Break features into agent-sized units
+- ✅ Setup multi-agent workflows: Specialist hand-offs, A2A protocol
+- ✅ Implement deterministic hooks: Security validations, format constraints
+
+### Phase 4: Scale & Optimize (Week 7+)
+- ✅ Monitor token economics: Track burn rates, optimize context payloads
+- ✅ Benchmark agent performance: Terminal Bench, custom eval suites
+- ✅ Iterate harness configuration: Prompt/tool optimization based on failures
+
+### Critical Standards to Adopt
+
+| Standard | Purpose |
+|---|---|
+| **Google's Agents CLI & ADK** | Scaffold projects, run evaluations, manage agent lifecycle |
+| **Model Context Protocol (MCP)** | Standardize tool access, ensure interoperability |
+| **Agent-to-Agent (A2A) Protocol** | Enable cross-agent delegation, collaborative workflows |
+| **Configuration Files (AGENTS.md)** | Enforce versioned rule files as constitutional constraints |
+
 ---
 
 - Core process for [[ai-native-engineering]] — ADLC is the operational framework that AI-native engineers execute
@@ -61,4 +94,7 @@ AI compresses the build step dramatically, but compression value depends on exec
 - Enforced by [[harness-engineering]] — harness primitives (AGENTS.md, feature_list.json) provide structural enforcement within ADLC
 - Implements [[specification-driven-development]] — the Planning phase is specification-driven development at scale
 - Related to [[tdd-methodology]] — ADLC's Testing phase is TDD adapted for agentic workflows
+- Related to [[agent-loop]] — each ADLC phase triggers the Perceive-Plan-Act-Observe cycle at different scales
+- Related to [[agent-verification]] — the Testing and Review phases implement trajectory + output verification
 - Benchmark source: [[sources/practical-guide-ai-native-engineer]] — Shah Rahman's ADLC framework
+- Benchmark source: [[sources/new-sdlc-vibe-coding]] — 4-phase implementation roadmap and critical standards

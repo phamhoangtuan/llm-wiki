@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Harness Engineering</h1>
-  <div class="page-meta"><span>Source: learn-harness-engineering</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: learn-harness-engineering, new-sdlc-vibe-coding</span><span>Updated: 2026-06-20</span></div>
   <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">reliability</span><span class="tag">testing</span><span class="tag">workflow</span></div>
 </div>
 <div class="content-area concept">
@@ -134,6 +134,54 @@
     └────────── (Fail: loop back) ←───────────────┘
                                      (Pass: Done)</code></pre>
 <p>Reliability is a byproduct of closed-loop verification, not of prompt engineering. If the harness doesn't facilitate auto-fix through runtime observability, you have expensive autocomplete — not an agent.</p>
+<h2 id="the-90-rule-harness-determines-success">The 90% Rule: Harness Determines Success</h2>
+<p>A LangChain study demonstrated that harness configuration — not model selection — is the primary driver of agent performance:</p>
+<ul>
+<li><strong>Fixed model</strong>, tweaked only system prompt + tools + middleware</li>
+<li><strong>Result</strong>: +13.7 points on Terminal Bench 2.0</li>
+<li><strong>Conclusion</strong>: Harness configuration > model swapping</li>
+</ul>
+<blockquote>"Model is only 10% of the system. The harness is the other 90%."</blockquote>
+<p>The harness is not an "optional extra" — it's the physical scaffolding that transforms raw inference into a reliable production asset. Investing in a better model without improving the harness yields diminishing returns.</p>
+<h2 id="anatomy-of-a-production-grade-harness">Anatomy of a Production-Grade Harness</h2>
+<p>A production harness comprises six components beyond the four primitives:</p>
+<table><thead><tr>
+<th>Component</th>
+<th>Purpose</th>
+<th>Production Requirement</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Instructions & Rule Files</strong> 📜</td>
+<td>Establish agent identity, boundaries, prohibited trajectories</td>
+<td>Versioned config files (AGENTS.md, CLAUDE.md) in codebase</td>
+</tr>
+<tr>
+<td><strong>Tools & MCP Servers</strong> 🔧</td>
+<td>Enable model interface with external state (APIs, DBs, file systems)</td>
+<td>Precise functional definitions + semantic prose for invocation params</td>
+</tr>
+<tr>
+<td><strong>Sandboxes & Managed Runtimes</strong> 🧪</td>
+<td>Isolated execution environments for code verification</td>
+<td>Cloud-hosted, ephemeral runtimes with zero-trust scoped permissions</td>
+</tr>
+<tr>
+<td><strong>Orchestration Logic</strong> 🎭</td>
+<td>Govern sub-agent spawning, specialist hand-offs, iterative loop</td>
+<td>Deterministic rules for delegation + inter-agent communication protocols</td>
+</tr>
+<tr>
+<td><strong>Guardrails & Hooks</strong> 🛡️</td>
+<td>Enforce hard constraints at framework layer</td>
+<td>Final-layer deterministic code intercept hazardous actions (block hardcoded credentials)</td>
+</tr>
+<tr>
+<td><strong>Observability & Tracing</strong> 🔍</td>
+<td>Monitor model drift, token burn rates, architectural alignment</td>
+<td>Comprehensive telemetry, granular traces, cost metering for audit decisions</td>
+</tr>
+</tbody></table>
+<p>These components map to the 5 <a href="agent-components.html" class="wiki-link">agent-components</a> — the harness is the implementation layer that configures and integrates them into a production system.</p>
 <h2 id="deployment-readiness-checklist">Deployment Readiness Checklist</h2>
 <p>Before deploying any agentic harness, verify:</p>
 <ul>
@@ -191,10 +239,30 @@
       <h4>Context Engineering</h4>
       <p>AGENTS.md and context files are both harness primitives and context engineering artifacts; the disciplines overlap at the configuration layer</p>
     </a>
+    <a class="connection-card" href="agent-components.html">
+      <span class="connection-type related">Related</span>
+      <h4>Agent Components</h4>
+      <p>the harness is the implementation layer that configures the 5 components into a production system</p>
+    </a>
+    <a class="connection-card" href="agent-loop.html">
+      <span class="connection-type related">Related</span>
+      <h4>Agent Loop</h4>
+      <p>harness primitives ensure each stage of the Perceive-Plan-Act-Observe cycle completes before proceeding</p>
+    </a>
+    <a class="connection-card" href="agent-verification.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Verification</h4>
+      <p>deterministic hooks and guardrails are the final safety layer in agent verification</p>
+    </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
-      <h4>Context Engineering</h4>
+      <h4>Agent Verification</h4>
       <p>walkinglabs' guide to closed-loop AI agent systems</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Agent Verification</h4>
+      <p>the 90% rule and 6-component production anatomy</p>
     </div>
   </div>
 </section>

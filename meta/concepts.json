@@ -1,5 +1,29 @@
 {
   "concepts": {
+    "agent-components": {
+      "title": "Agent Components",
+      "category": "AI & Agents",
+      "url": "concepts/agent-components.html",
+      "definition": "An AI agent is built from **5 foundational components** — Model, Tools, Memory, Orchestration, and Deployment. These components are static by themselves; they only gain value when set in motion by the",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "architecture",
+        "llm"
+      ]
+    },
+    "agent-loop": {
+      "title": "Agent Loop",
+      "category": "AI & Agents",
+      "url": "concepts/agent-loop.html",
+      "definition": "The **Agent Loop** is the iterative cycle that powers autonomous AI agents — the mechanism that distinguishes agents from chatbots. Rather than guessing an answer from a single prompt, an agent works ",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "autonomy",
+        "llm"
+      ]
+    },
     "agent-quality-optimization": {
       "title": "Agent Quality Optimization",
       "category": "AI & Agents",
@@ -11,6 +35,19 @@
         "token-optimization",
         "llm",
         "reliability"
+      ]
+    },
+    "agent-verification": {
+      "title": "Agent Verification",
+      "category": "AI & Agents",
+      "url": "concepts/agent-verification.html",
+      "definition": "**Agent Verification** is the discipline of validating both the *output* and the *trajectory* of AI agents — going beyond traditional software testing to account for the non-deterministic, multi-step ",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "testing",
+        "reliability",
+        "quality"
       ]
     },
     "agentic-development-life-cycle": {

@@ -3,8 +3,8 @@ title: "Harness Engineering"
 type: concept
 tags: [ai-engineering, agents, reliability, testing, workflow]
 created: 2026-05-31
-updated: 2026-06-15
-sources: [learn-harness-engineering]
+updated: 2026-06-20
+sources: [learn-harness-engineering, new-sdlc-vibe-coding]
 ---
 
 ## Summary
@@ -105,6 +105,33 @@ Encounter Issues → Auto-fix → Run Test Suite → Verify
 
 Reliability is a byproduct of closed-loop verification, not of prompt engineering. If the harness doesn't facilitate auto-fix through runtime observability, you have expensive autocomplete — not an agent.
 
+## The 90% Rule: Harness Determines Success
+
+A LangChain study demonstrated that harness configuration — not model selection — is the primary driver of agent performance:
+
+- **Fixed model**, tweaked only system prompt + tools + middleware
+- **Result**: +13.7 points on Terminal Bench 2.0
+- **Conclusion**: Harness configuration > model swapping
+
+> "Model is only 10% of the system. The harness is the other 90%."
+
+The harness is not an "optional extra" — it's the physical scaffolding that transforms raw inference into a reliable production asset. Investing in a better model without improving the harness yields diminishing returns.
+
+## Anatomy of a Production-Grade Harness
+
+A production harness comprises six components beyond the four primitives:
+
+| Component | Purpose | Production Requirement |
+|---|---|---|
+| **Instructions & Rule Files** 📜 | Establish agent identity, boundaries, prohibited trajectories | Versioned config files (AGENTS.md, CLAUDE.md) in codebase |
+| **Tools & MCP Servers** 🔧 | Enable model interface with external state (APIs, DBs, file systems) | Precise functional definitions + semantic prose for invocation params |
+| **Sandboxes & Managed Runtimes** 🧪 | Isolated execution environments for code verification | Cloud-hosted, ephemeral runtimes with zero-trust scoped permissions |
+| **Orchestration Logic** 🎭 | Govern sub-agent spawning, specialist hand-offs, iterative loop | Deterministic rules for delegation + inter-agent communication protocols |
+| **Guardrails & Hooks** 🛡️ | Enforce hard constraints at framework layer | Final-layer deterministic code intercept hazardous actions (block hardcoded credentials) |
+| **Observability & Tracing** 🔍 | Monitor model drift, token burn rates, architectural alignment | Comprehensive telemetry, granular traces, cost metering for audit decisions |
+
+These components map to the 5 [[agent-components]] — the harness is the implementation layer that configures and integrates them into a production system.
+
 ## Deployment Readiness Checklist
 
 Before deploying any agentic harness, verify:
@@ -132,4 +159,8 @@ The AI engineer's role is not prompt whisperer — it's **environment designer**
 - Core to [[ai-native-engineering]] — harness primitives (AGENTS.md, feature_list.json, verification loops) are the structural enforcement layer for AI-native workflows
 - Provides verification gates for [[agentic-development-life-cycle]] — each ADLC phase (Planning, Building, Testing, Review) uses harness primitives as checkpoints
 - Related to [[context-engineering]] — AGENTS.md and context files are both harness primitives and context engineering artifacts; the disciplines overlap at the configuration layer
+- Organizes [[agent-components]] — the harness is the implementation layer that configures the 5 components into a production system
+- Enforces [[agent-loop]] — harness primitives ensure each stage of the Perceive-Plan-Act-Observe cycle completes before proceeding
+- Related to [[agent-verification]] — deterministic hooks and guardrails are the final safety layer in agent verification
 - Benchmark source: [[sources/learn-harness-engineering]] — walkinglabs' guide to closed-loop AI agent systems
+- Benchmark source: [[sources/new-sdlc-vibe-coding]] — the 90% rule and 6-component production anatomy

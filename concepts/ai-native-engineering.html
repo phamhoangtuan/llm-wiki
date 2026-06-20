@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>AI-Native Engineering</h1>
-  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, new-sdlc-vibe-coding</span><span>Updated: 2026-06-20</span></div>
   <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">software-engineering</span><span class="tag">agents</span><span class="tag">methodology</span></div>
 </div>
 <div class="content-area concept">
@@ -65,6 +65,51 @@
 </tr>
 </tbody></table>
 <blockquote>"Coding has always been a small part of engineering (20-30% max). This underappreciated reality is more visible when AI agents produce more code — but more code is not necessarily more productive."</blockquote>
+<h2 id="conductor-vs-orchestrator-two-modes">Conductor vs Orchestrator: Two Modes</h2>
+<p>As agents assume the manual labor of coding, the engineer fluidly moves between two modes:</p>
+<h3 id="the-conductor-hands-on-real-time">The Conductor: Hands-On, Real-Time</h3>
+<ul>
+<li>🎼 <strong>Mode</strong>: In-IDE, synchronous feedback</li>
+<li>🎯 <strong>Focus</strong>: Single-file tasks, keystroke-level control</li>
+<li>🛠️ <strong>Tools</strong>: Chat interface, inline suggestions</li>
+<li>✅ <strong>Best for</strong>: Quick iterations, learning, debugging with AI</li>
+</ul>
+<h3 id="the-orchestrator-high-leverage-delegatio">The Orchestrator: High-Leverage Delegation</h3>
+<ul>
+<li>🎼 <strong>Mode</strong>: Asynchronous, goal-level specifications</li>
+<li>🎯 <strong>Focus</strong>: Outcomes, not lines of code; review PRs later</li>
+<li>🛠️ <strong>Tools</strong>: Multi-agent teams, harness configuration, eval suites</li>
+<li>✅ <strong>Best for</strong>: Production features, complex projects, scaling output</li>
+</ul>
+<p>The shift from Conductor to Orchestrator is the defining career transition for AI-native engineers. The output is no longer code — it's the <a href="harness-engineering.html" class="wiki-link">Harness</a> that produces the code.</p>
+<h2 id="four-orchestrator-skills">Four Orchestrator Skills</h2>
+<table><thead><tr>
+<th>Skill</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Specification</strong> 📝</td>
+<td>Defining tasks precisely to eliminate ambiguity</td>
+<td>"Build login flow with OAuth2 + rate limiting + audit logging"</td>
+</tr>
+<tr>
+<td><strong>Decomposition</strong> 🔪</td>
+<td>Breaking massive projects into agent-sized units</td>
+<td>Split "Build e-commerce platform" → [Auth, Product Catalog, Cart, Checkout]</td>
+</tr>
+<tr>
+<td><strong>Evaluation</strong> 🔍</td>
+<td>Quickly judging if agent's trajectory/output meet quality bar</td>
+<td>Review PR: Does code pass tests? Match spec? Follow conventions?</td>
+</tr>
+<tr>
+<td><strong>System Design</strong> 🏗️</td>
+<td>Designing harnesses that keep agents productive + safe</td>
+<td>Write AGENTS.md, configure guardrails, setup observability</td>
+</tr>
+</tbody></table>
+<p>These four skills map to the four core practices: Specification → <a href="specification-driven-development.html" class="wiki-link">specification-driven-development</a>, Decomposition → Problem Decomposition, Evaluation → Critical Verification, System Design → <a href="harness-engineering.html" class="wiki-link">harness-engineering</a>.</p>
 <h2 id="the-four-core-practices">The Four Core Practices</h2>
 <h3 id="1-context-engineering">1. Context Engineering</h3>
 <p>The systematic curation of project-specific information injected into AI working memory: architectural diagrams, coding standards, business rules, team conventions, development workflows. This supersedes basic "prompt engineering" by recognizing that <strong>the quality of AI output is bounded by the quality of context it receives</strong>. Teams practicing rigorous context engineering report 40-50% speed increases. See <a href="context-engineering.html" class="wiki-link">context-engineering</a>.</p>
@@ -139,6 +184,16 @@
       <h4>Agent Quality Optimization</h4>
       <p>quality optimization governs model selection, token strategy, and compound error prevention</p>
     </a>
+    <a class="connection-card" href="agent-loop.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Loop</h4>
+      <p>the Orchestrator mode delegates to agents running the Perceive-Plan-Act-Observe cycle</p>
+    </a>
+    <a class="connection-card" href="agent-components.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Components</h4>
+      <p>the 5 pillars define the architecture that AI-native engineers design and configure</p>
+    </a>
     <a class="connection-card" href="technological-centaur.html">
       <span class="connection-type related">Related to</span>
       <h4>Technological Centaur</h4>
@@ -148,6 +203,11 @@
       <span class="connection-type related">Related</span>
       <h4>Technological Centaur</h4>
       <p>Shah Rahman's guide on ByteByteGo</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Technological Centaur</h4>
+      <p>Conductor vs Orchestrator modes, 4 orchestrator skills</p>
     </div>
   </div>
 </section>

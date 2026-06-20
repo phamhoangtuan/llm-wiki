@@ -1,7 +1,24 @@
 {
-  "harness-engineering": [
-    "agent-quality-optimization",
+  "agent-loop": [
+    "agent-components",
+    "agent-components",
+    "agent-components",
+    "agent-verification",
     "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "harness-engineering",
+    "vibe-coding",
+    "new-sdlc-vibe-coding"
+  ],
+  "harness-engineering": [
+    "agent-components",
+    "agent-loop",
+    "agent-loop",
+    "agent-quality-optimization",
+    "agent-verification",
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "ai-native-engineering",
     "ai-native-engineering",
     "ai-native-engineering",
     "code-overload",
@@ -12,20 +29,103 @@
     "semantic-layer",
     "technological-centaur",
     "testing-strategy",
+    "vibe-coding",
     "learn-harness-engineering",
     "learn-harness-engineering",
+    "new-sdlc-vibe-coding",
     "practical-guide-ai-native-engineer"
   ],
-  "technological-centaur": [
+  "context-engineering": [
+    "agent-components",
     "agent-quality-optimization",
+    "agentic-development-life-cycle",
     "ai-native-engineering",
+    "ai-native-engineering",
+    "code-overload",
     "harness-engineering",
-    "readability-vs-performance",
+    "specification-driven-development",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "ai-native-engineering": [
+    "agent-components",
+    "agent-quality-optimization",
+    "agentic-development-life-cycle",
+    "ai-psychosis",
+    "code-overload",
+    "code-overload",
+    "code-overload",
+    "code-overload",
+    "context-engineering",
+    "data-engineering-fundamentals",
+    "harness-engineering",
+    "specification-driven-development",
     "vibe-coding",
-    "contieri-clean-code-cookbook"
+    "vibe-coding",
+    "vibe-coding",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "agent-verification": [
+    "agent-components",
+    "agent-quality-optimization",
+    "agentic-development-life-cycle",
+    "harness-engineering",
+    "vibe-coding",
+    "new-sdlc-vibe-coding"
+  ],
+  "sources/new-sdlc-vibe-coding": [
+    "agent-components",
+    "agent-loop",
+    "agent-quality-optimization",
+    "agent-verification",
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "context-engineering",
+    "harness-engineering",
+    "vibe-coding"
+  ],
+  "agent-components": [
+    "agent-loop",
+    "ai-native-engineering",
+    "context-engineering",
+    "context-engineering",
+    "harness-engineering",
+    "harness-engineering",
+    "new-sdlc-vibe-coding"
+  ],
+  "vibe-coding": [
+    "agent-loop",
+    "agent-quality-optimization",
+    "agent-verification",
+    "ai-native-engineering",
+    "ai-native-engineering",
+    "ai-psychosis",
+    "code-overload",
+    "code-overload",
+    "context-engineering",
+    "specification-driven-development",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "agentic-development-life-cycle": [
+    "agent-loop",
+    "ai-native-engineering",
+    "ai-psychosis",
+    "harness-engineering",
+    "specification-driven-development",
+    "specification-driven-development",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
   ],
   "fail-fast": [
+    "agent-loop",
     "agent-quality-optimization",
+    "agent-verification",
     "bijection",
     "bijection",
     "code-quality-pillars",
@@ -43,8 +143,17 @@
     "tdd-methodology",
     "contieri-clean-code-cookbook"
   ],
+  "technological-centaur": [
+    "agent-quality-optimization",
+    "ai-native-engineering",
+    "harness-engineering",
+    "readability-vs-performance",
+    "vibe-coding",
+    "contieri-clean-code-cookbook"
+  ],
   "testing-strategy": [
     "agent-quality-optimization",
+    "agent-verification",
     "cicd-data-pipelines",
     "code-quality-pillars",
     "functional-testing",
@@ -61,42 +170,24 @@
     "tdd-python-percival",
     "tdd-python-percival"
   ],
-  "context-engineering": [
-    "agent-quality-optimization",
-    "agentic-development-life-cycle",
-    "ai-native-engineering",
-    "ai-native-engineering",
-    "code-overload",
-    "harness-engineering",
-    "specification-driven-development",
-    "practical-guide-ai-native-engineer",
-    "practical-guide-ai-native-engineer"
-  ],
-  "ai-native-engineering": [
-    "agent-quality-optimization",
-    "agentic-development-life-cycle",
-    "ai-psychosis",
-    "code-overload",
-    "code-overload",
-    "code-overload",
-    "code-overload",
-    "context-engineering",
-    "data-engineering-fundamentals",
-    "harness-engineering",
-    "specification-driven-development",
-    "vibe-coding",
-    "vibe-coding",
-    "vibe-coding",
-    "practical-guide-ai-native-engineer",
-    "practical-guide-ai-native-engineer"
-  ],
   "sources/agent-quality-token-optimization": [
     "agent-quality-optimization",
     "context-engineering"
   ],
+  "agent-quality-optimization": [
+    "agent-verification",
+    "ai-native-engineering",
+    "context-engineering",
+    "vibe-coding",
+    "agent-quality-token-optimization",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer"
+  ],
   "specification-driven-development": [
     "agentic-development-life-cycle",
-    "code-overload"
+    "ai-native-engineering",
+    "code-overload",
+    "new-sdlc-vibe-coding"
   ],
   "tdd-methodology": [
     "agentic-development-life-cycle",
@@ -113,32 +204,6 @@
     "context-engineering",
     "specification-driven-development",
     "vibe-coding"
-  ],
-  "vibe-coding": [
-    "ai-native-engineering",
-    "ai-native-engineering",
-    "ai-psychosis",
-    "code-overload",
-    "code-overload",
-    "context-engineering",
-    "specification-driven-development",
-    "practical-guide-ai-native-engineer",
-    "practical-guide-ai-native-engineer"
-  ],
-  "agentic-development-life-cycle": [
-    "ai-native-engineering",
-    "ai-psychosis",
-    "harness-engineering",
-    "specification-driven-development",
-    "specification-driven-development",
-    "practical-guide-ai-native-engineer",
-    "practical-guide-ai-native-engineer"
-  ],
-  "agent-quality-optimization": [
-    "ai-native-engineering",
-    "context-engineering",
-    "agent-quality-token-optimization",
-    "practical-guide-ai-native-engineer"
   ],
   "meta-destroying-engineering-org-orosz": [
     "ai-psychosis"

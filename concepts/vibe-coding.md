@@ -3,8 +3,8 @@ title: "Vibe Coding"
 type: concept
 tags: [ai-engineering, coding, methodology, terminology]
 created: 2026-06-15
-updated: 2026-06-15
-sources: [practical-guide-ai-native-engineer]
+updated: 2026-06-20
+sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding]
 aliases: [vibe-coding]
 ---
 
@@ -43,9 +43,40 @@ aliases: [vibe-coding]
 
 When professional engineers operate in vibe coding mode — generating code through AI without the four core practices of [[ai-native-engineering]] — the result is [[code-overload]]: more code velocity, more bugs, more incidents, more technical debt. Vibe coding is not wrong; it's wrong for production engineering.
 
+## The Agentic Engineering Spectrum
+
+Software development now exists on a spectrum of discipline between two poles:
+
+| Dimension | Vibe Coding 🌊 | Agentic Engineering 🏗️ |
+|---|---|---|
+| **Intent Specification** | Casual natural language prompts | Formal specs, architecture docs, memory files |
+| **Verification** | Manual "Does it seem to work?" checks | Automated test suites + LM Judges/Evals |
+| **Error Handling** | Reactive copy-paste error messages | Autonomous self-diagnosis within bounds |
+| **Risk Profile** | 🔴 High (fine for prototypes/hackathons) | 🟢 Low (systematic verification for production) |
+| **Token Economics** | ❌ High burn from trial-and-error loops | ✅ Optimized via high-signal context payloads |
+
+**Applied rule**: "The higher the stakes, the tighter the harness." A weekend hackathon can be pure vibe coding. A production system handling financial transactions requires [[harness-engineering|agentic engineering]].
+
+## Token Economics: The Hidden Interest Rate
+
+Vibe coding appears cheap upfront but carries a "hidden interest rate" — the maintenance tax from trial-and-error loops, token burn, and accumulating technical debt:
+
+| Approach | CapEx (Upfront) | OpEx (Ongoing) | Long-Term Viability |
+|---|---|---|---|
+| Vibe Coding 🌊 | 🟢 Low (just subscription) | 🔴 High ("Maintenance Tax" + token burn) | ❌ 3-10x cost crossover point |
+| Agentic Engineering 🏗️ | 🔴 High (system design, test suites) | 🟢 Low (sustainable marginal costs) | ✅ Scalable economic model |
+
+The financial insight: **high-signal context payloads (precise AGENTS.md) prevent trial-and-error loops that drive up API costs.** Investing in context engineering upfront pays for itself in reduced token burn and fewer wasted iterations.
+
+> "Vibe coding's low CapEx is a teaser rate. The real cost is in the OpEx."
+
 ---
 
 - Contrasts with [[ai-native-engineering]] — AI-native engineering is the professional discipline; vibe coding is the democratized subset
+- Contrasts with [[agent-loop]] — vibe coding skips the Perceive-Plan-Act-Observe cycle; agentic engineering runs it systematically
+- Contrasts with [[agent-verification]] — vibe coding relies on "seems to work"; agentic engineering verifies both output and trajectory
 - Related to [[technological-centaur]] — vibe coding is pure AI reliance; the centaur model requires human expertise directing AI
 - Risk factor for [[code-overload]] — when professional teams adopt vibe coding practices, code overload follows
+- Related to [[agent-quality-optimization]] — token economics reveal vibe coding's hidden OpEx costs
 - Benchmark source: [[sources/practical-guide-ai-native-engineer]] — ByteByteGo article placing vibe coding in context
+- Benchmark source: [[sources/new-sdlc-vibe-coding]] — spectrum comparison and token economics framework

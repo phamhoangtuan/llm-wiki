@@ -3,8 +3,8 @@ title: "AI-Native Engineering"
 type: concept
 tags: [ai-engineering, software-engineering, agents, methodology]
 created: 2026-06-15
-updated: 2026-06-15
-sources: [practical-guide-ai-native-engineer]
+updated: 2026-06-20
+sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding]
 aliases: [ai-native, ai-orchestrated-development]
 ---
 
@@ -24,6 +24,35 @@ The distinction: AI-native engineering enables 10x→100x productivity through p
 | Ships features by coding them | Ships features by decomposing and delegating |
 
 > "Coding has always been a small part of engineering (20-30% max). This underappreciated reality is more visible when AI agents produce more code — but more code is not necessarily more productive."
+
+## Conductor vs Orchestrator: Two Modes
+
+As agents assume the manual labor of coding, the engineer fluidly moves between two modes:
+
+### The Conductor: Hands-On, Real-Time
+- 🎼 **Mode**: In-IDE, synchronous feedback
+- 🎯 **Focus**: Single-file tasks, keystroke-level control
+- 🛠️ **Tools**: Chat interface, inline suggestions
+- ✅ **Best for**: Quick iterations, learning, debugging with AI
+
+### The Orchestrator: High-Leverage Delegation
+- 🎼 **Mode**: Asynchronous, goal-level specifications
+- 🎯 **Focus**: Outcomes, not lines of code; review PRs later
+- 🛠️ **Tools**: Multi-agent teams, harness configuration, eval suites
+- ✅ **Best for**: Production features, complex projects, scaling output
+
+The shift from Conductor to Orchestrator is the defining career transition for AI-native engineers. The output is no longer code — it's the [[harness-engineering|Harness]] that produces the code.
+
+## Four Orchestrator Skills
+
+| Skill | Description | Example |
+|---|---|---|
+| **Specification** 📝 | Defining tasks precisely to eliminate ambiguity | "Build login flow with OAuth2 + rate limiting + audit logging" |
+| **Decomposition** 🔪 | Breaking massive projects into agent-sized units | Split "Build e-commerce platform" → [Auth, Product Catalog, Cart, Checkout] |
+| **Evaluation** 🔍 | Quickly judging if agent's trajectory/output meet quality bar | Review PR: Does code pass tests? Match spec? Follow conventions? |
+| **System Design** 🏗️ | Designing harnesses that keep agents productive + safe | Write AGENTS.md, configure guardrails, setup observability |
+
+These four skills map to the four core practices: Specification → [[specification-driven-development]], Decomposition → Problem Decomposition, Evaluation → Critical Verification, System Design → [[harness-engineering]].
 
 ## The Four Core Practices
 
@@ -81,5 +110,8 @@ The security landscape is alarming: roughly one new insecure AI integration per 
 - Structured by [[agentic-development-life-cycle]] — ADLC is the process framework for AI-native teams
 - Enforced by [[harness-engineering]] — harness engineering provides structural guardrails for AI-native workflows
 - Optimized by [[agent-quality-optimization]] — quality optimization governs model selection, token strategy, and compound error prevention
+- Related to [[agent-loop]] — the Orchestrator mode delegates to agents running the Perceive-Plan-Act-Observe cycle
+- Related to [[agent-components]] — the 5 pillars define the architecture that AI-native engineers design and configure
 - Related to [[technological-centaur]] — both describe the human-AI collaborative model where expertise amplifies tool effectiveness
 - Benchmark source: [[sources/practical-guide-ai-native-engineer]] — Shah Rahman's guide on ByteByteGo
+- Benchmark source: [[sources/new-sdlc-vibe-coding]] — Conductor vs Orchestrator modes, 4 orchestrator skills
