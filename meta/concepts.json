@@ -191,6 +191,18 @@
         "optimization"
       ]
     },
+    "api-architectural-styles": {
+      "title": "API Architectural Styles",
+      "category": "System Architecture",
+      "url": "concepts/api-architectural-styles.html",
+      "definition": "API architectural styles define how clients and servers communicate. Each style optimizes for different use cases — no single style is universally best.",
+      "tags": [
+        "api",
+        "architecture",
+        "system-design",
+        "web"
+      ]
+    },
     "bijection": {
       "title": "Bijection",
       "category": "System Architecture",
@@ -200,6 +212,19 @@
         "architecture",
         "design-principles",
         "domain-modeling"
+      ]
+    },
+    "bloom-filter": {
+      "title": "Bloom Filter",
+      "category": "Career & Growth",
+      "url": "concepts/bloom-filter.html",
+      "definition": "A Bloom filter is a space-efficient probabilistic data structure for set membership testing. Its defining characteristic: it can tell you something is **definitely not** in a set, but only **probably*",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "caching",
+        "system-design",
+        "probabilistic"
       ]
     },
     "byzantine-fault-tolerance": {
@@ -306,6 +331,17 @@
         "delta-lake"
       ]
     },
+    "cloud-service-models": {
+      "title": "Cloud Service Models",
+      "category": "Infrastructure",
+      "url": "concepts/cloud-service-models.html",
+      "definition": "Cloud service models represent three levels of infrastructure abstraction, each trading control for operational simplicity.",
+      "tags": [
+        "cloud",
+        "infrastructure",
+        "system-design"
+      ]
+    },
     "code-archaeology": {
       "title": "Code Archaeology",
       "category": "Meta",
@@ -366,6 +402,19 @@
         "architecture",
         "di",
         "composition-root"
+      ]
+    },
+    "containerization": {
+      "title": "Containerization",
+      "category": "Infrastructure",
+      "url": "concepts/containerization.html",
+      "definition": "Containerization packages software code with all its dependencies (libraries, frameworks) into an isolated unit called a container. Unlike virtual machines, containers share the host OS kernel — no gu",
+      "tags": [
+        "containers",
+        "docker",
+        "virtualization",
+        "infrastructure",
+        "system-design"
       ]
     },
     "context-engineering": {
@@ -471,6 +520,18 @@
         "data-platform"
       ]
     },
+    "database-isolation": {
+      "title": "Database Isolation Levels",
+      "category": "Infrastructure",
+      "url": "concepts/database-isolation.html",
+      "definition": "Database isolation allows transactions to execute as if no other concurrent transactions exist. Guaranteed by MVCC (Multi-Version Concurrency Control) and locks.",
+      "tags": [
+        "databases",
+        "transactions",
+        "concurrency",
+        "system-design"
+      ]
+    },
     "database-replication": {
       "title": "Database Replication",
       "category": "Infrastructure",
@@ -574,6 +635,18 @@
         "solid"
       ]
     },
+    "deployment-strategies": {
+      "title": "Deployment Strategies",
+      "category": "Infrastructure",
+      "url": "concepts/deployment-strategies.html",
+      "definition": "Deployment is the highest-risk phase of the software lifecycle. A small bug can cause outages for millions of users. Strategy choice should match the stakes.",
+      "tags": [
+        "deployment",
+        "devops",
+        "system-design",
+        "reliability"
+      ]
+    },
     "differential-dataflow": {
       "title": "Differential Dataflow",
       "category": "System Architecture",
@@ -583,6 +656,20 @@
         "distributed-systems",
         "stream-processing",
         "incremental-computation"
+      ]
+    },
+    "distributed-consensus": {
+      "title": "Distributed Consensus (Raft & Paxos)",
+      "category": "System Architecture",
+      "url": "concepts/distributed-consensus.html",
+      "definition": "**Distributed consensus** is the process by which multiple nodes in a network reach unanimous agreement on a value or sequence of actions, even when some nodes fail, the network partitions, or message",
+      "tags": [
+        "distributed-systems",
+        "consensus",
+        "raft",
+        "paxos",
+        "fault-tolerance",
+        "distributed-consensus"
       ]
     },
     "domain-driven-design": {
@@ -729,6 +816,19 @@
         "workflow"
       ]
     },
+    "http-evolution": {
+      "title": "HTTP Evolution",
+      "category": "Go & Web",
+      "url": "concepts/http-evolution.html",
+      "definition": "HTTP has evolved across four major versions, each solving a specific performance bottleneck. The central problem has always been Head-of-Line (HOL) blocking.",
+      "tags": [
+        "http",
+        "networking",
+        "protocol",
+        "web",
+        "system-design"
+      ]
+    },
     "immutability": {
       "title": "Immutability of Essence",
       "category": "Software Design",
@@ -800,6 +900,19 @@
         "data-engineering"
       ]
     },
+    "leader-election": {
+      "title": "Leader Election",
+      "category": "System Architecture",
+      "url": "concepts/leader-election.html",
+      "definition": "**Leader Election** is the process by which a distributed system selects a single node to act as the coordinator — exclusively handling writes, assigning work, or maintaining cluster state — ensuring ",
+      "tags": [
+        "distributed-systems",
+        "consensus",
+        "raft",
+        "fault-tolerance",
+        "coordination"
+      ]
+    },
     "liquid-clustering": {
       "title": "Liquid Clustering",
       "category": "Data Engineering",
@@ -848,6 +961,18 @@
         "data-engineering",
         "streaming",
         "caching"
+      ]
+    },
+    "message-delivery-semantics": {
+      "title": "Message Delivery Semantics",
+      "category": "System Architecture",
+      "url": "concepts/message-delivery-semantics.html",
+      "definition": "Message delivery semantics define the guarantees a messaging system provides about whether messages are delivered, and whether they can be duplicated. The right choice depends on the business impact o",
+      "tags": [
+        "distributed-systems",
+        "messaging",
+        "system-design",
+        "reliability"
       ]
     },
     "message-queue": {
@@ -900,6 +1025,30 @@
         "metrics",
         "reliability",
         "devops"
+      ]
+    },
+    "orchestration-vs-choreography": {
+      "title": "Orchestration vs Choreography",
+      "category": "System Architecture",
+      "url": "concepts/orchestration-vs-choreography.html",
+      "definition": "Two competing patterns for coordinating interactions between microservices. Neither is universally better — the choice depends on the workflow's complexity and reliability requirements.",
+      "tags": [
+        "microservices",
+        "architecture",
+        "system-design",
+        "distributed-systems"
+      ]
+    },
+    "password-storage": {
+      "title": "Password Storage",
+      "category": "System Architecture",
+      "url": "concepts/password-storage.html",
+      "definition": "Secure password storage requires defending against rainbow table attacks — precomputed lookup tables mapping hashes to plaintext passwords. The defense: salting.",
+      "tags": [
+        "security",
+        "authentication",
+        "cryptography",
+        "system-design"
       ]
     },
     "polars": {
@@ -1099,6 +1248,18 @@
         "clean-code"
       ]
     },
+    "redis": {
+      "title": "Redis",
+      "category": "Infrastructure",
+      "url": "concepts/redis.html",
+      "definition": "Redis is an in-memory data structure store that achieves extreme throughput (100K+ requests/second) through a combination of architectural choices.",
+      "tags": [
+        "caching",
+        "performance",
+        "databases",
+        "system-design"
+      ]
+    },
     "refactoring-at-scale": {
       "title": "Refactoring at Scale",
       "category": "Software Design",
@@ -1146,6 +1307,18 @@
         "ai",
         "dbt",
         "metrics"
+      ]
+    },
+    "snowflake-id": {
+      "title": "Snowflake ID",
+      "category": "System Architecture",
+      "url": "concepts/snowflake-id.html",
+      "definition": "Snowflake is a distributed unique ID generation pattern created by Twitter. It produces 64-bit numeric IDs that are roughly time-ordered, efficient to store and index, and scalable without coordinatio",
+      "tags": [
+        "distributed-systems",
+        "databases",
+        "system-design",
+        "uuid"
       ]
     },
     "software-as-simulation": {
@@ -1206,6 +1379,18 @@
         "software-engineering",
         "methodology",
         "requirements"
+      ]
+    },
+    "sso": {
+      "title": "Single Sign-On (SSO)",
+      "category": "System Architecture",
+      "url": "concepts/sso.html",
+      "definition": "Single Sign-On allows users to navigate multiple service domains (e.g., Gmail, YouTube, Drive) with a single set of credentials. It neutralizes \"password fatigue\" — reducing attack surface while incre",
+      "tags": [
+        "security",
+        "authentication",
+        "identity",
+        "system-design"
       ]
     },
     "staff-engineering": {
@@ -1314,6 +1499,18 @@
         "distributed-systems",
         "stream-processing",
         "incremental-computation"
+      ]
+    },
+    "tls-https": {
+      "title": "TLS & HTTPS",
+      "category": "System Architecture",
+      "url": "concepts/tls-https.html",
+      "definition": "HTTPS uses Transport Layer Security (TLS) to encrypt data between client and server. The handshake combines asymmetric and symmetric encryption — leveraging each for what it does best.",
+      "tags": [
+        "security",
+        "encryption",
+        "networking",
+        "system-design"
       ]
     },
     "unity-catalog": {

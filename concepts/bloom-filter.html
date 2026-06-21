@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bloom Filter — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-structures">Data Structures</a> <span class="sep">/</span>
+  <span>Bloom Filter</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Bloom Filter</h1>
+  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">data-structures</span><span class="tag">algorithms</span><span class="tag">caching</span><span class="tag">system-design</span><span class="tag">probabilistic</span></div>
+</div>
+<div class="content-area concept">
+<p>A Bloom filter is a space-efficient probabilistic data structure for set membership testing. Its defining characteristic: it can tell you something is <strong>definitely not</strong> in a set, but only <strong>probably</strong> in a set.</p>
+<h2 id="how-it-works">How It Works</h2>
+<ul>
+<li>Returns "false" → element is <strong>definitely</strong> NOT in the set ✅</li>
+<li>Returns "true" → element is <strong>probably</strong> in the set (false positives possible) ⚠️</li>
+<li><strong>No false negatives</strong> — if something is in the set, it will never say it isn't</li>
+</ul>
+<p>The filter uses multiple hash functions to set bits in a bit array. Adding an element sets k bits; checking involves verifying all k bits are set. If any bit is 0, the element was never added. If all bits are 1, the element may have been added (or other elements happened to set the same bits).</p>
+<h2 id="key-use-cases">Key Use Cases</h2>
+<h3 id="cache-miss-prevention">Cache Miss Prevention</h3>
+<pre><code>bloom = BloomFilter(capacity=1000000, error_rate=0.01)
+
+def get_from_cache(key):
+    if not bloom.contains(key):
+        return None              # Skip expensive DB query — definitely not there
+    result = cache.get(key) or db.get(key)
+    if result:
+        bloom.add(key)
+    return result</code></pre>
+<p>This prevents cache miss attacks where queries for non-existent keys hammer the database. The bloom filter acts as a cheap first line of defense.</p>
+<h3 id="url-deduplication">URL Deduplication</h3>
+<p>Google-scale web crawlers use bloom filters to avoid crawling the same URL twice. When processing billions of URLs, storing every seen URL in a set is infeasible — bloom filters trade a small false positive rate for massive space savings.</p>
+<h2 id="trade-off">Trade-off</h2>
+<ul>
+<li>Space efficiency: a few bits per element vs storing full keys</li>
+<li>Configurable false positive rate: more bits = fewer false positives</li>
+<li>Cannot remove elements (standard variant) — use Counting Bloom Filter for deletions</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="cache-strategy.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Cache Strategy</h4>
+      <p>bloom filters protect caches from miss storms</p>
+    </a>
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>System Design Interview</h4>
+      <p>common advanced component in design questions</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="bijection.html" class="prev">← Bijection</a><a href="byzantine-fault-tolerance.html" class="next">Byzantine Fault Tolerance (BFT) →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

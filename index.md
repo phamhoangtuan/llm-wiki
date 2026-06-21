@@ -94,6 +94,7 @@
 - [Semantic Layer](concepts/semantic-layer.html) — Unified context layer standardizing metrics and business logic for AI agents across dbt, BI, docs, and query patterns
 - [Staff Engineering](concepts/staff-engineering.html) — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
 - [Apache Spark](concepts/apache-spark.html) — Distributed data processing engine; internals, shuffle optimization, join strategies, data skew mitigation
+- [API Architectural Styles](concepts/api-architectural-styles.html) — Four major API styles (REST, GraphQL, gRPC, SOAP) — choosing the right paradigm for the use case
 - [Case Interview](concepts/case-interview.html) — Consulting case interview methodology: MECE, Pyramid Principle, SCORE framework, 9-Step Math
 - [Python Professional Practices](concepts/python-professional-practices.html) — Transition from "code that runs" to production-grade Python via automated quality control
 - [Python Static Analysis](concepts/python-static-analysis.html) — Black + Flake8 + Mypy trifecta for automated code quality gates
@@ -111,13 +112,28 @@
 - [Specification-Driven Development](concepts/specification-driven-development.html) — Define before build; antidote to random prompting in AI-native workflows
 - [Data Modeling](concepts/data-modeling.html) — Designing data structure, relationships, and constraints; the most enduring DE fundamental
 - [Data Quality Monitoring](concepts/data-quality-monitoring.html) — Continuous detection, lineage, and trust signals for data quality; health badges, TimesFM anomaly detection, blast radius calculation
+- [Database Isolation Levels](concepts/database-isolation.html) — Serializable, Repeatable Read, Read Committed, Read Uncommitted; MVCC, optimistic locking with version numbers
 - [Code Overload](concepts/code-overload.html) — NYT term: AI-generated code exceeding review capacity; more bugs, more debt
 - [Refactoring at Scale](concepts/refactoring-at-scale.html) — Safe restructuring of large codebases; drive-by refactorer, Brownie effect, rollout modes
 - [Software Rot](concepts/software-rot.html) — Inevitable code degradation from environmental change and requirement shifts
 - [Complexity Metrics](concepts/complexity-metrics.html) — Halstead, Cyclomatic, NPath — quantitative measurement for refactoring business cases
 - [Code Archaeology](concepts/code-archaeology.html) — Investigating historical context before refactoring; finding the "initial good"
+- [Bloom Filter](concepts/bloom-filter.html) — Space-efficient probabilistic set membership; cache miss prevention, URL deduplication at scale
 - [Byzantine Fault Tolerance (BFT)](concepts/byzantine-fault-tolerance.html) — Distributed consensus under adversarial node behavior; 3f+1 formula, PBFT protocol, CFT vs BFT trade-offs
 - [CAP Theorem](concepts/cap-theorem.html) — Distributed data stores can guarantee at most 2 of 3: Consistency, Availability, Partition Tolerance; CP vs AP architectures, quorum mechanics, PACELC extension
+- [Deployment Strategies](concepts/deployment-strategies.html) — Blue-Green, Canary, A/B Testing, Multi-Service — risk management for production releases
+- [Distributed Consensus (Raft & Paxos)](concepts/distributed-consensus.html) — Raft and Paxos algorithms for cluster-wide agreement on data state; FLP impossibility, Safety vs Liveness, leader election, log replication, ecosystem comparison
+- [Leader Election](concepts/leader-election.html) — Selecting a single coordinator node in distributed systems; Raft's randomized timeout mechanism, Term-based safety, split-brain prevention, production coordination services
+- [Cloud Service Models](concepts/cloud-service-models.html) — Three levels of cloud abstraction (IaaS, PaaS, SaaS) trading control for operational simplicity
+- [Containerization](concepts/containerization.html) — Docker and the container-vs-VM abstraction; isolation, portability, speed; "containerized on virtualized"
+- [Redis](concepts/redis.html) — In-memory data structure store achieving 100K+ req/s via RAM, single-threaded event loop, and IO multiplexing
+- [TLS & HTTPS](concepts/tls-https.html) — TLS handshake combining asymmetric and symmetric encryption for secure client-server communication
+- [HTTP Evolution](concepts/http-evolution.html) — HTTP/1.0 through HTTP/3 (QUIC): four versions solving Head-of-Line blocking at different layers
+- [Orchestration vs Choreography](concepts/orchestration-vs-choreography.html) — Two competing patterns for coordinating microservice interactions; centralized control vs decentralized events
+- [Password Storage](concepts/password-storage.html) — Salting, hashing, and constant-time comparison; why salt is stored in plaintext
+- [Message Delivery Semantics](concepts/message-delivery-semantics.html) — At-most-once, at-least-once, and effectively exactly-once delivery guarantees in distributed messaging systems
+- [Snowflake ID](concepts/snowflake-id.html) — Twitter's 64-bit distributed unique ID pattern: time-ordered, no coordination, efficient B-tree indexing
+- [Single Sign-On (SSO)](concepts/sso.html) — Centralized identity management; 4-step workflow, cross-domain propagation, password fatigue neutralization
 
 ## Sources
 
@@ -162,10 +178,12 @@
 - [CI/CD Tips — r/dataengineering](sources/reddit-cicd-tips-data-engineering.html) — Community discussion: Ruff, SQLFluff, SQLMesh, notebooks-vs-scripts debate, testing philosophy
 - [Refactoring at Scale](sources/refactoring-at-scale-lemaire.html) — Maude Lemaire's 245-page guide: strategic refactoring, code rot, complexity metrics, code archaeology
 - [Byzantine Fault Tolerance (BFT) — Data Engineering Handbook](sources/bft-data-engineering-handbook.html) — Vietnamese DE Handbook: Byzantine Generals Problem, 3f+1 formula, PBFT protocol, BFT applications in data engineering
+- [Đồng thuận phân tán (Raft & Paxos) — Data Engineering Handbook](sources/consensus-raft-paxos-handbook.html) — Vietnamese DE Handbook: distributed consensus problem, FLP impossibility, Paxos two-phase protocol, Raft leader election and log replication, comparison and ecosystem
 - [CAP Theorem — Data Engineering Handbook](sources/cap-theorem-handbook.html) — Vietnamese DE Handbook: Brewer's theorem, CP vs AP architectures, quorum mechanics, PACELC extension, CAP-C vs ACID-C distinction
 - [Data Quality Traffic Lights — Robert Sahlin](sources/data-quality-traffic-lights-sahlin.html) — Nordnet's Data Quality Health Badge: 5 failure modes, dbt+Looker lineage, TimesFM anomaly detection, programmatic trust for agents and ML pipelines
 - [Why Is Meta Destroying Its Engineering Org? — Gergely Orosz](sources/meta-destroying-engineering-org-orosz.html) — Pragmatic Engineer investigation: forced data labeling, keystroke tracking, tokenmaxxing, Instagram takeover outage, AI psychosis case study
 - [The New SDLC With Vibe Coding — Osmani, Saboo & Kartakis](sources/new-sdlc-vibe-coding.html) — 51-page ebook: 5-stage AI coding evolution, Agent Loop, 90% harness rule, vibe coding economics
+- [System Design: The Big Archive — Alex Xu](sources/system-design-big-archive.html) — 159-page ebook: cloud infra, containers, deployment, databases, security, performance, architecture patterns
 
 ## Syntheses
 
@@ -173,5 +191,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-20*
-*Pages: 156 (111 concepts + 45 sources)*
+*Last updated: 2026-06-21*
+*Pages: 174 (127 concepts + 47 sources)*

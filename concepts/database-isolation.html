@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Database Isolation Levels — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-databases">Databases</a> <span class="sep">/</span>
+  <span>Database Isolation Levels</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Database Isolation Levels</h1>
+  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">databases</span><span class="tag">transactions</span><span class="tag">concurrency</span><span class="tag">system-design</span></div>
+</div>
+<div class="content-area concept">
+<p>Database isolation allows transactions to execute as if no other concurrent transactions exist. Guaranteed by MVCC (Multi-Version Concurrency Control) and locks.</p>
+<h2 id="four-isolation-levels">Four Isolation Levels</h2>
+<table><thead><tr>
+<th>Level</th>
+<th>Description</th>
+<th>Example</th>
+<th>Use When</th>
+</tr></thead><tbody>
+<tr>
+<td>Serializable 🔒</td>
+<td>Highest level; transactions execute sequentially as if one at a time</td>
+<td>Banking transfers where order matters</td>
+<td>Financial systems, critical consistency</td>
+</tr>
+<tr>
+<td>Repeatable Read 🔄</td>
+<td>Reads consistent with transaction start point</td>
+<td>User profile reads during session</td>
+<td>Most OLTP applications</td>
+</tr>
+<tr>
+<td>Read Committed ✅</td>
+<td>Data modifications visible only after commit</td>
+<td>E-commerce product views</td>
+<td>Default for PostgreSQL, Oracle</td>
+</tr>
+<tr>
+<td>Read Uncommitted ⚠️</td>
+<td>Allows "dirty reads" — uncommitted modifications visible</td>
+<td>Analytics dashboards (tolerate stale data)</td>
+<td>Rarely used in production</td>
+</tr>
+</tbody></table>
+<p>Higher isolation = stronger consistency but lower concurrency. Each level is a trade-off.</p>
+<h2 id="optimistic-locking">Optimistic Locking</h2>
+<p>When conflicts are rare and retry cost is lower than lock overhead, use optimistic concurrency control with version numbers:</p>
+<pre><code>class Product:
+    def update_price(self, new_price, current_version):
+        product = db.get_product(self.id)
+        if product.version != current_version:
+            raise ConcurrentModificationError(&quot;Data changed, retry&quot;)
+        product.price = new_price
+        product.version += 1
+        db.save(product)</code></pre>
+<p>Check version before update, retry on conflict. Best for scenarios like e-commerce cart updates where simultaneous edits are uncommon.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="database-sharding.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Database Sharding</h4>
+      <p>isolation guarantees must hold across shards</p>
+    </a>
+    <a class="connection-card" href="cap-theorem.html">
+      <span class="connection-type related">Related</span>
+      <h4>CAP Theorem</h4>
+      <p>isolation is Consistency in ACID, which CAP treats differently</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="data-quality-monitoring.html" class="prev">← Data Quality Monitoring</a><a href="database-replication.html" class="next">Database Replication →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

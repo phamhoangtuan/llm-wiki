@@ -84,7 +84,7 @@ BFT is the right tool for small, high-value quorums in adversarial environments 
 
 ## Connections
 
-- Consensus algorithms (Raft/Paxos) — Crash Fault Tolerance (CFT) algorithms that assume fail-stop behavior; BFT extends this model to adversarial failures
+- [[distributed-consensus]] — Raft and Paxos are Crash Fault Tolerance (CFT) algorithms that assume fail-stop behavior; BFT extends this model to adversarial failures with `3f+1` nodes vs `2f+1` for CFT. Raft's leader election and log replication assume honest nodes, making BFT necessary for untrusted environments
 - Distributed systems — The broader context in which fault tolerance mechanisms operate; the Byzantine Generals Problem is a foundational distributed systems thought experiment
 - [[data-governance]] — Governance frameworks that benefit from cross-validation and integrity guarantees
 - [[data-ingestion]] — Pipelines where idempotency and data integrity are critical

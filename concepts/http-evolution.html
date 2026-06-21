@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTTP Evolution — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-http">Http</a> <span class="sep">/</span>
+  <span>HTTP Evolution</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>HTTP Evolution</h1>
+  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">http</span><span class="tag">networking</span><span class="tag">protocol</span><span class="tag">web</span><span class="tag">system-design</span></div>
+</div>
+<div class="content-area concept">
+<p>HTTP has evolved across four major versions, each solving a specific performance bottleneck. The central problem has always been Head-of-Line (HOL) blocking.</p>
+<h2 id="head-of-line-blocking">Head-of-Line Blocking</h2>
+<p>When one request is delayed, all subsequent requests behind it are also blocked — like a single slow car holding up an entire lane of traffic. Each HTTP version addresses HOL blocking at a different layer.</p>
+<h2 id="version-progression">Version Progression</h2>
+<table><thead><tr>
+<th>Version</th>
+<th>Key Features</th>
+<th>Problem Solved</th>
+</tr></thead><tbody>
+<tr>
+<td>HTTP/1.0</td>
+<td>Separate TCP connection per request</td>
+<td>— (baseline)</td>
+</tr>
+<tr>
+<td>HTTP/1.1</td>
+<td>Persistent connections, pipelining</td>
+<td>Connection establishment overhead</td>
+</tr>
+<tr>
+<td>HTTP/2.0</td>
+<td>Streams, multiplexing, header compression (HPACK)</td>
+<td>Application-layer HOL blocking</td>
+</tr>
+<tr>
+<td>HTTP/3.0 (QUIC)</td>
+<td>UDP-based transport, streams at transport layer, 0-RTT handshake</td>
+<td>Transport-layer HOL blocking</td>
+</tr>
+</tbody></table>
+<h2 id="key-transitions">Key Transitions</h2>
+<p><strong>HTTP/1.0 → 1.1</strong>: Persistent connections keep TCP alive between requests. Pipelining sends multiple requests without waiting for responses — but responses must arrive in order (still subject to HOL).</p>
+<p><strong>HTTP/1.1 → 2.0</strong>: Multiplexing allows multiple concurrent streams over one TCP connection. Requests and responses can interleave. However, a single lost TCP packet blocks ALL streams (transport-layer HOL).</p>
+<p><strong>HTTP/2.0 → 3.0</strong>: QUIC replaces TCP with UDP. Each stream is independent at the transport layer — a lost packet only blocks its own stream, not others. Also enables 0-RTT connection establishment for returning clients.</p>
+<h2 id="practical-impact">Practical Impact</h2>
+<ul>
+<li>HTTP/1.1: 6 parallel connections per domain (browser hack to work around HOL)</li>
+<li>HTTP/2: 1 connection, multiplexed — reduces connection overhead</li>
+<li>HTTP/3: Same multiplexing, but resilient to packet loss — critical for mobile networks</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="api-architectural-styles.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>API Architectural Styles</h4>
+      <p>gRPC uses HTTP/2 for multiplexed streaming</p>
+    </a>
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>System Design Interview</h4>
+      <p>protocol choice affects system latency and reliability</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="harness-engineering.html" class="prev">← Harness Engineering</a><a href="immutability.html" class="next">Immutability of Essence →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

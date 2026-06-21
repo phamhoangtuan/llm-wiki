@@ -3,8 +3,8 @@ title: "Cache Strategy"
 type: concept
 tags: [system-design, performance, caching, scalability]
 created: 2026-05-24
-updated: 2026-05-24
-sources: [system-design-interview-xu]
+updated: 2026-06-21
+sources: [system-design-interview-xu, system-design-big-archive]
 aliases: [caching, cache-tier, read-through-cache]
 ---
 
@@ -44,3 +44,5 @@ A cache is temporary in-memory storage for frequently accessed data. Proper cach
 - Related to [[database-replication]] — cache + replication = massive read scaling
 - Related to [[cdn]] — CDN is a specialized geographic cache for static content
 - Related to [[load-balancer]] — cache deployed behind load balancer
+- Foundation for [[redis]] — Redis is the most common high-performance caching backend
+- Related to [[bloom-filter]] — bloom filters protect caches from miss storms by filtering non-existent keys

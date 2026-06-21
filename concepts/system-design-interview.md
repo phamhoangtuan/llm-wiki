@@ -3,8 +3,8 @@ title: "System Design Interview"
 type: concept
 tags: [system-design, interview, methodology, architecture]
 created: 2026-05-24
-updated: 2026-06-08
-sources: [system-design-interview-xu]
+updated: 2026-06-21
+sources: [system-design-interview-xu, system-design-big-archive]
 aliases: [system-design-interview-framework]
 ---
 

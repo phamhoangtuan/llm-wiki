@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Containerization — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-containers">Containers</a> <span class="sep">/</span>
+  <span>Containerization</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Containerization</h1>
+  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">containers</span><span class="tag">docker</span><span class="tag">virtualization</span><span class="tag">infrastructure</span><span class="tag">system-design</span></div>
+</div>
+<div class="content-area concept">
+<p>Containerization packages software code with all its dependencies (libraries, frameworks) into an isolated unit called a container. Unlike virtual machines, containers share the host OS kernel — no guest OS needed.</p>
+<h2 id="containers-vs-virtual-machines">Containers vs Virtual Machines</h2>
+<p><strong>Virtualized Stack</strong>: Infrastructure → Host OS → Hypervisor → Guest OS → App</p>
+<p><strong>Containerized Stack</strong>: Infrastructure → Host OS → Container Engine → App (with dependencies)</p>
+<p>The critical difference: containers virtualize the <strong>Operating System</strong>, not hardware. No need to boot a Guest OS for each application.</p>
+<h2 id="three-core-benefits">Three Core Benefits</h2>
+<table><thead><tr>
+<th>Benefit</th>
+<th>Explanation</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td>Isolation 🧱</td>
+<td>Apps sandboxed with specific requirements, avoiding version conflicts</td>
+<td>App A needs Python 3.8, App B needs 3.11 — run side by side without conflict</td>
+</tr>
+<tr>
+<td>Portability 🌍</td>
+<td>"Build once, run anywhere" — container runs on laptop = production</td>
+<td>Docker image built on Mac → deploy to AWS Linux unchanged</td>
+</tr>
+<tr>
+<td>Speed ⚡</td>
+<td>No hypervisor + no Guest OS boot → instant-on start times</td>
+<td>Container starts ~100ms vs VM ~30s</td>
+</tr>
+</tbody></table>
+<h2 id="production-pattern">Production Pattern</h2>
+<p>Modern production environments commonly use <strong>"Containerized on Virtualized"</strong> — combining the security isolation of VM boundaries with the deployment agility of containers. You don't have to choose one.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="cloud-service-models.html">
+      <span class="connection-type related">Related</span>
+      <h4>Cloud Service Models</h4>
+      <p>containers typically run on IaaS/PaaS</p>
+    </a>
+    <a class="connection-card" href="deployment-strategies.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Deployment Strategies</h4>
+      <p>containers enable Blue-Green and Canary rollouts</p>
+    </a>
+    <a class="connection-card" href="goroutines.html">
+      <span class="connection-type related">Related</span>
+      <h4>Goroutines</h4>
+      <p>OS-level container isolation vs language-level concurrency</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="composition-root.html" class="prev">← Composition Root</a><a href="context-engineering.html" class="next">Context Engineering →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

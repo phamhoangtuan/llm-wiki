@@ -3,8 +3,8 @@ title: "Apache Kafka"
 type: concept
 tags: [streaming, messaging, kafka, data-engineering, event-driven]
 created: 2026-05-26
-updated: 2026-06-15
-sources: [hugo-data-ingestion-platform-flink, databricks-zerobus]
+updated: 2026-06-21
+sources: [hugo-data-ingestion-platform-flink, databricks-zerobus, system-design-big-archive]
 ---
 
 ## Summary
@@ -90,4 +90,5 @@ Kafka Connect is a framework for connecting Kafka with external systems via pre-
 - Powers [[data-ingestion]] — Kafka is a primary source in Hugo's unified ingestion platform
 - Related to [[change-data-capture]] — Kafka + Debezium was Grab's legacy CDC approach (now replaced by Flink CDC)
 - Simplified by [[sources/databricks-zerobus]] — Databricks Zerobus is an API-based streaming alternative for Lake House use cases, removing Kafka's operational overhead
+- Performance internals from [[sources/system-design-big-archive]] — sequential I/O minimizes disk seek, Zero Copy (sendfile()) bypasses app context for ~65% faster delivery
 - Benchmark source: [[sources/hugo-data-ingestion-platform-flink]] — Grab's migration away from Kafka Connect toward Flink

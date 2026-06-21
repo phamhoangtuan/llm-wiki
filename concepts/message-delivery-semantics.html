@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Message Delivery Semantics — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-distributed-systems">Distributed Systems</a> <span class="sep">/</span>
+  <span>Message Delivery Semantics</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Message Delivery Semantics</h1>
+  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">distributed-systems</span><span class="tag">messaging</span><span class="tag">system-design</span><span class="tag">reliability</span></div>
+</div>
+<div class="content-area concept">
+<p>Message delivery semantics define the guarantees a messaging system provides about whether messages are delivered, and whether they can be duplicated. The right choice depends on the business impact of data loss vs duplication.</p>
+<h2 id="three-semantics">Three Semantics</h2>
+<table><thead><tr>
+<th>Semantic</th>
+<th>Guarantee</th>
+<th>Use Cases</th>
+<th>Trade-offs</th>
+</tr></thead><tbody>
+<tr>
+<td>At-most once 📉</td>
+<td>Messages may be lost, never duplicated</td>
+<td>Metrics, logging, non-critical analytics</td>
+<td>✅ Low overhead ❌ Data loss acceptable</td>
+</tr>
+<tr>
+<td>At-least once 📈</td>
+<td>No messages lost, duplicates may occur</td>
+<td>Order processing, user notifications</td>
+<td>✅ Reliable delivery ❌ Need deduplication logic</td>
+</tr>
+<tr>
+<td>Exactly once 🎯</td>
+<td>No loss, no duplicates</td>
+<td>Financial transactions, inventory updates</td>
+<td>✅ Perfect consistency ❌ Complex + expensive</td>
+</tr>
+</tbody></table>
+<h2 id="the-exactly-once-illusion">The "Exactly Once" Illusion</h2>
+<p>True "exactly once" delivery is theoretically impossible in distributed systems (due to the Two Generals Problem). In practice, it's achieved through a design pattern:</p>
+<blockquote><strong>at-least-once delivery + idempotent consumers = effectively exactly once</strong></blockquote>
+<p>The messaging system guarantees delivery (at-least-once), and the consumer ensures processing each message has the same effect whether executed once or multiple times (idempotency).</p>
+<h2 id="idempotency-strategies">Idempotency Strategies</h2>
+<ul>
+<li><strong>Deduplication keys</strong>: Consumer tracks processed message IDs, skips duplicates</li>
+<li><strong>Idempotent operations</strong>: <code>SET balance = 100</code> (not <code>balance += 100</code>)</li>
+<li><strong>Transaction boundaries</strong>: Process message + record dedup key in single DB transaction</li>
+</ul>
+<h2 id="choosing-the-right-semantic">Choosing the Right Semantic</h2>
+<p>Ask: "What happens if this message is lost? What happens if it's processed twice?"</p>
+<ul>
+<li>Lost = acceptable, duplicate = bad → at-most once</li>
+<li>Lost = unacceptable, duplicate = manageable → at-least once + dedup</li>
+<li>Lost = unacceptable, duplicate = unacceptable → effectively exactly once (at-least-once + idempotent)</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="message-queue.html">
+      <span class="connection-type related">Related</span>
+      <h4>Message Queue</h4>
+      <p>delivery semantics are configured at the queue level</p>
+    </a>
+    <a class="connection-card" href="orchestration-vs-choreography.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Orchestration vs Choreography</h4>
+      <p>choreographed systems depend on delivery guarantees for consistency</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Kafka</h4>
+      <p>Kafka supports all three semantics through consumer configuration</p>
+    </a>
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>System Design Interview</h4>
+      <p>delivery semantics are central to distributed system reliability</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="materialized-views.html" class="prev">← Materialized Views</a><a href="message-queue.html" class="next">Message Queue →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

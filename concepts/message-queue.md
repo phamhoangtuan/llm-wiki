@@ -3,8 +3,8 @@ title: "Message Queue"
 type: concept
 tags: [system-design, messaging, async, decoupling, resilience]
 created: 2026-05-24
-updated: 2026-05-26
-sources: [system-design-interview-xu, hugo-data-ingestion-platform-flink]
+updated: 2026-06-21
+sources: [system-design-interview-xu, hugo-data-ingestion-platform-flink, system-design-big-archive]
 aliases: [message-broker, event-queue, task-queue]
 ---
 
@@ -52,3 +52,4 @@ Producer → [Message Queue] → Consumer 1
 - Related to [[observability]] — queue depth and consumer lag are critical metrics
 - Related to [[load-balancer]] — workers scale independently from web tier
 - Related to [[apache-kafka]] — Kafka is the most widely used distributed log implementation for data pipelines
+- Related to [[message-delivery-semantics]] — at-most-once, at-least-once, exactly-once delivery guarantees

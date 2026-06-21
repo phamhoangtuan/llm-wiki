@@ -146,6 +146,7 @@ Modern systems map to PACELC categories:
 
 ## Connections
 
+- [[distributed-consensus]] — Raft and Paxos are the consensus mechanisms that make CP systems possible; without consensus, distributed databases cannot guarantee consistency during partitions
 - [[byzantine-fault-tolerance]] — BFT extends fault tolerance beyond crash-stop to arbitrary (Byzantine) failures; CAP only models crash-stop and network partitions
 - [[database-replication]] — Master-slave replication is the mechanism that creates the C-vs-A tension in CAP
 - [[scalable-architecture]] — CAP is the fundamental constraint on how distributed data stores scale

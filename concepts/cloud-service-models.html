@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cloud Service Models — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-cloud">Cloud</a> <span class="sep">/</span>
+  <span>Cloud Service Models</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Cloud Service Models</h1>
+  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">cloud</span><span class="tag">infrastructure</span><span class="tag">system-design</span></div>
+</div>
+<div class="content-area concept">
+<p>Cloud service models represent three levels of infrastructure abstraction, each trading control for operational simplicity.</p>
+<h2 id="the-three-models">The Three Models</h2>
+<table><thead><tr>
+<th>Layer</th>
+<th>IaaS</th>
+<th>PaaS</th>
+<th>SaaS</th>
+</tr></thead><tbody>
+<tr>
+<td>Applications</td>
+<td>✅ You</td>
+<td>✅ You</td>
+<td>☁️ Provider</td>
+</tr>
+<tr>
+<td>Data</td>
+<td>✅ You</td>
+<td>✅ You</td>
+<td>☁️ Provider</td>
+</tr>
+<tr>
+<td>Runtime</td>
+<td>✅ You</td>
+<td>☁️ Provider</td>
+<td>☁️ Provider</td>
+</tr>
+<tr>
+<td>Middleware</td>
+<td>✅ You</td>
+<td>☁️ Provider</td>
+<td>☁️ Provider</td>
+</tr>
+<tr>
+<td>OS</td>
+<td>✅ You</td>
+<td>☁️ Provider</td>
+<td>☁️ Provider</td>
+</tr>
+<tr>
+<td>Virtualization</td>
+<td>☁️ Provider</td>
+<td>☁️ Provider</td>
+<td>☁️ Provider</td>
+</tr>
+<tr>
+<td>Servers/Storage/Networking</td>
+<td>☁️ Provider</td>
+<td>☁️ Provider</td>
+<td>☁️ Provider</td>
+</tr>
+</tbody></table>
+<p><strong>IaaS (Infrastructure-as-a-Service)</strong> gives granular control over raw infrastructure. You rent compute, storage, and networking, but manage everything from the OS up. Examples: AWS EC2, Google Compute Engine. Best when you need full control over the environment.</p>
+<p><strong>PaaS (Platform-as-a-Service)</strong> optimizes for developer velocity. The provider manages the runtime and all underlying complexity — you focus on code and data only. Examples: Heroku, Google App Engine. Best when you want to ship fast without infrastructure concerns.</p>
+<p><strong>SaaS (Software-as-a-Service)</strong> delivers zero operational overhead. You pay to use a complete product; the provider handles ALL technical layers. Examples: Gmail, Salesforce, Slack. Best when the problem is solved by existing software.</p>
+<h2 id="choosing-a-model">Choosing a Model</h2>
+<blockquote>Analogy: On-premises = raising cows for milk. Cloud = buying milk at the supermarket. You still get the end product, but don't worry about the barn, feed, or veterinary care.</blockquote>
+<p>The choice depends on business needs: IaaS for control, PaaS for velocity, SaaS for simplicity. You trade off flexibility against operational burden at each step.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="containerization.html">
+      <span class="connection-type related">Related</span>
+      <h4>Containerization</h4>
+      <p>containers typically run on IaaS/PaaS infrastructure</p>
+    </a>
+    <a class="connection-card" href="scalable-architecture.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Scalable Architecture</h4>
+      <p>cloud elasticity enables horizontal scaling</p>
+    </a>
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>System Design Interview</h4>
+      <p>cloud is the default deployment substrate</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="clickhouse.html" class="prev">← ClickHouse</a><a href="code-archaeology.html" class="next">Code Archaeology →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

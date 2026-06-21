@@ -452,11 +452,17 @@
     "data-engineer",
     "data-ingestion",
     "data-ingestion",
+    "distributed-consensus",
+    "leader-election",
+    "message-delivery-semantics",
     "message-queue",
     "message-queue",
+    "orchestration-vs-choreography",
+    "redis",
     "databricks-zerobus",
     "hugo-data-ingestion-platform-flink",
-    "hugo-data-ingestion-platform-flink"
+    "hugo-data-ingestion-platform-flink",
+    "system-design-big-archive"
   ],
   "apache-iceberg": [
     "apache-flink",
@@ -529,13 +535,20 @@
     "apache-kafka",
     "cap-theorem",
     "cdn",
+    "message-delivery-semantics",
     "observability",
+    "orchestration-vs-choreography",
     "scalable-architecture",
+    "system-design-big-archive",
     "system-design-interview-xu"
   ],
   "sources/databricks-zerobus": [
     "apache-kafka",
     "delta-lake"
+  ],
+  "sources/system-design-big-archive": [
+    "apache-kafka",
+    "database-sharding"
   ],
   "lance-file-format": [
     "apache-parquet",
@@ -570,6 +583,29 @@
   ],
   "sources/high-performance-spark": [
     "apache-spark"
+  ],
+  "http-evolution": [
+    "api-architectural-styles"
+  ],
+  "system-design-interview": [
+    "api-architectural-styles",
+    "bloom-filter",
+    "cloud-service-models",
+    "deployment-strategies",
+    "http-evolution",
+    "message-delivery-semantics",
+    "orchestration-vs-choreography",
+    "redis",
+    "scalable-architecture",
+    "snowflake-id",
+    "technical-interview",
+    "tls-https",
+    "system-design-big-archive",
+    "system-design-interview-xu"
+  ],
+  "orchestration-vs-choreography": [
+    "api-architectural-styles",
+    "message-delivery-semantics"
   ],
   "rich-domain-model": [
     "bijection",
@@ -618,8 +654,30 @@
     "technological-centaur",
     "tell-dont-ask"
   ],
+  "cache-strategy": [
+    "bloom-filter",
+    "cap-theorem",
+    "cdn",
+    "database-replication",
+    "database-sharding",
+    "load-balancer",
+    "observability",
+    "redis",
+    "scalable-architecture",
+    "stateless-architecture",
+    "system-design-interview",
+    "system-design-big-archive",
+    "system-design-interview-xu"
+  ],
   "bft-data-engineering-handbook": [
     "byzantine-fault-tolerance"
+  ],
+  "distributed-consensus": [
+    "byzantine-fault-tolerance",
+    "cap-theorem",
+    "leader-election",
+    "leader-election",
+    "consensus-raft-paxos-handbook"
   ],
   "data-governance": [
     "byzantine-fault-tolerance",
@@ -635,8 +693,11 @@
     "cache-strategy",
     "cap-theorem",
     "cdn",
+    "cloud-service-models",
     "database-replication",
     "database-sharding",
+    "deployment-strategies",
+    "distributed-consensus",
     "load-balancer",
     "message-queue",
     "observability",
@@ -649,6 +710,8 @@
     "cap-theorem",
     "database-sharding",
     "database-sharding",
+    "distributed-consensus",
+    "leader-election",
     "load-balancer",
     "observability",
     "scalable-architecture",
@@ -673,24 +736,20 @@
     "system-design-interview",
     "system-design-interview-xu"
   ],
+  "redis": [
+    "cache-strategy"
+  ],
+  "bloom-filter": [
+    "cache-strategy"
+  ],
   "cap-theorem-handbook": [
     "cap-theorem"
   ],
   "byzantine-fault-tolerance": [
     "cap-theorem",
+    "distributed-consensus",
+    "leader-election",
     "bft-data-engineering-handbook"
-  ],
-  "cache-strategy": [
-    "cap-theorem",
-    "cdn",
-    "database-replication",
-    "database-sharding",
-    "load-balancer",
-    "observability",
-    "scalable-architecture",
-    "stateless-architecture",
-    "system-design-interview",
-    "system-design-interview-xu"
   ],
   "technical-interview": [
     "case-interview",
@@ -746,6 +805,10 @@
     "clickhouse",
     "delta-kernel",
     "delta-lake"
+  ],
+  "containerization": [
+    "cloud-service-models",
+    "deployment-strategies"
   ],
   "complexity-metrics": [
     "code-archaeology",
@@ -865,6 +928,20 @@
     "dependency-injection",
     "solid-principles"
   ],
+  "cloud-service-models": [
+    "containerization"
+  ],
+  "deployment-strategies": [
+    "containerization"
+  ],
+  "goroutines": [
+    "containerization",
+    "go-http-handlers",
+    "go-web-ecosystem",
+    "kubernetes-operator",
+    "go-web-programming",
+    "go-web-programming"
+  ],
   "data-engineering-fundamentals": [
     "data-engineer",
     "data-engineer",
@@ -943,7 +1020,16 @@
     "data-quality-monitoring"
   ],
   "database-sharding": [
-    "database-replication"
+    "database-isolation",
+    "database-replication",
+    "snowflake-id",
+    "system-design-big-archive"
+  ],
+  "cap-theorem": [
+    "database-isolation",
+    "distributed-consensus",
+    "leader-election",
+    "cap-theorem-handbook"
   ],
   "sources/system-design-interview-xu": [
     "database-sharding"
@@ -1004,6 +1090,18 @@
     "materialized-views",
     "materialized-views-quick-insights",
     "materialized-views-quick-insights"
+  ],
+  "consensus-raft-paxos-handbook": [
+    "distributed-consensus",
+    "leader-election"
+  ],
+  "Apache Kafka": [
+    "distributed-consensus",
+    "leader-election"
+  ],
+  "leader-election": [
+    "distributed-consensus",
+    "consensus-raft-paxos-handbook"
   ],
   "software-as-simulation": [
     "domain-driven-design",
@@ -1068,13 +1166,6 @@
     "tdd-methodology",
     "testing-strategy"
   ],
-  "goroutines": [
-    "go-http-handlers",
-    "go-web-ecosystem",
-    "kubernetes-operator",
-    "go-web-programming",
-    "go-web-programming"
-  ],
   "go-web-ecosystem": [
     "go-http-handlers",
     "go-template-escaping",
@@ -1116,6 +1207,9 @@
   "sources/learn-harness-engineering": [
     "harness-engineering"
   ],
+  "api-architectural-styles": [
+    "http-evolution"
+  ],
   "python-standard-library": [
     "immutability",
     "python-professional-practices",
@@ -1144,8 +1238,19 @@
     "scalable-architecture",
     "system-design-interview-xu"
   ],
+  "message-delivery-semantics": [
+    "message-queue"
+  ],
   "sources/practical-object-oriented-design": [
     "object-oriented-design"
+  ],
+  "sso": [
+    "password-storage",
+    "tls-https"
+  ],
+  "tls-https": [
+    "password-storage",
+    "sso"
   ],
   "pytest-test-results": [
     "pytest-assertions",
@@ -1221,16 +1326,15 @@
     "python-professional-practices",
     "readability-vs-performance"
   ],
-  "system-design-interview": [
-    "scalable-architecture",
-    "technical-interview",
-    "system-design-interview-xu"
-  ],
   "sources/semantic-layers-for-ai": [
     "semantic-layer"
   ],
   "sources/seriously-good-software": [
     "software-quality-dimensions"
+  ],
+  "password-storage": [
+    "sso",
+    "tls-https"
   ],
   "sources/senior-to-staff-engineer": [
     "staff-engineering"
@@ -1256,9 +1360,6 @@
   "knowledge-graph": [
     "wiki-maintenance",
     "wiki-maintenance"
-  ],
-  "cap-theorem": [
-    "cap-theorem-handbook"
   ],
   "data-quality-monitoring": [
     "data-quality-traffic-lights-sahlin"

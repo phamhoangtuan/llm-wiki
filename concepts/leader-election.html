@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leader Election — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-distributed-systems">Distributed Systems</a> <span class="sep">/</span>
+  <span>Leader Election</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Leader Election</h1>
+  <div class="page-meta"><span>Source: consensus-raft-paxos-handbook</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">distributed-systems</span><span class="tag">consensus</span><span class="tag">raft</span><span class="tag">fault-tolerance</span><span class="tag">coordination</span></div>
+</div>
+<div class="content-area concept">
+<p><strong>Leader Election</strong> is the process by which a distributed system selects a single node to act as the coordinator — exclusively handling writes, assigning work, or maintaining cluster state — ensuring that even if the current leader fails, a new one is quickly and safely elected (source: <span class="wiki-link source-ref">consensus-raft-paxos-handbook</span>).</p>
+<p>Leader election is a fundamental building block of distributed consensus: both <a href="distributed-consensus.html" class="wiki-link">Raft</a> and Multi-Paxos rely on it to simplify coordination by funneling all decisions through a single node. Systems like <a href="Apache Kafka.html" class="wiki-link">Apache Kafka</a>, Zookeeper, etcd, and MongoDB all embed leader election mechanisms.</p>
+<h2 id="why-leaders">Why Leaders?</h2>
+<p>Without a leader, distributed systems face two pathologies:</p>
+<ul>
+<li><strong>Split-brain</strong>: Two nodes both believe they're in charge, accepting conflicting writes → permanent data corruption</li>
+<li><strong>Coordination chaos</strong>: Multi-writer protocols (some Paxos variants) have O(N²) communication complexity for every decision</li>
+</ul>
+<p>A strong leader reduces distributed consensus to a simpler problem: only one node makes decisions, and consensus becomes "make sure followers agree the leader is still the leader."</p>
+<h2 id="leader-election-in-raft">Leader Election in Raft</h2>
+<p>Raft's leader election is the canonical example — designed to be simple, safe, and fast. Every node in a Raft cluster exists in one of three states: <strong>Follower</strong>, <strong>Candidate</strong>, or <strong>Leader</strong>.</p>
+<h3 id="the-election-trigger">The Election Trigger</h3>
+<p>All nodes start as Followers. A Follower expects regular <strong>heartbeats</strong> (AppendEntries RPCs) from the Leader. If it receives no heartbeat within a <strong>randomized election timeout</strong> (typically 150-300ms), it assumes the Leader has failed and triggers an election.</p>
+<h3 id="election-process">Election Process</h3>
+<ol>
+<li><strong>Follower → Candidate</strong>: The node increments its current <strong>Term</strong> (a monotonically increasing integer), votes for itself, and sends <code>RequestVote</code> RPCs to all other nodes</li>
+<li><strong>Voting rule</strong>: Each node grants its vote to at most one Candidate per Term. It votes for the first Candidate whose log is at least as up-to-date as its own (log completeness guarantee)</li>
+<li><strong>Majority wins</strong>: The Candidate becomes Leader if it receives votes from a <strong>majority</strong> of nodes (<code>N/2 + 1</code>). It immediately begins sending heartbeats to assert authority and suppress new elections</li>
+<li><strong>Split vote</strong>: If two Candidates emerge simultaneously and neither gets a majority (each gets exactly <code>N/2</code>), both timeout, increment Term, and retry</li>
+</ol>
+<h3 id="randomized-timeouts-the-key-insight">Randomized Timeouts: The Key Insight</h3>
+<p>If every Follower had the same election timeout, split votes would be inevitable — every node would become a Candidate at the same instant. <strong>Randomized timeouts</strong> (e.g., 150-300ms uniform random) make it overwhelmingly probable that one node times out first, becomes Candidate, and wins the election before others even start.</p>
+<p>The winner's timeout expires first; it declares candidacy and receives votes before competitors even begin their campaigns.</p>
+<h3 id="term-based-safety">Term-Based Safety</h3>
+<p>The <strong>Term</strong> number is Raft's logical clock. Rules:</p>
+<ul>
+<li>A node always defers to a higher Term: Follower → Candidate → Leader</li>
+<li>If a Leader discovers a higher Term (from another node's RPC), it immediately steps down to Follower</li>
+<li>Stale leaders (network-partitioned from a previous Term) cannot corrupt the log because Followers reject their requests with outdated Terms</li>
+</ul>
+<p>This prevents the classic split-brain scenario where an isolated former leader continues accepting writes.</p>
+<h2 id="leader-election-in-multi-paxos">Leader Election in Multi-Paxos</h2>
+<p>Multi-Paxos also uses a leader to reduce message complexity (from two phases to one), but the election mechanism is less explicitly defined than Raft's. Paxos allows any node to become leader simply by issuing <code>Prepare</code> with a higher Proposal ID — an implicit election embedded in the consensus protocol itself rather than a separate sub-protocol.</p>
+<h2 id="coordination-services">Coordination Services</h2>
+<p>Several production systems provide ready-made leader election:</p>
+<table><thead><tr>
+<th>System</th>
+<th>Mechanism</th>
+<th>Used By</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Zookeeper</strong></td>
+<td>Ephemeral sequential znodes; lowest sequence number wins</td>
+<td>Apache Kafka (legacy), Hadoop, HBase</td>
+</tr>
+<tr>
+<td><strong>etcd</strong></td>
+<td>Raft consensus; leader elected via Raft's built-in mechanism</td>
+<td>Kubernetes (cluster state)</td>
+</tr>
+<tr>
+<td><strong>Consul</strong></td>
+<td>Raft-based; integrated with health checking and service discovery</td>
+<td>Nomad, Vault, service mesh</td>
+</tr>
+<tr>
+<td><strong>Apache Kafka KRaft</strong></td>
+<td>Raft-based metadata quorum (KIP-500)</td>
+<td>Kafka 3.3+ (replaces Zookeeper)</td>
+</tr>
+</tbody></table>
+<h2 id="common-failure-modes">Common Failure Modes</h2>
+<ul>
+<li><strong>Flaming leader</strong>: Leader is alive but too slow — followers time out and elect a new one, causing constant churn. Mitigation: increase election timeout, add leader load shedding</li>
+<li><strong>Network partition</strong>: Leader isolated on minority partition — cannot get majority for writes, but may still believe it's leader until it contacts a quorum and discovers a higher Term</li>
+<li><strong>Zombie leader</strong>: Former leader on minority partition keeps processing reads from cached data — solved by leases (time-bounded leadership) or requiring quorum for reads</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="distributed-consensus.html">
+      <span class="connection-type related">Related</span>
+      <h4>Distributed Consensus (Raft & Paxos)</h4>
+      <p>Raft decomposes consensus into Leader Election as its first sub-problem; Paxos embeds leader election implicitly in the Prepare phase</p>
+    </a>
+    <a class="connection-card" href="byzantine-fault-tolerance.html">
+      <span class="connection-type related">Related</span>
+      <h4>Byzantine Fault Tolerance (BFT)</h4>
+      <p>BFT leader election requires additional safeguards since Byzantine nodes may lie about being leader; PBFT also uses a leader-based model</p>
+    </a>
+    <a class="connection-card" href="cap-theorem.html">
+      <span class="connection-type related">Related</span>
+      <h4>CAP Theorem</h4>
+      <p>Leader election via majority quorum (`N/2 + 1`) is the mechanism that prevents split-brain, a CAP-critical failure mode</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Kafka</h4>
+      <p>Kafka brokers use Zookeeper (legacy) or KRaft (Raft-based) for controller election; partition leaders are elected per-topic-partition</p>
+    </a>
+    <a class="connection-card" href="database-replication.html">
+      <span class="connection-type related">Related</span>
+      <h4>Database Replication</h4>
+      <p>Master-slave replication depends on electing a single writable primary; leader election failures cause replication stalls</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="lance-file-format.html" class="prev">← Lance File Format</a><a href="liquid-clustering.html" class="next">Liquid Clustering →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

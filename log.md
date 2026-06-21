@@ -514,3 +514,64 @@
 - Updated concepts: vibe-coding (+ Agentic Engineering spectrum, token economics), harness-engineering (+ 90% rule, 6-component production anatomy), context-engineering (+ 6 dimensions, static vs dynamic, agent skills pattern), ai-native-engineering (+ Conductor vs Orchestrator modes, 4 orchestrator skills), agent-quality-optimization (+ CapEx vs OpEx token economics), agentic-development-life-cycle (+ 4-phase implementation roadmap)
 - Updated index.md: +3 concept entries, +1 source entry
 - Total pages: 156 (111 concepts + 45 sources)
+
+## [2026-06-21] ingest | Distributed Consensus (Raft & Paxos) — Data Engineering Handbook
+
+- Source: Vietnamese DE Handbook page on Raft & Paxos consensus algorithms (kythuatdulieu.github.io)
+- Created sources/consensus-raft-paxos-handbook.md
+- Created concepts/distributed-consensus.md — consensus problem (Agreement, Validity, Termination), FLP impossibility, Safety vs Liveness, Paxos (roles, two-phase protocol, Multi-Paxos, complexity issues), Raft (state machine, leader election, log replication, one-way data flow), comparison table, ecosystem
+- Created concepts/leader-election.md — Raft's randomized timeout mechanism, Term-based safety, split-brain prevention, Multi-Paxos implicit election, production coordination services (Zookeeper, etcd, Consul, KRaft), common failure modes
+- Updated concepts/byzantine-fault-tolerance.md — cross-referenced distributed-consensus for CFT vs BFT comparison
+- Updated concepts/cap-theorem.md — cross-referenced distributed-consensus as mechanism enabling CP systems
+- Updated index.md (113 concepts, 46 sources)
+
+## [2026-06-21] ingest | Cloud Service Models (Alex Xu — System Design Interview)
+
+- Created concepts/cloud-service-models.md — IaaS/PaaS/SaaS comparison table, choosing a model, cow/milk analogy
+- Source: system-design-interview-xu (existing source)
+- Updated index.md (114 concepts, 46 sources)
+
+## [2026-06-21] ingest | Orchestration vs Choreography (Alex Xu — System Design Interview)
+
+- Created concepts/orchestration-vs-choreography.md — comparison table, when to use each, e-commerce checkout example
+- Source: system-design-interview-xu (existing source)
+- Updated index.md (116 concepts, 46 sources)
+
+## [2026-06-21] ingest | TLS & HTTPS (Alex Xu — System Design Interview)
+
+- Created concepts/tls-https.md — 3-step TLS handshake, asymmetric vs symmetric encryption comparison, why TLS uses both
+- Source: system-design-interview-xu (existing source)
+- Updated index.md (115 concepts, 46 sources)
+
+## [2026-06-21] ingest | Redis (Alex Xu — System Design Interview)
+
+- Created concepts/redis.md — in-memory data store, single-threaded event loop, IO multiplexing, key use cases
+- Source: system-design-big-archive (new source reference)
+- Updated index.md (116 concepts, 46 sources)
+
+## [2026-06-21] ingest | Message Delivery Semantics (Alex Xu — System Design Interview)
+
+- Created concepts/message-delivery-semantics.md — at-most-once, at-least-once, effectively exactly-once; idempotency strategies; Two Generals Problem
+- Source: system-design-big-archive
+- Updated index.md (117 concepts, 46 sources)
+
+## [2026-06-21] ingest | Snowflake ID (Alex Xu — System Design Interview)
+
+- Created concepts/snowflake-id.md — 64-bit distributed unique ID pattern, time-ordered, no coordination
+- Source: system-design-big-archive
+- Updated index.md (117 concepts, 46 sources)
+
+## [2026-06-21] ingest | HTTP Evolution (Alex Xu — System Design Interview)
+
+- Created concepts/http-evolution.md — HTTP/1.0 through HTTP/3 (QUIC), HOL blocking across versions
+- Source: system-design-big-archive
+- Updated index.md (118 concepts, 46 sources)
+
+## [2026-06-21] ingest | System Design: The Big Archive (Alex Xu)
+
+- Source: "System Design: The Big Archive" by Alex Xu (ebook, 159 pages, finished 2026-06-21)
+- Created sources/system-design-big-archive.md
+- New concepts: cloud-service-models, containerization, deployment-strategies, database-isolation, sso, password-storage, tls-https, redis, orchestration-vs-choreography, api-architectural-styles, http-evolution, bloom-filter, snowflake-id, message-delivery-semantics
+- Updated concepts: apache-kafka (+ zero copy, sequential I/O perf internals), message-queue (+ delivery semantics cross-ref), database-sharding (+ hash vs range details), cache-strategy (+ redis, bloom-filter cross-refs), system-design-interview (+ source ref)
+- Updated index.md: +14 concept entries, +1 source entry
+- Total pages: 174 (127 concepts + 47 sources)

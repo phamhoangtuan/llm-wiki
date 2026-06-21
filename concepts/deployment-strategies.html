@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deployment Strategies — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-deployment">Deployment</a> <span class="sep">/</span>
+  <span>Deployment Strategies</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Deployment Strategies</h1>
+  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">deployment</span><span class="tag">devops</span><span class="tag">system-design</span><span class="tag">reliability</span></div>
+</div>
+<div class="content-area concept">
+<p>Deployment is the highest-risk phase of the software lifecycle. A small bug can cause outages for millions of users. Strategy choice should match the stakes.</p>
+<h2 id="four-strategies">Four Strategies</h2>
+<table><thead><tr>
+<th>Strategy</th>
+<th>How It Works</th>
+<th>Pros</th>
+<th>Cons</th>
+<th>Use When</th>
+</tr></thead><tbody>
+<tr>
+<td>Blue-Green 🟦🟩</td>
+<td>Two identical environments: Blue (staging) + Green (production). Switch traffic after verification</td>
+<td>✅ Best rollback safety ✅ Minimal downtime</td>
+<td>❌ Double infrastructure cost ❌ Complex synchronization</td>
+<td>Production-critical systems, financial apps</td>
+</tr>
+<tr>
+<td>Canary 🐤</td>
+<td>Upgrade gradually for subset users (5% → 20% → 100%)</td>
+<td>✅ Cost-effective ✅ Early failure detection</td>
+<td>❌ Testing in production required ❌ Complex observability</td>
+<td>Large user bases, feature flagging</td>
+</tr>
+<tr>
+<td>A/B Testing 🧪</td>
+<td>Different versions run simultaneously to measure user response</td>
+<td>✅ Data-driven decisions ✅ Feature experimentation</td>
+<td>❌ Not for infrastructure stability ❌ Risk of feature leaks</td>
+<td>Product experiments, UX optimization</td>
+</tr>
+<tr>
+<td>Multi-Service 🔗</td>
+<td>Simultaneous changes to multiple services</td>
+<td>✅ Simple to implement ✅ Fast for small teams</td>
+<td>❌ Low rollback safety ❌ High dependency risk</td>
+<td>Small projects, non-critical updates</td>
+</tr>
+</tbody></table>
+<h2 id="rule-of-thumb">Rule of Thumb</h2>
+<blockquote>Stakes determine strategy tightness. Financial transactions → Blue-Green. Weekend hackathon → Multi-Service is fine.</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="containerization.html">
+      <span class="connection-type related">Related</span>
+      <h4>Containerization</h4>
+      <p>containers enable fast environment switching</p>
+    </a>
+    <a class="connection-card" href="scalable-architecture.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Scalable Architecture</h4>
+      <p>zero-downtime deploys are prerequisite for scaling</p>
+    </a>
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>System Design Interview</h4>
+      <p>deployment architecture questions are common</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="dependency-injection.html" class="prev">← Dependency Injection</a><a href="differential-dataflow.html" class="next">Differential Dataflow →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

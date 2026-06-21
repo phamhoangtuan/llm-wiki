@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Distributed Consensus (Raft &amp; Paxos) — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-distributed-systems">Distributed Systems</a> <span class="sep">/</span>
+  <span>Distributed Consensus (Raft &amp; Paxos)</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Distributed Consensus (Raft &amp; Paxos)</h1>
+  <div class="page-meta"><span>Source: consensus-raft-paxos-handbook</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">distributed-systems</span><span class="tag">consensus</span><span class="tag">raft</span><span class="tag">paxos</span><span class="tag">fault-tolerance</span><span class="tag">distributed-consensus</span></div>
+</div>
+<div class="content-area concept">
+<p><strong>Distributed consensus</strong> is the process by which multiple nodes in a network reach unanimous agreement on a value or sequence of actions, even when some nodes fail, the network partitions, or messages are delayed (source: <span class="wiki-link source-ref">consensus-raft-paxos-handbook</span>).</p>
+<p>These algorithms are the heart of modern distributed databases and message queues — <a href="Apache Kafka.html" class="wiki-link">Apache Kafka</a>, Zookeeper, etcd, MongoDB, and Cassandra all depend on consensus for data integrity. Without it, systems risk <strong>split-brain</strong>: two cluster halves both claiming to be leader, writing conflicting data, causing permanent corruption.</p>
+<h2 id="the-consensus-problem">The Consensus Problem</h2>
+<p>A correct consensus algorithm must satisfy three properties:</p>
+<ol>
+<li><strong>Agreement</strong>: All non-faulty nodes must agree on the same value</li>
+<li><strong>Validity</strong>: The agreed value must have been proposed by some node in the system (not garbage)</li>
+<li><strong>Termination</strong>: Every non-faulty node eventually reaches a decision (no infinite hanging)</li>
+</ol>
+<h3 id="flp-impossibility">FLP Impossibility</h3>
+<p>The <strong>FLP theorem</strong> (Fischer, Lynch, Paterson, 1985) proved that in a fully asynchronous network with even one faulty node, no deterministic consensus algorithm can guarantee all three properties simultaneously. This means Paxos and Raft must make a trade-off: they guarantee <strong>Safety</strong> (Agreement + Validity) and sacrifice <strong>Liveness</strong> (Termination) — they may temporarily hang if the network is too unstable, but they will never return a wrong answer.</p>
+<h3 id="safety-vs-liveness">Safety vs Liveness</h3>
+<table><thead><tr>
+<th></th>
+<th>Safety</th>
+<th>Liveness</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Guarantee</strong></td>
+<td>Nothing bad happens</td>
+<td>Something good eventually happens</td>
+</tr>
+<tr>
+<td><strong>In practice</strong></td>
+<td>No two nodes decide differently</td>
+<td>System eventually makes progress</td>
+</tr>
+<tr>
+<td><strong>Violation</strong></td>
+<td>Split-brain, data corruption</td>
+<td>Temporarily unavailable, hanging</td>
+</tr>
+<tr>
+<td><strong>Priority in Paxos/Raft</strong></td>
+<td><strong>Absolute priority</strong></td>
+<td>Best-effort; sacrificed during severe partitions</td>
+</tr>
+</tbody></table>
+<h2 id="paxos-the-theoretical-foundation">Paxos: The Theoretical Foundation</h2>
+<p>Introduced by Leslie Lamport in 1989, Paxos was the first consensus algorithm proven mathematically safe in unreliable networks (fail-stop model).</p>
+<h3 id="roles">Roles</h3>
+<p>A node can serve multiple roles simultaneously:</p>
+<ul>
+<li><strong>Proposer</strong>: Proposes a value for consensus</li>
+<li><strong>Acceptor</strong>: Votes on proposed values (the "voting body")</li>
+<li><strong>Learner</strong>: Records and persists the agreed-upon value</li>
+</ul>
+<h3 id="two-phase-protocol">Two-Phase Protocol</h3>
+<p><strong>Phase 1 — Prepare/Promise</strong>:</p>
+<ol>
+<li>Proposer generates a Proposal ID higher than any previous ID</li>
+<li>Sends <code>Prepare(ID)</code> to a majority of Acceptors</li>
+<li>If ID > any ID the Acceptor has seen, it replies <code>Promise</code> — pledging to reject any proposal with a lower ID</li>
+</ol>
+<p><strong>Phase 2 — Accept/Accepted</strong>:</p>
+<ol>
+<li>Once Proposer receives majority <code>Promise</code> responses, it sends <code>Accept(ID, Value)</code></li>
+<li>Acceptors record the value and notify Learners</li>
+</ol>
+<h3 id="multi-paxos">Multi-Paxos</h3>
+<p>Basic Paxos only reaches consensus on a single value. To build a replicated log suitable for state machine replication, multiple Paxos instances are chained into <strong>Multi-Paxos</strong> — electing a stable leader to reduce the message complexity from two phases to one (Phase 2 only, since Prepare is skipped when the leader is stable).</p>
+<p><strong>Systems using Paxos/Multi-Paxos</strong>: Google Spanner, Google Chubby, Amazon DynamoDB (lightweight Paxos), Apache Cassandra (lightweight transactions).</p>
+<h3 id="why-paxos-is-difficult-to-implement">Why Paxos is Difficult to Implement</h3>
+<p>Lamport's original paper (<em>The Part-Time Parliament</em>) is famously abstract, using a fictional Greek parliament metaphor. <em>Paxos Made Simple</em> (2001) clarified the algorithm, but the gap between theory and production code remains vast: edge cases around leader changes, log compaction, membership changes, and performance optimization are not specified by the protocol itself. Most production Paxos deployments are heavily custom-engineered by organizations with deep distributed systems expertise.</p>
+<h2 id="raft-designed-for-human-understanding">Raft: Designed for Human Understanding</h2>
+<p>Diego Ongaro and John Ousterhout (Stanford, 2014) created Raft in response to Paxos's notorious complexity, with the explicit goal: <strong>understandability</strong> — while maintaining equivalent safety guarantees.</p>
+<h3 id="decomposition">Decomposition</h3>
+<p>Raft breaks the consensus problem into three independent sub-problems:</p>
+<ol>
+<li><strong>Leader Election</strong>: Select one server to exclusively handle write requests</li>
+<li><strong>Log Replication</strong>: Leader synchronizes its log to all Followers</li>
+<li><strong>Safety</strong>: Ensure no two leaders can overwrite each other's committed entries</li>
+</ol>
+<h3 id="state-machine">State Machine</h3>
+<pre><code>[Start] → Follower
+Follower → Candidate : Election timeout (no heartbeat)
+Candidate → Leader : Wins majority vote
+Candidate → Follower : Discovers leader with higher Term
+Leader → Follower : Discovers leader with higher Term</code></pre>
+<p>Every Raft node exists in one of three states: Follower (passive, responds to leaders), Candidate (actively seeking election), or Leader (handles all client requests). Term numbers monotonically increase — a higher Term always supersedes a lower one.</p>
+<h3 id="leader-election">Leader Election</h3>
+<p>All nodes start as Followers. If a Follower receives no heartbeat (AppendEntries RPC) from the Leader within a <strong>randomized election timeout</strong> (150-300ms), it transitions to Candidate, increments its Term, votes for itself, and sends <code>RequestVote</code> to all other nodes.</p>
+<ul>
+<li><strong>Majority wins</strong>: Candidate becomes Leader if it receives votes from a majority of nodes</li>
+<li><strong>Split vote</strong>: If two Candidates emerge simultaneously and neither gets a majority, both timeout, increment Term, and retry. Randomized timeouts make repeated splits exponentially unlikely</li>
+<li><strong>Term enforcement</strong>: If a node receives an RPC from a leader with a higher Term, it steps down</li>
+</ul>
+<h3 id="log-replication">Log Replication</h3>
+<p>Client writes flow through the Leader:</p>
+<ol>
+<li>Leader appends the command to its local log (uncommitted)</li>
+<li>Leader sends <code>AppendEntries</code> RPCs to all Followers (also serves as heartbeat)</li>
+<li>Once the entry is replicated to a <strong>majority</strong> of nodes, the Leader commits it</li>
+<li>Leader applies the committed entry to its state machine and returns success to the client</li>
+<li>Followers learn of new commit index on the next <code>AppendEntries</code> and apply committed entries</li>
+</ol>
+<p><strong>Critical safety property</strong>: A Leader can never overwrite committed entries. When a new Leader is elected, it must contain all committed entries from previous Terms — Raft enforces this through the election restriction (a Candidate cannot win unless its log is at least as up-to-date as the majority).</p>
+<h3 id="one-way-data-flow">One-Way Data Flow</h3>
+<p>Unlike Paxos where any node can propose, Raft has <strong>strict one-way flow</strong>: data travels only from Leader → Followers. Followers never redirect clients or propose values. This simplifies reasoning about the system state at the cost of making the Leader a potential bottleneck.</p>
+<h2 id="raft-vs-paxos-comparison">Raft vs Paxos: Comparison</h2>
+<table><thead><tr>
+<th>Criterion</th>
+<th>Paxos / Multi-Paxos</th>
+<th>Raft</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Understandability</strong></td>
+<td>Extremely complex; often custom-engineered by FAANG-scale orgs</td>
+<td>Highly intuitive; standardized libraries across all major languages</td>
+</tr>
+<tr>
+<td><strong>Leader model</strong></td>
+<td>Peer-to-peer or single leader (Multi-Paxos); any node can propose</td>
+<td>Strong Leader only; only the Leader handles client writes</td>
+</tr>
+<tr>
+<td><strong>Data flow</strong></td>
+<td>Multi-directional; nodes negotiate independently</td>
+<td>One-way: Leader → Followers</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Very high when hand-optimized; less leader bottleneck</td>
+<td>Leader can become network bottleneck under extreme write load</td>
+</tr>
+<tr>
+<td><strong>Edge cases</strong></td>
+<td>Many unspecified; implementers must discover and handle</td>
+<td>Explicitly enumerated and handled in the paper itself</td>
+</tr>
+<tr>
+<td><strong>Membership changes</strong></td>
+<td>Not defined in core protocol; ad-hoc extensions</td>
+<td>Built-in joint consensus mechanism for safe reconfiguration</td>
+</tr>
+</tbody></table>
+<h2 id="ecosystem">Ecosystem</h2>
+<ul>
+<li><strong>Raft</strong>: etcd (Kubernetes metadata store), Consul (HashiCorp service mesh), CockroachDB, TiDB, Neo4j, Apache Kafka (KRaft mode — replacing Zookeeper), YugabyteDB</li>
+<li><strong>Paxos</strong>: Google Spanner (globally distributed SQL), Google Chubby (distributed lock service), Amazon DynamoDB (lightweight Paxos for leader election), Apache Cassandra (lightweight transactions)</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="byzantine-fault-tolerance.html">
+      <span class="connection-type related">Related</span>
+      <h4>Byzantine Fault Tolerance (BFT)</h4>
+      <p>BFT extends consensus to adversarial node behavior (lying, corruption); Raft/Paxos are CFT algorithms that assume fail-stop (nodes simply crash, don't lie). BFT requires `3f+1` nodes vs `2f+1` for CFT</p>
+    </a>
+    <a class="connection-card" href="cap-theorem.html">
+      <span class="connection-type related">Related</span>
+      <h4>CAP Theorem</h4>
+      <p>Consensus algorithms are the mechanism that enables CP systems; without consensus, distributed stores must choose between consistency and availability during partitions</p>
+    </a>
+    <a class="connection-card" href="leader-election.html">
+      <span class="connection-type related">Related</span>
+      <h4>Leader Election</h4>
+      <p>Leader election is the first sub-problem Raft decomposes; randomized timeouts and Term numbers ensure at most one leader per Term</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Kafka</h4>
+      <p>Kafka's KRaft mode replaces Zookeeper with a self-managed Raft-based metadata quorum (KIP-500)</p>
+    </a>
+    <a class="connection-card" href="database-replication.html">
+      <span class="connection-type related">Related</span>
+      <h4>Database Replication</h4>
+      <p>Consensus underlies master election in replication clusters; ensures a single writable primary</p>
+    </a>
+    <a class="connection-card" href="scalable-architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Scalable Architecture</h4>
+      <p>Consensus is required for coordination services (locks, config, leader election) that enable horizontal scaling</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="differential-dataflow.html" class="prev">← Differential Dataflow</a><a href="domain-driven-design.html" class="next">Domain-Driven Design →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redis — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-caching">Caching</a> <span class="sep">/</span>
+  <span>Redis</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Redis</h1>
+  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">caching</span><span class="tag">performance</span><span class="tag">databases</span><span class="tag">system-design</span></div>
+</div>
+<div class="content-area concept">
+<p>Redis is an in-memory data structure store that achieves extreme throughput (100K+ requests/second) through a combination of architectural choices.</p>
+<h2 id="why-redis-is-fast">Why Redis Is Fast</h2>
+<p><strong>RAM-Based Storage</strong>: Memory access is ~1000× faster than disk. All data lives in RAM with periodic persistence to disk.</p>
+<p><strong>Single-Threaded Execution Loop</strong>: One thread processes all commands — no context switching overhead, no locking, no contention. Simple and predictable.</p>
+<p><strong>IO Multiplexing</strong>: Uses <code>epoll</code> (Linux) / <code>kqueue</code> (macOS) to handle thousands of concurrent connections with a single thread. Non-blocking event loop checks which connections have data ready.</p>
+<h3 id="blocking-vs-non-blocking-io">Blocking vs Non-Blocking IO</h3>
+<pre><code>❌ Traditional blocking I/O:
+for request in requests:
+    result = process(request)      # Blocks until done
+    send_response(result)
+
+✅ Redis-style IO multiplexing:
+ready = select(requests, timeout=0)
+for request in ready:
+    result = process_non_blocking(request)
+    if result_ready:
+        send_response(result)</code></pre>
+<p><strong>Efficient Data Structures</strong>: Simple Dynamic Strings (SDS), Skip List, and specialized structures optimized for in-memory access patterns.</p>
+<h2 id="key-use-cases">Key Use Cases</h2>
+<ul>
+<li><strong>Caching</strong>: Store frequent query results to reduce database load</li>
+<li><strong>Session Store</strong>: Fast, TTL-supported session management</li>
+<li><strong>Rate Limiting</strong>: Atomic increment operations with expiry</li>
+<li><strong>Message Broker</strong>: Pub/sub and stream data structures (Redis Streams)</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="cache-strategy.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Cache Strategy</h4>
+      <p>Redis is the most common caching backend</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Kafka</h4>
+      <p>Redis for low-latency cache, Kafka for high-throughput event streaming</p>
+    </a>
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>System Design Interview</h4>
+      <p>caching layer questions almost always involve Redis</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="readability-vs-performance.html" class="prev">← Readability vs Performance</a><a href="refactoring-at-scale.html" class="next">Refactoring at Scale →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

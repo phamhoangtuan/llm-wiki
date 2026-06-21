@@ -3,8 +3,8 @@ title: "Database Sharding"
 type: concept
 tags: [system-design, databases, scalability, partitioning]
 created: 2026-05-28
-updated: 2026-06-15
-sources: [system-design-interview-xu]
+updated: 2026-06-21
+sources: [system-design-interview-xu, system-design-big-archive]
 aliases: [sharding]
 ---
 
@@ -47,4 +47,5 @@ aliases: [sharding]
 - Contrasts with [[database-replication]] — replication copies data; sharding partitions data
 - Related to [[scalable-architecture]] — sharding is a horizontal scaling technique for databases
 - Related to [[cache-strategy]] — caching reduces read load; sharding handles write load
+- Detailed hash-vs-range comparison from [[sources/system-design-big-archive]] — hash minimizes hotspots but complicates range queries and rebalancing; range is predictable but risks uneven distribution
 - Benchmark source: [[sources/system-design-interview-xu]] — Alex Xu's system design guide

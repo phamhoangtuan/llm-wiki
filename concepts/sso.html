@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Single Sign-On (SSO) — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-security">Security</a> <span class="sep">/</span>
+  <span>Single Sign-On (SSO)</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Single Sign-On (SSO)</h1>
+  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-tags"><span class="tag">security</span><span class="tag">authentication</span><span class="tag">identity</span><span class="tag">system-design</span></div>
+</div>
+<div class="content-area concept">
+<p>Single Sign-On allows users to navigate multiple service domains (e.g., Gmail, YouTube, Drive) with a single set of credentials. It neutralizes "password fatigue" — reducing attack surface while increasing user retention.</p>
+<h2 id="4-step-sso-workflow">4-Step SSO Workflow</h2>
+<p><strong>1. Initial Interception</strong>: User accesses Domain 1 (e.g., Gmail) → unauthenticated → redirected to SSO Server.</p>
+<p><strong>2. Global Session Establishment</strong>: User submits credentials → SSO validates → creates global session + unique token.</p>
+<p><strong>3. Token Handover & Validation</strong>: SSO redirects user back to Domain 1 with token → Domain 1 validates token with SSO → grants access.</p>
+<p><strong>4. Cross-Domain Propagation</strong>: User accesses Domain 2 (e.g., YouTube) → unauthenticated → queries SSO → global session already active → SSO issues new token for Domain 2 → no re-authentication needed.</p>
+<h2 id="strategic-benefits">Strategic Benefits</h2>
+<ul>
+<li>Reduces "password fatigue" — users remember one credential</li>
+<li>Centralizes authentication logic — security policy applied consistently</li>
+<li>Decreases attack surface — fewer credentials to protect</li>
+<li>Improves user retention — seamless cross-product experience</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="password-storage.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Password Storage</h4>
+      <p>SSO still requires secure credential storage at the identity provider</p>
+    </a>
+    <a class="connection-card" href="tls-https.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>TLS & HTTPS</h4>
+      <p>SSO token exchange must occur over encrypted channels</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="specification-driven-development.html" class="prev">← Specification-Driven Development</a><a href="staff-engineering.html" class="next">Staff Engineering →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>
