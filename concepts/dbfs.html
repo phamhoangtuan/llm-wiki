@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DBFS (Databricks File System) — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-databricks">Databricks</a> <span class="sep">/</span>
+  <span>DBFS (Databricks File System)</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>DBFS (Databricks File System)</h1>
+  <div class="page-meta"><span>Source: databricks-dea-study-guide</span><span>Updated: 2026-06-23</span></div>
+  <div class="page-tags"><span class="tag">databricks</span><span class="tag">storage</span><span class="tag">cloud</span><span class="tag">data-engineering</span></div>
+</div>
+<div class="content-area concept">
+<p>DBFS is an abstraction layer in the <a href="databricks-platform.html" class="wiki-link">Databricks platform</a> that allows users to interact with cloud files using local filesystem syntax. It bridges the gap between ephemeral compute and durable storage.</p>
+<h2 id="the-abstraction">The Abstraction</h2>
+<table><thead><tr>
+<th>Before DBFS</th>
+<th>After DBFS</th>
+</tr></thead><tbody>
+<tr>
+<td>Navigate complex cloud APIs (AWS SDK, Azure SDK)</td>
+<td>Interact as if it's a local file system</td>
+</tr>
+<tr>
+<td>Manual, provider-specific path configurations</td>
+<td>Standard file APIs (<code>/dbfs/my_folder/file.csv</code>)</td>
+</tr>
+<tr>
+<td>Cloud-specific integration code for every task</td>
+<td>No cloud-specific code needed</td>
+</tr>
+</tbody></table>
+<h2 id="persistence-mechanics">Persistence Mechanics</h2>
+<p>This is the most important concept to internalize:</p>
+<ul>
+<li><strong>Compute clusters are TEMPORARY (ephemeral)</strong> — they can be terminated to optimize costs</li>
+<li><strong>The persistence layer is DURABLE</strong> — data survives cluster shutdown</li>
+</ul>
+<p>When files are saved via DBFS, they are written directly to underlying cloud storage:</p>
+<ul>
+<li>Azure workspace → persisted in <strong>Azure Data Lake Storage (ADLS)</strong></li>
+<li>AWS workspace → persisted in <strong>Amazon S3</strong></li>
+<li>GCP workspace → persisted in <strong>Google Cloud Storage</strong></li>
+</ul>
+<p><strong>Result</strong>: Cluster terminated → data remains permanent → accessible in future sessions → no data loss.</p>
+<h2 id="key-insight">Key Insight</h2>
+<blockquote>You use local-style paths (<code>/dbfs/my_folder</code>) but data is persisted to cloud storage — best of both worlds: developer-friendly abstraction with cloud-scale durability.</blockquote>
+<h2 id="usage-patterns">Usage Patterns</h2>
+<ul>
+<li><strong>Data upload</strong>: Upload CSV, JSON, Parquet files via DBFS for processing</li>
+<li><strong>Notebook access</strong>: Read/write files from notebooks using standard file operations</li>
+<li><strong>Pipeline I/O</strong>: Intermediate data staging between ETL steps</li>
+<li><strong>Library storage</strong>: Store custom Python libraries and JARs for cluster initialization</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="databricks-platform.html">
+      <span class="connection-type related">Related</span>
+      <h4>Databricks Platform</h4>
+      <p>DBFS is the filesystem layer within the Databricks platform</p>
+    </a>
+    <a class="connection-card" href="data-lakehouse.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Data Lakehouse</h4>
+      <p>DBFS abstracts cloud storage to make Lakehouse architecture feel local</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="dataops.html" class="prev">← DataOps</a><a href="dbsp.html" class="next">DBSP →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

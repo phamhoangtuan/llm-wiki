@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Unity Catalog</h1>
-  <div class="page-meta"><span>Source: delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables, databricks-dea-study-guide</span><span>Updated: 2026-06-23</span></div>
   <div class="page-tags"><span class="tag">data-governance</span><span class="tag">catalog</span><span class="tag">unity-catalog</span><span class="tag">delta-lake</span><span class="tag">lakehouse</span><span class="tag">duckdb</span></div>
 </div>
 <div class="content-area concept">
@@ -238,6 +238,21 @@ TBLPROPERTIES (&#x27;delta.feature.catalogManaged&#x27; = &#x27;supported&#x27;)
       <h4>Apache Iceberg</h4>
       <p>architectural shift: filesystem-managed → catalog-managed (Delta 4.1.0 + UC 0.4.0)</p>
     </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Iceberg</h4>
+      <p>progression from Hive Metastore (simple, learning-friendly) to Unity Catalog (centralized, fine-grained access control, multi-cloud, audit logging); Unity Catalog is Layer 3 of the Databricks architecture</p>
+    </div>
+    <a class="connection-card" href="databricks-platform.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Databricks Platform</h4>
+      <p>Unity Catalog governs Layer 3 of the Databricks 4-layer architecture</p>
+    </a>
+    <a class="connection-card" href="data-lakehouse.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Data Lakehouse</h4>
+      <p>centralized governance is a core Lakehouse benefit; Unity Catalog is the reference implementation</p>
+    </a>
   </div>
 </section>
 <nav class="pagination"><a href="tls-https.html" class="prev">← TLS & HTTPS</a><a href="vectorized-execution.html" class="next">Vectorized Execution →</a></nav>

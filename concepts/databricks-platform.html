@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Databricks Platform — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-databricks">Databricks</a> <span class="sep">/</span>
+  <span>Databricks Platform</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Databricks Platform</h1>
+  <div class="page-meta"><span>Source: databricks-dea-study-guide</span><span>Updated: 2026-06-23</span></div>
+  <div class="page-tags"><span class="tag">databricks</span><span class="tag">data-engineering</span><span class="tag">lakehouse</span><span class="tag">platform</span></div>
+</div>
+<div class="content-area concept">
+<p>Databricks is a unified Data Intelligence Platform built on a 4-layer architecture, delivering a Lakehouse experience for data engineers, scientists, and analysts across AWS, Azure, and GCP.</p>
+<h2 id="four-layer-architecture">Four-Layer Architecture</h2>
+<h3 id="layer-1-cloud-infrastructure">Layer 1: Cloud Infrastructure</h3>
+<p>Provider-managed hardware, networking, and virtual machines on Azure, AWS, or GCP. The foundation layer — customer retains full control of cloud resources.</p>
+<h3 id="layer-2-databricks-runtime">Layer 2: Databricks Runtime</h3>
+<p>Pre-configured, optimized VM image integrating <a href="apache-spark.html" class="wiki-link">apache-spark</a> with <a href="delta-lake.html" class="wiki-link">delta-lake</a>. Delta Lake provides ACID transactions, reliability, and consistency — transforming standard data lakes into reliable storage. The runtime is the compute engine powering all workloads.</p>
+<h3 id="layer-3-data-governance-unity-catalog">Layer 3: Data Governance (Unity Catalog)</h3>
+<p>Centralized security and governance for all data and AI assets. Evolution from Hive Metastore (legacy, learning-friendly) to <a href="unity-catalog.html" class="wiki-link">unity-catalog</a> (centralized, fine-grained access control, multi-cloud, audit logging). Manages catalogs, schemas, tables, files, and ML models as a single source of truth.</p>
+<h3 id="layer-4-workspace">Layer 4: Workspace</h3>
+<p>Primary interface for data professionals supporting Python, SQL, R, Scala, and Java. Collaborative tools: notebooks, dashboards, automated workflows. AI-powered features: Databricks Assistant (code generation, query explanation) and AI Search (natural language asset discovery).</p>
+<h2 id="control-plane-vs-data-plane">Control Plane vs Data Plane</h2>
+<p>Architectural "separation of powers" — a critical security and operational boundary:</p>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Control Plane</th>
+<th>Data Plane</th>
+</tr></thead><tbody>
+<tr>
+<td>Managed By</td>
+<td>Databricks</td>
+<td>Customer</td>
+</tr>
+<tr>
+<td>Resources</td>
+<td>Web UI, Cluster Manager, Job Scheduler, Notebooks</td>
+<td>Cluster VMs, Cloud Storage (ADLS/S3/GCS), DBFS</td>
+</tr>
+<tr>
+<td>Location</td>
+<td>Databricks Cloud Account</td>
+<td>Customer Cloud Subscription</td>
+</tr>
+</tbody></table>
+<h3 id="why-separation-matters">Why Separation Matters</h3>
+<ul>
+<li><strong>Data Sovereignty</strong>: Compute and storage remain in customer's account. Raw data never leaves the governed environment.</li>
+<li><strong>Maintenance Isolation</strong>: Databricks updates the platform without touching customer data. Security patches applied without data exposure.</li>
+</ul>
+<h2 id="sql-first-strategy">SQL-First Strategy</h2>
+<p>Databricks DE Associate (V3) certification emphasizes SQL as the primary interface for ETL/ELT. Rationale: SQL is the most accessible language for data manipulation, lowers barrier for traditional analysts. Python remains indispensable for complex operations.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-lakehouse.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Lakehouse</h4>
+      <p>Databricks is the leading commercial Lakehouse platform</p>
+    </a>
+    <a class="connection-card" href="dbfs.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>DBFS (Databricks File System)</h4>
+      <p>DBFS is the filesystem abstraction within the Databricks platform</p>
+    </a>
+    <a class="connection-card" href="apache-spark.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Spark</h4>
+      <p>Spark is the compute backbone of the Databricks Runtime</p>
+    </a>
+    <a class="connection-card" href="delta-lake.html">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Lake</h4>
+      <p>Delta Lake provides ACID transactions in Layer 2</p>
+    </a>
+    <a class="connection-card" href="unity-catalog.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Unity Catalog</h4>
+      <p>Unity Catalog governs Layer 3 of the architecture</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="database-sharding.html" class="prev">← Database Sharding</a><a href="dataops.html" class="next">DataOps →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

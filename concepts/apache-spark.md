@@ -3,8 +3,8 @@ title: "Apache Spark"
 type: concept
 tags: [apache-spark, data-engineering, big-data, performance, optimization]
 created: 2026-06-08
-updated: 2026-06-15
-sources: [high-performance-spark]
+updated: 2026-06-23
+sources: [high-performance-spark, system-design-big-archive, databricks-dea-study-guide]
 aliases: [spark, spark-optimization]
 ---
 
@@ -88,3 +88,6 @@ When some keys have disproportionately more data, causing straggler tasks:
 - Related to [[apache-iceberg]] — Spark is a primary engine for reading/writing Iceberg tables
 - Related to [[change-data-capture]] — Spark Streaming can consume CDC feeds
 - Benchmark source: [[sources/high-performance-spark]] — Karau & Warren's 356-page optimization guide
+- Databricks-specific context from [[sources/databricks-dea-study-guide]] — Spark is the backbone of Databricks Runtime; driver/worker node hierarchy, in-memory processing, unified batch+stream, multi-language support (Python, SQL, R, Scala, Java)
+- Foundation for [[databricks-platform]] — Databricks platform's Layer 2 (Runtime) is built on Apache Spark
+- Foundation for [[data-lakehouse]] — Spark provides the compute engine for Lakehouse analytics

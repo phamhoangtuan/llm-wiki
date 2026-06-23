@@ -482,6 +482,18 @@
         "data-lake"
       ]
     },
+    "data-lakehouse": {
+      "title": "Data Lakehouse",
+      "category": "Data Engineering",
+      "url": "concepts/data-lakehouse.html",
+      "definition": "Data Lakehouse is a modern data architecture that combines the economics and scalability of data lakes with the governance and performance of data warehouses into a single unified platform.",
+      "tags": [
+        "databricks",
+        "data-engineering",
+        "architecture",
+        "lakehouse"
+      ]
+    },
     "data-lifecycle": {
       "title": "Data Lifecycle",
       "category": "Data Engineering",
@@ -556,6 +568,18 @@
         "partitioning"
       ]
     },
+    "databricks-platform": {
+      "title": "Databricks Platform",
+      "category": "Data Engineering",
+      "url": "concepts/databricks-platform.html",
+      "definition": "Databricks is a unified Data Intelligence Platform built on a 4-layer architecture, delivering a Lakehouse experience for data engineers, scientists, and analysts across AWS, Azure, and GCP.",
+      "tags": [
+        "databricks",
+        "data-engineering",
+        "lakehouse",
+        "platform"
+      ]
+    },
     "dataops": {
       "title": "DataOps",
       "category": "Data Engineering",
@@ -567,6 +591,18 @@
         "dbt",
         "analytics",
         "methodology"
+      ]
+    },
+    "dbfs": {
+      "title": "DBFS (Databricks File System)",
+      "category": "Data Engineering",
+      "url": "concepts/dbfs.html",
+      "definition": "DBFS is an abstraction layer in the [[databricks-platform|Databricks platform]] that allows users to interact with cloud files using local filesystem syntax. It bridges the gap between ephemeral compu",
+      "tags": [
+        "databricks",
+        "storage",
+        "cloud",
+        "data-engineering"
       ]
     },
     "dbsp": {

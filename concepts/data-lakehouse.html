@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Lakehouse — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-databricks">Databricks</a> <span class="sep">/</span>
+  <span>Data Lakehouse</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Data Lakehouse</h1>
+  <div class="page-meta"><span>Source: databricks-dea-study-guide</span><span>Updated: 2026-06-23</span></div>
+  <div class="page-tags"><span class="tag">databricks</span><span class="tag">data-engineering</span><span class="tag">architecture</span><span class="tag">lakehouse</span></div>
+</div>
+<div class="content-area concept">
+<p>Data Lakehouse is a modern data architecture that combines the economics and scalability of data lakes with the governance and performance of data warehouses into a single unified platform.</p>
+<h2 id="warehouse-vs-lake-vs-lakehouse">Warehouse vs Lake vs Lakehouse</h2>
+<table><thead><tr>
+<th>Paradigm</th>
+<th>Metaphor</th>
+<th>Strengths</th>
+<th>Weaknesses</th>
+</tr></thead><tbody>
+<tr>
+<td>Data Warehouse</td>
+<td>Organized library</td>
+<td>Fast, reliable SQL, structured</td>
+<td>Rigid, expensive, struggles with unstructured data</td>
+</tr>
+<tr>
+<td>Data Lake</td>
+<td>Disordered storage shelf</td>
+<td>Low cost, massive scale, format flexibility</td>
+<td>Poor governance, "data swamps", hard to find data</td>
+</tr>
+<tr>
+<td>Lakehouse</td>
+<td>Smart, adaptable library</td>
+<td>Best of both: cheap storage + ACID + governance</td>
+<td>Requires modern open table formats (Delta, Iceberg)</td>
+</tr>
+</tbody></table>
+<p>The problem with two separate systems: silos → frequent data transfers → increased complexity → slowed innovation.</p>
+<h2 id="five-core-benefits">Five Core Benefits</h2>
+<table><thead><tr>
+<th>Benefit</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td>Openness & Scalability</td>
+<td>Low-cost cloud storage, vendor-neutral open formats, handles structured + unstructured</td>
+</tr>
+<tr>
+<td>Reliability & Governance</td>
+<td>Centralized security, ACID transactions, audit-ready compliance</td>
+</tr>
+<tr>
+<td>Cost-Efficiency</td>
+<td>Consolidate workloads, eliminate redundant data movement between systems</td>
+</tr>
+<tr>
+<td>Unified Platform</td>
+<td>Data engineers, scientists, analysts work on same data — one platform for BI + ML</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>Optimized for high-speed analytics across all data types</td>
+</tr>
+</tbody></table>
+<h2 id="key-enabling-technologies">Key Enabling Technologies</h2>
+<ul>
+<li><strong>Open table formats</strong>: <a href="delta-lake.html" class="wiki-link">Delta Lake</a>, <a href="apache-iceberg.html" class="wiki-link">Apache Iceberg</a> — provide ACID transactions on data lakes</li>
+<li><strong>Compute engine</strong>: <a href="apache-spark.html" class="wiki-link">apache-spark</a> — high-performance distributed processing</li>
+<li><strong>Governance</strong>: <a href="unity-catalog.html" class="wiki-link">unity-catalog</a> — centralized security and access control</li>
+<li><strong>Abstraction</strong>: <a href="dbfs.html" class="wiki-link">dbfs</a> — cloud storage feels like a local filesystem</li>
+</ul>
+<blockquote>A lakehouse represents a smart, adaptable library that combines the best of both worlds.</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="databricks-platform.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Databricks Platform</h4>
+      <p>Databricks is the leading commercial Lakehouse implementation</p>
+    </a>
+    <a class="connection-card" href="delta-lake.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Delta Lake</h4>
+      <p>Delta Lake provides the transactional layer enabling Lakehouse</p>
+    </a>
+    <a class="connection-card" href="apache-spark.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Spark</h4>
+      <p>Spark provides the compute engine for Lakehouse analytics</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="data-ingestion.html" class="prev">← Data Ingestion</a><a href="data-lifecycle.html" class="next">Data Lifecycle →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

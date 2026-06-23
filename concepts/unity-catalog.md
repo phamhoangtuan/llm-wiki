@@ -3,8 +3,8 @@ title: "Unity Catalog"
 type: concept
 tags: [data-governance, catalog, unity-catalog, delta-lake, lakehouse, duckdb]
 created: 2026-05-28
-updated: 2026-06-15
-sources: [delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables]
+updated: 2026-06-23
+sources: [delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables, databricks-dea-study-guide]
 aliases: [UC]
 ---
 
@@ -147,3 +147,6 @@ Once enabled, DuckDB INSERTs automatically route through UC's commit staging.
 - Related to [[apache-iceberg]] — UC can catalog Iceberg tables too; Iceberg also has its own catalog ecosystem (REST catalog, Hive, Glue)
 - Benchmark source: [[sources/delta-grows-up-writes-unity-catalog]] — DuckDB Labs announces stable UC extension with Catalog Commits
 - Benchmark source: [[sources/delta-catalog-managed-tables]] — architectural shift: filesystem-managed → catalog-managed (Delta 4.1.0 + UC 0.4.0)
+- Governance evolution from [[sources/databricks-dea-study-guide]] — progression from Hive Metastore (simple, learning-friendly) to Unity Catalog (centralized, fine-grained access control, multi-cloud, audit logging); Unity Catalog is Layer 3 of the Databricks architecture
+- Foundation for [[databricks-platform]] — Unity Catalog governs Layer 3 of the Databricks 4-layer architecture
+- Foundation for [[data-lakehouse]] — centralized governance is a core Lakehouse benefit; Unity Catalog is the reference implementation

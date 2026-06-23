@@ -3,8 +3,8 @@ title: "Delta Lake"
 type: concept
 tags: [table-formats, data-lake, delta-lake, lakehouse, duckdb, data-engineering, clickhouse]
 created: 2026-05-28
-updated: 2026-06-15
-sources: [delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering, databricks-zerobus]
+updated: 2026-06-23
+sources: [delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering, databricks-zerobus, databricks-dea-study-guide]
 aliases: [Delta]
 ---
 
@@ -206,3 +206,6 @@ Delta's catalog-managed design closely resembles [[apache-iceberg|Iceberg]]'s ca
 - Benchmark source: [[sources/integrating-rust-delta-kernel-clickhouse]] — ClickHouse's Delta Kernel integration and CDF support
 - Related to [[change-data-capture]] — Delta CDF enables CDC workflows via ClickPipes and other CDC tools
 - Streaming via [[sources/databricks-zerobus]] — Databricks Zerobus provides serverless, API-based streaming directly into Delta Lake, bypassing Kafka infrastructure
+- Role in Databricks Runtime from [[sources/databricks-dea-study-guide]] — Delta Lake is the critical transactional layer in Layer 2 of the Databricks 4-layer architecture, providing ACID transactions that transform standard data lakes into reliable storage
+- Foundation for [[data-lakehouse]] — Delta Lake provides the transactional guarantees enabling the Lakehouse paradigm
+- Foundation for [[databricks-platform]] — Delta Lake is a core component of the Databricks Runtime (Layer 2)

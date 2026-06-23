@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Delta Lake</h1>
-  <div class="page-meta"><span>Source: delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering, databricks-zerobus</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering, databricks-zerobus, databricks-dea-study-guide</span><span>Updated: 2026-06-23</span></div>
   <div class="page-tags"><span class="tag">table-formats</span><span class="tag">data-lake</span><span class="tag">delta-lake</span><span class="tag">lakehouse</span><span class="tag">duckdb</span><span class="tag">data-engineering</span><span class="tag">clickhouse</span></div>
 </div>
 <div class="content-area concept">
@@ -388,6 +388,21 @@ TBLPROPERTIES (&#x27;delta.feature.catalogManaged&#x27; = &#x27;supported&#x27;)
       <h4>Change Data Capture (CDC)</h4>
       <p>Databricks Zerobus provides serverless, API-based streaming directly into Delta Lake, bypassing Kafka infrastructure</p>
     </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>Delta Lake is the critical transactional layer in Layer 2 of the Databricks 4-layer architecture, providing ACID transactions that transform standard data lakes into reliable storage</p>
+    </div>
+    <a class="connection-card" href="data-lakehouse.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Data Lakehouse</h4>
+      <p>Delta Lake provides the transactional guarantees enabling the Lakehouse paradigm</p>
+    </a>
+    <a class="connection-card" href="databricks-platform.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Databricks Platform</h4>
+      <p>Delta Lake is a core component of the Databricks Runtime (Layer 2)</p>
+    </a>
   </div>
 </section>
 <nav class="pagination"><a href="delta-kernel.html" class="prev">← Delta Kernel</a><a href="dependency-injection.html" class="next">Dependency Injection →</a></nav>

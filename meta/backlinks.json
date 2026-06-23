@@ -473,6 +473,7 @@
     "clickhouse",
     "data-ingestion",
     "data-ingestion",
+    "data-lakehouse",
     "delta-lake",
     "delta-lake",
     "delta-lake",
@@ -515,6 +516,10 @@
     "change-data-capture",
     "clickhouse",
     "clickhouse",
+    "data-lakehouse",
+    "data-lakehouse",
+    "databricks-platform",
+    "databricks-platform",
     "delta-kernel",
     "delta-kernel",
     "duckdb",
@@ -522,6 +527,7 @@
     "liquid-clustering",
     "liquid-clustering",
     "unity-catalog",
+    "databricks-dea-study-guide",
     "databricks-zerobus",
     "debunking-data-layout-myths-liquid-clustering",
     "delta-catalog-managed-tables",
@@ -583,6 +589,28 @@
   ],
   "sources/high-performance-spark": [
     "apache-spark"
+  ],
+  "sources/databricks-dea-study-guide": [
+    "apache-spark",
+    "delta-lake",
+    "unity-catalog"
+  ],
+  "databricks-platform": [
+    "apache-spark",
+    "data-lakehouse",
+    "dbfs",
+    "dbfs",
+    "delta-lake",
+    "unity-catalog",
+    "databricks-dea-study-guide"
+  ],
+  "data-lakehouse": [
+    "apache-spark",
+    "databricks-platform",
+    "dbfs",
+    "delta-lake",
+    "unity-catalog",
+    "databricks-dea-study-guide"
   ],
   "http-evolution": [
     "api-architectural-styles"
@@ -1006,15 +1034,31 @@
   ],
   "unity-catalog": [
     "data-governance",
+    "data-lakehouse",
+    "databricks-platform",
+    "databricks-platform",
     "delta-lake",
     "delta-lake",
     "delta-lake",
     "duckdb",
     "duckdb",
+    "databricks-dea-study-guide",
     "delta-catalog-managed-tables",
     "delta-catalog-managed-tables",
     "delta-grows-up-writes-unity-catalog",
     "delta-grows-up-writes-unity-catalog"
+  ],
+  "apache-spark": [
+    "data-lakehouse",
+    "data-lakehouse",
+    "databricks-platform",
+    "databricks-platform",
+    "databricks-dea-study-guide",
+    "high-performance-spark"
+  ],
+  "dbfs": [
+    "data-lakehouse",
+    "databricks-platform"
   ],
   "data-quality-traffic-lights-sahlin": [
     "data-quality-monitoring"
@@ -1363,9 +1407,6 @@
   ],
   "data-quality-monitoring": [
     "data-quality-traffic-lights-sahlin"
-  ],
-  "apache-spark": [
-    "high-performance-spark"
   ],
   "domain-driven-design": [
     "learning-domain-driven-design"

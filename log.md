@@ -567,6 +567,11 @@
 - Source: system-design-big-archive
 - Updated index.md (118 concepts, 46 sources)
 
+## [2026-06-23] ingest | Databricks Platform concept page
+- Created concepts/databricks-platform.md — 4-layer architecture, control vs data plane, SQL-first strategy
+- Source: databricks-dea-study-guide (referenced in frontmatter)
+- Updated index.md (128 concepts, 47 sources)
+
 ## [2026-06-21] ingest | System Design: The Big Archive (Alex Xu)
 
 - Source: "System Design: The Big Archive" by Alex Xu (ebook, 159 pages, finished 2026-06-21)
@@ -575,3 +580,12 @@
 - Updated concepts: apache-kafka (+ zero copy, sequential I/O perf internals), message-queue (+ delivery semantics cross-ref), database-sharding (+ hash vs range details), cache-strategy (+ redis, bloom-filter cross-refs), system-design-interview (+ source ref)
 - Updated index.md: +14 concept entries, +1 source entry
 - Total pages: 174 (127 concepts + 47 sources)
+
+## [2026-06-23] ingest | Databricks Certified DE Associate Study Guide (Derar Alhussein)
+
+- Source: "Databricks Certified Data Engineer Associate Study Guide" by Derar Alhussein (ebook, 802 pages, finished 2026-06-23)
+- Created sources/databricks-dea-study-guide.md
+- New concepts: data-lakehouse, databricks-platform, dbfs
+- Updated concepts: apache-spark (+ Databricks Runtime context, driver/worker hierarchy, data-lakehouse/databricks-platform cross-refs), delta-lake (+ Databricks Runtime role, lakehouse foundation), unity-catalog (+ governance evolution, platform architecture role)
+- Updated index.md: +3 concept entries, +1 source entry
+- Total pages: 178 (130 concepts + 48 sources)

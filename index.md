@@ -134,6 +134,9 @@
 - [Message Delivery Semantics](concepts/message-delivery-semantics.html) — At-most-once, at-least-once, and effectively exactly-once delivery guarantees in distributed messaging systems
 - [Snowflake ID](concepts/snowflake-id.html) — Twitter's 64-bit distributed unique ID pattern: time-ordered, no coordination, efficient B-tree indexing
 - [Single Sign-On (SSO)](concepts/sso.html) — Centralized identity management; 4-step workflow, cross-domain propagation, password fatigue neutralization
+- [Data Lakehouse](concepts/data-lakehouse.html) — Modern architecture combining data lake economics with warehouse governance; five core benefits, open table formats
+- [DBFS](concepts/dbfs.html) — Databricks File System abstraction: local-feel cloud storage, ephemeral compute + durable data
+- [Databricks Platform](concepts/databricks-platform.html) — Unified Data Intelligence Platform with 4-layer architecture (infra, runtime, governance, workspace); control vs data plane separation; SQL-first strategy
 
 ## Sources
 
@@ -184,6 +187,7 @@
 - [Why Is Meta Destroying Its Engineering Org? — Gergely Orosz](sources/meta-destroying-engineering-org-orosz.html) — Pragmatic Engineer investigation: forced data labeling, keystroke tracking, tokenmaxxing, Instagram takeover outage, AI psychosis case study
 - [The New SDLC With Vibe Coding — Osmani, Saboo & Kartakis](sources/new-sdlc-vibe-coding.html) — 51-page ebook: 5-stage AI coding evolution, Agent Loop, 90% harness rule, vibe coding economics
 - [System Design: The Big Archive — Alex Xu](sources/system-design-big-archive.html) — 159-page ebook: cloud infra, containers, deployment, databases, security, performance, architecture patterns
+- [Databricks Certified DE Associate Study Guide — Derar Alhussein](sources/databricks-dea-study-guide.html) — 802-page ebook: Lakehouse architecture, 4-layer platform, control/data plane, Spark, DBFS, Unity Catalog
 
 ## Syntheses
 
@@ -191,5 +195,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-21*
-*Pages: 174 (127 concepts + 47 sources)*
+*Last updated: 2026-06-23*
+*Pages: 178 (130 concepts + 48 sources)*
