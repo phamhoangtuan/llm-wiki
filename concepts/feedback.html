@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feedback — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-learning">Learning</a> <span class="sep">/</span>
+  <span>Feedback</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Feedback</h1>
+  <div class="page-meta"><span>Source: ultralearning-scott-young</span><span>Updated: 2026-06-25</span></div>
+  <div class="page-tags"><span class="tag">learning</span><span class="tag">skill-acquisition</span><span class="tag">ultralearning</span><span class="tag">psychology</span></div>
+</div>
+<div class="content-area concept">
+<p># Feedback</p>
+<p><strong>Feedback</strong> in the context of skill acquisition is the information returned to a learner about their performance. In <a href="Ultralearning.html" class="wiki-link">Ultralearning</a>, it is the sixth principle: the discipline of seeking accurate, task-focused signal while avoiding ego-corrupted noise.</p>
+<blockquote>"Everybody has a plan until they get punched in the mouth." — Mike Tyson. The ultralearner doesn't dodge punches — they seek them out.</blockquote>
+<h2 id="three-levels-of-feedback">Three Levels of Feedback</h2>
+<table><thead><tr>
+<th>Level</th>
+<th>Signal Type</th>
+<th>Example</th>
+<th>Use Case</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Outcome</strong> 🚦</td>
+<td>Stop/Go (pass/fail)</td>
+<td>Sales figures, grades, public reaction</td>
+<td>Quick assessment of overall success</td>
+</tr>
+<tr>
+<td><strong>Informational</strong> 🔍</td>
+<td>What is wrong?</td>
+<td>Error messages, real-time results, audience confusion</td>
+<td>Identify specific problem areas</td>
+</tr>
+<tr>
+<td><strong>Corrective</strong> 🛠️</td>
+<td>How to fix it?</td>
+<td>Mentor pointing out technical error, solution keys</td>
+<td>When actionable improvement steps are needed</td>
+</tr>
+</tbody></table>
+<h2 id="the-ego-trap">The Ego Trap</h2>
+<p>Kluger & DeNisi's research warns that ego-focused feedback ("You're so smart!", "Great job!") is <strong>corrupted data</strong> — it masks performance deficits with noise by directing attention to self rather than task, triggering defensive or complacent postures.</p>
+<p>Effective feedback must be <strong>task-focused</strong>: "Your algorithm has O(n²) complexity here — can optimize to O(n)" provides usable informational signals that accelerate learning.</p>
+<h2 id="chris-rocks-signal-seeking-method">Chris Rock's Signal-Seeking Method</h2>
+<p>Comedian Chris Rock exemplifies the feedback-seeking mindset: he tests jokes anonymously at small comedy clubs, intentionally underselling delivery (slumping against a wall, reading from notes). Goal: isolate whether the joke itself is funny, stripped of celebrity persona. He seeks the "punch in the mouth from audience silence," not the empty calories of polite laughter.</p>
+<h2 id="implications-for-learning">Implications for Learning</h2>
+<ul>
+<li>Seek environments where feedback is rapid, accurate, and uncomfortably intense</li>
+<li>Prefer informational and corrective feedback over outcome-only feedback</li>
+<li>Avoid "praise noise" — compliments without diagnostic value</li>
+<li>Adjust strategy in real-time based on incoming signal</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="Ultralearning.html">
+      <span class="connection-type related">Related</span>
+      <h4>Ultralearning</h4>
+      <p>Feedback is Principle 6 of the methodology</p>
+    </a>
+    <a class="connection-card" href="Directness.html">
+      <span class="connection-type related">Related</span>
+      <h4>Directness</h4>
+      <p>Direct practice generates higher-quality feedback than indirect study</p>
+    </a>
+    <a class="connection-card" href="Testing Effect.html">
+      <span class="connection-type related">Related</span>
+      <h4>Testing Effect</h4>
+      <p>Retrieval testing provides immediate feedback on what you know vs. what you think you know</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="fail-fast.html" class="prev">← Fail Fast</a><a href="functional-testing.html" class="next">Functional Testing →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

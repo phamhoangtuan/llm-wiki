@@ -1135,6 +1135,34 @@
     "materialized-views-quick-insights",
     "materialized-views-quick-insights"
   ],
+  "Ultralearning": [
+    "directness",
+    "directness",
+    "feedback",
+    "feedback",
+    "metalearning",
+    "metalearning",
+    "spaced-repetition",
+    "testing-effect"
+  ],
+  "Testing Effect": [
+    "directness",
+    "feedback",
+    "metalearning",
+    "spaced-repetition",
+    "spaced-repetition",
+    "ultralearning",
+    "ultralearning",
+    "ultralearning-scott-young"
+  ],
+  "Metalearning": [
+    "directness",
+    "spaced-repetition",
+    "testing-effect",
+    "ultralearning",
+    "ultralearning",
+    "ultralearning-scott-young"
+  ],
   "consensus-raft-paxos-handbook": [
     "distributed-consensus",
     "leader-election"
@@ -1192,6 +1220,12 @@
     "python-professional-practices",
     "python-professional-practices",
     "python-professional-practices"
+  ],
+  "Directness": [
+    "feedback",
+    "ultralearning",
+    "ultralearning",
+    "ultralearning-scott-young"
   ],
   "pytest-basics": [
     "functional-testing",
@@ -1284,6 +1318,14 @@
   ],
   "message-delivery-semantics": [
     "message-queue"
+  ],
+  "Spaced Repetition": [
+    "metalearning",
+    "testing-effect",
+    "testing-effect",
+    "ultralearning",
+    "ultralearning",
+    "ultralearning-scott-young"
   ],
   "sources/practical-object-oriented-design": [
     "object-oriented-design"
@@ -1392,6 +1434,9 @@
   ],
   "sources/de-coding-technical-interview": [
     "technical-interview"
+  ],
+  "Feedback": [
+    "ultralearning"
   ],
   "apache-arrow": [
     "vortex-file-format",

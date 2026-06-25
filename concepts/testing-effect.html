@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testing Effect — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-learning">Learning</a> <span class="sep">/</span>
+  <span>Testing Effect</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Testing Effect</h1>
+  <div class="page-meta"><span>Source: ultralearning-scott-young</span><span>Updated: 2026-06-25</span></div>
+  <div class="page-tags"><span class="tag">learning</span><span class="tag">memory</span><span class="tag">cognitive-science</span><span class="tag">retrieval</span></div>
+</div>
+<div class="content-area concept">
+<p># Testing Effect</p>
+<p>The <strong>testing effect</strong> (also called <strong>retrieval practice</strong> or <strong>active recall</strong>) is the finding that retrieving information from memory strengthens that memory far more effectively than re-reading or passive review. Testing is not merely a measurement tool — it is a _construction_ tool for building durable knowledge.</p>
+<blockquote>"Retrieval — summoning information from memory — is a tool for constructing knowledge, not just measuring it."</blockquote>
+<h2 id="the-karpicke--blunt-study-landmark">The Karpicke & Blunt Study (Landmark)</h2>
+<p>This study produced one of the most striking results in learning science:</p>
+<table><thead><tr>
+<th>Method</th>
+<th>Retention Rate</th>
+<th>Final Test Performance</th>
+</tr></thead><tbody>
+<tr>
+<td>Passive Review (re-reading)</td>
+<td>Low</td>
+<td>Poor (rapid decay)</td>
+</tr>
+<tr>
+<td>Concept Mapping</td>
+<td>Moderate</td>
+<td>Moderate</td>
+</tr>
+<tr>
+<td><strong>Free Recall (Retrieval)</strong></td>
+<td><strong>High</strong></td>
+<td><strong>Best — 50%+ improvement</strong></td>
+</tr>
+</tbody></table>
+<p>The killer finding: free recall outperformed concept mapping _even when the final evaluation was a concept map_. This demonstrates that the act of recall builds more robust neural pathways than the act of externally organizing information.</p>
+<h2 id="why-retrieval-works">Why Retrieval Works</h2>
+<p>Retrieval strengthens memory through two mechanisms:</p>
+<ol>
+<li><strong>Consolidation</strong>: Each successful retrieval re-encodes the memory trace, making it more resistant to decay</li>
+<li><strong>Elaboration</strong>: Retrieval activates associated concepts, creating richer semantic networks around the target memory</li>
+</ol>
+<p>This stands in contrast to <strong>passive review</strong>, which creates an _illusion of knowing_ (high fluency during reading → false sense of mastery → rapid decay when tested).</p>
+<h2 id="the-fluency-trap">The Fluency Trap</h2>
+<p>When you re-read notes or a textbook, the material feels familiar. This familiarity is mistaken for mastery. The brain confuses _recognition_ (seeing the answer and thinking "I know this") with _recall_ (producing the answer from scratch). Only recall requires and builds the neural pathways needed for real-world performance.</p>
+<h2 id="desirable-difficulty-ra-bjork">Desirable Difficulty (R.A. Bjork)</h2>
+<blockquote>"The harder the retrieval, the deeper the encoding."</blockquote>
+<p>Key implications:</p>
+<ul>
+<li>Don't review too soon — let forgetting begin before testing</li>
+<li>Test yourself before you feel "ready"</li>
+<li>Embrace frustration — struggle is a signal that learning is happening</li>
+<li>Easy retrieval = shallow encoding = quick to forget</li>
+<li>Difficult retrieval = deep encoding = long-term retention</li>
+</ul>
+<p>This principle pairs directly with <a href="Spaced Repetition.html" class="wiki-link">Spaced Repetition</a>: spacing creates desirable difficulty by allowing partial forgetting between sessions.</p>
+<h2 id="practical-methods">Practical Methods</h2>
+<h3 id="free-recall">Free Recall</h3>
+<p>The simplest and most effective technique: close the book, take out a blank sheet, and write down everything you remember. Compare against the source to identify gaps. Repeat.</p>
+<h3 id="question-book-method">Question-Book Method</h3>
+<p>Transform passive notes into active prompts:</p>
+<table><thead><tr>
+<th>Passive Note</th>
+<th>Active Prompt</th>
+</tr></thead><tbody>
+<tr>
+<td>"The Magna Carta was signed in 1215"</td>
+<td>"When was the Magna Carta signed?"</td>
+</tr>
+<tr>
+<td>"PCA9685 uses I²C for communication"</td>
+<td>"What protocol does the PCA9685 use?"</td>
+</tr>
+</tbody></table>
+<p>Every review session becomes an active testing event, forcing retrieval instead of passive re-reading.</p>
+<h3 id="self-testing-before-study">Self-Testing Before Study</h3>
+<p>Even testing yourself _before_ studying material improves subsequent learning. The act of generating a wrong answer (and then being corrected) creates stronger encoding than simply reading the correct answer first.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="Ultralearning.html">
+      <span class="connection-type related">Related</span>
+      <h4>Ultralearning</h4>
+      <p>Retrieval is Principle 5 of the Ultralearning methodology</p>
+    </a>
+    <a class="connection-card" href="Spaced Repetition.html">
+      <span class="connection-type related">Related</span>
+      <h4>Spaced Repetition</h4>
+      <p>Retrieval is _what_ you do; spacing determines _when_ you do it. The two principles are complementary.</p>
+    </a>
+    <a class="connection-card" href="Metalearning.html">
+      <span class="connection-type related">Related</span>
+      <h4>Metalearning</h4>
+      <p>Identifies the knowledge structure (Concepts, Facts, Procedures); retrieval practice encodes each category into long-term memory</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="tell-dont-ask.html" class="prev">← Tell, Don't Ask</a><a href="testing-strategy.html" class="next">Testing Strategy →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

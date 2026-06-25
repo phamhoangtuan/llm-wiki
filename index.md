@@ -26,8 +26,10 @@
 - [Tell, Don't Ask](concepts/tell-dont-ask.html) — Tell objects to act, don't ask for data to process outside
 - [Immutability](concepts/immutability.html) — Essential attributes should never change; create new objects instead
 - [Fail Fast](concepts/fail-fast.html) — Stop execution immediately on error; don't let errors propagate
+- [Feedback](concepts/feedback.html) — Three levels of feedback in skill acquisition (Outcome, Informational, Corrective); ego trap, Chris Rock's signal-seeking
 - [Essential vs Accidental Complexity](concepts/essential-accidental-complexity.html) — Fred Brooks' two types: inherent vs design-caused
 - [Technological Centaur](concepts/technological-centaur.html) — Human architect + AI assistant; clean code enables collaboration
+- [Testing Effect](concepts/testing-effect.html) — Retrieval practice as knowledge construction; Karpicke & Blunt study, desirable difficulty, free recall
 - [Readability vs Performance](concepts/readability-vs-performance.html) — Write clean code first, optimize bottlenecks after profiling
 - [Materialized Views](concepts/materialized-views.html) — Pre-computed query results stored as physical tables — the hybrid of tables and views
 - [Incremental View Maintenance](concepts/incremental-view-maintenance.html) — Updating MVs by processing only changed data, not full recompute
@@ -45,6 +47,7 @@
 - [CDN](concepts/cdn.html) — Geographically distributed edge caching for static content delivery
 - [Stateless Architecture](concepts/stateless-architecture.html) — Externalized sessions enabling horizontal scaling and autoscaling
 - [Message Queue](concepts/message-queue.html) — Async decoupling of producers and consumers for resilience and independent scaling
+- [Metalearning](concepts/metalearning.html) — Learning how a subject is structured before learning it; Why/What/How framework, 10% Rule
 - [Observability](concepts/observability.html) — Metrics, logs, and traces for understanding distributed system health
 - [Vortex File Format](concepts/vortex-file-format.html) — Next-gen Rust-native columnar format; 100× random access claims vs Parquet, immature Python ecosystem as of 2026-05
 - [Polars](concepts/polars.html) — Rust-based DataFrame library with lazy evaluation; reported OOM reliability issues on large CSV
@@ -67,8 +70,10 @@
 - [Apache Arrow](concepts/apache-arrow.html) — Language-agnostic columnar in-memory format; zero-copy interop across Python, C++, Rust, Java
 - [Database Sharding](concepts/database-sharding.html) — Horizontal partitioning for write scalability; contrasts with replication
 - [Dependency Injection](concepts/dependency-injection.html) — Design discipline for loose coupling; constructor/method/property injection, lifetime management, anti-patterns
+- [Directness](concepts/directness.html) — Learning by doing the exact target skill; four tactics (project-based, immersive, flight simulator, overkill)
 - [Composition Root](concepts/composition-root.html) — Single centralized location where object graphs are wired; Pure DI vs DI Containers
 - [SOLID Principles](concepts/solid-principles.html) — SRP, OCP, LSP, ISP, DIP — the foundation for effective Dependency Injection
+- [Spaced Repetition](concepts/spaced-repetition.html) — Reviewing at the point of near-forgetting to maximize long-term retention; Ebbinghaus forgetting curve counter-strategy
 - [Harness Engineering](concepts/harness-engineering.html) — Closed-loop systems for reliable AI agents; 4 primitives, 5-phase workflow, 90% rule, 6-component anatomy
 - [Agent Quality Optimization](concepts/agent-quality-optimization.html) — Agent ROI over token counting; compound error, model selection, context engineering, Research-Plan-Implement workflow
 - [Agent Components](concepts/agent-components.html) — 5 pillars of AI agent architecture: Model, Tools, Memory, Orchestration, Deployment
@@ -137,6 +142,7 @@
 - [Data Lakehouse](concepts/data-lakehouse.html) — Modern architecture combining data lake economics with warehouse governance; five core benefits, open table formats
 - [DBFS](concepts/dbfs.html) — Databricks File System abstraction: local-feel cloud storage, ephemeral compute + durable data
 - [Databricks Platform](concepts/databricks-platform.html) — Unified Data Intelligence Platform with 4-layer architecture (infra, runtime, governance, workspace); control vs data plane separation; SQL-first strategy
+- [Ultralearning](concepts/ultralearning.html) — Aggressive self-directed skill acquisition; 9 principles, project framework, case studies (Scott Young, Nigel Richards)
 
 ## Sources
 
@@ -188,6 +194,7 @@
 - [The New SDLC With Vibe Coding — Osmani, Saboo & Kartakis](sources/new-sdlc-vibe-coding.html) — 51-page ebook: 5-stage AI coding evolution, Agent Loop, 90% harness rule, vibe coding economics
 - [System Design: The Big Archive — Alex Xu](sources/system-design-big-archive.html) — 159-page ebook: cloud infra, containers, deployment, databases, security, performance, architecture patterns
 - [Databricks Certified DE Associate Study Guide — Derar Alhussein](sources/databricks-dea-study-guide.html) — 802-page ebook: Lakehouse architecture, 4-layer platform, control/data plane, Spark, DBFS, Unity Catalog
+- [Ultralearning — Scott Young](sources/ultralearning-scott-young.html) — Notes on "Ultralearning" by Scott Young — 250 pages; 9 principles, case studies, project execution framework
 
 ## Syntheses
 
@@ -195,5 +202,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-23*
-*Pages: 178 (130 concepts + 48 sources)*
+*Last updated: 2026-06-25*
+*Pages: 185 (136 concepts + 49 sources)*

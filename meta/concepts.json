@@ -694,6 +694,17 @@
         "incremental-computation"
       ]
     },
+    "directness": {
+      "title": "Directness",
+      "category": "Meta",
+      "url": "concepts/directness.html",
+      "definition": "**Directness** is the principle of learning by doing the exact thing you want to become good at. It is the third principle of [[Ultralearning]] and serves as the strategic antidote to **transfer failu",
+      "tags": [
+        "learning",
+        "skill-acquisition",
+        "ultralearning"
+      ]
+    },
     "distributed-consensus": {
       "title": "Distributed Consensus (Raft & Paxos)",
       "category": "System Architecture",
@@ -768,6 +779,18 @@
         "error-handling",
         "reliability",
         "tdd"
+      ]
+    },
+    "feedback": {
+      "title": "Feedback",
+      "category": "Meta",
+      "url": "concepts/feedback.html",
+      "definition": "**Feedback** in the context of skill acquisition is the information returned to a learner about their performance. In [[Ultralearning]], it is the sixth principle: the discipline of seeking accurate, ",
+      "tags": [
+        "learning",
+        "skill-acquisition",
+        "ultralearning",
+        "psychology"
       ]
     },
     "functional-testing": {
@@ -1022,6 +1045,17 @@
         "async",
         "decoupling",
         "resilience"
+      ]
+    },
+    "metalearning": {
+      "title": "Metalearning",
+      "category": "Meta",
+      "url": "concepts/metalearning.html",
+      "definition": "**Metalearning** is the practice of learning _how a subject is structured_ before attempting to learn the subject itself. It is the first principle of [[Ultralearning]], and its purpose is to prevent ",
+      "tags": [
+        "learning",
+        "metacognition",
+        "skill-acquisition"
       ]
     },
     "middleware-pattern": {
@@ -1405,6 +1439,18 @@
         "clean-code"
       ]
     },
+    "spaced-repetition": {
+      "title": "Spaced Repetition",
+      "category": "Meta",
+      "url": "concepts/spaced-repetition.html",
+      "definition": "**Spaced repetition** is a learning technique that schedules review sessions at increasing intervals — specifically at the point of near-forgetting — to maximize long-term retention. It is the primary",
+      "tags": [
+        "learning",
+        "memory",
+        "retention",
+        "cognitive-science"
+      ]
+    },
     "specification-driven-development": {
       "title": "Specification-Driven Development",
       "category": "AI & Agents",
@@ -1513,6 +1559,18 @@
         "encapsulation"
       ]
     },
+    "testing-effect": {
+      "title": "Testing Effect",
+      "category": "Meta",
+      "url": "concepts/testing-effect.html",
+      "definition": "The **testing effect** (also called **retrieval practice** or **active recall**) is the finding that retrieving information from memory strengthens that memory far more effectively than re-reading or ",
+      "tags": [
+        "learning",
+        "memory",
+        "cognitive-science",
+        "retrieval"
+      ]
+    },
     "testing-strategy": {
       "title": "Testing Strategy",
       "category": "Python & Tools",
@@ -1547,6 +1605,18 @@
         "encryption",
         "networking",
         "system-design"
+      ]
+    },
+    "ultralearning": {
+      "title": "Ultralearning",
+      "category": "Career & Growth",
+      "url": "concepts/ultralearning.html",
+      "definition": "**Ultralearning** is a strategy for aggressive, self-directed skill acquisition — mastering hard subjects in compressed timeframes through intense, focused practice. Coined by Scott Young, it combines",
+      "tags": [
+        "learning",
+        "skill-acquisition",
+        "career",
+        "self-improvement"
       ]
     },
     "unity-catalog": {

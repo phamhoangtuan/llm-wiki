@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Directness — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-learning">Learning</a> <span class="sep">/</span>
+  <span>Directness</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Directness</h1>
+  <div class="page-meta"><span>Source: ultralearning-scott-young</span><span>Updated: 2026-06-25</span></div>
+  <div class="page-tags"><span class="tag">learning</span><span class="tag">skill-acquisition</span><span class="tag">ultralearning</span></div>
+</div>
+<div class="content-area concept">
+<p># Directness</p>
+<p><strong>Directness</strong> is the principle of learning by doing the exact thing you want to become good at. It is the third principle of <a href="Ultralearning.html" class="wiki-link">Ultralearning</a> and serves as the strategic antidote to <strong>transfer failure</strong> — the well-documented phenomenon where knowledge mastered in a classroom fails to apply in real-world contexts.</p>
+<blockquote>"The more direct the practice, the higher the transfer rate to real-world performance."</blockquote>
+<h2 id="the-transfer-problem">The Transfer Problem</h2>
+<p>Traditional education suffers from a "dirty secret": students frequently master skills in academic settings but cannot apply them in high-stakes, real-world environments. Knowledge becomes "welded" to the classroom context. Directness breaks this weld by ensuring the learning environment mirrors the performance environment.</p>
+<h2 id="four-tactics">Four Tactics</h2>
+<h3 id="1-project-based-learning">1. Project-Based Learning</h3>
+<p>Build a tangible output from day one instead of studying theory first and hoping to apply it later. Example: an architecture student builds a professional-grade portfolio using industry-standard software (Revit) rather than only studying design theory — resulting in immediate job offers.</p>
+<h3 id="2-immersive-learning">2. Immersive Learning</h3>
+<p>Surround yourself with the target environment. For language learning: a "no English" policy from day one forces the brain to rely on real-world cues, accelerating functional communication ability far beyond what grammar study alone achieves.</p>
+<h3 id="3-flight-simulator-method">3. Flight Simulator Method</h3>
+<p>When the real environment is inaccessible, simulate the exact cognitive demands. Example: coding in a live IDE (same cognitive demands as real development) beats reading about algorithms in a book.</p>
+<h3 id="4-overkill-approach">4. Overkill Approach</h3>
+<p>Aim above the required challenge level. Example: deliver a speech to an audience of merciless middle-schoolers rather than a supportive Toastmasters group. The intensity of direct feedback cannot be replicated in low-pressure environments.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="Ultralearning.html">
+      <span class="connection-type related">Related</span>
+      <h4>Ultralearning</h4>
+      <p>Directness is Principle 3 of the methodology</p>
+    </a>
+    <a class="connection-card" href="Testing Effect.html">
+      <span class="connection-type related">Related</span>
+      <h4>Testing Effect</h4>
+      <p>Directness ensures retrieval happens in realistic contexts, amplifying transfer</p>
+    </a>
+    <a class="connection-card" href="Metalearning.html">
+      <span class="connection-type related">Related</span>
+      <h4>Metalearning</h4>
+      <p>Metalearning maps the subject; Directness ensures you learn it in the right context</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="differential-dataflow.html" class="prev">← Differential Dataflow</a><a href="distributed-consensus.html" class="next">Distributed Consensus (Raft & Paxos) →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -4,6 +4,16 @@
 
 ---
 
+## [2026-06-25] ingest | Ultralearning (Scott Young)
+
+- Source: Book notes on "Ultralearning" by Scott Young (250 pages)
+- Copied to: raw/notes/ultralearning-scott-young.md
+- Created sources/ultralearning-scott-young.md
+- New concepts: ultralearning, metalearning, spaced-repetition, testing-effect, directness, feedback
+- Updated index.md: +6 entries (6 concepts + 1 source)
+- Total pages: 185
+- Post-ingest lint: fixed 2 broken wikilinks (Directness, Feedback) → created concept pages
+
 ## [2026-05-23] init | Wiki scaffolded
 
 - Created repo structure: concepts/, sources/, syntheses/, raw/, meta/
