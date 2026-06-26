@@ -41,3 +41,4 @@ Database replication is the process of copying data from a primary database (mas
 - Related to [[cache-strategy]] — cache sits in front of replicated reads for further scaling
 - Related to [[load-balancer]] — routes reads to available slaves
 - Contrasts with [[database-sharding]] — replication copies data; sharding partitions data
+- Related to [[database-isolation]] — isolation levels affect read consistency across replicas

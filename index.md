@@ -150,56 +150,56 @@
 
 ## Sources
 
-- [Python Testing with pytest](sources/okken-python-testing-pytest.html) — Notes on "Python Testing with pytest (2nd Ed.)" by Brian Okken — 398 pages
-- [The LLM Wiki Pattern](sources/sample-article.html) — Karpathy's gist: LLM-maintained persistent wiki instead of RAG
-- [Clean Code Cookbook](sources/contieri-clean-code-cookbook.html) — Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection
-- [Quick Insights on Materialized Views](sources/materialized-views-quick-insights.html) — Vu Trinh on MVs, IVM theory, freshness trade-offs, and streaming applications
-- [DuckDB: Up and Running](sources/duckdb-up-and-running.html) — Wei-Meng Lee's guide — 308 pages on architecture, performance, and ecosystem
-- [System Design Interview – An Insider's Guide](sources/system-design-interview-xu.html) — Alex Xu's 252-page ebook on designing scalable systems from single server to millions of users
-- [Benchmarking Vortex File Format vs Parquet, CSV](sources/benchmarking-vortex-file-format.html) — Daniel Beach benchmarks Vortex vs Parquet/CSV with DuckDB, Polars, DataFusion (Backblaze ~24 GB dataset, 2026-05)
-- [Hugo Data Ingestion Platform with Apache Flink](sources/hugo-data-ingestion-platform-flink.html) — Grab Engineering's evolution from siloed ingestion (Kafka Connect + Sprinkler) to unified Flink-based platform
-- [Unlocking dbt: Design and Deploy Transformations](sources/unlocking-dbt-design-deploy-transformations.html) — Cameron Cyr & Dustin Dorsey's 351-page guide to dbt fundamentals, modeling, testing, and deployment
-- [Dependency Injection Principles, Practices, and Patterns](sources/dependency-injection-principles-patterns.html) — van Deursen & Seemann's 643-page definitive guide to DI, Composition Root, and SOLID
-- [Delta Grows Up: Writes, Unity Catalog and Time Travel](sources/delta-grows-up-writes-unity-catalog.html) — DuckDB Labs announces stable Delta extension with writes, time travel, and Unity Catalog integration
-- [The Next Evolution of Delta — Catalog-Managed Tables](sources/delta-catalog-managed-tables.html) — Delta 4.1.0 + UC 0.4.0: catalog becomes authority for table state, inline commits, convergence with Iceberg
-- [Learn Harness Engineering](sources/learn-harness-engineering.html) — walkinglabs' guide: closed-loop AI agent systems, 4 primitives, 5-phase workflow, verification-first design
-- [Agent Quality & Token Optimization — GitHub Workshop](sources/agent-quality-token-optimization.html) — Felix Gozali, Lakshya Tyagi: agent ROI, compound error, model selection, context engineering, deterministic guardrails
-- [Integrating the Rust Delta Kernel into ClickHouse](sources/integrating-rust-delta-kernel-clickhouse.html) — ClickHouse's journey from native Delta protocol to Rust Kernel; FFI build challenges, CDF support
-- [Debunking 8 Data Layout Myths](sources/debunking-data-layout-myths-liquid-clustering.html) — Databricks' case for Liquid Clustering over partitioning; PB-scale benchmarks, 8 myths debunked
-- [Go Web Programming](sources/go-web-programming.html) — Sau Sheong Chang's guide to building web apps with Go's standard library — 314 pages
-- [Test-Driven Development with Python](sources/tdd-python-percival.html) — Harry Percival's hands-on journey through TDD with Django and Selenium — 662 pages
-- [Apache Iceberg 1.11.0 Release](sources/apache-iceberg-1.11.0-release.html) — Major release: V3 spec stabilization, table encryption, File Format API, server-side scan planning, SQL UDFs
-- [Cracking the Coding Interview](sources/cracking-the-coding-interview.html) — McDowell's 708-page guide to technical interview philosophy, company cultures, and problem-solving strategies
-- [Good Code, Bad Code](sources/good-code-bad-code.html) — Tom Long's 338-page guide: 4 goals, 6 pillars, and the engineering mindset
-- [Seriously Good Software](sources/seriously-good-software.html) — Marco Faella's 330-page deep dive: quality spectrum, trade-offs, YAGNI, and abstraction costs
-- [Data Engineering with dbt](sources/data-engineering-with-dbt.html) — Roberto Zagni's 603-page guide: DataOps mindset, 3-tier modeling, soft boundaries, Jinja-powered SQL
-- [Practical Object-Oriented Design](sources/practical-object-oriented-design.html) — Sandi Metz's 334-page guide: TRUE standard, design as discovery, messages in OOP
-- [Programming Kubernetes](sources/programming-kubernetes.html) — Schimanski & Hausenblas's 244-page guide: control loops, operators, CRDs, Go ecosystem for K8s-native development
-- [Data Engineer Role — Data Engineering Handbook](sources/data-engineer-role-handbook.html) — Vietnamese DE Handbook: role definition, differentiation from SWE/DA/DS, daily workflow, best practices
-- [Semantic Layers Are Now for AI](sources/semantic-layers-for-ai.html) — Madison Mae on why semantic layers are critical for AI agents, testing ktx open-source context layer
-- [How to Grow From Senior to Staff Engineer](sources/senior-to-staff-engineer.html) — Jordan Cutler's Pinterest case study: 3 dimensions of Staff-level impact in the AI era
-- [Databricks Zerobus — Event Streams + Lake House](sources/databricks-zerobus.html) — Daniel Beach explores serverless streaming into Delta Lake without Kafka infrastructure
-- [Data Engineering — Data Engineering Handbook](sources/data-engineering-handbook.html) — Vietnamese DE Handbook: discipline overview, four pillars, pipeline flow, best practices
-- [Data Lifecycle — Data Engineering Handbook](sources/data-lifecycle-handbook.html) — Vietnamese DE Handbook: six lifecycle stages, Hot/Cold data, GDPR right-to-be-forgotten, cloud automation
-- [De-Coding the Technical Interview Process](sources/de-coding-technical-interview.html) — Emma Bostian's 138-page guide: 5-stage interview lifecycle, 5-step problem-solving cycle
-- [High Performance Spark](sources/high-performance-spark.html) — Karau & Warren's 356-page optimization guide: shuffles, joins, skew, Catalyst, Tungsten
-- [The 1%: Conquer Your Consulting Case Interview](sources/the-1-percent-case-interview.html) — Smeritschnig's 294-page insider's guide: MECE, SCORE, Pyramid Principle
-- [Intuitive Python](sources/intuitive-python.html) — David Muller's 137-page guide to professional Python: static analysis, PDB debugging, standard library, concurrency
-- [Just Enough Software Architecture](sources/just-enough-software-architecture-fairbanks.html) — George Fairbanks' 378-page book on risk-driven architecture: commensurate effort, 3-step model, hoisting, model-code gap
-- [Learning Domain-Driven Design](sources/learning-domain-driven-design.html) — Vlad Khononov's 340-page guide to strategic DDD: subdomain classification, Ubiquitous Language, Bounded Contexts
-- [A Practical Guide to Becoming an AI-Native Engineer](sources/practical-guide-ai-native-engineer.html) — Shah Rahman (Meta) on AI-native engineering: orchestrator model, context engineering, ADLC, security guardrails
-- [In 2026 The Data Fundamentals Matter More Than Ever](sources/data-fundamentals-matter-2026.html) — SeattleDataGuy: SQL/Python/data modeling still critical, glue skills, messy data reality
-- [CI/CD Tips — r/dataengineering](sources/reddit-cicd-tips-data-engineering.html) — Community discussion: Ruff, SQLFluff, SQLMesh, notebooks-vs-scripts debate, testing philosophy
-- [Refactoring at Scale](sources/refactoring-at-scale-lemaire.html) — Maude Lemaire's 245-page guide: strategic refactoring, code rot, complexity metrics, code archaeology
-- [Byzantine Fault Tolerance (BFT) — Data Engineering Handbook](sources/bft-data-engineering-handbook.html) — Vietnamese DE Handbook: Byzantine Generals Problem, 3f+1 formula, PBFT protocol, BFT applications in data engineering
-- [Đồng thuận phân tán (Raft & Paxos) — Data Engineering Handbook](sources/consensus-raft-paxos-handbook.html) — Vietnamese DE Handbook: distributed consensus problem, FLP impossibility, Paxos two-phase protocol, Raft leader election and log replication, comparison and ecosystem
-- [CAP Theorem — Data Engineering Handbook](sources/cap-theorem-handbook.html) — Vietnamese DE Handbook: Brewer's theorem, CP vs AP architectures, quorum mechanics, PACELC extension, CAP-C vs ACID-C distinction
-- [Data Quality Traffic Lights — Robert Sahlin](sources/data-quality-traffic-lights-sahlin.html) — Nordnet's Data Quality Health Badge: 5 failure modes, dbt+Looker lineage, TimesFM anomaly detection, programmatic trust for agents and ML pipelines
-- [Why Is Meta Destroying Its Engineering Org? — Gergely Orosz](sources/meta-destroying-engineering-org-orosz.html) — Pragmatic Engineer investigation: forced data labeling, keystroke tracking, tokenmaxxing, Instagram takeover outage, AI psychosis case study
-- [The New SDLC With Vibe Coding — Osmani, Saboo & Kartakis](sources/new-sdlc-vibe-coding.html) — 51-page ebook: 5-stage AI coding evolution, Agent Loop, 90% harness rule, vibe coding economics
-- [System Design: The Big Archive — Alex Xu](sources/system-design-big-archive.html) — 159-page ebook: cloud infra, containers, deployment, databases, security, performance, architecture patterns
-- [Databricks Certified DE Associate Study Guide — Derar Alhussein](sources/databricks-dea-study-guide.html) — 802-page ebook: Lakehouse architecture, 4-layer platform, control/data plane, Spark, DBFS, Unity Catalog
-- [Ultralearning — Scott Young](sources/ultralearning-scott-young.html) — Notes on "Ultralearning" by Scott Young — 250 pages; 9 principles, case studies, project execution framework
+- [Python Testing with pytest](sources/okken-python-testing-pytest.md) — Notes on "Python Testing with pytest (2nd Ed.)" by Brian Okken — 398 pages
+- [The LLM Wiki Pattern](sources/sample-article.md) — Karpathy's gist: LLM-maintained persistent wiki instead of RAG
+- [Clean Code Cookbook](sources/contieri-clean-code-cookbook.md) — Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection
+- [Quick Insights on Materialized Views](sources/materialized-views-quick-insights.md) — Vu Trinh on MVs, IVM theory, freshness trade-offs, and streaming applications
+- [DuckDB: Up and Running](sources/duckdb-up-and-running.md) — Wei-Meng Lee's guide — 308 pages on architecture, performance, and ecosystem
+- [System Design Interview – An Insider's Guide](sources/system-design-interview-xu.md) — Alex Xu's 252-page ebook on designing scalable systems from single server to millions of users
+- [Benchmarking Vortex File Format vs Parquet, CSV](sources/benchmarking-vortex-file-format.md) — Daniel Beach benchmarks Vortex vs Parquet/CSV with DuckDB, Polars, DataFusion (Backblaze ~24 GB dataset, 2026-05)
+- [Hugo Data Ingestion Platform with Apache Flink](sources/hugo-data-ingestion-platform-flink.md) — Grab Engineering's evolution from siloed ingestion (Kafka Connect + Sprinkler) to unified Flink-based platform
+- [Unlocking dbt: Design and Deploy Transformations](sources/unlocking-dbt-design-deploy-transformations.md) — Cameron Cyr & Dustin Dorsey's 351-page guide to dbt fundamentals, modeling, testing, and deployment
+- [Dependency Injection Principles, Practices, and Patterns](sources/dependency-injection-principles-patterns.md) — van Deursen & Seemann's 643-page definitive guide to DI, Composition Root, and SOLID
+- [Delta Grows Up: Writes, Unity Catalog and Time Travel](sources/delta-grows-up-writes-unity-catalog.md) — DuckDB Labs announces stable Delta extension with writes, time travel, and Unity Catalog integration
+- [The Next Evolution of Delta — Catalog-Managed Tables](sources/delta-catalog-managed-tables.md) — Delta 4.1.0 + UC 0.4.0: catalog becomes authority for table state, inline commits, convergence with Iceberg
+- [Learn Harness Engineering](sources/learn-harness-engineering.md) — walkinglabs' guide: closed-loop AI agent systems, 4 primitives, 5-phase workflow, verification-first design
+- [Agent Quality & Token Optimization — GitHub Workshop](sources/agent-quality-token-optimization.md) — Felix Gozali, Lakshya Tyagi: agent ROI, compound error, model selection, context engineering, deterministic guardrails
+- [Integrating the Rust Delta Kernel into ClickHouse](sources/integrating-rust-delta-kernel-clickhouse.md) — ClickHouse's journey from native Delta protocol to Rust Kernel; FFI build challenges, CDF support
+- [Debunking 8 Data Layout Myths](sources/debunking-data-layout-myths-liquid-clustering.md) — Databricks' case for Liquid Clustering over partitioning; PB-scale benchmarks, 8 myths debunked
+- [Go Web Programming](sources/go-web-programming.md) — Sau Sheong Chang's guide to building web apps with Go's standard library — 314 pages
+- [Test-Driven Development with Python](sources/tdd-python-percival.md) — Harry Percival's hands-on journey through TDD with Django and Selenium — 662 pages
+- [Apache Iceberg 1.11.0 Release](sources/apache-iceberg-1.11.0-release.md) — Major release: V3 spec stabilization, table encryption, File Format API, server-side scan planning, SQL UDFs
+- [Cracking the Coding Interview](sources/cracking-the-coding-interview.md) — McDowell's 708-page guide to technical interview philosophy, company cultures, and problem-solving strategies
+- [Good Code, Bad Code](sources/good-code-bad-code.md) — Tom Long's 338-page guide: 4 goals, 6 pillars, and the engineering mindset
+- [Seriously Good Software](sources/seriously-good-software.md) — Marco Faella's 330-page deep dive: quality spectrum, trade-offs, YAGNI, and abstraction costs
+- [Data Engineering with dbt](sources/data-engineering-with-dbt.md) — Roberto Zagni's 603-page guide: DataOps mindset, 3-tier modeling, soft boundaries, Jinja-powered SQL
+- [Practical Object-Oriented Design](sources/practical-object-oriented-design.md) — Sandi Metz's 334-page guide: TRUE standard, design as discovery, messages in OOP
+- [Programming Kubernetes](sources/programming-kubernetes.md) — Schimanski & Hausenblas's 244-page guide: control loops, operators, CRDs, Go ecosystem for K8s-native development
+- [Data Engineer Role — Data Engineering Handbook](sources/data-engineer-role-handbook.md) — Vietnamese DE Handbook: role definition, differentiation from SWE/DA/DS, daily workflow, best practices
+- [Semantic Layers Are Now for AI](sources/semantic-layers-for-ai.md) — Madison Mae on why semantic layers are critical for AI agents, testing ktx open-source context layer
+- [How to Grow From Senior to Staff Engineer](sources/senior-to-staff-engineer.md) — Jordan Cutler's Pinterest case study: 3 dimensions of Staff-level impact in the AI era
+- [Databricks Zerobus — Event Streams + Lake House](sources/databricks-zerobus.md) — Daniel Beach explores serverless streaming into Delta Lake without Kafka infrastructure
+- [Data Engineering — Data Engineering Handbook](sources/data-engineering-handbook.md) — Vietnamese DE Handbook: discipline overview, four pillars, pipeline flow, best practices
+- [Data Lifecycle — Data Engineering Handbook](sources/data-lifecycle-handbook.md) — Vietnamese DE Handbook: six lifecycle stages, Hot/Cold data, GDPR right-to-be-forgotten, cloud automation
+- [De-Coding the Technical Interview Process](sources/de-coding-technical-interview.md) — Emma Bostian's 138-page guide: 5-stage interview lifecycle, 5-step problem-solving cycle
+- [High Performance Spark](sources/high-performance-spark.md) — Karau & Warren's 356-page optimization guide: shuffles, joins, skew, Catalyst, Tungsten
+- [The 1%: Conquer Your Consulting Case Interview](sources/the-1-percent-case-interview.md) — Smeritschnig's 294-page insider's guide: MECE, SCORE, Pyramid Principle
+- [Intuitive Python](sources/intuitive-python.md) — David Muller's 137-page guide to professional Python: static analysis, PDB debugging, standard library, concurrency
+- [Just Enough Software Architecture](sources/just-enough-software-architecture-fairbanks.md) — George Fairbanks' 378-page book on risk-driven architecture: commensurate effort, 3-step model, hoisting, model-code gap
+- [Learning Domain-Driven Design](sources/learning-domain-driven-design.md) — Vlad Khononov's 340-page guide to strategic DDD: subdomain classification, Ubiquitous Language, Bounded Contexts
+- [A Practical Guide to Becoming an AI-Native Engineer](sources/practical-guide-ai-native-engineer.md) — Shah Rahman (Meta) on AI-native engineering: orchestrator model, context engineering, ADLC, security guardrails
+- [In 2026 The Data Fundamentals Matter More Than Ever](sources/data-fundamentals-matter-2026.md) — SeattleDataGuy: SQL/Python/data modeling still critical, glue skills, messy data reality
+- [CI/CD Tips — r/dataengineering](sources/reddit-cicd-tips-data-engineering.md) — Community discussion: Ruff, SQLFluff, SQLMesh, notebooks-vs-scripts debate, testing philosophy
+- [Refactoring at Scale](sources/refactoring-at-scale-lemaire.md) — Maude Lemaire's 245-page guide: strategic refactoring, code rot, complexity metrics, code archaeology
+- [Byzantine Fault Tolerance (BFT) — Data Engineering Handbook](sources/bft-data-engineering-handbook.md) — Vietnamese DE Handbook: Byzantine Generals Problem, 3f+1 formula, PBFT protocol, BFT applications in data engineering
+- [Đồng thuận phân tán (Raft & Paxos) — Data Engineering Handbook](sources/consensus-raft-paxos-handbook.md) — Vietnamese DE Handbook: distributed consensus problem, FLP impossibility, Paxos two-phase protocol, Raft leader election and log replication, comparison and ecosystem
+- [CAP Theorem — Data Engineering Handbook](sources/cap-theorem-handbook.md) — Vietnamese DE Handbook: Brewer's theorem, CP vs AP architectures, quorum mechanics, PACELC extension, CAP-C vs ACID-C distinction
+- [Data Quality Traffic Lights — Robert Sahlin](sources/data-quality-traffic-lights-sahlin.md) — Nordnet's Data Quality Health Badge: 5 failure modes, dbt+Looker lineage, TimesFM anomaly detection, programmatic trust for agents and ML pipelines
+- [Why Is Meta Destroying Its Engineering Org? — Gergely Orosz](sources/meta-destroying-engineering-org-orosz.md) — Pragmatic Engineer investigation: forced data labeling, keystroke tracking, tokenmaxxing, Instagram takeover outage, AI psychosis case study
+- [The New SDLC With Vibe Coding — Osmani, Saboo & Kartakis](sources/new-sdlc-vibe-coding.md) — 51-page ebook: 5-stage AI coding evolution, Agent Loop, 90% harness rule, vibe coding economics
+- [System Design: The Big Archive — Alex Xu](sources/system-design-big-archive.md) — 159-page ebook: cloud infra, containers, deployment, databases, security, performance, architecture patterns
+- [Databricks Certified DE Associate Study Guide — Derar Alhussein](sources/databricks-dea-study-guide.md) — 802-page ebook: Lakehouse architecture, 4-layer platform, control/data plane, Spark, DBFS, Unity Catalog
+- [Ultralearning — Scott Young](sources/ultralearning-scott-young.md) — Notes on "Ultralearning" by Scott Young — 250 pages; 9 principles, case studies, project execution framework
 
 ## Syntheses
 

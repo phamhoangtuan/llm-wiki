@@ -10,7 +10,7 @@ aliases: [Bầu chọn Leader, Leader Election Algorithm]
 
 **Leader Election** is the process by which a distributed system selects a single node to act as the coordinator — exclusively handling writes, assigning work, or maintaining cluster state — ensuring that even if the current leader fails, a new one is quickly and safely elected (source: [[consensus-raft-paxos-handbook]]).
 
-Leader election is a fundamental building block of distributed consensus: both [[distributed-consensus|Raft]] and Multi-Paxos rely on it to simplify coordination by funneling all decisions through a single node. Systems like [[Apache Kafka]], Zookeeper, etcd, and MongoDB all embed leader election mechanisms.
+Leader election is a fundamental building block of distributed consensus: both [[distributed-consensus|Raft]] and Multi-Paxos rely on it to simplify coordination by funneling all decisions through a single node. Systems like [[apache-kafka|Apache Kafka]], Zookeeper, etcd, and MongoDB all embed leader election mechanisms.
 
 ## Why Leaders?
 

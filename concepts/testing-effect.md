@@ -50,7 +50,7 @@ Key implications:
 - Easy retrieval = shallow encoding = quick to forget
 - Difficult retrieval = deep encoding = long-term retention
 
-This principle pairs directly with [[Spaced Repetition]]: spacing creates desirable difficulty by allowing partial forgetting between sessions.
+This principle pairs directly with [[spaced-repetition|Spaced Repetition]]: spacing creates desirable difficulty by allowing partial forgetting between sessions.
 
 ## Practical Methods
 
@@ -74,6 +74,6 @@ Even testing yourself _before_ studying material improves subsequent learning. T
 
 ## Connections
 
-- [[Ultralearning]] — Retrieval is Principle 5 of the Ultralearning methodology
-- [[Spaced Repetition]] — Retrieval is _what_ you do; spacing determines _when_ you do it. The two principles are complementary.
-- [[Metalearning]] — Identifies the knowledge structure (Concepts, Facts, Procedures); retrieval practice encodes each category into long-term memory
+- [[ultralearning|Ultralearning]] — Retrieval is Principle 5 of the Ultralearning methodology
+- [[spaced-repetition|Spaced Repetition]] — Retrieval is _what_ you do; spacing determines _when_ you do it. The two principles are complementary.
+- [[metalearning|Metalearning]] — Identifies the knowledge structure (Concepts, Facts, Procedures); retrieval practice encodes each category into long-term memory

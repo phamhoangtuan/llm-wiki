@@ -47,5 +47,7 @@ aliases: [sharding]
 - Contrasts with [[database-replication]] — replication copies data; sharding partitions data
 - Related to [[scalable-architecture]] — sharding is a horizontal scaling technique for databases
 - Related to [[cache-strategy]] — caching reduces read load; sharding handles write load
+- Related to [[database-isolation]] — isolation guarantees must hold across shards
+- Related to [[snowflake-id]] — time-ordered IDs as efficient shard keys
 - Detailed hash-vs-range comparison from [[sources/system-design-big-archive]] — hash minimizes hotspots but complicates range queries and rebalancing; range is predictable but risks uneven distribution
 - Benchmark source: [[sources/system-design-interview-xu]] — Alex Xu's system design guide

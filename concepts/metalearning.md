@@ -10,7 +10,7 @@ aliases: [learning how to learn]
 
 # Metalearning
 
-**Metalearning** is the practice of learning _how a subject is structured_ before attempting to learn the subject itself. It is the first principle of [[Ultralearning]], and its purpose is to prevent wasted effort by drawing an accurate map before starting the journey.
+**Metalearning** is the practice of learning _how a subject is structured_ before attempting to learn the subject itself. It is the first principle of [[ultralearning|Ultralearning]], and its purpose is to prevent wasted effort by drawing an accurate map before starting the journey.
 
 > "Metalearning = Learning about how a specific subject is structured."
 
@@ -79,6 +79,6 @@ This is especially valuable for **instrumental** (career-oriented) learning goal
 
 ## Connections
 
-- [[Ultralearning]] — The parent methodology; Metalearning is its first and foundational principle
-- [[Testing Effect]] — Once you know _how_ the subject is structured, retrieval practice is how you encode it
-- [[Spaced Repetition]] — Metalearning helps identify _what_ needs to be remembered; spacing determines _when_
+- [[ultralearning|Ultralearning]] — The parent methodology; Metalearning is its first and foundational principle
+- [[testing-effect|Testing Effect]] — Once you know _how_ the subject is structured, retrieval practice is how you encode it
+- [[spaced-repetition|Spaced Repetition]] — Metalearning helps identify _what_ needs to be remembered; spacing determines _when_

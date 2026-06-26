@@ -41,3 +41,4 @@ Check version before update, retry on conflict. Best for scenarios like e-commer
 ---
 - Foundation for [[database-sharding]] — isolation guarantees must hold across shards
 - Contrast with [[cap-theorem]] — isolation is Consistency in ACID, which CAP treats differently
+- Related to [[database-replication]] — isolation levels affect read consistency across replicas

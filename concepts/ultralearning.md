@@ -22,7 +22,7 @@ Traditional education fails to close this gap — rising costs, poor transfer fr
 
 ## The Nine Principles
 
-### 1. [[Metalearning]] — Draw the Map
+### 1. [[metalearning|Metalearning]] — Draw the Map
 Before learning any subject, first learn _how it is structured_. Answer three questions:
 - **Why** — Instrumental (career ROI) or intrinsic (personal satisfaction) motivation?
 - **What** — Categorize knowledge into Concepts (understand), Facts (memorize), Procedures (practice)
@@ -36,7 +36,7 @@ Three obstacles to concentration:
 - **Sustaining**: Eliminate environmental noise (phone, clutter), switch from passive to active methods, note intrusive thoughts without engaging
 - **Optimizing**: Match arousal to task complexity — low arousal for complex tasks (quiet, well-rested), high arousal for simple tasks (coffee shop, background noise)
 
-### 3. [[Directness]] — Learn by Doing
+### 3. [[directness|Directness]] — Learn by Doing
 The core antidote to **transfer failure** — the phenomenon where knowledge mastered in a classroom fails to apply in real-world contexts. Learn the exact thing you want to be good at:
 
 - **Project-Based Learning**: Build tangible output from day one (e.g., an architecture portfolio using industry-standard software)
@@ -57,7 +57,7 @@ Five drill archetypes: **Time Slicing** (isolate hardest transitions), **Cogniti
 > "If you drill a sub-skill that isn't the bottleneck, you are wasting your time."
 
 ### 5. Retrieval — Testing as Construction
-The [[Testing Effect]] shows that retrieving information from memory is not just measurement — it's how knowledge is _built_. The landmark Karpicke & Blunt study found that free recall outperformed concept mapping by 50%+ even when the final evaluation was a concept map.
+The [[testing-effect|Testing Effect]] shows that retrieving information from memory is not just measurement — it's how knowledge is _built_. The landmark Karpicke & Blunt study found that free recall outperformed concept mapping by 50%+ even when the final evaluation was a concept map.
 
 **Desirable Difficulty** (R.A. Bjork): Harder retrieval produces deeper encoding. Don't review too soon — let forgetting begin. Test yourself before you feel "ready." Struggle is a signal that learning is happening.
 
@@ -79,7 +79,7 @@ Three theories of forgetting:
 - **Interference**: New and old memories compete (proactive: old habits block new ones; retroactive: new knowledge overwrites old)
 - **Forgotten Cues**: Memory exists but the retrieval key is lost
 
-Counter-strategy: [[Spaced Repetition]] — review at the point of near-forgetting to repair and strengthen memory. Optimal schedule: Day 1 (initial), Day 2, Day 7, Day 30, Day 90.
+Counter-strategy: [[spaced-repetition|Spaced Repetition]] — review at the point of near-forgetting to repair and strengthen memory. Optimal schedule: Day 1 (initial), Day 2, Day 7, Day 30, Day 90.
 
 ### 8. Intuition — Wrestle with Problems
 Deep understanding comes from struggling with hard problems, not memorizing solutions. Don't look at the answer too quickly — the process of fighting through confusion builds durable intuition.
@@ -109,8 +109,8 @@ As mastery approaches, move beyond copying established techniques. Experiment wi
 
 ## Connections
 
-- [[Metalearning]] — The meta-layer: learning how to learn before learning
-- [[Testing Effect]] — The cognitive science behind retrieval practice
-- [[Spaced Repetition]] — The scheduling strategy for long-term retention
-- [[Directness]] — Learning by doing the exact target skill
-- [[Feedback]] — Three levels of feedback and the ego trap
+- [[metalearning|Metalearning]] — The meta-layer: learning how to learn before learning
+- [[testing-effect|Testing Effect]] — The cognitive science behind retrieval practice
+- [[spaced-repetition|Spaced Repetition]] — The scheduling strategy for long-term retention
+- [[directness|Directness]] — Learning by doing the exact target skill
+- [[feedback|Feedback]] — Three levels of feedback and the ego trap

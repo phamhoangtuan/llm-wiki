@@ -10,7 +10,7 @@ aliases: [learning by doing, direct practice]
 
 # Directness
 
-**Directness** is the principle of learning by doing the exact thing you want to become good at. It is the third principle of [[Ultralearning]] and serves as the strategic antidote to **transfer failure** — the well-documented phenomenon where knowledge mastered in a classroom fails to apply in real-world contexts.
+**Directness** is the principle of learning by doing the exact thing you want to become good at. It is the third principle of [[ultralearning|Ultralearning]] and serves as the strategic antidote to **transfer failure** — the well-documented phenomenon where knowledge mastered in a classroom fails to apply in real-world contexts.
 
 > "The more direct the practice, the higher the transfer rate to real-world performance."
 
@@ -36,6 +36,6 @@ Aim above the required challenge level. Example: deliver a speech to an audience
 
 ## Connections
 
-- [[Ultralearning]] — Directness is Principle 3 of the methodology
-- [[Testing Effect]] — Directness ensures retrieval happens in realistic contexts, amplifying transfer
-- [[Metalearning]] — Metalearning maps the subject; Directness ensures you learn it in the right context
+- [[ultralearning|Ultralearning]] — Directness is Principle 3 of the methodology
+- [[testing-effect|Testing Effect]] — Directness ensures retrieval happens in realistic contexts, amplifying transfer
+- [[metalearning|Metalearning]] — Metalearning maps the subject; Directness ensures you learn it in the right context

@@ -64,6 +64,6 @@ Research consistently shows that spaced practice produces _superior long-term re
 
 ## Connections
 
-- [[Ultralearning]] — Retention (Principle 7) relies on spaced repetition to secure knowledge assets
-- [[Testing Effect]] — Retrieval practice is _what_ you do during review sessions; spacing determines _when_ you do them
-- [[Metalearning]] — Identifies _what_ needs to be retained; spacing schedules _when_ to reinforce it
+- [[ultralearning|Ultralearning]] — Retention (Principle 7) relies on spaced repetition to secure knowledge assets
+- [[testing-effect|Testing Effect]] — Retrieval practice is _what_ you do during review sessions; spacing determines _when_ you do them
+- [[metalearning|Metalearning]] — Identifies _what_ needs to be retained; spacing schedules _when_ to reinforce it

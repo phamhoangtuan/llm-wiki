@@ -10,7 +10,7 @@ aliases: [feedback in learning, corrective feedback]
 
 # Feedback
 
-**Feedback** in the context of skill acquisition is the information returned to a learner about their performance. In [[Ultralearning]], it is the sixth principle: the discipline of seeking accurate, task-focused signal while avoiding ego-corrupted noise.
+**Feedback** in the context of skill acquisition is the information returned to a learner about their performance. In [[ultralearning|Ultralearning]], it is the sixth principle: the discipline of seeking accurate, task-focused signal while avoiding ego-corrupted noise.
 
 > "Everybody has a plan until they get punched in the mouth." — Mike Tyson. The ultralearner doesn't dodge punches — they seek them out.
 
@@ -43,6 +43,6 @@ Comedian Chris Rock exemplifies the feedback-seeking mindset: he tests jokes ano
 
 ## Connections
 
-- [[Ultralearning]] — Feedback is Principle 6 of the methodology
-- [[Directness]] — Direct practice generates higher-quality feedback than indirect study
-- [[Testing Effect]] — Retrieval testing provides immediate feedback on what you know vs. what you think you know
+- [[ultralearning|Ultralearning]] — Feedback is Principle 6 of the methodology
+- [[directness|Directness]] — Direct practice generates higher-quality feedback than indirect study
+- [[testing-effect|Testing Effect]] — Retrieval testing provides immediate feedback on what you know vs. what you think you know

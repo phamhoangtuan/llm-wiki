@@ -457,6 +457,8 @@
     "data-ingestion",
     "data-ingestion",
     "distributed-consensus",
+    "distributed-consensus",
+    "leader-election",
     "leader-election",
     "message-delivery-semantics",
     "message-queue",
@@ -801,6 +803,7 @@
   "database-replication": [
     "cache-strategy",
     "cap-theorem",
+    "database-isolation",
     "database-sharding",
     "database-sharding",
     "distributed-consensus",
@@ -1111,6 +1114,13 @@
     "risk-driven-architecture",
     "cap-theorem-handbook"
   ],
+  "database-isolation": [
+    "database-replication",
+    "database-sharding"
+  ],
+  "snowflake-id": [
+    "database-sharding"
+  ],
   "sources/system-design-interview-xu": [
     "database-sharding"
   ],
@@ -1171,7 +1181,7 @@
     "materialized-views-quick-insights",
     "materialized-views-quick-insights"
   ],
-  "Ultralearning": [
+  "ultralearning": [
     "directness",
     "directness",
     "feedback",
@@ -1181,29 +1191,22 @@
     "spaced-repetition",
     "testing-effect"
   ],
-  "Testing Effect": [
+  "testing-effect": [
     "directness",
     "feedback",
     "metalearning",
     "spaced-repetition",
-    "spaced-repetition",
     "ultralearning",
-    "ultralearning",
-    "ultralearning-scott-young"
+    "ultralearning"
   ],
-  "Metalearning": [
+  "metalearning": [
     "directness",
     "spaced-repetition",
     "testing-effect",
     "ultralearning",
-    "ultralearning",
-    "ultralearning-scott-young"
+    "ultralearning"
   ],
   "consensus-raft-paxos-handbook": [
-    "distributed-consensus",
-    "leader-election"
-  ],
-  "Apache Kafka": [
     "distributed-consensus",
     "leader-election"
   ],
@@ -1259,11 +1262,10 @@
     "python-professional-practices",
     "python-professional-practices"
   ],
-  "Directness": [
+  "directness": [
     "feedback",
     "ultralearning",
-    "ultralearning",
-    "ultralearning-scott-young"
+    "ultralearning"
   ],
   "pytest-basics": [
     "functional-testing",
@@ -1357,13 +1359,12 @@
   "message-delivery-semantics": [
     "message-queue"
   ],
-  "Spaced Repetition": [
+  "spaced-repetition": [
     "metalearning",
     "testing-effect",
     "testing-effect",
     "ultralearning",
-    "ultralearning",
-    "ultralearning-scott-young"
+    "ultralearning"
   ],
   "sources/practical-object-oriented-design": [
     "object-oriented-design"
@@ -1459,6 +1460,10 @@
   "sources/seriously-good-software": [
     "software-quality-dimensions"
   ],
+  "Testing Effect": [
+    "spaced-repetition",
+    "ultralearning-scott-young"
+  ],
   "password-storage": [
     "sso",
     "tls-https"
@@ -1476,7 +1481,7 @@
   "sources/de-coding-technical-interview": [
     "technical-interview"
   ],
-  "Feedback": [
+  "feedback": [
     "ultralearning"
   ],
   "apache-arrow": [
@@ -1496,5 +1501,14 @@
   ],
   "ai-psychosis": [
     "meta-destroying-engineering-org-orosz"
+  ],
+  "Metalearning": [
+    "ultralearning-scott-young"
+  ],
+  "Directness": [
+    "ultralearning-scott-young"
+  ],
+  "Spaced Repetition": [
+    "ultralearning-scott-young"
   ]
 }
