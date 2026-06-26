@@ -4,6 +4,23 @@
 
 ---
 
+## [2026-06-26] lint | Post-ingest health check
+
+- Health score: 85/100
+- Fixed: 1 fully broken wikilink → `[[agentic-development-life-cycle]]` in architecture-in-agile.md
+- Fixed: 27 title-style wikilinks → slug-style across 4 new concept pages (architecture sub-wiki)
+- Noted: ~29 title-style wikilinks remain in ultralearning sub-wiki (6 pages) + distributed-consensus/leader-election — Obsidian-compatible but HTML-broken
+- Noted: 12 low-connectivity pages (frontmatter-only, no body wikilinks)
+- Noted: 50 index.md source links → `sources/*.html` (intentionally not generated)
+
+## [2026-06-26] ingest | Just Enough Software Architecture (George Fairbanks)
+
+- Source: Book notes on "Just Enough Software Architecture: A Risk-Driven Approach" by George Fairbanks (378 pages)
+- Created sources/just-enough-software-architecture-fairbanks.md
+- New concepts: risk-driven-architecture, architecture-hoisting, model-code-gap, architecture-in-agile
+- Updated index.md: +5 entries (4 concepts + 1 source)
+- Total pages: 190 (140 concepts + 50 sources)
+
 ## [2026-06-25] ingest | Ultralearning (Scott Young)
 
 - Source: Book notes on "Ultralearning" by Scott Young (250 pages)

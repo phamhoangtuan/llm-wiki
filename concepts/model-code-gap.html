@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model-Code Gap — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-software-architecture">Software Architecture</a> <span class="sep">/</span>
+  <span>Model-Code Gap</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Model-Code Gap</h1>
+  <div class="page-meta"><span>Source: just-enough-software-architecture-fairbanks</span><span>Updated: 2026-06-26</span></div>
+  <div class="page-tags"><span class="tag">software-architecture</span><span class="tag">design-intent</span><span class="tag">code-quality</span></div>
+</div>
+<div class="content-area concept">
+<p>The Model-Code Gap is the disconnect between <strong>design intent</strong> (what the architect intended) and <strong>code reality</strong> (what the code actually does). Code alone cannot express <em>why</em> a decision was made — it can only show <em>what</em> was implemented.</p>
+<h2 id="why-it-matters">Why It Matters</h2>
+<blockquote>"Code is the truth, but not the whole truth."</blockquote>
+<p>A developer reading code sees variables, loops, and function calls — the <strong>phenomena</strong>. An architect sees thread-safe locking policies, event-driven architecture, fault isolation boundaries — the <strong>strategy</strong>. The gap between these two perspectives is the source of architectural drift: as code evolves without awareness of design intent, it silently violates the architecture.</p>
+<h2 id="point-of-view-is-worth-80-iq-points">Point of View Is Worth 80 IQ Points</h2>
+<p>Alan Kay's insight applies directly to software:</p>
+<table><thead><tr>
+<th>Rookie Perspective</th>
+<th>Coach (Architect) Perspective</th>
+</tr></thead><tbody>
+<tr>
+<td>Sees raw phenomena: variables, loops, function calls</td>
+<td>Sees strategy: concurrency policies, communication patterns, isolation boundaries</td>
+</tr>
+<tr>
+<td>"This function calls that function"</td>
+<td>"This is an event-driven architecture with async message passing"</td>
+</tr>
+<tr>
+<td>Fixes symptoms</td>
+<td>Addresses root structural causes</td>
+</tr>
+</tbody></table>
+<p>The right <strong>point of view</strong> — the architectural lens — transforms how you read and write code.</p>
+<h2 id="architecturally-evident-coding">Architecturally-Evident Coding</h2>
+<p>The antidote to the model-code gap: write code so that <strong>architectural structure is visible</strong> in the codebase itself.</p>
+<p><strong>Principle</strong>: If architecture requires fault isolation via separate processes, organize modules and packages to reflect that boundary. Make it impossible for a new developer to accidentally create cross-process dependencies that violate the architecture.</p>
+<p><strong>Examples</strong>:</p>
+<ul>
+<li>Separate packages for each bounded context (DDD alignment)</li>
+<li>Directory structure that mirrors architectural layers (presentation, domain, data)</li>
+<li>Explicit interfaces at module boundaries that enforce architectural rules</li>
+<li>Build system constraints that prevent forbidden dependencies</li>
+</ul>
+<h2 id="chain-of-intentionality">Chain of Intentionality</h2>
+<p>The Rackspace case study demonstrates the chain: a deliberate architectural choice (accept 15-minute stale data) traces directly to a higher-level goal (scalability to handle terabytes). Without architectural documentation, this trade-off looks like a bug. With it, it's an <strong>intentional, reasoned decision</strong>.</p>
+<p>This chain must be preserved across the model-code gap. Every "weird" implementation detail should have a traceable architectural rationale.</p>
+<h2 id="bridging-the-gap">Bridging the Gap</h2>
+<p>Strategies to minimize the model-code gap:</p>
+<ol>
+<li><strong>Architecturally-evident coding</strong> — structure reflects intent</li>
+<li><strong>Architecture Decision Records (ADRs)</strong> — document the <em>why</em> of key decisions</li>
+<li><strong>"Just enough" modeling</strong> — lightweight diagrams that explain strategy without BDUF overhead</li>
+<li><strong>Code reviews with architectural lens</strong> — reviewers check not just correctness but alignment with design intent</li>
+<li><strong>Architecture Hoisting</strong> — encode guarantees in structure so code <em>can't</em> violate them</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="architecture-hoisting|Architecture Hoisting.html">
+      <span class="connection-type related">Related</span>
+      <h4>architecture-hoisting|Architecture Hoisting</h4>
+      <p>The strongest bridge: guarantees encoded in structure so code can't drift</p>
+    </a>
+    <a class="connection-card" href="risk-driven-architecture|Risk-Driven Architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>risk-driven-architecture|Risk-Driven Architecture</h4>
+      <p>The meta-framework that determines how much modeling is "just enough"</p>
+    </a>
+    <a class="connection-card" href="software-rot|Software Rot.html">
+      <span class="connection-type related">Related</span>
+      <h4>software-rot|Software Rot</h4>
+      <p>Unchecked model-code gap accelerates code degradation</p>
+    </a>
+    <a class="connection-card" href="code-archaeology|Code Archaeology.html">
+      <span class="connection-type related">Related</span>
+      <h4>code-archaeology|Code Archaeology</h4>
+      <p>Recovering lost design intent from code alone</p>
+    </a>
+    <a class="connection-card" href="software-as-simulation|Software as Simulation.html">
+      <span class="connection-type related">Related</span>
+      <h4>software-as-simulation|Software as Simulation</h4>
+      <p>Software models reality; the gap is between the model and its implementation</p>
+    </a>
+    <a class="connection-card" href="domain-driven-design|Domain-Driven Design.html">
+      <span class="connection-type related">Related</span>
+      <h4>domain-driven-design|Domain-Driven Design</h4>
+      <p>Bounded Contexts and Ubiquitous Language as bridges between model and code</p>
+    </a>
+    <a class="connection-card" href="solid-principles|SOLID Principles.html">
+      <span class="connection-type related">Related</span>
+      <h4>solid-principles|SOLID Principles</h4>
+      <p>Principles that keep code aligned with design intent</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="middleware-pattern.html" class="prev">← Middleware Pattern</a><a href="object-oriented-design.html" class="next">Object-Oriented Design →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

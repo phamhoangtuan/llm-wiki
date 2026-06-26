@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Risk-Driven Architecture — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-software-architecture">Software Architecture</a> <span class="sep">/</span>
+  <span>Risk-Driven Architecture</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Risk-Driven Architecture</h1>
+  <div class="page-meta"><span>Source: just-enough-software-architecture-fairbanks</span><span>Updated: 2026-06-26</span></div>
+  <div class="page-tags"><span class="tag">software-architecture</span><span class="tag">risk-management</span><span class="tag">design-methodology</span></div>
+</div>
+<div class="content-area concept">
+<p>Risk-Driven Architecture is a meta-framework for deciding <strong>how much</strong> architecture to do and <strong>when to stop</strong>. Instead of prescribing a fixed amount of upfront design, it ties architectural effort directly to the risk of failure.</p>
+<h2 id="the-golden-rule-commensurate-effort">The Golden Rule: Commensurate Effort</h2>
+<blockquote>Engineering rigor must match the risk of failure.</blockquote>
+<p>This is the <strong>mailbox principle</strong>: when installing a mailbox, you don't calculate soil strain or moment forces — you just dig a hole and pour concrete. The risk of failure is low (a tilted mailbox is a minor inconvenience). When building a bridge, the solution space is narrow and consequences catastrophic — skipping calculations would be malpractice.</p>
+<table><thead><tr>
+<th>Context</th>
+<th>Architecture Rigor</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td>Low risk</td>
+<td>Minimal</td>
+<td>Family picnic website</td>
+</tr>
+<tr>
+<td>High risk</td>
+<td>High</td>
+<td>Patient monitoring system</td>
+</tr>
+</tbody></table>
+<h2 id="the-middle-path">The Middle Path</h2>
+<p>The risk-driven approach avoids both extremes:</p>
+<table><thead><tr>
+<th>BDUF (Big Design Up Front)</th>
+<th>Big Ball of Mud</th>
+<th>Just Enough Architecture</th>
+</tr></thead><tbody>
+<tr>
+<td>Design everything before code</td>
+<td>Code immediately, no architecture</td>
+<td>Design enough to reduce risk to acceptable levels</td>
+</tr>
+<tr>
+<td>Expensive, rigid, speculative</td>
+<td>Unmaintainable, chaotic</td>
+<td>Flexible, focused on real risks</td>
+</tr>
+</tbody></table>
+<h2 id="the-3-step-model">The 3-Step Model</h2>
+<pre><code>1. Identify &amp; Prioritize Risks
+   ↓
+2. Select &amp; Apply Techniques
+   ↓
+3. Evaluate Risk Reduction
+   ↓ (if risk still too high — loop back to 2)
+   STOP — permission to code</code></pre>
+<h3 id="step-1-identify-risks">Step 1: Identify Risks</h3>
+<p>Two categories — architecture only solves one:</p>
+<ul>
+<li><strong>Engineering Risks</strong> (architecture can help): "System can't handle 10,000 users", "Security breach", "Latency too high"</li>
+<li><strong>Management Risks</strong> (architecture can't solve): "Missed deadline", "Staffing shortage", "Stakeholder conflicts"</li>
+</ul>
+<h3 id="step-2-select-techniques">Step 2: Select Techniques</h3>
+<p>Match the technique to the risk using <strong>Viewtypes</strong>:</p>
+<table><thead><tr>
+<th>Risk Type</th>
+<th>Viewtype</th>
+<th>What You Model</th>
+</tr></thead><tbody>
+<tr>
+<td>Performance</td>
+<td>Runtime View</td>
+<td>Latency, throughput, bottlenecks</td>
+</tr>
+<tr>
+<td>Maintainability</td>
+<td>Module View</td>
+<td>Dependencies, coupling, cohesion</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>Allocation View</td>
+<td>Code-to-hardware mapping, scaling</td>
+</tr>
+</tbody></table>
+<p>Architecture is an <strong>orthogonal concern</strong> to functionality — the same function can be implemented with different architectures depending on risk profile. The Rackspace case study demonstrates this: three generations of email log search (same "what"), three different architectures (different "how") driven by changing risk priorities (speed → accessibility → scalability).</p>
+<h3 id="step-3-evaluate-reduction">Step 3: Evaluate Reduction</h3>
+<p>Ask: <strong>"Is the risk low enough to code?"</strong></p>
+<p>This is the <strong>termination condition</strong> — the permission to stop doing architecture and start building. If risk is still too high, loop back to Step 2 with a different or deeper technique.</p>
+<h2 id="architecture-as-macroscopic-design">Architecture as Macroscopic Design</h2>
+<p>Architecture is the <strong>macroscopic design</strong> of the system — the set of structures (elements, relationships, properties) that let us reason about the system as a <strong>whole</strong>. To manage complexity that outpaces human cognition, architects wield three invisible weapons:</p>
+<ol>
+<li><strong>Partitioning</strong> — break large problems into encapsulated, manageable pieces</li>
+<li><strong>Knowledge</strong> — leverage existing patterns and experience for recurring problems</li>
+<li><strong>Abstraction</strong> — hide irrelevant detail to expose the essence</li>
+</ol>
+<h2 id="when-to-apply">When to Apply</h2>
+<p>Use risk-driven architecture when:</p>
+<ul>
+<li>Starting a new project of uncertain scope</li>
+<li>Adding features to an existing system with unknown scalability impact</li>
+<li>Deciding between architectural alternatives with different risk profiles</li>
+<li>Avoiding analysis paralysis — the termination condition provides explicit permission to stop</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="architecture-hoisting|Architecture Hoisting.html">
+      <span class="connection-type related">Related</span>
+      <h4>architecture-hoisting|Architecture Hoisting</h4>
+      <p>Shifting quality guarantees from manual code to structural constraints</p>
+    </a>
+    <a class="connection-card" href="model-code-gap|Model-Code Gap.html">
+      <span class="connection-type related">Related</span>
+      <h4>model-code-gap|Model-Code Gap</h4>
+      <p>Why code alone can't express design intent; rookie vs coach perspective</p>
+    </a>
+    <a class="connection-card" href="architecture-in-agile|Architecture in Agile.html">
+      <span class="connection-type related">Related</span>
+      <h4>architecture-in-agile|Architecture in Agile</h4>
+      <p>Applying risk-driven thinking in iterative development</p>
+    </a>
+    <a class="connection-card" href="essential-accidental-complexity|Essential vs Accidental Complexity.html">
+      <span class="connection-type related">Related</span>
+      <h4>essential-accidental-complexity|Essential vs Accidental Complexity</h4>
+      <p>The complexity that architecture must manage</p>
+    </a>
+    <a class="connection-card" href="software-quality-dimensions|Software Quality Dimensions.html">
+      <span class="connection-type related">Related</span>
+      <h4>software-quality-dimensions|Software Quality Dimensions</h4>
+      <p>Quality attributes are the risks that architecture addresses</p>
+    </a>
+    <a class="connection-card" href="cap-theorem|CAP Theorem.html">
+      <span class="connection-type related">Related</span>
+      <h4>cap-theorem|CAP Theorem</h4>
+      <p>Example of a risk-driven trade-off: pick 2 of 3</p>
+    </a>
+    <a class="connection-card" href="system-design-interview|System Design Interview.html">
+      <span class="connection-type related">Related</span>
+      <h4>system-design-interview|System Design Interview</h4>
+      <p>Risk-driven thinking under interview constraints</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="rich-domain-model.html" class="prev">← Rich Domain Model</a><a href="scalable-architecture.html" class="next">Scalable Architecture →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

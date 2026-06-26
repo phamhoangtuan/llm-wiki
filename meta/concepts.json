@@ -203,6 +203,29 @@
         "web"
       ]
     },
+    "architecture-hoisting": {
+      "title": "Architecture Hoisting",
+      "category": "Software Design",
+      "url": "concepts/architecture-hoisting.html",
+      "definition": "Architecture Hoisting is the strategy of **shifting quality attribute guarantees from manual developer discipline to structural system constraints**. Instead of relying on every developer to follow ru",
+      "tags": [
+        "software-architecture",
+        "quality-attributes",
+        "design-patterns"
+      ]
+    },
+    "architecture-in-agile": {
+      "title": "Architecture in Agile",
+      "category": "Meta",
+      "url": "concepts/architecture-in-agile.html",
+      "definition": "Architecture in Agile reconciles the perceived tension between upfront design and iterative development. Architecture is not Agile's enemy — it's the **skeleton that makes agility possible**. Without ",
+      "tags": [
+        "software-architecture",
+        "agile",
+        "project-management",
+        "methodology"
+      ]
+    },
     "bijection": {
       "title": "Bijection",
       "category": "System Architecture",
@@ -1072,6 +1095,17 @@
         "design-patterns"
       ]
     },
+    "model-code-gap": {
+      "title": "Model-Code Gap",
+      "category": "Meta",
+      "url": "concepts/model-code-gap.html",
+      "definition": "The Model-Code Gap is the disconnect between **design intent** (what the architect intended) and **code reality** (what the code actually does). Code alone cannot express *why* a decision was made — i",
+      "tags": [
+        "software-architecture",
+        "design-intent",
+        "code-quality"
+      ]
+    },
     "object-oriented-design": {
       "title": "Object-Oriented Design",
       "category": "Software Design",
@@ -1352,6 +1386,17 @@
         "oop",
         "architecture",
         "domain-driven-design"
+      ]
+    },
+    "risk-driven-architecture": {
+      "title": "Risk-Driven Architecture",
+      "category": "Meta",
+      "url": "concepts/risk-driven-architecture.html",
+      "definition": "Risk-Driven Architecture is a meta-framework for deciding **how much** architecture to do and **when to stop**. Instead of prescribing a fixed amount of upfront design, it ties architectural effort di",
+      "tags": [
+        "software-architecture",
+        "risk-management",
+        "design-methodology"
       ]
     },
     "scalable-architecture": {

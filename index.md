@@ -100,6 +100,10 @@
 - [Staff Engineering](concepts/staff-engineering.html) — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
 - [Apache Spark](concepts/apache-spark.html) — Distributed data processing engine; internals, shuffle optimization, join strategies, data skew mitigation
 - [API Architectural Styles](concepts/api-architectural-styles.html) — Four major API styles (REST, GraphQL, gRPC, SOAP) — choosing the right paradigm for the use case
+- [Architecture Hoisting](concepts/architecture-hoisting.html) — Shifting quality guarantees from manual code to structural system constraints
+- [Architecture in Agile](concepts/architecture-in-agile.html) — Reconciling architecture with iterative development: Iteration Zero, risk backlog, skeleton vs straitjacket
+- [Model-Code Gap](concepts/model-code-gap.html) — The disconnect between design intent and code reality; architecturally-evident coding as antidote
+- [Risk-Driven Architecture](concepts/risk-driven-architecture.html) — Meta-framework for deciding how much architecture: Identify → Select → Evaluate, commensurate effort
 - [Case Interview](concepts/case-interview.html) — Consulting case interview methodology: MECE, Pyramid Principle, SCORE framework, 9-Step Math
 - [Python Professional Practices](concepts/python-professional-practices.html) — Transition from "code that runs" to production-grade Python via automated quality control
 - [Python Static Analysis](concepts/python-static-analysis.html) — Black + Flake8 + Mypy trifecta for automated code quality gates
@@ -181,6 +185,7 @@
 - [High Performance Spark](sources/high-performance-spark.html) — Karau & Warren's 356-page optimization guide: shuffles, joins, skew, Catalyst, Tungsten
 - [The 1%: Conquer Your Consulting Case Interview](sources/the-1-percent-case-interview.html) — Smeritschnig's 294-page insider's guide: MECE, SCORE, Pyramid Principle
 - [Intuitive Python](sources/intuitive-python.html) — David Muller's 137-page guide to professional Python: static analysis, PDB debugging, standard library, concurrency
+- [Just Enough Software Architecture](sources/just-enough-software-architecture-fairbanks.html) — George Fairbanks' 378-page book on risk-driven architecture: commensurate effort, 3-step model, hoisting, model-code gap
 - [Learning Domain-Driven Design](sources/learning-domain-driven-design.html) — Vlad Khononov's 340-page guide to strategic DDD: subdomain classification, Ubiquitous Language, Bounded Contexts
 - [A Practical Guide to Becoming an AI-Native Engineer](sources/practical-guide-ai-native-engineer.html) — Shah Rahman (Meta) on AI-native engineering: orchestrator model, context engineering, ADLC, security guardrails
 - [In 2026 The Data Fundamentals Matter More Than Ever](sources/data-fundamentals-matter-2026.html) — SeattleDataGuy: SQL/Python/data modeling still critical, glue skills, messy data reality
@@ -202,5 +207,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-25*
-*Pages: 185 (136 concepts + 49 sources)*
+*Last updated: 2026-06-26*
+*Pages: 190 (140 concepts + 50 sources)*

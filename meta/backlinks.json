@@ -115,6 +115,7 @@
     "agent-loop",
     "ai-native-engineering",
     "ai-psychosis",
+    "architecture-in-agile",
     "harness-engineering",
     "specification-driven-development",
     "specification-driven-development",
@@ -126,6 +127,7 @@
     "agent-loop",
     "agent-quality-optimization",
     "agent-verification",
+    "architecture-hoisting",
     "bijection",
     "bijection",
     "code-quality-pillars",
@@ -220,10 +222,12 @@
   ],
   "software-rot": [
     "ai-psychosis",
+    "architecture-in-agile",
     "code-archaeology",
     "code-quality-pillars",
     "complexity-metrics",
     "essential-accidental-complexity",
+    "model-code-gap",
     "refactoring-at-scale"
   ],
   "dbt": [
@@ -624,6 +628,7 @@
     "message-delivery-semantics",
     "orchestration-vs-choreography",
     "redis",
+    "risk-driven-architecture",
     "scalable-architecture",
     "snowflake-id",
     "technical-interview",
@@ -634,6 +639,80 @@
   "orchestration-vs-choreography": [
     "api-architectural-styles",
     "message-delivery-semantics"
+  ],
+  "risk-driven-architecture": [
+    "architecture-hoisting",
+    "architecture-in-agile",
+    "model-code-gap"
+  ],
+  "model-code-gap": [
+    "architecture-hoisting",
+    "architecture-in-agile",
+    "risk-driven-architecture"
+  ],
+  "software-quality-dimensions": [
+    "architecture-hoisting",
+    "code-quality-pillars",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "object-oriented-design",
+    "readability-vs-performance",
+    "risk-driven-architecture",
+    "staff-engineering",
+    "seriously-good-software"
+  ],
+  "immutability": [
+    "architecture-hoisting",
+    "bijection",
+    "code-quality-pillars",
+    "dependency-injection",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "python-standard-library",
+    "rich-domain-model",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "tell-dont-ask",
+    "contieri-clean-code-cookbook"
+  ],
+  "dependency-injection": [
+    "architecture-hoisting",
+    "code-quality-pillars",
+    "composition-root",
+    "composition-root",
+    "composition-root",
+    "go-http-handlers",
+    "go-web-ecosystem",
+    "object-oriented-design",
+    "pytest-fixtures",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "testing-strategy"
+  ],
+  "Model-Code Gap": [
+    "architecture-in-agile"
+  ],
+  "architecture-hoisting": [
+    "architecture-in-agile",
+    "model-code-gap",
+    "risk-driven-architecture"
+  ],
+  "refactoring-at-scale": [
+    "architecture-in-agile",
+    "code-archaeology",
+    "code-quality-pillars",
+    "complexity-metrics",
+    "complexity-metrics",
+    "essential-accidental-complexity",
+    "software-rot",
+    "software-rot"
+  ],
+  "domain-driven-design": [
+    "architecture-in-agile",
+    "model-code-gap",
+    "learning-domain-driven-design"
   ],
   "rich-domain-model": [
     "bijection",
@@ -647,20 +726,6 @@
     "solid-principles",
     "solid-principles",
     "technological-centaur",
-    "contieri-clean-code-cookbook"
-  ],
-  "immutability": [
-    "bijection",
-    "code-quality-pillars",
-    "dependency-injection",
-    "essential-accidental-complexity",
-    "fail-fast",
-    "python-standard-library",
-    "rich-domain-model",
-    "software-quality-dimensions",
-    "solid-principles",
-    "solid-principles",
-    "tell-dont-ask",
     "contieri-clean-code-cookbook"
   ],
   "mapper-principles": [
@@ -847,15 +912,6 @@
     "software-rot",
     "software-rot"
   ],
-  "refactoring-at-scale": [
-    "code-archaeology",
-    "code-quality-pillars",
-    "complexity-metrics",
-    "complexity-metrics",
-    "essential-accidental-complexity",
-    "software-rot",
-    "software-rot"
-  ],
   "essential-accidental-complexity": [
     "code-archaeology",
     "code-quality-pillars",
@@ -864,6 +920,7 @@
     "immutability",
     "readability-vs-performance",
     "refactoring-at-scale",
+    "risk-driven-architecture",
     "software-quality-dimensions",
     "software-rot"
   ],
@@ -898,25 +955,12 @@
     "technological-centaur",
     "contieri-clean-code-cookbook"
   ],
-  "dependency-injection": [
-    "code-quality-pillars",
-    "composition-root",
-    "composition-root",
-    "composition-root",
-    "go-http-handlers",
-    "go-web-ecosystem",
-    "object-oriented-design",
-    "pytest-fixtures",
-    "software-quality-dimensions",
-    "solid-principles",
-    "solid-principles",
-    "testing-strategy"
-  ],
   "solid-principles": [
     "code-quality-pillars",
     "composition-root",
     "dependency-injection",
     "dependency-injection",
+    "model-code-gap",
     "object-oriented-design",
     "dependency-injection-principles-patterns",
     "practical-object-oriented-design"
@@ -930,15 +974,6 @@
     "solid-principles",
     "solid-principles",
     "contieri-clean-code-cookbook"
-  ],
-  "software-quality-dimensions": [
-    "code-quality-pillars",
-    "essential-accidental-complexity",
-    "fail-fast",
-    "object-oriented-design",
-    "readability-vs-performance",
-    "staff-engineering",
-    "seriously-good-software"
   ],
   "object-oriented-design": [
     "code-quality-pillars",
@@ -1073,6 +1108,7 @@
     "database-isolation",
     "distributed-consensus",
     "leader-election",
+    "risk-driven-architecture",
     "cap-theorem-handbook"
   ],
   "sources/system-design-interview-xu": [
@@ -1178,6 +1214,7 @@
   "software-as-simulation": [
     "domain-driven-design",
     "mapper-principles",
+    "model-code-gap",
     "readability-vs-performance",
     "technological-centaur",
     "contieri-clean-code-cookbook"
@@ -1204,6 +1241,7 @@
   ],
   "code-archaeology": [
     "essential-accidental-complexity",
+    "model-code-gap",
     "refactoring-at-scale",
     "software-rot"
   ],
@@ -1412,6 +1450,9 @@
     "python-professional-practices",
     "readability-vs-performance"
   ],
+  "architecture-in-agile": [
+    "risk-driven-architecture"
+  ],
   "sources/semantic-layers-for-ai": [
     "semantic-layer"
   ],
@@ -1452,9 +1493,6 @@
   ],
   "data-quality-monitoring": [
     "data-quality-traffic-lights-sahlin"
-  ],
-  "domain-driven-design": [
-    "learning-domain-driven-design"
   ],
   "ai-psychosis": [
     "meta-destroying-engineering-org-orosz"
