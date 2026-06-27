@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Synthetic Data — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-privacy">Data Privacy</a> <span class="sep">/</span>
+  <span>Synthetic Data</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Synthetic Data</h1>
+  <div class="page-meta"><span>Source: building-anonymization-pipeline</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">data-privacy</span><span class="tag">machine-learning</span><span class="tag">anonymization</span><span class="tag">testing</span><span class="tag">ai</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Synthetic Data</strong> is artificially generated data that preserves the statistical properties, distributions, and relationships of real data but contains no actual individual records. Because no real person's information exists in the dataset, re-identification risk is effectively zero — making it a powerful tool for software testing, AI training, and safe data sharing.</p>
+<h2 id="how-it-works">How It Works</h2>
+<p>Synthetic data generators learn the underlying structure of real data and produce new samples from that learned distribution:</p>
+<pre><code>Real Data → Learn Distribution → Generate Samples → Synthetic Data
+                                  (same stats,
+                                  different records)</code></pre>
+<p>Modern approaches range from statistical modeling to generative AI:</p>
+<table><thead><tr>
+<th>Generation Method</th>
+<th>How It Works</th>
+<th>Best For</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Statistical modeling</strong></td>
+<td>Fit probability distributions to each column; sample from them</td>
+<td>Tabular data with simple column relationships</td>
+</tr>
+<tr>
+<td><strong>Agent-based simulation</strong></td>
+<td>Model entities and their interactions; record outcomes</td>
+<td>Complex systems (traffic, economics, epidemiology)</td>
+</tr>
+<tr>
+<td><strong>GANs (Generative Adversarial Networks)</strong></td>
+<td>Generator creates fake data; discriminator tries to detect fakes; both improve iteratively</td>
+<td>Images, complex multi-column relationships</td>
+</tr>
+<tr>
+<td><strong>Large Language Models</strong></td>
+<td>Prompt LLMs to generate structured text data matching schema</td>
+<td>Text-heavy datasets, realistic names/addresses</td>
+</tr>
+<tr>
+<td><strong>Variational Autoencoders (VAEs)</strong></td>
+<td>Compress real data to latent space; sample and decode</td>
+<td>Continuous data, smooth interpolation between samples</td>
+</tr>
+</tbody></table>
+<h2 id="why-synthetic-data-matters">Why Synthetic Data Matters</h2>
+<h3 id="zero-re-identification-risk">Zero Re-Identification Risk</h3>
+<p>Unlike anonymized real data — which always carries residual re-identification risk — synthetic data contains no real records. Even if an attacker knows a specific person is in the original dataset, they cannot find that person in the synthetic version because no real individuals exist there.</p>
+<h3 id="key-use-cases">Key Use Cases</h3>
+<table><thead><tr>
+<th>Use Case</th>
+<th>Why Synthetic Data Wins</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Dev/Test environments</strong></td>
+<td>Realistic data without exposing production PII to developers</td>
+</tr>
+<tr>
+<td><strong>AI/ML training</strong></td>
+<td>Unlimited data generation for model training without privacy concerns</td>
+</tr>
+<tr>
+<td><strong>Vendor sharing</strong></td>
+<td>Share data-like products with external partners without legal/regulatory exposure</td>
+</tr>
+<tr>
+<td><strong>Rare event simulation</strong></td>
+<td>Generate edge cases and outliers that are scarce in real data</td>
+</tr>
+<tr>
+<td><strong>What-if analysis</strong></td>
+<td>Simulate scenarios that haven't occurred yet (fraud patterns, market crashes)</td>
+</tr>
+</tbody></table>
+<h2 id="limitations">Limitations</h2>
+<p>Synthetic data is not a universal solution:</p>
+<table><thead><tr>
+<th>Limitation</th>
+<th>Implication</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Statistical fidelity</strong></td>
+<td>Synthetic data is only as good as the generation model — biases in training data propagate</td>
+</tr>
+<tr>
+<td><strong>Rare event preservation</strong></td>
+<td>GANs and statistical models struggle to accurately represent very rare outcomes</td>
+</tr>
+<tr>
+<td><strong>Correlation fidelity</strong></td>
+<td>Complex multi-variable relationships may be lost or distorted</td>
+</tr>
+<tr>
+<td><strong>Outlier handling</strong></td>
+<td>Outliers in real data may be smoothed away or exaggerated</td>
+</tr>
+<tr>
+<td><strong>Validation difficulty</strong></td>
+<td>Hard to verify that synthetic data truly captures all relevant patterns</td>
+</tr>
+</tbody></table>
+<blockquote>Synthetic data provides absolute safety (no real records) at the cost of statistical fidelity. Acceptable when approximate patterns suffice — not when individual precision matters.</blockquote>
+<h2 id="synthetic-data-in-anonymization-pipeline">Synthetic Data in Anonymization Pipelines</h2>
+<p>In the context of <a href="data-anonymization.html" class="wiki-link">data-anonymization</a> pipelines, synthetic data serves as a <strong>complementary tool</strong>, not a replacement:</p>
+<table><thead><tr>
+<th>Scenario</th>
+<th>Approach</th>
+</tr></thead><tbody>
+<tr>
+<td>Need exact individual records for analysis</td>
+<td>Traditional anonymization (generalization, suppression)</td>
+</tr>
+<tr>
+<td>Need statistical patterns for model training</td>
+<td>Synthetic data — zero risk</td>
+</tr>
+<tr>
+<td>Need both — individual precision AND privacy</td>
+<td>[[differential-privacy</td>
+<td>Differential Privacy]] — formal mathematical guarantees on real data</td>
+</tr>
+<tr>
+<td>Development and testing exclusively</td>
+<td>Synthetic data — no privacy concerns at all</td>
+</tr>
+</tbody></table>
+<h2 id="relationship-to-other-privacy-techniques">Relationship to Other Privacy Techniques</h2>
+<ul>
+<li><strong>vs <a href="data-anonymization.html" class="wiki-link">data-anonymization</a></strong>: Anonymization transforms real data (residual risk remains). Synthetic data generates new data (zero risk).</li>
+<li><strong>vs <a href="differential-privacy.html" class="wiki-link">differential-privacy</a></strong>: DP provides formal guarantees on real query results. Synthetic data provides approximate patterns with no real records.</li>
+<li><strong>Combined</strong>: A pipeline might use synthetic data for dev/test, differential privacy for published analytics, and traditional anonymization for research data sharing — each chosen for its strengths.</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-anonymization.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Data Anonymization</h4>
+      <p>synthetic data as the zero-risk tier in the anonymization toolkit</p>
+    </a>
+    <a class="connection-card" href="differential-privacy.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Differential Privacy</h4>
+      <p>different privacy model: no real data vs formal guarantees on real data</p>
+    </a>
+    <a class="connection-card" href="data-governance.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Governance</h4>
+      <p>synthetic data usage must still comply with governance policies (validation, approved use cases)</p>
+    </a>
+    <a class="connection-card" href="data-quality-monitoring.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Quality Monitoring</h4>
+      <p>synthetic data can serve as a baseline for quality comparison without exposing real data</p>
+    </a>
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Ingestion</h4>
+      <p>synthetic data generation at ingestion boundary for safe pipeline testing</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Ingestion</h4>
+      <p>Arbuckle & El Emam's coverage of emerging PETs</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="stateless-architecture.html" class="prev">← Stateless Architecture</a><a href="system-design-interview.html" class="next">System Design Interview →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

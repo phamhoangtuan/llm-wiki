@@ -8,7 +8,7 @@ sources: [bft-data-engineering-handbook]
 aliases: [BFT, Byzantine Fault Tolerant]
 ---
 
-**Byzantine Fault Tolerance (BFT)** is the property of a distributed system to maintain correct operation and reach consensus even when some of its components fail — not just by crashing, but by actively sending contradictory, incorrect, or malicious information (source: [[bft-data-engineering-handbook]]).
+**Byzantine Fault Tolerance (BFT)** is the property of a distributed system to maintain correct operation and reach consensus even when some of its components fail — not just by crashing, but by actively sending contradictory, incorrect, or malicious information (source: [[sources/bft-data-engineering-handbook]]).
 
 Unlike **Crash Fault Tolerance (CFT)** — which handles nodes that simply stop responding — BFT addresses *Byzantine failures*: hardware bit-flips, corrupted network packets, software bugs producing wrong outputs, and compromised nodes under attacker control.
 

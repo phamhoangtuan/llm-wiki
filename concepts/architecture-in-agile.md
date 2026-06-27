@@ -45,7 +45,7 @@ Risk mitigation tasks are **not optional** — they are the architecture work th
 
 ### 3. Model-Code Gap Management
 
-Iterative development amplifies the [[Model-Code Gap]] because code changes rapidly while design intent drifts. Counter-strategies:
+Iterative development amplifies the [[model-code-gap]] because code changes rapidly while design intent drifts. Counter-strategies:
 - **"Just enough" modeling** — lightweight diagrams updated alongside code, not massive upfront specs
 - **Architecturally-evident coding** — code structure reflects architectural intent
 - **Architecture reviews as part of Definition of Done** — not a separate phase

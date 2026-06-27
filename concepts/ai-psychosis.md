@@ -8,7 +8,7 @@ sources: [meta-destroying-engineering-org-orosz]
 aliases: [AI Obsession, AI Delusion, AI Hype Disorder]
 ---
 
-**AI Psychosis** is an organizational pathology where leadership becomes so fixated on AI — building it, adopting it, or optimizing for it — that they systematically destroy the engineering culture, operational reliability, and human capital that made their company successful (source: [[meta-destroying-engineering-org-orosz]]).
+**AI Psychosis** is an organizational pathology where leadership becomes so fixated on AI — building it, adopting it, or optimizing for it — that they systematically destroy the engineering culture, operational reliability, and human capital that made their company successful (source: [[sources/meta-destroying-engineering-org-orosz]]).
 
 Coined by Mitchell Hashimoto (founder of HashiCorp, creator of Ghostty), the term describes leaders who operate under an "almost absolute MTTR-is-all-you-need mentality" — believing AI agents will fix bugs so quickly and at such scale that traditional safeguards (testing, code review, resilient architecture) become obsolete.
 

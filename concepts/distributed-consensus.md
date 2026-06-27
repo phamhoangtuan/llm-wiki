@@ -8,7 +8,7 @@ sources: [consensus-raft-paxos-handbook]
 aliases: [Consensus Algorithm, Raft, Paxos, Multi-Paxos, Đồng thuận phân tán]
 ---
 
-**Distributed consensus** is the process by which multiple nodes in a network reach unanimous agreement on a value or sequence of actions, even when some nodes fail, the network partitions, or messages are delayed (source: [[consensus-raft-paxos-handbook]]).
+**Distributed consensus** is the process by which multiple nodes in a network reach unanimous agreement on a value or sequence of actions, even when some nodes fail, the network partitions, or messages are delayed (source: [[sources/consensus-raft-paxos-handbook]]).
 
 These algorithms are the heart of modern distributed databases and message queues — [[apache-kafka|Apache Kafka]], Zookeeper, etcd, MongoDB, and Cassandra all depend on consensus for data integrity. Without it, systems risk **split-brain**: two cluster halves both claiming to be leader, writing conflicting data, causing permanent corruption.
 

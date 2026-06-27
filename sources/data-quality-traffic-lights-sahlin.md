@@ -8,6 +8,8 @@ source_date: 2026-06-17
 ingested: 2026-06-17
 tags: [data-quality, data-observability, lineage, dbt, looker, anomaly-detection, data-platform]
 concepts: [data-quality-monitoring]
+created: 2026-06-17
+updated: 2026-06-17
 ---
 
 ## Summary

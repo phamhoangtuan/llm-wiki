@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Object-Oriented Design</h1>
-  <div class="page-meta"><span>Source: practical-object-oriented-design</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: practical-object-oriented-design, clean-code-principles-patterns-silen</span><span>Updated: 2026-06-27</span></div>
   <div class="page-tags"><span class="tag">oop</span><span class="tag">design-principles</span><span class="tag">maintainability</span><span class="tag">agile</span></div>
 </div>
 <div class="content-area concept">
@@ -139,6 +139,26 @@ calculate_tax(order)
 // ✅ OOP thinking: send a message
 order.tax()  → TaxCalculator receives message, responds with result</code></pre>
 <blockquote><strong>Mindset shift</strong>: Don't think about executing logic. Think about sending messages that request objects to perform their behavior.</blockquote>
+<h2 id="composition-over-inheritance">Composition Over Inheritance</h2>
+<p>Petri Silén's Clean Code book emphasizes a practical heuristic: ask "What does this object have?" rather than "What is this object?" — favoring composition (has-a) over inheritance (is-a):</p>
+<table><thead><tr>
+<th>Inheritance (Is-a)</th>
+<th>Composition (Has-a)</th>
+</tr></thead><tbody>
+<tr>
+<td>Creates rigid class hierarchies</td>
+<td>Flexible — assemble objects to create new behavior</td>
+</tr>
+<tr>
+<td>Hard to change parent without breaking children</td>
+<td>Components swappable independently</td>
+</tr>
+<tr>
+<td>Deep chains are hard to debug</td>
+<td>Flat structure, clear dependencies</td>
+</tr>
+</tbody></table>
+<p>In Python, composition is the default pragmatic choice — Protocols and abstract classes provide interface contracts without the fragility of deep class hierarchies.</p>
 <h2 id="srp-smallest-possible-useful-thing">SRP: Smallest Possible Useful Thing</h2>
 <p>The Single Responsibility Principle is the foundation. A class should do the smallest possible thing while still being useful:</p>
 <pre><code>// ❌ SRP violation: one class, three responsibilities
@@ -203,6 +223,11 @@ class OrderNotifier { send_confirmation(order) }</code></pre>
       <span class="connection-type related">Related</span>
       <h4>Dependency Injection</h4>
       <p>Sandi Metz's 334-page guide</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Dependency Injection</h4>
+      <p>Silén's emphasis on composition over inheritance in Python</p>
     </div>
   </div>
 </section>

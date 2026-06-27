@@ -3,8 +3,8 @@ title: "Data Governance"
 type: concept
 tags: [data-governance, compliance, security, metadata, data-quality]
 created: 2026-06-14
-updated: 2026-06-14
-sources: [data-lifecycle-handbook, data-engineering-handbook]
+updated: 2026-06-27
+sources: [data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline]
 aliases: [governance]
 ---
 
@@ -35,6 +35,20 @@ Without governance:
 - **Security**: Unclassified data means sensitive information may sit unprotected in dev environments.
 - **Agent Sprawl** (2026): Without governance, AI agents produce minor data inconsistencies that compound into indecision and leadership pushback — the LLM-era equivalent of dashboard sprawl.
 
+## The Five Safes Framework (Privacy Governance)
+
+For data anonymization specifically, the Five Safes framework from Arbuckle & El Emam provides a holistic governance model (source: [[sources/building-anonymization-pipeline]]):
+
+| Safe | Question |
+|---|---|
+| **Safe Projects** | Is this project legal and ethical? |
+| **Safe People** | Who receives the data — what's their motivation and re-identification capability? |
+| **Safe Settings** | Is the sharing environment technically secured? |
+| **Safe Data** | Has identifiability been quantitatively reduced to an acceptable level? |
+| **Safe Outputs** | Could aggregate analysis results inadvertently disclose individual information? |
+
+The framework ensures governance evaluates the entire ecosystem — not just the data itself. See [[data-anonymization]] for the full anonymization workflow.
+
 ## Governance in Practice
 
 Data Engineers implement governance through:
@@ -46,6 +60,7 @@ Data Engineers implement governance through:
 ---
 
 - Core to [[data-lifecycle]] — Data Lifecycle Management operationalizes governance retention and archiving policies
+- Informs [[data-anonymization]] — Five Safes framework bridges governance policy and anonymization execution
 - Related to [[data-engineer]] — DEs implement governance automation through pipeline design and infrastructure
 - Related to [[dataops]] — DataOps applies software engineering discipline to governance enforcement
 - Related to [[data-ingestion]] — Governance classification should begin at ingestion, not as an afterthought
@@ -54,3 +69,4 @@ Data Engineers implement governance through:
 - Informed by [[data-engineering-fundamentals]] — the messy data reality (2026) makes governance more critical, not less
 - Benchmark source: [[sources/data-lifecycle-handbook]] — Data Engineering Handbook (data lifecycle)
 - Benchmark source: [[sources/data-engineering-handbook]] — Data Engineering Handbook (discipline overview)
+- Benchmark source: [[sources/building-anonymization-pipeline]] — Arbuckle & El Emam on Five Safes, ethics committees, and trust-based governance

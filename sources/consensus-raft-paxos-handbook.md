@@ -8,6 +8,8 @@ source_date: 2026-06-15
 ingested: 2026-06-21
 tags: [distributed-systems, consensus, raft, paxos, distributed-consensus, leader-election]
 concepts: [distributed-consensus, leader-election]
+created: 2026-06-21
+updated: 2026-06-21
 ---
 
 ## Summary

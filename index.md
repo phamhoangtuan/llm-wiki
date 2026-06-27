@@ -63,7 +63,7 @@
 - [Apache Kafka](concepts/apache-kafka.html) — Distributed event streaming platform; persistent log, high throughput, schema registry
 - [Apache Iceberg](concepts/apache-iceberg.html) — Open table format; V3 spec stabilized (1.11.0) with deletion vectors, table encryption, pluggable File Format API, server-side scan planning
 - [dbt (data build tool)](concepts/dbt.html) — SQL transformation framework for ELT; compute-neutral, declarative, with built-in testing and docs
-- [Analytics Engineer](concepts/analytics-engineer.html) — Bridge role between Data Engineer and Analyst; owns the transformation layer
+- [Analytics Engineer](concepts/analytics-engineer.html) — Bridge role between Data Engineer and Analyst; owns the transformation layer; AI increases demand for modeling and governance skills
 - [ELT (Extract-Load-Transform)](concepts/elt.html) — Modern data paradigm: load raw first, transform in-warehouse; dbt handles the "T"
 - [Delta Lake](concepts/delta-lake.html) — Open table format with ACID, time travel, schema enforcement; DuckDB supports reads + writes (stable)
 - [Unity Catalog](concepts/unity-catalog.html) — Open standard for data governance; Catalog Commits coordinate concurrent writes to Delta tables
@@ -95,8 +95,8 @@
 - [Object-Oriented Design](concepts/object-oriented-design.html) — Practical OO design: TRUE standard, design as discovery, messages over methods, SRP as foundation
 - [Kubernetes Operator](concepts/kubernetes-operator.html) — Control loop pattern (READ → CHANGE → UPDATE), CRDs, extension patterns, Go ecosystem for K8s-native apps
 - [Middleware Pattern](concepts/middleware-pattern.html) — Composable HTTP handler wrapping for cross-cutting concerns; Go's standard-library middleware chaining
-- [Data Engineer](concepts/data-engineer.html) — Specialized SWE role: builds data infrastructure, pipelines, and platforms; bridges SWE and DA/DS
-- [Semantic Layer](concepts/semantic-layer.html) — Unified context layer standardizing metrics and business logic for AI agents across dbt, BI, docs, and query patterns
+- [Data Engineer](concepts/data-engineer.html) — Specialized SWE role: builds data infrastructure, pipelines, and platforms; AI shifts role from writing pipelines to orchestrating AI that writes them
+- [Semantic Layer](concepts/semantic-layer.html) — Unified context layer standardizing metrics and business logic for AI agents across dbt, BI, docs, and query patterns; AE frontier in the AI era
 - [Staff Engineering](concepts/staff-engineering.html) — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
 - [Apache Spark](concepts/apache-spark.html) — Distributed data processing engine; internals, shuffle optimization, join strategies, data skew mitigation
 - [API Architectural Styles](concepts/api-architectural-styles.html) — Four major API styles (REST, GraphQL, gRPC, SOAP) — choosing the right paradigm for the use case
@@ -147,6 +147,14 @@
 - [DBFS](concepts/dbfs.html) — Databricks File System abstraction: local-feel cloud storage, ephemeral compute + durable data
 - [Databricks Platform](concepts/databricks-platform.html) — Unified Data Intelligence Platform with 4-layer architecture (infra, runtime, governance, workspace); control vs data plane separation; SQL-first strategy
 - [Ultralearning](concepts/ultralearning.html) — Aggressive self-directed skill acquisition; 9 principles, project framework, case studies (Scott Young, Nigel Richards)
+- [Data Analyst](concepts/data-analyst.html) — Business-facing role for metrics, dashboards, and ad-hoc queries; faces the biggest AI disruption — must upskill into data modeling
+- [Data Scientist](concepts/data-scientist.html) — Predictive models, ML, and statistical patterns; AI commoditizes Python coding, elevates business understanding
+- [Self-Service Analytics](concepts/self-service-analytics.html) — AI-powered direct data access for stakeholders; existential threat to analysts who don't learn data modeling
+- [Data Anonymization](concepts/data-anonymization.html) — Spectrum of identifiability; Five Safes framework, iterative measurement-and-transformation, Push/Pull/Functional pipeline architectures
+- [Differential Privacy](concepts/differential-privacy.html) — Mathematical noise injection with formal privacy guarantees; ε-budget, Laplace/Gaussian mechanisms, DP-SGD
+- [Microservices](concepts/microservices.html) — Autopilot architecture: stateless, resilient, SRP at service level; coupling reduction via encapsulation, facade pattern, DDD
+- [Shift Left Security](concepts/shift-left-security.html) — DevSecOps: embed security into every lifecycle phase; SAST, SCA, DAST, threat modeling, secure defaults
+- [Synthetic Data](concepts/synthetic-data.html) — Artificially generated data matching real statistical properties; zero re-identification risk; GANs, VAEs, statistical modeling
 
 ## Sources
 
@@ -200,6 +208,9 @@
 - [System Design: The Big Archive — Alex Xu](sources/system-design-big-archive.md) — 159-page ebook: cloud infra, containers, deployment, databases, security, performance, architecture patterns
 - [Databricks Certified DE Associate Study Guide — Derar Alhussein](sources/databricks-dea-study-guide.md) — 802-page ebook: Lakehouse architecture, 4-layer platform, control/data plane, Spark, DBFS, Unity Catalog
 - [Ultralearning — Scott Young](sources/ultralearning-scott-young.md) — Notes on "Ultralearning" by Scott Young — 250 pages; 9 principles, case studies, project execution framework
+- [How AI Changes 4 Core Data Roles](sources/how-ai-changes-4-core-data-roles.md) — Madison Mae maps how AI reshapes Data Analyst, Data Engineer, Data Scientist, and Analytics Engineer roles
+- [Clean Code Principles And Patterns](sources/clean-code-principles-patterns-silen.md) — Petri Silen's 676-page Python edition: microservices architecture, SOLID, testing pyramid, DevSecOps
+- [Building an Anonymization Pipeline](sources/building-anonymization-pipeline.md) — Arbuckle & El Emam's 167-page guide: Five Safes, differential privacy, synthetic data, pipeline architectures
 
 ## Syntheses
 
@@ -207,5 +218,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-26*
-*Pages: 190 (140 concepts + 50 sources)*
+*Last updated: 2026-06-27*
+*Pages: 202 (149 concepts + 53 sources)*

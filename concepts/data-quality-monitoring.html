@@ -35,11 +35,11 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Quality Monitoring</h1>
-  <div class="page-meta"><span>Source: data-quality-traffic-lights-sahlin</span><span>Updated: 2026-06-17</span></div>
+  <div class="page-meta"><span>Source: data-quality-traffic-lights-sahlin, building-anonymization-pipeline</span><span>Updated: 2026-06-27</span></div>
   <div class="page-tags"><span class="tag">data-quality</span><span class="tag">data-observability</span><span class="tag">lineage</span><span class="tag">monitoring</span><span class="tag">dbt</span><span class="tag">data-platform</span></div>
 </div>
 <div class="content-area concept">
-<p><strong>Data Quality Monitoring</strong> is the practice of continuously detecting, tracking, and communicating data quality incidents across a data platform — going beyond simple test failures to provide end-to-end visibility into data trustworthiness (source: <span class="wiki-link source-ref">data-quality-traffic-lights-sahlin</span>).</p>
+<p><strong>Data Quality Monitoring</strong> is the practice of continuously detecting, tracking, and communicating data quality incidents across a data platform — going beyond simple test failures to provide end-to-end visibility into data trustworthiness (source: <span class="wiki-link source-ref">sources/data-quality-traffic-lights-sahlin</span>).</p>
 <p>Unlike traditional data testing (which catches violations at build time), data quality monitoring operates continuously, tracks incident lifecycles, calculates downstream impact (blast radius), and surfaces trust signals directly where users consume data — in dashboards, catalogs, and automated systems.</p>
 <h2 id="the-three-pillars-of-data-quality-monito">The Three Pillars of Data Quality Monitoring</h2>
 <h3 id="1-detection-knowing-what-broke">1. Detection: Knowing What Broke</h3>
@@ -135,6 +135,14 @@
 <td>Data producers close/acknowledge incidents directly, decentralizing ownership</td>
 </tr>
 </tbody></table>
+<h2 id="anonymization-output-monitoring">Anonymization Output Monitoring</h2>
+<p>In anonymization pipelines (source: <span class="wiki-link source-ref">sources/building-anonymization-pipeline</span>), data quality monitoring takes on a privacy-specific dimension:</p>
+<ul>
+<li><strong>Output validation</strong>: After anonymization transformation (generalization, suppression, randomization), monitor that outputs still satisfy the identifiability threshold</li>
+<li><strong>Continuous risk assessment</strong>: Anonymization is not "set and forget" — ongoing monitoring detects when risk drifts above acceptable levels as new data arrives</li>
+<li><strong>Safe Outputs check</strong>: Verify that aggregate analysis results don't inadvertently disclose information about individuals or small groups — the fifth dimension of the Five Safes framework</li>
+</ul>
+<p>This extends traditional quality monitoring (detecting broken pipelines, missing data) to include privacy-preservation validation.</p>
 <h2 id="key-principles">Key Principles</h2>
 <ol>
 <li><strong>Actionability over accuracy</strong> — showing context (team ownership, links, descriptions) matters more than perfect detection</li>
@@ -167,9 +175,14 @@
       <h4>CI/CD for Data Pipelines</h4>
       <p>CI/CD practices that prevent quality regressions at build time; monitoring catches what CI/CD misses at runtime</p>
     </a>
+    <a class="connection-card" href="data-anonymization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Anonymization</h4>
+      <p>output validation and continuous risk monitoring are quality dimensions specific to anonymization pipelines</p>
+    </a>
   </div>
 </section>
-<nav class="pagination"><a href="data-modeling.html" class="prev">← Data Modeling</a><a href="database-isolation.html" class="next">Database Isolation Levels →</a></nav>
+<nav class="pagination"><a href="data-modeling.html" class="prev">← Data Modeling</a><a href="data-scientist.html" class="next">Data Scientist →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

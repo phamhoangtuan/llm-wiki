@@ -3,8 +3,8 @@ title: "SOLID Principles"
 type: concept
 tags: [design-principles, architecture, solid, oop, clean-code]
 created: 2026-05-31
-updated: 2026-06-15
-sources: [dependency-injection-principles-patterns, contieri-clean-code-cookbook, practical-object-oriented-design]
+updated: 2026-06-27
+sources: [dependency-injection-principles-patterns, contieri-clean-code-cookbook, practical-object-oriented-design, clean-code-principles-patterns-silen]
 ---
 
 ## Summary
@@ -108,3 +108,4 @@ SOLID is guidance, not dogma:
 - Related to [[immutability]] — readonly fields prevent accidental mutation of injected dependencies
 - Foundation for [[object-oriented-design]] — SRP anchors the TRUE framework; OCP/LSP/ISP/DIP enable practical, change-tolerant design
 - Benchmark source: [[sources/dependency-injection-principles-patterns]] — van Deursen & Seemann's definitive guide
+- Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén's Python edition emphasizes SOLID as non-negotiable at every architectural level

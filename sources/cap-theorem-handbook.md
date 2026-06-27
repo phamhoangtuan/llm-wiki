@@ -8,6 +8,8 @@ source_date: 2026-06-16
 ingested: 2026-06-17
 tags: [distributed-systems, cap-theorem, consistency, availability, partition-tolerance, architecture]
 concepts: [cap-theorem]
+created: 2026-06-17
+updated: 2026-06-17
 ---
 
 ## Summary

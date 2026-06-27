@@ -98,7 +98,8 @@
         "analytics",
         "roles",
         "dbt",
-        "data-modeling"
+        "data-modeling",
+        "ai"
       ]
     },
     "apache-arrow": {
@@ -453,6 +454,33 @@
         "knowledge-management"
       ]
     },
+    "data-analyst": {
+      "title": "Data Analyst",
+      "category": "Data Engineering",
+      "url": "concepts/data-analyst.html",
+      "definition": "A **Data Analyst** works closely with business stakeholders to define metrics and dimensions, creating dashboards, reports, and ad-hoc queries to answer business questions. They typically focus on a s",
+      "tags": [
+        "data-analytics",
+        "roles",
+        "career",
+        "bi",
+        "sql",
+        "ai"
+      ]
+    },
+    "data-anonymization": {
+      "title": "Data Anonymization",
+      "category": "Data Engineering",
+      "url": "concepts/data-anonymization.html",
+      "definition": "**Data Anonymization** is the process of transforming data to reduce the risk of re-identifying individuals while preserving analytical utility. It is fundamentally a risk management discipline — not ",
+      "tags": [
+        "data-privacy",
+        "anonymization",
+        "data-governance",
+        "data-pipeline",
+        "security"
+      ]
+    },
     "data-engineer": {
       "title": "Data Engineer",
       "category": "Data Engineering",
@@ -462,7 +490,8 @@
         "data-engineering",
         "roles",
         "career",
-        "infrastructure"
+        "infrastructure",
+        "ai"
       ]
     },
     "data-engineering-fundamentals": {
@@ -553,6 +582,21 @@
         "monitoring",
         "dbt",
         "data-platform"
+      ]
+    },
+    "data-scientist": {
+      "title": "Data Scientist",
+      "category": "AI & Agents",
+      "url": "concepts/data-scientist.html",
+      "definition": "A **Data Scientist** builds predictive and machine learning models, uncovers statistically significant patterns in large-scale datasets, and enables the business to predict future behaviors. Their sup",
+      "tags": [
+        "data-science",
+        "ml",
+        "ai",
+        "roles",
+        "career",
+        "python",
+        "statistics"
       ]
     },
     "database-isolation": {
@@ -715,6 +759,19 @@
         "distributed-systems",
         "stream-processing",
         "incremental-computation"
+      ]
+    },
+    "differential-privacy": {
+      "title": "Differential Privacy",
+      "category": "Meta",
+      "url": "concepts/differential-privacy.html",
+      "definition": "**Differential Privacy** is a mathematical framework that provides formal guarantees about individual privacy in statistical data analysis. It ensures that an attacker cannot determine whether any spe",
+      "tags": [
+        "data-privacy",
+        "anonymization",
+        "mathematics",
+        "machine-learning",
+        "security"
       ]
     },
     "directness": {
@@ -1081,6 +1138,19 @@
         "skill-acquisition"
       ]
     },
+    "microservices": {
+      "title": "Microservices",
+      "category": "System Architecture",
+      "url": "concepts/microservices.html",
+      "definition": "**Microservices** is an architectural style where an application is composed of small, independent services — each with a single responsibility, running in its own process, and communicating via light",
+      "tags": [
+        "architecture",
+        "microservices",
+        "cloud-native",
+        "distributed-systems",
+        "clean-code"
+      ]
+    },
     "middleware-pattern": {
       "title": "Middleware Pattern",
       "category": "Go & Web",
@@ -1411,6 +1481,18 @@
         "distributed-systems"
       ]
     },
+    "self-service-analytics": {
+      "title": "Self-Service Analytics",
+      "category": "Data Engineering",
+      "url": "concepts/self-service-analytics.html",
+      "definition": "**Self-Service Analytics** is the capability for non-technical business stakeholders to answer their own data questions without relying on data analysts or engineers. Traditional self-service tools (B",
+      "tags": [
+        "analytics",
+        "ai",
+        "data-democratization",
+        "bi"
+      ]
+    },
     "semantic-layer": {
       "title": "Semantic Layer",
       "category": "Data Engineering",
@@ -1422,6 +1504,19 @@
         "ai",
         "dbt",
         "metrics"
+      ]
+    },
+    "shift-left-security": {
+      "title": "Shift Left Security",
+      "category": "Go & Web",
+      "url": "concepts/shift-left-security.html",
+      "definition": "**Shift Left Security** is the practice of integrating security into every phase of the software development lifecycle — from planning through monitoring — rather than treating it as a final gate befo",
+      "tags": [
+        "security",
+        "devsecops",
+        "ci-cd",
+        "cloud-native",
+        "clean-code"
       ]
     },
     "snowflake-id": {
@@ -1542,6 +1637,19 @@
         "scalability",
         "sessions",
         "distributed-systems"
+      ]
+    },
+    "synthetic-data": {
+      "title": "Synthetic Data",
+      "category": "Testing",
+      "url": "concepts/synthetic-data.html",
+      "definition": "**Synthetic Data** is artificially generated data that preserves the statistical properties, distributions, and relationships of real data but contains no actual individual records. Because no real pe",
+      "tags": [
+        "data-privacy",
+        "machine-learning",
+        "anonymization",
+        "testing",
+        "ai"
       ]
     },
     "system-design-interview": {

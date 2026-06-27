@@ -15,6 +15,15 @@
 - Added backlinks: database-sharding.md → database-isolation, snowflake-id; database-replication.md → database-isolation, database-isolation.md → database-replication
 - All title-style wikilinks now use `[[slug|Display Name]]` format — works in both Obsidian and HTML
 
+## [2026-06-27] ingest | How AI Changes 4 Core Data Roles (Madison Mae)
+
+- Source: Article on how AI reshapes 4 data roles (Data Analyst, Data Engineer, Data Scientist, Analytics Engineer)
+- Created sources/how-ai-changes-4-core-data-roles.md
+- New concepts: data-analyst, data-scientist, self-service-analytics
+- Updated concepts: analytics-engineer (AI impact section), data-engineer (AI impact section), semantic-layer (new backlinks + sources)
+- Updated index.md: +4 entries (3 concepts + 1 source), updated 3 existing entries
+- Total pages: 195 (144 concepts + 51 sources)
+
 ## [2026-06-26] ingest | Just Enough Software Architecture (George Fairbanks)
 
 - Source: Book notes on "Just Enough Software Architecture: A Risk-Driven Approach" by George Fairbanks (378 pages)
@@ -618,3 +627,26 @@
 - Updated concepts: apache-spark (+ Databricks Runtime context, driver/worker hierarchy, data-lakehouse/databricks-platform cross-refs), delta-lake (+ Databricks Runtime role, lakehouse foundation), unity-catalog (+ governance evolution, platform architecture role)
 - Updated index.md: +3 concept entries, +1 source entry
 - Total pages: 178 (130 concepts + 48 sources)
+
+## [2026-06-27] ingest | Clean Code Principles And Patterns (Petri Silen) + Building an Anonymization Pipeline (Arbuckle & El Emam)
+
+- Source 1: "Clean Code Principles And Patterns (Python Edition)" by Petri Silen (ebook, 676 pages, finished 2026-04-28)
+- Source 2: "Building an Anonymization Pipeline: Creating Safe Data" by Luk Arbuckle & Khaled El Emam (ebook, 167 pages, finished 2026-04-29)
+- Created sources/clean-code-principles-patterns-silen.md
+- Created sources/building-anonymization-pipeline.md
+- New concepts: microservices, shift-left-security, data-anonymization, differential-privacy, synthetic-data
+- Updated concepts: solid-principles (+ source ref), object-oriented-design (+ composition over inheritance section + source ref), code-quality-pillars (+ source ref), testing-strategy (+ testing pyramid/BDD + source ref), observability (+ OpenTelemetry/SLIs/SLOs section + source ref), software-rot (+ technical debt management section + source ref), data-governance (+ Five Safes framework section + source ref), data-quality-monitoring (+ anonymization output monitoring section + source ref)
+- Updated index.md: +5 concept entries, +2 source entries
+- Total pages: 202 (149 concepts + 53 sources)
+
+## [2026-06-27] lint | Post-ingest health check + fix pass
+
+- Scanned all 202 wiki pages (149 concepts + 53 sources) across 6 lint dimensions
+- Fixed 12 broken wikilinks:
+  - **Missing `sources/` prefix (6)**: ai-psychosis, byzantine-fault-tolerance, cap-theorem, data-quality-monitoring, distributed-consensus, leader-election — inline source citations lacked `sources/` prefix
+  - **Title Case → kebab-case slug (6)**: architecture-in-agile (`[[Model-Code Gap]]` → `[[model-code-gap]]`), spaced-repetition (`[[Testing Effect]]` → `[[testing-effect]]`), ultralearning-scott-young (`[[Metalearning]]`, `[[Directness]]`, `[[Testing Effect]]`, `[[Spaced Repetition]]`)
+- Fixed 11 source files missing frontmatter fields:
+  - Added `created`/`updated` to: how-ai-changes-4-core-data-roles, just-enough-software-architecture-fairbanks, ultralearning-scott-young, databricks-dea-study-guide, system-design-big-archive, consensus-raft-paxos-handbook, new-sdlc-vibe-coding, meta-destroying-engineering-org-orosz, data-quality-traffic-lights-sahlin, cap-theorem-handbook, bft-data-engineering-handbook
+  - Added missing `url: ""` to ultralearning-scott-young
+- Verified: 0 contradictions, 0 true orphans (14 near-orphans with 1 inbound link noted), 0 gaps (all source concept refs have pages), 100% frontmatter completeness
+- HTML regenerated via convert-to-html.py

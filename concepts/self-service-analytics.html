@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Self-Service Analytics — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-analytics">Analytics</a> <span class="sep">/</span>
+  <span>Self-Service Analytics</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Self-Service Analytics</h1>
+  <div class="page-meta"><span>Source: how-ai-changes-4-core-data-roles, semantic-layers-for-ai</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">analytics</span><span class="tag">ai</span><span class="tag">data-democratization</span><span class="tag">bi</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Self-Service Analytics</strong> is the capability for non-technical business stakeholders to answer their own data questions without relying on data analysts or engineers. Traditional self-service tools (BI dashboards, natural-language query interfaces) had limited adoption, but <strong>AI agents powered by LLMs</strong> are transforming self-service from aspiration into reality — and potentially into an existential threat for data analysts who don't adapt.</p>
+<h2 id="the-evolution">The Evolution</h2>
+<table><thead><tr>
+<th>Era</th>
+<th>Self-Service Model</th>
+<th>Adoption</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>2010s</strong></td>
+<td>BI dashboards with filters, drill-downs</td>
+<td>Moderate — still needed analysts for complex questions</td>
+</tr>
+<tr>
+<td><strong>2020s</strong></td>
+<td>Natural-language BI (ThoughtSpot, Tableau Ask Data)</td>
+<td>Low — NLP often misunderstood business context</td>
+</tr>
+<tr>
+<td><strong>2026+</strong></td>
+<td><strong>AI agents + semantic layers</strong></td>
+<td>Growing fast — ~95% accuracy when data foundations exist (Anthropic benchmark)</td>
+</tr>
+</tbody></table>
+<h2 id="how-ai-changes-self-service">How AI Changes Self-Service</h2>
+<ol>
+<li><strong>Natural language is finally working</strong>: LLMs can translate "show me revenue by region for Q2" into accurate SQL when backed by a <a href="semantic-layer.html" class="wiki-link">semantic layer</a> that standardizes metric definitions.</li>
+</ol>
+<ol>
+<li><strong>Dashboards become dataset sources</strong>: Stakeholders now use dashboards to download filtered datasets for Claude rather than consuming the dashboard itself (source: <span class="wiki-link source-ref">sources/how-ai-changes-4-core-data-roles</span>). What matters is clean data, not polished visuals.</li>
+</ol>
+<ol>
+<li><strong>Governance is the gate</strong>: Without <a href="data-governance.html" class="wiki-link">data-governance</a>, AI-powered self-service produces inconsistent results — agent sprawl mirrors dashboard sprawl, compounding errors into indecision.</li>
+</ol>
+<h2 id="threat-to-data-analysts">Threat to Data Analysts</h2>
+<p>The most significant career implication is for <a href="data-analyst.html" class="wiki-link">data analysts</a>:</p>
+<ul>
+<li><strong>What gets automated</strong>: Routine query answering, dashboard updates, basic reporting</li>
+<li><strong>What remains human</strong>: Data modeling, metric definition, governance, business context translation</li>
+<li><strong>The path forward</strong>: Analysts must learn <a href="data-modeling.html" class="wiki-link">data-modeling</a> and <a href="dbt.html" class="wiki-link">dbt</a> to become <a href="analytics-engineer.html" class="wiki-link">analytics engineers</a> — the builders of the clean models that AI queries</li>
+</ul>
+<blockquote>Analysts who only answer ad-hoc questions are at risk. Analysts who build the models AI queries are indispensable.</blockquote>
+<h2 id="requirements-for-ai-powered-self-service">Requirements for AI-Powered Self-Service</h2>
+<table><thead><tr>
+<th>Component</th>
+<th>Why It's Critical</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Clean data models</strong> (<a href="data-modeling.html" class="wiki-link">data-modeling</a>)</td>
+<td>AI can only answer questions about data it can find and understand</td>
+</tr>
+<tr>
+<td><strong>Semantic layer</strong> (<a href="semantic-layer.html" class="wiki-link">semantic-layer</a>)</td>
+<td>Standardizes metric definitions so AI doesn't guess what "revenue" means</td>
+</tr>
+<tr>
+<td><strong>Data governance</strong> (<a href="data-governance.html" class="wiki-link">data-governance</a>)</td>
+<td>Prevents agent sprawl and inconsistent answers across AI tools</td>
+</tr>
+<tr>
+<td><strong>Data lineage</strong></td>
+<td>Shows where data came from — builds trust in AI-generated answers</td>
+</tr>
+<tr>
+<td><strong>Testing & validation</strong></td>
+<td>Ensures correctness; AI outputs must be verified</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-analyst.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Analyst</h4>
+      <p>analysts who only answer ad-hoc questions face replacement</p>
+    </a>
+    <a class="connection-card" href="semantic-layer.html">
+      <span class="connection-type related">Related</span>
+      <h4>Semantic Layer</h4>
+      <p>the context layer that makes AI self-service accurate</p>
+    </a>
+    <a class="connection-card" href="data-modeling.html">
+      <span class="connection-type related">Depends on</span>
+      <h4>Data Modeling</h4>
+      <p>clean, well-structured models are the foundation AI queries</p>
+    </a>
+    <a class="connection-card" href="data-governance.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Governance</h4>
+      <p>governance prevents self-service from becoming self-destruction</p>
+    </a>
+    <a class="connection-card" href="analytics-engineer.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Analytics Engineer</h4>
+      <p>Analytics Engineers build the models that enable self-service</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Analytics Engineer</h4>
+      <p>Madison Mae on the analyst-to-AE upskilling imperative</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Analytics Engineer</h4>
+      <p>Anthropic's 95% accuracy benchmark for self-service</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="scalable-architecture.html" class="prev">← Scalable Architecture</a><a href="semantic-layer.html" class="next">Semantic Layer →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

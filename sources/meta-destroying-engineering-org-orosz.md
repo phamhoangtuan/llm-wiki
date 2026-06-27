@@ -8,6 +8,8 @@ source_date: 2026-06-16
 ingested: 2026-06-17
 tags: [engineering-culture, ai, meta, leadership, cost-center, tokenmaxxing, data-labeling]
 concepts: [ai-psychosis]
+created: 2026-06-17
+updated: 2026-06-17
 ---
 
 ## Summary

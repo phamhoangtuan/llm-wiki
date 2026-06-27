@@ -1,10 +1,10 @@
 ---
 title: "Analytics Engineer"
 type: concept
-tags: [data-engineering, analytics, roles, dbt, data-modeling]
+tags: [data-engineering, analytics, roles, dbt, data-modeling, ai]
 created: 2026-05-28
-updated: 2026-06-15
-sources: [unlocking-dbt-design-deploy-transformations, data-engineering-with-dbt]
+updated: 2026-06-27
+sources: [unlocking-dbt-design-deploy-transformations, data-engineering-with-dbt, how-ai-changes-4-core-data-roles]
 ---
 
 ## Summary
@@ -64,6 +64,21 @@ With the Analytics Engineer:
 | **Best Practices** | Weeks 3-4 | Adopt 3-tier modeling, add tests for critical columns, configure docs |
 | **Collaboration** | Weeks 5-6 | Git workflow, CI/CD pipeline, PR-based code review |
 | **Scale** | Weeks 7+ | Incremental models for large tables, macros for DRY logic, performance monitoring |
+
+## How AI Is Changing the Role
+
+AI adoption is increasing demand for analytics engineering skills (source: [[sources/how-ai-changes-4-core-data-roles]]):
+
+1. **Data modeling becomes more critical**: As stakeholders query data through AI agents, clean, well-structured [[data-modeling|data models]] are the foundation that determines whether AI answers are accurate or garbage. The AE's core skill becomes more valuable, not less.
+
+2. **Data governance rises in importance**: AI agents consuming data without governance produce inconsistent answers — agent sprawl mirrors dashboard sprawl. AEs' [[data-governance|governance]] expertise is a growth area.
+
+3. **Semantic/context layers become the new frontier**: AEs must understand how both human stakeholders and AI agents consume data models, shifting focus toward building [[semantic-layer|semantic layers]] that provide unified business context.
+
+4. **Analysts will upskill into AEs**: [[data-analyst|Data analysts]] who don't learn dbt and data modeling face replacement by [[self-service-analytics]]. The analyst-to-AE transition is the key career pivot of the AI era.
+
+5. **AI tools accelerate AE work**: AEs use AI to generate dbt models, write tests, and produce documentation — but the AE still owns context, direction, and quality judgment.
+
 ---
 - Defined by [[dbt]] — the Analytics Engineer role emerged from the dbt ecosystem and tooling
 - Related to [[elt]] — Analytics Engineers own the "T" (Transform) step in the ELT pipeline

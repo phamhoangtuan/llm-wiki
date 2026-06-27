@@ -3,8 +3,8 @@ title: "Semantic Layer"
 type: concept
 tags: [data-engineering, analytics, ai, dbt, metrics]
 created: 2026-06-08
-updated: 2026-06-15
-sources: [semantic-layers-for-ai]
+updated: 2026-06-27
+sources: [semantic-layers-for-ai, how-ai-changes-4-core-data-roles]
 aliases: [context-layer, metrics-layer, semantic-context]
 ---
 
@@ -60,4 +60,8 @@ Current tools in the space:
 - Informs [[analytics-engineer]] — Analytics Engineers are the natural builders and maintainers of semantic layers
 - Enables [[dataops]] — semantic layers are a DataOps practice: version-controlled, testable, CI/CD-ready context
 - Related to [[harness-engineering]] — semantic layers are the "source of truth" harness that AI agents need for reliable answers
+- Powers [[self-service-analytics]] — semantic layers are the foundation that makes AI-powered self-service accurate
+- Built by [[analytics-engineer|Analytics Engineers]] — Madison Mae identifies semantic layers as the new frontier for AEs in the AI era
+- Related to [[data-analyst]] — analysts must understand semantic layers as AI agents become primary data consumers
 - Benchmark source: [[sources/semantic-layers-for-ai]] — Madison Mae on why semantic layers are now for AI
+- Benchmark source: [[sources/how-ai-changes-4-core-data-roles]] — Madison Mae on AEs shifting focus to context layers

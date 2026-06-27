@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shift Left Security — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-security">Security</a> <span class="sep">/</span>
+  <span>Shift Left Security</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Shift Left Security</h1>
+  <div class="page-meta"><span>Source: clean-code-principles-patterns-silen</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">security</span><span class="tag">devsecops</span><span class="tag">ci-cd</span><span class="tag">cloud-native</span><span class="tag">clean-code</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Shift Left Security</strong> is the practice of integrating security into every phase of the software development lifecycle — from planning through monitoring — rather than treating it as a final gate before deployment. The term "shift left" refers to moving security activities earlier (to the left) in the development timeline, where fixes are cheaper and faster.</p>
+<h2 id="the-devsecops-lifecycle">The DevSecOps Lifecycle</h2>
+<p>Security is embedded at every stage:</p>
+<pre><code>Plan → Code → Build → Test → Release → Deploy → Operate → Monitor
+  │      │      │       │       │         │         │         │
+  ▼      ▼      ▼       ▼       ▼         ▼         ▼         ▼
+Threat  SAST   SCA    DAST    Pen      Secure    Access    Anomaly
+Model   Lint   Dep    Fuzz   Testing   Config    Control   Detect</code></pre>
+<table><thead><tr>
+<th>Phase</th>
+<th>Security Activity</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Plan</strong></td>
+<td>Threat modeling, security requirements definition, risk assessment</td>
+</tr>
+<tr>
+<td><strong>Code</strong></td>
+<td>SAST (Static Application Security Testing), IDE security linters, secrets scanning</td>
+</tr>
+<tr>
+<td><strong>Build</strong></td>
+<td>SCA (Software Composition Analysis) for dependency vulnerabilities, image scanning</td>
+</tr>
+<tr>
+<td><strong>Test</strong></td>
+<td>DAST (Dynamic Application Security Testing), fuzz testing, security-focused integration tests</td>
+</tr>
+<tr>
+<td><strong>Release</strong></td>
+<td>Penetration testing, security sign-off, compliance validation</td>
+</tr>
+<tr>
+<td><strong>Deploy</strong></td>
+<td>Secure configuration, least-privilege IAM, network policies, TLS enforcement</td>
+</tr>
+<tr>
+<td><strong>Operate</strong></td>
+<td>Access control, audit logging, secret rotation, patch management</td>
+</tr>
+<tr>
+<td><strong>Monitor</strong></td>
+<td>Anomaly detection, intrusion detection, security event alerting</td>
+</tr>
+</tbody></table>
+<h2 id="why-shift-left">Why Shift Left?</h2>
+<table><thead><tr>
+<th>Traditional (Right-Side Security)</th>
+<th>Shift Left Security</th>
+</tr></thead><tbody>
+<tr>
+<td>Security review just before deployment</td>
+<td>Security from Day 1 of planning</td>
+</tr>
+<tr>
+<td>Fixing vulnerabilities late = expensive rewrites</td>
+<td>Catching issues early = cheap fixes</td>
+</tr>
+<tr>
+<td>Security team as gatekeeper bottleneck</td>
+<td>Security as shared responsibility across all engineers</td>
+</tr>
+<tr>
+<td>"We'll secure it later" → never happens</td>
+<td>Security is baked into the DNA of the system</td>
+</tr>
+</tbody></table>
+<blockquote>Fixing a security vulnerability found in production can cost <strong>30-100×</strong> more than catching it during code review.</blockquote>
+<h2 id="key-practices">Key Practices</h2>
+<h3 id="automated-vulnerability-scanning-in-cicd">Automated Vulnerability Scanning in CI/CD</h3>
+<ul>
+<li><strong>SAST tools</strong> scan source code for known vulnerability patterns (SQL injection, XSS, hardcoded secrets)</li>
+<li><strong>Dependency scanning</strong> checks third-party libraries against CVE databases</li>
+<li><strong>Container image scanning</strong> identifies OS-level and package vulnerabilities</li>
+<li><strong>Infrastructure as Code (IaC) scanning</strong> catches misconfigurations before deployment</li>
+</ul>
+<h3 id="threat-modeling">Threat Modeling</h3>
+<p>Before writing code, ask:</p>
+<ul>
+<li>What are we building? (system diagram)</li>
+<li>What can go wrong? (threat identification — STRIDE: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege)</li>
+<li>What are we doing about it? (mitigations)</li>
+<li>Did we do a good job? (validation)</li>
+</ul>
+<h3 id="secure-by-default">Secure by Default</h3>
+<ul>
+<li><strong>Least privilege</strong>: services get only the permissions they absolutely need</li>
+<li><strong>Secure defaults</strong>: frameworks should default to safe configurations (e.g., parameterized queries over string concatenation)</li>
+<li><strong>Defense in depth</strong>: multiple security layers so one breach doesn't compromise everything</li>
+</ul>
+<h2 id="relationship-to-other-practices">Relationship to Other Practices</h2>
+<p>Shift Left Security is not a standalone discipline — it's the security dimension of broader quality practices:</p>
+<ul>
+<li><strong><a href="testing-strategy.html" class="wiki-link">testing-strategy</a></strong>: Security testing is a pillar of non-functional testing — DAST, fuzz testing, penetration testing</li>
+<li><strong><a href="code-quality-pillars.html" class="wiki-link">code-quality-pillars</a></strong>: "Make code hard to misuse" (pillar 3) is the developer-facing expression of security-by-design</li>
+<li><strong><a href="cicd-data-pipelines.html" class="wiki-link">cicd-data-pipelines</a></strong>: CI/CD gates that enforce security rules (secret scanning, dependency checks) prevent insecure code from reaching production</li>
+<li><strong><a href="observability.html" class="wiki-link">observability</a></strong>: Security monitoring (anomaly detection, intrusion alerts) is the runtime feedback loop</li>
+<li><strong><a href="fail-fast.html" class="wiki-link">fail-fast</a></strong>: Fail fast on security violations — reject insecure configurations at build time, not runtime</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type extends">Extends</span>
+      <h4>Testing Strategy</h4>
+      <p>security testing as the non-functional testing dimension</p>
+    </a>
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Related</span>
+      <h4>Code Quality Pillars</h4>
+      <p>pillar 3 (hard to misuse) is security-by-design</p>
+    </a>
+    <a class="connection-card" href="cicd-data-pipelines.html">
+      <span class="connection-type extends">Enforced by</span>
+      <h4>CI/CD for Data Pipelines</h4>
+      <p>automated security gates in deployment pipelines</p>
+    </a>
+    <a class="connection-card" href="observability.html">
+      <span class="connection-type related">Related</span>
+      <h4>Observability</h4>
+      <p>runtime security event detection and alerting</p>
+    </a>
+    <a class="connection-card" href="fail-fast.html">
+      <span class="connection-type related">Related</span>
+      <h4>Fail Fast</h4>
+      <p>reject insecure configurations immediately, not later</p>
+    </a>
+    <a class="connection-card" href="deployment-strategies.html">
+      <span class="connection-type related">Related</span>
+      <h4>Deployment Strategies</h4>
+      <p>canary and blue-green deployments reduce security change blast radius</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Deployment Strategies</h4>
+      <p>Silén's DevSecOps chapter</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="semantic-layer.html" class="prev">← Semantic Layer</a><a href="snowflake-id.html" class="next">Snowflake ID →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

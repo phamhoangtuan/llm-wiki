@@ -3,8 +3,8 @@ title: "Code Quality Pillars"
 type: concept
 tags: [design-principles, clean-code, engineering, maintainability]
 created: 2026-06-08
-updated: 2026-06-15
-sources: [good-code-bad-code, practical-object-oriented-design]
+updated: 2026-06-27
+sources: [good-code-bad-code, practical-object-oriented-design, clean-code-principles-patterns-silen]
 aliases: [six-pillars-of-code-quality]
 ---
 
@@ -129,3 +129,4 @@ Code Change → Code Review (proofreading) → Commit → Pre-submit Checks (aut
 - Maintained by [[refactoring-at-scale]] — refactoring is the practice that preserves code quality over time against [[software-rot]]
 - Measured by [[complexity-metrics]] — quantitative quality enforcement via Halstead, Cyclomatic, NPath
 - Benchmark source: [[sources/good-code-bad-code]] — Tom Long's 338-page guide
+- Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén on uniform naming, self-documenting code, and tactical quality practices

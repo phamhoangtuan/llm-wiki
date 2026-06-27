@@ -39,7 +39,7 @@
   <div class="page-tags"><span class="tag">distributed-systems</span><span class="tag">consensus</span><span class="tag">raft</span><span class="tag">fault-tolerance</span><span class="tag">coordination</span></div>
 </div>
 <div class="content-area concept">
-<p><strong>Leader Election</strong> is the process by which a distributed system selects a single node to act as the coordinator — exclusively handling writes, assigning work, or maintaining cluster state — ensuring that even if the current leader fails, a new one is quickly and safely elected (source: <span class="wiki-link source-ref">consensus-raft-paxos-handbook</span>).</p>
+<p><strong>Leader Election</strong> is the process by which a distributed system selects a single node to act as the coordinator — exclusively handling writes, assigning work, or maintaining cluster state — ensuring that even if the current leader fails, a new one is quickly and safely elected (source: <span class="wiki-link source-ref">sources/consensus-raft-paxos-handbook</span>).</p>
 <p>Leader election is a fundamental building block of distributed consensus: both <a href="distributed-consensus.html" class="wiki-link">Raft</a> and Multi-Paxos rely on it to simplify coordination by funneling all decisions through a single node. Systems like <a href="apache-kafka.html" class="wiki-link">Apache Kafka</a>, Zookeeper, etcd, and MongoDB all embed leader election mechanisms.</p>
 <h2 id="why-leaders">Why Leaders?</h2>
 <p>Without a leader, distributed systems face two pathologies:</p>

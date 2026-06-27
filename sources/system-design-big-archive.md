@@ -8,6 +8,8 @@ source_date: 2026-06-21
 ingested: 2026-06-21
 tags: [system-design, cloud, security, performance, databases, architecture]
 concepts: [cloud-service-models, containerization, deployment-strategies, database-isolation, database-sharding, sso, password-storage, tls-https, redis, apache-kafka, orchestration-vs-choreography, api-architectural-styles, http-evolution, bloom-filter, snowflake-id, message-delivery-semantics, system-design-interview, cache-strategy, message-queue]
+created: 2026-06-21
+updated: 2026-06-21
 ---
 
 # System Design: The Big Archive

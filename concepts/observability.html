@@ -35,12 +35,19 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Observability</h1>
-  <div class="page-meta"><span>Source: system-design-interview-xu</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: system-design-interview-xu, clean-code-principles-patterns-silen</span><span>Updated: 2026-06-27</span></div>
   <div class="page-tags"><span class="tag">system-design</span><span class="tag">monitoring</span><span class="tag">metrics</span><span class="tag">reliability</span><span class="tag">devops</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
 <p>Observability is the ability to understand a system's internal state by examining its outputs — metrics, logs, and traces. In distributed systems, observability is not optional: without it, you cannot detect failures, debug issues, or make informed scaling decisions.</p>
+<h2 id="production-observability-standards">Production Observability Standards</h2>
+<p>Beyond the three pillars, production systems need standardized observability infrastructure:</p>
+<ul>
+<li><strong>OpenTelemetry</strong>: Vendor-neutral standard for collecting and exporting telemetry data — recommended by Silén as the canonical observability layer</li>
+<li><strong>SLIs/SLOs</strong> (Service Level Indicators/Objectives): Define measurable service health targets (e.g., "p99 latency < 200ms") and alert when violated</li>
+<li><strong>Automated Alerting</strong>: Anomaly detection on metrics with actionable notifications — not just dashboards that no one watches</li>
+</ul>
 <h2 id="the-three-pillars">The Three Pillars</h2>
 <table><thead><tr>
 <th>Pillar</th>
@@ -142,6 +149,16 @@
       <h4>Kubernetes Operator</h4>
       <p>production operators export Prometheus metrics, structured logs, and OpenTelemetry traces</p>
     </a>
+    <a class="connection-card" href="microservices.html">
+      <span class="connection-type related">Related</span>
+      <h4>Microservices</h4>
+      <p>distributed tracing across services is mandatory for debugging multi-service systems</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Microservices</h4>
+      <p>Silén on OpenTelemetry standardization, SLIs/SLOs, and automated alerting</p>
+    </div>
   </div>
 </section>
 <nav class="pagination"><a href="object-oriented-design.html" class="prev">← Object-Oriented Design</a><a href="orchestration-vs-choreography.html" class="next">Orchestration vs Choreography →</a></nav>

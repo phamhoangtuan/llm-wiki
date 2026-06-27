@@ -8,6 +8,8 @@ source_date: 2010
 ingested: 2026-06-26
 tags: [software-architecture, risk-management, agile, design]
 concepts: [risk-driven-architecture, architecture-hoisting, model-code-gap, architecture-in-agile]
+created: 2026-06-26
+updated: 2026-06-26
 ---
 
 # Just Enough Software Architecture: A Risk-Driven Approach

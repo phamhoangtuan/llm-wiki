@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Analyst — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-analytics">Data Analytics</a> <span class="sep">/</span>
+  <span>Data Analyst</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Data Analyst</h1>
+  <div class="page-meta"><span>Source: how-ai-changes-4-core-data-roles</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">data-analytics</span><span class="tag">roles</span><span class="tag">career</span><span class="tag">bi</span><span class="tag">sql</span><span class="tag">ai</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>A <strong>Data Analyst</strong> works closely with business stakeholders to define metrics and dimensions, creating dashboards, reports, and ad-hoc queries to answer business questions. They typically focus on a specific domain — product, growth, finance, or marketing — and their superpower is <strong>making the most of available data to get insights fast</strong>.</p>
+<h2 id="role-positioning">Role Positioning</h2>
+<table><thead><tr>
+<th>Role</th>
+<th>Focus</th>
+<th>Primary Tools</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Data Engineer</strong></td>
+<td>Infrastructure, pipeline orchestration</td>
+<td>Airflow, Kafka, Python</td>
+</tr>
+<tr>
+<td><strong>Analytics Engineer</strong></td>
+<td>Transformation layer, data modeling</td>
+<td>dbt, SQL, Git</td>
+</tr>
+<tr>
+<td><strong>Data Analyst</strong> ✅</td>
+<td>Business insights, reporting, ad-hoc analysis</td>
+<td>Looker, Tableau, Power BI, Excel, SQL</td>
+</tr>
+<tr>
+<td><strong>Data Scientist</strong></td>
+<td>Predictive models, ML, statistical patterns</td>
+<td>Python, R, ScikitLearn</td>
+</tr>
+</tbody></table>
+<p>Data analysts don't build pipelines or manage infrastructure — they work with the data already available to them. They are the closest data role to business stakeholders.</p>
+<h2 id="core-skills">Core Skills</h2>
+<table><thead><tr>
+<th>Skill</th>
+<th>Importance</th>
+<th>Role in Daily Work</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>SQL</strong></td>
+<td>5/5</td>
+<td>Primary language for ad-hoc queries and data exploration</td>
+</tr>
+<tr>
+<td><strong>Excel</strong></td>
+<td>4/5</td>
+<td>Quick analysis, pivot tables, stakeholder-friendly output</td>
+</tr>
+<tr>
+<td><strong>BI Tools</strong> (Looker, Tableau, Power BI)</td>
+<td>4/5</td>
+<td>Dashboard creation, visualization, self-service enablement</td>
+</tr>
+<tr>
+<td><strong>A/B Testing</strong></td>
+<td>3/5</td>
+<td>Experimentation design and statistical interpretation</td>
+</tr>
+<tr>
+<td><strong>Statistics</strong></td>
+<td>3/5</td>
+<td>Understanding significance, distributions, correlation</td>
+</tr>
+</tbody></table>
+<h2 id="how-ai-is-changing-the-role">How AI Is Changing the Role</h2>
+<p>The data analyst role faces the <strong>biggest disruption</strong> from AI among all data roles (source: <span class="wiki-link source-ref">sources/how-ai-changes-4-core-data-roles</span>):</p>
+<ol>
+<li><strong>Dashboards becoming dataset sources</strong>: Stakeholders increasingly use dashboards to download filtered datasets that they feed directly to Claude/AI. <em>How data is displayed</em> and <em>how metrics are calculated</em> matter less than having a clean dataset.</li>
+</ol>
+<ol>
+<li><strong>Self-service analytics threat</strong>: AI-powered self-service tools can answer business questions without analyst intermediaries. The role shifts from <em>answering questions</em> to <em>building the clean models that AI queries</em>.</li>
+</ol>
+<ol>
+<li><strong>Data modeling becomes essential</strong>: Analysts must learn <a href="data-modeling.html" class="wiki-link">data-modeling</a> — the core skill of <a href="analytics-engineer.html" class="wiki-link">analytics engineering</a> — to remain valuable. Building clean, documented, governed data models is the new analyst superpower.</li>
+</ol>
+<ol>
+<li><strong>Upskilling imperative</strong>: Without learning dbt and data modeling, analysts risk being replaced by <a href="self-service-analytics.html" class="wiki-link">self-service-analytics</a>. The path forward is analyst-to-analytics-engineer.</li>
+</ol>
+<h2 id="analyst-vs-analytics-engineer">Analyst vs Analytics Engineer</h2>
+<table><thead><tr>
+<th>Capability</th>
+<th>Data Analyst</th>
+<th>Analytics Engineer</th>
+</tr></thead><tbody>
+<tr>
+<td>Dashboard creation</td>
+<td>Primary focus</td>
+<td>Secondary</td>
+</tr>
+<tr>
+<td>Data modeling</td>
+<td>Limited</td>
+<td>Primary focus</td>
+</tr>
+<tr>
+<td>SQL complexity</td>
+<td>Moderate (queries)</td>
+<td>High (CTEs, window functions, modular models)</td>
+</tr>
+<tr>
+<td>Business proximity</td>
+<td>Very high</td>
+<td>Medium-high</td>
+</tr>
+<tr>
+<td>Technical depth</td>
+<td>Moderate</td>
+<td>High</td>
+</tr>
+<tr>
+<td>Pipeline ownership</td>
+<td>None</td>
+<td>Transformation layer</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="analytics-engineer.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Analytics Engineer</h4>
+      <p>Analytics Engineers build the models Analysts query; the boundary is blurring</p>
+    </a>
+    <a class="connection-card" href="data-modeling.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Modeling</h4>
+      <p>the critical upskill for analysts in the AI era</p>
+    </a>
+    <a class="connection-card" href="self-service-analytics.html">
+      <span class="connection-type related">Related</span>
+      <h4>Self-Service Analytics</h4>
+      <p>the AI-powered trend that analysts must adapt to or be replaced by</p>
+    </a>
+    <a class="connection-card" href="data-engineer.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Engineer</h4>
+      <p>Analysts consume the infrastructure DEs build</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineer</h4>
+      <p>Madison Mae on AI's impact on data roles</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="context-engineering.html" class="prev">← Context Engineering</a><a href="data-anonymization.html" class="next">Data Anonymization →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

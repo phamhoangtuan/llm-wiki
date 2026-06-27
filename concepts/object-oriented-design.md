@@ -3,8 +3,8 @@ title: "Object-Oriented Design"
 type: concept
 tags: [oop, design-principles, maintainability, agile]
 created: 2026-06-08
-updated: 2026-06-15
-sources: [practical-object-oriented-design]
+updated: 2026-06-27
+sources: [practical-object-oriented-design, clean-code-principles-patterns-silen]
 aliases: [pood, oo-design, practical-design]
 ---
 
@@ -70,6 +70,18 @@ order.tax()  → TaxCalculator receives message, responds with result
 
 > **Mindset shift**: Don't think about executing logic. Think about sending messages that request objects to perform their behavior.
 
+## Composition Over Inheritance
+
+Petri Silén's Clean Code book emphasizes a practical heuristic: ask "What does this object have?" rather than "What is this object?" — favoring composition (has-a) over inheritance (is-a):
+
+| Inheritance (Is-a) | Composition (Has-a) |
+|---|---|
+| Creates rigid class hierarchies | Flexible — assemble objects to create new behavior |
+| Hard to change parent without breaking children | Components swappable independently |
+| Deep chains are hard to debug | Flat structure, clear dependencies |
+
+In Python, composition is the default pragmatic choice — Protocols and abstract classes provide interface contracts without the fragility of deep class hierarchies.
+
 ## SRP: Smallest Possible Useful Thing
 
 The Single Responsibility Principle is the foundation. A class should do the smallest possible thing while still being useful:
@@ -108,3 +120,4 @@ Choosing speed over design borrows time from the future — and you pay with int
 - Related to [[rich-domain-model]] — objects encapsulate both data and behavior via message-passing
 - Related to [[dependency-injection]] — DI supplies objects their collaborators so they can send messages
 - Benchmark source: [[sources/practical-object-oriented-design]] — Sandi Metz's 334-page guide
+- Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén's emphasis on composition over inheritance in Python

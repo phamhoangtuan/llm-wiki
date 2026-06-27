@@ -4,9 +4,12 @@ type: source
 source_type: book
 author: "Scott Young"
 source_date: 2019-01-01
+url: ""
 ingested: 2026-06-25
 tags: [learning, skill-acquisition, self-improvement, career]
 concepts: [ultralearning, metalearning, spaced-repetition, testing-effect]
+created: 2026-06-25
+updated: 2026-06-25
 ---
 
 # Ultralearning
@@ -25,13 +28,13 @@ Traditional education compounds the problem — rising tuition costs, the "trans
 
 ## The Nine Principles
 
-1. **[[Metalearning]]**: Draw a map before starting. Understand how the subject is structured using the Why/What/How framework. Spend ~10% of total project time on research to prevent wasted effort.
+1. **[[metalearning]]**: Draw a map before starting. Understand how the subject is structured using the Why/What/How framework. Spend ~10% of total project time on research to prevent wasted effort.
 2. **Focus**: Overcome three obstacles to concentration — starting (procrastination → Five-Minute Rule), sustaining (distraction → remove environmental, task, and mental noise), and optimizing (match arousal level to task complexity).
-3. **[[Directness]]**: Learn by doing the exact thing you want to get good at. The antidote to transfer failure — where classroom knowledge stays "welded" to academic context. Four tactics: project-based learning, immersive learning, flight simulator method, and the overkill approach.
+3. **[[directness]]**: Learn by doing the exact thing you want to get good at. The antidote to transfer failure — where classroom knowledge stays "welded" to academic context. Four tactics: project-based learning, immersive learning, flight simulator method, and the overkill approach.
 4. **Drills**: Identify rate-determining steps (bottlenecks in skill acquisition), isolate them, drill aggressively, then re-integrate. Five archetypes: Time Slicing, Cognitive Components, Copycat, Magnifying Glass, Prerequisite Chaining. Benjamin Franklin's writing drill (prose → verse → prose) is the classic example.
-5. **Retrieval**: Testing is not measurement — it's construction. The Karpicke & Blunt study showed free recall outperforming concept mapping by 50%+ even when the final test was a concept map. Apply "desirable difficulty" — harder retrieval means deeper encoding. (See: [[Testing Effect]])
+5. **Retrieval**: Testing is not measurement — it's construction. The Karpicke & Blunt study showed free recall outperforming concept mapping by 50%+ even when the final test was a concept map. Apply "desirable difficulty" — harder retrieval means deeper encoding. (See: [[testing-effect]])
 6. **Feedback**: Three levels — Outcome (pass/fail), Informational (what's wrong), Corrective (how to fix). Avoid ego-focused "praise noise" (Kluger & DeNisi); seek task-focused signal. Chris Rock's Comedy Cellar experiments exemplify seeking pure signal in noise.
-7. **Retention**: Fight the forgetting curve via [[Spaced Repetition]]. Review at the point of near-forgetting to strengthen memory. Nigel Richards memorized a French dictionary in 9 weeks (without speaking French) and won the French Scrabble World Championship.
+7. **Retention**: Fight the forgetting curve via [[spaced-repetition]]. Review at the point of near-forgetting to strengthen memory. Nigel Richards memorized a French dictionary in 9 weeks (without speaking French) and won the French Scrabble World Championship.
 8. **Intuition**: Deep understanding comes from wrestling with hard problems, not memorizing solutions. Embrace the struggle.
 9. **Experimentation**: As you approach mastery, move beyond established methods and experiment with novel approaches.
 

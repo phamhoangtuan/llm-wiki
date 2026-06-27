@@ -3,12 +3,12 @@ title: "Data Quality Monitoring"
 type: concept
 tags: [data-quality, data-observability, lineage, monitoring, dbt, data-platform]
 created: 2026-06-17
-updated: 2026-06-17
-sources: [data-quality-traffic-lights-sahlin]
+updated: 2026-06-27
+sources: [data-quality-traffic-lights-sahlin, building-anonymization-pipeline]
 aliases: [Data Quality Health Badge, Data Quality Traffic Lights, DQ Monitoring]
 ---
 
-**Data Quality Monitoring** is the practice of continuously detecting, tracking, and communicating data quality incidents across a data platform — going beyond simple test failures to provide end-to-end visibility into data trustworthiness (source: [[data-quality-traffic-lights-sahlin]]).
+**Data Quality Monitoring** is the practice of continuously detecting, tracking, and communicating data quality incidents across a data platform — going beyond simple test failures to provide end-to-end visibility into data trustworthiness (source: [[sources/data-quality-traffic-lights-sahlin]]).
 
 Unlike traditional data testing (which catches violations at build time), data quality monitoring operates continuously, tracks incident lifecycles, calculates downstream impact (blast radius), and surfaces trust signals directly where users consume data — in dashboards, catalogs, and automated systems.
 
@@ -82,6 +82,16 @@ The incident status data becomes a foundational primitive for automated decision
 | **Data catalog** | Enrich asset metadata with health status for discovery-time awareness |
 | **Self-service incident mgmt** | Data producers close/acknowledge incidents directly, decentralizing ownership |
 
+## Anonymization Output Monitoring
+
+In anonymization pipelines (source: [[sources/building-anonymization-pipeline]]), data quality monitoring takes on a privacy-specific dimension:
+
+- **Output validation**: After anonymization transformation (generalization, suppression, randomization), monitor that outputs still satisfy the identifiability threshold
+- **Continuous risk assessment**: Anonymization is not "set and forget" — ongoing monitoring detects when risk drifts above acceptable levels as new data arrives
+- **Safe Outputs check**: Verify that aggregate analysis results don't inadvertently disclose information about individuals or small groups — the fifth dimension of the Five Safes framework
+
+This extends traditional quality monitoring (detecting broken pipelines, missing data) to include privacy-preservation validation.
+
 ## Key Principles
 
 1. **Actionability over accuracy** — showing context (team ownership, links, descriptions) matters more than perfect detection
@@ -99,3 +109,4 @@ The incident status data becomes a foundational primitive for automated decision
 - [[dbt]] — dbt's testing framework and manifest are foundational to quality monitoring infrastructure
 - [[cicd-data-pipelines]] — CI/CD practices that prevent quality regressions at build time; monitoring catches what CI/CD misses at runtime
 - Data observability — Monitoring, alerting, and lineage together form data observability; a natural next concept to formalize from this source
+- Related to [[data-anonymization]] — output validation and continuous risk monitoring are quality dimensions specific to anonymization pipelines

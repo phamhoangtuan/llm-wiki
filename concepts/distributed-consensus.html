@@ -39,7 +39,7 @@
   <div class="page-tags"><span class="tag">distributed-systems</span><span class="tag">consensus</span><span class="tag">raft</span><span class="tag">paxos</span><span class="tag">fault-tolerance</span><span class="tag">distributed-consensus</span></div>
 </div>
 <div class="content-area concept">
-<p><strong>Distributed consensus</strong> is the process by which multiple nodes in a network reach unanimous agreement on a value or sequence of actions, even when some nodes fail, the network partitions, or messages are delayed (source: <span class="wiki-link source-ref">consensus-raft-paxos-handbook</span>).</p>
+<p><strong>Distributed consensus</strong> is the process by which multiple nodes in a network reach unanimous agreement on a value or sequence of actions, even when some nodes fail, the network partitions, or messages are delayed (source: <span class="wiki-link source-ref">sources/consensus-raft-paxos-handbook</span>).</p>
 <p>These algorithms are the heart of modern distributed databases and message queues — <a href="apache-kafka.html" class="wiki-link">Apache Kafka</a>, Zookeeper, etcd, MongoDB, and Cassandra all depend on consensus for data integrity. Without it, systems risk <strong>split-brain</strong>: two cluster halves both claiming to be leader, writing conflicting data, causing permanent corruption.</p>
 <h2 id="the-consensus-problem">The Consensus Problem</h2>
 <p>A correct consensus algorithm must satisfy three properties:</p>

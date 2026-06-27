@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Software Rot</h1>
-  <div class="page-meta"><span>Source: refactoring-at-scale-lemaire</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: refactoring-at-scale-lemaire, clean-code-principles-patterns-silen</span><span>Updated: 2026-06-27</span></div>
   <div class="page-tags"><span class="tag">software-design</span><span class="tag">technical-debt</span><span class="tag">maintenance</span><span class="tag">code-quality</span></div>
 </div>
 <div class="content-area concept">
@@ -82,6 +82,13 @@
 <h2 id="the-bad-code-myth">The "Bad Code" Myth</h2>
 <blockquote>"'Bad code' is often a clever response to specific constraints of time, money, or requirements at the time it was written."</blockquote>
 <p>A 200-line function with 7 levels of nested conditionals might have been a <strong>monumental success</strong> — written in a 48-hour hackathon that saved the company. Judging it by today's standards without understanding its historical context misses the point. The question isn't "was this good code?" — it's "what has changed that makes this code no longer fit for purpose?"</p>
+<h2 id="managing-technical-debt">Managing Technical Debt</h2>
+<p>Technical debt is the practical manifestation of software rot. Silén recommends two concrete countermeasures:</p>
+<ul>
+<li><strong>Sprint refactoring allocation</strong>: Reserve fixed time in every sprint for refactoring — debt accrues interest if unmanaged, and the interest compounds.</li>
+<li><strong>Design before code</strong>: Invest in thorough design upfront. Rushing to code without design is borrowing time from the future — and you pay with interest when the codebase becomes rigid.</li>
+</ul>
+<p>These complement the broader countermeasures below.</p>
 <h2 id="countermeasures">Countermeasures</h2>
 <p>Software rot is inevitable, but its impact can be managed:</p>
 <ul>
@@ -123,6 +130,11 @@
       <span class="connection-type related">Related</span>
       <h4>Code Archaeology</h4>
       <p>Lemaire's analysis of code degradation</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Code Archaeology</h4>
+      <p>Silén on technical debt management via sprint refactoring time</p>
     </div>
   </div>
 </section>

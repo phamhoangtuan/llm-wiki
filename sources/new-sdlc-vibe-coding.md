@@ -8,6 +8,8 @@ source_date: 2026-06-20
 ingested: 2026-06-20
 tags: [ai-engineering, agents, sdlc, vibe-coding, agentic-engineering, context-engineering, harness-engineering]
 concepts: [agent-loop, agent-components, agent-verification, vibe-coding, harness-engineering, context-engineering, ai-native-engineering, agent-quality-optimization, agentic-development-life-cycle, specification-driven-development]
+created: 2026-06-20
+updated: 2026-06-20
 ---
 
 A 51-page ebook mapping the transformation of software engineering from manual coding to agentic orchestration. Written by three Google/engineering leaders, it traces the 5-stage evolution of AI coding tools (autocomplete → autonomous agents), defines the core agent architecture (5 pillars + Perceive-Plan-Act-Observe loop), and establishes the economic and engineering case for systematic harness design over ad-hoc prompting.

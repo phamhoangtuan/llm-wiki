@@ -1,10 +1,10 @@
 ---
 title: "Data Engineer"
 type: concept
-tags: [data-engineering, roles, career, infrastructure]
+tags: [data-engineering, roles, career, infrastructure, ai]
 created: 2026-06-08
-updated: 2026-06-15
-sources: [data-engineer-role-handbook, data-engineering-handbook]
+updated: 2026-06-27
+sources: [data-engineer-role-handbook, data-engineering-handbook, how-ai-changes-4-core-data-roles]
 aliases: [de, data-engineering-role]
 ---
 
@@ -105,6 +105,20 @@ Every DE system rests on four foundational capabilities:
 **Not yet, when:**
 - Data fits in a single database with acceptable query performance
 - A skilled Data Analyst with strong SQL can handle everything
+
+## How AI Is Changing the Role
+
+AI is transforming the data engineer's workflow at the implementation level (source: [[sources/how-ai-changes-4-core-data-roles]]):
+
+1. **AI builds pipelines**: AI thrives at building and applying logic to systems. Data engineers no longer write Python scripts and pipelines from scratch — AI generates them. The role shifts from *writing* to *directing and reviewing*.
+
+2. **Focus moves to complex problems**: With routine pipeline coding handled by AI, DEs focus on higher-leverage work: handling large data cost-effectively, optimizing performance at scale, and architecting systems that AI can't fully reason about.
+
+3. **AI tool proficiency is mandatory**: The new core skill is knowing how to use AI tools to do the building. DEs who can orchestrate AI agents effectively outperform those who code everything manually.
+
+4. **Foundational knowledge still required**: AI agents aren't data experts — the DE must judge whether AI-generated pipelines are correct, performant, and maintainable. The [[data-engineering-fundamentals|fundamentals]] (SQL, Python, data modeling) remain the differentiator between competent engineers and those who can't tell when AI produces garbage.
+
+This aligns with the broader [[ai-native-engineering]] shift: engineers become orchestrators of AI agents rather than manual coders.
 
 ---
 

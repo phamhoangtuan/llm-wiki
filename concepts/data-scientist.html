@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Scientist — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-science">Data Science</a> <span class="sep">/</span>
+  <span>Data Scientist</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Data Scientist</h1>
+  <div class="page-meta"><span>Source: how-ai-changes-4-core-data-roles</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">data-science</span><span class="tag">ml</span><span class="tag">ai</span><span class="tag">roles</span><span class="tag">career</span><span class="tag">python</span><span class="tag">statistics</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>A <strong>Data Scientist</strong> builds predictive and machine learning models, uncovers statistically significant patterns in large-scale datasets, and enables the business to predict future behaviors. Their superpower is <strong>uncovering hidden patterns in data</strong> and translating them into actionable models.</p>
+<h2 id="role-positioning">Role Positioning</h2>
+<table><thead><tr>
+<th>Role</th>
+<th>Focus</th>
+<th>Primary Tools</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Data Engineer</strong></td>
+<td>Infrastructure, pipeline orchestration</td>
+<td>Airflow, Kafka, Python</td>
+</tr>
+<tr>
+<td><strong>Analytics Engineer</strong></td>
+<td>Transformation layer, data modeling</td>
+<td>dbt, SQL, Git</td>
+</tr>
+<tr>
+<td><strong>Data Analyst</strong></td>
+<td>Business insights, reporting</td>
+<td>Looker, Tableau, SQL</td>
+</tr>
+<tr>
+<td><strong>Data Scientist</strong> ✅</td>
+<td>Predictive models, ML, statistical patterns</td>
+<td>Python, R, ScikitLearn, TensorFlow</td>
+</tr>
+</tbody></table>
+<p>Data scientists work cross-functionally like <a href="data-analyst.html" class="wiki-link">data analysts</a>, but their output is statistical models and predictions rather than dashboards and reports. They do deep research-style work while maintaining a focus on business value.</p>
+<h2 id="core-skills">Core Skills</h2>
+<table><thead><tr>
+<th>Skill</th>
+<th>Importance</th>
+<th>Role in Daily Work</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Python</strong></td>
+<td>5/5</td>
+<td>Primary language: NumPy, Pandas, ScikitLearn, Matplotlib, TensorFlow</td>
+</tr>
+<tr>
+<td><strong>Statistics</strong></td>
+<td>5/5</td>
+<td>Hypothesis testing, distributions, Bayesian inference, experimental design</td>
+</tr>
+<tr>
+<td><strong>Machine Learning</strong></td>
+<td>5/5</td>
+<td>Supervised/unsupervised learning, neural networks, model evaluation</td>
+</tr>
+<tr>
+<td><strong>R</strong></td>
+<td>3/5</td>
+<td>Statistical computing, visualization, academic research</td>
+</tr>
+<tr>
+<td><strong>SQL</strong></td>
+<td>2/5</td>
+<td>Data cleaning, extraction from warehouses</td>
+</tr>
+</tbody></table>
+<h2 id="how-ai-is-changing-the-role">How AI Is Changing the Role</h2>
+<p>The data scientist role is undergoing significant transformation (source: <span class="wiki-link source-ref">sources/how-ai-changes-4-core-data-roles</span>):</p>
+<ol>
+<li><strong>AI replaces technical-heavy work</strong>: AI tools can now handle much of the Python coding, feature engineering, and model selection that previously demanded sharp technical skills. Writing custom ScikitLearn pipelines from scratch is no longer the differentiator.</li>
+</ol>
+<ol>
+<li><strong>Business understanding becomes the differentiator</strong>: The new key skill is <strong>understanding the business well enough to tweak models</strong> as conditions change. Knowing <em>what</em> to model and <em>why</em> matters more than knowing <em>how</em> to code it.</li>
+</ol>
+<ol>
+<li><strong>AI tool proficiency is mandatory</strong>: Like <a href="data-engineer.html" class="wiki-link">data engineers</a>, data scientists must learn to use AI tools to accelerate development. The role shifts from <em>building models</em> to <em>directing AI to build models</em>.</li>
+</ol>
+<ol>
+<li><strong>Workflow evolution</strong>: The classic data science workflow (data cleaning → feature engineering → model training → evaluation) is increasingly mediated by AI. Human data scientists focus on problem framing, model interpretation, and business communication.</li>
+</ol>
+<h2 id="trade-offs">Trade-offs</h2>
+<table><thead><tr>
+<th>Advantage</th>
+<th>Challenge</th>
+</tr></thead><tbody>
+<tr>
+<td>High-impact, visible business value</td>
+<td>Heavy reliance on clean data from DE/AE teams</td>
+</tr>
+<tr>
+<td>Deep intellectual work</td>
+<td>Model deployment and maintenance complexity</td>
+</tr>
+<tr>
+<td>AI tools accelerate experimentation</td>
+<td>Sharp Python skills commoditized by AI</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-engineer.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineer</h4>
+      <p>and [[analytics-engineer]] — clean data and modeled datasets are prerequisites</p>
+    </a>
+    <a class="connection-card" href="data-analyst.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Analyst</h4>
+      <p>both work cross-functionally with stakeholders</p>
+    </a>
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>AI-Native Engineering</h4>
+      <p>the shift to orchestrating AI agents applies across all technical roles</p>
+    </a>
+    <a class="connection-card" href="self-service-analytics.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Self-Service Analytics</h4>
+      <p>AI-powered self-service may reduce demand for routine DS work</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Self-Service Analytics</h4>
+      <p>Madison Mae on AI's impact on data roles</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="data-quality-monitoring.html" class="prev">← Data Quality Monitoring</a><a href="database-isolation.html" class="next">Database Isolation Levels →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

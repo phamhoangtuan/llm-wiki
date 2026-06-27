@@ -8,7 +8,7 @@ sources: [cap-theorem-handbook]
 aliases: [Brewer's Theorem, Định lý CAP, CAP]
 ---
 
-**CAP Theorem** (also known as Brewer's Theorem) states that any distributed data store can provide at most two of three guarantees simultaneously: **Consistency**, **Availability**, and **Partition Tolerance** (source: [[cap-theorem-handbook]]).
+**CAP Theorem** (also known as Brewer's Theorem) states that any distributed data store can provide at most two of three guarantees simultaneously: **Consistency**, **Availability**, and **Partition Tolerance** (source: [[sources/cap-theorem-handbook]]).
 
 Formulated by Eric Brewer in 2000 and formally proven by Seth Gilbert and Nancy Lynch (MIT) in 2002, CAP is the most important architectural constraint in distributed system design.
 

@@ -8,6 +8,8 @@ source_date: 2026-06-23
 ingested: 2026-06-23
 tags: [databricks, data-engineering, lakehouse, spark, delta-lake, unity-catalog]
 concepts: [data-lakehouse, databricks-platform, dbfs, apache-spark, delta-lake, unity-catalog]
+created: 2026-06-23
+updated: 2026-06-23
 ---
 
 # Databricks Certified Data Engineer Associate Study Guide

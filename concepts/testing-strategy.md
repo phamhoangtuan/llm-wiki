@@ -3,8 +3,8 @@ title: "Testing Strategy"
 type: concept
 tags: [python, testing, strategy, architecture, tdd]
 created: 2026-05-23
-updated: 2026-06-08
-sources: [okken-python-testing-pytest, tdd-python-percival, good-code-bad-code]
+updated: 2026-06-27
+sources: [okken-python-testing-pytest, tdd-python-percival, good-code-bad-code, clean-code-principles-patterns-silen]
 ---
 
 ## Summary
@@ -38,3 +38,4 @@ A professional testing strategy focuses effort where it matters most — the API
 - Informs [[code-quality-pillars]] — pillar 6 (testable) structures testing into 3 levels: unit, integration, E2E
 - Benchmark source: [[sources/okken-python-testing-pytest]] — Okken's comprehensive pytest guide
 - Benchmark source: [[sources/tdd-python-percival]] — Percival's TDD with Django and Selenium
+- Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén on testing pyramid, BDD with Gherkin, and non-functional testing (performance, stability, security)

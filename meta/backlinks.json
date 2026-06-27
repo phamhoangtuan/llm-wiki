@@ -58,12 +58,15 @@
     "code-overload",
     "code-overload",
     "context-engineering",
+    "data-engineer",
     "data-engineering-fundamentals",
+    "data-scientist",
     "harness-engineering",
     "specification-driven-development",
     "vibe-coding",
     "vibe-coding",
     "vibe-coding",
+    "how-ai-changes-4-core-data-roles",
     "new-sdlc-vibe-coding",
     "practical-guide-ai-native-engineer",
     "practical-guide-ai-native-engineer"
@@ -139,6 +142,8 @@
     "python-professional-practices",
     "python-static-analysis",
     "refactoring-at-scale",
+    "shift-left-security",
+    "shift-left-security",
     "software-quality-dimensions",
     "solid-principles",
     "solid-principles",
@@ -167,7 +172,10 @@
     "pytest-plugins",
     "python-debugging-pdb",
     "python-static-analysis",
+    "shift-left-security",
+    "shift-left-security",
     "tdd-methodology",
+    "clean-code-principles-patterns-silen",
     "okken-python-testing-pytest",
     "tdd-python-percival",
     "tdd-python-percival"
@@ -207,7 +215,7 @@
     "specification-driven-development",
     "vibe-coding"
   ],
-  "meta-destroying-engineering-org-orosz": [
+  "sources/meta-destroying-engineering-org-orosz": [
     "ai-psychosis"
   ],
   "code-overload": [
@@ -227,8 +235,11 @@
     "code-quality-pillars",
     "complexity-metrics",
     "essential-accidental-complexity",
+    "microservices",
+    "microservices",
     "model-code-gap",
-    "refactoring-at-scale"
+    "refactoring-at-scale",
+    "clean-code-principles-patterns-silen"
   ],
   "dbt": [
     "analytics-engineer",
@@ -246,6 +257,7 @@
     "elt",
     "elt",
     "elt",
+    "self-service-analytics",
     "semantic-layer",
     "data-engineering-with-dbt",
     "unlocking-dbt-design-deploy-transformations"
@@ -269,6 +281,79 @@
     "hugo-data-ingestion-platform-flink",
     "hugo-data-ingestion-platform-flink"
   ],
+  "sources/how-ai-changes-4-core-data-roles": [
+    "analytics-engineer",
+    "data-analyst",
+    "data-analyst",
+    "data-engineer",
+    "data-scientist",
+    "data-scientist",
+    "self-service-analytics",
+    "self-service-analytics",
+    "semantic-layer"
+  ],
+  "data-modeling": [
+    "analytics-engineer",
+    "data-analyst",
+    "data-analyst",
+    "data-engineering-fundamentals",
+    "data-engineering-fundamentals",
+    "self-service-analytics",
+    "self-service-analytics",
+    "self-service-analytics",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles"
+  ],
+  "data-governance": [
+    "analytics-engineer",
+    "byzantine-fault-tolerance",
+    "cicd-data-pipelines",
+    "data-anonymization",
+    "data-lifecycle",
+    "data-lifecycle",
+    "data-modeling",
+    "data-quality-monitoring",
+    "differential-privacy",
+    "self-service-analytics",
+    "self-service-analytics",
+    "self-service-analytics",
+    "synthetic-data",
+    "building-anonymization-pipeline",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles"
+  ],
+  "semantic-layer": [
+    "analytics-engineer",
+    "data-engineer",
+    "self-service-analytics",
+    "self-service-analytics",
+    "self-service-analytics",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "semantic-layers-for-ai"
+  ],
+  "data-analyst": [
+    "analytics-engineer",
+    "data-scientist",
+    "data-scientist",
+    "self-service-analytics",
+    "self-service-analytics",
+    "semantic-layer",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles"
+  ],
+  "self-service-analytics": [
+    "analytics-engineer",
+    "data-analyst",
+    "data-analyst",
+    "data-scientist",
+    "semantic-layer",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles"
+  ],
   "elt": [
     "analytics-engineer",
     "data-engineer",
@@ -288,12 +373,14 @@
     "apache-kafka",
     "byzantine-fault-tolerance",
     "change-data-capture",
+    "data-anonymization",
     "data-engineer",
     "data-governance",
     "data-lifecycle",
     "dataops",
     "dbt",
     "elt",
+    "synthetic-data",
     "hugo-data-ingestion-platform-flink",
     "hugo-data-ingestion-platform-flink"
   ],
@@ -302,6 +389,7 @@
     "cicd-data-pipelines",
     "cicd-data-pipelines",
     "code-quality-pillars",
+    "data-anonymization",
     "data-engineer",
     "data-engineer",
     "data-engineering-fundamentals",
@@ -548,6 +636,8 @@
     "cap-theorem",
     "cdn",
     "message-delivery-semantics",
+    "microservices",
+    "microservices",
     "observability",
     "orchestration-vs-choreography",
     "scalable-architecture",
@@ -583,13 +673,19 @@
   "data-engineer": [
     "apache-spark",
     "cicd-data-pipelines",
+    "data-analyst",
     "data-engineering-fundamentals",
     "data-governance",
     "data-lifecycle",
+    "data-scientist",
+    "data-scientist",
     "data-engineer-role-handbook",
     "data-engineering-handbook",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
     "reddit-cicd-tips-data-engineering",
     "reddit-cicd-tips-data-engineering"
   ],
@@ -640,7 +736,10 @@
   ],
   "orchestration-vs-choreography": [
     "api-architectural-styles",
-    "message-delivery-semantics"
+    "message-delivery-semantics",
+    "microservices",
+    "microservices",
+    "microservices"
   ],
   "risk-driven-architecture": [
     "architecture-hoisting",
@@ -649,6 +748,7 @@
   ],
   "model-code-gap": [
     "architecture-hoisting",
+    "architecture-in-agile",
     "architecture-in-agile",
     "risk-driven-architecture"
   ],
@@ -693,9 +793,6 @@
     "solid-principles",
     "testing-strategy"
   ],
-  "Model-Code Gap": [
-    "architecture-in-agile"
-  ],
   "architecture-hoisting": [
     "architecture-in-agile",
     "model-code-gap",
@@ -713,6 +810,8 @@
   ],
   "domain-driven-design": [
     "architecture-in-agile",
+    "microservices",
+    "microservices",
     "model-code-gap",
     "learning-domain-driven-design"
   ],
@@ -764,7 +863,7 @@
     "system-design-big-archive",
     "system-design-interview-xu"
   ],
-  "bft-data-engineering-handbook": [
+  "sources/bft-data-engineering-handbook": [
     "byzantine-fault-tolerance"
   ],
   "distributed-consensus": [
@@ -773,16 +872,6 @@
     "leader-election",
     "leader-election",
     "consensus-raft-paxos-handbook"
-  ],
-  "data-governance": [
-    "byzantine-fault-tolerance",
-    "cicd-data-pipelines",
-    "data-lifecycle",
-    "data-lifecycle",
-    "data-modeling",
-    "data-quality-monitoring",
-    "data-fundamentals-matter-2026",
-    "data-fundamentals-matter-2026"
   ],
   "scalable-architecture": [
     "cache-strategy",
@@ -838,7 +927,7 @@
   "bloom-filter": [
     "cache-strategy"
   ],
-  "cap-theorem-handbook": [
+  "sources/cap-theorem-handbook": [
     "cap-theorem"
   ],
   "byzantine-fault-tolerance": [
@@ -904,7 +993,9 @@
   ],
   "containerization": [
     "cloud-service-models",
-    "deployment-strategies"
+    "deployment-strategies",
+    "microservices",
+    "microservices"
   ],
   "complexity-metrics": [
     "code-archaeology",
@@ -938,10 +1029,13 @@
     "python-static-analysis",
     "readability-vs-performance",
     "refactoring-at-scale",
+    "shift-left-security",
+    "shift-left-security",
     "software-quality-dimensions",
     "software-rot",
     "staff-engineering",
     "testing-strategy",
+    "clean-code-principles-patterns-silen",
     "good-code-bad-code"
   ],
   "sources/refactoring-at-scale-lemaire": [
@@ -963,8 +1057,10 @@
     "composition-root",
     "dependency-injection",
     "dependency-injection",
+    "microservices",
     "model-code-gap",
     "object-oriented-design",
+    "clean-code-principles-patterns-silen",
     "dependency-injection-principles-patterns",
     "practical-object-oriented-design"
   ],
@@ -984,10 +1080,21 @@
     "software-quality-dimensions",
     "solid-principles",
     "tell-dont-ask",
+    "clean-code-principles-patterns-silen",
     "practical-object-oriented-design"
   ],
   "sources/good-code-bad-code": [
     "code-quality-pillars"
+  ],
+  "sources/clean-code-principles-patterns-silen": [
+    "code-quality-pillars",
+    "microservices",
+    "object-oriented-design",
+    "observability",
+    "shift-left-security",
+    "software-rot",
+    "solid-principles",
+    "testing-strategy"
   ],
   "sources/dependency-injection-principles-patterns": [
     "composition-root",
@@ -998,7 +1105,10 @@
     "containerization"
   ],
   "deployment-strategies": [
-    "containerization"
+    "containerization",
+    "microservices",
+    "microservices",
+    "shift-left-security"
   ],
   "goroutines": [
     "containerization",
@@ -1008,7 +1118,66 @@
     "go-web-programming",
     "go-web-programming"
   ],
+  "analytics-engineer": [
+    "data-analyst",
+    "data-analyst",
+    "data-engineer",
+    "data-modeling",
+    "data-scientist",
+    "dataops",
+    "dataops",
+    "dbt",
+    "elt",
+    "self-service-analytics",
+    "self-service-analytics",
+    "semantic-layer",
+    "semantic-layer",
+    "data-engineering-with-dbt",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "unlocking-dbt-design-deploy-transformations",
+    "unlocking-dbt-design-deploy-transformations"
+  ],
+  "sources/building-anonymization-pipeline": [
+    "data-anonymization",
+    "data-anonymization",
+    "data-governance",
+    "data-governance",
+    "data-quality-monitoring",
+    "differential-privacy",
+    "differential-privacy",
+    "synthetic-data"
+  ],
+  "synthetic-data": [
+    "data-anonymization",
+    "data-anonymization",
+    "differential-privacy",
+    "building-anonymization-pipeline"
+  ],
+  "differential-privacy": [
+    "data-anonymization",
+    "data-anonymization",
+    "synthetic-data",
+    "synthetic-data",
+    "synthetic-data",
+    "building-anonymization-pipeline"
+  ],
+  "data-quality-monitoring": [
+    "data-anonymization",
+    "differential-privacy",
+    "synthetic-data",
+    "building-anonymization-pipeline",
+    "data-quality-traffic-lights-sahlin"
+  ],
+  "data-lifecycle": [
+    "data-anonymization",
+    "data-governance",
+    "data-lifecycle-handbook"
+  ],
   "data-engineering-fundamentals": [
+    "data-engineer",
     "data-engineer",
     "data-engineer",
     "data-governance",
@@ -1024,24 +1193,10 @@
     "data-governance",
     "data-quality-monitoring",
     "dataops",
+    "shift-left-security",
+    "shift-left-security",
     "reddit-cicd-tips-data-engineering",
     "reddit-cicd-tips-data-engineering"
-  ],
-  "analytics-engineer": [
-    "data-engineer",
-    "data-modeling",
-    "dataops",
-    "dataops",
-    "dbt",
-    "elt",
-    "semantic-layer",
-    "data-engineering-with-dbt",
-    "unlocking-dbt-design-deploy-transformations",
-    "unlocking-dbt-design-deploy-transformations"
-  ],
-  "semantic-layer": [
-    "data-engineer",
-    "semantic-layers-for-ai"
   ],
   "sources/data-engineer-role-handbook": [
     "data-engineer",
@@ -1053,22 +1208,24 @@
     "data-lifecycle",
     "data-modeling"
   ],
-  "data-modeling": [
-    "data-engineering-fundamentals",
-    "data-engineering-fundamentals"
-  ],
   "sources/data-fundamentals-matter-2026": [
     "data-engineering-fundamentals",
     "data-modeling"
+  ],
+  "data-anonymization": [
+    "data-governance",
+    "data-governance",
+    "data-quality-monitoring",
+    "differential-privacy",
+    "synthetic-data",
+    "synthetic-data",
+    "synthetic-data",
+    "building-anonymization-pipeline"
   ],
   "sources/data-lifecycle-handbook": [
     "data-governance",
     "data-governance",
     "data-lifecycle"
-  ],
-  "data-lifecycle": [
-    "data-governance",
-    "data-lifecycle-handbook"
   ],
   "unity-catalog": [
     "data-governance",
@@ -1098,7 +1255,7 @@
     "data-lakehouse",
     "databricks-platform"
   ],
-  "data-quality-traffic-lights-sahlin": [
+  "sources/data-quality-traffic-lights-sahlin": [
     "data-quality-monitoring"
   ],
   "database-sharding": [
@@ -1196,17 +1353,20 @@
     "feedback",
     "metalearning",
     "spaced-repetition",
+    "spaced-repetition",
     "ultralearning",
-    "ultralearning"
+    "ultralearning",
+    "ultralearning-scott-young"
   ],
   "metalearning": [
     "directness",
     "spaced-repetition",
     "testing-effect",
     "ultralearning",
-    "ultralearning"
+    "ultralearning",
+    "ultralearning-scott-young"
   ],
-  "consensus-raft-paxos-handbook": [
+  "sources/consensus-raft-paxos-handbook": [
     "distributed-consensus",
     "leader-election"
   ],
@@ -1260,12 +1420,14 @@
     "python-professional-practices",
     "python-professional-practices",
     "python-professional-practices",
-    "python-professional-practices"
+    "python-professional-practices",
+    "clean-code-principles-patterns-silen"
   ],
   "directness": [
     "feedback",
     "ultralearning",
-    "ultralearning"
+    "ultralearning",
+    "ultralearning-scott-young"
   ],
   "pytest-basics": [
     "functional-testing",
@@ -1294,6 +1456,8 @@
   ],
   "middleware-pattern": [
     "go-http-handlers",
+    "microservices",
+    "microservices",
     "go-web-programming"
   ],
   "sources/go-web-programming": [
@@ -1326,7 +1490,9 @@
     "harness-engineering"
   ],
   "api-architectural-styles": [
-    "http-evolution"
+    "http-evolution",
+    "microservices",
+    "microservices"
   ],
   "python-standard-library": [
     "immutability",
@@ -1340,8 +1506,13 @@
   "observability": [
     "kubernetes-operator",
     "message-queue",
+    "microservices",
+    "microservices",
     "scalable-architecture",
+    "shift-left-security",
+    "shift-left-security",
     "system-design-interview",
+    "clean-code-principles-patterns-silen",
     "system-design-interview-xu"
   ],
   "sources/programming-kubernetes": [
@@ -1353,6 +1524,8 @@
   "stateless-architecture": [
     "load-balancer",
     "message-queue",
+    "microservices",
+    "microservices",
     "scalable-architecture",
     "system-design-interview-xu"
   ],
@@ -1364,10 +1537,15 @@
     "testing-effect",
     "testing-effect",
     "ultralearning",
-    "ultralearning"
+    "ultralearning",
+    "ultralearning-scott-young"
   ],
   "sources/practical-object-oriented-design": [
     "object-oriented-design"
+  ],
+  "microservices": [
+    "observability",
+    "clean-code-principles-patterns-silen"
   ],
   "sso": [
     "password-storage",
@@ -1455,14 +1633,11 @@
     "risk-driven-architecture"
   ],
   "sources/semantic-layers-for-ai": [
+    "self-service-analytics",
     "semantic-layer"
   ],
   "sources/seriously-good-software": [
     "software-quality-dimensions"
-  ],
-  "Testing Effect": [
-    "spaced-repetition",
-    "ultralearning-scott-young"
   ],
   "password-storage": [
     "sso",
@@ -1496,19 +1671,14 @@
     "wiki-maintenance",
     "wiki-maintenance"
   ],
-  "data-quality-monitoring": [
-    "data-quality-traffic-lights-sahlin"
+  "shift-left-security": [
+    "clean-code-principles-patterns-silen"
+  ],
+  "data-scientist": [
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles"
   ],
   "ai-psychosis": [
     "meta-destroying-engineering-org-orosz"
-  ],
-  "Metalearning": [
-    "ultralearning-scott-young"
-  ],
-  "Directness": [
-    "ultralearning-scott-young"
-  ],
-  "Spaced Repetition": [
-    "ultralearning-scott-young"
   ]
 }

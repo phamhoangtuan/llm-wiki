@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Differential Privacy — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-privacy">Data Privacy</a> <span class="sep">/</span>
+  <span>Differential Privacy</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Differential Privacy</h1>
+  <div class="page-meta"><span>Source: building-anonymization-pipeline</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">data-privacy</span><span class="tag">anonymization</span><span class="tag">mathematics</span><span class="tag">machine-learning</span><span class="tag">security</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Differential Privacy</strong> is a mathematical framework that provides formal guarantees about individual privacy in statistical data analysis. It ensures that an attacker cannot determine whether any specific individual's data was included in the dataset used to produce a result — regardless of what other information the attacker possesses.</p>
+<h2 id="core-mechanism">Core Mechanism</h2>
+<p>Differential privacy works by injecting calibrated <strong>mathematical noise</strong> into query results:</p>
+<pre><code>Query Result = True Result + Noise(ε)</code></pre>
+<p>Where <strong>ε (epsilon)</strong> — the privacy budget — controls the trade-off between privacy and accuracy:</p>
+<table><thead><tr>
+<th>ε Value</th>
+<th>Privacy</th>
+<th>Accuracy</th>
+<th>Use Case</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Small ε</strong> (e.g., 0.1)</td>
+<td>Strong privacy guarantee</td>
+<td>Lower accuracy, more noise</td>
+<td>Sensitive census data, medical statistics</td>
+</tr>
+<tr>
+<td><strong>Large ε</strong> (e.g., 10)</td>
+<td>Weaker guarantee</td>
+<td>Higher accuracy, less noise</td>
+<td>Approximate analytics, non-sensitive aggregates</td>
+</tr>
+</tbody></table>
+<h2 id="why-differential-privacy-matters">Why Differential Privacy Matters</h2>
+<p>Traditional anonymization techniques (generalization, suppression, k-anonymity) have known weaknesses:</p>
+<ul>
+<li><strong>Linkage attacks</strong>: combining anonymized data with external datasets can re-identify individuals</li>
+<li><strong>Composition attacks</strong>: running multiple queries on the same anonymized dataset can cumulatively reveal information</li>
+<li><strong>Auxiliary information</strong>: attackers with side knowledge (e.g., knowing a specific person is in the dataset) can narrow down records</li>
+</ul>
+<p>Differential privacy addresses these by providing a <strong>provable mathematical guarantee</strong>: the output of a differentially private mechanism is nearly the same whether or not any individual's data is included. No amount of external data or repeated querying breaks this guarantee — only the privacy budget (ε) is consumed.</p>
+<blockquote>"Differential privacy ensures the attacker cannot know whether a specific individual is in the dataset — regardless of auxiliary information or repeated queries." (source: <span class="wiki-link source-ref">sources/building-anonymization-pipeline</span>)</blockquote>
+<h2 id="how-it-works">How It Works</h2>
+<h3 id="the-formal-definition">The Formal Definition</h3>
+<p>A randomized mechanism <strong>M</strong> satisfies ε-differential privacy if for any two datasets <strong>D₁</strong> and <strong>D₂</strong> that differ by only one record, and for any possible output <strong>S</strong>:</p>
+<pre><code>Pr[M(D₁) ∈ S] ≤ e^ε × Pr[M(D₂) ∈ S]</code></pre>
+<p>In plain English: the probability of any output changes by at most a factor of e^ε when a single individual's data is added or removed.</p>
+<h3 id="noise-mechanisms">Noise Mechanisms</h3>
+<table><thead><tr>
+<th>Mechanism</th>
+<th>How It Works</th>
+<th>Best For</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Laplace Mechanism</strong></td>
+<td>Adds noise drawn from Laplace distribution scaled by sensitivity/ε</td>
+<td>Numeric queries (counts, sums, averages)</td>
+</tr>
+<tr>
+<td><strong>Gaussian Mechanism</strong></td>
+<td>Adds Gaussian noise; satisfies (ε, δ)-differential privacy</td>
+<td>Higher-dimensional queries, machine learning</td>
+</tr>
+<tr>
+<td><strong>Exponential Mechanism</strong></td>
+<td>Randomly selects output with probability proportional to utility score</td>
+<td>Non-numeric outputs (best category, top-K items)</td>
+</tr>
+</tbody></table>
+<h3 id="sensitivity">Sensitivity</h3>
+<p>The <strong>sensitivity</strong> of a query determines how much noise is needed: it's the maximum change in the query result when one individual's data is added or removed. A count query has sensitivity = 1 (adding one person changes count by at most 1). A sum query has sensitivity = max possible value (adding one person can change the sum by the largest possible value).</p>
+<h2 id="practical-applications">Practical Applications</h2>
+<table><thead><tr>
+<th>Domain</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Government census</strong></td>
+<td>US Census Bureau uses DP to publish demographic statistics without revealing individual responses</td>
+</tr>
+<tr>
+<td><strong>Tech companies</strong></td>
+<td>Apple uses local differential privacy to collect usage statistics from iOS devices</td>
+</tr>
+<tr>
+<td><strong>Machine learning</strong></td>
+<td>DP-SGD (Differentially Private Stochastic Gradient Descent) trains models that don't memorize individual training examples</td>
+</tr>
+<tr>
+<td><strong>Medical research</strong></td>
+<td>Share aggregate health outcomes across hospitals without patient-level disclosure risk</td>
+</tr>
+</tbody></table>
+<h2 id="privacy-budget--composition">Privacy Budget & Composition</h2>
+<p>Each query consumes a portion of the privacy budget (ε). Sequential composition: running two ε₁-differentially private queries yields (ε₁ + ε₂)-differential privacy. This is why a <strong>privacy budget</strong> must be managed — repeated queries on the same dataset erode the guarantee.</p>
+<p>In a production anonymization pipeline, the privacy budget is tracked and queries are blocked when the budget is exhausted — preventing death-by-a-thousand-cuts re-identification.</p>
+<h2 id="trade-offs">Trade-offs</h2>
+<table><thead><tr>
+<th>Benefit</th>
+<th>Cost</th>
+</tr></thead><tbody>
+<tr>
+<td>Formal mathematical guarantee</td>
+<td>Accuracy loss proportional to privacy level</td>
+</tr>
+<tr>
+<td>Resistant to auxiliary information attacks</td>
+<td>Tuning ε requires domain expertise</td>
+</tr>
+<tr>
+<td>Immune to composition attacks (budget-managed)</td>
+<td>Small datasets lose more utility than large ones</td>
+</tr>
+<tr>
+<td>Applicable to any statistical output</td>
+<td>Not suitable when individual-level precision is required</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-anonymization.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Anonymization</h4>
+      <p>differential privacy adds mathematical rigor to traditional anonymization pipelines</p>
+    </a>
+    <a class="connection-card" href="synthetic-data.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Synthetic Data</h4>
+      <p>synthetic data provides zero-risk alternative; DP provides formal guarantees on real data</p>
+    </a>
+    <a class="connection-card" href="data-governance.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Governance</h4>
+      <p>Five Safes framework provides the policy layer above DP's mathematical guarantees</p>
+    </a>
+    <a class="connection-card" href="data-quality-monitoring.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Quality Monitoring</h4>
+      <p>noise injection impacts data quality metrics; monitoring must account for DP-induced variance</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Quality Monitoring</h4>
+      <p>Arbuckle & El Emam's coverage of emerging PETs</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="differential-dataflow.html" class="prev">← Differential Dataflow</a><a href="directness.html" class="next">Directness →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

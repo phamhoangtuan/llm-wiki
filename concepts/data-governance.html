@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Governance</h1>
-  <div class="page-meta"><span>Source: data-lifecycle-handbook, data-engineering-handbook</span><span>Updated: 2026-06-14</span></div>
+  <div class="page-meta"><span>Source: data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline</span><span>Updated: 2026-06-27</span></div>
   <div class="page-tags"><span class="tag">data-governance</span><span class="tag">compliance</span><span class="tag">security</span><span class="tag">metadata</span><span class="tag">data-quality</span></div>
 </div>
 <div class="content-area concept">
@@ -85,6 +85,34 @@
 <li><strong>Security</strong>: Unclassified data means sensitive information may sit unprotected in dev environments.</li>
 <li><strong>Agent Sprawl</strong> (2026): Without governance, AI agents produce minor data inconsistencies that compound into indecision and leadership pushback — the LLM-era equivalent of dashboard sprawl.</li>
 </ul>
+<h2 id="the-five-safes-framework-privacy-governa">The Five Safes Framework (Privacy Governance)</h2>
+<p>For data anonymization specifically, the Five Safes framework from Arbuckle & El Emam provides a holistic governance model (source: <span class="wiki-link source-ref">sources/building-anonymization-pipeline</span>):</p>
+<table><thead><tr>
+<th>Safe</th>
+<th>Question</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Safe Projects</strong></td>
+<td>Is this project legal and ethical?</td>
+</tr>
+<tr>
+<td><strong>Safe People</strong></td>
+<td>Who receives the data — what's their motivation and re-identification capability?</td>
+</tr>
+<tr>
+<td><strong>Safe Settings</strong></td>
+<td>Is the sharing environment technically secured?</td>
+</tr>
+<tr>
+<td><strong>Safe Data</strong></td>
+<td>Has identifiability been quantitatively reduced to an acceptable level?</td>
+</tr>
+<tr>
+<td><strong>Safe Outputs</strong></td>
+<td>Could aggregate analysis results inadvertently disclose individual information?</td>
+</tr>
+</tbody></table>
+<p>The framework ensures governance evaluates the entire ecosystem — not just the data itself. See <a href="data-anonymization.html" class="wiki-link">data-anonymization</a> for the full anonymization workflow.</p>
 <h2 id="governance-in-practice">Governance in Practice</h2>
 <p>Data Engineers implement governance through:</p>
 <ul>
@@ -101,6 +129,11 @@
       <span class="connection-type core">Core to</span>
       <h4>Data Lifecycle</h4>
       <p>Data Lifecycle Management operationalizes governance retention and archiving policies</p>
+    </a>
+    <a class="connection-card" href="data-anonymization.html">
+      <span class="connection-type related">Informs</span>
+      <h4>Data Anonymization</h4>
+      <p>Five Safes framework bridges governance policy and anonymization execution</p>
     </a>
     <a class="connection-card" href="data-engineer.html">
       <span class="connection-type related">Related to</span>
@@ -141,6 +174,11 @@
       <span class="connection-type related">Related</span>
       <h4>Data Engineering Fundamentals</h4>
       <p>Data Engineering Handbook (discipline overview)</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineering Fundamentals</h4>
+      <p>Arbuckle & El Emam on Five Safes, ethics committees, and trust-based governance</p>
     </div>
   </div>
 </section>

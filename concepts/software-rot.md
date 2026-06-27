@@ -3,8 +3,8 @@ title: "Software Rot"
 type: concept
 tags: [software-design, technical-debt, maintenance, code-quality]
 created: 2026-06-15
-updated: 2026-06-15
-sources: [refactoring-at-scale-lemaire]
+updated: 2026-06-27
+sources: [refactoring-at-scale-lemaire, clean-code-principles-patterns-silen]
 aliases: [code-rot, software-degradation, bit-rot]
 ---
 
@@ -38,6 +38,15 @@ What the code needs to do changes:
 
 A 200-line function with 7 levels of nested conditionals might have been a **monumental success** — written in a 48-hour hackathon that saved the company. Judging it by today's standards without understanding its historical context misses the point. The question isn't "was this good code?" — it's "what has changed that makes this code no longer fit for purpose?"
 
+## Managing Technical Debt
+
+Technical debt is the practical manifestation of software rot. Silén recommends two concrete countermeasures:
+
+- **Sprint refactoring allocation**: Reserve fixed time in every sprint for refactoring — debt accrues interest if unmanaged, and the interest compounds.
+- **Design before code**: Invest in thorough design upfront. Rushing to code without design is borrowing time from the future — and you pay with interest when the codebase becomes rigid.
+
+These complement the broader countermeasures below.
+
 ## Countermeasures
 
 Software rot is inevitable, but its impact can be managed:
@@ -54,3 +63,4 @@ Software rot is inevitable, but its impact can be managed:
 - Related to [[code-quality-pillars]] — maintaining code quality requires active rot prevention
 - Understandable via [[code-archaeology]] — archaeology reveals when and why rot began
 - Benchmark source: [[sources/refactoring-at-scale-lemaire]] — Lemaire's analysis of code degradation
+- Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén on technical debt management via sprint refactoring time

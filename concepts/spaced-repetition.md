@@ -40,7 +40,7 @@ Young recommends a practical schedule for self-directed learners:
 
 The core principle: **review at the point of near-forgetting**. Too soon, and retrieval is too easy (shallow encoding). Too late, and the memory is already lost (requiring re-learning rather than strengthening).
 
-This aligns with Bjork's concept of [[Testing Effect|desirable difficulty]] — harder retrieval produces deeper, more durable encoding.
+This aligns with Bjork's concept of [[testing-effect|desirable difficulty]] — harder retrieval produces deeper, more durable encoding.
 
 ## The Scrabble Champion Case
 
