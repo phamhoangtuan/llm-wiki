@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Cache Strategy</h1>
-  <div class="page-meta"><span>Source: system-design-interview-xu, system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-meta"><span>Source: system-design-interview-xu, system-design-big-archive, system-design-interview-volume-2</span><span>Updated: 2026-06-29</span></div>
   <div class="page-tags"><span class="tag">system-design</span><span class="tag">performance</span><span class="tag">caching</span><span class="tag">scalability</span></div>
 </div>
 <div class="content-area concept">
@@ -89,6 +89,30 @@
 <td>CDN-friendly but requires URL management</td>
 </tr>
 </tbody></table>
+<h2 id="cache-stampede-mitigation">Cache Stampede Mitigation</h2>
+<p>A <strong>cache stampede</strong> occurs when a large-scale cache invalidation event (e.g., nightly batch job) causes millions of keys to expire simultaneously — creating a sudden surge of cache misses that can crush the database.</p>
+<p><strong>Mitigation strategies:</strong></p>
+<table><thead><tr>
+<th>Strategy</th>
+<th>How It Works</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Staggered invalidation</strong></td>
+<td>Don't invalidate all keys at once — spread across time windows</td>
+</tr>
+<tr>
+<td><strong>Cache warming</strong></td>
+<td>Pre-populate the cache with fresh data before invalidating the old data</td>
+</tr>
+<tr>
+<td><strong>Rate limiting</strong></td>
+<td>Cap the number of concurrent requests allowed to reach the database</td>
+</tr>
+<tr>
+<td><strong>Circuit breakers</strong></td>
+<td>Detect database overload and temporarily fail fast rather than compounding the problem</td>
+</tr>
+</tbody></table>
 <blockquote><strong>Hard problems in computer science</strong>: Cache invalidation, naming things, and off-by-one errors.</blockquote>
 </div>
 <section class="connections-section">
@@ -123,6 +147,11 @@
       <span class="connection-type related">Related to</span>
       <h4>Bloom Filter</h4>
       <p>bloom filters protect caches from miss storms by filtering non-existent keys</p>
+    </a>
+    <a class="connection-card" href="proximity-service.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Proximity Service</h4>
+      <p>cache stampede risk from nightly index rebuilds</p>
     </a>
   </div>
 </section>

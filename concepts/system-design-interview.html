@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>System Design Interview</h1>
-  <div class="page-meta"><span>Source: system-design-interview-xu, system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-meta"><span>Source: system-design-interview-xu, system-design-big-archive, system-design-interview-volume-2</span><span>Updated: 2026-06-29</span></div>
   <div class="page-tags"><span class="tag">system-design</span><span class="tag">interview</span><span class="tag">methodology</span><span class="tag">architecture</span></div>
 </div>
 <div class="content-area concept">
@@ -76,6 +76,37 @@
 <li>1M DAU ≈ 100 RPS peak (with 10:1 read/write ratio)</li>
 <li>1KB per request × 1B requests/day ≈ 1TB/day</li>
 <li>99.9% availability ≈ 8.76 hours downtime/year; 99.99% ≈ 52 minutes</li>
+<li><strong>QPS shortcut</strong>: <code>QPS = (DAU × Average Actions) / 10^5</code> — round 86,400 seconds/day to 100,000 for instant mental division</li>
+</ul>
+<h3 id="qps--architecture-decision-table">QPS → Architecture Decision Table</h3>
+<table><thead><tr>
+<th>QPS Range</th>
+<th>Architecture Implication</th>
+</tr></thead><tbody>
+<tr>
+<td>< 100 QPS</td>
+<td>Single server can handle</td>
+</tr>
+<tr>
+<td>100 – 1,000 QPS</td>
+<td>Load balancer + 2–3 servers</td>
+</tr>
+<tr>
+<td>1,000 – 10,000 QPS</td>
+<td>Stateless services + database replicas</td>
+</tr>
+<tr>
+<td>> 10,000 QPS</td>
+<td>Full distributed system + caching + sharding</td>
+</tr>
+</tbody></table>
+<h2 id="canonical-problems">Canonical Problems</h2>
+<p>System design interviews reuse a set of well-known architecture problems:</p>
+<ul>
+<li><strong><a href="proximity-service.html" class="wiki-link">proximity-service</a></strong> — Yelp/Google Maps: geolocation search at scale (<a href="geospatial-indexing.html" class="wiki-link">geospatial-indexing</a>, <a href="geohash.html" class="wiki-link">geohash</a>, <a href="quadtree.html" class="wiki-link">quadtree</a>)</li>
+<li>URL shortener (hash functions, key generation)</li>
+<li>Social media feed (fan-out, timeline generation)</li>
+<li>Chat system (WebSocket, message delivery)</li>
 </ul>
 </div>
 <section class="connections-section">
@@ -110,6 +141,16 @@
       <span class="connection-type related">Related</span>
       <h4>Technical Interview</h4>
       <p>system design tests architecture/scale, technical interviews test algorithms/PoC</p>
+    </a>
+    <a class="connection-card" href="proximity-service.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Proximity Service</h4>
+      <p>the canonical geolocation system design problem</p>
+    </a>
+    <a class="connection-card" href="geospatial-indexing.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Geospatial Indexing</h4>
+      <p>the core algorithmic challenge for location-based systems</p>
     </a>
   </div>
 </section>

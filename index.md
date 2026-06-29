@@ -27,6 +27,8 @@
 - [Immutability](concepts/immutability.html) — Essential attributes should never change; create new objects instead
 - [Fail Fast](concepts/fail-fast.html) — Stop execution immediately on error; don't let errors propagate
 - [Feedback](concepts/feedback.html) — Three levels of feedback in skill acquisition (Outcome, Informational, Corrective); ego trap, Chris Rock's signal-seeking
+- [Geohash](concepts/geohash.html) — Base32 string encoding for geolocation; recursive grid subdivision, prefix matching, boundary issues
+- [Geospatial Indexing](concepts/geospatial-indexing.html) — Dimensionality reduction: 2D coordinates → 1D index for efficient spatial queries; Geohash + Quadtree strategies
 - [Essential vs Accidental Complexity](concepts/essential-accidental-complexity.html) — Fred Brooks' two types: inherent vs design-caused
 - [Technological Centaur](concepts/technological-centaur.html) — Human architect + AI assistant; clean code enables collaboration
 - [Testing Effect](concepts/testing-effect.html) — Retrieval practice as knowledge construction; Karpicke & Blunt study, desirable difficulty, free recall
@@ -39,11 +41,11 @@
 - [DuckDB](concepts/duckdb.html) — In-process OLAP database — "SQLite for analytics" — columnar, vectorized, zero-setup
 - [Vectorized Execution](concepts/vectorized-execution.html) — Processing data in vectors (chunks) not row-by-row; SIMD, cache-efficient
 - [In-Process OLAP](concepts/in-process-olap.html) — Analytical database runs as embedded library — no server, no network latency
-- [System Design Interview](concepts/system-design-interview.html) — Framework for designing scalable distributed systems under constraints
-- [Scalable Architecture](concepts/scalable-architecture.html) — Evolution from single server to horizontal scaling with distributed components
+- [System Design Interview](concepts/system-design-interview.html) — Framework for designing scalable distributed systems under constraints; QPS estimation (10^5 shortcut), canonical problems (Proximity Service, URL Shortener)
+- [Scalable Architecture](concepts/scalable-architecture.html) — Evolution from single server to horizontal scaling; QPS-driven architecture decisions (100 → 10K+ ranges)
 - [Load Balancer](concepts/load-balancer.html) — Traffic distribution, security, and high availability across backend servers
-- [Database Replication](concepts/database-replication.html) — Master-slave pattern for read/write separation and horizontal read scaling
-- [Cache Strategy](concepts/cache-strategy.html) — Read-through cache, TTL, eviction policies, and invalidation strategies
+- [Database Replication](concepts/database-replication.html) — Master-slave pattern for read/write separation; Primary-Secondary clustering for read-heavy workloads with acceptable replication lag
+- [Cache Strategy](concepts/cache-strategy.html) — Read-through cache, TTL, eviction, invalidation; cache stampede mitigation via staggered invalidation and circuit breakers
 - [CDN](concepts/cdn.html) — Geographically distributed edge caching for static content delivery
 - [Stateless Architecture](concepts/stateless-architecture.html) — Externalized sessions enabling horizontal scaling and autoscaling
 - [Message Queue](concepts/message-queue.html) — Async decoupling of producers and consumers for resilience and independent scaling
@@ -51,6 +53,7 @@
 - [Observability](concepts/observability.html) — Metrics, logs, and traces for understanding distributed system health
 - [Vortex File Format](concepts/vortex-file-format.html) — Next-gen Rust-native columnar format; 100× random access claims vs Parquet, immature Python ecosystem as of 2026-05
 - [Polars](concepts/polars.html) — Rust-based DataFrame library with lazy evaluation; reported OOM reliability issues on large CSV
+- [Proximity Service](concepts/proximity-service.html) — Geolocation-based search architecture (Yelp, Google Maps); 2-service split, data freshness SLA, 5,000 QPS baseline
 - [Apache DataFusion](concepts/apache-datafusion.html) — Rust-native embeddable SQL query engine; fastest CSV scan in benchmarks (5.1s vs 25.5s DuckDB)
 - [Apache Parquet](concepts/apache-parquet.html) — Dominant columnar storage format for data lakes; ~200× faster than CSV for analytics
 - [Lance File Format](concepts/lance-file-format.html) — Columnar format optimized for ML/AI workloads; random access, versioning
@@ -107,6 +110,7 @@
 - [Case Interview](concepts/case-interview.html) — Consulting case interview methodology: MECE, Pyramid Principle, SCORE framework, 9-Step Math
 - [Python Professional Practices](concepts/python-professional-practices.html) — Transition from "code that runs" to production-grade Python via automated quality control
 - [Python Static Analysis](concepts/python-static-analysis.html) — Black + Flake8 + Mypy trifecta for automated code quality gates
+- [Quadtree](concepts/quadtree.html) — In-memory tree structure for adaptive 2D spatial subdivision; 1.71 GB for 200M businesses, fits on single server RAM
 - [Python Debugging with PDB](concepts/python-debugging-pdb.html) — Interactive debugging via breakpoint() and PDB: surgical state inspection over print()
 - [Python Standard Library](concepts/python-standard-library.html) — Batteries-included: collections (defaultdict, namedtuple) and sqlite3
 - [Python Concurrency](concepts/python-concurrency.html) — Threads vs Processes, GIL, race condition dangers, and when to use concurrency
@@ -130,7 +134,7 @@
 - [Bloom Filter](concepts/bloom-filter.html) — Space-efficient probabilistic set membership; cache miss prevention, URL deduplication at scale
 - [Byzantine Fault Tolerance (BFT)](concepts/byzantine-fault-tolerance.html) — Distributed consensus under adversarial node behavior; 3f+1 formula, PBFT protocol, CFT vs BFT trade-offs
 - [CAP Theorem](concepts/cap-theorem.html) — Distributed data stores can guarantee at most 2 of 3: Consistency, Availability, Partition Tolerance; CP vs AP architectures, quorum mechanics, PACELC extension
-- [Deployment Strategies](concepts/deployment-strategies.html) — Blue-Green, Canary, A/B Testing, Multi-Service — risk management for production releases
+- [Deployment Strategies](concepts/deployment-strategies.html) — Blue-Green, Canary, A/B Testing, Multi-Service; incremental rollout for in-memory index rebuild safety
 - [Distributed Consensus (Raft & Paxos)](concepts/distributed-consensus.html) — Raft and Paxos algorithms for cluster-wide agreement on data state; FLP impossibility, Safety vs Liveness, leader election, log replication, ecosystem comparison
 - [Leader Election](concepts/leader-election.html) — Selecting a single coordinator node in distributed systems; Raft's randomized timeout mechanism, Term-based safety, split-brain prevention, production coordination services
 - [Cloud Service Models](concepts/cloud-service-models.html) — Three levels of cloud abstraction (IaaS, PaaS, SaaS) trading control for operational simplicity
@@ -206,6 +210,7 @@
 - [Why Is Meta Destroying Its Engineering Org? — Gergely Orosz](sources/meta-destroying-engineering-org-orosz.md) — Pragmatic Engineer investigation: forced data labeling, keystroke tracking, tokenmaxxing, Instagram takeover outage, AI psychosis case study
 - [The New SDLC With Vibe Coding — Osmani, Saboo & Kartakis](sources/new-sdlc-vibe-coding.md) — 51-page ebook: 5-stage AI coding evolution, Agent Loop, 90% harness rule, vibe coding economics
 - [System Design: The Big Archive — Alex Xu](sources/system-design-big-archive.md) — 159-page ebook: cloud infra, containers, deployment, databases, security, performance, architecture patterns
+- [System Design Interview – An Insider's Guide: Volume 2 — Alex Xu & Sahn Lam](sources/system-design-interview-volume-2.md) — 429-page ebook: proximity service architecture, geospatial indexing, Geohash vs Quadtree, cache stampede mitigation
 - [Databricks Certified DE Associate Study Guide — Derar Alhussein](sources/databricks-dea-study-guide.md) — 802-page ebook: Lakehouse architecture, 4-layer platform, control/data plane, Spark, DBFS, Unity Catalog
 - [Ultralearning — Scott Young](sources/ultralearning-scott-young.md) — Notes on "Ultralearning" by Scott Young — 250 pages; 9 principles, case studies, project execution framework
 - [How AI Changes 4 Core Data Roles](sources/how-ai-changes-4-core-data-roles.md) — Madison Mae maps how AI reshapes Data Analyst, Data Engineer, Data Scientist, and Analytics Engineer roles
@@ -218,5 +223,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-27*
-*Pages: 202 (149 concepts + 53 sources)*
+*Last updated: 2026-06-29*
+*Pages: 207 (153 concepts + 54 sources)*

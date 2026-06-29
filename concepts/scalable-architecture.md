@@ -3,8 +3,8 @@ title: "Scalable Architecture"
 type: concept
 tags: [system-design, scalability, architecture, distributed-systems]
 created: 2026-05-24
-updated: 2026-05-24
-sources: [system-design-interview-xu]
+updated: 2026-06-29
+sources: [system-design-interview-xu, system-design-interview-volume-2]
 aliases: [scaling-strategy, distributed-architecture]
 ---
 
@@ -36,6 +36,19 @@ Add more servers to a pool. Theoretically unlimited, enables high availability a
 | Vertical | More CPU/RAM per server | Simple, no architecture changes | Hardware ceiling, SPOF, downtime |
 | Horizontal | More servers in pool | Unlimited theoretically, HA, fault tolerance | Complex: LB, state, consistency |
 
+## QPS-Driven Architecture Decisions
+
+QPS estimation is the foundation of system design. Back-of-the-envelope calculations dictate the architecture:
+
+| QPS Range | Architecture Implication |
+|-----------|-------------------------|
+| < 100 QPS | Single server can handle (monolith acceptable) |
+| 100 – 1,000 QPS | Load balancer + 2–3 servers |
+| 1,000 – 10,000 QPS | Stateless services + database replicas |
+| > 10,000 QPS | Full distributed system + caching + sharding |
+
+**Estimation shortcut**: `QPS = (DAU × Average Actions) / 10^5` — round 86,400 seconds/day to 100,000 for instant mental math. Example: 100M DAU × 5 searches = 5,000 QPS → stateless services + replicas.
+
 > **Lesson**: Horizontal scaling is the only path to massive scale. But it demands solving new problems: load balancing, state management, and data consistency.
 
 ---
@@ -47,3 +60,4 @@ Add more servers to a pool. Theoretically unlimited, enables high availability a
 - Related to [[cdn]] — global distribution at scale
 - Related to [[message-queue]] — decouples components for independent scaling
 - Related to [[observability]] — monitor everything as complexity grows
+- Foundation for [[proximity-service]] — QPS estimation drives the architecture (5,000 QPS → stateless + replicas)

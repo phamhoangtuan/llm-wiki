@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geospatial Indexing — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-databases">Databases</a> <span class="sep">/</span>
+  <span>Geospatial Indexing</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Geospatial Indexing</h1>
+  <div class="page-meta"><span>Source: system-design-interview-volume-2</span><span>Updated: 2026-06-29</span></div>
+  <div class="page-tags"><span class="tag">databases</span><span class="tag">geospatial</span><span class="tag">indexing</span><span class="tag">system-design</span></div>
+</div>
+<div class="content-area concept">
+<p>Geospatial indexing solves a fundamental dimensionality mismatch: standard database indexes (B-trees, hash indexes) are 1-dimensional, but location data exists in 2-dimensional space (latitude + longitude). The solution is mapping 2D coordinates into a 1D representation that enables efficient single-index lookups.</p>
+<h2 id="the-problem-naive-sql-fails-at-scale">The Problem: Naive SQL Fails at Scale</h2>
+<pre><code class="language-sql">-- BROKEN at scale:
+SELECT business_id FROM business
+WHERE latitude  BETWEEN {:lat} - radius AND {:lat} + radius
+  AND longitude BETWEEN {:long} - radius AND {:long} + radius</code></pre>
+<p>Why this fails:</p>
+<ul>
+<li>Standard indexes are 1-dimensional — they sort by a single key</li>
+<li>A 2D search requires intersecting two massive datasets (latitude range ∩ longitude range)</li>
+<li>The database must scan millions of rows in memory to compute the intersection</li>
+<li>Query latency degrades linearly (or worse) with data volume</li>
+</ul>
+<h2 id="the-solution-2d--1d-mapping">The Solution: 2D → 1D Mapping</h2>
+<p>Map the 2D coordinate space onto a 1D line — enabling traditional index structures to work efficiently. Two main strategies:</p>
+<table><thead><tr>
+<th>Strategy</th>
+<th>Approach</th>
+<th>Storage</th>
+<th>Best For</th>
+</tr></thead><tbody>
+<tr>
+<td><a href="geohash.html" class="wiki-link">geohash</a></td>
+<td>Recursive grid subdivision → base32 string prefix match</td>
+<td>Database</td>
+<td>Persistence, SQL compatibility</td>
+</tr>
+<tr>
+<td><a href="quadtree.html" class="wiki-link">quadtree</a></td>
+<td>Adaptive tree subdivision into 4 quadrants</td>
+<td>In-memory</td>
+<td>Speed, cache layer</td>
+</tr>
+</tbody></table>
+<h2 id="key-insight">Key Insight</h2>
+<blockquote>Proximity service is not <code>SELECT * WHERE lat/long BETWEEN</code>. It's the art of mapping 2D coordinates into 1D index to find k-nearest neighbors at 200M+ scale with millisecond latency.</blockquote>
+<p>Recommended approach: <strong>Hybrid</strong> — Quadtree for in-memory cache (speed) + Geohash for database index (persistence). Each optimizes for its environment: Quadtree exploits RAM speed and adaptive density, Geohash leverages SQL string prefix matching and durability.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="proximity-service.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Proximity Service</h4>
+      <p>the architecture that depends on spatial indexing</p>
+    </a>
+    <a class="connection-card" href="geohash.html">
+      <span class="connection-type related">Related</span>
+      <h4>Geohash</h4>
+      <p>database-level encoding via base32 string prefix matching</p>
+    </a>
+    <a class="connection-card" href="quadtree.html">
+      <span class="connection-type related">Related</span>
+      <h4>Quadtree</h4>
+      <p>in-memory adaptive tree structure for spatial subdivision</p>
+    </a>
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type related">Related to</span>
+      <h4>System Design Interview</h4>
+      <p>a core design pattern in system design interviews</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="geohash.html" class="prev">← Geohash</a><a href="go-http-handlers.html" class="next">Go HTTP Handlers →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

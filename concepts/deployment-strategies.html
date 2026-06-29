@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Deployment Strategies</h1>
-  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
+  <div class="page-meta"><span>Source: system-design-big-archive, system-design-interview-volume-2</span><span>Updated: 2026-06-29</span></div>
   <div class="page-tags"><span class="tag">deployment</span><span class="tag">devops</span><span class="tag">system-design</span><span class="tag">reliability</span></div>
 </div>
 <div class="content-area concept">
@@ -77,6 +77,25 @@
 <td>Small projects, non-critical updates</td>
 </tr>
 </tbody></table>
+<h2 id="incremental-rollout-in-memory-indexes">Incremental Rollout (In-Memory Indexes)</h2>
+<p>When services maintain large in-memory data structures (e.g., a <a href="quadtree.html" class="wiki-link">quadtree</a> built from 200M database rows), deployment strategy becomes critical:</p>
+<ul>
+<li><strong>Problem</strong>: Blue/Green deployment spins up an entire fresh cluster — every new instance simultaneously fetches 200M businesses from the database to build its in-memory index. This can crash the database.</li>
+<li><strong>Solution (Incremental Rollout)</strong>: New instances initialize gradually, one or a few at a time. Existing instances maintain capacity while newcomers build their indexes. No database overload.</li>
+</ul>
+<table><thead><tr>
+<th>Strategy</th>
+<th>Risk for In-Memory Index Rebuild</th>
+</tr></thead><tbody>
+<tr>
+<td>Blue-Green</td>
+<td>High — entire cluster fetches data simultaneously</td>
+</tr>
+<tr>
+<td>Incremental Rollout</td>
+<td>Low — gradual initialization, database protected</td>
+</tr>
+</tbody></table>
 <h2 id="rule-of-thumb">Rule of Thumb</h2>
 <blockquote>Stakes determine strategy tightness. Financial transactions → Blue-Green. Weekend hackathon → Multi-Service is fine.</blockquote>
 </div>
@@ -97,6 +116,11 @@
       <span class="connection-type core">Foundation for</span>
       <h4>System Design Interview</h4>
       <p>deployment architecture questions are common</p>
+    </a>
+    <a class="connection-card" href="quadtree.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Quadtree</h4>
+      <p>in-memory index rebuild requires incremental rollout</p>
     </a>
   </div>
 </section>

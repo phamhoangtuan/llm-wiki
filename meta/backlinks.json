@@ -297,7 +297,6 @@
     "data-analyst",
     "data-analyst",
     "data-engineering-fundamentals",
-    "data-engineering-fundamentals",
     "self-service-analytics",
     "self-service-analytics",
     "self-service-analytics",
@@ -722,9 +721,13 @@
     "bloom-filter",
     "cloud-service-models",
     "deployment-strategies",
+    "geohash",
+    "geospatial-indexing",
     "http-evolution",
     "message-delivery-semantics",
     "orchestration-vs-choreography",
+    "proximity-service",
+    "quadtree",
     "redis",
     "risk-driven-architecture",
     "scalable-architecture",
@@ -856,6 +859,7 @@
     "database-sharding",
     "load-balancer",
     "observability",
+    "proximity-service",
     "redis",
     "scalable-architecture",
     "stateless-architecture",
@@ -885,6 +889,7 @@
     "load-balancer",
     "message-queue",
     "observability",
+    "proximity-service",
     "stateless-architecture",
     "system-design-interview",
     "system-design-interview-xu"
@@ -899,6 +904,7 @@
     "leader-election",
     "load-balancer",
     "observability",
+    "proximity-service",
     "scalable-architecture",
     "stateless-architecture",
     "system-design-interview",
@@ -926,6 +932,16 @@
   ],
   "bloom-filter": [
     "cache-strategy"
+  ],
+  "proximity-service": [
+    "cache-strategy",
+    "database-replication",
+    "geohash",
+    "geospatial-indexing",
+    "quadtree",
+    "scalable-architecture",
+    "system-design-interview",
+    "system-design-interview"
   ],
   "sources/cap-theorem-handbook": [
     "cap-theorem"
@@ -1108,6 +1124,8 @@
     "containerization",
     "microservices",
     "microservices",
+    "proximity-service",
+    "quadtree",
     "shift-left-security"
   ],
   "goroutines": [
@@ -1330,6 +1348,16 @@
     "solid-principles",
     "solid-principles"
   ],
+  "quadtree": [
+    "deployment-strategies",
+    "deployment-strategies",
+    "geohash",
+    "geohash",
+    "geospatial-indexing",
+    "geospatial-indexing",
+    "proximity-service",
+    "system-design-interview"
+  ],
   "dbsp": [
     "differential-dataflow",
     "incremental-view-maintenance",
@@ -1446,6 +1474,22 @@
     "tdd-methodology",
     "testing-strategy"
   ],
+  "geospatial-indexing": [
+    "geohash",
+    "proximity-service",
+    "quadtree",
+    "system-design-interview",
+    "system-design-interview"
+  ],
+  "geohash": [
+    "geospatial-indexing",
+    "geospatial-indexing",
+    "proximity-service",
+    "quadtree",
+    "quadtree",
+    "quadtree",
+    "system-design-interview"
+  ],
   "go-web-ecosystem": [
     "go-http-handlers",
     "go-template-escaping",
@@ -1526,6 +1570,7 @@
     "message-queue",
     "microservices",
     "microservices",
+    "proximity-service",
     "scalable-architecture",
     "system-design-interview-xu"
   ],

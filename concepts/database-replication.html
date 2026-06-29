@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Database Replication</h1>
-  <div class="page-meta"><span>Source: system-design-interview-xu</span><span>Updated: 2026-05-24</span></div>
+  <div class="page-meta"><span>Source: system-design-interview-xu, system-design-interview-volume-2</span><span>Updated: 2026-06-29</span></div>
   <div class="page-tags"><span class="tag">databases</span><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">data-consistency</span></div>
 </div>
 <div class="content-area concept">
@@ -90,6 +90,20 @@
 <td>If master and promoted slave both accept writes, data diverges</td>
 </tr>
 </tbody></table>
+<h2 id="primary-secondary-cluster-read-optimized">Primary-Secondary Cluster (Read-Optimized)</h2>
+<p>For read-heavy workloads (read >> write), the Primary-Secondary pattern scales reads horizontally:</p>
+<pre><code>┌────────────────────────────────────────┐
+│           Primary (Master)              │
+│      Handles ALL writes (CRUD)          │
+└────────────┬───────────────────────────┘
+             │ (Replication)
+             ▼
+┌─────────┬─────────┬─────────┬─────────┐
+│Secondary│Secondary│Secondary│Secondary│
+│(Replica)│(Replica)│(Replica)│(Replica)│
+│Reads    │Reads    │Reads    │Reads    │
+└─────────┴─────────┴─────────┴─────────┘</code></pre>
+<p><strong>When replication delay is acceptable</strong>: If data freshness can tolerate hours of lag (e.g., next-day SLA), replication simplifies significantly — nightly batch jobs handle the sync, avoiding real-time complexity.</p>
 <blockquote><strong>Rule of thumb</strong>: Start with a single database. Add replication when read load exceeds what one server can handle.</blockquote>
 </div>
 <section class="connections-section">
@@ -119,6 +133,11 @@
       <span class="connection-type related">Related to</span>
       <h4>Database Isolation Levels</h4>
       <p>isolation levels affect read consistency across replicas</p>
+    </a>
+    <a class="connection-card" href="proximity-service.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Proximity Service</h4>
+      <p>Primary-Secondary clustering handles read-heavy geospatial queries</p>
     </a>
   </div>
 </section>

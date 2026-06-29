@@ -639,6 +639,25 @@
 - Updated index.md: +5 concept entries, +2 source entries
 - Total pages: 202 (149 concepts + 53 sources)
 
+## [2026-06-29] ingest | System Design Interview – An Insider's Guide: Volume 2 (Alex Xu & Sahn Lam)
+
+- Source: "System Design Interview – An Insider's Guide: Volume 2" by Alex Xu & Sahn Lam (ebook, 429 pages, finished 2026-06-29)
+- Copied to: raw/system-design-interview-volume-2.md (Vietnamese notes)
+- Created sources/system-design-interview-volume-2.md
+- New concepts: proximity-service, geospatial-indexing, geohash, quadtree
+- Updated concepts: system-design-interview (+ Volume 2 reference, QPS 10^5 shortcut, QPS→architecture table, canonical problems), database-replication (+ Primary-Secondary cluster diagram, replication lag acceptability), cache-strategy (+ cache stampede mitigation: staggered invalidation, cache warming, rate limiting, circuit breakers), deployment-strategies (+ incremental rollout for in-memory index rebuild, Blue/Green risk), scalable-architecture (+ QPS-driven architecture decisions table)
+- Updated index.md: +4 concept entries, +1 source entry, updated 5 existing summaries
+- Total pages: 207 (153 concepts + 54 sources)
+
+## [2026-06-29] lint | Post-ingest health check
+
+- Scanned all 207 wiki pages (153 concepts + 54 sources) across 3 lint dimensions (broken wikilinks, orphans, frontmatter)
+- Broken wikilinks: 0 found — all [[wikilinks]] resolve correctly
+- Orphans: 14 near-orphans (1 inbound link each): ai-psychosis, apache-arrow, architecture-in-agile, bloom-filter, cloud-service-models, data-scientist, feedback, http-evolution, knowledge-graph, message-delivery-semantics, python-repl, redis, shift-left-security, snowflake-id — deferred to next lint pass
+- Frontmatter: all 10 new/updated files have complete frontmatter; 1 source (system-design-interview-volume-2) has empty `url: ""` — consistent with 18 other book sources
+- Fixed: stale comment in data-engineering-fundamentals.md (claimed `[[data-modeling]]` didn't exist; page was created in prior ingest)
+- HTML regenerated
+
 ## [2026-06-27] lint | Post-ingest health check + fix pass
 
 - Scanned all 202 wiki pages (149 concepts + 53 sources) across 6 lint dimensions

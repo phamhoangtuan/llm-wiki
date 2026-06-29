@@ -3,8 +3,8 @@ title: "Database Replication"
 type: concept
 tags: [databases, system-design, scalability, data-consistency]
 created: 2026-05-24
-updated: 2026-05-24
-sources: [system-design-interview-xu]
+updated: 2026-06-29
+sources: [system-design-interview-xu, system-design-interview-volume-2]
 aliases: [master-slave-replication, read-replicas]
 ---
 
@@ -34,6 +34,26 @@ Database replication is the process of copying data from a primary database (mas
 | **Write bottleneck** | All writes go to a single master — master capacity is the write ceiling |
 | **Split-brain** | If master and promoted slave both accept writes, data diverges |
 
+## Primary-Secondary Cluster (Read-Optimized)
+
+For read-heavy workloads (read >> write), the Primary-Secondary pattern scales reads horizontally:
+
+```
+┌────────────────────────────────────────┐
+│           Primary (Master)              │
+│      Handles ALL writes (CRUD)          │
+└────────────┬───────────────────────────┘
+             │ (Replication)
+             ▼
+┌─────────┬─────────┬─────────┬─────────┐
+│Secondary│Secondary│Secondary│Secondary│
+│(Replica)│(Replica)│(Replica)│(Replica)│
+│Reads    │Reads    │Reads    │Reads    │
+└─────────┴─────────┴─────────┴─────────┘
+```
+
+**When replication delay is acceptable**: If data freshness can tolerate hours of lag (e.g., next-day SLA), replication simplifies significantly — nightly batch jobs handle the sync, avoiding real-time complexity.
+
 > **Rule of thumb**: Start with a single database. Add replication when read load exceeds what one server can handle.
 
 ---
@@ -42,3 +62,4 @@ Database replication is the process of copying data from a primary database (mas
 - Related to [[load-balancer]] — routes reads to available slaves
 - Contrasts with [[database-sharding]] — replication copies data; sharding partitions data
 - Related to [[database-isolation]] — isolation levels affect read consistency across replicas
+- Core to [[proximity-service]] — Primary-Secondary clustering handles read-heavy geospatial queries

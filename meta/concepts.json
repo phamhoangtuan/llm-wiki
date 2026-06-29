@@ -887,6 +887,30 @@
         "python"
       ]
     },
+    "geohash": {
+      "title": "Geohash",
+      "category": "Infrastructure",
+      "url": "concepts/geohash.html",
+      "definition": "Geohash is a geospatial indexing system that recursively subdivides the world into grids and encodes each grid as a base32 string. Longer strings represent smaller, more precise grid cells. The key pr",
+      "tags": [
+        "geospatial",
+        "indexing",
+        "databases",
+        "algorithms"
+      ]
+    },
+    "geospatial-indexing": {
+      "title": "Geospatial Indexing",
+      "category": "Infrastructure",
+      "url": "concepts/geospatial-indexing.html",
+      "definition": "Geospatial indexing solves a fundamental dimensionality mismatch: standard database indexes (B-trees, hash indexes) are 1-dimensional, but location data exists in 2-dimensional space (latitude + longi",
+      "tags": [
+        "databases",
+        "geospatial",
+        "indexing",
+        "system-design"
+      ]
+    },
     "go-http-handlers": {
       "title": "Go HTTP Handlers",
       "category": "Go & Web",
@@ -1238,6 +1262,18 @@
         "data-engineering"
       ]
     },
+    "proximity-service": {
+      "title": "Proximity Service",
+      "category": "System Architecture",
+      "url": "concepts/proximity-service.html",
+      "definition": "Proximity service architecture enables users to discover nearby points of interest (businesses, people, locations) based on their latitude/longitude. It's one of the canonical system design problems —",
+      "tags": [
+        "system-design",
+        "geospatial",
+        "scalability",
+        "architecture"
+      ]
+    },
     "pytest-assertions": {
       "title": "pytest Assertions",
       "category": "Python & Tools",
@@ -1409,6 +1445,18 @@
         "python",
         "static-analysis",
         "code-quality"
+      ]
+    },
+    "quadtree": {
+      "title": "Quadtree",
+      "category": "Data Engineering",
+      "url": "concepts/quadtree.html",
+      "definition": "A Quadtree is an in-memory tree data structure that recursively subdivides 2D space into four quadrants — but only when a grid's business density exceeds a threshold (e.g., 100 businesses). This adapt",
+      "tags": [
+        "geospatial",
+        "data-structures",
+        "in-memory",
+        "algorithms"
       ]
     },
     "readability-vs-performance": {

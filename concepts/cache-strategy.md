@@ -3,8 +3,8 @@ title: "Cache Strategy"
 type: concept
 tags: [system-design, performance, caching, scalability]
 created: 2026-05-24
-updated: 2026-06-21
-sources: [system-design-interview-xu, system-design-big-archive]
+updated: 2026-06-29
+sources: [system-design-interview-xu, system-design-big-archive, system-design-interview-volume-2]
 aliases: [caching, cache-tier, read-through-cache]
 ---
 
@@ -37,6 +37,19 @@ A cache is temporary in-memory storage for frequently accessed data. Proper cach
 | Active invalidation | Application deletes cache entry on write | More consistent but adds complexity |
 | Versioned URLs | `image.jpg?v=2` forces fetch of new version | CDN-friendly but requires URL management |
 
+## Cache Stampede Mitigation
+
+A **cache stampede** occurs when a large-scale cache invalidation event (e.g., nightly batch job) causes millions of keys to expire simultaneously — creating a sudden surge of cache misses that can crush the database.
+
+**Mitigation strategies:**
+
+| Strategy | How It Works |
+|----------|-------------|
+| **Staggered invalidation** | Don't invalidate all keys at once — spread across time windows |
+| **Cache warming** | Pre-populate the cache with fresh data before invalidating the old data |
+| **Rate limiting** | Cap the number of concurrent requests allowed to reach the database |
+| **Circuit breakers** | Detect database overload and temporarily fail fast rather than compounding the problem |
+
 > **Hard problems in computer science**: Cache invalidation, naming things, and off-by-one errors.
 
 ---
@@ -46,3 +59,4 @@ A cache is temporary in-memory storage for frequently accessed data. Proper cach
 - Related to [[load-balancer]] — cache deployed behind load balancer
 - Foundation for [[redis]] — Redis is the most common high-performance caching backend
 - Related to [[bloom-filter]] — bloom filters protect caches from miss storms by filtering non-existent keys
+- Related to [[proximity-service]] — cache stampede risk from nightly index rebuilds

@@ -3,7 +3,7 @@ title: "Data Engineering Fundamentals"
 type: concept
 tags: [data-engineering, fundamentals, sql, python, data-modeling, career]
 created: 2026-06-15
-updated: 2026-06-15
+updated: 2026-06-29
 sources: [data-fundamentals-matter-2026, data-engineer-role-handbook]
 aliases: [de-fundamentals, data-engineering-basics]
 ---
@@ -77,5 +77,3 @@ The fundamentals provide the judgment to answer these questions. Without them, y
 - Informs [[ai-native-engineering]] — understanding fundamentals is what separates AI-native engineers from vibe coders
 - Benchmark source: [[sources/data-fundamentals-matter-2026]] — SeattleDataGuy on fundamentals in 2026
 - Benchmark source: [[sources/data-engineer-role-handbook]] — Data Engineering Handbook (core skills)
-
-(Note: `[[data-modeling]]` target page does not exist yet — this is a gap for future ingest.)

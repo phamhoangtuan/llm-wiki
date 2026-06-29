@@ -3,8 +3,8 @@ title: "System Design Interview"
 type: concept
 tags: [system-design, interview, methodology, architecture]
 created: 2026-05-24
-updated: 2026-06-21
-sources: [system-design-interview-xu, system-design-big-archive]
+updated: 2026-06-29
+sources: [system-design-interview-xu, system-design-big-archive, system-design-interview-volume-2]
 aliases: [system-design-interview-framework]
 ---
 
@@ -35,6 +35,25 @@ The canonical 4S framework for system design interviews:
 - 1M DAU ≈ 100 RPS peak (with 10:1 read/write ratio)
 - 1KB per request × 1B requests/day ≈ 1TB/day
 - 99.9% availability ≈ 8.76 hours downtime/year; 99.99% ≈ 52 minutes
+- **QPS shortcut**: `QPS = (DAU × Average Actions) / 10^5` — round 86,400 seconds/day to 100,000 for instant mental division
+
+### QPS → Architecture Decision Table
+
+| QPS Range | Architecture Implication |
+|-----------|-------------------------|
+| < 100 QPS | Single server can handle |
+| 100 – 1,000 QPS | Load balancer + 2–3 servers |
+| 1,000 – 10,000 QPS | Stateless services + database replicas |
+| > 10,000 QPS | Full distributed system + caching + sharding |
+
+## Canonical Problems
+
+System design interviews reuse a set of well-known architecture problems:
+
+- **[[proximity-service]]** — Yelp/Google Maps: geolocation search at scale ([[geospatial-indexing]], [[geohash]], [[quadtree]])
+- URL shortener (hash functions, key generation)
+- Social media feed (fan-out, timeline generation)
+- Chat system (WebSocket, message delivery)
 
 ---
 - Foundation for [[scalable-architecture]] — the output of a system design interview
@@ -43,3 +62,5 @@ The canonical 4S framework for system design interviews:
 - Related to [[cache-strategy]] — a performance optimization to discuss
 - Related to [[observability]] — metrics to monitor the designed system
 - Complementary to [[technical-interview]] — system design tests architecture/scale, technical interviews test algorithms/PoC
+- Foundation for [[proximity-service]] — the canonical geolocation system design problem
+- Related to [[geospatial-indexing]] — the core algorithmic challenge for location-based systems
