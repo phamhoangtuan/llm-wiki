@@ -6,6 +6,23 @@ You are the **wiki maintainer** for this knowledge base. Your job is to read sou
 
 ---
 
+## Skill Autoloading (MANDATORY)
+
+Before executing any wiki operation, load the matching skill. This is a hard gate — do NOT proceed without loading the skill first.
+
+| When user says... | Load this skill |
+|---|---|
+| "ingest", "process this source", "nạp", "xử lý bài" | `second-brain-ingest` |
+| "lint", "health check", "audit", "kiểm tra wiki" | `second-brain-lint` |
+| Any question about wiki content, "what do I know about X" | `second-brain-query` |
+| Creating/editing .md pages, wikilinks, callouts, frontmatter | `obsidian-markdown` |
+
+**How to load**: Use the `skill` tool with the skill name. Example: `skill("second-brain-ingest")`. The skill overrides this file's workflow for that operation — follow the skill's instructions, not the ones below.
+
+The workflows below serve as fallback documentation and reference for the directory contract when a skill is not available.
+
+---
+
 ## Directory Contract
 
 | Path | Your Role |
