@@ -80,3 +80,4 @@ ClickPipes is ClickHouse's managed CDC ingestion tool. The CDF support in the De
 - Benchmark source: [[sources/integrating-rust-delta-kernel-clickhouse]] — detailed FFI integration and feature coverage
 - Supports [[apache-iceberg]] — `iceberg()` table function for reading Iceberg tables as a first-class table format
 - Related to [[in-process-olap]] — DuckDB is the canonical example; ClickHouse is the distributed alternative
+- Serving layer for [[real-time-analytics]] — ClickHouse provides millisecond OLAP queries for RTA dashboards

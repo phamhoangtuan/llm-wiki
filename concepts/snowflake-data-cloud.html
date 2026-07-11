@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Snowflake Data Cloud — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-warehouse">Data Warehouse</a> <span class="sep">/</span>
+  <span>Snowflake Data Cloud</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Snowflake Data Cloud</h1>
+  <div class="page-meta"><span>Source: snowflake-the-definitive-guide</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">data-warehouse</span><span class="tag">cloud</span><span class="tag">snowflake</span><span class="tag">analytics</span><span class="tag">governance</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Snowflake</strong> is a cloud-native data platform that decouples <strong>storage</strong>, <strong>compute</strong>, and <strong>cloud services</strong> into independently scalable layers. Unlike traditional data warehouses where storage and compute are tightly coupled, Snowflake allows organizations to scale query power up or down without moving data, and pay only for the compute resources actually used.</p>
+<h2 id="the-three-layers">The Three Layers</h2>
+<pre><code>┌─────────────────────────────┐
+│      Cloud Services           │
+│  (Query optimization,         │
+│   metadata, security,         │
+│   auto-scaling)               │
+│  — Shared across all users    │
+├─────────────────────────────┤
+│      Compute Layer            │
+│  (Virtual Warehouses)         │
+│  — Independent clusters       │
+│    that execute queries       │
+│  — Scale: X-Small → 6X-Large  │
+│  — Auto-suspend / auto-resume │
+├─────────────────────────────┤
+│      Storage Layer            │
+│  (Cloud-agnostic: AWS/Azure/GCP)
+│  — Columnar, compressed       │
+│  — Pay-as-you-go              │
+│  — Separated from compute     │
+└─────────────────────────────┘</code></pre>
+<h2 id="key-differentiators">Key Differentiators</h2>
+<table><thead><tr>
+<th>Feature</th>
+<th>Snowflake</th>
+<th>Traditional DW</th>
+</tr></thead><tbody>
+<tr>
+<td>Storage/compute</td>
+<td>Separated</td>
+<td>Coupled</td>
+</tr>
+<tr>
+<td>Scaling</td>
+<td>Independent per layer</td>
+<td>Scale everything together</td>
+</tr>
+<tr>
+<td>Maintenance</td>
+<td>Zero (fully managed)</td>
+<td>DBA-required</td>
+</tr>
+<tr>
+<td>Data formats</td>
+<td>Structured + semi-structured (JSON, Parquet) native</td>
+<td>Structured only</td>
+</tr>
+<tr>
+<td>Cloning</td>
+<td>Zero-copy (no data duplication)</td>
+<td>Full physical copy</td>
+</tr>
+<tr>
+<td>Time travel</td>
+<td>Query past states (up to 90 days)</td>
+<td>Requires backup/restore</td>
+</tr>
+<tr>
+<td>Sharing</td>
+<td>Cross-account data sharing without ETL</td>
+<td>Export/import required</td>
+</tr>
+</tbody></table>
+<h2 id="semi-structured-data">Semi-Structured Data</h2>
+<p>Snowflake treats JSON, Avro, Parquet, and ORC as first-class citizens via the <strong>VARIANT</strong> data type:</p>
+<pre><code class="language-sql">SELECT
+  order_id,
+  customer:email::STRING as email,
+  customer:address:city::STRING as city
+FROM orders
+WHERE customer:country::STRING = &#x27;VN&#x27;;</code></pre>
+<p>No ETL parsing required — query nested structures directly with SQL.</p>
+<h2 id="security--governance">Security & Governance</h2>
+<ul>
+<li><strong>RBAC</strong> — Role-Based Access Control; permissions granted to roles, not users</li>
+<li><strong>Dynamic Data Masking</strong> — Automatically hide PII based on the querier's role</li>
+<li><strong>Secure Views</strong> — Restrict row/column visibility even if user has table access</li>
+<li><strong>Column-Level Security</strong> — Granular access control per column</li>
+</ul>
+<h2 id="cost-management">Cost Management</h2>
+<ul>
+<li><strong>Virtual Warehouse sizing</strong> — Choose appropriate size for workload (X-Small for dev, 6X-Large for heavy ETL)</li>
+<li><strong>Auto-suspend</strong> — Automatically pause idle warehouses after configurable timeout</li>
+<li><strong>Auto-resume</strong> — Restart warehouse on next query (adds ~10s cold start)</li>
+<li><strong>Query History</strong> — Built-in cost monitoring: credits used, execution time per query</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Separation of storage and compute is Snowflake's architectural breakthrough — scale and cost-optimize each independently.</li>
+<li>Zero-copy cloning and Time Travel are "superpowers" for development, testing, and disaster recovery.</li>
+<li>Native semi-structured support eliminates ETL complexity for JSON/Avro/Parquet ingestion.</li>
+<li>RBAC + dynamic masking make enterprise security and compliance manageable.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-lakehouse.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Lakehouse</h4>
+      <p>Snowflake is a proprietary lakehouse platform combining warehouse and lake capabilities</p>
+    </a>
+    <a class="connection-card" href="data-governance.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Governance</h4>
+      <p>Snowflake's RBAC, masking, and secure views are governance primitives</p>
+    </a>
+    <a class="connection-card" href="cloud-service-models.html">
+      <span class="connection-type related">Related</span>
+      <h4>Cloud Service Models</h4>
+      <p>Snowflake is SaaS with PaaS-like configurability</p>
+    </a>
+    <a class="connection-card" href="delta-lake.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Delta Lake</h4>
+      <p>open table format vs Snowflake's proprietary storage</p>
+    </a>
+    <a class="connection-card" href="apache-iceberg.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Apache Iceberg</h4>
+      <p>open table format ecosystem vs Snowflake's native format</p>
+    </a>
+    <a class="connection-card" href="database-isolation.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Database Isolation Levels</h4>
+      <p>transactional guarantees in a cloud-native warehouse</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Database Isolation Levels</h4>
+      <p>Avila's comprehensive O'Reilly guide</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="shift-left-security.html" class="prev">← Shift Left Security</a><a href="snowflake-id.html" class="next">Snowflake ID →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

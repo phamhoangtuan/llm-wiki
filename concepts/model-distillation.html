@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Distillation — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-llm">Llm</a> <span class="sep">/</span>
+  <span>Model Distillation</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Model Distillation</h1>
+  <div class="page-meta"><span>Source: building-llms-for-production</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">llm</span><span class="tag">ml</span><span class="tag">optimization</span><span class="tag">compression</span><span class="tag">teacher-student</span><span class="tag">production</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Model Distillation</strong> is a compression technique where a smaller "student" model is trained to replicate the behavior of a larger, more capable "teacher" model. The student learns from the teacher's output distributions (soft targets) rather than from raw ground-truth labels, enabling it to capture nuanced reasoning patterns with far fewer parameters.</p>
+<h2 id="why-distill">Why Distill</h2>
+<table><thead><tr>
+<th>Problem</th>
+<th>Distillation Solution</th>
+</tr></thead><tbody>
+<tr>
+<td>Large models are too slow for real-time APIs</td>
+<td>Student model runs 10× faster with ~95% quality</td>
+</tr>
+<tr>
+<td>High serving costs at scale</td>
+<td>Smaller model fits on cheaper hardware</td>
+</tr>
+<tr>
+<td>Edge/mobile deployment</td>
+<td>Student can run on-device (phones, IoT)</td>
+</tr>
+<tr>
+<td>Multiple specialized variants</td>
+<td>One teacher, many lightweight students</td>
+</tr>
+</tbody></table>
+<h2 id="the-distillation-process">The Distillation Process</h2>
+<pre><code>Teacher Model (large, frozen) → Generates soft predictions on training data
+                                      ↓
+Student Model (small, trainable) → Trained to match teacher&#x27;s probability distribution
+                                      ↓
+Distilled Model → Deployed for fast, cheap inference</code></pre>
+<h3 id="soft-targets-vs-hard-labels">Soft Targets vs Hard Labels</h3>
+<ul>
+<li><strong>Hard labels:</strong> <code>[0, 1, 0]</code> — one-hot ground truth</li>
+<li><strong>Soft targets:</strong> <code>[0.1, 0.8, 0.1]</code> — teacher's probability distribution</li>
+</ul>
+<p>Soft targets encode <em>relational knowledge</em> between classes — the teacher's confidence that "cat" is somewhat like "dog" helps the student learn richer representations.</p>
+<h2 id="distillation-variants">Distillation Variants</h2>
+<table><thead><tr>
+<th>Variant</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Logit Distillation</strong></td>
+<td>Student mimics teacher's output logits (class probabilities)</td>
+</tr>
+<tr>
+<td><strong>Feature Distillation</strong></td>
+<td>Student mimics intermediate layer representations (hidden states)</td>
+</tr>
+<tr>
+<td><strong>Chain-of-Thought Distillation</strong></td>
+<td>Student learns to reproduce teacher's reasoning steps, not just answers</td>
+</tr>
+<tr>
+<td><strong>Self-Distillation</strong></td>
+<td>Model distills knowledge from its own ensemble or earlier checkpoints</td>
+</tr>
+</tbody></table>
+<h2 id="trade-offs">Trade-offs</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Teacher</th>
+<th>Student</th>
+</tr></thead><tbody>
+<tr>
+<td>Size</td>
+<td>Large (e.g., 70B parameters)</td>
+<td>Small (e.g., 7B parameters)</td>
+</tr>
+<tr>
+<td>Quality</td>
+<td>Baseline</td>
+<td>~90–95% of teacher</td>
+</tr>
+<tr>
+<td>Latency</td>
+<td>High</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>Expensive to serve</td>
+<td>Cheap to serve</td>
+</tr>
+<tr>
+<td>Training cost</td>
+<td>High (pre-training)</td>
+<td>Medium (distillation)</td>
+</tr>
+</tbody></table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Distillation is the primary method for deploying large-model capabilities at small-model cost.</li>
+<li>Soft targets encode richer information than hard labels, enabling better student learning.</li>
+<li>Chain-of-Thought distillation is emerging as critical for reasoning tasks.</li>
+<li>Distillation is complementary to quantization and pruning — often used together.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="model-quantization.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Model Quantization</h4>
+      <p>quantization shrinks precision; distillation shrinks architecture</p>
+    </a>
+    <a class="connection-card" href="model-pruning.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Model Pruning</h4>
+      <p>pruning removes weights; distillation trains a smaller model from scratch</p>
+    </a>
+    <a class="connection-card" href="fine-tuning.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fine-Tuning</h4>
+      <p>a fine-tuned teacher can be distilled into a specialized student</p>
+    </a>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Flink</h4>
+      <p>model serving layers may use distilled models for low-latency inference</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Flink</h4>
+      <p>distillation as a deployment optimization pillar</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="model-code-gap.html" class="prev">← Model-Code Gap</a><a href="model-pruning.html" class="next">Model Pruning →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

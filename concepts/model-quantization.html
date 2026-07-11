@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Model Quantization — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-llm">Llm</a> <span class="sep">/</span>
+  <span>Model Quantization</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Model Quantization</h1>
+  <div class="page-meta"><span>Source: building-llms-for-production</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">llm</span><span class="tag">ml</span><span class="tag">optimization</span><span class="tag">compression</span><span class="tag">inference</span><span class="tag">production</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Model Quantization</strong> reduces the numerical precision of a model's weights and activations — for example, from 32-bit floating point (FP32) to 8-bit integers (INT8) or 4-bit formats. This shrinks model size, lowers memory bandwidth requirements, and accelerates inference on both GPUs and CPUs, enabling large models to run on consumer hardware.</p>
+<h2 id="why-quantize">Why Quantize</h2>
+<table><thead><tr>
+<th>Precision</th>
+<th>Size</th>
+<th>VRAM for 7B Model</th>
+<th>Typical Use</th>
+</tr></thead><tbody>
+<tr>
+<td>FP32</td>
+<td>100%</td>
+<td>28 GB</td>
+<td>Training</td>
+</tr>
+<tr>
+<td>FP16</td>
+<td>50%</td>
+<td>14 GB</td>
+<td>Standard inference</td>
+</tr>
+<tr>
+<td>INT8</td>
+<td>25%</td>
+<td>7 GB</td>
+<td>High-throughput serving</td>
+</tr>
+<tr>
+<td>INT4 / FP4</td>
+<td>12.5%</td>
+<td>3.5 GB</td>
+<td>Edge/consumer GPU inference</td>
+</tr>
+</tbody></table>
+<h2 id="quantization-methods">Quantization Methods</h2>
+<table><thead><tr>
+<th>Method</th>
+<th>When Applied</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Post-Training Quantization (PTQ)</strong></td>
+<td>After training</td>
+<td>Convert weights to lower precision without retraining; fastest but may lose accuracy</td>
+</tr>
+<tr>
+<td><strong>Quantization-Aware Training (QAT)</strong></td>
+<td>During training</td>
+<td>Simulate low-precision arithmetic during training; higher accuracy but more expensive</td>
+</tr>
+<tr>
+<td><strong>GPTQ / AWQ</strong></td>
+<td>Post-training</td>
+<td>Layer-wise quantization optimized for generative models; popular for LLMs</td>
+</tr>
+</tbody></table>
+<h2 id="notable-formats">Notable Formats</h2>
+<ul>
+<li><strong>GGML / GGUF</strong> — File format for quantized LLMs used by llama.cpp; supports multiple quantization schemes per tensor.</li>
+<li><strong>NF4 (Normal Float 4)</strong> — 4-bit format used in QLoRA; optimizes bit allocation for normally distributed weights.</li>
+</ul>
+<h2 id="accuracy-impact">Accuracy Impact</h2>
+<ul>
+<li>Modern 4-bit quantization (GPTQ, AWQ) retains <strong>>95% of baseline accuracy</strong> for most tasks.</li>
+<li>Quantization is more damaging to small models than large ones — larger models have redundant capacity that absorbs precision loss.</li>
+<li>Emerging techniques (e.g., QLoRA-style 4-bit adapters) allow training on quantized bases with minimal degradation.</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Quantization is the fastest way to reduce model size and inference cost — no architecture changes needed.</li>
+<li>4-bit quantization makes 70B-parameter models runnable on a single consumer GPU.</li>
+<li>PTQ is sufficient for most deployment scenarios; QAT is reserved for extreme precision requirements.</li>
+<li>Quantization + distillation + pruning are often stacked together for maximum compression.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="model-distillation.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Model Distillation</h4>
+      <p>distill to shrink architecture, then quantize to shrink precision</p>
+    </a>
+    <a class="connection-card" href="model-pruning.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Model Pruning</h4>
+      <p>prune redundant weights, then quantize the survivors</p>
+    </a>
+    <a class="connection-card" href="fine-tuning.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fine-Tuning</h4>
+      <p>QLoRA enables fine-tuning on 4-bit quantized base models</p>
+    </a>
+    <a class="connection-card" href="in-process-olap.html">
+      <span class="connection-type related">Related to</span>
+      <h4>In-Process OLAP</h4>
+      <p>both optimize for query performance via low-level data representation changes</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>In-Process OLAP</h4>
+      <p>quantization as a deployment optimization pillar</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="model-pruning.html" class="prev">← Model Pruning</a><a href="object-oriented-design.html" class="next">Object-Oriented Design →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

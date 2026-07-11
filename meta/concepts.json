@@ -102,6 +102,19 @@
         "ai"
       ]
     },
+    "apache-airflow": {
+      "title": "Apache Airflow",
+      "category": "Data Engineering",
+      "url": "concepts/apache-airflow.html",
+      "definition": "**Apache Airflow** is an open-source platform for programmatically authoring, scheduling, and monitoring data pipelines. It represents workflows as **Directed Acyclic Graphs (DAGs)** written in Python",
+      "tags": [
+        "data-engineering",
+        "orchestration",
+        "workflow",
+        "python",
+        "dag"
+      ]
+    },
     "apache-arrow": {
       "title": "Apache Arrow",
       "category": "Data Engineering",
@@ -125,6 +138,19 @@
         "apache",
         "sql",
         "data-engineering"
+      ]
+    },
+    "apache-druid": {
+      "title": "Apache Druid",
+      "category": "Data Engineering",
+      "url": "concepts/apache-druid.html",
+      "definition": "**Apache Druid** is an open-source, column-oriented, distributed data store designed for high-performance real-time analytics on event-driven data. It is optimized for low-latency OLAP queries on stre",
+      "tags": [
+        "olap",
+        "database",
+        "streaming",
+        "analytics",
+        "real-time"
       ]
     },
     "apache-flink": {
@@ -179,6 +205,20 @@
         "delta-lake"
       ]
     },
+    "apache-pinot": {
+      "title": "Apache Pinot",
+      "category": "Data Engineering",
+      "url": "concepts/apache-pinot.html",
+      "definition": "**Apache Pinot** is an open-source, distributed OLAP datastore designed for low-latency, high-concurrency analytical queries on streaming and batch data. Originally built at LinkedIn to power real-tim",
+      "tags": [
+        "olap",
+        "database",
+        "streaming",
+        "analytics",
+        "real-time",
+        "linkedin"
+      ]
+    },
     "apache-spark": {
       "title": "Apache Spark",
       "category": "Data Engineering",
@@ -225,6 +265,20 @@
         "agile",
         "project-management",
         "methodology"
+      ]
+    },
+    "batch-processing": {
+      "title": "Batch Processing",
+      "category": "Data Engineering",
+      "url": "concepts/batch-processing.html",
+      "definition": "**Batch Processing** is the traditional paradigm of collecting data over a period of time and processing it all at once in a scheduled job. Unlike [[stream-processing|stream processing]] which handles",
+      "tags": [
+        "data-engineering",
+        "batch",
+        "etl",
+        "hadoop",
+        "spark",
+        "traditional"
       ]
     },
     "bijection": {
@@ -825,6 +879,19 @@
         "data-engineering"
       ]
     },
+    "edge-computing": {
+      "title": "Edge Computing",
+      "category": "Data Engineering",
+      "url": "concepts/edge-computing.html",
+      "definition": "**Edge Computing** is the paradigm of processing data near its source — at the \"edge\" of the network — rather than sending all data to a centralized cloud or data center. By analyzing data locally (on",
+      "tags": [
+        "iot",
+        "distributed",
+        "latency",
+        "streaming",
+        "analytics"
+      ]
+    },
     "elt": {
       "title": "ELT (Extract-Load-Transform)",
       "category": "Data Engineering",
@@ -849,6 +916,19 @@
         "design-principles"
       ]
     },
+    "event-time-processing": {
+      "title": "Event Time Processing",
+      "category": "Stream Processing",
+      "url": "concepts/event-time-processing.html",
+      "definition": "**Event Time Processing** is the practice of using the timestamp embedded in each data record (when the event actually occurred) rather than the time the system processes it. In distributed stream pro",
+      "tags": [
+        "stream-processing",
+        "time",
+        "distributed-systems",
+        "flink",
+        "correctness"
+      ]
+    },
     "fail-fast": {
       "title": "Fail Fast",
       "category": "Software Design",
@@ -871,6 +951,20 @@
         "skill-acquisition",
         "ultralearning",
         "psychology"
+      ]
+    },
+    "fine-tuning": {
+      "title": "Fine-Tuning",
+      "category": "AI & Agents",
+      "url": "concepts/fine-tuning.html",
+      "definition": "**Fine-Tuning** is the process of adapting a pre-trained general-purpose Large Language Model to a specific task or domain by continuing training on a smaller, targeted dataset. It embeds domain exper",
+      "tags": [
+        "llm",
+        "ml",
+        "training",
+        "lora",
+        "domain-adaptation",
+        "production"
       ]
     },
     "functional-testing": {
@@ -1026,6 +1120,19 @@
         "streaming"
       ]
     },
+    "kappa-architecture": {
+      "title": "Kappa Architecture",
+      "category": "System Architecture",
+      "url": "concepts/kappa-architecture.html",
+      "definition": "**Kappa Architecture** is a simplified data processing paradigm proposed by Jay Kreps (co-creator of Apache Kafka) that eliminates the batch layer entirely. All data is treated as a stream — even \"bat",
+      "tags": [
+        "big-data",
+        "architecture",
+        "streaming",
+        "simplification",
+        "kafka"
+      ]
+    },
     "knowledge-graph": {
       "title": "Knowledge Graph",
       "category": "System Architecture",
@@ -1051,6 +1158,19 @@
         "automation"
       ]
     },
+    "lambda-architecture": {
+      "title": "Lambda Architecture",
+      "category": "System Architecture",
+      "url": "concepts/lambda-architecture.html",
+      "definition": "**Lambda Architecture** is a big data processing paradigm that maintains two parallel data paths — a **batch layer** for comprehensive, accurate historical processing and a **speed layer** for real-ti",
+      "tags": [
+        "big-data",
+        "architecture",
+        "batch",
+        "streaming",
+        "historical"
+      ]
+    },
     "lance-file-format": {
       "title": "Lance File Format",
       "category": "Data Engineering",
@@ -1061,6 +1181,19 @@
         "columnar",
         "ml",
         "data-engineering"
+      ]
+    },
+    "langchain": {
+      "title": "LangChain",
+      "category": "AI & Agents",
+      "url": "concepts/langchain.html",
+      "definition": "**LangChain** is an open-source Python/JS framework for building applications powered by Large Language Models. It provides modular components for chaining together LLM calls, integrating external too",
+      "tags": [
+        "llm",
+        "framework",
+        "agents",
+        "orchestration",
+        "python"
       ]
     },
     "leader-election": {
@@ -1089,6 +1222,32 @@
         "partitioning",
         "databricks",
         "data-engineering"
+      ]
+    },
+    "llama-index": {
+      "title": "LlamaIndex",
+      "category": "AI & Agents",
+      "url": "concepts/llama-index.html",
+      "definition": "**LlamaIndex** (formerly GPT Index) is an open-source data framework for connecting LLMs with external data sources. Unlike [[langchain|LangChain]] which is a general orchestration framework, LlamaInd",
+      "tags": [
+        "llm",
+        "rag",
+        "indexing",
+        "retrieval",
+        "data"
+      ]
+    },
+    "llm-evaluation-metrics": {
+      "title": "LLM Evaluation Metrics",
+      "category": "AI & Agents",
+      "url": "concepts/llm-evaluation-metrics.html",
+      "definition": "**LLM Evaluation Metrics** are quantitative measures used to assess the quality, reliability, and usefulness of Large Language Model outputs in production systems. Unlike academic benchmarks (e.g., MM",
+      "tags": [
+        "llm",
+        "evaluation",
+        "metrics",
+        "production",
+        "reliability"
       ]
     },
     "load-balancer": {
@@ -1200,6 +1359,48 @@
         "code-quality"
       ]
     },
+    "model-distillation": {
+      "title": "Model Distillation",
+      "category": "AI & Agents",
+      "url": "concepts/model-distillation.html",
+      "definition": "**Model Distillation** is a compression technique where a smaller \"student\" model is trained to replicate the behavior of a larger, more capable \"teacher\" model. The student learns from the teacher's ",
+      "tags": [
+        "llm",
+        "ml",
+        "optimization",
+        "compression",
+        "teacher-student",
+        "production"
+      ]
+    },
+    "model-pruning": {
+      "title": "Model Pruning",
+      "category": "AI & Agents",
+      "url": "concepts/model-pruning.html",
+      "definition": "**Model Pruning** is a neural network compression technique that removes weights, connections, or entire neurons that contribute minimally to the model's output. By eliminating redundancy, pruning red",
+      "tags": [
+        "llm",
+        "ml",
+        "optimization",
+        "compression",
+        "inference",
+        "production"
+      ]
+    },
+    "model-quantization": {
+      "title": "Model Quantization",
+      "category": "AI & Agents",
+      "url": "concepts/model-quantization.html",
+      "definition": "**Model Quantization** reduces the numerical precision of a model's weights and activations — for example, from 32-bit floating point (FP32) to 8-bit integers (INT8) or 4-bit formats. This shrinks mod",
+      "tags": [
+        "llm",
+        "ml",
+        "optimization",
+        "compression",
+        "inference",
+        "production"
+      ]
+    },
     "object-oriented-design": {
       "title": "Object-Oriented Design",
       "category": "Software Design",
@@ -1260,6 +1461,19 @@
         "rust",
         "python",
         "data-engineering"
+      ]
+    },
+    "prompt-engineering": {
+      "title": "Prompt Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/prompt-engineering.html",
+      "definition": "**Prompt Engineering** is the practice of designing and refining input instructions (prompts) to guide Large Language Models (LLMs) toward desired outputs without modifying the underlying model weight",
+      "tags": [
+        "llm",
+        "ai",
+        "prompting",
+        "nlp",
+        "production"
       ]
     },
     "proximity-service": {
@@ -1470,6 +1684,19 @@
         "clean-code"
       ]
     },
+    "real-time-analytics": {
+      "title": "Real-Time Analytics",
+      "category": "Data Engineering",
+      "url": "concepts/real-time-analytics.html",
+      "definition": "**Real-Time Analytics (RTA)** is the paradigm of processing and analyzing data as it arrives — continuously, without waiting for batch windows to close. Unlike traditional batch processing which opera",
+      "tags": [
+        "analytics",
+        "streaming",
+        "real-time",
+        "data-engineering",
+        "decision-making"
+      ]
+    },
     "redis": {
       "title": "Redis",
       "category": "Infrastructure",
@@ -1493,6 +1720,20 @@
         "code-quality",
         "technical-debt",
         "engineering"
+      ]
+    },
+    "retrieval-augmented-generation": {
+      "title": "Retrieval-Augmented Generation (RAG)",
+      "category": "AI & Agents",
+      "url": "concepts/retrieval-augmented-generation.html",
+      "definition": "**Retrieval-Augmented Generation (RAG)** is an architecture pattern that grounds Large Language Model outputs in external, verifiable data sources. Instead of relying solely on parametric knowledge (w",
+      "tags": [
+        "llm",
+        "rag",
+        "vector-database",
+        "search",
+        "knowledge",
+        "production"
       ]
     },
     "rich-domain-model": {
@@ -1565,6 +1806,19 @@
         "ci-cd",
         "cloud-native",
         "clean-code"
+      ]
+    },
+    "snowflake-data-cloud": {
+      "title": "Snowflake Data Cloud",
+      "category": "Data Engineering",
+      "url": "concepts/snowflake-data-cloud.html",
+      "definition": "**Snowflake** is a cloud-native data platform that decouples **storage**, **compute**, and **cloud services** into independently scalable layers. Unlike traditional data warehouses where storage and c",
+      "tags": [
+        "data-warehouse",
+        "cloud",
+        "snowflake",
+        "analytics",
+        "governance"
       ]
     },
     "snowflake-id": {
@@ -1675,6 +1929,19 @@
         "senior-to-staff"
       ]
     },
+    "stateful-stream-processing": {
+      "title": "Stateful Stream Processing",
+      "category": "Stream Processing",
+      "url": "concepts/stateful-stream-processing.html",
+      "definition": "**Stateful Stream Processing** is the class of stream computations that require memory of past events to produce correct results. Unlike stateless transformations (e.g., filtering, mapping), stateful ",
+      "tags": [
+        "stream-processing",
+        "state",
+        "distributed-systems",
+        "flink",
+        "fault-tolerance"
+      ]
+    },
     "stateless-architecture": {
       "title": "Stateless Architecture",
       "category": "System Architecture",
@@ -1685,6 +1952,19 @@
         "scalability",
         "sessions",
         "distributed-systems"
+      ]
+    },
+    "stream-processing": {
+      "title": "Stream Processing",
+      "category": "Data Engineering",
+      "url": "concepts/stream-processing.html",
+      "definition": "**Stream Processing** is the paradigm of computing on data as it flows — processing each event incrementally rather than waiting for a batch to accumulate. It is the engine layer of [[real-time-analyt",
+      "tags": [
+        "streaming",
+        "data-engineering",
+        "real-time",
+        "architecture",
+        "event-driven"
       ]
     },
     "synthetic-data": {
@@ -1878,6 +2158,19 @@
         "meta",
         "workflow",
         "agents"
+      ]
+    },
+    "windowing": {
+      "title": "Windowing",
+      "category": "Stream Processing",
+      "url": "concepts/windowing.html",
+      "definition": "**Windowing** is the technique of dividing an infinite data stream into finite, manageable chunks (\"windows\") over which aggregations and computations can be performed. Because streams are unbounded, ",
+      "tags": [
+        "stream-processing",
+        "time",
+        "aggregation",
+        "analytics",
+        "flink"
       ]
     }
   }

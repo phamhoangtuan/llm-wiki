@@ -43,3 +43,6 @@ The problem with two separate systems: silos → frequent data transfers → inc
 - Foundation for [[databricks-platform]] — Databricks is the leading commercial Lakehouse implementation
 - Foundation for [[delta-lake]] — Delta Lake provides the transactional layer enabling Lakehouse
 - Builds on [[apache-spark]] — Spark provides the compute engine for Lakehouse analytics
+- Related to [[lambda-architecture]] — lakehouses reduce the need for separate batch/speed storage paths
+- Related to [[kappa-architecture]] — unified lakehouse storage supports single-path streaming replay
+- Related to [[snowflake-data-cloud]] — Snowflake is a proprietary lakehouse platform with separated storage/compute

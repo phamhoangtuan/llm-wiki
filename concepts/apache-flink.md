@@ -130,3 +130,8 @@ In Grab's Hugo data ingestion platform, Flink replaced a fragmented architecture
 - Integrates with [[apache-iceberg]] — Flink 2.1 is the default build target; DynamicIcebergSink enables multi-table routing and auto-schema evolution
 - Benchmark source: [[sources/hugo-data-ingestion-platform-flink]] — Grab's production migration from Kafka Connect+Sprinkler to Flink
 - Reference: [[sources/apache-iceberg-1.11.0-release]] — Iceberg 1.11.0 adds Flink 2.1 support, DynamicIcebergSink, post-commit maintenance
+- Core implementation of [[stream-processing]] — Flink is the reference engine for stateful, low-latency stream processing
+- Core implementation of [[event-time-processing]] — Flink's watermark and event-time semantics are production-standard
+- Core implementation of [[stateful-stream-processing]] — Flink treats state as a first-class citizen with RocksDB and checkpointing
+- Core implementation of [[windowing]] — Flink provides tumbling, sliding, session, and global window operators
+- Benchmark source: [[sources/stream-processing-apache-flink]] — Hueske's definitive guide to Flink architecture and time semantics

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Batch Processing — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-engineering">Data Engineering</a> <span class="sep">/</span>
+  <span>Batch Processing</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Batch Processing</h1>
+  <div class="page-meta"><span>Source: building-real-time-analytics-systems</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">batch</span><span class="tag">etl</span><span class="tag">hadoop</span><span class="tag">spark</span><span class="tag">traditional</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Batch Processing</strong> is the traditional paradigm of collecting data over a period of time and processing it all at once in a scheduled job. Unlike <a href="stream-processing.html" class="wiki-link">stream processing</a> which handles events incrementally, batch processing operates on <strong>bounded datasets</strong> with defined start and end points.</p>
+<h2 id="characteristics">Characteristics</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Batch</th>
+<th>Stream</th>
+</tr></thead><tbody>
+<tr>
+<td>Data boundary</td>
+<td>Bounded (finite)</td>
+<td>Unbounded (infinite)</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>Schedule (cron, clock)</td>
+<td>Event-driven</td>
+</tr>
+<tr>
+<td>Latency</td>
+<td>Minutes to hours</td>
+<td>Milliseconds to seconds</td>
+</tr>
+<tr>
+<td>Throughput</td>
+<td>Very high (full dataset at once)</td>
+<td>Sustained (record-by-record)</td>
+</tr>
+<tr>
+<td>Fault recovery</td>
+<td>Restart entire job</td>
+<td>Checkpoint and resume</td>
+</tr>
+</tbody></table>
+<h2 id="when-batch-is-still-the-right-choice">When Batch Is Still the Right Choice</h2>
+<ul>
+<li><strong>Historical reporting</strong> — monthly/quarterly financial reports</li>
+<li><strong>Data reconciliation</strong> — end-of-day settlement, accounting</li>
+<li><strong>Large-scale transformations</strong> — full-table repartitioning, historical backfills</li>
+<li><strong>Cost optimization</strong> — batch is cheaper than streaming for non-time-sensitive work</li>
+<li><strong>Complex analytics</strong> — large joins, graph algorithms that streaming engines can't handle efficiently</li>
+</ul>
+<h2 id="batch-in-the-modern-stack">Batch in the Modern Stack</h2>
+<p>Even in streaming-first architectures, batch hasn't disappeared — it has been unified:</p>
+<ul>
+<li><strong>Micro-batching</strong> — <a href="apache-spark.html" class="wiki-link">Spark Streaming</a> processes data in small batches (e.g., 1-second windows)</li>
+<li><strong>Unified engines</strong> — <a href="apache-flink.html" class="wiki-link">Flink</a> treats batch as a bounded stream: same API, different data source</li>
+<li><strong>Lakehouse batch</strong> — <a href="delta-lake.html" class="wiki-link">Delta Lake</a> and <a href="apache-iceberg.html" class="wiki-link">Iceberg</a> tables are queried by both batch and streaming jobs</li>
+</ul>
+<h2 id="batch-tools">Batch Tools</h2>
+<table><thead><tr>
+<th>Tool</th>
+<th>Era</th>
+<th>Role</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Hadoop MapReduce</strong></td>
+<td>2000s</td>
+<td>Original distributed batch processing</td>
+</tr>
+<tr>
+<td><strong>Apache Spark</strong></td>
+<td>2010s</td>
+<td>In-memory batch + micro-batch streaming</td>
+</tr>
+<tr>
+<td><strong>dbt</strong></td>
+<td>2020s</td>
+<td>SQL-based batch transformation in data warehouses</td>
+</tr>
+<tr>
+<td><strong>Airflow</strong></td>
+<td>2020s</td>
+<td>Batch workflow orchestration and scheduling</td>
+</tr>
+</tbody></table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Batch processing is not dead — it remains the right choice for historical reporting, reconciliation, and cost-sensitive workloads.</li>
+<li>Modern architectures unify batch and stream: the same data and often the same engine handles both.</li>
+<li>The <a href="lambda-architecture.html" class="wiki-link">Lambda Architecture</a> was built because batch and stream required separate systems; modern engines have made this obsolete.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="stream-processing.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Stream Processing</h4>
+      <p>the fundamental paradigm difference in data processing</p>
+    </a>
+    <a class="connection-card" href="real-time-analytics.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Real-Time Analytics</h4>
+      <p>RTA replaces batch for time-sensitive decision-making</p>
+    </a>
+    <a class="connection-card" href="apache-spark.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Spark</h4>
+      <p>Spark is the dominant modern batch processing engine</p>
+    </a>
+    <a class="connection-card" href="dbt.html">
+      <span class="connection-type related">Related to</span>
+      <h4>dbt (data build tool)</h4>
+      <p>dbt is the standard batch transformation tool in cloud warehouses</p>
+    </a>
+    <a class="connection-card" href="apache-airflow.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Airflow</h4>
+      <p>Airflow orchestrates batch pipeline schedules</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Airflow</h4>
+      <p>Needham contrasts batch with real-time analytics</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="architecture-in-agile.html" class="prev">← Architecture in Agile</a><a href="bijection.html" class="next">Bijection →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

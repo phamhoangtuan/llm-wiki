@@ -7,7 +7,10 @@
     "agentic-development-life-cycle",
     "ai-native-engineering",
     "harness-engineering",
+    "langchain",
+    "prompt-engineering",
     "vibe-coding",
+    "building-llms-for-production",
     "new-sdlc-vibe-coding"
   ],
   "harness-engineering": [
@@ -43,6 +46,7 @@
     "ai-native-engineering",
     "code-overload",
     "harness-engineering",
+    "prompt-engineering",
     "specification-driven-development",
     "new-sdlc-vibe-coding",
     "practical-guide-ai-native-engineer",
@@ -165,6 +169,7 @@
     "code-quality-pillars",
     "functional-testing",
     "harness-engineering",
+    "llm-evaluation-metrics",
     "pytest-fixtures",
     "pytest-markers",
     "pytest-mocking",
@@ -245,6 +250,8 @@
     "analytics-engineer",
     "analytics-engineer",
     "analytics-engineer",
+    "apache-airflow",
+    "batch-processing",
     "data-engineer",
     "data-engineer",
     "data-engineer",
@@ -270,6 +277,7 @@
     "apache-kafka",
     "apache-kafka",
     "apache-spark",
+    "batch-processing",
     "change-data-capture",
     "change-data-capture",
     "data-engineer",
@@ -278,8 +286,21 @@
     "data-ingestion",
     "dbt",
     "dbt",
+    "event-time-processing",
+    "kappa-architecture",
+    "kappa-architecture",
+    "kappa-architecture",
+    "lambda-architecture",
+    "lambda-architecture",
+    "model-distillation",
+    "real-time-analytics",
+    "stateful-stream-processing",
+    "stream-processing",
+    "windowing",
+    "building-real-time-analytics-systems",
     "hugo-data-ingestion-platform-flink",
-    "hugo-data-ingestion-platform-flink"
+    "hugo-data-ingestion-platform-flink",
+    "stream-processing-apache-flink"
   ],
   "sources/how-ai-changes-4-core-data-roles": [
     "analytics-engineer",
@@ -317,12 +338,14 @@
     "self-service-analytics",
     "self-service-analytics",
     "self-service-analytics",
+    "snowflake-data-cloud",
     "synthetic-data",
     "building-anonymization-pipeline",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026",
     "how-ai-changes-4-core-data-roles",
-    "how-ai-changes-4-core-data-roles"
+    "how-ai-changes-4-core-data-roles",
+    "snowflake-the-definitive-guide"
   ],
   "semantic-layer": [
     "analytics-engineer",
@@ -355,6 +378,7 @@
   ],
   "elt": [
     "analytics-engineer",
+    "apache-airflow",
     "data-engineer",
     "data-ingestion",
     "data-ingestion",
@@ -379,12 +403,14 @@
     "dataops",
     "dbt",
     "elt",
+    "retrieval-augmented-generation",
     "synthetic-data",
     "hugo-data-ingestion-platform-flink",
     "hugo-data-ingestion-platform-flink"
   ],
   "dataops": [
     "analytics-engineer",
+    "apache-airflow",
     "cicd-data-pipelines",
     "cicd-data-pipelines",
     "code-quality-pillars",
@@ -397,6 +423,7 @@
     "dbt",
     "semantic-layer",
     "data-engineering-with-dbt",
+    "data-engineering-with-python",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026",
     "reddit-cicd-tips-data-engineering",
@@ -406,6 +433,57 @@
     "analytics-engineer",
     "dbt",
     "elt"
+  ],
+  "data-engineer": [
+    "apache-airflow",
+    "apache-spark",
+    "cicd-data-pipelines",
+    "data-analyst",
+    "data-engineering-fundamentals",
+    "data-governance",
+    "data-lifecycle",
+    "data-scientist",
+    "data-scientist",
+    "building-llms-for-production",
+    "data-engineer-role-handbook",
+    "data-engineering-handbook",
+    "data-engineering-with-python",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "reddit-cicd-tips-data-engineering",
+    "reddit-cicd-tips-data-engineering"
+  ],
+  "cicd-data-pipelines": [
+    "apache-airflow",
+    "data-engineer",
+    "data-engineer",
+    "data-governance",
+    "data-quality-monitoring",
+    "dataops",
+    "shift-left-security",
+    "shift-left-security",
+    "reddit-cicd-tips-data-engineering",
+    "reddit-cicd-tips-data-engineering"
+  ],
+  "apache-spark": [
+    "apache-airflow",
+    "batch-processing",
+    "batch-processing",
+    "data-lakehouse",
+    "data-lakehouse",
+    "databricks-platform",
+    "databricks-platform",
+    "lambda-architecture",
+    "building-real-time-analytics-systems",
+    "data-engineering-with-python",
+    "databricks-dea-study-guide",
+    "high-performance-spark"
+  ],
+  "sources/data-engineering-with-python": [
+    "apache-airflow"
   ],
   "polars": [
     "apache-arrow",
@@ -509,6 +587,7 @@
     "duckdb",
     "duckdb",
     "in-process-olap",
+    "model-pruning",
     "duckdb-up-and-running",
     "duckdb-up-and-running"
   ],
@@ -519,6 +598,56 @@
     "lance-file-format",
     "polars",
     "vortex-file-format"
+  ],
+  "real-time-analytics": [
+    "apache-druid",
+    "apache-druid",
+    "apache-kafka",
+    "apache-pinot",
+    "batch-processing",
+    "clickhouse",
+    "data-engineer",
+    "edge-computing",
+    "event-time-processing",
+    "kappa-architecture",
+    "lambda-architecture",
+    "stream-processing",
+    "stream-processing",
+    "windowing",
+    "building-real-time-analytics-systems"
+  ],
+  "clickhouse": [
+    "apache-druid",
+    "apache-druid",
+    "apache-parquet",
+    "apache-pinot",
+    "apache-pinot",
+    "change-data-capture",
+    "change-data-capture",
+    "delta-kernel",
+    "delta-kernel",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "real-time-analytics",
+    "building-real-time-analytics-systems",
+    "integrating-rust-delta-kernel-clickhouse"
+  ],
+  "apache-pinot": [
+    "apache-druid",
+    "apache-druid",
+    "building-real-time-analytics-systems"
+  ],
+  "sources/building-real-time-analytics-systems": [
+    "apache-druid",
+    "apache-kafka",
+    "apache-pinot",
+    "batch-processing",
+    "edge-computing",
+    "kappa-architecture",
+    "lambda-architecture",
+    "real-time-analytics",
+    "stream-processing"
   ],
   "change-data-capture": [
     "apache-flink",
@@ -532,9 +661,12 @@
     "delta-lake",
     "delta-lake",
     "liquid-clustering",
+    "stream-processing",
+    "building-real-time-analytics-systems",
     "hugo-data-ingestion-platform-flink",
     "hugo-data-ingestion-platform-flink",
-    "integrating-rust-delta-kernel-clickhouse"
+    "integrating-rust-delta-kernel-clickhouse",
+    "stream-processing-apache-flink"
   ],
   "apache-kafka": [
     "apache-flink",
@@ -545,16 +677,24 @@
     "data-ingestion",
     "distributed-consensus",
     "distributed-consensus",
+    "edge-computing",
+    "kappa-architecture",
+    "kappa-architecture",
     "leader-election",
     "leader-election",
     "message-delivery-semantics",
     "message-queue",
     "message-queue",
     "orchestration-vs-choreography",
+    "real-time-analytics",
     "redis",
+    "retrieval-augmented-generation",
+    "stream-processing",
+    "building-real-time-analytics-systems",
     "databricks-zerobus",
     "hugo-data-ingestion-platform-flink",
     "hugo-data-ingestion-platform-flink",
+    "stream-processing-apache-flink",
     "system-design-big-archive"
   ],
   "apache-iceberg": [
@@ -562,6 +702,7 @@
     "apache-parquet",
     "apache-parquet",
     "apache-spark",
+    "batch-processing",
     "clickhouse",
     "clickhouse",
     "data-ingestion",
@@ -575,6 +716,7 @@
     "duckdb",
     "liquid-clustering",
     "liquid-clustering",
+    "snowflake-data-cloud",
     "unity-catalog",
     "unity-catalog",
     "debunking-data-layout-myths-liquid-clustering",
@@ -582,7 +724,8 @@
     "delta-catalog-managed-tables",
     "delta-grows-up-writes-unity-catalog",
     "hugo-data-ingestion-platform-flink",
-    "hugo-data-ingestion-platform-flink"
+    "hugo-data-ingestion-platform-flink",
+    "snowflake-the-definitive-guide"
   ],
   "sources/hugo-data-ingestion-platform-flink": [
     "apache-flink",
@@ -593,6 +736,46 @@
   "sources/apache-iceberg-1.11.0-release": [
     "apache-flink",
     "apache-iceberg"
+  ],
+  "stream-processing": [
+    "apache-flink",
+    "apache-kafka",
+    "batch-processing",
+    "batch-processing",
+    "edge-computing",
+    "event-time-processing",
+    "stateful-stream-processing",
+    "windowing",
+    "building-real-time-analytics-systems",
+    "stream-processing-apache-flink"
+  ],
+  "event-time-processing": [
+    "apache-flink",
+    "stateful-stream-processing",
+    "stream-processing",
+    "windowing",
+    "windowing",
+    "stream-processing-apache-flink"
+  ],
+  "stateful-stream-processing": [
+    "apache-flink",
+    "event-time-processing",
+    "stream-processing",
+    "windowing",
+    "stream-processing-apache-flink"
+  ],
+  "windowing": [
+    "apache-flink",
+    "event-time-processing",
+    "stateful-stream-processing",
+    "stream-processing-apache-flink"
+  ],
+  "sources/stream-processing-apache-flink": [
+    "apache-flink",
+    "event-time-processing",
+    "stateful-stream-processing",
+    "stream-processing",
+    "windowing"
   ],
   "liquid-clustering": [
     "apache-iceberg",
@@ -606,6 +789,7 @@
     "apache-iceberg",
     "apache-parquet",
     "apache-parquet",
+    "batch-processing",
     "change-data-capture",
     "clickhouse",
     "clickhouse",
@@ -619,6 +803,7 @@
     "duckdb",
     "liquid-clustering",
     "liquid-clustering",
+    "snowflake-data-cloud",
     "unity-catalog",
     "databricks-dea-study-guide",
     "databricks-zerobus",
@@ -627,7 +812,8 @@
     "delta-catalog-managed-tables",
     "delta-grows-up-writes-unity-catalog",
     "delta-grows-up-writes-unity-catalog",
-    "integrating-rust-delta-kernel-clickhouse"
+    "integrating-rust-delta-kernel-clickhouse",
+    "snowflake-the-definitive-guide"
   ],
   "message-queue": [
     "apache-kafka",
@@ -651,6 +837,23 @@
     "apache-kafka",
     "database-sharding"
   ],
+  "lambda-architecture": [
+    "apache-kafka",
+    "batch-processing",
+    "data-lakehouse",
+    "kappa-architecture",
+    "kappa-architecture",
+    "real-time-analytics",
+    "building-real-time-analytics-systems"
+  ],
+  "kappa-architecture": [
+    "apache-kafka",
+    "data-lakehouse",
+    "lambda-architecture",
+    "lambda-architecture",
+    "real-time-analytics",
+    "building-real-time-analytics-systems"
+  ],
   "lance-file-format": [
     "apache-parquet",
     "apache-parquet",
@@ -658,35 +861,10 @@
     "benchmarking-vortex-file-format",
     "benchmarking-vortex-file-format"
   ],
-  "clickhouse": [
-    "apache-parquet",
-    "change-data-capture",
-    "change-data-capture",
-    "delta-kernel",
-    "delta-kernel",
-    "delta-lake",
-    "delta-lake",
-    "delta-lake",
-    "integrating-rust-delta-kernel-clickhouse"
-  ],
-  "data-engineer": [
-    "apache-spark",
-    "cicd-data-pipelines",
-    "data-analyst",
-    "data-engineering-fundamentals",
-    "data-governance",
-    "data-lifecycle",
-    "data-scientist",
-    "data-scientist",
-    "data-engineer-role-handbook",
-    "data-engineering-handbook",
-    "data-fundamentals-matter-2026",
-    "data-fundamentals-matter-2026",
-    "how-ai-changes-4-core-data-roles",
-    "how-ai-changes-4-core-data-roles",
-    "how-ai-changes-4-core-data-roles",
-    "reddit-cicd-tips-data-engineering",
-    "reddit-cicd-tips-data-engineering"
+  "apache-druid": [
+    "apache-pinot",
+    "apache-pinot",
+    "building-real-time-analytics-systems"
   ],
   "sources/high-performance-spark": [
     "apache-spark"
@@ -710,8 +888,13 @@
     "databricks-platform",
     "dbfs",
     "delta-lake",
+    "lambda-architecture",
+    "real-time-analytics",
+    "snowflake-data-cloud",
     "unity-catalog",
-    "databricks-dea-study-guide"
+    "building-real-time-analytics-systems",
+    "databricks-dea-study-guide",
+    "snowflake-the-definitive-guide"
   ],
   "http-evolution": [
     "api-architectural-styles"
@@ -818,6 +1001,11 @@
     "model-code-gap",
     "learning-domain-driven-design"
   ],
+  "apache-airflow": [
+    "batch-processing",
+    "data-engineer",
+    "data-engineering-with-python"
+  ],
   "rich-domain-model": [
     "bijection",
     "code-quality-pillars",
@@ -906,6 +1094,7 @@
     "observability",
     "proximity-service",
     "scalable-architecture",
+    "stateful-stream-processing",
     "stateless-architecture",
     "system-design-interview",
     "system-design-interview-xu"
@@ -999,6 +1188,7 @@
     "clickhouse",
     "clickhouse",
     "duckdb",
+    "model-quantization",
     "vectorized-execution",
     "duckdb-up-and-running"
   ],
@@ -1118,7 +1308,9 @@
     "solid-principles"
   ],
   "cloud-service-models": [
-    "containerization"
+    "containerization",
+    "snowflake-data-cloud",
+    "snowflake-the-definitive-guide"
   ],
   "deployment-strategies": [
     "containerization",
@@ -1185,8 +1377,11 @@
   "data-quality-monitoring": [
     "data-anonymization",
     "differential-privacy",
+    "fine-tuning",
+    "llm-evaluation-metrics",
     "synthetic-data",
     "building-anonymization-pipeline",
+    "data-engineering-with-python",
     "data-quality-traffic-lights-sahlin"
   ],
   "data-lifecycle": [
@@ -1202,19 +1397,9 @@
     "data-modeling",
     "data-modeling",
     "dataops",
+    "data-engineering-with-python",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026"
-  ],
-  "cicd-data-pipelines": [
-    "data-engineer",
-    "data-engineer",
-    "data-governance",
-    "data-quality-monitoring",
-    "dataops",
-    "shift-left-security",
-    "shift-left-security",
-    "reddit-cicd-tips-data-engineering",
-    "reddit-cicd-tips-data-engineering"
   ],
   "sources/data-engineer-role-handbook": [
     "data-engineer",
@@ -1261,17 +1446,13 @@
     "delta-grows-up-writes-unity-catalog",
     "delta-grows-up-writes-unity-catalog"
   ],
-  "apache-spark": [
-    "data-lakehouse",
-    "data-lakehouse",
-    "databricks-platform",
-    "databricks-platform",
-    "databricks-dea-study-guide",
-    "high-performance-spark"
-  ],
   "dbfs": [
     "data-lakehouse",
     "databricks-platform"
+  ],
+  "snowflake-data-cloud": [
+    "data-lakehouse",
+    "snowflake-the-definitive-guide"
   ],
   "sources/data-quality-traffic-lights-sahlin": [
     "data-quality-monitoring"
@@ -1291,7 +1472,10 @@
   ],
   "database-isolation": [
     "database-replication",
-    "database-sharding"
+    "database-sharding",
+    "snowflake-data-cloud",
+    "data-engineering-with-python",
+    "snowflake-the-definitive-guide"
   ],
   "snowflake-id": [
     "database-sharding"
@@ -1310,6 +1494,7 @@
     "incremental-view-maintenance",
     "incremental-view-maintenance",
     "materialized-views",
+    "windowing",
     "materialized-views-quick-insights",
     "materialized-views-quick-insights"
   ],
@@ -1430,11 +1615,26 @@
     "in-process-olap",
     "vectorized-execution"
   ],
+  "model-quantization": [
+    "edge-computing",
+    "edge-computing",
+    "model-distillation",
+    "model-pruning",
+    "building-llms-for-production"
+  ],
   "code-archaeology": [
     "essential-accidental-complexity",
     "model-code-gap",
     "refactoring-at-scale",
     "software-rot"
+  ],
+  "message-delivery-semantics": [
+    "event-time-processing",
+    "kappa-architecture",
+    "message-queue",
+    "stateful-stream-processing",
+    "stream-processing",
+    "stream-processing-apache-flink"
   ],
   "functional-testing": [
     "fail-fast",
@@ -1456,6 +1656,41 @@
     "ultralearning",
     "ultralearning",
     "ultralearning-scott-young"
+  ],
+  "retrieval-augmented-generation": [
+    "fine-tuning",
+    "langchain",
+    "langchain",
+    "llama-index",
+    "llama-index",
+    "llm-evaluation-metrics",
+    "prompt-engineering",
+    "building-llms-for-production"
+  ],
+  "prompt-engineering": [
+    "fine-tuning",
+    "langchain",
+    "llama-index",
+    "llm-evaluation-metrics",
+    "retrieval-augmented-generation",
+    "building-llms-for-production"
+  ],
+  "model-distillation": [
+    "fine-tuning",
+    "model-pruning",
+    "model-quantization",
+    "building-llms-for-production"
+  ],
+  "sources/building-llms-for-production": [
+    "fine-tuning",
+    "langchain",
+    "llama-index",
+    "llm-evaluation-metrics",
+    "model-distillation",
+    "model-pruning",
+    "model-quantization",
+    "prompt-engineering",
+    "retrieval-augmented-generation"
   ],
   "pytest-basics": [
     "functional-testing",
@@ -1549,6 +1784,7 @@
   ],
   "observability": [
     "kubernetes-operator",
+    "llm-evaluation-metrics",
     "message-queue",
     "microservices",
     "microservices",
@@ -1556,14 +1792,34 @@
     "shift-left-security",
     "shift-left-security",
     "system-design-interview",
+    "building-llms-for-production",
     "clean-code-principles-patterns-silen",
     "system-design-interview-xu"
   ],
   "sources/programming-kubernetes": [
     "kubernetes-operator"
   ],
+  "llama-index": [
+    "langchain",
+    "langchain",
+    "langchain",
+    "building-llms-for-production"
+  ],
   "sources/debunking-data-layout-myths-liquid-clustering": [
     "liquid-clustering"
+  ],
+  "langchain": [
+    "llama-index",
+    "llama-index",
+    "llama-index",
+    "building-llms-for-production"
+  ],
+  "llm-evaluation-metrics": [
+    "llama-index",
+    "observability",
+    "prompt-engineering",
+    "retrieval-augmented-generation",
+    "building-llms-for-production"
   ],
   "stateless-architecture": [
     "load-balancer",
@@ -1574,9 +1830,6 @@
     "scalable-architecture",
     "system-design-interview-xu"
   ],
-  "message-delivery-semantics": [
-    "message-queue"
-  ],
   "spaced-repetition": [
     "metalearning",
     "testing-effect",
@@ -1584,6 +1837,20 @@
     "ultralearning",
     "ultralearning",
     "ultralearning-scott-young"
+  ],
+  "model-pruning": [
+    "model-distillation",
+    "model-quantization",
+    "building-llms-for-production"
+  ],
+  "fine-tuning": [
+    "model-distillation",
+    "model-pruning",
+    "model-quantization",
+    "prompt-engineering",
+    "retrieval-augmented-generation",
+    "retrieval-augmented-generation",
+    "building-llms-for-production"
   ],
   "sources/practical-object-oriented-design": [
     "object-oriented-design"
@@ -1652,7 +1919,8 @@
     "python-debugging-pdb",
     "python-repl",
     "python-standard-library",
-    "python-static-analysis"
+    "python-static-analysis",
+    "data-engineering-with-python"
   ],
   "sources/intuitive-python": [
     "python-concurrency",
@@ -1674,12 +1942,23 @@
     "python-professional-practices",
     "readability-vs-performance"
   ],
+  "batch-processing": [
+    "real-time-analytics",
+    "building-real-time-analytics-systems"
+  ],
+  "edge-computing": [
+    "real-time-analytics",
+    "building-real-time-analytics-systems"
+  ],
   "architecture-in-agile": [
     "risk-driven-architecture"
   ],
   "sources/semantic-layers-for-ai": [
     "self-service-analytics",
     "semantic-layer"
+  ],
+  "sources/snowflake-the-definitive-guide": [
+    "snowflake-data-cloud"
   ],
   "sources/seriously-good-software": [
     "software-quality-dimensions"

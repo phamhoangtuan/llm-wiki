@@ -135,3 +135,5 @@ This aligns with the broader [[ai-native-engineering]] shift: engineers become o
 - Related to [[cicd-data-pipelines]] — CI/CD discipline applied to pipeline code (linting, testing, deployment automation)
 - Benchmark source: [[sources/data-engineer-role-handbook]] — Data Engineering Handbook (role definition)
 - Benchmark source: [[sources/data-engineering-handbook]] — Data Engineering Handbook (discipline overview)
+- Related to [[apache-airflow]] — orchestration is a core pillar of the data engineering toolkit
+- Related to [[real-time-analytics]] — data engineers design and build RTA pipelines as a specialized domain

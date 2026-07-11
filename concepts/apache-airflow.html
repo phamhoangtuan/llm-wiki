@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apache Airflow — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-engineering">Data Engineering</a> <span class="sep">/</span>
+  <span>Apache Airflow</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Apache Airflow</h1>
+  <div class="page-meta"><span>Source: data-engineering-with-python</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">orchestration</span><span class="tag">workflow</span><span class="tag">python</span><span class="tag">dag</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Apache Airflow</strong> is an open-source platform for programmatically authoring, scheduling, and monitoring data pipelines. It represents workflows as <strong>Directed Acyclic Graphs (DAGs)</strong> written in Python, enabling data engineers to define complex task dependencies, retry logic, and monitoring in code rather than through GUI configurations.</p>
+<h2 id="core-concepts">Core Concepts</h2>
+<table><thead><tr>
+<th>Concept</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>DAG</strong></td>
+<td>Directed Acyclic Graph — a collection of tasks with explicit dependencies and no cycles</td>
+</tr>
+<tr>
+<td><strong>Task</strong></td>
+<td>A unit of work (e.g., run a SQL query, execute a Python script, transfer a file)</td>
+</tr>
+<tr>
+<td><strong>Operator</strong></td>
+<td>A template for a task type (e.g., <code>PythonOperator</code>, <code>BashOperator</code>, <code>SnowflakeOperator</code>)</td>
+</tr>
+<tr>
+<td><strong>Scheduler</strong></td>
+<td>Parses DAGs, determines execution order, and triggers tasks based on schedule</td>
+</tr>
+<tr>
+<td><strong>Executor</strong></td>
+<td>Runs the tasks (e.g., LocalExecutor, CeleryExecutor, KubernetesExecutor)</td>
+</tr>
+<tr>
+<td><strong>Web UI</strong></td>
+<td>Visualizes DAG runs, task status, logs, and historical performance</td>
+</tr>
+</tbody></table>
+<h2 id="why-airflow-became-standard">Why Airflow Became Standard</h2>
+<ol>
+<li><strong>Python-native</strong> — pipelines are code, not XML or YAML; integrates with pandas, SQLAlchemy, boto3</li>
+<li><strong>Dependency as code</strong> — <code>task_a >> task_b >> task_c</code> explicitly encodes execution order</li>
+<li><strong>Backfill and catchup</strong> — automatically run missed schedules when a DAG is paused and resumed</li>
+<li><strong>Extensible</strong> — 500+ community operators for databases, cloud services, ML platforms</li>
+<li><strong>Observability</strong> — built-in logging, SLA alerting, and retry with exponential backoff</li>
+</ol>
+<h2 id="example-dag">Example DAG</h2>
+<pre><code class="language-python">from airflow import DAG
+from airflow.operators.python import PythonOperator
+from datetime import datetime
+
+def extract(): ...
+def transform(): ...
+def load(): ...
+
+with DAG(&#x27;etl_pipeline&#x27;, start_date=datetime(2024, 1, 1), schedule=&#x27;@daily&#x27;) as dag:
+    extract_task = PythonOperator(task_id=&#x27;extract&#x27;, python_callable=extract)
+    transform_task = PythonOperator(task_id=&#x27;transform&#x27;, python_callable=transform)
+    load_task = PythonOperator(task_id=&#x27;load&#x27;, python_callable=load)
+
+    extract_task &gt;&gt; transform_task &gt;&gt; load_task</code></pre>
+<h2 id="alternatives-and-when-to-choose-them">Alternatives and When to Choose Them</h2>
+<table><thead><tr>
+<th>Tool</th>
+<th>Strength</th>
+<th>Best For</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Airflow</strong></td>
+<td>Mature, Python-native, vast operator library</td>
+<td>General data pipelines, ETL/ELT</td>
+</tr>
+<tr>
+<td><strong>Prefect</strong></td>
+<td>Modern API, hybrid cloud/on-prem</td>
+<td>Teams wanting simpler local development</td>
+</tr>
+<tr>
+<td><strong>Dagster</strong></td>
+<td>Asset-oriented, strong testing</td>
+<td>Data-aware pipelines with unit testing</td>
+</tr>
+<tr>
+<td><strong>Luigi</strong></td>
+<td>Lightweight, Spotify origin</td>
+<td>Simple dependency graphs</td>
+</tr>
+<tr>
+<td><strong>Temporal</strong></td>
+<td>Durable execution, long-running</td>
+<td>Business process workflows, microservice orchestration</td>
+</tr>
+</tbody></table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Airflow is the de facto standard for data pipeline orchestration in Python ecosystems.</li>
+<li>DAGs-as-code make pipelines versionable, testable, and reviewable.</li>
+<li>Backfill, retry, and SLA monitoring are built-in production features.</li>
+<li>For modern stacks, evaluate Dagster (asset-centric) and Prefect (simpler API) as alternatives.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-engineer.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineer</h4>
+      <p>orchestration is one of the four pillars of data engineering</p>
+    </a>
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type related">Related</span>
+      <h4>DataOps</h4>
+      <p>Airflow embodies the DataOps principle of treating pipelines as software</p>
+    </a>
+    <a class="connection-card" href="cicd-data-pipelines.html">
+      <span class="connection-type related">Related to</span>
+      <h4>CI/CD for Data Pipelines</h4>
+      <p>DAGs should be linted, tested, and deployed via CI/CD</p>
+    </a>
+    <a class="connection-card" href="apache-spark.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Spark</h4>
+      <p>Spark jobs are commonly triggered from Airflow DAGs</p>
+    </a>
+    <a class="connection-card" href="elt.html">
+      <span class="connection-type related">Related to</span>
+      <h4>ELT (Extract-Load-Transform)</h4>
+      <p>Airflow orchestrates the extraction and load steps; dbt handles transformation</p>
+    </a>
+    <a class="connection-card" href="dbt.html">
+      <span class="connection-type related">Related to</span>
+      <h4>dbt (data build tool)</h4>
+      <p>dbt + Airflow is the canonical modern data stack combination</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>dbt (data build tool)</h4>
+      <p>Crickard's guide covers Airflow DAG construction</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="analytics-engineer.html" class="prev">← Analytics Engineer</a><a href="apache-arrow.html" class="next">Apache Arrow →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

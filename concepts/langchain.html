@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LangChain — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-llm">Llm</a> <span class="sep">/</span>
+  <span>LangChain</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>LangChain</h1>
+  <div class="page-meta"><span>Source: building-llms-for-production</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">llm</span><span class="tag">framework</span><span class="tag">agents</span><span class="tag">orchestration</span><span class="tag">python</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>LangChain</strong> is an open-source Python/JS framework for building applications powered by Large Language Models. It provides modular components for chaining together LLM calls, integrating external tools (APIs, databases, search engines), and building autonomous agents that can plan and execute multi-step workflows.</p>
+<h2 id="core-components">Core Components</h2>
+<table><thead><tr>
+<th>Component</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Chains</strong></td>
+<td>Sequences of calls — LLM → tool → LLM → output</td>
+</tr>
+<tr>
+<td><strong>Agents</strong></td>
+<td>Dynamic reasoning loops where the LLM decides which tool to use next</td>
+</tr>
+<tr>
+<td><strong>Tools</strong></td>
+<td>Pre-built integrations (Google Search, Wikipedia, SQL databases, APIs)</td>
+</tr>
+<tr>
+<td><strong>Memory</strong></td>
+<td>Conversational context persistence across multiple interactions</td>
+</tr>
+<tr>
+<td><strong>Document Loaders</strong></td>
+<td>Ingest PDFs, web pages, databases for [[retrieval-augmented-generation</td>
+<td>RAG]]</td>
+</tr>
+<tr>
+<td><strong>Vector Stores</strong></td>
+<td>Connectors for Pinecone, Weaviate, Chroma, pgvector</td>
+</tr>
+</tbody></table>
+<h2 id="langchain-vs-llamaindex">LangChain vs LlamaIndex</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>LangChain</th>
+<th>[[llama-index</th>
+<th>LlamaIndex]]</th>
+</tr></thead><tbody>
+<tr>
+<td>Focus</td>
+<td>General LLM orchestration</td>
+<td>Data indexing and retrieval</td>
+</tr>
+<tr>
+<td>Strength</td>
+<td>Multi-step workflows, tool use</td>
+<td>Private data ingestion, advanced search</td>
+</tr>
+<tr>
+<td>When to use</td>
+<td>Complex agents, many tools</td>
+<td>RAG on enterprise documents</td>
+</tr>
+<tr>
+<td>Abstraction level</td>
+<td>High (opinionated chains)</td>
+<td>Medium (flexible pipelines)</td>
+</tr>
+</tbody></table>
+<h2 id="when-to-use-langchain">When to Use LangChain</h2>
+<ul>
+<li>Building chatbots that need to call APIs, query databases, or use calculators</li>
+<li>Creating autonomous research agents</li>
+<li>Orchestrating multi-step LLM workflows with conditional logic</li>
+<li>Prototyping LLM applications quickly with pre-built components</li>
+</ul>
+<h2 id="when-not-to-use-langchain">When NOT to Use LangChain</h2>
+<ul>
+<li>Simple prompt-and-response apps (adds unnecessary complexity)</li>
+<li>When you need fine-grained control over every LLM call</li>
+<li>Production systems where minimizing dependencies matters</li>
+<li>When <a href="llama-index.html" class="wiki-link">LlamaIndex</a>'s retrieval focus is a better fit</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>LangChain is the most popular general-purpose framework for building LLM-powered applications.</li>
+<li>It shines for agent workflows and multi-tool orchestration.</li>
+<li>For retrieval-heavy applications, LlamaIndex is often a better choice.</li>
+<li>In production, evaluate whether LangChain's abstractions justify its dependency overhead.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="llama-index.html">
+      <span class="connection-type related">Related</span>
+      <h4>LlamaIndex</h4>
+      <p>LangChain is general orchestration; LlamaIndex is retrieval-specialized</p>
+    </a>
+    <a class="connection-card" href="prompt-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Prompt Engineering</h4>
+      <p>LangChain chains are engineered prompt sequences</p>
+    </a>
+    <a class="connection-card" href="agent-loop.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Loop</h4>
+      <p>LangChain agents implement the Perceive-Plan-Act-Observe cycle</p>
+    </a>
+    <a class="connection-card" href="retrieval-augmented-generation.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Retrieval-Augmented Generation (RAG)</h4>
+      <p>LangChain provides RAG pipeline components</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Retrieval-Augmented Generation (RAG)</h4>
+      <p>Peters & Bouchard compare LangChain and LlamaIndex</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="lance-file-format.html" class="prev">← Lance File Format</a><a href="leader-election.html" class="next">Leader Election →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

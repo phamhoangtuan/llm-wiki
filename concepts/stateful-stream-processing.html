@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stateful Stream Processing — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-stream-processing">Stream Processing</a> <span class="sep">/</span>
+  <span>Stateful Stream Processing</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Stateful Stream Processing</h1>
+  <div class="page-meta"><span>Source: stream-processing-apache-flink</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">stream-processing</span><span class="tag">state</span><span class="tag">distributed-systems</span><span class="tag">flink</span><span class="tag">fault-tolerance</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Stateful Stream Processing</strong> is the class of stream computations that require memory of past events to produce correct results. Unlike stateless transformations (e.g., filtering, mapping), stateful operations — such as windowed aggregations, sessionization, and stream joins — must durably persist and recover state across failures and restarts.</p>
+<h2 id="why-state-matters">Why State Matters</h2>
+<p>Many real-world stream computations are inherently stateful:</p>
+<ul>
+<li><strong>Running counts</strong> — "How many events per user in the last hour?"</li>
+<li><strong>Sessionization</strong> — "Group all events from a user until 30 minutes of inactivity"</li>
+<li><strong>Stream joins</strong> — "Match ad impressions with subsequent purchases by the same user"</li>
+<li><strong>Pattern detection</strong> — "Alert when three failed login attempts occur within 5 minutes"</li>
+</ul>
+<p>Without managed state, the system would lose all progress on restart.</p>
+<h2 id="types-of-state">Types of State</h2>
+<table><thead><tr>
+<th>State Type</th>
+<th>Scope</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Keyed State</strong></td>
+<td>Per-key (e.g., per user_id)</td>
+<td>Shopping cart contents, running total per customer</td>
+</tr>
+<tr>
+<td><strong>Operator State</strong></td>
+<td>Per-parallel task instance</td>
+<td>Kafka partition offset, custom buffer</td>
+</tr>
+<tr>
+<td><strong>Broadcast State</strong></td>
+<td>Shared across all tasks</td>
+<td>Configuration rules, reference data</td>
+</tr>
+</tbody></table>
+<h2 id="fault-tolerance-mechanisms">Fault Tolerance Mechanisms</h2>
+<table><thead><tr>
+<th>Mechanism</th>
+<th>Trigger</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Checkpoints</strong></td>
+<td>Automatic (periodic)</td>
+<td>Crash recovery — restore state from last snapshot</td>
+</tr>
+<tr>
+<td><strong>Savepoints</strong></td>
+<td>Manual (user-triggered)</td>
+<td>Planned maintenance, code updates, cluster migration</td>
+</tr>
+</tbody></table>
+<h3 id="checkpoints">Checkpoints</h3>
+<ul>
+<li>Based on the <strong>Chandy–Lamport distributed snapshot algorithm</strong></li>
+<li>State is asynchronously written to remote durable storage (e.g., S3, HDFS)</li>
+<li>On failure, the job restarts from the latest checkpoint — no data loss, no duplication</li>
+</ul>
+<h3 id="savepoints">Savepoints</h3>
+<ul>
+<li>Manually triggered by the operator</li>
+<li>Used before deploying new code, rescaling the cluster, or migrating to new infrastructure</li>
+<li>Like a "manual save" in a video game before a boss fight</li>
+</ul>
+<h2 id="state-backends">State Backends</h2>
+<table><thead><tr>
+<th>Backend</th>
+<th>Best For</th>
+<th>Trade-off</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>In-Memory (Heap)</strong></td>
+<td>Small state, ultra-low latency</td>
+<td>Lost on failure unless checkpointed frequently</td>
+</tr>
+<tr>
+<td><strong>RocksDB</strong></td>
+<td>Large state (TB scale), spill-to-disk</td>
+<td>Higher latency than heap, but scales beyond RAM</td>
+</tr>
+<tr>
+<td><strong>Remote Storage</strong></td>
+<td>Infinite state, serverless models</td>
+<td>Highest latency, lowest operational burden</td>
+</tr>
+</tbody></table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Stateful stream processing is essential for aggregations, joins, and sessionization.</li>
+<li>State must be durable, recoverable, and scalable — managed state backends are not optional in production.</li>
+<li>Checkpoints provide automatic fault tolerance; savepoints enable planned maintenance without data loss.</li>
+<li>RocksDB is the production standard for large state in Flink; heap suffices only for small, fast state.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="stream-processing.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Stream Processing</h4>
+      <p>state management is one of the two fundamental challenges (alongside time)</p>
+    </a>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Flink</h4>
+      <p>Flink treats state as a first-class citizen with mature checkpoint/savepoint support</p>
+    </a>
+    <a class="connection-card" href="event-time-processing.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Event Time Processing</h4>
+      <p>state is keyed and time-bounded for correct event-time computation</p>
+    </a>
+    <a class="connection-card" href="windowing.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Windowing</h4>
+      <p>windows are stateful aggregations over time-bounded buckets</p>
+    </a>
+    <a class="connection-card" href="message-delivery-semantics.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Message Delivery Semantics</h4>
+      <p>exactly-once delivery requires exactly-once state updates</p>
+    </a>
+    <a class="connection-card" href="database-replication.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Database Replication</h4>
+      <p>both solve the problem of durable state across failures</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Database Replication</h4>
+      <p>Hueske's definitive coverage of Flink state management</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="staff-engineering.html" class="prev">← Staff Engineering</a><a href="stateless-architecture.html" class="next">Stateless Architecture →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

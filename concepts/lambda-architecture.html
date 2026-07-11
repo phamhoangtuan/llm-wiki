@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lambda Architecture — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-big-data">Big Data</a> <span class="sep">/</span>
+  <span>Lambda Architecture</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Lambda Architecture</h1>
+  <div class="page-meta"><span>Source: building-real-time-analytics-systems</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">big-data</span><span class="tag">architecture</span><span class="tag">batch</span><span class="tag">streaming</span><span class="tag">historical</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Lambda Architecture</strong> is a big data processing paradigm that maintains two parallel data paths — a <strong>batch layer</strong> for comprehensive, accurate historical processing and a <strong>speed layer</strong> for real-time, approximate stream processing. Results from both paths are merged in a <strong>serving layer</strong> to provide a unified query interface.</p>
+<h2 id="the-three-layers">The Three Layers</h2>
+<pre><code>         ┌─────────────────┐
+         │   Serving Layer │ ← Merges batch views + real-time views
+         │   (Query API)   │
+         └────────┬────────┘
+                  │
+    ┌─────────────┴─────────────┐
+    │                           │
+    ▼                           ▼
+┌──────────┐              ┌──────────┐
+│  Batch   │              │  Speed   │
+│  Layer   │              │  Layer   │
+│(accurate,│              │(approx., │
+│ complete)│             │  fast)   │
+└────┬─────┘              └────┬─────┘
+     │                         │
+     ▼                         ▼
+┌──────────┐              ┌──────────┐
+│ Raw Data │              │ Raw Data │
+│ (immutable│             │ (stream) │
+│  master) │              │          │
+└──────────┘              └──────────┘</code></pre>
+<h3 id="batch-layer">Batch Layer</h3>
+<ul>
+<li>Processes the full dataset (all historical data)</li>
+<li>Emits pre-computed views (e.g., daily aggregations)</li>
+<li>High latency (hours) but <strong>100% accurate and complete</strong></li>
+<li>Tools: Hadoop MapReduce, Apache Spark</li>
+</ul>
+<h3 id="speed-layer">Speed Layer</h3>
+<ul>
+<li>Processes only recent data (the delta since last batch run)</li>
+<li>Compensates for batch latency with <strong>approximate, real-time views</strong></li>
+<li>Lower latency (seconds) but may use estimation or partial data</li>
+<li>Tools: Apache Storm, Apache Flink, Spark Streaming</li>
+</ul>
+<h3 id="serving-layer">Serving Layer</h3>
+<ul>
+<li>Stores and indexes both batch and speed views</li>
+<li>Queries merge results: batch view (complete but stale) + speed view (fresh but incomplete)</li>
+<li>Tools: Apache Druid, Elasticsearch, HBase</li>
+</ul>
+<h2 id="why-lambda-emerged">Why Lambda Emerged</h2>
+<p>In the early 2010s, stream processing frameworks were immature — they couldn't guarantee accuracy or handle late-arriving data reliably. Lambda was a pragmatic compromise:</p>
+<blockquote>"We'll do the best we can in real time, but trust the batch layer for the final answer."</blockquote>
+<h2 id="criticisms--decline">Criticisms & Decline</h2>
+<table><thead><tr>
+<th>Problem</th>
+<th>Cause</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Code duplication</strong></td>
+<td>Same business logic must be implemented twice (batch + stream)</td>
+</tr>
+<tr>
+<td><strong>Operational complexity</strong></td>
+<td>Two separate pipelines to maintain, monitor, and debug</td>
+</tr>
+<tr>
+<td><strong>Merge complexity</strong></td>
+<td>Serving layer must reconcile potentially divergent batch and speed views</td>
+</tr>
+<tr>
+<td><strong>Delayed corrections</strong></td>
+<td>If the speed layer is wrong, corrections only arrive with the next batch run</td>
+</tr>
+</tbody></table>
+<p>Modern stream processors like <a href="apache-flink.html" class="wiki-link">apache-flink</a> can now achieve both accuracy and low latency in a single path, making Lambda largely obsolete for new systems.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Lambda was a pragmatic solution for an era when stream processing couldn't be trusted for accuracy.</li>
+<li>It requires writing and maintaining the same logic twice — a heavy operational burden.</li>
+<li>Modern streaming frameworks (Flink, Kafka Streams) have made Lambda architecture unnecessary for most use cases.</li>
+<li>Legacy Lambda systems are gradually being migrated to <a href="kappa-architecture.html" class="wiki-link">kappa-architecture</a> or unified streaming pipelines.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="kappa-architecture.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Kappa Architecture</h4>
+      <p>the simplified single-path streaming alternative</p>
+    </a>
+    <a class="connection-card" href="real-time-analytics.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Real-Time Analytics</h4>
+      <p>modern RTA typically uses unified streaming, not dual paths</p>
+    </a>
+    <a class="connection-card" href="apache-spark.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Spark</h4>
+      <p>Spark powers the batch layer; Spark Streaming historically powered the speed layer</p>
+    </a>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Flink</h4>
+      <p>Flink's exactly-once guarantees eliminated the need for a separate batch reconciliation path</p>
+    </a>
+    <a class="connection-card" href="data-lakehouse.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Lakehouse</h4>
+      <p>lakehouses provide unified storage that reduces the need for separate batch/speed storage</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Lakehouse</h4>
+      <p>Needham discusses the evolution away from Lambda</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="kubernetes-operator.html" class="prev">← Kubernetes Operator</a><a href="lance-file-format.html" class="next">Lance File Format →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

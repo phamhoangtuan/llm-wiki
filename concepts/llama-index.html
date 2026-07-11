@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LlamaIndex — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-llm">Llm</a> <span class="sep">/</span>
+  <span>LlamaIndex</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>LlamaIndex</h1>
+  <div class="page-meta"><span>Source: building-llms-for-production</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">llm</span><span class="tag">rag</span><span class="tag">indexing</span><span class="tag">retrieval</span><span class="tag">data</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>LlamaIndex</strong> (formerly GPT Index) is an open-source data framework for connecting LLMs with external data sources. Unlike <a href="langchain.html" class="wiki-link">LangChain</a> which is a general orchestration framework, LlamaIndex specializes in <strong>indexing, retrieval, and query optimization</strong> — making it the preferred choice for building sophisticated <a href="retrieval-augmented-generation.html" class="wiki-link">RAG</a> systems over private or domain-specific data.</p>
+<h2 id="core-capabilities">Core Capabilities</h2>
+<table><thead><tr>
+<th>Feature</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Data Ingestion</strong></td>
+<td>Load 100+ data sources: PDFs, SQL databases, Notion, Slack, APIs</td>
+</tr>
+<tr>
+<td><strong>Indexing</strong></td>
+<td>Multiple index types: vector, tree, keyword, knowledge graph</td>
+</tr>
+<tr>
+<td><strong>Query Routing</strong></td>
+<td>Automatically choose the best index for a given query</td>
+</tr>
+<tr>
+<td><strong>Response Synthesis</strong></td>
+<td>Combine retrieved nodes into coherent answers with citations</td>
+</tr>
+<tr>
+<td><strong>Evaluation</strong></td>
+<td>Built-in RAG evaluation metrics (relevance, faithfulness)</td>
+</tr>
+</tbody></table>
+<h2 id="index-types">Index Types</h2>
+<table><thead><tr>
+<th>Index</th>
+<th>Best For</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Vector Index</strong></td>
+<td>Semantic similarity search over documents</td>
+</tr>
+<tr>
+<td><strong>Tree Index</strong></td>
+<td>Hierarchical summarization (top-down querying)</td>
+</tr>
+<tr>
+<td><strong>Keyword Index</strong></td>
+<td>Exact-match and BM25 retrieval</td>
+</tr>
+<tr>
+<td><strong>Knowledge Graph Index</strong></td>
+<td>Structured relationship queries</td>
+</tr>
+<tr>
+<td><strong>Composable</strong></td>
+<td>Combine multiple indices for complex use cases</td>
+</tr>
+</tbody></table>
+<h2 id="llamaindex-vs-langchain">LlamaIndex vs LangChain</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>LlamaIndex</th>
+<th>[[langchain</th>
+<th>LangChain]]</th>
+</tr></thead><tbody>
+<tr>
+<td>Primary focus</td>
+<td>Data retrieval and indexing</td>
+<td>General LLM workflow orchestration</td>
+</tr>
+<tr>
+<td>RAG depth</td>
+<td>Deep — advanced chunking, re-ranking, query transformation</td>
+<td>Surface — basic document loaders and vector stores</td>
+</tr>
+<tr>
+<td>Agent support</td>
+<td>Limited</td>
+<td>Extensive</td>
+</tr>
+<tr>
+<td>When to use</td>
+<td>Enterprise RAG, complex document search</td>
+<td>Multi-tool agents, general LLM apps</td>
+</tr>
+</tbody></table>
+<h2 id="when-to-use-llamaindex">When to Use LlamaIndex</h2>
+<ul>
+<li>Building RAG over large, heterogeneous document collections</li>
+<li>Need advanced retrieval strategies (multi-step query transformation, re-ranking)</li>
+<li>Querying structured + unstructured data together (SQL tables + PDFs)</li>
+<li>Want built-in evaluation and observability for RAG quality</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>LlamaIndex is the most capable open-source framework for production RAG systems.</li>
+<li>Its indexing abstractions handle the hard parts of document ingestion, chunking, and retrieval.</li>
+<li>Use LlamaIndex for retrieval-heavy apps; use LangChain for agent-heavy, tool-orchestration apps.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="langchain.html">
+      <span class="connection-type related">Related</span>
+      <h4>LangChain</h4>
+      <p>LlamaIndex is retrieval-specialized; LangChain is general-purpose</p>
+    </a>
+    <a class="connection-card" href="retrieval-augmented-generation.html">
+      <span class="connection-type related">Related</span>
+      <h4>Retrieval-Augmented Generation (RAG)</h4>
+      <p>LlamaIndex provides the indexing and retrieval layer</p>
+    </a>
+    <a class="connection-card" href="prompt-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Prompt Engineering</h4>
+      <p>retrieved content is injected into prompts via LlamaIndex's response synthesis</p>
+    </a>
+    <a class="connection-card" href="llm-evaluation-metrics.html">
+      <span class="connection-type related">Related to</span>
+      <h4>LLM Evaluation Metrics</h4>
+      <p>LlamaIndex includes built-in RAG evaluation tools</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>LLM Evaluation Metrics</h4>
+      <p>Peters & Bouchard compare LlamaIndex and LangChain</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="liquid-clustering.html" class="prev">← Liquid Clustering</a><a href="llm-evaluation-metrics.html" class="next">LLM Evaluation Metrics →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

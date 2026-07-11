@@ -56,3 +56,4 @@ Beyond the three pillars, production systems need standardized observability inf
 - Required by [[kubernetes-operator]] — production operators export Prometheus metrics, structured logs, and OpenTelemetry traces
 - Required by [[microservices]] — distributed tracing across services is mandatory for debugging multi-service systems
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén on OpenTelemetry standardization, SLIs/SLOs, and automated alerting
+- Related to [[llm-evaluation-metrics]] — LLM observability extends traditional observability into non-deterministic AI systems

@@ -4,6 +4,38 @@
 
 ---
 
+## [2026-07-11] ingest | Building LLMs for Production, Real-Time Analytics, Data Engineering with Python, Snowflake, Apache Flink
+
+- Source 1: "Building LLMs for Production" by Peters & Bouchard (ebook, 423 pages, finished 2026-04-21)
+- Source 2: "Building Real-Time Analytics Systems" by Mark Needham (ebook, 221 pages, finished 2026-04-26)
+- Source 3: "Data Engineering with Python" by Paul Crickard (ebook, 299 pages, finished 2026-04-22)
+- Source 4: "Snowflake: The Definitive Guide" by Joyce Kay Avila (ebook, 467 pages, finished 2026-04-24)
+- Source 5: "Stream Processing with Apache Flink" by Fabian Hueske (ebook, 318 pages, finished 2026-04-27)
+- Created sources/building-llms-for-production.md, sources/building-real-time-analytics-systems.md, sources/data-engineering-with-python.md, sources/snowflake-the-definitive-guide.md, sources/stream-processing-apache-flink.md
+- New concepts: prompt-engineering, retrieval-augmented-generation, fine-tuning, model-distillation, model-quantization, model-pruning, llm-evaluation-metrics, real-time-analytics, lambda-architecture, kappa-architecture, stream-processing, apache-airflow, snowflake-data-cloud, event-time-processing, stateful-stream-processing, windowing
+- Updated concepts: apache-flink (+ stream-processing, event-time-processing, stateful-stream-processing, windowing links), apache-kafka (+ real-time-analytics, stream-processing, lambda/kappa links), data-engineer (+ apache-airflow, real-time-analytics), clickhouse (+ real-time-analytics), data-lakehouse (+ lambda-architecture, kappa-architecture, snowflake-data-cloud), observability (+ llm-evaluation-metrics)
+- Regenerated HTML via convert-to-html.py
+- Updated index.md: +16 concept entries, +5 source entries
+- Total pages: 228 (169 concepts + 59 sources)
+
+## [2026-07-11] lint | Post-ingest health check + fix pass
+
+- Scanned all 233 wiki pages (174 concepts + 59 sources) across 5 lint dimensions
+- Broken wikilinks: 6 found → 0 remaining
+  - Created concepts/apache-druid.md (linked from building-real-time-analytics-systems.md)
+  - Created concepts/apache-pinot.md (linked from building-real-time-analytics-systems.md)
+  - Created concepts/batch-processing.md (linked from real-time-analytics.md, 2 refs)
+  - Created concepts/edge-computing.md (linked from building-real-time-analytics-systems.md, 2 refs)
+  - Created concepts/langchain.md (linked from building-llms-for-production.md)
+  - Created concepts/llama-index.md (linked from building-llms-for-production.md)
+- Title-style wikilinks: 0 found (all use slug-style format)
+- Orphans: 0 true orphans
+- Near-orphans: 9 pages with 1 inbound link (deferred): ai-psychosis, architecture-in-agile, bloom-filter, feedback, http-evolution, python-repl, redis, shift-left-security, snowflake-id
+- Frontmatter: all 6 new stub pages have complete frontmatter
+- Regenerated HTML via convert-to-html.py
+- Updated index.md: +6 concept entries, page count 228 → 233
+- Total pages: 233 (174 concepts + 59 sources)
+
 ## [2026-06-26] lint | Post-ingest link hygiene pass
 
 - Health score: 85→92/100

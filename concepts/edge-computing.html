@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edge Computing — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-iot">Iot</a> <span class="sep">/</span>
+  <span>Edge Computing</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Edge Computing</h1>
+  <div class="page-meta"><span>Source: building-real-time-analytics-systems</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">iot</span><span class="tag">distributed</span><span class="tag">latency</span><span class="tag">streaming</span><span class="tag">analytics</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Edge Computing</strong> is the paradigm of processing data near its source — at the "edge" of the network — rather than sending all data to a centralized cloud or data center. By analyzing data locally (on IoT devices, routers, or local servers), edge computing reduces network bandwidth, minimizes latency, and enables real-time decisions even when cloud connectivity is intermittent.</p>
+<h2 id="why-edge-computing-matters">Why Edge Computing Matters</h2>
+<table><thead><tr>
+<th>Problem</th>
+<th>Edge Solution</th>
+</tr></thead><tbody>
+<tr>
+<td>Network latency</td>
+<td>Process locally; decisions in milliseconds without round-trips to cloud</td>
+</tr>
+<tr>
+<td>Bandwidth costs</td>
+<td>Send only aggregated insights, not raw data streams</td>
+</tr>
+<tr>
+<td>Connectivity gaps</td>
+<td>Continue operating when cloud link is down</td>
+</tr>
+<tr>
+<td>Data sovereignty</td>
+<td>Keep sensitive data local; comply with geographic regulations</td>
+</tr>
+<tr>
+<td>Scale</td>
+<td>Distribute computation across millions of edge nodes</td>
+</tr>
+</tbody></table>
+<h2 id="edge-vs-cloud-vs-fog">Edge vs Cloud vs Fog</h2>
+<table><thead><tr>
+<th>Layer</th>
+<th>Location</th>
+<th>Role</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Edge</strong></td>
+<td>Device itself (sensor, camera, phone)</td>
+<td>Ultra-low latency, immediate action</td>
+</tr>
+<tr>
+<td><strong>Fog</strong></td>
+<td>Local gateway, on-premise server</td>
+<td>Aggregation, filtering, local coordination</td>
+</tr>
+<tr>
+<td><strong>Cloud</strong></td>
+<td>Centralized data center</td>
+<td>Deep analytics, long-term storage, training</td>
+</tr>
+</tbody></table>
+<h2 id="edge-analytics-use-cases">Edge Analytics Use Cases</h2>
+<ul>
+<li><strong>Autonomous vehicles</strong> — Real-time obstacle detection can't wait for cloud round-trip</li>
+<li><strong>Smart manufacturing</strong> — Detect equipment anomalies on the factory floor</li>
+<li><strong>Retail</strong> — In-store cameras analyzing foot traffic without sending video to cloud</li>
+<li><strong>Healthcare</strong> — Wearable devices monitoring vitals and alerting locally</li>
+<li><strong>Energy grids</strong> — Real-time load balancing across distributed power sources</li>
+</ul>
+<h2 id="challenges">Challenges</h2>
+<ul>
+<li><strong>Limited compute</strong> — Edge devices have constrained CPU, memory, and battery</li>
+<li><strong>Heterogeneity</strong> — Thousands of device types with different capabilities</li>
+<li><strong>Management at scale</strong> — Deploying, updating, and monitoring millions of edge nodes</li>
+<li><strong><a href="model-quantization.html" class="wiki-link">Model quantization</a></strong> — ML models must be compressed to run on edge hardware</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Edge computing moves computation closer to data sources to reduce latency and bandwidth.</li>
+<li>It complements — not replaces — cloud analytics; most architectures use a tiered edge-fog-cloud model.</li>
+<li>Model quantization and lightweight inference engines are essential for ML at the edge.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="real-time-analytics.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Real-Time Analytics</h4>
+      <p>edge analytics is a specialized form of RTA at the network edge</p>
+    </a>
+    <a class="connection-card" href="model-quantization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Model Quantization</h4>
+      <p>quantized models are required to fit ML on edge hardware</p>
+    </a>
+    <a class="connection-card" href="stream-processing.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Stream Processing</h4>
+      <p>edge devices often run lightweight stream processors</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Kafka</h4>
+      <p>Kafka at the edge (Kafka on devices/gateways) is an emerging pattern</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Kafka</h4>
+      <p>Needham covers edge analytics as a future trend</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="duckdb.html" class="prev">← DuckDB</a><a href="elt.html" class="next">ELT (Extract-Load-Transform) →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

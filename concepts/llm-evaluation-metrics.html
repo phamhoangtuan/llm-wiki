@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LLM Evaluation Metrics — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-llm">Llm</a> <span class="sep">/</span>
+  <span>LLM Evaluation Metrics</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>LLM Evaluation Metrics</h1>
+  <div class="page-meta"><span>Source: building-llms-for-production</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">llm</span><span class="tag">evaluation</span><span class="tag">metrics</span><span class="tag">production</span><span class="tag">reliability</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>LLM Evaluation Metrics</strong> are quantitative measures used to assess the quality, reliability, and usefulness of Large Language Model outputs in production systems. Unlike academic benchmarks (e.g., MMLU, HellaSwag), production metrics focus on application-specific behavior: Is the answer faithful to the context? Is it relevant to the query? Is the retrieval system finding the right documents?</p>
+<h2 id="core-production-metrics">Core Production Metrics</h2>
+<table><thead><tr>
+<th>Metric</th>
+<th>Definition</th>
+<th>What It Catches</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Faithfulness</strong></td>
+<td>Degree to which the answer is supported by the provided context</td>
+<td>Hallucinations, fabricated facts</td>
+</tr>
+<tr>
+<td><strong>Relevancy</strong></td>
+<td>Degree to which the answer addresses the user's actual intent</td>
+<td>Off-topic answers, generic responses</td>
+</tr>
+<tr>
+<td><strong>Hit Rate</strong></td>
+<td>Percentage of retrieval queries returning useful results</td>
+<td>Poor retrieval, irrelevant document matches</td>
+</tr>
+<tr>
+<td><strong>Context Precision</strong></td>
+<td>Ratio of relevant retrieved chunks to total retrieved chunks</td>
+<td>Noise in the context window</td>
+</tr>
+<tr>
+<td><strong>Context Recall</strong></td>
+<td>Ratio of relevant ground-truth chunks that were retrieved</td>
+<td>Missing critical information</td>
+</tr>
+<tr>
+<td><strong>Answer Correctness</strong></td>
+<td>Factual accuracy compared to ground truth</td>
+<td>Factual errors even when grounded</td>
+</tr>
+</tbody></table>
+<h2 id="evaluation-approaches">Evaluation Approaches</h2>
+<h3 id="human-evaluation">Human Evaluation</h3>
+<ul>
+<li><strong>Pros:</strong> Captures nuance, tone, and subjective quality</li>
+<li><strong>Cons:</strong> Expensive, slow, inconsistent between raters</li>
+<li><strong>Best for:</strong> Initial model selection, adversarial case auditing</li>
+</ul>
+<h3 id="automated-metrics">Automated Metrics</h3>
+<ul>
+<li><strong>Rule-based</strong> — Regex, string matching, JSON schema validation (fast, brittle)</li>
+<li><strong>Model-based (LLM-as-Judge)</strong> — Use a stronger model (e.g., GPT-4) to score outputs of a weaker model (e.g., Llama-3-8B)</li>
+</ul>
+<p>  - Pros: Scalable, captures semantic nuance</p>
+<p>  - Cons: Expensive, may inherit judge model biases</p>
+<ul>
+<li><strong>Embedding-based</strong> — Cosine similarity between output and reference answer</li>
+</ul>
+<p>  - Pros: Fast, language-agnostic</p>
+<p>  - Cons: Misses semantic equivalence expressed differently</p>
+<h3 id="rag-specific-metrics">RAG-Specific Metrics</h3>
+<table><thead><tr>
+<th>Metric</th>
+<th>Measures</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Hit Rate</strong></td>
+<td>Retrieval quality</td>
+</tr>
+<tr>
+<td><strong>Mean Reciprocal Rank (MRR)</strong></td>
+<td>Average rank of first relevant result</td>
+</tr>
+<tr>
+<td><strong>Normalized Discounted Cumulative Gain (NDCG)</strong></td>
+<td>Ranking quality of retrieved set</td>
+</tr>
+<tr>
+<td><strong>Faithfulness</strong></td>
+<td>Generation grounded in retrieved context</td>
+</tr>
+</tbody></table>
+<h2 id="observability-integration">Observability Integration</h2>
+<p>Production evaluation is not a one-time test — it is continuous:</p>
+<ul>
+<li><strong>LangSmith</strong> — Trace every request, log prompts/responses, score runs</li>
+<li><strong>Weights & Biases</strong> — Track prompt versions, model variants, metric trends over time</li>
+<li><strong>Arize</strong> — Drift detection, A/B testing of prompt/model changes</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Production LLM evaluation is distinct from academic benchmarking — focus on application behavior.</li>
+<li>Faithfulness and Relevancy are the two most important metrics for grounded generation systems.</li>
+<li>LLM-as-Judge is the most scalable automated approach, but requires careful prompt design and bias auditing.</li>
+<li>Evaluation must be continuous, not a one-time report — integrate into the observability stack.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="prompt-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Prompt Engineering</h4>
+      <p>prompt changes are A/B tested using these metrics</p>
+    </a>
+    <a class="connection-card" href="retrieval-augmented-generation.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Retrieval-Augmented Generation (RAG)</h4>
+      <p>RAG quality is measured by Hit Rate, Context Precision, and Faithfulness</p>
+    </a>
+    <a class="connection-card" href="observability.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Observability</h4>
+      <p>LLM evaluation is a specialized observability domain</p>
+    </a>
+    <a class="connection-card" href="data-quality-monitoring.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Quality Monitoring</h4>
+      <p>both use automated validation to catch production issues early</p>
+    </a>
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Testing Strategy</h4>
+      <p>production LLM evaluation extends the testing pyramid into non-deterministic systems</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Testing Strategy</h4>
+      <p>Peters & Bouchard's coverage of production evaluation</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="llama-index.html" class="prev">← LlamaIndex</a><a href="load-balancer.html" class="next">Load Balancer →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

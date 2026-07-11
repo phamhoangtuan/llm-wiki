@@ -159,6 +159,28 @@
 - [Microservices](concepts/microservices.html) — Autopilot architecture: stateless, resilient, SRP at service level; coupling reduction via encapsulation, facade pattern, DDD
 - [Shift Left Security](concepts/shift-left-security.html) — DevSecOps: embed security into every lifecycle phase; SAST, SCA, DAST, threat modeling, secure defaults
 - [Synthetic Data](concepts/synthetic-data.html) — Artificially generated data matching real statistical properties; zero re-identification risk; GANs, VAEs, statistical modeling
+- [Prompt Engineering](concepts/prompt-engineering.html) — Designing instructions to guide LLM behavior without modifying model weights
+- [Retrieval-Augmented Generation (RAG)](concepts/retrieval-augmented-generation.html) — Grounding LLM outputs in external, verifiable data sources to reduce hallucinations
+- [Fine-Tuning](concepts/fine-tuning.html) — Adapting pre-trained LLMs to specific domains via continued training on targeted datasets
+- [Model Distillation](concepts/model-distillation.html) — Training smaller student models to replicate larger teacher model behavior
+- [Model Quantization](concepts/model-quantization.html) — Reducing numerical precision of model weights to shrink size and accelerate inference
+- [Model Pruning](concepts/model-pruning.html) — Removing low-importance weights and connections to compress neural networks
+- [LLM Evaluation Metrics](concepts/llm-evaluation-metrics.html) — Quantitative measures for assessing production LLM output quality and reliability
+- [Real-Time Analytics](concepts/real-time-analytics.html) — Processing and analyzing unbounded data streams with sub-second latency
+- [Lambda Architecture](concepts/lambda-architecture.html) — Dual-path batch + stream processing paradigm for big data systems
+- [Kappa Architecture](concepts/kappa-architecture.html) — Simplified single-path streaming architecture eliminating the batch layer
+- [Stream Processing](concepts/stream-processing.html) — Computing on data as it flows, with managed state and time semantics
+- [Apache Airflow](concepts/apache-airflow.html) — Python-native DAG orchestrator for scheduling and monitoring data pipelines
+- [Snowflake Data Cloud](concepts/snowflake-data-cloud.html) — Cloud-native data platform with separated storage, compute, and services layers
+- [Event Time Processing](concepts/event-time-processing.html) — Using event timestamps for deterministic, reproducible stream computation
+- [Stateful Stream Processing](concepts/stateful-stream-processing.html) — Stream computations requiring durable memory of past events with fault recovery
+- [Windowing](concepts/windowing.html) — Dividing infinite streams into finite chunks for bounded aggregation and analysis
+- [Apache Druid](concepts/apache-druid.html) — Open-source column-oriented OLAP for real-time streaming analytics
+- [Apache Pinot](concepts/apache-pinot.html) — LinkedIn-built distributed OLAP for low-latency user-facing analytics
+- [Batch Processing](concepts/batch-processing.html) — Traditional scheduled processing of bounded datasets
+- [Edge Computing](concepts/edge-computing.html) — Processing data at the network edge to reduce latency and bandwidth
+- [LangChain](concepts/langchain.html) — Open-source framework for building LLM-powered applications with tool use and agents
+- [LlamaIndex](concepts/llama-index.html) — Data framework specialized in indexing and retrieval for RAG systems
 
 ## Sources
 
@@ -216,6 +238,11 @@
 - [How AI Changes 4 Core Data Roles](sources/how-ai-changes-4-core-data-roles.md) — Madison Mae maps how AI reshapes Data Analyst, Data Engineer, Data Scientist, and Analytics Engineer roles
 - [Clean Code Principles And Patterns](sources/clean-code-principles-patterns-silen.md) — Petri Silen's 676-page Python edition: microservices architecture, SOLID, testing pyramid, DevSecOps
 - [Building an Anonymization Pipeline](sources/building-anonymization-pipeline.md) — Arbuckle & El Emam's 167-page guide: Five Safes, differential privacy, synthetic data, pipeline architectures
+- [Building LLMs for Production](sources/building-llms-for-production.md) — Peters & Bouchard's 423-page guide: prompt engineering, RAG, fine-tuning, model optimization, evaluation, and deployment
+- [Building Real-Time Analytics Systems](sources/building-real-time-analytics-systems.md) — Mark Needham's 221-page guide: streaming stack architecture, Kafka, Flink, OLAP serving, and scaling
+- [Data Engineering with Python](sources/data-engineering-with-python.md) — Paul Crickard's 299-page guide: Python data pipelines, Airflow, Spark, database interaction, and production principles
+- [Snowflake: The Definitive Guide](sources/snowflake-the-definitive-guide.md) — Joyce Kay Avila's 467-page O'Reilly guide: architecture, semi-structured data, Time Travel, Zero-Copy Cloning, security, and cost optimization
+- [Stream Processing with Apache Flink](sources/stream-processing-apache-flink.md) — Fabian Hueske's 318-page guide: Flink architecture, DataStream API, stateful processing, time semantics, and deployment
 
 ## Syntheses
 
@@ -223,5 +250,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-06-29*
-*Pages: 207 (153 concepts + 54 sources)*
+*Last updated: 2026-07-11*
+*Pages: 233 (174 concepts + 59 sources)*

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Real-Time Analytics — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-analytics">Analytics</a> <span class="sep">/</span>
+  <span>Real-Time Analytics</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Real-Time Analytics</h1>
+  <div class="page-meta"><span>Source: building-real-time-analytics-systems</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">analytics</span><span class="tag">streaming</span><span class="tag">real-time</span><span class="tag">data-engineering</span><span class="tag">decision-making</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Real-Time Analytics (RTA)</strong> is the paradigm of processing and analyzing data as it arrives — continuously, without waiting for batch windows to close. Unlike traditional batch processing which operates on bounded datasets with artificial time boundaries (e.g., "run once per day"), RTA treats data as an unbounded stream where insights are generated incrementally with sub-second to sub-minute latency.</p>
+<h2 id="batch-vs-real-time">Batch vs Real-Time</h2>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Batch Processing</th>
+<th>Real-Time Analytics</th>
+</tr></thead><tbody>
+<tr>
+<td>Data boundary</td>
+<td>Bounded (finite dataset)</td>
+<td>Unbounded (infinite stream)</td>
+</tr>
+<tr>
+<td>Trigger</td>
+<td>Scheduled (cron, clock time)</td>
+<td>Event-driven (every record)</td>
+</tr>
+<tr>
+<td>Latency</td>
+<td>Hours to days</td>
+<td>Seconds to milliseconds</td>
+</tr>
+<tr>
+<td>Use case</td>
+<td>Historical reporting, reconciliation</td>
+<td>Operational decisions, alerting</td>
+</tr>
+<tr>
+<td>Example</td>
+<td>Daily sales summary</td>
+<td>Fraud detection on each transaction</td>
+</tr>
+</tbody></table>
+<h2 id="the-modern-streaming-stack">The Modern Streaming Stack</h2>
+<p>A production RTA system typically has five layers:</p>
+<pre><code>Event Producers → Streaming Platform → Stream Processor → OLAP Serving Layer → Frontend</code></pre>
+<table><thead><tr>
+<th>Layer</th>
+<th>Role</th>
+<th>Examples</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Event Producers</strong></td>
+<td>Detect and emit state changes</td>
+<td>CDC (Debezium), SDKs, IoT sensors</td>
+</tr>
+<tr>
+<td><strong>Streaming Platform</strong></td>
+<td>Durable, partitioned event log</td>
+<td>Apache Kafka, Amazon Kinesis</td>
+</tr>
+<tr>
+<td><strong>Stream Processor</strong></td>
+<td>Transform, enrich, aggregate</td>
+<td>Apache Flink, Kafka Streams, Spark Streaming</td>
+</tr>
+<tr>
+<td><strong>OLAP Serving Layer</strong></td>
+<td>Low-latency query serving</td>
+<td>ClickHouse, Apache Pinot, Apache Druid</td>
+</tr>
+<tr>
+<td><strong>Frontend</strong></td>
+<td>Dashboards, alerts, apps</td>
+<td>React, Streamlit, Superset</td>
+</tr>
+</tbody></table>
+<h2 id="business-value">Business Value</h2>
+<ol>
+<li><strong>Faster decisions</strong> — React to events before competitors; automated trading, dynamic pricing</li>
+<li><strong>New revenue streams</strong> — Sell real-time data products (e.g., live user-facing dashboards)</li>
+<li><strong>Cost reduction</strong> — Process incrementally avoids the storage/computation coupling explosion of massive batch jobs</li>
+<li><strong>Customer experience</strong> — Detect and fix issues before customers report them</li>
+</ol>
+<h2 id="scaling-considerations">Scaling Considerations</h2>
+<table><thead><tr>
+<th>Factor</th>
+<th>Key Decision</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Partitioning</strong></td>
+<td>Horizontally scale topics across brokers for throughput</td>
+</tr>
+<tr>
+<td><strong>Throughput (QPS)</strong></td>
+<td>Size compute based on read/write queries per second</td>
+</tr>
+<tr>
+<td><strong>Retention</strong></td>
+<td>Balance cost vs. history; roll up old data to coarser granularity</td>
+</tr>
+<tr>
+<td><strong>Replication</strong></td>
+<td>Factor of 3 is the gold standard for fault tolerance</td>
+</tr>
+</tbody></table>
+<h2 id="future-trends">Future Trends</h2>
+<ul>
+<li><strong>Edge Analytics</strong> — Process at the source to reduce network latency and bandwidth</li>
+<li><strong>Compute-Storage Separation</strong> — Scale each dimension independently (cloud-native OLAP)</li>
+<li><strong>Streaming Databases</strong> — Unified systems that blur the processor/database boundary (e.g., RisingWave, Materialize)</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>RTA eliminates artificial time boundaries — process every event as it happens.</li>
+<li>The five-layer stack (Producers → Platform → Processor → OLAP → Frontend) is the modern standard.</li>
+<li>Do not confuse stream processing (transformation) with serving (querying) — use the right tool for each.</li>
+<li>Capacity planning (QPS, partitioning, retention) must be done before production deployment.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="batch-processing.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Batch Processing</h4>
+      <p>the traditional paradigm RTA replaces</p>
+    </a>
+    <a class="connection-card" href="lambda-architecture.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Lambda Architecture</h4>
+      <p>the legacy dual-path approach combining batch and speed layers</p>
+    </a>
+    <a class="connection-card" href="kappa-architecture.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Kappa Architecture</h4>
+      <p>the simplified streaming-first architecture</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Kafka</h4>
+      <p>Kafka is the persistent log backbone of most RTA stacks</p>
+    </a>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Flink</h4>
+      <p>Flink is the advanced stream processor for stateful RTA workloads</p>
+    </a>
+    <a class="connection-card" href="clickhouse.html">
+      <span class="connection-type related">Related</span>
+      <h4>ClickHouse</h4>
+      <p>ClickHouse is a high-performance OLAP serving layer for real-time queries</p>
+    </a>
+    <a class="connection-card" href="data-lakehouse.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Lakehouse</h4>
+      <p>lakehouses unify batch and streaming storage under one format</p>
+    </a>
+    <a class="connection-card" href="edge-computing.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Edge Computing</h4>
+      <p>edge analytics pushes RTA closer to data sources</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Edge Computing</h4>
+      <p>Mark Needham's guide to RTA architecture</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="readability-vs-performance.html" class="prev">← Readability vs Performance</a><a href="redis.html" class="next">Redis →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

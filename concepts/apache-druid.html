@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apache Druid — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-olap">Olap</a> <span class="sep">/</span>
+  <span>Apache Druid</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Apache Druid</h1>
+  <div class="page-meta"><span>Source: building-real-time-analytics-systems</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">olap</span><span class="tag">database</span><span class="tag">streaming</span><span class="tag">analytics</span><span class="tag">real-time</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Apache Druid</strong> is an open-source, column-oriented, distributed data store designed for high-performance real-time analytics on event-driven data. It is optimized for low-latency OLAP queries on streaming and batch data, making it a popular choice for the <strong>serving layer</strong> in <a href="real-time-analytics.html" class="wiki-link">real-time-analytics</a> systems.</p>
+<h2 id="key-characteristics">Key Characteristics</h2>
+<ul>
+<li><strong>Columnar storage</strong> — data stored by column for efficient aggregation queries</li>
+<li><strong>Real-time ingestion</strong> — can ingest streaming data directly from Kafka, Kinesis, etc.</li>
+<li><strong>Time-series optimized</strong> — built around the concept of time-based segments</li>
+<li><strong>Sub-second queries</strong> — pre-aggregated indexes enable millisecond response times</li>
+<li><strong>Horizontal scalability</strong> — scales out by adding more nodes</li>
+</ul>
+<h2 id="druid-vs-other-olap-stores">Druid vs Other OLAP Stores</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Druid</th>
+<th>[[clickhouse</th>
+<th>ClickHouse]]</th>
+<th>[[apache-pinot</th>
+<th>Pinot]]</th>
+</tr></thead><tbody>
+<tr>
+<td>Data model</td>
+<td>Event-oriented, time-series</td>
+<td>General OLAP</td>
+<td>Event-oriented, time-series</td>
+</tr>
+<tr>
+<td>Ingestion</td>
+<td>Native real-time streaming</td>
+<td>Batch + streaming</td>
+<td>Native real-time streaming</td>
+</tr>
+<tr>
+<td>Query language</td>
+<td>Druid SQL</td>
+<td>ANSI SQL</td>
+<td>Pinot SQL (ANSI-like)</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>Cluster required</td>
+<td>Single node or cluster</td>
+<td>Cluster required</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Streaming analytics, monitoring</td>
+<td>General analytics, logs</td>
+<td>User-facing analytics, metrics</td>
+</tr>
+</tbody></table>
+<h2 id="when-to-use-druid">When to Use Druid</h2>
+<ul>
+<li>Real-time analytics dashboards (e.g., monitoring, A/B testing)</li>
+<li>Event-driven data (clickstreams, IoT, logs)</li>
+<li>Need sub-second query latency on TB-scale data</li>
+<li>Time-series aggregation is the primary query pattern</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Druid is purpose-built for real-time OLAP on streaming event data.</li>
+<li>It sits in the serving layer of the modern streaming stack — between the stream processor and the frontend.</li>
+<li>ClickHouse and Pinot are the primary alternatives; choose based on deployment simplicity and query patterns.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="clickhouse.html">
+      <span class="connection-type related">Related</span>
+      <h4>ClickHouse</h4>
+      <p>both serve the OLAP layer in RTA stacks</p>
+    </a>
+    <a class="connection-card" href="apache-pinot.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Pinot</h4>
+      <p>similar event-oriented OLAP focus</p>
+    </a>
+    <a class="connection-card" href="real-time-analytics.html">
+      <span class="connection-type related">Related</span>
+      <h4>Real-Time Analytics</h4>
+      <p>Druid is a canonical OLAP serving layer choice</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Real-Time Analytics</h4>
+      <p>Needham covers Druid as a serving layer option</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="apache-datafusion.html" class="prev">← Apache DataFusion</a><a href="apache-flink.html" class="next">Apache Flink →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

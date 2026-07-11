@@ -92,3 +92,8 @@ Kafka Connect is a framework for connecting Kafka with external systems via pre-
 - Simplified by [[sources/databricks-zerobus]] — Databricks Zerobus is an API-based streaming alternative for Lake House use cases, removing Kafka's operational overhead
 - Performance internals from [[sources/system-design-big-archive]] — sequential I/O minimizes disk seek, Zero Copy (sendfile()) bypasses app context for ~65% faster delivery
 - Benchmark source: [[sources/hugo-data-ingestion-platform-flink]] — Grab's migration away from Kafka Connect toward Flink
+- Backbone of [[real-time-analytics]] — Kafka is the durable log layer in modern RTA stacks
+- Core to [[stream-processing]] — stream processors consume from and produce to Kafka topics
+- Related to [[lambda-architecture]] — Kafka's replayable log enables both batch and speed layer inputs
+- Related to [[kappa-architecture]] — Kafka's immutable log is the foundational prerequisite for Kappa systems
+- Benchmark source: [[sources/building-real-time-analytics-systems]] — Needham covers Kafka as the streaming data platform layer

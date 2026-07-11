@@ -16,3 +16,8 @@ __pycache__/
 # Temp
 *.tmp
 *.swp
+
+# AI agent artifacts
+.atl/
+.omo/
+.sisyphus/
