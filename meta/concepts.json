@@ -967,6 +967,32 @@
         "production"
       ]
     },
+    "flash-attention": {
+      "title": "Flash Attention",
+      "category": "AI & Agents",
+      "url": "concepts/flash-attention.html",
+      "definition": "**Flash Attention** is an IO-aware attention algorithm that dramatically speeds up the self-attention computation in transformer models by optimizing data movement between different levels of GPU memo",
+      "tags": [
+        "llm",
+        "attention",
+        "optimization",
+        "transformer",
+        "gpu"
+      ]
+    },
+    "functional-programming": {
+      "title": "Functional Programming",
+      "category": "Meta",
+      "url": "concepts/functional-programming.html",
+      "definition": "**Functional Programming (FP)** is a programming paradigm where computation is treated as the evaluation of mathematical functions — avoiding mutable state, side effects, and imperative control flow. ",
+      "tags": [
+        "functional-programming",
+        "programming-paradigms",
+        "software-design",
+        "immutability",
+        "declarative"
+      ]
+    },
     "functional-testing": {
       "title": "Functional Testing",
       "category": "Testing",
@@ -1094,7 +1120,8 @@
       "tags": [
         "design-principles",
         "immutability",
-        "domain-modeling"
+        "domain-modeling",
+        "functional-programming"
       ]
     },
     "in-process-olap": {
@@ -1156,6 +1183,19 @@
         "cloud-native",
         "golang",
         "automation"
+      ]
+    },
+    "kv-caching": {
+      "title": "KV Caching",
+      "category": "AI & Agents",
+      "url": "concepts/kv-caching.html",
+      "definition": "**KV Caching** is an inference optimization technique for autoregressive transformer models that stores previously computed Key and Value vectors so they don't need to be recomputed for each new token",
+      "tags": [
+        "llm",
+        "inference",
+        "optimization",
+        "attention",
+        "transformer"
       ]
     },
     "lambda-architecture": {
@@ -1262,6 +1302,19 @@
         "scalability"
       ]
     },
+    "lora": {
+      "title": "LoRA",
+      "category": "AI & Agents",
+      "url": "concepts/lora.html",
+      "definition": "**LoRA (Low-Rank Adaptation)** is a parameter-efficient fine-tuning (PEFT) technique that injects small, trainable rank-decomposition matrices into the layers of a pre-trained model. Instead of updati",
+      "tags": [
+        "llm",
+        "fine-tuning",
+        "peft",
+        "optimization",
+        "training"
+      ]
+    },
     "mapper-principles": {
       "title": "MAPPER Principles",
       "category": "System Architecture",
@@ -1271,6 +1324,20 @@
         "architecture",
         "design-principles",
         "clean-code"
+      ]
+    },
+    "market-basket-analysis": {
+      "title": "Market Basket Analysis",
+      "category": "Career & Growth",
+      "url": "concepts/market-basket-analysis.html",
+      "definition": "**Market Basket Analysis (MBA)** is a data mining technique that discovers co-occurrence patterns — items that frequently appear together in transactions. The output is a set of **association rules** ",
+      "tags": [
+        "data-mining",
+        "algorithms",
+        "association-rules",
+        "mapreduce",
+        "spark",
+        "retail"
       ]
     },
     "materialized-views": {
@@ -1448,6 +1515,19 @@
         "authentication",
         "cryptography",
         "system-design"
+      ]
+    },
+    "peft": {
+      "title": "PEFT",
+      "category": "AI & Agents",
+      "url": "concepts/peft.html",
+      "definition": "**PEFT (Parameter-Efficient Fine-Tuning)** is a family of techniques that adapt pre-trained large language models to specific tasks by training only a small fraction of the model's parameters. Instead",
+      "tags": [
+        "llm",
+        "fine-tuning",
+        "training",
+        "optimization",
+        "ml"
       ]
     },
     "polars": {
@@ -1720,6 +1800,20 @@
         "code-quality",
         "technical-debt",
         "engineering"
+      ]
+    },
+    "reranking": {
+      "title": "Reranking",
+      "category": "AI & Agents",
+      "url": "concepts/reranking.html",
+      "definition": "**Reranking** is a two-stage retrieval pattern where a fast, cheap retriever (e.g., keyword search, vector similarity) first produces a broad candidate set, and then a more expensive but more accurate",
+      "tags": [
+        "llm",
+        "rag",
+        "retrieval",
+        "search",
+        "optimization",
+        "pipeline"
       ]
     },
     "retrieval-augmented-generation": {

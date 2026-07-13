@@ -3,7 +3,7 @@ title: "Refactoring at Scale"
 type: concept
 tags: [refactoring, software-design, code-quality, technical-debt, engineering]
 created: 2026-06-15
-updated: 2026-06-15
+updated: 2026-07-13
 sources: [refactoring-at-scale-lemaire]
 aliases: [large-scale-refactoring, strategic-refactoring]
 ---
@@ -68,4 +68,5 @@ Translate to business: faster onboarding, reduced bug fix time, higher feature v
 - Addresses [[software-rot]] — the inevitable degradation that refactoring counteracts
 - Related to [[essential-accidental-complexity]] — refactoring reduces accidental complexity while preserving essential complexity
 - Related to [[fail-fast]] — safe refactoring requires test coverage that catches regressions immediately
+- Supported by [[architecture-in-agile]] — architecture as skeleton enables safe iterative refactoring without collapsing into a Big Ball of Mud
 - Benchmark source: [[sources/refactoring-at-scale-lemaire]] — Maude Lemaire's 245-page guide

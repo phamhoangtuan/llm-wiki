@@ -3,7 +3,7 @@ title: "Spaced Repetition"
 type: concept
 tags: [learning, memory, retention, cognitive-science]
 created: 2026-06-25
-updated: 2026-06-25
+updated: 2026-07-13
 sources: [ultralearning-scott-young]
 aliases: [spacing effect, distributed practice]
 ---
@@ -67,3 +67,4 @@ Research consistently shows that spaced practice produces _superior long-term re
 - [[ultralearning|Ultralearning]] — Retention (Principle 7) relies on spaced repetition to secure knowledge assets
 - [[testing-effect|Testing Effect]] — Retrieval practice is _what_ you do during review sessions; spacing determines _when_ you do them
 - [[metalearning|Metalearning]] — Identifies _what_ needs to be retained; spacing schedules _when_ to reinforce it
+- [[feedback|Feedback]] — Spaced retrieval generates feedback on what has been retained vs. forgotten, enabling adaptive review strategies

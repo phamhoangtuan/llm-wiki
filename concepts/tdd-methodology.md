@@ -3,7 +3,7 @@ title: "TDD Methodology"
 type: concept
 tags: [tdd, testing, methodology, design, python, clean-code]
 created: 2026-06-03
-updated: 2026-06-15
+updated: 2026-07-13
 sources: [tdd-python-percival]
 ---
 
@@ -75,3 +75,4 @@ Key rules:
 - Enabled by [[pytest-basics]] — pytest is the tool that makes the Red-Green-Refactor cycle fast in Python
 - Benchmark source: [[sources/tdd-python-percival]] — Percival's hands-on TDD with Django and Selenium
 - Related to [[fail-fast]] — both principles advocate catching problems at the earliest possible point
+- Complementary to [[architecture-in-agile]] — TDD and architecture-in-agile are both iterative methodologies that embed quality into the development rhythm

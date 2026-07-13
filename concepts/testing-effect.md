@@ -3,7 +3,7 @@ title: "Testing Effect"
 type: concept
 tags: [learning, memory, cognitive-science, retrieval]
 created: 2026-06-25
-updated: 2026-06-25
+updated: 2026-07-13
 sources: [ultralearning-scott-young]
 aliases: [retrieval practice, active recall, test-enhanced learning]
 ---
@@ -77,3 +77,4 @@ Even testing yourself _before_ studying material improves subsequent learning. T
 - [[ultralearning|Ultralearning]] — Retrieval is Principle 5 of the Ultralearning methodology
 - [[spaced-repetition|Spaced Repetition]] — Retrieval is _what_ you do; spacing determines _when_ you do it. The two principles are complementary.
 - [[metalearning|Metalearning]] — Identifies the knowledge structure (Concepts, Facts, Procedures); retrieval practice encodes each category into long-term memory
+- [[feedback|Feedback]] — Retrieval testing provides immediate feedback on what you know vs. what you think you know; this informational feedback drives learning

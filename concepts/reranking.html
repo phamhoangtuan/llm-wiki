@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reranking — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-llm">Llm</a> <span class="sep">/</span>
+  <span>Reranking</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Reranking</h1>
+  <div class="page-meta"><span>Source: hands-on-large-language-models</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">llm</span><span class="tag">rag</span><span class="tag">retrieval</span><span class="tag">search</span><span class="tag">optimization</span><span class="tag">pipeline</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Reranking</strong> is a two-stage retrieval pattern where a fast, cheap retriever (e.g., keyword search, vector similarity) first produces a broad candidate set, and then a more expensive but more accurate model (e.g., cross-encoder, LLM) re-scores and filters that candidate set. It achieves near-expert retrieval quality at a fraction of the cost of running the expensive model on the full dataset.</p>
+<h2 id="two-stage-architecture">Two-Stage Architecture</h2>
+<pre><code>Full Dataset → Stage 1: Fast Retriever → Top-K Candidates (100–1000) → Stage 2: Re-ranker → Final Results (5–20)</code></pre>
+<table><thead><tr>
+<th>Stage</th>
+<th>Method</th>
+<th>Cost per Document</th>
+<th>Accuracy</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Stage 1 (Retrieval)</strong></td>
+<td>BM25, vector similarity (bi-encoder)</td>
+<td>Very low (microseconds)</td>
+<td>Moderate — high recall, low precision</td>
+</tr>
+<tr>
+<td><strong>Stage 2 (Reranking)</strong></td>
+<td>Cross-encoder, LLM, Cohere Rerank</td>
+<td>Low–Medium (milliseconds)</td>
+<td>High — re-orders by true relevance</td>
+</tr>
+</tbody></table>
+<h2 id="why-reranking-works">Why Reranking Works</h2>
+<p>The fast retriever prioritizes <strong>recall</strong> (don't miss anything relevant), even at the cost of precision (include some irrelevant results). The re-ranker then prioritizes <strong>precision</strong> (rank the truly relevant highest). Combined, they deliver both high recall and high precision without the linear cost of running the expensive model on every document.</p>
+<h2 id="reranking-in-rag-pipelines">Reranking in RAG Pipelines</h2>
+<p>Reranking is critical for Retrieval-Augmented Generation:</p>
+<ol>
+<li><strong>Vector search</strong> retrieves 50–200 candidate passages</li>
+<li><strong>Cross-encoder or LLM</strong> re-ranks them to the top 5–10</li>
+<li>Only the top-ranked passages are injected into the LLM context window</li>
+</ol>
+<p>This ensures the LLM sees only the most relevant context, reducing hallucinations and improving answer quality.</p>
+<h2 id="reranking-beyond-rag">Reranking Beyond RAG</h2>
+<table><thead><tr>
+<th>Application</th>
+<th>Fast Retriever</th>
+<th>Re-ranker</th>
+<th>Benefit</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>E-commerce search</strong></td>
+<td>Elasticsearch/BM25</td>
+<td>Learning-to-rank model</td>
+<td>Catalog-scale search with precise ranking</td>
+</tr>
+<tr>
+<td><strong>Code search</strong></td>
+<td>grep/ripgrep</td>
+<td>Embedding similarity</td>
+<td>Instant matches + semantic understanding</td>
+</tr>
+<tr>
+<td><strong>Topic modeling (BERTopic)</strong></td>
+<td>Document clustering</td>
+<td>LLM for label generation</td>
+<td>Millions of documents with only hundreds of LLM calls</td>
+</tr>
+</tbody></table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Reranking is a cost-quality Pareto optimization — pay more for the last mile of precision.</li>
+<li>The fast retriever handles scale; the re-ranker handles quality.</li>
+<li>Essential for production RAG — without reranking, vector search alone injects noise into LLM prompts.</li>
+<li>Same pattern applies beyond text: image search, recommendation, code search all benefit from two-stage pipelines.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="retrieval-augmented-generation.html">
+      <span class="connection-type related">Related</span>
+      <h4>Retrieval-Augmented Generation (RAG)</h4>
+      <p>reranking improves RAG retrieval quality before context injection</p>
+    </a>
+    <a class="connection-card" href="prompt-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Prompt Engineering</h4>
+      <p>clean, relevant context from reranking reduces prompt engineering burden</p>
+    </a>
+    <a class="connection-card" href="llm-evaluation-metrics.html">
+      <span class="connection-type related">Related to</span>
+      <h4>LLM Evaluation Metrics</h4>
+      <p>reranking directly improves retrieval metrics (Hit Rate, MRR) and downstream generation quality</p>
+    </a>
+    <a class="connection-card" href="semantic-layer.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Semantic Layer</h4>
+      <p>reranking bridges structured and unstructured data in agent-facing architectures</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Semantic Layer</h4>
+      <p>reranking as an efficiency pattern for LLM-powered systems</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="refactoring-at-scale.html" class="prev">← Refactoring at Scale</a><a href="retrieval-augmented-generation.html" class="next">Retrieval-Augmented Generation (RAG) →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

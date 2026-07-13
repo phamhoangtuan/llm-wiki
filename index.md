@@ -9,6 +9,13 @@
 
 - [Wiki Maintenance](concepts/wiki-maintenance.html) — How this LLM-maintained wiki works, its conventions and workflows
 - [Knowledge Graph](concepts/knowledge-graph.html) — Lightweight knowledge graph via cross-linked pages, no vector DB needed
+- [Functional Programming](concepts/functional-programming.html) — FP paradigm: expressions, abstraction, immutability, dataflow; 4 pillars and the Yin-Yang learning philosophy
+- [Market Basket Analysis](concepts/market-basket-analysis.html) — Data mining technique for discovering item co-occurrence patterns; Support/Confidence metrics, MapReduce implementation
+- [KV Caching](concepts/kv-caching.html) — Inference optimization storing attention keys/values to avoid redundant recomputation; ~5× speedup
+- [LoRA](concepts/lora.html) — Low-Rank Adaptation for parameter-efficient fine-tuning; QLoRA enables fine-tuning on consumer GPUs
+- [Flash Attention](concepts/flash-attention.html) — IO-aware exact attention algorithm; optimizes GPU memory hierarchy for 2–4× training speedup
+- [PEFT](concepts/peft.html) — Parameter-Efficient Fine-Tuning family; LoRA, QLoRA, Adapters, Prefix Tuning — 1% parameters, 99% quality
+- [Reranking](concepts/reranking.html) — Two-stage retrieval pattern: fast coarse search + expensive precise re-ranking for RAG efficiency
 - [pytest Basics](concepts/pytest-basics.html) — pytest fundamentals: test discovery, naming conventions, plain assert, CLI usage
 - [pytest Fixtures](concepts/pytest-fixtures.html) — Reusable setup/teardown via dependency injection, conftest.py, fixture scopes
 - [pytest Parametrization](concepts/pytest-parametrization.html) — Run one test function with multiple data sets
@@ -184,6 +191,9 @@
 
 ## Sources
 
+- [Data Algorithms](sources/data-algorithms.md) — Notes on "Data Algorithms" by Mahmoud Parsian — 778 pages on distributed algorithms, MapReduce, and Market Basket Analysis
+- [Hands-On Large Language Models](sources/hands-on-large-language-models.md) — Notes on Jay Alammar's guide — 431 pages on LLM optimization, quantization, PEFT, KV caching, and attention mechanisms
+- [The Art of Functional Programming](sources/the-art-of-functional-programming.md) — Notes on Minh Quang Tran's book — 205 pages on FP thinking, 4 pillars, and the declarative paradigm shift
 - [Python Testing with pytest](sources/okken-python-testing-pytest.md) — Notes on "Python Testing with pytest (2nd Ed.)" by Brian Okken — 398 pages
 - [The LLM Wiki Pattern](sources/sample-article.md) — Karpathy's gist: LLM-maintained persistent wiki instead of RAG
 - [Clean Code Cookbook](sources/contieri-clean-code-cookbook.md) — Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection
@@ -250,5 +260,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-07-11*
-*Pages: 233 (174 concepts + 59 sources)*
+*Last updated: 2026-07-13*
+*Pages: 244 (181 concepts + 63 sources)*

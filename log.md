@@ -4,6 +4,34 @@
 
 ---
 
+## [2026-07-13] ingest | Data Algorithms, Hands-On Large Language Models, The Art of Functional Programming
+
+- Source 1: "Data Algorithms" by Mahmoud Parsian (ebook, 778 pages, finished 2026-04-14)
+- Source 2: "Hands-On Large Language Models" by Jay Alammar (ebook, 431 pages, finished 2026-04-13)
+- Source 3: "The Art of Functional Programming" by Minh Quang Tran, PhD (ebook, 205 pages, finished 2026-04-11)
+- Created sources/data-algorithms.md, sources/hands-on-large-language-models.md, sources/the-art-of-functional-programming.md
+- New concepts: market-basket-analysis, kv-caching, lora, flash-attention, peft, reranking, functional-programming
+- Updated concepts: apache-spark (+MBA section, Spark-for-MBA pipeline), model-quantization (+GGUF format, new source), fine-tuning (+PEFT methods, Prefix Tuning, LoRA cross-refs, new source), retrieval-augmented-generation (+reranking dependency, LoRA specialization, new source), immutability (+FP pillar connection, architecture-hoisting, new source)
+- Regenerated HTML via convert-to-html.py
+- Updated index.md: +7 concept entries, +3 source entries
+- Total pages: 244 (181 concepts + 63 sources)
+
+## [2026-07-13] lint | Post-ingest link hygiene + orphan fix
+
+- Scanned all 244 wiki pages (181 concepts + 63 sources) across 5 lint dimensions
+- Broken wikilinks: 0 found — all [[wikilinks]] resolve correctly across new and modified pages
+- Orphans: 5 → 0 resolved
+  - architecture-hoisting: added backlinks from fail-fast (+hoisting as structural enforcement), software-quality-dimensions (+hoisting targets quality attributes), immutability (+immutability as form of hoisting)
+  - architecture-in-agile: added backlinks from code-quality-pillars (+architecture guides iterative quality), tdd-methodology (+both embed quality into dev rhythm), refactoring-at-scale (+architecture enables safe refactoring)
+  - risk-driven-architecture: added backlinks from software-quality-dimensions (+guides quality prioritization), system-design-interview (+risk-driven thinking under constraints)
+  - feedback: added backlinks from metalearning (+identifies feedback sources), testing-effect (+retrieval generates feedback), spaced-repetition (+spacing enables feedback on retention)
+  - ultralearning: added backlink from staff-engineering (+ultralearning as path to Staff)
+- Near-orphans: 35 pages with 1–2 inbound links (deferred — consistent with historical patterns; new pages naturally start with few refs)
+- Frontmatter: all 10 new/modified files have complete frontmatter (title, created, updated, sources)
+- Note: fixed orphan detection — prior check used exact wikilink match (missed aliased `[[slug|Display]]`); corrected to prefix match
+- Regenerated HTML via convert-to-html.py
+- Updated dates on 11 modified concept pages to 2026-07-13
+
 ## [2026-07-11] ingest | Building LLMs for Production, Real-Time Analytics, Data Engineering with Python, Snowflake, Apache Flink
 
 - Source 1: "Building LLMs for Production" by Peters & Bouchard (ebook, 423 pages, finished 2026-04-21)

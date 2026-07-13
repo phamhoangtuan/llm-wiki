@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Retrieval-Augmented Generation (RAG)</h1>
-  <div class="page-meta"><span>Source: building-llms-for-production</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-meta"><span>Source: building-llms-for-production, hands-on-large-language-models</span><span>Updated: 2026-07-13</span></div>
   <div class="page-tags"><span class="tag">llm</span><span class="tag">rag</span><span class="tag">vector-database</span><span class="tag">search</span><span class="tag">knowledge</span><span class="tag">production</span></div>
 </div>
 <div class="content-area concept">
@@ -67,6 +67,7 @@
 <li>A secondary model re-scores retrieved passages for relevance</li>
 <li>Cross-encoders (e.g., BERT-based re-rankers) are more accurate but slower than bi-encoders</li>
 <li>Trade-off: latency vs. precision</li>
+<li>Reranking is a general efficiency pattern beyond RAG — see <a href="reranking.html" class="wiki-link">reranking</a> for the full two-stage retrieval architecture</li>
 </ul>
 <h3 id="4-generation">4. Generation</h3>
 <ul>
@@ -135,6 +136,11 @@
       <h4>Prompt Engineering</h4>
       <p>retrieved content is fed into carefully engineered prompt templates</p>
     </a>
+    <a class="connection-card" href="reranking.html">
+      <span class="connection-type related">Depends on</span>
+      <h4>Reranking</h4>
+      <p>reranking is essential for RAG quality; it filters noise before context injection</p>
+    </a>
     <a class="connection-card" href="llm-evaluation-metrics.html">
       <span class="connection-type related">Related to</span>
       <h4>LLM Evaluation Metrics</h4>
@@ -150,14 +156,19 @@
       <h4>Apache Kafka</h4>
       <p>real-time document updates can stream through Kafka into vector indexes</p>
     </a>
+    <a class="connection-card" href="lora.html">
+      <span class="connection-type related">Related</span>
+      <h4>LoRA</h4>
+      <p>LoRA adapters can tune LLMs for specific RAG domains</p>
+    </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
-      <h4>Apache Kafka</h4>
-      <p>RAG as one of four pillars of production LLM stack</p>
+      <h4>LoRA</h4>
+      <p>, [[sources/hands-on-large-language-models]]</p>
     </div>
   </div>
 </section>
-<nav class="pagination"><a href="refactoring-at-scale.html" class="prev">← Refactoring at Scale</a><a href="rich-domain-model.html" class="next">Rich Domain Model →</a></nav>
+<nav class="pagination"><a href="reranking.html" class="prev">← Reranking</a><a href="rich-domain-model.html" class="next">Rich Domain Model →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

@@ -3,8 +3,8 @@ title: "Fine-Tuning"
 type: concept
 tags: [llm, ml, training, lora, domain-adaptation, production]
 created: 2026-07-11
-updated: 2026-07-11
-sources: [building-llms-for-production]
+updated: 2026-07-13
+sources: [building-llms-for-production, hands-on-large-language-models]
 aliases: [model-fine-tuning, instruction-tuning, supervised-fine-tuning]
 ---
 
@@ -36,6 +36,9 @@ Fine-tuning is warranted when:
 | **LoRA** | Low-Rank Adaptation — injects small trainable rank-decomposition matrices into each layer | ~10,000× fewer parameters than full fine-tuning |
 | **QLoRA** | Quantized LoRA — runs LoRA on 4-bit quantized base models | Trainable on a single consumer GPU (e.g., RTX 4090) |
 | **Adapter Layers** | Add small bottleneck layers; freeze base model | Minimal overhead at inference |
+| **Prefix Tuning** | Learnable continuous vectors prepended to input | < 0.1% of model parameters |
+
+All PEFT methods share a key advantage: the frozen base model stays on disk/VRAM while only the tiny adapters are swapped for different tasks. One base model can serve dozens of domains by switching adapters at runtime.
 
 ## Instruction Tuning
 
@@ -67,6 +70,9 @@ A special case of fine-tuning where the model is trained on `(instruction, input
 
 - Complements [[retrieval-augmented-generation]] — fine-tuning shapes behavior; RAG supplies facts
 - Related to [[prompt-engineering]] — the three primary methods for controlling LLM output
+- Related to [[lora]] — LoRA is the most practical path to fine-tuning for engineers without data-center GPUs
+- Related to [[peft]] — PEFT is the umbrella of parameter-efficient techniques that make fine-tuning accessible
 - Related to [[model-distillation]] — distillation can produce a smaller model that approximates a fine-tuned teacher
 - Related to [[data-quality-monitoring]] — fine-tuning datasets require the same rigorous quality validation as production data
-- Framework source: [[sources/building-llms-for-production]] — fine-tuning as one of four production pillars
+- Accelerated by [[flash-attention]] — Flash Attention speeds up fine-tuning forward/backward passes by 2–4×
+- Framework sources: [[sources/building-llms-for-production]], [[sources/hands-on-large-language-models]]

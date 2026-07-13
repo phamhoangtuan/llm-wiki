@@ -350,6 +350,7 @@
   "semantic-layer": [
     "analytics-engineer",
     "data-engineer",
+    "reranking",
     "self-service-analytics",
     "self-service-analytics",
     "self-service-analytics",
@@ -444,6 +445,7 @@
     "data-lifecycle",
     "data-scientist",
     "data-scientist",
+    "market-basket-analysis",
     "building-llms-for-production",
     "data-engineer-role-handbook",
     "data-engineering-handbook",
@@ -476,7 +478,9 @@
     "data-lakehouse",
     "databricks-platform",
     "databricks-platform",
+    "functional-programming",
     "lambda-architecture",
+    "market-basket-analysis",
     "building-real-time-analytics-systems",
     "data-engineering-with-python",
     "databricks-dea-study-guide",
@@ -866,6 +870,10 @@
     "apache-pinot",
     "building-real-time-analytics-systems"
   ],
+  "market-basket-analysis": [
+    "apache-spark",
+    "apache-spark"
+  ],
   "sources/high-performance-spark": [
     "apache-spark"
   ],
@@ -895,6 +903,10 @@
     "building-real-time-analytics-systems",
     "databricks-dea-study-guide",
     "snowflake-the-definitive-guide"
+  ],
+  "functional-programming": [
+    "apache-spark",
+    "immutability"
   ],
   "http-evolution": [
     "api-architectural-styles"
@@ -930,7 +942,9 @@
   "risk-driven-architecture": [
     "architecture-hoisting",
     "architecture-in-agile",
-    "model-code-gap"
+    "model-code-gap",
+    "software-quality-dimensions",
+    "system-design-interview"
   ],
   "model-code-gap": [
     "architecture-hoisting",
@@ -943,6 +957,7 @@
     "code-quality-pillars",
     "essential-accidental-complexity",
     "fail-fast",
+    "functional-programming",
     "object-oriented-design",
     "readability-vs-performance",
     "risk-driven-architecture",
@@ -956,6 +971,7 @@
     "dependency-injection",
     "essential-accidental-complexity",
     "fail-fast",
+    "functional-programming",
     "python-standard-library",
     "rich-domain-model",
     "software-quality-dimensions",
@@ -981,12 +997,16 @@
   ],
   "architecture-hoisting": [
     "architecture-in-agile",
+    "fail-fast",
+    "immutability",
     "model-code-gap",
-    "risk-driven-architecture"
+    "risk-driven-architecture",
+    "software-quality-dimensions"
   ],
   "refactoring-at-scale": [
     "architecture-in-agile",
     "code-archaeology",
+    "code-quality-pillars",
     "code-quality-pillars",
     "complexity-metrics",
     "complexity-metrics",
@@ -1230,6 +1250,7 @@
     "dataops",
     "essential-accidental-complexity",
     "fail-fast",
+    "functional-programming",
     "object-oriented-design",
     "python-standard-library",
     "python-static-analysis",
@@ -1280,9 +1301,16 @@
     "solid-principles",
     "contieri-clean-code-cookbook"
   ],
+  "architecture-in-agile": [
+    "code-quality-pillars",
+    "refactoring-at-scale",
+    "risk-driven-architecture",
+    "tdd-methodology"
+  ],
   "object-oriented-design": [
     "code-quality-pillars",
     "domain-driven-design",
+    "functional-programming",
     "software-quality-dimensions",
     "solid-principles",
     "tell-dont-ask",
@@ -1559,6 +1587,7 @@
     "metalearning",
     "metalearning",
     "spaced-repetition",
+    "staff-engineering",
     "testing-effect"
   ],
   "testing-effect": [
@@ -1618,8 +1647,12 @@
   "model-quantization": [
     "edge-computing",
     "edge-computing",
+    "flash-attention",
+    "kv-caching",
+    "lora",
     "model-distillation",
     "model-pruning",
+    "peft",
     "building-llms-for-production"
   ],
   "code-archaeology": [
@@ -1664,7 +1697,10 @@
     "llama-index",
     "llama-index",
     "llm-evaluation-metrics",
+    "lora",
+    "peft",
     "prompt-engineering",
+    "reranking",
     "building-llms-for-production"
   ],
   "prompt-engineering": [
@@ -1672,14 +1708,31 @@
     "langchain",
     "llama-index",
     "llm-evaluation-metrics",
+    "reranking",
     "retrieval-augmented-generation",
     "building-llms-for-production"
+  ],
+  "lora": [
+    "fine-tuning",
+    "kv-caching",
+    "model-quantization",
+    "peft",
+    "retrieval-augmented-generation"
+  ],
+  "peft": [
+    "fine-tuning",
+    "lora"
   ],
   "model-distillation": [
     "fine-tuning",
     "model-pruning",
     "model-quantization",
     "building-llms-for-production"
+  ],
+  "flash-attention": [
+    "fine-tuning",
+    "kv-caching",
+    "model-quantization"
   ],
   "sources/building-llms-for-production": [
     "fine-tuning",
@@ -1691,6 +1744,36 @@
     "model-quantization",
     "prompt-engineering",
     "retrieval-augmented-generation"
+  ],
+  "sources/hands-on-large-language-models": [
+    "fine-tuning",
+    "flash-attention",
+    "kv-caching",
+    "lora",
+    "model-quantization",
+    "peft",
+    "reranking",
+    "retrieval-augmented-generation"
+  ],
+  "kv-caching": [
+    "flash-attention",
+    "model-quantization"
+  ],
+  "fine-tuning": [
+    "flash-attention",
+    "lora",
+    "model-distillation",
+    "model-pruning",
+    "model-quantization",
+    "peft",
+    "prompt-engineering",
+    "retrieval-augmented-generation",
+    "retrieval-augmented-generation",
+    "building-llms-for-production"
+  ],
+  "sources/the-art-of-functional-programming": [
+    "functional-programming",
+    "immutability"
   ],
   "pytest-basics": [
     "functional-testing",
@@ -1818,6 +1901,7 @@
     "llama-index",
     "observability",
     "prompt-engineering",
+    "reranking",
     "retrieval-augmented-generation",
     "building-llms-for-production"
   ],
@@ -1830,6 +1914,9 @@
     "scalable-architecture",
     "system-design-interview-xu"
   ],
+  "sources/data-algorithms": [
+    "market-basket-analysis"
+  ],
   "spaced-repetition": [
     "metalearning",
     "testing-effect",
@@ -1838,18 +1925,15 @@
     "ultralearning",
     "ultralearning-scott-young"
   ],
+  "feedback": [
+    "metalearning",
+    "spaced-repetition",
+    "testing-effect",
+    "ultralearning"
+  ],
   "model-pruning": [
     "model-distillation",
     "model-quantization",
-    "building-llms-for-production"
-  ],
-  "fine-tuning": [
-    "model-distillation",
-    "model-pruning",
-    "model-quantization",
-    "prompt-engineering",
-    "retrieval-augmented-generation",
-    "retrieval-augmented-generation",
     "building-llms-for-production"
   ],
   "sources/practical-object-oriented-design": [
@@ -1950,8 +2034,9 @@
     "real-time-analytics",
     "building-real-time-analytics-systems"
   ],
-  "architecture-in-agile": [
-    "risk-driven-architecture"
+  "reranking": [
+    "retrieval-augmented-generation",
+    "retrieval-augmented-generation"
   ],
   "sources/semantic-layers-for-ai": [
     "self-service-analytics",
@@ -1979,9 +2064,6 @@
   ],
   "sources/de-coding-technical-interview": [
     "technical-interview"
-  ],
-  "feedback": [
-    "ultralearning"
   ],
   "apache-arrow": [
     "vortex-file-format",

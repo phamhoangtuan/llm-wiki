@@ -3,7 +3,7 @@ title: "Software Quality Dimensions"
 type: concept
 tags: [design-principles, architecture, engineering, optimization]
 created: 2026-06-08
-updated: 2026-06-15
+updated: 2026-07-13
 sources: [seriously-good-software, practical-object-oriented-design]
 aliases: [quality-spectrum, 2d-quality-model]
 ---
@@ -111,4 +111,6 @@ The architect's role: choose the right "style" for the context.
 - Enabled by [[dependency-injection]] — programming to interfaces enables context-appropriate implementations
 - Related to [[rich-domain-model]] — rich objects encapsulate behavior that balances multiple quality dimensions
 - Complements [[object-oriented-design]] — design as discovery embraces the context-driven, trade-off-aware philosophy of quality dimensions
+- Targeted by [[architecture-hoisting]] — hoisting shifts quality attribute guarantees from manual discipline to structural constraints
+- Guided by [[risk-driven-architecture]] — the meta-framework that decides which quality dimensions to prioritize based on failure risk
 - Benchmark source: [[sources/seriously-good-software]] — Marco Faella's 330-page guide

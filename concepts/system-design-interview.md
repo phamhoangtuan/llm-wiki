@@ -3,7 +3,7 @@ title: "System Design Interview"
 type: concept
 tags: [system-design, interview, methodology, architecture]
 created: 2026-05-24
-updated: 2026-06-29
+updated: 2026-07-13
 sources: [system-design-interview-xu, system-design-big-archive, system-design-interview-volume-2]
 aliases: [system-design-interview-framework]
 ---
@@ -64,3 +64,4 @@ System design interviews reuse a set of well-known architecture problems:
 - Complementary to [[technical-interview]] — system design tests architecture/scale, technical interviews test algorithms/PoC
 - Foundation for [[proximity-service]] — the canonical geolocation system design problem
 - Related to [[geospatial-indexing]] — the core algorithmic challenge for location-based systems
+- Guided by [[risk-driven-architecture]] — risk-driven thinking: identify the highest risks (performance, availability) and apply commensurate architecture effort

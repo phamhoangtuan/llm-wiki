@@ -3,7 +3,7 @@ title: "Metalearning"
 type: concept
 tags: [learning, metacognition, skill-acquisition]
 created: 2026-06-25
-updated: 2026-06-25
+updated: 2026-07-13
 sources: [ultralearning-scott-young]
 aliases: [learning how to learn]
 ---
@@ -82,3 +82,4 @@ This is especially valuable for **instrumental** (career-oriented) learning goal
 - [[ultralearning|Ultralearning]] — The parent methodology; Metalearning is its first and foundational principle
 - [[testing-effect|Testing Effect]] — Once you know _how_ the subject is structured, retrieval practice is how you encode it
 - [[spaced-repetition|Spaced Repetition]] — Metalearning helps identify _what_ needs to be remembered; spacing determines _when_
+- [[feedback|Feedback]] — Metalearning identifies the right feedback sources; feedback tells you whether your map was correct

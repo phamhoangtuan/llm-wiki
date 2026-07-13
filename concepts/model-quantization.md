@@ -3,8 +3,8 @@ title: "Model Quantization"
 type: concept
 tags: [llm, ml, optimization, compression, inference, production]
 created: 2026-07-11
-updated: 2026-07-11
-sources: [building-llms-for-production]
+updated: 2026-07-13
+sources: [building-llms-for-production, hands-on-large-language-models]
 aliases: [quantization, weight-quantization, post-training-quantization]
 ---
 
@@ -31,8 +31,20 @@ aliases: [quantization, weight-quantization, post-training-quantization]
 
 ## Notable Formats
 
-- **GGML / GGUF** — File format for quantized LLMs used by llama.cpp; supports multiple quantization schemes per tensor.
-- **NF4 (Normal Float 4)** — 4-bit format used in QLoRA; optimizes bit allocation for normally distributed weights.
+### GGUF (GPT-Generated Unified Format)
+
+The successor to GGML, GGUF is the standard file format for distributing and running quantized LLMs:
+
+- **Compatible with llama.cpp**, Ollama, LM Studio, and most local LLM runners
+- **Self-contained** — embeds model architecture, tokenizer, and quantized weights in a single file
+- **Multi-precision** — supports different quantization levels per tensor (e.g., Q4_K_M)
+- **CPU + GPU hybrid** — optimized for partial offloading to GPU
+
+> GGUF is to quantized LLMs what MP3 is to audio: a practical distribution format that trades a small quality loss for massive size reduction.
+
+### NF4 (Normal Float 4)
+
+4-bit format used in QLoRA; optimizes bit allocation for normally distributed weights.
 
 ## Accuracy Impact
 
@@ -51,6 +63,9 @@ aliases: [quantization, weight-quantization, post-training-quantization]
 
 - Complements [[model-distillation]] — distill to shrink architecture, then quantize to shrink precision
 - Complements [[model-pruning]] — prune redundant weights, then quantize the survivors
+- Powers [[lora]] via QLoRA — 4-bit quantization enables LoRA fine-tuning on consumer GPUs
 - Related to [[fine-tuning]] — QLoRA enables fine-tuning on 4-bit quantized base models
+- Related to [[kv-caching]] — quantization shrinks model weights; KV caching addresses compute redundancy — complementary optimizations
+- Related to [[flash-attention]] — both are memory-centric optimizations targeting different parts of the transformer
 - Related to [[in-process-olap]] — both optimize for query performance via low-level data representation changes
-- Framework source: [[sources/building-llms-for-production]] — quantization as a deployment optimization pillar
+- Framework sources: [[sources/building-llms-for-production]], [[sources/hands-on-large-language-models]]

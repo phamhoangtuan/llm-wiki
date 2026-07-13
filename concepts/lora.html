@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LoRA — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-llm">Llm</a> <span class="sep">/</span>
+  <span>LoRA</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>LoRA</h1>
+  <div class="page-meta"><span>Source: hands-on-large-language-models</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">llm</span><span class="tag">fine-tuning</span><span class="tag">peft</span><span class="tag">optimization</span><span class="tag">training</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>LoRA (Low-Rank Adaptation)</strong> is a parameter-efficient fine-tuning (PEFT) technique that injects small, trainable rank-decomposition matrices into the layers of a pre-trained model. Instead of updating all billions of original parameters, LoRA trains only these tiny adapter matrices, reducing trainable parameters by <strong>orders of magnitude</strong> while preserving near full-fine-tuning quality.</p>
+<h2 id="how-lora-works">How LoRA Works</h2>
+<p>Traditional fine-tuning updates the full weight matrix W:</p>
+<pre><code>W&#x27; = W + ΔW   (ΔW has same dimensions as W — billions of parameters)</code></pre>
+<p>LoRA decomposes the update into two low-rank matrices:</p>
+<pre><code>ΔW = A × B    (A and B are much smaller than W)</code></pre>
+<table><thead><tr>
+<th>Component</th>
+<th>Size (Full FT)</th>
+<th>Size (LoRA)</th>
+</tr></thead><tbody>
+<tr>
+<td>Trainable parameters</td>
+<td>150,000,000</td>
+<td>197,000 (per transformer block)</td>
+</tr>
+<tr>
+<td>GPU VRAM required</td>
+<td>60+ GB</td>
+<td>~12 GB</td>
+</tr>
+</tbody></table>
+<h2 id="qlora-lora--quantization">QLoRA: LoRA + Quantization</h2>
+<p><strong>QLoRA</strong> combines LoRA with 4-bit quantization of the base model:</p>
+<ul>
+<li>The base model is quantized to 4-bit (NF4 — Normal Float 4) for memory efficiency</li>
+<li>LoRA adapters are trained in higher precision (FP16/BF16)</li>
+<li><strong>Result</strong>: Fine-tune a 65B model on a single RTX 4090 (24 GB VRAM)</li>
+</ul>
+<blockquote>QLoRA is the key enabler for "GPU-poor" fine-tuning — high-quality domain adaptation without data-center hardware.</blockquote>
+<h2 id="why-low-rank-works">Why Low-Rank Works</h2>
+<p>Pre-trained models have <strong>intrinsic low-dimensional structure</strong> — most of the variation during fine-tuning happens in a low-rank subspace. LoRA exploits this by only updating along the most impactful directions, leaving the rest of the weight matrix frozen.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>LoRA reduces trainable parameters by ~10,000× compared to full fine-tuning.</li>
+<li>QLoRA makes fine-tuning accessible on a single consumer GPU.</li>
+<li>The frozen base + trainable adapter architecture allows swapping adapters without reloading the base model.</li>
+<li>LoRA is the standard PEFT method — supported across Hugging Face, PyTorch, and most LLM frameworks.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="peft.html">
+      <span class="connection-type related">Related</span>
+      <h4>PEFT</h4>
+      <p>LoRA is the most widely used PEFT method</p>
+    </a>
+    <a class="connection-card" href="model-quantization.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Model Quantization</h4>
+      <p>QLoRA stacks LoRA on top of 4-bit quantization for maximum GPU efficiency</p>
+    </a>
+    <a class="connection-card" href="fine-tuning.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Fine-Tuning</h4>
+      <p>LoRA is the practical path to fine-tuning for engineers without data-center GPUs</p>
+    </a>
+    <a class="connection-card" href="retrieval-augmented-generation.html">
+      <span class="connection-type related">Related</span>
+      <h4>Retrieval-Augmented Generation (RAG)</h4>
+      <p>systems — LoRA adapters can specialize LLMs for retrieval-augmented tasks</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Retrieval-Augmented Generation (RAG)</h4>
+      <p>Jay Alammar's coverage of GPU-poor optimization</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="load-balancer.html" class="prev">← Load Balancer</a><a href="mapper-principles.html" class="next">MAPPER Principles →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

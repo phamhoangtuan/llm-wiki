@@ -3,7 +3,7 @@ title: "Staff Engineering"
 type: concept
 tags: [career, engineering-leadership, growth, senior-to-staff]
 created: 2026-06-08
-updated: 2026-06-15
+updated: 2026-07-13
 sources: [senior-to-staff-engineer]
 aliases: [staff-plus, staff-engineer-role, senior-to-staff]
 ---
@@ -68,4 +68,5 @@ Build frameworks where value compounds without your ongoing involvement.
 - Related to [[code-quality-pillars]] — Staff-level systems thinking applies the same modularity and reusability principles at organizational scale
 - Informed by [[software-quality-dimensions]] — choosing what NOT to build (YAGNI at the organization level) is a Staff-level trade-off
 - Related to [[technical-interview]] — Staff-level interviews assess system design and cross-team influence, not just algorithms
+- Related to [[ultralearning]] — continuous aggressive skill acquisition is the path from Senior to Staff; ultralearning's 9 principles apply to career transitions
 - Benchmark source: [[sources/senior-to-staff-engineer]] — Jordan Cutler's case study from Pinterest

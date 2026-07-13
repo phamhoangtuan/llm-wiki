@@ -3,8 +3,8 @@ title: "Retrieval-Augmented Generation (RAG)"
 type: concept
 tags: [llm, rag, vector-database, search, knowledge, production]
 created: 2026-07-11
-updated: 2026-07-11
-sources: [building-llms-for-production]
+updated: 2026-07-13
+sources: [building-llms-for-production, hands-on-large-language-models]
 aliases: [rag, augmented-generation, grounded-generation]
 ---
 
@@ -44,6 +44,7 @@ User Query → Retriever (Search/Vector DB) → Top-K Documents → Prompt Const
 - A secondary model re-scores retrieved passages for relevance
 - Cross-encoders (e.g., BERT-based re-rankers) are more accurate but slower than bi-encoders
 - Trade-off: latency vs. precision
+- Reranking is a general efficiency pattern beyond RAG — see [[reranking]] for the full two-stage retrieval architecture
 
 ### 4. Generation
 
@@ -85,7 +86,9 @@ RAG excels at factual grounding but struggles when:
 
 - Complements [[fine-tuning]] — RAG grounds facts; fine-tuning shapes behavior and domain expertise
 - Complements [[prompt-engineering]] — retrieved content is fed into carefully engineered prompt templates
+- Depends on [[reranking]] — reranking is essential for RAG quality; it filters noise before context injection
 - Related to [[llm-evaluation-metrics]] — Hit Rate measures retrieval quality; Faithfulness measures grounded generation quality
 - Related to [[data-ingestion]] — RAG pipelines are a specialized form of data ingestion (document chunking, embedding, indexing)
 - Related to [[apache-kafka]] — real-time document updates can stream through Kafka into vector indexes
-- Framework source: [[sources/building-llms-for-production]] — RAG as one of four pillars of production LLM stack
+- Specialized by [[lora]] — LoRA adapters can tune LLMs for specific RAG domains
+- Framework sources: [[sources/building-llms-for-production]], [[sources/hands-on-large-language-models]]

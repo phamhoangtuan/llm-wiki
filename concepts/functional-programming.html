@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Functional Programming — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-functional-programming">Functional Programming</a> <span class="sep">/</span>
+  <span>Functional Programming</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Functional Programming</h1>
+  <div class="page-meta"><span>Source: the-art-of-functional-programming</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">functional-programming</span><span class="tag">programming-paradigms</span><span class="tag">software-design</span><span class="tag">immutability</span><span class="tag">declarative</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Functional Programming (FP)</strong> is a programming paradigm where computation is treated as the evaluation of mathematical functions — avoiding mutable state, side effects, and imperative control flow. FP produces programs that are safer, easier to reason about, and more composable by building systems from pure, reusable transformations on immutable data.</p>
+<h2 id="the-four-pillars-of-fp">The Four Pillars of FP</h2>
+<h3 id="1-everything-as-an-expression">1. Everything as an Expression</h3>
+<p>In FP, every construct (including conditionals and functions) is an expression that <strong>evaluates to a value</strong>. There are no statements that "do" things without returning — everything composes naturally like Lego blocks.</p>
+<pre><code class="language-haskell">-- An if-expression, not an if-statement:
+result = if x &gt; 0 then &quot;positive&quot; else &quot;non-positive&quot;</code></pre>
+<h3 id="2-abstraction-through-functions">2. Abstraction through Functions</h3>
+<p>Grounded in <strong>Lambda calculus</strong>, functions are first-class citizens — they can be passed as arguments, returned from other functions, and composed to create higher-order behavior.</p>
+<pre><code class="language-haskell">-- map, filter, fold replace explicit loops:
+processed = map transform (filter isValid data)</code></pre>
+<h3 id="3-immutability--purity">3. Immutability & Purity</h3>
+<table><thead><tr>
+<th>Concept</th>
+<th>Definition</th>
+<th>Benefit</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Pure Functions</strong></td>
+<td>Same input → same output, no side effects</td>
+<td>Deterministic, testable, parallelizable</td>
+</tr>
+<tr>
+<td><strong>Immutable Data</strong></td>
+<td>Data never changes after creation</td>
+<td>Thread-safe, no unexpected state mutations</td>
+</tr>
+</tbody></table>
+<h3 id="4-dataflow-programming">4. Dataflow Programming</h3>
+<p>Programs are modeled as <strong>directed graphs</strong> where data flows through a series of reusable, functional components. Instead of thinking "what does the computer do next?", think "how does data transform as it moves through the system?"</p>
+<h2 id="the-yin-yang-learning-philosophy">The Yin-Yang Learning Philosophy</h2>
+<p>The book's pedagogical framework balances two forces:</p>
+<table><thead><tr>
+<th>Yin (Principles)</th>
+<th>Yang (Practice)</th>
+</tr></thead><tbody>
+<tr>
+<td>Deep understanding of Lambda calculus, type checking, parsing</td>
+<td>Real-world problems: JSON processing, e-commerce, data pipelines</td>
+</tr>
+<tr>
+<td>Theory and fundamentals</td>
+<td>Pragmatic application in mainstream languages</td>
+</tr>
+</tbody></table>
+<blockquote>The goal is not to master Haskell — it's to bring FP thinking into your daily work regardless of language.</blockquote>
+<h2 id="fp-in-the-industry-the-declarative-shift">FP in the Industry: The Declarative Shift</h2>
+<p>FP concepts underpin many modern tools, often invisibly:</p>
+<table><thead><tr>
+<th>Tool</th>
+<th>Paradigm</th>
+<th>FP Influence</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>React</strong></td>
+<td>Declarative UI</td>
+<td>Components as pure functions of state</td>
+</tr>
+<tr>
+<td><strong>Terraform</strong></td>
+<td>Declarative infra</td>
+<td>Desired state as expression, not step-by-step</td>
+</tr>
+<tr>
+<td><strong>Maven/Gradle</strong></td>
+<td>Declarative builds</td>
+<td>Build definition as data transformation</td>
+</tr>
+<tr>
+<td><strong>Apache Spark</strong></td>
+<td>Functional data processing</td>
+<td>map, filter, reduce on distributed datasets</td>
+</tr>
+</tbody></table>
+<h2 id="languages">Languages</h2>
+<table><thead><tr>
+<th>Category</th>
+<th>Languages</th>
+<th>Role</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Pure FP</strong></td>
+<td>Haskell, OCaml, Elm</td>
+<td>Demonstrate FP in its purest form</td>
+</tr>
+<tr>
+<td><strong>Multi-paradigm</strong></td>
+<td>Scala, F#, Clojure</td>
+<td>Blend FP with OOP</td>
+</tr>
+<tr>
+<td><strong>FP-friendly</strong></td>
+<td>JavaScript, Python, Swift, Kotlin, Go</td>
+<td>Support FP patterns without requiring them</td>
+</tr>
+</tbody></table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>FP is a mindset, not a language feature — the principles apply everywhere.</li>
+<li>Pure functions + immutable data = code that is easier to test, debug, and parallelize.</li>
+<li>The industry is shifting toward declarative paradigms — FP provides the theoretical foundation.</li>
+<li>Mastering FP fundamentals makes you adaptable to any tool or language that emerges.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="immutability.html">
+      <span class="connection-type related">Related</span>
+      <h4>Immutability of Essence</h4>
+      <p>immutable data is the foundation of pure functional programming</p>
+    </a>
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Code Quality Pillars</h4>
+      <p>FP's emphasis on composability and testability aligns with software engineering quality goals</p>
+    </a>
+    <a class="connection-card" href="object-oriented-design.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Object-Oriented Design</h4>
+      <p>FP and OO are complementary, not competing; multi-paradigm design combines both</p>
+    </a>
+    <a class="connection-card" href="software-quality-dimensions.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Software Quality Dimensions</h4>
+      <p>FP improves analyzability and composability dimensions</p>
+    </a>
+    <a class="connection-card" href="apache-spark.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Spark</h4>
+      <p>Spark's RDD API is fundamentally functional (map, filter, reduce on immutable distributed collections)</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Spark</h4>
+      <p>Minh Quang Tran's guide to thinking functionally</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="flash-attention.html" class="prev">← Flash Attention</a><a href="functional-testing.html" class="next">Functional Testing →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

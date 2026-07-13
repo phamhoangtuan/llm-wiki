@@ -3,7 +3,7 @@ title: "Code Quality Pillars"
 type: concept
 tags: [design-principles, clean-code, engineering, maintainability]
 created: 2026-06-08
-updated: 2026-06-27
+updated: 2026-07-13
 sources: [good-code-bad-code, practical-object-oriented-design, clean-code-principles-patterns-silen]
 aliases: [six-pillars-of-code-quality]
 ---
@@ -124,6 +124,8 @@ Code Change → Code Review (proofreading) → Commit → Pre-submit Checks (aut
 - Related to [[immutability]] — immutability makes code harder to misuse (pillar 3)
 - Related to [[rich-domain-model]] — cohesive classes embody rich behavior (pillar 4)
 - Contrasted with [[software-quality-dimensions]] — complementary framework: pillars (tactical) vs dimensions (analytical)
+- Supported by [[architecture-in-agile]] — architecture as skeleton, not straitjacket, guides iterative development toward quality
+- Related to [[refactoring-at-scale]] — both address the engineering discipline needed for maintainable codebases
 - Complements [[object-oriented-design]] — TRUE (Transparent/Reasonable) aligns with readability and modularity pillars
 - Informs [[dataops]] — DataOps applies the same modularity, testing, and reuse pillars to data pipelines
 - Maintained by [[refactoring-at-scale]] — refactoring is the practice that preserves code quality over time against [[software-rot]]

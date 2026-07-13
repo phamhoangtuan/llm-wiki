@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Model Quantization</h1>
-  <div class="page-meta"><span>Source: building-llms-for-production</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-meta"><span>Source: building-llms-for-production, hands-on-large-language-models</span><span>Updated: 2026-07-13</span></div>
   <div class="page-tags"><span class="tag">llm</span><span class="tag">ml</span><span class="tag">optimization</span><span class="tag">compression</span><span class="tag">inference</span><span class="tag">production</span></div>
 </div>
 <div class="content-area concept">
@@ -96,10 +96,17 @@
 </tr>
 </tbody></table>
 <h2 id="notable-formats">Notable Formats</h2>
+<h3 id="gguf-gpt-generated-unified-format">GGUF (GPT-Generated Unified Format)</h3>
+<p>The successor to GGML, GGUF is the standard file format for distributing and running quantized LLMs:</p>
 <ul>
-<li><strong>GGML / GGUF</strong> — File format for quantized LLMs used by llama.cpp; supports multiple quantization schemes per tensor.</li>
-<li><strong>NF4 (Normal Float 4)</strong> — 4-bit format used in QLoRA; optimizes bit allocation for normally distributed weights.</li>
+<li><strong>Compatible with llama.cpp</strong>, Ollama, LM Studio, and most local LLM runners</li>
+<li><strong>Self-contained</strong> — embeds model architecture, tokenizer, and quantized weights in a single file</li>
+<li><strong>Multi-precision</strong> — supports different quantization levels per tensor (e.g., Q4_K_M)</li>
+<li><strong>CPU + GPU hybrid</strong> — optimized for partial offloading to GPU</li>
 </ul>
+<blockquote>GGUF is to quantized LLMs what MP3 is to audio: a practical distribution format that trades a small quality loss for massive size reduction.</blockquote>
+<h3 id="nf4-normal-float-4">NF4 (Normal Float 4)</h3>
+<p>4-bit format used in QLoRA; optimizes bit allocation for normally distributed weights.</p>
 <h2 id="accuracy-impact">Accuracy Impact</h2>
 <ul>
 <li>Modern 4-bit quantization (GPTQ, AWQ) retains <strong>>95% of baseline accuracy</strong> for most tasks.</li>
@@ -127,10 +134,25 @@
       <h4>Model Pruning</h4>
       <p>prune redundant weights, then quantize the survivors</p>
     </a>
+    <a class="connection-card" href="lora.html">
+      <span class="connection-type related">Related</span>
+      <h4>LoRA</h4>
+      <p>via QLoRA — 4-bit quantization enables LoRA fine-tuning on consumer GPUs</p>
+    </a>
     <a class="connection-card" href="fine-tuning.html">
       <span class="connection-type related">Related to</span>
       <h4>Fine-Tuning</h4>
       <p>QLoRA enables fine-tuning on 4-bit quantized base models</p>
+    </a>
+    <a class="connection-card" href="kv-caching.html">
+      <span class="connection-type related">Related to</span>
+      <h4>KV Caching</h4>
+      <p>quantization shrinks model weights; KV caching addresses compute redundancy — complementary optimizations</p>
+    </a>
+    <a class="connection-card" href="flash-attention.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Flash Attention</h4>
+      <p>both are memory-centric optimizations targeting different parts of the transformer</p>
     </a>
     <a class="connection-card" href="in-process-olap.html">
       <span class="connection-type related">Related to</span>
@@ -140,7 +162,7 @@
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
       <h4>In-Process OLAP</h4>
-      <p>quantization as a deployment optimization pillar</p>
+      <p>, [[sources/hands-on-large-language-models]]</p>
     </div>
   </div>
 </section>

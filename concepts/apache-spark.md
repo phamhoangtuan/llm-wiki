@@ -3,8 +3,8 @@ title: "Apache Spark"
 type: concept
 tags: [apache-spark, data-engineering, big-data, performance, optimization]
 created: 2026-06-08
-updated: 2026-06-23
-sources: [high-performance-spark, system-design-big-archive, databricks-dea-study-guide]
+updated: 2026-07-13
+sources: [high-performance-spark, system-design-big-archive, databricks-dea-study-guide, data-algorithms]
 aliases: [spark, spark-optimization]
 ---
 
@@ -81,6 +81,16 @@ When some keys have disproportionately more data, causing straggler tasks:
 
 > For most workloads, the gap is negligible due to Spark SQL's dominance. Use whatever language your team knows best.
 
+## Spark for Market Basket Analysis
+
+Spark excels at MBA because the pipeline requires multiple phases:
+
+1. **Phase 1**: Count frequent itemsets (find combinations exceeding min_support)
+2. **Phase 2**: Generate association rules from frequent itemsets
+3. **Phase 3**: Compute confidence for each rule
+
+Spark's in-memory processing runs all three phases in a single unified pipeline, whereas Hadoop MapReduce would require chaining multiple jobs with disk I/O between each — making Spark dramatically faster for end-to-end MBA. See [[market-basket-analysis]] for the full technique.
+
 ---
 
 - Related to [[data-engineer]] — Spark is the workhorse of distributed batch processing in modern DE stacks
@@ -91,3 +101,5 @@ When some keys have disproportionately more data, causing straggler tasks:
 - Databricks-specific context from [[sources/databricks-dea-study-guide]] — Spark is the backbone of Databricks Runtime; driver/worker node hierarchy, in-memory processing, unified batch+stream, multi-language support (Python, SQL, R, Scala, Java)
 - Foundation for [[databricks-platform]] — Databricks platform's Layer 2 (Runtime) is built on Apache Spark
 - Foundation for [[data-lakehouse]] — Spark provides the compute engine for Lakehouse analytics
+- Powers [[market-basket-analysis]] — Spark is the preferred engine for end-to-end MBA pipelines with rule generation and confidence computation
+- Related to [[functional-programming]] — Spark's RDD API (map, filter, reduce) is fundamentally a functional programming model on distributed immutable collections

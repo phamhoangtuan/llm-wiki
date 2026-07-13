@@ -1,10 +1,10 @@
 ---
 title: "Immutability of Essence"
 type: concept
-tags: [design-principles, immutability, domain-modeling]
+tags: [design-principles, immutability, domain-modeling, functional-programming]
 created: 2026-05-23
-updated: 2026-06-15
-sources: [contieri-clean-code-cookbook]
+updated: 2026-07-13
+sources: [contieri-clean-code-cookbook, the-art-of-functional-programming]
 ---
 
 ## Summary
@@ -22,4 +22,6 @@ Essential attributes of a domain object should never change. If a change is need
 - Supports [[fail-fast]] — immutable objects fail fast on invalid construction
 - Related to [[essential-accidental-complexity]] — immutability eliminates accidental complexity
 - Implemented via [[python-standard-library]] — namedtuple provides immutable data structures in Python
-- Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook
+- Core pillar of [[functional-programming]] — immutability is one of the 4 pillars of FP; pure functions require immutable data
+- A form of [[architecture-hoisting]] — immutability is structural hoisting: the architecture guarantees no mutation, freeing developers from worrying about it
+- Benchmark sources: [[sources/contieri-clean-code-cookbook]], [[sources/the-art-of-functional-programming]]

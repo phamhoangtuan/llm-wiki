@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KV Caching — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-llm">Llm</a> <span class="sep">/</span>
+  <span>KV Caching</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>KV Caching</h1>
+  <div class="page-meta"><span>Source: hands-on-large-language-models</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">llm</span><span class="tag">inference</span><span class="tag">optimization</span><span class="tag">attention</span><span class="tag">transformer</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>KV Caching</strong> is an inference optimization technique for autoregressive transformer models that stores previously computed Key and Value vectors so they don't need to be recomputed for each new token generation. It eliminates redundant computation, making text generation dramatically faster without any change to model weights or output quality.</p>
+<h2 id="the-problem-it-solves">The Problem It Solves</h2>
+<p>LLMs generate text <strong>one token at a time</strong> (autoregressive). Without caching, every new token forces a full recalculation of attention over all previous tokens:</p>
+<pre><code>Generate token #1: compute K,V for token #1
+Generate token #2: compute K,V for token #1 + token #2
+Generate token #3: compute K,V for token #1 + token #2 + token #3
+...</code></pre>
+<p>This is <strong>O(n²)</strong> in compute — each new token redoes all prior work.</p>
+<h2 id="how-kv-caching-works">How KV Caching Works</h2>
+<ol>
+<li>During the <strong>first forward pass</strong> (processing the prompt), compute and <strong>store</strong> all Key and Value vectors</li>
+<li>For each <strong>subsequent token</strong>, retrieve cached K,V for all prior tokens and only compute K,V for the new token</li>
+<li>The attention mechanism operates over <code>[cached K,V + new K,V]</code> without any recomputation</li>
+</ol>
+<h2 id="performance-impact">Performance Impact</h2>
+<table><thead><tr>
+<th>Scenario</th>
+<th>Time for 100 Tokens</th>
+<th>Explanation</th>
+</tr></thead><tbody>
+<tr>
+<td>Without KV Cache</td>
+<td>21.8 seconds</td>
+<td>Recomputes all K,V every token</td>
+</tr>
+<tr>
+<td>With KV Cache</td>
+<td>4.5 seconds</td>
+<td>Only computes K,V for the new token</td>
+</tr>
+</tbody></table>
+<blockquote><strong>~5× speedup</strong> for typical generation lengths. The longer the sequence, the bigger the win.</blockquote>
+<h2 id="memory-trade-off">Memory Trade-Off</h2>
+<p>The cache stores all K,V vectors for every layer and every attention head:</p>
+<ul>
+<li><strong>For a 7B model</strong>: ~2 GB of KV cache for a 2048-token context</li>
+<li><strong>For a 70B model</strong>: ~20 GB for the same context length</li>
+</ul>
+<p>This is the main cost — VRAM consumption grows linearly with context length × batch size. Techniques like Multi-query Attention (MQA) and Grouped-query Attention (GQA) reduce KV cache size by sharing K,V across attention heads.</p>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>KV Caching is the single highest-impact inference optimization — ~5× speedup with zero quality loss.</li>
+<li>The trade-off is VRAM: longer contexts require larger caches.</li>
+<li>MQA and GQA are architectural responses to KV cache memory pressure.</li>
+<li>Always enable KV Caching in production inference — it's a solved problem with standard implementations.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="flash-attention.html">
+      <span class="connection-type related">Related</span>
+      <h4>Flash Attention</h4>
+      <p>Flash Attention's IO-aware design works in tandem with KV caching for maximum throughput</p>
+    </a>
+    <a class="connection-card" href="model-quantization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Model Quantization</h4>
+      <p>quantization shrinks model weights; KV caching addresses compute redundancy — complementary optimizations</p>
+    </a>
+    <a class="connection-card" href="lora.html">
+      <span class="connection-type related">Related to</span>
+      <h4>LoRA</h4>
+      <p>LoRA fine-tuned models benefit equally from KV caching at inference time</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>LoRA</h4>
+      <p>Jay Alammar's practical guide to LLM optimization</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="kubernetes-operator.html" class="prev">← Kubernetes Operator</a><a href="lambda-architecture.html" class="next">Lambda Architecture →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

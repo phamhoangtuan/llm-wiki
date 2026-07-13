@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Fine-Tuning</h1>
-  <div class="page-meta"><span>Source: building-llms-for-production</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-meta"><span>Source: building-llms-for-production, hands-on-large-language-models</span><span>Updated: 2026-07-13</span></div>
   <div class="page-tags"><span class="tag">llm</span><span class="tag">ml</span><span class="tag">training</span><span class="tag">lora</span><span class="tag">domain-adaptation</span><span class="tag">production</span></div>
 </div>
 <div class="content-area concept">
@@ -77,7 +77,13 @@
 <td>Add small bottleneck layers; freeze base model</td>
 <td>Minimal overhead at inference</td>
 </tr>
+<tr>
+<td><strong>Prefix Tuning</strong></td>
+<td>Learnable continuous vectors prepended to input</td>
+<td>< 0.1% of model parameters</td>
+</tr>
 </tbody></table>
+<p>All PEFT methods share a key advantage: the frozen base model stays on disk/VRAM while only the tiny adapters are swapped for different tasks. One base model can serve dozens of domains by switching adapters at runtime.</p>
 <h2 id="instruction-tuning">Instruction Tuning</h2>
 <p>A special case of fine-tuning where the model is trained on <code>(instruction, input, output)</code> triples to improve following of natural language commands. Forms the basis of "Instruct" model variants (e.g., Llama-2-Chat, GPT-3.5-turbo).</p>
 <h2 id="fine-tuning-vs-rag-vs-prompt-engineering">Fine-Tuning vs RAG vs Prompt Engineering</h2>
@@ -138,6 +144,16 @@
       <h4>Prompt Engineering</h4>
       <p>the three primary methods for controlling LLM output</p>
     </a>
+    <a class="connection-card" href="lora.html">
+      <span class="connection-type related">Related to</span>
+      <h4>LoRA</h4>
+      <p>LoRA is the most practical path to fine-tuning for engineers without data-center GPUs</p>
+    </a>
+    <a class="connection-card" href="peft.html">
+      <span class="connection-type related">Related to</span>
+      <h4>PEFT</h4>
+      <p>PEFT is the umbrella of parameter-efficient techniques that make fine-tuning accessible</p>
+    </a>
     <a class="connection-card" href="model-distillation.html">
       <span class="connection-type related">Related to</span>
       <h4>Model Distillation</h4>
@@ -148,14 +164,19 @@
       <h4>Data Quality Monitoring</h4>
       <p>fine-tuning datasets require the same rigorous quality validation as production data</p>
     </a>
+    <a class="connection-card" href="flash-attention.html">
+      <span class="connection-type related">Related</span>
+      <h4>Flash Attention</h4>
+      <p>Flash Attention speeds up fine-tuning forward/backward passes by 2–4×</p>
+    </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
-      <h4>Data Quality Monitoring</h4>
-      <p>fine-tuning as one of four production pillars</p>
+      <h4>Flash Attention</h4>
+      <p>, [[sources/hands-on-large-language-models]]</p>
     </div>
   </div>
 </section>
-<nav class="pagination"><a href="feedback.html" class="prev">← Feedback</a><a href="functional-testing.html" class="next">Functional Testing →</a></nav>
+<nav class="pagination"><a href="feedback.html" class="prev">← Feedback</a><a href="flash-attention.html" class="next">Flash Attention →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

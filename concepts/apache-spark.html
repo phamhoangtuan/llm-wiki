@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Apache Spark</h1>
-  <div class="page-meta"><span>Source: high-performance-spark, system-design-big-archive, databricks-dea-study-guide</span><span>Updated: 2026-06-23</span></div>
+  <div class="page-meta"><span>Source: high-performance-spark, system-design-big-archive, databricks-dea-study-guide, data-algorithms</span><span>Updated: 2026-07-13</span></div>
   <div class="page-tags"><span class="tag">apache-spark</span><span class="tag">data-engineering</span><span class="tag">big-data</span><span class="tag">performance</span><span class="tag">optimization</span></div>
 </div>
 <div class="content-area concept">
@@ -184,6 +184,14 @@ df_large.join(broadcast(df_small), &quot;key&quot;)  # Forces broadcast join</co
 </tr>
 </tbody></table>
 <blockquote>For most workloads, the gap is negligible due to Spark SQL's dominance. Use whatever language your team knows best.</blockquote>
+<h2 id="spark-for-market-basket-analysis">Spark for Market Basket Analysis</h2>
+<p>Spark excels at MBA because the pipeline requires multiple phases:</p>
+<ol>
+<li><strong>Phase 1</strong>: Count frequent itemsets (find combinations exceeding min_support)</li>
+<li><strong>Phase 2</strong>: Generate association rules from frequent itemsets</li>
+<li><strong>Phase 3</strong>: Compute confidence for each rule</li>
+</ol>
+<p>Spark's in-memory processing runs all three phases in a single unified pipeline, whereas Hadoop MapReduce would require chaining multiple jobs with disk I/O between each — making Spark dramatically faster for end-to-end MBA. See <a href="market-basket-analysis.html" class="wiki-link">market-basket-analysis</a> for the full technique.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -227,6 +235,16 @@ df_large.join(broadcast(df_small), &quot;key&quot;)  # Forces broadcast join</co
       <span class="connection-type core">Foundation for</span>
       <h4>Data Lakehouse</h4>
       <p>Spark provides the compute engine for Lakehouse analytics</p>
+    </a>
+    <a class="connection-card" href="market-basket-analysis.html">
+      <span class="connection-type related">Related</span>
+      <h4>Market Basket Analysis</h4>
+      <p>Spark is the preferred engine for end-to-end MBA pipelines with rule generation and confidence computation</p>
+    </a>
+    <a class="connection-card" href="functional-programming.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Functional Programming</h4>
+      <p>Spark's RDD API (map, filter, reduce) is fundamentally a functional programming model on distributed immutable collections</p>
     </a>
   </div>
 </section>
