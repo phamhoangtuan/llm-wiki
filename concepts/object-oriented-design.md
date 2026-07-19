@@ -4,7 +4,7 @@ type: concept
 tags: [oop, design-principles, maintainability, agile]
 created: 2026-06-08
 updated: 2026-06-27
-sources: [practical-object-oriented-design, clean-code-principles-patterns-silen]
+sources: [practical-object-oriented-design, clean-code-principles-patterns-silen, dive-into-design-patterns]
 aliases: [pood, oo-design, practical-design]
 ---
 
@@ -15,7 +15,7 @@ Object-oriented design is the practice of arranging code to minimize the cost of
 ## What Design Is (and Isn't)
 
 | Old View | Practical View (POOD) |
-|---|---|
+| --- | --- |
 | Design is creating perfection upfront | Design is arranging code to reduce the cost of change |
 | Design is a separate phase before coding | Design is part of continuous discovery |
 | Goal: follow rigid principles | Goal: preserve changeability |
@@ -27,7 +27,7 @@ Object-oriented design is the practice of arranging code to minimize the cost of
 A practical checklist for measuring design quality — not abstract metrics, but questions anyone can ask:
 
 | Letter | Meaning | Question |
-|---|---|---|
+| --- | --- | --- |
 | **T — Transparent** | Consequences of change are obvious | "If I change this, do I know exactly what will be affected?" |
 | **R — Reasonable** | Cost of change is proportional to benefit | "Is this change worth the effort, or disproportionately complex?" |
 | **U — Usable** | Code is reusable in new contexts | "Can I use this code for another feature without major rewrites?" |
@@ -40,12 +40,13 @@ A practical checklist for measuring design quality — not abstract metrics, but
 Big Up Front Design (BUFD) assumes requirements are known and stable — an illusion:
 
 | BUFD ❌ | Design as Discovery ✅ |
-|---|---|
+| --- | --- |
 | Assumes we can predict all requirements | Accepts that customers discover needs through working software |
 | Creates adversarial relationship with stakeholders | Iterative feedback loop builds trust |
 | Produces "beautiful" architectures that don't fit reality | Produces code that evolves with understanding |
 
 **Three ways design fails:**
+
 1. **Lack of Design** — successful app without design carries seeds of self-destruction
 2. **Overdesign** — rigid application of principles creates beautiful but unusable code castles
 3. **Separation from Practice** — design by isolated "experts" without coding feedback loops
@@ -55,7 +56,7 @@ Big Up Front Design (BUFD) assumes requirements are known and stable — an illu
 OOP is fundamentally about objects communicating via messages, not calling functions:
 
 | Procedural | Object-Oriented |
-|---|---|
+| --- | --- |
 | Data and behavior separated by a "chasm" | Data + behavior combined in objects |
 | Functions execute predefined logic | Objects send messages requesting behavior |
 | Extensibility limited to built-in types | Infinite extensibility — programmers create new types |
@@ -75,7 +76,7 @@ order.tax()  → TaxCalculator receives message, responds with result
 Petri Silén's Clean Code book emphasizes a practical heuristic: ask "What does this object have?" rather than "What is this object?" — favoring composition (has-a) over inheritance (is-a):
 
 | Inheritance (Is-a) | Composition (Has-a) |
-|---|---|
+| --- | --- |
 | Creates rigid class hierarchies | Flexible — assemble objects to create new behavior |
 | Hard to change parent without breaking children | Components swappable independently |
 | Deep chains are hard to debug | Flat structure, clear dependencies |
@@ -121,3 +122,5 @@ Choosing speed over design borrows time from the future — and you pay with int
 - Related to [[dependency-injection]] — DI supplies objects their collaborators so they can send messages
 - Benchmark source: [[sources/practical-object-oriented-design]] — Sandi Metz's 334-page guide
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén's emphasis on composition over inheritance in Python
+- Benchmark source: [[sources/dive-into-design-patterns]] — Shvets' practical pattern catalog reinforces composition over inheritance
+- Related to [[design-patterns]] — patterns embody the OO design principles: Strategy, Observer, Decorator

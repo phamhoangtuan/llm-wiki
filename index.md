@@ -32,6 +32,7 @@
 - [Rich Domain Model](concepts/rich-domain-model.html) — Objects encapsulate data + behavior; contrast with anemic domain model
 - [Tell, Don't Ask](concepts/tell-dont-ask.html) — Tell objects to act, don't ask for data to process outside
 - [Immutability](concepts/immutability.html) — Essential attributes should never change; create new objects instead
+- [Information Hiding](concepts/information-hiding.html) — Core design heuristic: hide implementation secrets behind stable interfaces to localize change impact
 - [Fail Fast](concepts/fail-fast.html) — Stop execution immediately on error; don't let errors propagate
 - [Feedback](concepts/feedback.html) — Three levels of feedback in skill acquisition (Outcome, Informational, Corrective); ego trap, Chris Rock's signal-seeking
 - [Geohash](concepts/geohash.html) — Base32 string encoding for geolocation; recursive grid subdivision, prefix matching, boundary issues
@@ -41,6 +42,7 @@
 - [Testing Effect](concepts/testing-effect.html) — Retrieval practice as knowledge construction; Karpicke & Blunt study, desirable difficulty, free recall
 - [Readability vs Performance](concepts/readability-vs-performance.html) — Write clean code first, optimize bottlenecks after profiling
 - [Materialized Views](concepts/materialized-views.html) — Pre-computed query results stored as physical tables — the hybrid of tables and views
+- [Medallion Architecture](concepts/medallion-architecture.html) — Data organization pattern: Bronze (raw) → Silver (cleaned) → Gold (business-ready); progressive refinement with quality gates
 - [Incremental View Maintenance](concepts/incremental-view-maintenance.html) — Updating MVs by processing only changed data, not full recompute
 - [Timely Dataflow](concepts/timely-dataflow.html) — Timestamp-based notification model for distributed incremental computation (Naiad)
 - [Differential Dataflow](concepts/differential-dataflow.html) — Versioned incremental computation built on Timely Dataflow
@@ -91,6 +93,7 @@
 - [Agent Verification](concepts/agent-verification.html) — Output + trajectory verification for non-deterministic agents; deterministic hooks as final safety layer
 - [ClickHouse](concepts/clickhouse.html) — High-performance column-oriented OLAP DBMS; data lake ready with Delta Lake and Iceberg support
 - [Delta Kernel](concepts/delta-kernel.html) — Rust abstraction layer for Delta Lake protocol; handles transaction logs, snapshots, schema evolution
+- [Delta Live Tables (DLT)](concepts/delta-live-tables.html) — Declarative ETL framework on Databricks; define “what” not “how” — built-in data quality expectations
 - [Liquid Clustering](concepts/liquid-clustering.html) — Modern data layout for Delta/Iceberg tables; replaces Hive-style partitioning with incremental, multi-dimensional clustering
 - [Goroutines](concepts/goroutines.html) — Go's lightweight concurrency primitive; concurrency vs parallelism distinction — handles 100K+ concurrent tasks
 - [Go HTTP Handlers](concepts/go-http-handlers.html) — Handler interface, HandlerFunc, ServeMux routing, and middleware chaining — the building blocks of Go web apps
@@ -98,6 +101,7 @@
 - [Go Web Ecosystem](concepts/go-web-ecosystem.html) — Go's philosophy: standard library over frameworks, static binary deployment, built-in testing, implicit interfaces
 - [TDD Methodology](concepts/tdd-methodology.html) — Red-Green-Refactor cycle, Outside-In TDD (Double Loop), YAGNI, the Testing Goat discipline
 - [Functional Testing](concepts/functional-testing.html) — User-perspective testing via Selenium/HTTP client; outer loop of TDD; test behavior not constants
+- [Game Theory](concepts/game-theory.html) — Mathematical study of strategic interaction among rational decision-makers; Nash equilibrium, backward induction, incomplete information
 - [Technical Interview](concepts/technical-interview.html) — Philosophy of coding interviews: relative evaluation, false positives/negatives, company cultures, BUD optimization, Talk Aloud
 - [Code Quality Pillars](concepts/code-quality-pillars.html) — Engineering vs Coding distinction, 4 goals and 6 tactical pillars for maintainable software
 - [Software Quality Dimensions](concepts/software-quality-dimensions.html) — Multi-dimensional quality spectrum, four core trade-offs, YAGNI, analyzability, abstraction costs
@@ -110,6 +114,8 @@
 - [Staff Engineering](concepts/staff-engineering.html) — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
 - [Apache Spark](concepts/apache-spark.html) — Distributed data processing engine; internals, shuffle optimization, join strategies, data skew mitigation
 - [API Architectural Styles](concepts/api-architectural-styles.html) — Four major API styles (REST, GraphQL, gRPC, SOAP) — choosing the right paradigm for the use case
+- [Architectural Characteristics](concepts/architectural-characteristics.html) — Non-functional "-ilities" (scalability, availability, reliability) that drive architectural decisions; one of the 4 dimensions of architecture
+- [Architectural Decision Records (ADRs)](concepts/architectural-decision-records.html) — Lightweight documents capturing context, rationale, and consequences of architectural decisions; institutional memory of "Why"
 - [Architecture Hoisting](concepts/architecture-hoisting.html) — Shifting quality guarantees from manual code to structural system constraints
 - [Architecture in Agile](concepts/architecture-in-agile.html) — Reconciling architecture with iterative development: Iteration Zero, risk backlog, skeleton vs straitjacket
 - [Model-Code Gap](concepts/model-code-gap.html) — The disconnect between design intent and code reality; architecturally-evident coding as antidote
@@ -142,6 +148,7 @@
 - [Byzantine Fault Tolerance (BFT)](concepts/byzantine-fault-tolerance.html) — Distributed consensus under adversarial node behavior; 3f+1 formula, PBFT protocol, CFT vs BFT trade-offs
 - [CAP Theorem](concepts/cap-theorem.html) — Distributed data stores can guarantee at most 2 of 3: Consistency, Availability, Partition Tolerance; CP vs AP architectures, quorum mechanics, PACELC extension
 - [Deployment Strategies](concepts/deployment-strategies.html) — Blue-Green, Canary, A/B Testing, Multi-Service; incremental rollout for in-memory index rebuild safety
+- [Design Patterns](concepts/design-patterns.html) — All 22 GoF patterns in 3 categories (Creational, Structural, Behavioral); principles-first, composition over inheritance
 - [Distributed Consensus (Raft & Paxos)](concepts/distributed-consensus.html) — Raft and Paxos algorithms for cluster-wide agreement on data state; FLP impossibility, Safety vs Liveness, leader election, log replication, ecosystem comparison
 - [Leader Election](concepts/leader-election.html) — Selecting a single coordinator node in distributed systems; Raft's randomized timeout mechanism, Term-based safety, split-brain prevention, production coordination services
 - [Cloud Service Models](concepts/cloud-service-models.html) — Three levels of cloud abstraction (IaaS, PaaS, SaaS) trading control for operational simplicity
@@ -172,6 +179,7 @@
 - [Model Distillation](concepts/model-distillation.html) — Training smaller student models to replicate larger teacher model behavior
 - [Model Quantization](concepts/model-quantization.html) — Reducing numerical precision of model weights to shrink size and accelerate inference
 - [Model Pruning](concepts/model-pruning.html) — Removing low-importance weights and connections to compress neural networks
+- [Nash Equilibrium](concepts/nash-equilibrium.html) — Foundational solution concept in game theory: a state where no player can improve by unilaterally changing strategy
 - [LLM Evaluation Metrics](concepts/llm-evaluation-metrics.html) — Quantitative measures for assessing production LLM output quality and reliability
 - [Real-Time Analytics](concepts/real-time-analytics.html) — Processing and analyzing unbounded data streams with sub-second latency
 - [Lambda Architecture](concepts/lambda-architecture.html) — Dual-path batch + stream processing paradigm for big data systems
@@ -220,6 +228,7 @@
 - [Practical Object-Oriented Design](sources/practical-object-oriented-design.md) — Sandi Metz's 334-page guide: TRUE standard, design as discovery, messages in OOP
 - [Programming Kubernetes](sources/programming-kubernetes.md) — Schimanski & Hausenblas's 244-page guide: control loops, operators, CRDs, Go ecosystem for K8s-native development
 - [Data Engineer Role — Data Engineering Handbook](sources/data-engineer-role-handbook.md) — Vietnamese DE Handbook: role definition, differentiation from SWE/DA/DS, daily workflow, best practices
+- [Big Book of Data Engineering](sources/big-book-data-engineering.md) — Databricks' 125-page guide: 3 pillars (Ingest/Transform/Orchestrate), Medallion architecture, DLT, Unity Catalog, DatabricksIQ
 - [Semantic Layers Are Now for AI](sources/semantic-layers-for-ai.md) — Madison Mae on why semantic layers are critical for AI agents, testing ktx open-source context layer
 - [How to Grow From Senior to Staff Engineer](sources/senior-to-staff-engineer.md) — Jordan Cutler's Pinterest case study: 3 dimensions of Staff-level impact in the AI era
 - [Databricks Zerobus — Event Streams + Lake House](sources/databricks-zerobus.md) — Daniel Beach explores serverless streaming into Delta Lake without Kafka infrastructure
@@ -260,5 +269,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-*Last updated: 2026-07-13*
-*Pages: 244 (181 concepts + 63 sources)*
+_Last updated: 2026-07-13_
+_Pages: 257 (190 concepts + 67 sources)_

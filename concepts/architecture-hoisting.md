@@ -13,7 +13,7 @@ Architecture Hoisting is the strategy of **shifting quality attribute guarantees
 ## The Analogy: Seatbelt vs. Airbag
 
 | Approach | Example | Developer Role |
-|---|---|---|
+| --- | --- | --- |
 | Architecture-Focused | Seatbelt | System provides support, but developer must remember to "buckle up" (follow the rule) |
 | Architecture Hoisting | Airbag | System handles it automatically. Developer neither needs to think about it nor can interfere |
 
@@ -26,7 +26,7 @@ Hoisting is the **airbag** — automatic, non-negotiable, always on.
 Hoisting creates **strict constraints** (tyranny), but those constraints **liberate** developers from worrying about low-level correctness:
 
 | Problem Domain | Manual (Fragile) | Hoisted (Guaranteed) |
-|---|---|---|
+| --- | --- | --- |
 | Memory Management | Developer calls `free()` on every allocation — risk of leaks, double-free | Garbage Collection — system handles all memory lifecycle |
 | Concurrency | Developer manages threads, locks, synchronization — risk of race conditions, deadlocks | App Server (EJB) — server manages instance pooling and thread safety |
 | Fault Isolation | Code reviews enforce separation rules — easily violated | Separate processes — crash in one cannot affect another |
@@ -39,6 +39,7 @@ Hoisting imposes constraints that reduce **needless creativity**. When developer
 ## When to Hoist
 
 Consider hoisting when:
+
 - A quality attribute is **critical** to system success (safety, security, data integrity)
 - Manual enforcement has **failed repeatedly** (code review catch rate is low)
 - The failure mode has **catastrophic consequences** (patient monitoring, financial transactions)
@@ -47,6 +48,7 @@ Consider hoisting when:
 ## The Cost
 
 Hoisting isn't free. You trade flexibility for safety:
+
 - **EJB example**: Can't write custom threading — must work within container's model
 - **GC example**: Less control over memory layout and deallocation timing
 - **Structural isolation**: Can't share memory for performance — must serialize across boundaries
@@ -63,3 +65,4 @@ The risk-driven framework answers whether this trade-off is worth it: if the ris
 - [[immutability|Immutability]] — A form of hoisting: structural guarantee against mutation
 - [[fail-fast|Fail Fast]] — Hoisting enforces fail-fast at architectural boundaries
 - [[dependency-injection|Dependency Injection]] — Structural enforcement of loose coupling
+- [[architectural-decision-records|ADRs]] — Hoisting's rationale captured as institutional memory; ADRs encode "why" beyond "how"

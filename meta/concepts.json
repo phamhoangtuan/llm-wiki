@@ -244,6 +244,29 @@
         "web"
       ]
     },
+    "architectural-characteristics": {
+      "title": "Architectural Characteristics",
+      "category": "Meta",
+      "url": "concepts/architectural-characteristics.html",
+      "definition": "The non-functional \"-ilities\" that a system must exhibit — the quality attributes that define how a system behaves, not what it does. They form one of the 4 dimensions of software architecture (alongs",
+      "tags": [
+        "software-architecture",
+        "non-functional-requirements",
+        "-ilities"
+      ]
+    },
+    "architectural-decision-records": {
+      "title": "Architectural Decision Records (ADRs)",
+      "category": "Meta",
+      "url": "concepts/architectural-decision-records.html",
+      "definition": "Lightweight documents that capture the context, rationale, and consequences of significant architectural decisions. ADRs are institutional memory — \"Why\" preserved long after the \"How\" (code) has been",
+      "tags": [
+        "software-architecture",
+        "documentation",
+        "decision-making",
+        "adr"
+      ]
+    },
     "architecture-hoisting": {
       "title": "Architecture Hoisting",
       "category": "Software Design",
@@ -779,6 +802,18 @@
         "clickhouse"
       ]
     },
+    "delta-live-tables": {
+      "title": "Delta Live Tables (DLT)",
+      "category": "Data Engineering",
+      "url": "concepts/delta-live-tables.html",
+      "definition": "Declarative ETL framework on Databricks that lets you define *what* data transformations to perform, not *how* to execute them. DLT automatically handles cluster management, monitoring, and data quali",
+      "tags": [
+        "data-engineering",
+        "databricks",
+        "etl",
+        "data-quality"
+      ]
+    },
     "dependency-injection": {
       "title": "Dependency Injection",
       "category": "Software Design",
@@ -802,6 +837,18 @@
         "devops",
         "system-design",
         "reliability"
+      ]
+    },
+    "design-patterns": {
+      "title": "Design Patterns",
+      "category": "Software Design",
+      "url": "concepts/design-patterns.html",
+      "definition": "Reusable, customizable blueprints for solving recurring software design problems — not copy-paste code, but architectural templates. The 22 classic Gang of Four (GoF) patterns are organized into three",
+      "tags": [
+        "software-design",
+        "patterns",
+        "oop",
+        "gang-of-four"
       ]
     },
     "differential-dataflow": {
@@ -1007,6 +1054,19 @@
         "python"
       ]
     },
+    "game-theory": {
+      "title": "Game Theory",
+      "category": "Testing",
+      "url": "concepts/game-theory.html",
+      "definition": "The mathematical study of strategic interaction among rational decision-makers — where each player's outcome depends on the actions of others. Focus on **non-cooperative game theory**: each player opt",
+      "tags": [
+        "game-theory",
+        "strategy",
+        "economics",
+        "decision-making",
+        "mathematics"
+      ]
+    },
     "geohash": {
       "title": "Geohash",
       "category": "Infrastructure",
@@ -1145,6 +1205,18 @@
         "databases",
         "incremental-computation",
         "streaming"
+      ]
+    },
+    "information-hiding": {
+      "title": "Information Hiding",
+      "category": "Software Design",
+      "url": "concepts/information-hiding.html",
+      "definition": "A core design heuristic: hide implementation secrets (data structures, algorithms, internal state) behind stable interfaces so that changes don't cascade through the system.",
+      "tags": [
+        "software-design",
+        "complexity",
+        "abstraction",
+        "encapsulation"
       ]
     },
     "kappa-architecture": {
@@ -1352,6 +1424,18 @@
         "caching"
       ]
     },
+    "medallion-architecture": {
+      "title": "Medallion Architecture",
+      "category": "Data Engineering",
+      "url": "concepts/medallion-architecture.html",
+      "definition": "A data organization pattern that organizes data into three progressive quality tiers: Bronze (raw), Silver (cleaned), and Gold (business-ready). Like water flowing through filtration, data moves from ",
+      "tags": [
+        "data-engineering",
+        "lakehouse",
+        "databricks",
+        "data-quality"
+      ]
+    },
     "message-delivery-semantics": {
       "title": "Message Delivery Semantics",
       "category": "System Architecture",
@@ -1466,6 +1550,18 @@
         "compression",
         "inference",
         "production"
+      ]
+    },
+    "nash-equilibrium": {
+      "title": "Nash Equilibrium",
+      "category": "Testing",
+      "url": "concepts/nash-equilibrium.html",
+      "definition": "The foundational solution concept in non-cooperative [[game-theory|game theory]]: a strategy profile where no player can improve their payoff by *unilaterally* changing their strategy, given what ever",
+      "tags": [
+        "game-theory",
+        "strategy",
+        "equilibrium",
+        "economics"
       ]
     },
     "object-oriented-design": {
@@ -1936,6 +2032,17 @@
         "architecture",
         "philosophy",
         "domain-modeling"
+      ]
+    },
+    "software-construction": {
+      "title": "Software Construction",
+      "category": "Meta",
+      "url": "concepts/software-construction.html",
+      "definition": "The central activity of software development where ideas transform into working products — far broader than \"coding.\" Construction encompasses detailed design, coding, debugging, integration, and deve",
+      "tags": [
+        "software-engineering",
+        "code-quality",
+        "construction"
       ]
     },
     "software-quality-dimensions": {

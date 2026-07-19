@@ -179,8 +179,10 @@
     "python-static-analysis",
     "shift-left-security",
     "shift-left-security",
+    "software-construction",
     "tdd-methodology",
     "clean-code-principles-patterns-silen",
+    "code-complete",
     "okken-python-testing-pytest",
     "tdd-python-percival",
     "tdd-python-percival"
@@ -404,6 +406,7 @@
     "dataops",
     "dbt",
     "elt",
+    "medallion-architecture",
     "retrieval-augmented-generation",
     "synthetic-data",
     "hugo-data-ingestion-platform-flink",
@@ -720,6 +723,7 @@
     "duckdb",
     "liquid-clustering",
     "liquid-clustering",
+    "medallion-architecture",
     "snowflake-data-cloud",
     "unity-catalog",
     "unity-catalog",
@@ -803,12 +807,17 @@
     "databricks-platform",
     "delta-kernel",
     "delta-kernel",
+    "delta-live-tables",
     "duckdb",
     "duckdb",
     "liquid-clustering",
     "liquid-clustering",
+    "medallion-architecture",
+    "medallion-architecture",
     "snowflake-data-cloud",
     "unity-catalog",
+    "big-book-data-engineering",
+    "big-book-data-engineering",
     "databricks-dea-study-guide",
     "databricks-zerobus",
     "debunking-data-layout-myths-liquid-clustering",
@@ -888,6 +897,7 @@
     "dbfs",
     "dbfs",
     "delta-lake",
+    "delta-live-tables",
     "unity-catalog",
     "databricks-dea-study-guide"
   ],
@@ -897,9 +907,12 @@
     "dbfs",
     "delta-lake",
     "lambda-architecture",
+    "medallion-architecture",
+    "medallion-architecture",
     "real-time-analytics",
     "snowflake-data-cloud",
     "unity-catalog",
+    "big-book-data-engineering",
     "building-real-time-analytics-systems",
     "databricks-dea-study-guide",
     "snowflake-the-definitive-guide"
@@ -939,12 +952,77 @@
     "microservices",
     "microservices"
   ],
+  "microservices": [
+    "architectural-characteristics",
+    "architectural-characteristics",
+    "observability",
+    "clean-code-principles-patterns-silen",
+    "head-first-software-architecture"
+  ],
+  "sources/head-first-software-architecture": [
+    "architectural-characteristics",
+    "architectural-decision-records",
+    "risk-driven-architecture"
+  ],
   "risk-driven-architecture": [
+    "architectural-characteristics",
+    "architectural-decision-records",
     "architecture-hoisting",
     "architecture-in-agile",
     "model-code-gap",
     "software-quality-dimensions",
-    "system-design-interview"
+    "system-design-interview",
+    "head-first-software-architecture"
+  ],
+  "architectural-decision-records": [
+    "architectural-characteristics",
+    "architecture-hoisting",
+    "risk-driven-architecture",
+    "risk-driven-architecture",
+    "head-first-software-architecture",
+    "head-first-software-architecture"
+  ],
+  "observability": [
+    "architectural-characteristics",
+    "kubernetes-operator",
+    "llm-evaluation-metrics",
+    "message-queue",
+    "microservices",
+    "microservices",
+    "scalable-architecture",
+    "shift-left-security",
+    "shift-left-security",
+    "system-design-interview",
+    "building-llms-for-production",
+    "clean-code-principles-patterns-silen",
+    "system-design-interview-xu"
+  ],
+  "architecture-in-agile": [
+    "architectural-decision-records",
+    "architectural-decision-records",
+    "code-quality-pillars",
+    "refactoring-at-scale",
+    "risk-driven-architecture",
+    "tdd-methodology"
+  ],
+  "architectural-characteristics": [
+    "architectural-decision-records",
+    "microservices",
+    "risk-driven-architecture",
+    "risk-driven-architecture",
+    "head-first-software-architecture",
+    "head-first-software-architecture"
+  ],
+  "architecture-hoisting": [
+    "architectural-decision-records",
+    "architecture-in-agile",
+    "fail-fast",
+    "immutability",
+    "information-hiding",
+    "model-code-gap",
+    "risk-driven-architecture",
+    "software-quality-dimensions",
+    "head-first-software-architecture"
   ],
   "model-code-gap": [
     "architecture-hoisting",
@@ -986,6 +1064,7 @@
     "composition-root",
     "composition-root",
     "composition-root",
+    "design-patterns",
     "go-http-handlers",
     "go-web-ecosystem",
     "object-oriented-design",
@@ -994,14 +1073,6 @@
     "solid-principles",
     "solid-principles",
     "testing-strategy"
-  ],
-  "architecture-hoisting": [
-    "architecture-in-agile",
-    "fail-fast",
-    "immutability",
-    "model-code-gap",
-    "risk-driven-architecture",
-    "software-quality-dimensions"
   ],
   "refactoring-at-scale": [
     "architecture-in-agile",
@@ -1237,12 +1308,15 @@
     "code-quality-pillars",
     "complexity-metrics",
     "fail-fast",
+    "game-theory",
     "immutability",
     "readability-vs-performance",
     "refactoring-at-scale",
     "risk-driven-architecture",
+    "software-construction",
     "software-quality-dimensions",
-    "software-rot"
+    "software-rot",
+    "code-complete"
   ],
   "code-quality-pillars": [
     "code-archaeology",
@@ -1258,11 +1332,13 @@
     "refactoring-at-scale",
     "shift-left-security",
     "shift-left-security",
+    "software-construction",
     "software-quality-dimensions",
     "software-rot",
     "staff-engineering",
     "testing-strategy",
     "clean-code-principles-patterns-silen",
+    "code-complete",
     "good-code-bad-code"
   ],
   "sources/refactoring-at-scale-lemaire": [
@@ -1284,11 +1360,16 @@
     "composition-root",
     "dependency-injection",
     "dependency-injection",
+    "design-patterns",
+    "design-patterns",
+    "information-hiding",
     "microservices",
     "model-code-gap",
     "object-oriented-design",
     "clean-code-principles-patterns-silen",
     "dependency-injection-principles-patterns",
+    "dive-into-design-patterns",
+    "dive-into-design-patterns",
     "practical-object-oriented-design"
   ],
   "tell-dont-ask": [
@@ -1301,20 +1382,16 @@
     "solid-principles",
     "contieri-clean-code-cookbook"
   ],
-  "architecture-in-agile": [
-    "code-quality-pillars",
-    "refactoring-at-scale",
-    "risk-driven-architecture",
-    "tdd-methodology"
-  ],
   "object-oriented-design": [
     "code-quality-pillars",
+    "design-patterns",
     "domain-driven-design",
     "functional-programming",
     "software-quality-dimensions",
     "solid-principles",
     "tell-dont-ask",
     "clean-code-principles-patterns-silen",
+    "dive-into-design-patterns",
     "practical-object-oriented-design"
   ],
   "sources/good-code-bad-code": [
@@ -1329,6 +1406,22 @@
     "software-rot",
     "solid-principles",
     "testing-strategy"
+  ],
+  "sources/code-complete": [
+    "code-quality-pillars"
+  ],
+  "software-construction": [
+    "code-quality-pillars",
+    "essential-accidental-complexity",
+    "information-hiding"
+  ],
+  "information-hiding": [
+    "code-quality-pillars",
+    "essential-accidental-complexity",
+    "software-construction",
+    "software-construction",
+    "code-complete",
+    "code-complete"
   ],
   "sources/dependency-injection-principles-patterns": [
     "composition-root",
@@ -1404,6 +1497,7 @@
   ],
   "data-quality-monitoring": [
     "data-anonymization",
+    "delta-live-tables",
     "differential-privacy",
     "fine-tuning",
     "llm-evaluation-metrics",
@@ -1468,11 +1562,32 @@
     "delta-lake",
     "duckdb",
     "duckdb",
+    "big-book-data-engineering",
+    "big-book-data-engineering",
     "databricks-dea-study-guide",
     "delta-catalog-managed-tables",
     "delta-catalog-managed-tables",
     "delta-grows-up-writes-unity-catalog",
     "delta-grows-up-writes-unity-catalog"
+  ],
+  "medallion-architecture": [
+    "data-lakehouse",
+    "data-lakehouse",
+    "databricks-platform",
+    "delta-live-tables",
+    "delta-live-tables",
+    "big-book-data-engineering",
+    "big-book-data-engineering"
+  ],
+  "delta-live-tables": [
+    "data-lakehouse",
+    "data-quality-monitoring",
+    "databricks-platform",
+    "databricks-platform",
+    "medallion-architecture",
+    "medallion-architecture",
+    "big-book-data-engineering",
+    "big-book-data-engineering"
   ],
   "dbfs": [
     "data-lakehouse",
@@ -1629,6 +1744,7 @@
     "essential-accidental-complexity",
     "fail-fast",
     "immutability",
+    "information-hiding",
     "mapper-principles",
     "object-oriented-design",
     "rich-domain-model",
@@ -1792,6 +1908,12 @@
     "tdd-methodology",
     "testing-strategy"
   ],
+  "nash-equilibrium": [
+    "game-theory",
+    "game-theory",
+    "game-theory-bonanno",
+    "game-theory-bonanno"
+  ],
   "geospatial-indexing": [
     "geohash",
     "proximity-service",
@@ -1865,20 +1987,6 @@
     "knowledge-graph",
     "sample-article"
   ],
-  "observability": [
-    "kubernetes-operator",
-    "llm-evaluation-metrics",
-    "message-queue",
-    "microservices",
-    "microservices",
-    "scalable-architecture",
-    "shift-left-security",
-    "shift-left-security",
-    "system-design-interview",
-    "building-llms-for-production",
-    "clean-code-principles-patterns-silen",
-    "system-design-interview-xu"
-  ],
   "sources/programming-kubernetes": [
     "kubernetes-operator"
   ],
@@ -1936,12 +2044,22 @@
     "model-quantization",
     "building-llms-for-production"
   ],
+  "game-theory": [
+    "nash-equilibrium",
+    "nash-equilibrium",
+    "game-theory-bonanno"
+  ],
   "sources/practical-object-oriented-design": [
     "object-oriented-design"
   ],
-  "microservices": [
-    "observability",
-    "clean-code-principles-patterns-silen"
+  "sources/dive-into-design-patterns": [
+    "object-oriented-design",
+    "solid-principles"
+  ],
+  "design-patterns": [
+    "object-oriented-design",
+    "solid-principles",
+    "dive-into-design-patterns"
   ],
   "sso": [
     "password-storage",

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Design Patterns — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-software-design">Software Design</a> <span class="sep">/</span>
+  <span>Design Patterns</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Design Patterns</h1>
+  <div class="page-meta"><span>Source: dive-into-design-patterns</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">software-design</span><span class="tag">patterns</span><span class="tag">oop</span><span class="tag">gang-of-four</span></div>
+</div>
+<div class="content-area concept">
+<p># Design Patterns</p>
+<p>Reusable, customizable blueprints for solving recurring software design problems — not copy-paste code, but architectural templates. The 22 classic Gang of Four (GoF) patterns are organized into three categories by intent: Creational, Structural, and Behavioral.</p>
+<h2 id="principles-before-patterns">Principles Before Patterns</h2>
+<p>Patterns rest on foundational principles. Master these first:</p>
+<ul>
+<li><strong>Encapsulate What Varies</strong> — Isolate changing logic</li>
+<li><strong>Program to an Interface</strong> — Depend on abstractions</li>
+<li><strong>Favor Composition Over Inheritance</strong> — Flexible object assembly over rigid hierarchies</li>
+<li><a href="solid-principles.html" class="wiki-link">SOLID</a> — The gold standard of object-oriented design</li>
+</ul>
+<h2 id="creational-patterns-5">Creational Patterns (5)</h2>
+<p>Solve object creation with flexibility and decoupling:</p>
+<table><thead><tr>
+<th>Pattern</th>
+<th>Intent</th>
+<th>Key Use Case</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Factory Method</strong></td>
+<td>Delegate creation to subclasses</td>
+<td>When a class can't anticipate what objects it must create</td>
+</tr>
+<tr>
+<td><strong>Abstract Factory</strong></td>
+<td>Create families of related objects</td>
+<td>UI widget kits for different platforms (Windows/macOS)</td>
+</tr>
+<tr>
+<td><strong>Builder</strong></td>
+<td>Construct complex objects step-by-step</td>
+<td>Multi-part reports, SQL query builders</td>
+</tr>
+<tr>
+<td><strong>Prototype</strong></td>
+<td>Clone existing instances</td>
+<td>When object creation is costly (database lookups)</td>
+</tr>
+<tr>
+<td><strong>Singleton</strong></td>
+<td>Ensure exactly one instance</td>
+<td>Configuration managers, connection pools</td>
+</tr>
+</tbody></table>
+<h2 id="structural-patterns-7">Structural Patterns (7)</h2>
+<p>Assemble larger structures from smaller parts without tight coupling:</p>
+<table><thead><tr>
+<th>Pattern</th>
+<th>Intent</th>
+<th>Key Use Case</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Adapter</strong></td>
+<td>Make incompatible interfaces collaborate</td>
+<td>Integrating legacy APIs with new systems</td>
+</tr>
+<tr>
+<td><strong>Bridge</strong></td>
+<td>Separate abstraction from implementation</td>
+<td>When both need to vary independently</td>
+</tr>
+<tr>
+<td><strong>Composite</strong></td>
+<td>Treat individual objects and groups uniformly</td>
+<td>File systems, UI component trees</td>
+</tr>
+<tr>
+<td><strong>Decorator</strong></td>
+<td>Add responsibilities dynamically</td>
+<td>Logging, compression, encryption wrappers</td>
+</tr>
+<tr>
+<td><strong>Facade</strong></td>
+<td>Simplify access to complex subsystems</td>
+<td>Home theater systems, library wrappers</td>
+</tr>
+<tr>
+<td><strong>Flyweight</strong></td>
+<td>Share state to reduce memory</td>
+<td>Text editor character rendering</td>
+</tr>
+<tr>
+<td><strong>Proxy</strong></td>
+<td>Control access to an object</td>
+<td>Lazy loading, security checks, remote proxies</td>
+</tr>
+</tbody></table>
+<h2 id="behavioral-patterns-10">Behavioral Patterns (10)</h2>
+<p>Define how objects communicate and delegate responsibilities:</p>
+<table><thead><tr>
+<th>Pattern</th>
+<th>Intent</th>
+<th>Key Use Case</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Chain of Responsibility</strong></td>
+<td>Pass requests along handler chain</td>
+<td>Logging levels, middleware pipelines</td>
+</tr>
+<tr>
+<td><strong>Command</strong></td>
+<td>Turn actions into first-class objects</td>
+<td>Undo/redo, macro recording, job queues</td>
+</tr>
+<tr>
+<td><strong>Iterator</strong></td>
+<td>Traverse collections without exposing internals</td>
+<td>Uniform access to lists, trees, graphs</td>
+</tr>
+<tr>
+<td><strong>Mediator</strong></td>
+<td>Centralize chaotic many-to-many dependencies</td>
+<td>Chat rooms, air traffic control</td>
+</tr>
+<tr>
+<td><strong>Memento</strong></td>
+<td>Capture and restore object state</td>
+<td>Undo/redo, game save states</td>
+</tr>
+<tr>
+<td><strong>Observer</strong></td>
+<td>Notify dependents of state changes</td>
+<td>Event listeners, pub-sub systems</td>
+</tr>
+<tr>
+<td><strong>State</strong></td>
+<td>Change behavior with internal state</td>
+<td>Order workflows, vending machines</td>
+</tr>
+<tr>
+<td><strong>Strategy</strong></td>
+<td>Interchangeable algorithms</td>
+<td>Payment methods, sorting strategies, compression</td>
+</tr>
+<tr>
+<td><strong>Template Method</strong></td>
+<td>Algorithm skeleton with customizable steps</td>
+<td>Build pipelines, data processing frameworks</td>
+</tr>
+<tr>
+<td><strong>Visitor</strong></td>
+<td>Add operations without modifying classes</td>
+<td>AST traversal, report generation</td>
+</tr>
+</tbody></table>
+<h2 id="pattern-selection-heuristic">Pattern Selection Heuristic</h2>
+<p>Start with the <em>problem</em>, not the pattern. Ask "What's hurting in my design?" then match symptoms to patterns. Master 3–5 patterns deeply before expanding.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="solid-principles.html">
+      <span class="connection-type related">Related</span>
+      <h4>SOLID Principles</h4>
+      <p>SOLID is the compass for knowing when and how to apply patterns</p>
+    </a>
+    <a class="connection-card" href="object-oriented-design.html">
+      <span class="connection-type extends">Extends</span>
+      <h4>Object-Oriented Design</h4>
+      <p>patterns embody composition over inheritance, messages over methods</p>
+    </a>
+    <a class="connection-card" href="dependency-injection.html">
+      <span class="connection-type related">Related</span>
+      <h4>Dependency Injection</h4>
+      <p>Strategy, Factory, and Decorator are DI's closest allies</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="deployment-strategies.html" class="prev">← Deployment Strategies</a><a href="differential-dataflow.html" class="next">Differential Dataflow →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

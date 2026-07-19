@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nash Equilibrium — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-game-theory">Game Theory</a> <span class="sep">/</span>
+  <span>Nash Equilibrium</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Nash Equilibrium</h1>
+  <div class="page-meta"><span>Source: game-theory-bonanno</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">game-theory</span><span class="tag">strategy</span><span class="tag">equilibrium</span><span class="tag">economics</span></div>
+</div>
+<div class="content-area concept">
+<p># Nash Equilibrium</p>
+<p>The foundational solution concept in non-cooperative <a href="game-theory.html" class="wiki-link">game theory</a>: a strategy profile where no player can improve their payoff by <em>unilaterally</em> changing their strategy, given what everyone else is doing.</p>
+<h2 id="intuition">Intuition</h2>
+<p>A Nash equilibrium is a "resting point" — once reached, no individual has an incentive to deviate. It's not necessarily the <em>best</em> outcome; it's the <em>stable</em> one.</p>
+<h2 id="pure-vs-mixed-strategies">Pure vs. Mixed Strategies</h2>
+<ul>
+<li><strong>Pure Strategy</strong>: A single deterministic choice (always play Rock)</li>
+<li><strong>Mixed Strategy</strong>: A probability distribution over choices (play Rock 1/3, Paper 1/3, Scissors 1/3)</li>
+<li>Every finite game has at least one Nash equilibrium — but it may require mixed strategies</li>
+</ul>
+<h2 id="types-of-nash-equilibria">Types of Nash Equilibria</h2>
+<table><thead><tr>
+<th>Type</th>
+<th>Context</th>
+<th>Key Property</th>
+</tr></thead><tbody>
+<tr>
+<td>Nash Equilibrium</td>
+<td>Simultaneous-move games</td>
+<td>No unilateral deviation</td>
+</tr>
+<tr>
+<td>Subgame-Perfect Equilibrium (SPE)</td>
+<td>Dynamic games</td>
+<td>Nash in every subgame — eliminates non-credible threats</td>
+</tr>
+<tr>
+<td>Bayesian Nash Equilibrium</td>
+<td>Incomplete information</td>
+<td>Optimize given probabilistic beliefs about opponent types</td>
+</tr>
+</tbody></table>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li><strong>Multiplicity</strong>: Many games have multiple equilibria — which one will players coordinate on?</li>
+<li><strong>Unreasonable equilibria</strong>: Some Nash equilibria rely on threats that wouldn't be carried out (refined by SPE, PBE)</li>
+<li><strong>Rationality assumption</strong>: Players must be perfectly rational — real humans often aren't</li>
+</ul>
+<h2 id="examples">Examples</h2>
+<blockquote><strong>Prisoner's Dilemma</strong>: Both confessing is Nash (neither can improve by staying silent alone), but mutual silence is collectively better.</blockquote>
+<blockquote><strong>Coordination Game</strong>: Driving on the left vs. right — two Nash equilibria; social convention picks one.</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="game-theory.html">
+      <span class="connection-type related">Related</span>
+      <h4>Game Theory</h4>
+      <p>the core solution concept for strategic interaction</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="model-quantization.html" class="prev">← Model Quantization</a><a href="object-oriented-design.html" class="next">Object-Oriented Design →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architectural Decision Records (ADRs) — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-software-architecture">Software Architecture</a> <span class="sep">/</span>
+  <span>Architectural Decision Records (ADRs)</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Architectural Decision Records (ADRs)</h1>
+  <div class="page-meta"><span>Source: head-first-software-architecture</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">software-architecture</span><span class="tag">documentation</span><span class="tag">decision-making</span><span class="tag">adr</span></div>
+</div>
+<div class="content-area concept">
+<p># Architectural Decision Records (ADRs)</p>
+<p>Lightweight documents that capture the context, rationale, and consequences of significant architectural decisions. ADRs are institutional memory — "Why" preserved long after the "How" (code) has been refactored.</p>
+<h2 id="structure-of-an-adr">Structure of an ADR</h2>
+<p>Each ADR typically contains:</p>
+<ol>
+<li><strong>Title</strong>: Short, descriptive name (e.g., "ADR-001: Use PostgreSQL as Primary Database")</li>
+<li><strong>Context</strong>: What problem are we solving? What constraints exist?</li>
+<li><strong>Decision</strong>: What did we choose?</li>
+<li><strong>Consequences</strong>: What are the trade-offs? What becomes easier? What becomes harder?</li>
+<li><strong>Alternatives Considered</strong>: What else did we evaluate and why was it rejected?</li>
+</ol>
+<h2 id="why-adrs-matter">Why ADRs Matter</h2>
+<blockquote>"Why is more important than how." — Second Law of Architecture (source: <span class="wiki-link source-ref">Head First Software Architecture</span>)</blockquote>
+<p>Code changes; the reasoning behind decisions keeps teams aligned. ADRs:</p>
+<ul>
+<li>Prevent "why did they do this?" archaeology months later</li>
+<li>Help new team members understand architectural rationale</li>
+<li>Record trade-offs explicitly — no revisionist history</li>
+<li>Enable <a href="architecture-in-agile.html" class="wiki-link">agile architecture</a> by capturing decisions as they emerge</li>
+</ul>
+<h2 id="when-to-write-an-adr">When to Write an ADR</h2>
+<p>Write an ADR when a decision is:</p>
+<ul>
+<li><strong>Strategic</strong> (long-term impact, not a tactical fix)</li>
+<li><strong>Hard to change</strong> (expensive to reverse)</li>
+<li><strong>Involves significant trade-offs</strong> (e.g., consistency vs. availability)</li>
+</ul>
+<h2 id="adr-lifecycle">ADR Lifecycle</h2>
+<p>Proposed → Accepted → Deprecated → Superseded. ADRs are never deleted — superseded ones explain why the old decision was replaced.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="risk-driven-architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Risk-Driven Architecture</h4>
+      <p>ADRs record why specific risks were prioritized</p>
+    </a>
+    <a class="connection-card" href="architectural-characteristics.html">
+      <span class="connection-type related">Related</span>
+      <h4>Architectural Characteristics</h4>
+      <p>each ADR explains which -ilities drove the decision</p>
+    </a>
+    <a class="connection-card" href="architecture-in-agile.html">
+      <span class="connection-type related">Related</span>
+      <h4>Architecture in Agile</h4>
+      <p>lightweight, incremental architectural documentation</p>
+    </a>
+    <a class="connection-card" href="architecture-hoisting.html">
+      <span class="connection-type related">Related</span>
+      <h4>Architecture Hoisting</h4>
+      <p>ADRs are structural constraints encoded as institutional knowledge</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="architectural-characteristics.html" class="prev">← Architectural Characteristics</a><a href="architecture-hoisting.html" class="next">Architecture Hoisting →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

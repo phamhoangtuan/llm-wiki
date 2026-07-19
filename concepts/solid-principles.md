@@ -4,7 +4,7 @@ type: concept
 tags: [design-principles, architecture, solid, oop, clean-code]
 created: 2026-05-31
 updated: 2026-06-27
-sources: [dependency-injection-principles-patterns, contieri-clean-code-cookbook, practical-object-oriented-design, clean-code-principles-patterns-silen]
+sources: [dependency-injection-principles-patterns, contieri-clean-code-cookbook, practical-object-oriented-design, clean-code-principles-patterns-silen, dive-into-design-patterns]
 ---
 
 ## Summary
@@ -73,7 +73,7 @@ This is the **direct enabler** of DI: if everything depends on interfaces, you c
 ## SOLID in Practice with DI
 
 | Principle | DI Impact |
-|---|---|
+| --- | --- |
 | **SRP** | Focused classes → focused constructors (fewer parameters) |
 | **OCP** | Decoration pattern — wrap services without touching originals |
 | **LSP** | Any implementation works through the abstraction — swap freely |
@@ -98,7 +98,9 @@ SOLID is guidance, not dogma:
 - OCP via decoration adds indirection → only when needed
 - ISP can over-fragment interfaces → balance with cohesion
 - DIP requires abstractions → don't abstract stable dependencies (`string`, `List<T>`)
+
 ---
+
 - Enables [[dependency-injection]] — DI works because of SRP, OCP, LSP, ISP, and DIP
 - Implements [[composition-root]] — Composition Root uses DIP to wire abstractions to concretions
 - Complements [[mapper-principles]] — different framework, same goal: maintainable software
@@ -109,3 +111,5 @@ SOLID is guidance, not dogma:
 - Foundation for [[object-oriented-design]] — SRP anchors the TRUE framework; OCP/LSP/ISP/DIP enable practical, change-tolerant design
 - Benchmark source: [[sources/dependency-injection-principles-patterns]] — van Deursen & Seemann's definitive guide
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén's Python edition emphasizes SOLID as non-negotiable at every architectural level
+- Benchmark source: [[sources/dive-into-design-patterns]] — Shvets' pattern catalog grounded in SOLID as the compass
+- Foundation for [[design-patterns]] — all 22 GoF patterns rest on SOLID principles

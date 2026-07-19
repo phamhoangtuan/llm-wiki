@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architectural Characteristics — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-software-architecture">Software Architecture</a> <span class="sep">/</span>
+  <span>Architectural Characteristics</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Architectural Characteristics</h1>
+  <div class="page-meta"><span>Source: head-first-software-architecture</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">software-architecture</span><span class="tag">non-functional-requirements</span><span class="tag">-ilities</span></div>
+</div>
+<div class="content-area concept">
+<p># Architectural Characteristics</p>
+<p>The non-functional "-ilities" that a system must exhibit — the quality attributes that define how a system behaves, not what it does. They form one of the 4 dimensions of software architecture (alongside Decisions, Components, and Styles).</p>
+<h2 id="common-architectural-characteristics">Common Architectural Characteristics</h2>
+<table><thead><tr>
+<th>Characteristic</th>
+<th>What It Means</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Handle growing workload without degrading</td>
+</tr>
+<tr>
+<td><strong>Availability</strong></td>
+<td>Remain operational and accessible</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>Produce correct results consistently</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Respond within acceptable time bounds</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>Protect data and access from threats</td>
+</tr>
+<tr>
+<td><strong>Maintainability</strong></td>
+<td>Allow efficient modification and debugging</td>
+</tr>
+<tr>
+<td><strong>Observability</strong></td>
+<td>Expose internal state for monitoring</td>
+</tr>
+<tr>
+<td><strong>Testability</strong></td>
+<td>Enable efficient verification of correctness</td>
+</tr>
+<tr>
+<td><strong>Deployability</strong></td>
+<td>Release frequently and safely</td>
+</tr>
+</tbody></table>
+<h2 id="why-they-matter">Why They Matter</h2>
+<p>Architectural characteristics are the <strong>first dimension</strong> of the 4D puzzle. They drive architectural decisions: if scalability is critical, the style might shift from monolith to <a href="microservices.html" class="wiki-link">microservices</a>; if security is paramount, authentication lives at the architecture level, not as an afterthought.</p>
+<h2 id="characteristics-as-trade-offs">Characteristics as Trade-offs</h2>
+<p>Every architectural characteristic comes at a cost:</p>
+<ul>
+<li><strong>Scalability ↑</strong> → Complexity ↑ (distributed systems are harder)</li>
+<li><strong>Availability ↑</strong> → Cost ↑ (redundant infrastructure)</li>
+<li><strong>Security ↑</strong> → Usability ↓ (more authentication steps)</li>
+<li><strong>Performance ↑</strong> → Maintainability ↓ (optimized code is harder to read)</li>
+</ul>
+<p>This is the First Law of Architecture: <strong>everything is a trade-off</strong> (source: <span class="wiki-link source-ref">Head First Software Architecture</span>).</p>
+<h2 id="architecture-vs-design-boundary">Architecture vs. Design Boundary</h2>
+<p>Architectural characteristics that are hard to change and require significant trade-off analysis belong to architecture. Those easily adjusted belong to design.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="risk-driven-architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Risk-Driven Architecture</h4>
+      <p>characteristics drive which architectural risks to address</p>
+    </a>
+    <a class="connection-card" href="architectural-decision-records|ADRs.html">
+      <span class="connection-type related">Related</span>
+      <h4>architectural-decision-records|ADRs</h4>
+      <p>each ADR explains which characteristics were prioritized</p>
+    </a>
+    <a class="connection-card" href="microservices.html">
+      <span class="connection-type related">Related</span>
+      <h4>Microservices</h4>
+      <p>a style chosen when scalability and deployability are top characteristics</p>
+    </a>
+    <a class="connection-card" href="observability.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Observability</h4>
+      <p>observability itself is an architectural characteristic</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="api-architectural-styles.html" class="prev">← API Architectural Styles</a><a href="architectural-decision-records.html" class="next">Architectural Decision Records (ADRs) →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -4,6 +4,21 @@
 
 ---
 
+## [2026-07-13] ingest | Big Book of Data Engineering, Code Complete, Dive Into Design Patterns, Game Theory (Bonanno), Head First Software Architecture
+
+- Source 1: "Big Book of Data Engineering" by Databricks (ebook, 125 pages, finished 2026-04-10)
+- Source 2: "Code Complete (2nd Edition)" by Steve McConnell (ebook, 1,271 pages, finished 2026-03-27)
+- Source 3: "Dive Into Design Patterns" by Alexander Shvets (ebook, 410 pages, finished 2026-04-02)
+- Source 4: "Game Theory: An Open Access Textbook" by Giacomo Bonanno (ebook, 585 pages, finished 2026-04-04)
+- Source 5: "Head First Software Architecture" by Gandhi, Richards & Ford (ebook, 486 pages, finished 2026-04-07)
+- Copied to: raw/big-book-data-engineering.md, raw/code-complete.md, raw/dive-into-design-patterns.md, raw/game-theory-bonanno.md, raw/head-first-software-architecture.md
+- Created sources/big-book-data-engineering.md, sources/code-complete.md, sources/dive-into-design-patterns.md, sources/game-theory-bonanno.md, sources/head-first-software-architecture.md
+- New concepts: medallion-architecture, delta-live-tables, software-construction, information-hiding, design-patterns, game-theory, nash-equilibrium, architectural-characteristics, architectural-decision-records
+- Updated concepts: data-lakehouse (+Medallion section, big-book source), databricks-platform (+DLT, DatabricksIQ, big-book source), data-quality-monitoring (+DLT expectations, big-book source), essential-accidental-complexity (+construction, information-hiding, code-complete source), code-quality-pillars (+software-construction, information-hiding, code-complete source), risk-driven-architecture (+4D puzzle, two laws, architectural-characteristics, ADRs, head-first source), architecture-hoisting (+ADRs connection), microservices (+architectural-characteristics), solid-principles (+design-patterns, dive-into-design-patterns source), object-oriented-design (+design-patterns, dive-into-design-patterns source)
+- Regenerated HTML via convert-to-html.py
+- Updated index.md: +9 concept entries, +5 source entries
+- Total pages: 257 (190 concepts + 67 sources)
+
 ## [2026-07-13] ingest | Data Algorithms, Hands-On Large Language Models, The Art of Functional Programming
 
 - Source 1: "Data Algorithms" by Mahmoud Parsian (ebook, 778 pages, finished 2026-04-14)
@@ -16,21 +31,21 @@
 - Updated index.md: +7 concept entries, +3 source entries
 - Total pages: 244 (181 concepts + 63 sources)
 
-## [2026-07-13] lint | Post-ingest link hygiene + orphan fix
+## [2026-07-13] lint | Post-ingest health check + fix pass
 
-- Scanned all 244 wiki pages (181 concepts + 63 sources) across 5 lint dimensions
-- Broken wikilinks: 0 found — all [[wikilinks]] resolve correctly across new and modified pages
-- Orphans: 5 → 0 resolved
-  - architecture-hoisting: added backlinks from fail-fast (+hoisting as structural enforcement), software-quality-dimensions (+hoisting targets quality attributes), immutability (+immutability as form of hoisting)
-  - architecture-in-agile: added backlinks from code-quality-pillars (+architecture guides iterative quality), tdd-methodology (+both embed quality into dev rhythm), refactoring-at-scale (+architecture enables safe refactoring)
-  - risk-driven-architecture: added backlinks from software-quality-dimensions (+guides quality prioritization), system-design-interview (+risk-driven thinking under constraints)
-  - feedback: added backlinks from metalearning (+identifies feedback sources), testing-effect (+retrieval generates feedback), spaced-repetition (+spacing enables feedback on retention)
-  - ultralearning: added backlink from staff-engineering (+ultralearning as path to Staff)
-- Near-orphans: 35 pages with 1–2 inbound links (deferred — consistent with historical patterns; new pages naturally start with few refs)
-- Frontmatter: all 10 new/modified files have complete frontmatter (title, created, updated, sources)
-- Note: fixed orphan detection — prior check used exact wikilink match (missed aliased `[[slug|Display]]`); corrected to prefix match
+- Scanned all 257 wiki pages (190 concepts + 67 sources) across 5 lint dimensions
+- Broken wikilinks: 1 found → 0 remaining
+  - Fixed: sources/big-book-data-engineering.md `[[auto-loader]]` → plain text (Databricks-specific tool, doesn't warrant concept page)
+- Orphans: 0 — all pages have at least 1 inbound link
+- Near-orphans (1 inbound link): 12 — consistent with historical patterns (many are niche/recent pages):
+  - ai-psychosis, apache-arrow, bloom-filter, data-scientist, http-evolution, knowledge-graph, market-basket-analysis, python-repl, redis, reranking, shift-left-security, snowflake-id
+- Frontmatter: 0 issues — all 257 pages have complete frontmatter (title, created, updated, sources/concepts)
+- Stale pages: 3 (cdn, load-balancer, stateless-architecture — last updated 2026-05-24, from initial system-design-interview ingest)
+  - Deferred: these pages are structurally sound but could benefit from cross-reference enrichment
+- Contradictions: 0 found — high-tag-overlap pairs reviewed, no conflicting claims detected
+- Source concept refs without pages: 0 — all concepts listed in source frontmatter resolve to existing pages
 - Regenerated HTML via convert-to-html.py
-- Updated dates on 11 modified concept pages to 2026-07-13
+- Updated log.md
 
 ## [2026-07-11] ingest | Building LLMs for Production, Real-Time Analytics, Data Engineering with Python, Snowflake, Apache Flink
 
@@ -147,7 +162,7 @@
 ## [2026-05-24] ingest | Quick Insights on Materialized Views (Vu Trinh)
 
 - Source: "Quick Insights on Materialized Views" by Vu Trinh (Substack, 2026-05-21)
-- URL: https://vutr.substack.com/p/quick-insights-on-materialized-views
+- URL: <https://vutr.substack.com/p/quick-insights-on-materialized-views>
 - Created sources/materialized-views-quick-insights.html
 - New concepts: materialized-views, incremental-view-maintenance, timely-dataflow, differential-dataflow, dbsp
 - Updated index.md: +5 concept entries, +1 source entry
@@ -199,7 +214,7 @@
 ## [2026-05-26] ingest | Benchmarking Vortex File Format vs Parquet, CSV
 
 - Source: Daniel Beach (Data Engineering Central), Substack article published 2026-05-25
-- URL: https://dataengineeringcentral.substack.com/p/benchmarking-vortex-file-format-vs
+- URL: <https://dataengineeringcentral.substack.com/p/benchmarking-vortex-file-format-vs>
 - Created sources/benchmarking-vortex-file-format.md
 - New concepts: vortex-file-format, polars, apache-datafusion, apache-parquet, lance-file-format
 - Updated concepts: duckdb (added benchmark source ref, vortex extension notes, Polars competitor connection)
@@ -209,7 +224,7 @@
 ## [2026-05-26] ingest | Hugo Data Ingestion Platform with Apache Flink (Grab Engineering)
 
 - Source: Grab Engineering blog by Shuguang Xiang, Hung Nguyen, Hung Tran Viet, Shi Kai Ng (2026-05-22)
-- URL: https://engineering.grab.com/one-click-data-ingestion-platform-with-apache-flink
+- URL: <https://engineering.grab.com/one-click-data-ingestion-platform-with-apache-flink>
 - Created sources/hugo-data-ingestion-platform-flink.md
 - New concepts: apache-flink, change-data-capture, data-ingestion, apache-kafka, apache-iceberg
 - Updated concepts: message-queue (added Kafka reference and cross-link)
@@ -229,7 +244,7 @@
 ## [2026-05-28] ingest | Delta Grows Up: Writes, Unity Catalog, Time Travel (DuckDB Labs)
 
 - Source: Ben Fleis (DuckDB Labs), republished on delta.io (2026-05-06)
-- URL: https://delta.io/blog/2026-05-06-delta-grows-up-writes-time-travel-and-unity-catalog/
+- URL: <https://delta.io/blog/2026-05-06-delta-grows-up-writes-time-travel-and-unity-catalog/>
 - Created sources/delta-grows-up-writes-unity-catalog.md
 - New concepts: delta-lake, unity-catalog
 - Updated concepts: duckdb (added Delta/UC extensions + source ref), apache-iceberg (added Delta Lake competitor connection)
@@ -261,7 +276,7 @@
 ## [2026-05-31] ingest | Delta Catalog-Managed Tables (Delta 4.1.0 + UC 0.4.0)
 
 - Source: Benjamin Mathew, Scott Sandre, Scott Haines — delta.io blog (2026-02-02)
-- URL: https://delta.io/blog/2026-02-02-delta-catalog-managed-tables/
+- URL: <https://delta.io/blog/2026-02-02-delta-catalog-managed-tables/>
 - Created sources/delta-catalog-managed-tables.md
 - New concepts: none (enriched existing)
 - Updated concepts: delta-lake (catalog-managed architecture: discovery, reads via get_catalog_commits, writes via ratification, inline commits, convergence with Iceberg), unity-catalog (catalog commit protocol, get_catalog_commits API, staged vs inline commits, ratification/publishing)
@@ -271,7 +286,7 @@
 ## [2026-05-31] ingest | Learn Harness Engineering (walkinglabs)
 
 - Source: "Learn Harness Engineering" by walkinglabs — online guide
-- URL: https://walkinglabs.github.io/learn-harness-engineering/en/
+- URL: <https://walkinglabs.github.io/learn-harness-engineering/en/>
 - Copied to: raw/articles/learn-harness-engineering.md (Vietnamese notes)
 - Created sources/learn-harness-engineering.md
 - New concepts: harness-engineering
@@ -314,7 +329,7 @@
 ## [2026-06-05] ingest | Apache Iceberg 1.11.0 Release
 
 - Source: Apache Iceberg PMC blog post (2026-05-19)
-- URL: https://iceberg.apache.org/blog/apache-iceberg-1.11.0-release/
+- URL: <https://iceberg.apache.org/blog/apache-iceberg-1.11.0-release/>
 - Created sources/apache-iceberg-1.11.0-release.md
 - Updated concepts: apache-iceberg (major rewrite: V3 spec stabilization, table encryption, File Format API, server-side scan planning, SQL UDFs, engine support matrix), apache-flink (DynamicIcebergSink, Flink 2.1, post-commit maintenance, branch compaction, type support)
 - Updated index.md: +1 source entry, updated 2 concept summaries
@@ -371,7 +386,7 @@
 ## [2026-06-08] ingest | Data Engineer Role — Data Engineering Handbook
 
 - Source: "Data Engineer Role" from Data Engineering Handbook (kythuatdulieu.github.io)
-- URL: https://kythuatdulieu.github.io/concepts/foundation/data-engineer-role/
+- URL: <https://kythuatdulieu.github.io/concepts/foundation/data-engineer-role/>
 - Copied to: raw/articles/data-engineer-role.md
 - Created sources/data-engineer-role-handbook.md
 - New concepts: data-engineer
@@ -391,7 +406,7 @@
 ## [2026-06-08] ingest | Data Engineering — Data Engineering Handbook
 
 - Source: "Data Engineering" from Data Engineering Handbook (kythuatdulieu.github.io)
-- URL: https://kythuatdulieu.github.io/concepts/foundation/data-engineering/
+- URL: <https://kythuatdulieu.github.io/concepts/foundation/data-engineering/>
 - Created sources/data-engineering-handbook.md
 - Updated concepts: data-engineer (added four pillars, 6-step pipeline flow, idempotency/IaC/testing best practices, trade-offs, common mistakes)
 - Updated index.md: +1 source entry
@@ -442,7 +457,7 @@
 ## [2026-06-14] ingest | Data Lifecycle — Data Engineering Handbook
 
 - Source: Vietnamese Data Engineering Handbook, concept page about Vòng đời Dữ liệu (Data Lifecycle)
-- URL: https://kythuatdulieu.github.io/concepts/foundation/data-lifecycle/
+- URL: <https://kythuatdulieu.github.io/concepts/foundation/data-lifecycle/>
 - Created sources/data-lifecycle-handbook.md
 - Created concepts/data-lifecycle.md
 - New concepts: data-lifecycle
@@ -452,7 +467,7 @@
 ## [2026-06-14] ingest | Agent Quality & Token Optimization — GitHub Workshop
 
 - Source: "Agent Quality & Token Optimization" workshop by Felix Gozali & Lakshya Tyagi (GitHub)
-- URL: https://staticassets.goldcast.io/public_images/organization/4bbeac0f-e176-4d6f-85a7-ac3397470d44/lsQlOCxTfKqVMqgFOVUA_Agent_Quality_and_Token_Optimization_(customer-facing_workshop).pdf
+- URL: <https://staticassets.goldcast.io/public_images/organization/4bbeac0f-e176-4d6f-85a7-ac3397470d44/lsQlOCxTfKqVMqgFOVUA_Agent_Quality_and_Token_Optimization_(customer-facing_workshop).pdf>
 - Copied to: raw/assets/agent-quality-token-optimization-workshop.pdf
 - Created sources/agent-quality-token-optimization.md
 - Created concepts/agent-quality-optimization.md
@@ -515,6 +530,7 @@
 ## [2026-06-15] lint | Dead-end sources & connection card fixes
 
 ### Part 1: Fixed 10 dead-end sources (added wikilinks + connection cards)
+
 - sources/benchmarking-vortex-file-format.md — added inline wikilinks + connection cards for 6 concepts
 - sources/data-fundamentals-matter-2026.md — added inline wikilinks + connection cards for 4 concepts
 - sources/delta-catalog-managed-tables.md — added inline wikilinks + connection cards for 2 concepts
@@ -527,6 +543,7 @@
 - sources/tdd-python-percival.md — added inline wikilinks + connection cards for 3 concepts
 
 ### Part 2: Fixed 12 connection card inconsistencies
+
 - concepts/bijection.md — added [[fail-fast]] to connections
 - concepts/duckdb.md — added [[apache-datafusion]], [[apache-iceberg]], [[vortex-file-format]] to connections
 - concepts/apache-arrow.md — added [[duckdb]] to connections
@@ -541,6 +558,7 @@
 - sources/unlocking-dbt-design-deploy-transformations.md — added connection cards section with [[analytics-engineer]], [[elt]]
 
 ### Part 3: Added backlinks from 5 Python concept pages to intuitive-python
+
 - concepts/python-debugging-pdb.md — added [[sources/intuitive-python]] backlink
 - concepts/python-standard-library.md — added [[sources/intuitive-python]] backlink
 - concepts/python-concurrency.md — added [[sources/intuitive-python]] backlink
@@ -585,18 +603,21 @@
 - No more merge conflicts on index.html — CI never touches main branch files
 
 ## [2026-06-17] ingest | Byzantine Fault Tolerance (BFT) — Data Engineering Handbook
+
 - Source: Vietnamese DE Handbook page on BFT (kythuatdulieu.github.io)
 - Created sources/bft-data-engineering-handbook.md
 - Created concepts/byzantine-fault-tolerance.md — Byzantine Generals Problem, 3f+1, PBFT, CFT vs BFT, DE applications (checksums, Merkle Trees, Zero-Trust Data Mesh)
 - Updated index.md (105 concepts, 41 sources)
 
 ## [2026-06-17] ingest | CAP Theorem — Data Engineering Handbook
+
 - Source: Vietnamese DE Handbook page on CAP Theorem (kythuatdulieu.github.io)
 - Created sources/cap-theorem-handbook.md
 - Created concepts/cap-theorem.md — Brewer's theorem, CP vs AP architectures, CAP-C vs ACID-C distinction, quorum mechanics (R+W>N), split-brain resolution, PACELC extension, best practices for DE
 - Updated index.md (106 concepts, 42 sources)
 
 ## [2026-06-17] ingest | Data Quality Traffic Lights (Robert Sahlin) + Meta Engineering Org (Gergely Orosz)
+
 - Sources: "Data quality traffic lights" (robertsahlin.substack.com) + "Why is Meta destroying its engineering organization?" (pragmaticengineer.com)
 - Created sources/data-quality-traffic-lights-sahlin.md, sources/meta-destroying-engineering-org-orosz.md
 - Created concepts/data-quality-monitoring.md — 3 pillars (detection, lineage, communication), 5 failure modes, TimesFM anomaly detection, programmatic trust for agents/ML
@@ -666,6 +687,7 @@
 - Updated index.md (118 concepts, 46 sources)
 
 ## [2026-06-23] ingest | Databricks Platform concept page
+
 - Created concepts/databricks-platform.md — 4-layer architecture, control vs data plane, SQL-first strategy
 - Source: databricks-dea-study-guide (referenced in frontmatter)
 - Updated index.md (128 concepts, 47 sources)

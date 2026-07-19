@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Lakehouse</h1>
-  <div class="page-meta"><span>Source: databricks-dea-study-guide</span><span>Updated: 2026-06-23</span></div>
+  <div class="page-meta"><span>Source: databricks-dea-study-guide, big-book-data-engineering</span><span>Updated: 2026-06-23</span></div>
   <div class="page-tags"><span class="tag">databricks</span><span class="tag">data-engineering</span><span class="tag">architecture</span><span class="tag">lakehouse</span></div>
 </div>
 <div class="content-area concept">
@@ -93,6 +93,8 @@
 <td>Optimized for high-speed analytics across all data types</td>
 </tr>
 </tbody></table>
+<h2 id="medallion-architecture">Medallion Architecture</h2>
+<p>The canonical data organization pattern within a lakehouse: <a href="medallion-architecture.html" class="wiki-link">medallion-architecture</a> (Bronze → Silver → Gold). Raw data lands in Bronze, gets cleaned in Silver, and becomes business-ready in Gold. Each transition quality-gated by <a href="delta-live-tables.html" class="wiki-link">DLT expectations</a>.</p>
 <h2 id="key-enabling-technologies">Key Enabling Technologies</h2>
 <ul>
 <li><strong>Open table formats</strong>: <a href="delta-lake.html" class="wiki-link">Delta Lake</a>, <a href="apache-iceberg.html" class="wiki-link">Apache Iceberg</a> — provide ACID transactions on data lakes</li>
@@ -129,6 +131,11 @@
       <span class="connection-type related">Related to</span>
       <h4>Kappa Architecture</h4>
       <p>unified lakehouse storage supports single-path streaming replay</p>
+    </a>
+    <a class="connection-card" href="medallion-architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Medallion Architecture</h4>
+      <p>the canonical data organization pattern for lakehouse platforms</p>
     </a>
     <a class="connection-card" href="snowflake-data-cloud.html">
       <span class="connection-type related">Related to</span>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Software Construction — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-software-engineering">Software Engineering</a> <span class="sep">/</span>
+  <span>Software Construction</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Software Construction</h1>
+  <div class="page-meta"><span>Source: code-complete</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">software-engineering</span><span class="tag">code-quality</span><span class="tag">construction</span></div>
+</div>
+<div class="content-area concept">
+<p># Software Construction</p>
+<p>The central activity of software development where ideas transform into working products — far broader than "coding." Construction encompasses detailed design, coding, debugging, integration, and developer testing.</p>
+<h2 id="why-construction-matters">Why Construction Matters</h2>
+<ul>
+<li><strong>Only guaranteed activity</strong>: Even with vague requirements and weak architecture, construction always happens</li>
+<li><strong>30–80% of project time</strong>: The bulk of development effort</li>
+<li><strong>50–75% of defects</strong>: Where most errors originate in medium-to-large projects</li>
+<li><strong>10×–20× productivity variance</strong>: Between individual programmers on the same task</li>
+<li><strong>Source code is truth</strong>: Often the only accurate, up-to-date description of the software</li>
+</ul>
+<h2 id="the-primary-challenge-complexity">The Primary Challenge: Complexity</h2>
+<p>Humans have limited mental capacity. Every design technique — <a href="information-hiding.html" class="wiki-link">information hiding</a>, abstraction, encapsulation, loose coupling — aims to minimize what a developer must hold in their head at once.</p>
+<h2 id="construction-vs-other-activities">Construction vs. Other Activities</h2>
+<table><thead><tr>
+<th>Activity</th>
+<th>Relationship to Construction</th>
+</tr></thead><tbody>
+<tr>
+<td>Requirements</td>
+<td>Prerequisite — fixing a requirement error during construction costs 20×–100× more</td>
+</tr>
+<tr>
+<td>Architecture</td>
+<td>Good architecture makes construction easy; bad makes it nearly impossible</td>
+</tr>
+<tr>
+<td>Design</td>
+<td>Detailed design is part of construction itself</td>
+</tr>
+<tr>
+<td>Testing</td>
+<td>Developer testing (unit, component, integration) is part of construction</td>
+</tr>
+</tbody></table>
+<h2 id="quality-in-construction">Quality in Construction</h2>
+<p>Collaborative techniques (formal inspections, pair programming) catch ~60% of defects — nearly double what unit testing alone catches (~30%). Test-first development improves both design and defect detection.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Related</span>
+      <h4>Code Quality Pillars</h4>
+      <p>construction accounts for 50–75% of defects</p>
+    </a>
+    <a class="connection-card" href="information-hiding.html">
+      <span class="connection-type related">Related</span>
+      <h4>Information Hiding</h4>
+      <p>the core heuristic for managing complexity during construction</p>
+    </a>
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Testing Strategy</h4>
+      <p>developer testing is integral to construction</p>
+    </a>
+    <a class="connection-card" href="essential-accidental-complexity.html">
+      <span class="connection-type related">Informs</span>
+      <h4>Essential vs Accidental Complexity</h4>
+      <p>managing complexity is construction's primary challenge</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="software-as-simulation.html" class="prev">← Software as Simulation</a><a href="software-quality-dimensions.html" class="next">Software Quality Dimensions →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -19,7 +19,7 @@ aliases: [microservices-architecture, autopilot-microservices]
 SRP applies recursively across architectural layers:
 
 | Level | Responsibility |
-|---|---|
+| --- | --- |
 | **System** | One overarching purpose |
 | **Application** | One core business domain |
 | **Microservice** | One specific responsibility within its bounded context |
@@ -39,10 +39,10 @@ Each service should operate like a self-driving car — no human babysitting:
 Loose coupling is the architecture's primary defense against [[software-rot]]:
 
 | Technique | Description |
-|---|---|
+| --- | --- |
 | **Encapsulation** | Hide internal implementation; expose only public APIs. Database schemas are private to each service. |
 | **Facade Pattern** | Aggregate multiple lower-level services behind a simplified interface for higher-level consumers |
-| **[[domain-driven-design|Domain-Driven Design]]** | Partition the system into subdomains and bounded contexts. Code speaks the business's ubiquitous language. |
+| **[[domain-driven-design | Domain-Driven Design]]** | Partition the system into subdomains and bounded contexts. Code speaks the business's ubiquitous language. |
 
 > Example: Service "Order" needs inventory data → calls Inventory API, never accesses Inventory's database directly. Schema changes in Inventory don't touch Order code.
 
@@ -51,7 +51,7 @@ Loose coupling is the architecture's primary defense against [[software-rot]]:
 Microservices communicate via well-defined interfaces:
 
 | Pattern | Use Case |
-|---|---|
+| --- | --- |
 | **Synchronous (REST/gRPC)** | Request-response when caller needs immediate answer |
 | **Asynchronous ([[message-queue]])** | Fire-and-forget; decouple producer from consumer timing and availability |
 | **Event-driven** | Services emit events; interested services subscribe |
@@ -61,7 +61,7 @@ Synchronous creates temporal coupling (caller waits). Asynchronous and event-dri
 ## Trade-offs
 
 | Benefit | Cost |
-|---|---|
+| --- | --- |
 | Independent deployability | Network latency between services |
 | Technology diversity (right tool per service) | Operational complexity (more moving parts) |
 | Fault isolation (one service down ≠ system down) | Distributed debugging (traces span services) |
@@ -92,4 +92,5 @@ Microservices are not a default choice — they solve organizational scaling pro
 - Grounded in [[solid-principles]] — SRP at the service level is the architectural translation of class-level SRP
 - Informed by [[domain-driven-design]] — bounded contexts define service boundaries
 - Countered by [[software-rot]] — loose coupling is the defense against degradation spreading across services
+- Balances [[architectural-characteristics]] — scalability and deployability are the -ilities that justify microservices
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén's microservices architecture chapter

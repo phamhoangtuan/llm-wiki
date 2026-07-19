@@ -4,7 +4,7 @@ type: concept
 tags: [software-architecture, risk-management, design-methodology]
 created: 2026-06-26
 updated: 2026-06-26
-sources: [just-enough-software-architecture-fairbanks]
+sources: [just-enough-software-architecture-fairbanks, head-first-software-architecture]
 aliases: [risk-driven-model, commensurate-effort]
 ---
 
@@ -17,7 +17,7 @@ Risk-Driven Architecture is a meta-framework for deciding **how much** architect
 This is the **mailbox principle**: when installing a mailbox, you don't calculate soil strain or moment forces — you just dig a hole and pour concrete. The risk of failure is low (a tilted mailbox is a minor inconvenience). When building a bridge, the solution space is narrow and consequences catastrophic — skipping calculations would be malpractice.
 
 | Context | Architecture Rigor | Example |
-|---|---|---|
+| --- | --- | --- |
 | Low risk | Minimal | Family picnic website |
 | High risk | High | Patient monitoring system |
 
@@ -26,7 +26,7 @@ This is the **mailbox principle**: when installing a mailbox, you don't calculat
 The risk-driven approach avoids both extremes:
 
 | BDUF (Big Design Up Front) | Big Ball of Mud | Just Enough Architecture |
-|---|---|---|
+| --- | --- | --- |
 | Design everything before code | Code immediately, no architecture | Design enough to reduce risk to acceptable levels |
 | Expensive, rigid, speculative | Unmaintainable, chaotic | Flexible, focused on real risks |
 
@@ -54,7 +54,7 @@ Two categories — architecture only solves one:
 Match the technique to the risk using **Viewtypes**:
 
 | Risk Type | Viewtype | What You Model |
-|---|---|---|
+| --- | --- | --- |
 | Performance | Runtime View | Latency, throughput, bottlenecks |
 | Maintainability | Module View | Dependencies, coupling, cohesion |
 | Deployment | Allocation View | Code-to-hardware mapping, scaling |
@@ -75,9 +75,20 @@ Architecture is the **macroscopic design** of the system — the set of structur
 2. **Knowledge** — leverage existing patterns and experience for recurring problems
 3. **Abstraction** — hide irrelevant detail to expose the essence
 
+## The 4D Puzzle
+
+Complementary perspective from [[sources/head-first-software-architecture|Head First Software Architecture]]: architecture is a 4-dimensional puzzle balancing [[architectural-characteristics|Architectural Characteristics]] (-ilities), Architectural Decisions, Logical Components, and Architectural Styles. Each dimension constrains the others.
+
+## Two Laws of Architecture
+
+**Law 1**: Everything is a trade-off. No universal best practices — every solution has costs and benefits.
+
+**Law 2**: Why matters more than how. Capture decisions as [[architectural-decision-records|ADRs]] — institutional memory of rationale, not just code.
+
 ## When to Apply
 
 Use risk-driven architecture when:
+
 - Starting a new project of uncertain scope
 - Adding features to an existing system with unknown scalability impact
 - Deciding between architectural alternatives with different risk profiles
@@ -94,3 +105,5 @@ Use risk-driven architecture when:
 - [[software-quality-dimensions|Software Quality Dimensions]] — Quality attributes are the risks that architecture addresses
 - [[cap-theorem|CAP Theorem]] — Example of a risk-driven trade-off: pick 2 of 3
 - [[system-design-interview|System Design Interview]] — Risk-driven thinking under interview constraints
+- [[architectural-characteristics|Architectural Characteristics]] — the -ilities that drive which risks to prioritize
+- [[architectural-decision-records|ADRs]] — capture why a risk was accepted or mitigated

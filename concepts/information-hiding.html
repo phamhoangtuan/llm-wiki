@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Information Hiding — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-software-design">Software Design</a> <span class="sep">/</span>
+  <span>Information Hiding</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Information Hiding</h1>
+  <div class="page-meta"><span>Source: code-complete</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">software-design</span><span class="tag">complexity</span><span class="tag">abstraction</span><span class="tag">encapsulation</span></div>
+</div>
+<div class="content-area concept">
+<p># Information Hiding</p>
+<p>A core design heuristic: hide implementation secrets (data structures, algorithms, internal state) behind stable interfaces so that changes don't cascade through the system.</p>
+<h2 id="what-to-hide">What to Hide</h2>
+<ul>
+<li><strong>Data representation</strong>: How data is stored internally (array vs. hash table vs. tree)</li>
+<li><strong>Algorithms</strong>: Which algorithm implements a behavior (quicksort vs. mergesort)</li>
+<li><strong>Internal state</strong>: Private fields that shouldn't be directly manipulated</li>
+<li><strong>Dependencies</strong>: Which external systems or libraries are used</li>
+</ul>
+<h2 id="why-it-matters">Why It Matters</h2>
+<p>The primary goal is <strong>localizing change</strong>. When implementation details change, only the module that owns them needs modification — clients using the public interface remain untouched.</p>
+<h2 id="information-hiding-vs-related-concepts">Information Hiding vs. Related Concepts</h2>
+<table><thead><tr>
+<th>Concept</th>
+<th>Relationship</th>
+</tr></thead><tbody>
+<tr>
+<td>Encapsulation</td>
+<td>The <em>mechanism</em> (private fields, access modifiers) that enables information hiding</td>
+</tr>
+<tr>
+<td>Abstraction</td>
+<td>The <em>result</em> — clients think at a higher level, ignoring hidden details</td>
+</tr>
+<tr>
+<td>Loose Coupling</td>
+<td>Information hiding <em>produces</em> loose coupling by minimizing surface area between modules</td>
+</tr>
+</tbody></table>
+<h2 id="in-practice">In Practice</h2>
+<ul>
+<li>Design class interfaces around "what," not "how"</li>
+<li>Ask: "What secret am I hiding from the rest of the system?"</li>
+<li>Change-prone areas (business rules, hardware dependencies, data formats) are prime candidates for hiding</li>
+<li>Reveal as little as possible in interfaces — expose only what callers genuinely need</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="software-construction.html">
+      <span class="connection-type related">Related</span>
+      <h4>Software Construction</h4>
+      <p>the key heuristic for managing complexity</p>
+    </a>
+    <a class="connection-card" href="solid-principles|SOLID.html">
+      <span class="connection-type related">Related</span>
+      <h4>solid-principles|SOLID</h4>
+      <p>Interface Segregation and Dependency Inversion are information hiding in practice</p>
+    </a>
+    <a class="connection-card" href="bijection|loose coupling.html">
+      <span class="connection-type related">Related</span>
+      <h4>bijection|loose coupling</h4>
+      <p>hiding details minimizes module surface area</p>
+    </a>
+    <a class="connection-card" href="architecture-hoisting.html">
+      <span class="connection-type related">Related</span>
+      <h4>Architecture Hoisting</h4>
+      <p>turning manual conventions into structural constraints</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="incremental-view-maintenance.html" class="prev">← Incremental View Maintenance</a><a href="kappa-architecture.html" class="next">Kappa Architecture →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

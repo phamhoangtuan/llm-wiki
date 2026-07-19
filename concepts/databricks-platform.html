@@ -35,7 +35,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Databricks Platform</h1>
-  <div class="page-meta"><span>Source: databricks-dea-study-guide</span><span>Updated: 2026-06-23</span></div>
+  <div class="page-meta"><span>Source: databricks-dea-study-guide, big-book-data-engineering</span><span>Updated: 2026-06-23</span></div>
   <div class="page-tags"><span class="tag">databricks</span><span class="tag">data-engineering</span><span class="tag">lakehouse</span><span class="tag">platform</span></div>
 </div>
 <div class="content-area concept">
@@ -48,7 +48,7 @@
 <h3 id="layer-3-data-governance-unity-catalog">Layer 3: Data Governance (Unity Catalog)</h3>
 <p>Centralized security and governance for all data and AI assets. Evolution from Hive Metastore (legacy, learning-friendly) to <a href="unity-catalog.html" class="wiki-link">unity-catalog</a> (centralized, fine-grained access control, multi-cloud, audit logging). Manages catalogs, schemas, tables, files, and ML models as a single source of truth.</p>
 <h3 id="layer-4-workspace">Layer 4: Workspace</h3>
-<p>Primary interface for data professionals supporting Python, SQL, R, Scala, and Java. Collaborative tools: notebooks, dashboards, automated workflows. AI-powered features: Databricks Assistant (code generation, query explanation) and AI Search (natural language asset discovery).</p>
+<p>Primary interface for data professionals supporting Python, SQL, R, Scala, and Java. Collaborative tools: notebooks, dashboards, automated workflows. AI-powered features: Databricks Assistant (code generation, query explanation) and AI Search (natural language asset discovery). <a href="delta-live-tables.html" class="wiki-link">Delta Live Tables</a> provides declarative ETL with built-in data quality expectations. DatabricksIQ uses Unity Catalog metadata to power organization-specific AI models for code generation, debugging, and optimization.</p>
 <h2 id="control-plane-vs-data-plane">Control Plane vs Data Plane</h2>
 <p>Architectural "separation of powers" — a critical security and operational boundary:</p>
 <table><thead><tr>
@@ -107,6 +107,16 @@
       <span class="connection-type core">Foundation for</span>
       <h4>Unity Catalog</h4>
       <p>Unity Catalog governs Layer 3 of the architecture</p>
+    </a>
+    <a class="connection-card" href="delta-live-tables.html">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Live Tables (DLT)</h4>
+      <p>declarative ETL framework native to the platform</p>
+    </a>
+    <a class="connection-card" href="medallion-architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Medallion Architecture</h4>
+      <p>DLT pipelines are purpose-built for Bronze → Silver → Gold</p>
     </a>
   </div>
 </section>

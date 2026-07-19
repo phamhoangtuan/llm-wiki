@@ -4,7 +4,7 @@ type: concept
 tags: [design-principles, clean-code, engineering, maintainability]
 created: 2026-06-08
 updated: 2026-07-13
-sources: [good-code-bad-code, practical-object-oriented-design, clean-code-principles-patterns-silen]
+sources: [good-code-bad-code, practical-object-oriented-design, clean-code-principles-patterns-silen, code-complete]
 aliases: [six-pillars-of-code-quality]
 ---
 
@@ -15,7 +15,7 @@ Quality code isn't a matter of aesthetics — it's a practical necessity for bus
 ## Engineering vs Coding
 
 | Aspect | Coding | Software Engineering |
-|---|---|---|
+| --- | --- | --- |
 | **Time horizon** | Write and forget | Code must survive years of change |
 | **Consequences** | Personal project — fix mistakes easily | Real systems (banking, healthcare) — bugs can ruin lives |
 | **Environment** | Solitary work | "Busy places" — many developers modify simultaneously |
@@ -27,7 +27,7 @@ Quality code isn't a matter of aesthetics — it's a practical necessity for bus
 Every code decision should advance these four measurable goals:
 
 | Goal | Meaning |
-|---|---|
+| --- | --- |
 | **1. It should work** | Solves the right problem, including performance, security, and privacy |
 | **2. It should keep working** | Survives dependency changes, new features, evolving business logic |
 | **3. It should be adaptable** | Requirements will change — code must bend without breaking |
@@ -58,7 +58,7 @@ Design to prevent errors at the source, like shaped ports on a TV that prevent p
 Divide systems into small, independent components.
 
 | Modular (Lego) | Stitched-Together |
-|---|---|
+| --- | --- |
 | Easy to snap apart and replace blocks | Must break everything to fix one part |
 | Reconfigurable, debuggable, replaceable | Fragile, tightly coupled |
 
@@ -74,7 +74,7 @@ Divide systems into small, independent components.
 Testing is the last line of defense before production. Three levels:
 
 | Level | Scope |
-|---|---|
+| --- | --- |
 | **Unit Tests** | Individual functions/classes |
 | **Integration Tests** | Components working together |
 | **End-to-End (E2E)** | Complete user workflows |
@@ -86,11 +86,12 @@ Modular code is inherently more testable because each component can be isolated.
 ### API vs Implementation Detail
 
 | Component | Characteristic | Example |
-|---|---|---|
+| --- | --- | --- |
 | **Public API** | What callers see — high-level concepts | `user.save()` |
 | **Implementation Detail** | Internal "nuts and bolts" — must stay hidden | `INSERT INTO users...` |
 
 ### Design Rules
+
 - **Small functions**: One function, one job. If you can't describe it in one sentence, it's too complex.
 - **Cohesive classes**: Group related concepts. Avoid "MassiveClass" that does too much.
 - **Layer thickness**: Not too thick (mixing abstractions), not too thin (unnecessary boilerplate).
@@ -106,7 +107,7 @@ Code Change → Code Review (proofreading) → Commit → Pre-submit Checks (aut
 ## Less Haste, More Speed
 
 | Approach | Short-term | Long-term |
-|---|---|---|
+| --- | --- | --- |
 | **Hacky solutions** | Save minutes (like gluing shelves to walls) | Disaster later (shelves fall, rebuild everything) |
 | **High-quality code** | Costs upfront thinking time | Sustainable speed, avoids painful refactoring |
 
@@ -132,3 +133,6 @@ Code Change → Code Review (proofreading) → Commit → Pre-submit Checks (aut
 - Measured by [[complexity-metrics]] — quantitative quality enforcement via Halstead, Cyclomatic, NPath
 - Benchmark source: [[sources/good-code-bad-code]] — Tom Long's 338-page guide
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén on uniform naming, self-documenting code, and tactical quality practices
+- Benchmark source: [[sources/code-complete]] — McConnell on construction as the heart of software development
+- Related to [[software-construction]] — construction accounts for 30-80% of project time and 50-75% of defects
+- Related to [[information-hiding]] — information hiding is the core heuristic for managing construction complexity
