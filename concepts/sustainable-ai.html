@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sustainable AI — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-machine-learning">Machine Learning</a> <span class="sep">/</span>
+  <span>Sustainable AI</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Sustainable AI</h1>
+  <div class="page-meta"><span>Source: introduction-to-machine-learning-systems</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">machine-learning</span><span class="tag">sustainability</span><span class="tag">green-computing</span><span class="tag">ai-ethics</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Sustainable AI</strong> is the practice of measuring and minimizing the environmental footprint of AI training and inference — treating carbon cost as a first-class engineering constraint alongside latency, accuracy, and dollar cost. It moves AI ethics from philosophy to implementation: trust isn't a feature you add, it's a property you engineer from day one.</p>
+<h2 id="why-it-matters">Why It Matters</h2>
+<p>Training a single large transformer can emit as much CO₂ as five cars over their entire lifetimes. As models scale and AI adoption grows, the aggregate environmental impact becomes significant. Sustainable AI addresses this through:</p>
+<ul>
+<li><strong>Measurement</strong>: Carbon tracking tools integrated into training pipelines</li>
+<li><strong>Optimization</strong>: Choosing efficient architectures, hardware, and data centers</li>
+<li><strong>Trade-off awareness</strong>: Making intentional decisions about accuracy vs. carbon cost</li>
+</ul>
+<h2 id="key-strategies">Key Strategies</h2>
+<table><thead><tr>
+<th>Strategy</th>
+<th>Impact</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Efficient architectures</strong></td>
+<td>Model distillation, pruning, quantization reduce compute needs 4-10x</td>
+</tr>
+<tr>
+<td><strong>Hardware selection</strong></td>
+<td>TPUs and modern GPUs offer better performance-per-watt; choosing regions with renewable energy</td>
+</tr>
+<tr>
+<td><strong>Training optimization</strong></td>
+<td>Mixed-precision training, gradient accumulation, early stopping</td>
+</tr>
+<tr>
+<td><strong>Inference optimization</strong></td>
+<td>Batching, caching, model cascades (small model first, large model only when needed)</td>
+</tr>
+<tr>
+<td><strong>Carbon-aware scheduling</strong></td>
+<td>Shift non-urgent training jobs to times/locations with cleaner energy</td>
+</tr>
+</tbody></table>
+<h2 id="engineering-for-sustainability">Engineering for Sustainability</h2>
+<p>Sustainable AI is not just about carbon — it extends to deploying trustworthy AI under extreme constraints (low bandwidth, limited power) to solve healthcare, climate, and equity challenges. The principle: design systems that are efficient by default, not wasteful by convenience.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="machine-learning-systems.html">
+      <span class="connection-type related">Related</span>
+      <h4>Machine Learning Systems</h4>
+      <p>sustainability is a systems-level concern, not an algorithmic afterthought</p>
+    </a>
+    <a class="connection-card" href="model-distillation.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Model Distillation</h4>
+      <p>, [[model-pruning]], [[model-quantization]] — optimization techniques serve both performance and sustainability goals</p>
+    </a>
+    <a class="connection-card" href="ai-scaling-laws.html">
+      <span class="connection-type related">Related</span>
+      <h4>AI Scaling Laws</h4>
+      <p>understanding diminishing returns prevents over-investment in marginal accuracy gains</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>AI Scaling Laws</h4>
+      <p>Reddi covers Sustainable AI in Part V (Trustworthy Systems)</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="stream-processing.html" class="prev">← Stream Processing</a><a href="synthetic-data.html" class="next">Synthetic Data →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

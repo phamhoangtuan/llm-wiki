@@ -26,6 +26,7 @@
     "ai-native-engineering",
     "code-overload",
     "code-overload",
+    "compound-ai-systems",
     "context-engineering",
     "domain-driven-design",
     "fail-fast",
@@ -66,6 +67,8 @@
     "data-engineering-fundamentals",
     "data-scientist",
     "harness-engineering",
+    "machine-learning-systems",
+    "mlops",
     "specification-driven-development",
     "vibe-coding",
     "vibe-coding",
@@ -97,6 +100,7 @@
   "agent-components": [
     "agent-loop",
     "ai-native-engineering",
+    "compound-ai-systems",
     "context-engineering",
     "context-engineering",
     "harness-engineering",
@@ -233,6 +237,8 @@
   "staff-engineering": [
     "ai-psychosis",
     "case-interview",
+    "staff-plus-archetypes",
+    "technical-leadership",
     "senior-to-staff-engineer"
   ],
   "software-rot": [
@@ -247,6 +253,32 @@
     "model-code-gap",
     "refactoring-at-scale",
     "clean-code-principles-patterns-silen"
+  ],
+  "sustainable-ai": [
+    "ai-scaling-laws",
+    "ai-scaling-laws",
+    "machine-learning-systems"
+  ],
+  "machine-learning-systems": [
+    "ai-scaling-laws",
+    "compound-ai-systems",
+    "mlops",
+    "sustainable-ai"
+  ],
+  "model-distillation": [
+    "ai-scaling-laws",
+    "fine-tuning",
+    "model-pruning",
+    "model-quantization",
+    "sustainable-ai",
+    "building-llms-for-production"
+  ],
+  "sources/introduction-to-machine-learning-systems": [
+    "ai-scaling-laws",
+    "compound-ai-systems",
+    "machine-learning-systems",
+    "mlops",
+    "sustainable-ai"
   ],
   "dbt": [
     "analytics-engineer",
@@ -425,6 +457,7 @@
     "data-governance",
     "data-quality-monitoring",
     "dbt",
+    "mlops",
     "semantic-layer",
     "data-engineering-with-dbt",
     "data-engineering-with-python",
@@ -969,6 +1002,7 @@
     "architectural-decision-records",
     "architecture-hoisting",
     "architecture-in-agile",
+    "lindy-effect",
     "model-code-gap",
     "software-quality-dimensions",
     "system-design-interview",
@@ -989,6 +1023,7 @@
     "message-queue",
     "microservices",
     "microservices",
+    "mlops",
     "scalable-architecture",
     "shift-left-security",
     "shift-left-security",
@@ -1310,6 +1345,7 @@
     "fail-fast",
     "game-theory",
     "immutability",
+    "lindy-effect",
     "readability-vs-performance",
     "refactoring-at-scale",
     "risk-driven-architecture",
@@ -1320,6 +1356,7 @@
   ],
   "code-quality-pillars": [
     "code-archaeology",
+    "code-readability",
     "complexity-metrics",
     "dataops",
     "essential-accidental-complexity",
@@ -1336,6 +1373,7 @@
     "software-quality-dimensions",
     "software-rot",
     "staff-engineering",
+    "staff-plus-archetypes",
     "testing-strategy",
     "clean-code-principles-patterns-silen",
     "code-complete",
@@ -1349,6 +1387,7 @@
   ],
   "readability-vs-performance": [
     "code-quality-pillars",
+    "code-readability",
     "python-concurrency",
     "python-professional-practices",
     "software-quality-dimensions",
@@ -1381,6 +1420,9 @@
     "solid-principles",
     "solid-principles",
     "contieri-clean-code-cookbook"
+  ],
+  "code-readability": [
+    "code-quality-pillars"
   ],
   "object-oriented-design": [
     "code-quality-pillars",
@@ -1417,16 +1459,40 @@
   ],
   "information-hiding": [
     "code-quality-pillars",
+    "code-readability",
     "essential-accidental-complexity",
     "software-construction",
     "software-construction",
+    "technical-leadership",
     "code-complete",
     "code-complete"
+  ],
+  "sources/art-of-readable-code": [
+    "code-readability"
   ],
   "sources/dependency-injection-principles-patterns": [
     "composition-root",
     "dependency-injection",
     "solid-principles"
+  ],
+  "ai-scaling-laws": [
+    "compound-ai-systems",
+    "machine-learning-systems",
+    "sustainable-ai"
+  ],
+  "retrieval-augmented-generation": [
+    "compound-ai-systems",
+    "fine-tuning",
+    "langchain",
+    "langchain",
+    "llama-index",
+    "llama-index",
+    "llm-evaluation-metrics",
+    "lora",
+    "peft",
+    "prompt-engineering",
+    "reranking",
+    "building-llms-for-production"
   ],
   "cloud-service-models": [
     "containerization",
@@ -1508,6 +1574,7 @@
   ],
   "data-lifecycle": [
     "data-anonymization",
+    "data-engineering-fundamentals",
     "data-governance",
     "data-lifecycle-handbook"
   ],
@@ -1519,6 +1586,7 @@
     "data-modeling",
     "data-modeling",
     "dataops",
+    "lindy-effect",
     "data-engineering-with-python",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026"
@@ -1533,9 +1601,17 @@
     "data-lifecycle",
     "data-modeling"
   ],
+  "lindy-effect": [
+    "data-engineering-fundamentals",
+    "data-engineering-fundamentals"
+  ],
   "sources/data-fundamentals-matter-2026": [
     "data-engineering-fundamentals",
     "data-modeling"
+  ],
+  "sources/fundamentals-of-data-engineering": [
+    "data-engineering-fundamentals",
+    "lindy-effect"
   ],
   "data-anonymization": [
     "data-governance",
@@ -1769,6 +1845,7 @@
     "model-distillation",
     "model-pruning",
     "peft",
+    "sustainable-ai",
     "building-llms-for-production"
   ],
   "code-archaeology": [
@@ -1806,19 +1883,6 @@
     "ultralearning",
     "ultralearning-scott-young"
   ],
-  "retrieval-augmented-generation": [
-    "fine-tuning",
-    "langchain",
-    "langchain",
-    "llama-index",
-    "llama-index",
-    "llm-evaluation-metrics",
-    "lora",
-    "peft",
-    "prompt-engineering",
-    "reranking",
-    "building-llms-for-production"
-  ],
   "prompt-engineering": [
     "fine-tuning",
     "langchain",
@@ -1838,12 +1902,6 @@
   "peft": [
     "fine-tuning",
     "lora"
-  ],
-  "model-distillation": [
-    "fine-tuning",
-    "model-pruning",
-    "model-quantization",
-    "building-llms-for-production"
   ],
   "flash-attention": [
     "fine-tuning",
@@ -2022,6 +2080,12 @@
     "scalable-architecture",
     "system-design-interview-xu"
   ],
+  "mlops": [
+    "machine-learning-systems"
+  ],
+  "compound-ai-systems": [
+    "machine-learning-systems"
+  ],
   "sources/data-algorithms": [
     "market-basket-analysis"
   ],
@@ -2042,6 +2106,7 @@
   "model-pruning": [
     "model-distillation",
     "model-quantization",
+    "sustainable-ai",
     "building-llms-for-production"
   ],
   "game-theory": [
@@ -2170,8 +2235,22 @@
     "sso",
     "tls-https"
   ],
+  "staff-plus-archetypes": [
+    "staff-engineering",
+    "staff-engineering",
+    "technical-leadership"
+  ],
+  "technical-leadership": [
+    "staff-engineering",
+    "staff-plus-archetypes"
+  ],
   "sources/senior-to-staff-engineer": [
     "staff-engineering"
+  ],
+  "sources/staff-engineers-path": [
+    "staff-engineering",
+    "staff-plus-archetypes",
+    "technical-leadership"
   ],
   "case-interview": [
     "technical-interview",

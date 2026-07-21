@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Scaling Laws — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-machine-learning">Machine Learning</a> <span class="sep">/</span>
+  <span>AI Scaling Laws</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>AI Scaling Laws</h1>
+  <div class="page-meta"><span>Source: introduction-to-machine-learning-systems</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">machine-learning</span><span class="tag">scaling</span><span class="tag">compute</span><span class="tag">performance</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>AI Scaling Laws</strong> describe predictable relationships between model performance and three key resources: <strong>data size</strong>, <strong>model size</strong> (parameters), and <strong>compute</strong> (FLOPs). They enable engineers to forecast training outcomes before investing resources, avoiding over-investment in diminishing returns.</p>
+<h2 id="the-core-relationship">The Core Relationship</h2>
+<p>Performance improves as a power law with scale: more data, more parameters, and more compute all help — but with predictable diminishing returns. Understanding these curves tells you when doubling compute yields only a 0.1% accuracy gain, making optimization techniques (pruning, quantization) a better investment.</p>
+<h2 id="practical-applications">Practical Applications</h2>
+<table><thead><tr>
+<th>Application</th>
+<th>How Scaling Laws Help</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Budget planning</strong></td>
+<td>Estimate compute cost for target accuracy before training</td>
+</tr>
+<tr>
+<td><strong>Architecture decisions</strong></td>
+<td>Choose model size based on available data, not just ambition</td>
+</tr>
+<tr>
+<td><strong>Diminishing returns detection</strong></td>
+<td>Know when to stop scaling and instead optimize elsewhere</td>
+</tr>
+<tr>
+<td><strong>Transfer learning strategy</strong></td>
+<td>Decide between training from scratch vs. fine-tuning based on data volume</td>
+</tr>
+</tbody></table>
+<h2 id="key-trade-offs">Key Trade-offs</h2>
+<p>Scaling laws expose the tension between accuracy and efficiency. A 1% accuracy gain isn't worth a 10x latency increase in production — the laws help quantify exactly when the trade-off flips. Combined with <a href="sustainable-ai.html" class="wiki-link">carbon-aware engineering</a>, they guide decisions about when larger models are justified.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="machine-learning-systems.html">
+      <span class="connection-type related">Informs</span>
+      <h4>Machine Learning Systems</h4>
+      <p>scaling laws are a core tool in performance engineering (Part III of the framework)</p>
+    </a>
+    <a class="connection-card" href="model-distillation.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Model Distillation</h4>
+      <p>when scaling laws show diminishing returns, distillation offers a better path</p>
+    </a>
+    <a class="connection-card" href="sustainable-ai.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Sustainable AI</h4>
+      <p>scaling laws help quantify the carbon cost of marginal accuracy gains</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Sustainable AI</h4>
+      <p>Reddi covers scaling laws in Part III (Performance Engineering)</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="ai-psychosis.html" class="prev">← AI Psychosis</a><a href="analytics-engineer.html" class="next">Analytics Engineer →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

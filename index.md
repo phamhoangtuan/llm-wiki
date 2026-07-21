@@ -27,7 +27,8 @@
 - [pytest Test Results](concepts/pytest-test-results.html) — Result symbols: PASSED, FAILED, SKIPPED, XFAIL, XPASS, ERROR
 - [Testing Strategy](concepts/testing-strategy.html) — API-first testing, test pyramid, 4 pillars of professional testing
 - [Software as Simulation](concepts/software-as-simulation.html) — Software is a simulator of reality, not a list of commands
-- [MAPPER Principles](concepts/mapper-principles.html) — 6 principles: Model, Abstract, Partial, Programmable, Explaining, Reality
+- [MAPPER Principles](concepts/mapper-principles.html)
+- [Machine Learning Systems](concepts/machine-learning-systems.html) — Engineering discipline bridging ML theory to production; AI Triangle (Data/Algorithms/Infrastructure), 6-part framework — 6 principles: Model, Abstract, Partial, Programmable, Explaining, Reality
 - [Bijection](concepts/bijection.html) — 1-1 mapping between reality and code; the golden design rule
 - [Rich Domain Model](concepts/rich-domain-model.html) — Objects encapsulate data + behavior; contrast with anemic domain model
 - [Tell, Don't Ask](concepts/tell-dont-ask.html) — Tell objects to act, don't ask for data to process outside
@@ -83,7 +84,8 @@
 - [Database Sharding](concepts/database-sharding.html) — Horizontal partitioning for write scalability; contrasts with replication
 - [Dependency Injection](concepts/dependency-injection.html) — Design discipline for loose coupling; constructor/method/property injection, lifetime management, anti-patterns
 - [Directness](concepts/directness.html) — Learning by doing the exact target skill; four tactics (project-based, immersive, flight simulator, overkill)
-- [Composition Root](concepts/composition-root.html) — Single centralized location where object graphs are wired; Pure DI vs DI Containers
+- [Composition Root](concepts/composition-root.html)
+- [Compound AI Systems](concepts/compound-ai-systems.html) — Orchestrated ensembles of specialized components (retrievers, reasoners, verifiers, tools) instead of monolithic models — Single centralized location where object graphs are wired; Pure DI vs DI Containers
 - [SOLID Principles](concepts/solid-principles.html) — SRP, OCP, LSP, ISP, DIP — the foundation for effective Dependency Injection
 - [Spaced Repetition](concepts/spaced-repetition.html) — Reviewing at the point of near-forgetting to maximize long-term retention; Ebbinghaus forgetting curve counter-strategy
 - [Harness Engineering](concepts/harness-engineering.html) — Closed-loop systems for reliable AI agents; 4 primitives, 5-phase workflow, 90% rule, 6-component anatomy
@@ -102,16 +104,20 @@
 - [TDD Methodology](concepts/tdd-methodology.html) — Red-Green-Refactor cycle, Outside-In TDD (Double Loop), YAGNI, the Testing Goat discipline
 - [Functional Testing](concepts/functional-testing.html) — User-perspective testing via Selenium/HTTP client; outer loop of TDD; test behavior not constants
 - [Game Theory](concepts/game-theory.html) — Mathematical study of strategic interaction among rational decision-makers; Nash equilibrium, backward induction, incomplete information
-- [Technical Interview](concepts/technical-interview.html) — Philosophy of coding interviews: relative evaluation, false positives/negatives, company cultures, BUD optimization, Talk Aloud
-- [Code Quality Pillars](concepts/code-quality-pillars.html) — Engineering vs Coding distinction, 4 goals and 6 tactical pillars for maintainable software
+- [Technical Interview](concepts/technical-interview.html)
+- [Technical Leadership](concepts/technical-leadership.html) — Leading through influence rather than authority; communication, organizational navigation, framing problems — Philosophy of coding interviews: relative evaluation, false positives/negatives, company cultures, BUD optimization, Talk Aloud
+- [Code Quality Pillars](concepts/code-quality-pillars.html)
+- [Code Readability](concepts/code-readability.html) — Discipline of minimizing time-to-understanding; Fundamental Theorem of Readability, 4 stages of improvement — Engineering vs Coding distinction, 4 goals and 6 tactical pillars for maintainable software
 - [Software Quality Dimensions](concepts/software-quality-dimensions.html) — Multi-dimensional quality spectrum, four core trade-offs, YAGNI, analyzability, abstraction costs
 - [DataOps](concepts/dataops.html) — Applying software engineering practices (version control, testing, modularity) to data pipelines and transformations
 - [Object-Oriented Design](concepts/object-oriented-design.html) — Practical OO design: TRUE standard, design as discovery, messages over methods, SRP as foundation
 - [Kubernetes Operator](concepts/kubernetes-operator.html) — Control loop pattern (READ → CHANGE → UPDATE), CRDs, extension patterns, Go ecosystem for K8s-native apps
-- [Middleware Pattern](concepts/middleware-pattern.html) — Composable HTTP handler wrapping for cross-cutting concerns; Go's standard-library middleware chaining
+- [Middleware Pattern](concepts/middleware-pattern.html)
+- [MLOps](concepts/mlops.html) — Automating deployment, monitoring, and retraining of ML models; extends DevOps to address data drift, model staleness, and concept drift — Composable HTTP handler wrapping for cross-cutting concerns; Go's standard-library middleware chaining
 - [Data Engineer](concepts/data-engineer.html) — Specialized SWE role: builds data infrastructure, pipelines, and platforms; AI shifts role from writing pipelines to orchestrating AI that writes them
 - [Semantic Layer](concepts/semantic-layer.html) — Unified context layer standardizing metrics and business logic for AI agents across dbt, BI, docs, and query patterns; AE frontier in the AI era
-- [Staff Engineering](concepts/staff-engineering.html) — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
+- [Staff Engineering](concepts/staff-engineering.html)
+- [Staff+ Archetypes](concepts/staff-plus-archetypes.html) — Four role shapes (Tech Lead, Architect, Solver, Right Hand); fluid movement between disciplines — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
 - [Apache Spark](concepts/apache-spark.html) — Distributed data processing engine; internals, shuffle optimization, join strategies, data skew mitigation
 - [API Architectural Styles](concepts/api-architectural-styles.html) — Four major API styles (REST, GraphQL, gRPC, SOAP) — choosing the right paradigm for the use case
 - [Architectural Characteristics](concepts/architectural-characteristics.html) — Non-functional "-ilities" (scalability, availability, reliability) that drive architectural decisions; one of the 4 dimensions of architecture
@@ -129,7 +135,8 @@
 - [Python Concurrency](concepts/python-concurrency.html) — Threads vs Processes, GIL, race condition dangers, and when to use concurrency
 - [Python REPL](concepts/python-repl.html) — Interactive console as a living laboratory: repr, dir(), help(), __mro__ for object exploration
 - [AI-Native Engineering](concepts/ai-native-engineering.html) — Engineers as AI agent orchestrators; four core practices, Conductor vs Orchestrator modes, code overload
-- [AI Psychosis](concepts/ai-psychosis.html) — Organizational pathology where leadership AI obsession destroys engineering culture; Meta case study, MTBF vs MTTR, profit center vs cost center
+- [AI Psychosis](concepts/ai-psychosis.html)
+- [AI Scaling Laws](concepts/ai-scaling-laws.html) — Predictable relationships between model performance and data, parameters, and compute; power-law diminishing returns — Organizational pathology where leadership AI obsession destroys engineering culture; Meta case study, MTBF vs MTTR, profit center vs cost center
 - [Context Engineering](concepts/context-engineering.html) — 6 dimensions of context, static vs dynamic, agent skills pattern; supersedes prompt engineering
 - [Agentic Development Life Cycle (ADLC)](concepts/agentic-development-life-cycle.html) — Redefinition of SDLC for agent-human collaboration; 4-phase implementation roadmap
 - [Vibe Coding](concepts/vibe-coding.html) — Ad-hoc AI-assisted coding vs professional AI-native engineering; Agentic Engineering spectrum, hidden token economics
@@ -150,7 +157,8 @@
 - [Deployment Strategies](concepts/deployment-strategies.html) — Blue-Green, Canary, A/B Testing, Multi-Service; incremental rollout for in-memory index rebuild safety
 - [Design Patterns](concepts/design-patterns.html) — All 22 GoF patterns in 3 categories (Creational, Structural, Behavioral); principles-first, composition over inheritance
 - [Distributed Consensus (Raft & Paxos)](concepts/distributed-consensus.html) — Raft and Paxos algorithms for cluster-wide agreement on data state; FLP impossibility, Safety vs Liveness, leader election, log replication, ecosystem comparison
-- [Leader Election](concepts/leader-election.html) — Selecting a single coordinator node in distributed systems; Raft's randomized timeout mechanism, Term-based safety, split-brain prevention, production coordination services
+- [Leader Election](concepts/leader-election.html)
+- [Lindy Effect](concepts/lindy-effect.html) — Technology longevity heuristic: the longer a technology has survived, the longer it will continue to survive — Selecting a single coordinator node in distributed systems; Raft's randomized timeout mechanism, Term-based safety, split-brain prevention, production coordination services
 - [Cloud Service Models](concepts/cloud-service-models.html) — Three levels of cloud abstraction (IaaS, PaaS, SaaS) trading control for operational simplicity
 - [Containerization](concepts/containerization.html) — Docker and the container-vs-VM abstraction; isolation, portability, speed; "containerized on virtualized"
 - [Redis](concepts/redis.html) — In-memory data structure store achieving 100K+ req/s via RAM, single-threaded event loop, and IO multiplexing
@@ -184,7 +192,8 @@
 - [Real-Time Analytics](concepts/real-time-analytics.html) — Processing and analyzing unbounded data streams with sub-second latency
 - [Lambda Architecture](concepts/lambda-architecture.html) — Dual-path batch + stream processing paradigm for big data systems
 - [Kappa Architecture](concepts/kappa-architecture.html) — Simplified single-path streaming architecture eliminating the batch layer
-- [Stream Processing](concepts/stream-processing.html) — Computing on data as it flows, with managed state and time semantics
+- [Stream Processing](concepts/stream-processing.html)
+- [Sustainable AI](concepts/sustainable-ai.html) — Measuring and minimizing AI carbon footprint; efficient architectures, carbon-aware scheduling — Computing on data as it flows, with managed state and time semantics
 - [Apache Airflow](concepts/apache-airflow.html) — Python-native DAG orchestrator for scheduling and monitoring data pipelines
 - [Snowflake Data Cloud](concepts/snowflake-data-cloud.html) — Cloud-native data platform with separated storage, compute, and services layers
 - [Event Time Processing](concepts/event-time-processing.html) — Using event timestamps for deterministic, reproducible stream computation
@@ -206,7 +215,8 @@
 - [The LLM Wiki Pattern](sources/sample-article.md) — Karpathy's gist: LLM-maintained persistent wiki instead of RAG
 - [Clean Code Cookbook](sources/contieri-clean-code-cookbook.md) — Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection
 - [Quick Insights on Materialized Views](sources/materialized-views-quick-insights.md) — Vu Trinh on MVs, IVM theory, freshness trade-offs, and streaming applications
-- [DuckDB: Up and Running](sources/duckdb-up-and-running.md) — Wei-Meng Lee's guide — 308 pages on architecture, performance, and ecosystem
+- [DuckDB: Up and Running](sources/duckdb-up-and-running.md)
+- [Fundamentals of Data Engineering](sources/fundamentals-of-data-engineering.md) — Reis & Housley's 446-page guide: Data Engineering Lifecycle (5 stages), 6 undercurrents, Lindy Effect for tool selection — Wei-Meng Lee's guide — 308 pages on architecture, performance, and ecosystem
 - [System Design Interview – An Insider's Guide](sources/system-design-interview-xu.md) — Alex Xu's 252-page ebook on designing scalable systems from single server to millions of users
 - [Benchmarking Vortex File Format vs Parquet, CSV](sources/benchmarking-vortex-file-format.md) — Daniel Beach benchmarks Vortex vs Parquet/CSV with DuckDB, Polars, DataFusion (Backblaze ~24 GB dataset, 2026-05)
 - [Hugo Data Ingestion Platform with Apache Flink](sources/hugo-data-ingestion-platform-flink.md) — Grab Engineering's evolution from siloed ingestion (Kafka Connect + Sprinkler) to unified Flink-based platform
@@ -216,11 +226,14 @@
 - [The Next Evolution of Delta — Catalog-Managed Tables](sources/delta-catalog-managed-tables.md) — Delta 4.1.0 + UC 0.4.0: catalog becomes authority for table state, inline commits, convergence with Iceberg
 - [Learn Harness Engineering](sources/learn-harness-engineering.md) — walkinglabs' guide: closed-loop AI agent systems, 4 primitives, 5-phase workflow, verification-first design
 - [Agent Quality & Token Optimization — GitHub Workshop](sources/agent-quality-token-optimization.md) — Felix Gozali, Lakshya Tyagi: agent ROI, compound error, model selection, context engineering, deterministic guardrails
-- [Integrating the Rust Delta Kernel into ClickHouse](sources/integrating-rust-delta-kernel-clickhouse.md) — ClickHouse's journey from native Delta protocol to Rust Kernel; FFI build challenges, CDF support
+- [Integrating the Rust Delta Kernel into ClickHouse](sources/integrating-rust-delta-kernel-clickhouse.md)
+- [Introduction to Machine Learning Systems](sources/introduction-to-machine-learning-systems.md) — Reddi's 2,020-page textbook: AI Triangle, 6-part framework from foundations to compound AI systems — ClickHouse's journey from native Delta protocol to Rust Kernel; FFI build challenges, CDF support
 - [Debunking 8 Data Layout Myths](sources/debunking-data-layout-myths-liquid-clustering.md) — Databricks' case for Liquid Clustering over partitioning; PB-scale benchmarks, 8 myths debunked
 - [Go Web Programming](sources/go-web-programming.md) — Sau Sheong Chang's guide to building web apps with Go's standard library — 314 pages
 - [Test-Driven Development with Python](sources/tdd-python-percival.md) — Harry Percival's hands-on journey through TDD with Django and Selenium — 662 pages
-- [Apache Iceberg 1.11.0 Release](sources/apache-iceberg-1.11.0-release.md) — Major release: V3 spec stabilization, table encryption, File Format API, server-side scan planning, SQL UDFs
+- [Apache Iceberg 1.11.0 Release](sources/apache-iceberg-1.11.0-release.md)
+- [The Architecture of Open Source Applications, Volume II](sources/architecture-of-open-source-applications-vol2.md)
+- [The Art of Readable Code](sources/art-of-readable-code.md) — Boswell & Foucher's 198-page guide: Fundamental Theorem of Readability, 4 stages of improvement — Amy Brown & Greg Wilson's 390-page study of real OSS architectures (nginx, Git, GDB, FreeRTOS) — Major release: V3 spec stabilization, table encryption, File Format API, server-side scan planning, SQL UDFs
 - [Cracking the Coding Interview](sources/cracking-the-coding-interview.md) — McDowell's 708-page guide to technical interview philosophy, company cultures, and problem-solving strategies
 - [Good Code, Bad Code](sources/good-code-bad-code.md) — Tom Long's 338-page guide: 4 goals, 6 pillars, and the engineering mindset
 - [Seriously Good Software](sources/seriously-good-software.md) — Marco Faella's 330-page deep dive: quality spectrum, trade-offs, YAGNI, and abstraction costs
@@ -260,7 +273,8 @@
 - [Building LLMs for Production](sources/building-llms-for-production.md) — Peters & Bouchard's 423-page guide: prompt engineering, RAG, fine-tuning, model optimization, evaluation, and deployment
 - [Building Real-Time Analytics Systems](sources/building-real-time-analytics-systems.md) — Mark Needham's 221-page guide: streaming stack architecture, Kafka, Flink, OLAP serving, and scaling
 - [Data Engineering with Python](sources/data-engineering-with-python.md) — Paul Crickard's 299-page guide: Python data pipelines, Airflow, Spark, database interaction, and production principles
-- [Snowflake: The Definitive Guide](sources/snowflake-the-definitive-guide.md) — Joyce Kay Avila's 467-page O'Reilly guide: architecture, semi-structured data, Time Travel, Zero-Copy Cloning, security, and cost optimization
+- [Snowflake: The Definitive Guide](sources/snowflake-the-definitive-guide.md)
+- [The Staff Engineer's Path](sources/staff-engineers-path.md) — Tanya Reilly's 368-page roadmap: 3 pillars, 4 archetypes, "humaning" flying buttresses for technical leaders — Joyce Kay Avila's 467-page O'Reilly guide: architecture, semi-structured data, Time Travel, Zero-Copy Cloning, security, and cost optimization
 - [Stream Processing with Apache Flink](sources/stream-processing-apache-flink.md) — Fabian Hueske's 318-page guide: Flink architecture, DataStream API, stateful processing, time semantics, and deployment
 
 ## Syntheses
@@ -270,4 +284,4 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 _Last updated: 2026-07-13_
-_Pages: 257 (190 concepts + 67 sources)_
+_Pages: 270 (198 concepts + 72 sources)_

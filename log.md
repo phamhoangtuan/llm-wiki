@@ -4,6 +4,20 @@
 
 ---
 
+## [2026-07-13] ingest | Fundamentals of Data Engineering, Introduction to ML Systems, Architecture of OSS Vol II, The Art of Readable Code, The Staff Engineer's Path
+
+- Source 1: "Fundamentals of Data Engineering" by Joe Reis & Matt Housley (ebook, 446 pages, finished 2026-03-22)
+- Source 2: "Introduction to Machine Learning Systems" by Vijay Janapa Reddi (ebook, 2,020 pages, finished 2026-03-16)
+- Source 3: "The Architecture of Open Source Applications, Volume II" by Amy Brown & Greg Wilson (ebook, 390 pages, finished 2026-03-25)
+- Source 4: "The Art of Readable Code" by Dustin Boswell & Trevor Foucher (ebook, 198 pages, finished 2026-03-18)
+- Source 5: "The Staff Engineer's Path" by Tanya Reilly (ebook, 368 pages, finished 2026-03-21)
+- Created sources/fundamentals-of-data-engineering.md, sources/introduction-to-machine-learning-systems.md, sources/architecture-of-open-source-applications-vol2.md, sources/art-of-readable-code.md, sources/staff-engineers-path.md
+- New concepts: code-readability, machine-learning-systems, mlops, sustainable-ai, ai-scaling-laws, compound-ai-systems, lindy-effect, staff-plus-archetypes, technical-leadership
+- Updated concepts: data-engineering-fundamentals (+Lifecycle framework, 6 undercurrents, Data Maturity Model), staff-engineering (+Staff+ fork, 3 Pillars, humaning skills, mental models)
+- Regenerated HTML via convert-to-html.py
+- Updated index.md: +9 concept entries, +5 source entries
+- Total pages: 270 (198 concepts + 72 sources)
+
 ## [2026-07-13] ingest | Big Book of Data Engineering, Code Complete, Dive Into Design Patterns, Game Theory (Bonanno), Head First Software Architecture
 
 - Source 1: "Big Book of Data Engineering" by Databricks (ebook, 125 pages, finished 2026-04-10)

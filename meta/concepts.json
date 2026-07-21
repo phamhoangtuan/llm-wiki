@@ -88,6 +88,18 @@
         "risk"
       ]
     },
+    "ai-scaling-laws": {
+      "title": "AI Scaling Laws",
+      "category": "Meta",
+      "url": "concepts/ai-scaling-laws.html",
+      "definition": "**AI Scaling Laws** describe predictable relationships between model performance and three key resources: **data size**, **model size** (parameters), and **compute** (FLOPs). They enable engineers to ",
+      "tags": [
+        "machine-learning",
+        "scaling",
+        "compute",
+        "performance"
+      ]
+    },
     "analytics-engineer": {
       "title": "Analytics Engineer",
       "category": "Data Engineering",
@@ -480,6 +492,18 @@
         "maintainability"
       ]
     },
+    "code-readability": {
+      "title": "Code Readability",
+      "category": "Meta",
+      "url": "concepts/code-readability.html",
+      "definition": "**Code Readability** is the discipline of writing code that minimizes the time it takes for someone else to understand it. The **Fundamental Theorem of Readability** states that the primary metric of ",
+      "tags": [
+        "code-quality",
+        "readability",
+        "software-engineering",
+        "best-practices"
+      ]
+    },
     "complexity-metrics": {
       "title": "Complexity Metrics",
       "category": "Data Engineering",
@@ -503,6 +527,18 @@
         "architecture",
         "di",
         "composition-root"
+      ]
+    },
+    "compound-ai-systems": {
+      "title": "Compound AI Systems",
+      "category": "AI & Agents",
+      "url": "concepts/compound-ai-systems.html",
+      "definition": "**Compound AI Systems** are the paradigm shift from single monolithic models to orchestrated ensembles of specialized components — retrievers, reasoners, verifiers, tools, and agents working together.",
+      "tags": [
+        "machine-learning",
+        "ai-engineering",
+        "orchestration",
+        "systems-design"
       ]
     },
     "containerization": {
@@ -1321,6 +1357,18 @@
         "coordination"
       ]
     },
+    "lindy-effect": {
+      "title": "Lindy Effect",
+      "category": "System Architecture",
+      "url": "concepts/lindy-effect.html",
+      "definition": "The **Lindy Effect** is a heuristic for technology selection: **the longer a technology has been around, the longer it's likely to stay around.** Future life expectancy is proportional to current age ",
+      "tags": [
+        "technology-selection",
+        "architecture",
+        "heuristics",
+        "data-engineering"
+      ]
+    },
     "liquid-clustering": {
       "title": "Liquid Clustering",
       "category": "Data Engineering",
@@ -1385,6 +1433,18 @@
         "peft",
         "optimization",
         "training"
+      ]
+    },
+    "machine-learning-systems": {
+      "title": "Machine Learning Systems",
+      "category": "AI & Agents",
+      "url": "concepts/machine-learning-systems.html",
+      "definition": "**Machine Learning Systems** is the engineering discipline of building AI solutions that work reliably in production — not just achieving high accuracy in a notebook. It bridges the gap between ML the",
+      "tags": [
+        "machine-learning",
+        "systems-design",
+        "ml-engineering",
+        "ai-engineering"
       ]
     },
     "mapper-principles": {
@@ -1497,6 +1557,19 @@
         "middleware",
         "web",
         "design-patterns"
+      ]
+    },
+    "mlops": {
+      "title": "MLOps",
+      "category": "Infrastructure",
+      "url": "concepts/mlops.html",
+      "definition": "**MLOps** (Machine Learning Operations) is the discipline of automating deployment, monitoring, and retraining of ML models in production. It extends DevOps principles to ML systems, addressing the un",
+      "tags": [
+        "machine-learning",
+        "mlops",
+        "devops",
+        "deployment",
+        "monitoring"
       ]
     },
     "model-code-gap": {
@@ -2130,6 +2203,18 @@
         "senior-to-staff"
       ]
     },
+    "staff-plus-archetypes": {
+      "title": "Staff+ Archetypes",
+      "category": "Career & Growth",
+      "url": "concepts/staff-plus-archetypes.html",
+      "definition": "**Staff+ Archetypes** are the four primary \"shapes\" a Staff Engineer role can take, as defined by Tanya Reilly. Not all Staff roles look the same — understanding your archetype helps navigate ambiguit",
+      "tags": [
+        "career",
+        "staff-engineering",
+        "technical-leadership",
+        "roles"
+      ]
+    },
     "stateful-stream-processing": {
       "title": "Stateful Stream Processing",
       "category": "Stream Processing",
@@ -2166,6 +2251,18 @@
         "real-time",
         "architecture",
         "event-driven"
+      ]
+    },
+    "sustainable-ai": {
+      "title": "Sustainable AI",
+      "category": "Meta",
+      "url": "concepts/sustainable-ai.html",
+      "definition": "**Sustainable AI** is the practice of measuring and minimizing the environmental footprint of AI training and inference — treating carbon cost as a first-class engineering constraint alongside latency",
+      "tags": [
+        "machine-learning",
+        "sustainability",
+        "green-computing",
+        "ai-ethics"
       ]
     },
     "synthetic-data": {
@@ -2217,6 +2314,18 @@
         "algorithms",
         "problem-solving",
         "career"
+      ]
+    },
+    "technical-leadership": {
+      "title": "Technical Leadership",
+      "category": "Career & Growth",
+      "url": "concepts/technical-leadership.html",
+      "definition": "**Technical Leadership** is the practice of leading through influence rather than authority — the core mechanism of the Staff+ engineering path. Unlike management, which leads through direct reports, ",
+      "tags": [
+        "career",
+        "leadership",
+        "staff-engineering",
+        "influence"
       ]
     },
     "technological-centaur": {

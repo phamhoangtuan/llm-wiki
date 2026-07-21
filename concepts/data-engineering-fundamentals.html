@@ -35,13 +35,76 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Engineering Fundamentals</h1>
-  <div class="page-meta"><span>Source: data-fundamentals-matter-2026, data-engineer-role-handbook</span><span>Updated: 2026-06-29</span></div>
+  <div class="page-meta"><span>Source: data-fundamentals-matter-2026, data-engineer-role-handbook, fundamentals-of-data-engineering</span><span>Updated: 2026-07-13</span></div>
   <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">fundamentals</span><span class="tag">sql</span><span class="tag">python</span><span class="tag">data-modeling</span><span class="tag">career</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
 <p><strong>Data Engineering Fundamentals</strong> are the enduring technical skills — SQL, Python, data modeling, and "glue technical skills" — that remain essential regardless of tool evolution or AI adoption. As the data landscape shifts toward AI engineers and FDEs (Future Data Engineers) in 2026, these fundamentals are more critical than ever: they are what allow engineers to distinguish AI-generated garbage from viable solutions and to build reliable systems on top of messy, real-world data.</p>
 <blockquote>"You know what that dish is missing for garnish, a little solid technique."</blockquote>
+<p>Data Engineering is the discipline of building systems that turn chaotic raw data into trustworthy information for analytics, ML, and business impact. It sits at the intersection of six disciplines: Security, Data Management, DataOps, Data Architecture, Orchestration, and Software Engineering.</p>
+<h2 id="the-data-engineering-lifecycle">The Data Engineering Lifecycle</h2>
+<p>Every piece of data flows through five stages (Reis & Housley):</p>
+<table><thead><tr>
+<th>Stage</th>
+<th>What Happens</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Generation</strong></td>
+<td>Source systems (IoT, apps, databases) create and persist raw data</td>
+</tr>
+<tr>
+<td><strong>Ingestion</strong></td>
+<td>Moving data from sources into storage — batch or streaming, push or pull</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>The bedrock layer — data lives here at multiple points as it moves through the pipeline</td>
+</tr>
+<tr>
+<td><strong>Transformation</strong></td>
+<td>Cleaning, normalizing, and applying business logic</td>
+</tr>
+<tr>
+<td><strong>Serving</strong></td>
+<td>Delivering value — BI dashboards, ML models, operational analytics, reverse ETL</td>
+</tr>
+</tbody></table>
+<p>Storage isn't just one place — it appears at multiple points as data flows from generation to serving.</p>
+<h2 id="six-undercurrents">Six Undercurrents</h2>
+<p>These principles support every stage of the lifecycle:</p>
+<ol>
+<li><strong>Security</strong>: Principle of least privilege at every layer — top of mind, not an afterthought</li>
+<li><strong>Data Management</strong>: Governance, quality, metadata, privacy — ensures data is trustworthy and discoverable</li>
+<li><strong>DataOps</strong>: Agile, DevOps, and statistical control for data workflows — automation, observability, fast incident response</li>
+<li><strong>Data Architecture</strong>: Design for change, favor reversible "two-way door" decisions</li>
+<li><strong>Orchestration</strong>: The "center of gravity" of the data platform — coordinates jobs by dependency</li>
+<li><strong>Software Engineering</strong>: Production-grade SQL, Python, JVM languages, bash — testing and design patterns matter</li>
+</ol>
+<h2 id="data-maturity-model">Data Maturity Model</h2>
+<table><thead><tr>
+<th>Stage</th>
+<th>Organization Focus</th>
+<th>Engineer Role</th>
+</tr></thead><tbody>
+<tr>
+<td>Starting with Data</td>
+<td>Building basic infrastructure</td>
+<td>Generalist who moves fast, wears many hats</td>
+</tr>
+<tr>
+<td>Scaling with Data</td>
+<td>Formalizing practices</td>
+<td>Specialist introducing DataOps/DevOps rigor</td>
+</tr>
+<tr>
+<td>Leading with Data</td>
+<td>Data as competitive advantage</td>
+<td>Deep expert building custom tools, driving strategy</td>
+</tr>
+</tbody></table>
+<h2 id="the-lindy-effect-in-tool-selection">The Lindy Effect in Tool Selection</h2>
+<p>The <a href="lindy-effect.html" class="wiki-link">Lindy Effect</a> governs technology choices: the longer a technology has been around, the longer it's likely to stay. Build foundations on immutable tech (SQL, object storage, Unix principles); be cautious with transitory tools. When choosing, evaluate <strong>TCO</strong> (total cost including maintenance and training) and <strong>TOCO</strong> (total opportunity cost — what you lose by picking one tool over another).</p>
 <h2 id="the-core-triad">The Core Triad</h2>
 <table><thead><tr>
 <th>Skill</th>
@@ -123,15 +186,30 @@
       <h4>AI-Native Engineering</h4>
       <p>understanding fundamentals is what separates AI-native engineers from vibe coders</p>
     </a>
+    <a class="connection-card" href="data-lifecycle.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Lifecycle</h4>
+      <p>the five lifecycle stages provide the operational framework for DE work</p>
+    </a>
+    <a class="connection-card" href="lindy-effect.html">
+      <span class="connection-type related">Related</span>
+      <h4>Lindy Effect</h4>
+      <p>Lindy heuristic governs technology selection in data architecture</p>
+    </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
-      <h4>AI-Native Engineering</h4>
+      <h4>Lindy Effect</h4>
       <p>SeattleDataGuy on fundamentals in 2026</p>
     </div>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
-      <h4>AI-Native Engineering</h4>
+      <h4>Lindy Effect</h4>
       <p>Data Engineering Handbook (core skills)</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Lindy Effect</h4>
+      <p>Reis & Housley's lifecycle framework</p>
     </div>
   </div>
 </section>

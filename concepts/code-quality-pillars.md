@@ -126,6 +126,7 @@ Code Change → Code Review (proofreading) → Commit → Pre-submit Checks (aut
 - Related to [[rich-domain-model]] — cohesive classes embody rich behavior (pillar 4)
 - Contrasted with [[software-quality-dimensions]] — complementary framework: pillars (tactical) vs dimensions (analytical)
 - Supported by [[architecture-in-agile]] — architecture as skeleton, not straitjacket, guides iterative development toward quality
+- Related to [[code-readability]] — readable code is the surface-level manifestation of code quality; readability minimizes time-to-understanding
 - Related to [[refactoring-at-scale]] — both address the engineering discipline needed for maintainable codebases
 - Complements [[object-oriented-design]] — TRUE (Transparent/Reasonable) aligns with readability and modularity pillars
 - Informs [[dataops]] — DataOps applies the same modularity, testing, and reuse pillars to data pipelines

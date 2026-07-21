@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MLOps — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-machine-learning">Machine Learning</a> <span class="sep">/</span>
+  <span>MLOps</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>MLOps</h1>
+  <div class="page-meta"><span>Source: introduction-to-machine-learning-systems</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">machine-learning</span><span class="tag">mlops</span><span class="tag">devops</span><span class="tag">deployment</span><span class="tag">monitoring</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>MLOps</strong> (Machine Learning Operations) is the discipline of automating deployment, monitoring, and retraining of ML models in production. It extends DevOps principles to ML systems, addressing the unique challenge that ML technical debt accumulates faster than in traditional software due to data drift, model staleness, and concept drift.</p>
+<h2 id="why-mlops-exists">Why MLOps Exists</h2>
+<p>ML systems have more failure modes than traditional software:</p>
+<table><thead><tr>
+<th>Failure Mode</th>
+<th>Traditional Software</th>
+<th>ML Adds</th>
+</tr></thead><tbody>
+<tr>
+<td>Code bugs</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Dependency issues</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><strong>Data quality degradation</strong></td>
+<td>Rare</td>
+<td><strong>Constant</strong></td>
+</tr>
+<tr>
+<td><strong>Model staleness</strong></td>
+<td>N/A</td>
+<td><strong>Inevitable</strong></td>
+</tr>
+<tr>
+<td><strong>Concept drift</strong></td>
+<td>N/A</td>
+<td><strong>Silent</strong></td>
+</tr>
+<tr>
+<td><strong>Training/serving skew</strong></td>
+<td>N/A</td>
+<td><strong>Common</strong></td>
+</tr>
+</tbody></table>
+<p>MLOps addresses these by automating the entire lifecycle: data validation → training → evaluation → deployment → monitoring → retraining.</p>
+<h2 id="core-practices">Core Practices</h2>
+<ul>
+<li><strong>Continuous Training (CT)</strong>: Automatically retrain models when data distributions shift or performance degrades below thresholds</li>
+<li><strong>Model Versioning</strong>: Track model artifacts, training data, hyperparameters, and evaluation metrics together</li>
+<li><strong>Deployment Strategies</strong>: Canary deployments, shadow mode, A/B testing for models</li>
+<li><strong>Monitoring</strong>: Track prediction drift, feature drift, latency, throughput, and business metrics</li>
+<li><strong>Feature Stores</strong>: Centralized repositories for feature definitions, ensuring consistency between training and serving</li>
+<li><strong>Pipeline Orchestration</strong>: Coordinate data extraction, feature engineering, training, evaluation, and deployment as a DAG</li>
+</ul>
+<h2 id="relationship-to-devops">Relationship to DevOps</h2>
+<p>MLOps inherits DevOps principles (CI/CD, infrastructure as code, observability) but extends them with:</p>
+<ul>
+<li><strong>Data versioning</strong> (not just code)</li>
+<li><strong>Model registries</strong> (not just container registries)</li>
+<li><strong>Experiment tracking</strong> (not just build logs)</li>
+<li><strong>Fairness/bias monitoring</strong> (not just performance monitoring)</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="machine-learning-systems.html">
+      <span class="connection-type related">Related</span>
+      <h4>Machine Learning Systems</h4>
+      <p>MLOps operationalizes the ML systems engineering discipline</p>
+    </a>
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type related">Related to</span>
+      <h4>DataOps</h4>
+      <p>DataOps applies similar DevOps principles to data pipelines</p>
+    </a>
+    <a class="connection-card" href="observability.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Observability</h4>
+      <p>metrics, logs, and traces extended to model behavior</p>
+    </a>
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>AI-Native Engineering</h4>
+      <p>MLOps is a core practice for professional AI-native engineers</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>AI-Native Engineering</h4>
+      <p>Reddi covers MLOps in Part IV (Robust Deployment)</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="middleware-pattern.html" class="prev">← Middleware Pattern</a><a href="model-code-gap.html" class="next">Model-Code Gap →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>
