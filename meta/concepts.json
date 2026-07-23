@@ -1279,6 +1279,33 @@
         "index"
       ]
     },
+    "kubernetes-architecture": {
+      "title": "Kubernetes Architecture",
+      "category": "Go & Web",
+      "url": "concepts/kubernetes-architecture.html",
+      "definition": "**Kubernetes Architecture** is the design of a level-triggered control system that continuously reconciles actual state toward declared desired state. It splits into two layers: the **control plane** ",
+      "tags": [
+        "kubernetes",
+        "architecture",
+        "cloud-native",
+        "control-plane",
+        "reconciliation"
+      ]
+    },
+    "kubernetes-networking": {
+      "title": "Kubernetes Networking",
+      "category": "Go & Web",
+      "url": "concepts/kubernetes-networking.html",
+      "definition": "**Kubernetes Networking** follows a simple model — every pod gets its own IP, pods talk directly across nodes without NAT, and a pod sees itself at the same address others use — but delegates implemen",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "cni",
+        "services",
+        "dns",
+        "cloud-native"
+      ]
+    },
     "kubernetes-operator": {
       "title": "Kubernetes Operator",
       "category": "Go & Web",
@@ -1291,6 +1318,20 @@
         "cloud-native",
         "golang",
         "automation"
+      ]
+    },
+    "kubernetes-security": {
+      "title": "Kubernetes Security",
+      "category": "Go & Web",
+      "url": "concepts/kubernetes-security.html",
+      "definition": "**Kubernetes Security** is the set of controls that protect the cluster at every layer of the API request pipeline — authentication, authorization, admission control — plus the runtime concerns of sec",
+      "tags": [
+        "kubernetes",
+        "security",
+        "rbac",
+        "policy",
+        "secrets",
+        "cloud-native"
       ]
     },
     "kv-caching": {

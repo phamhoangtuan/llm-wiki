@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kubernetes Architecture — LLM Wiki</title>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-kubernetes">Kubernetes</a> <span class="sep">/</span>
+  <span>Kubernetes Architecture</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Kubernetes Architecture</h1>
+  <div class="page-meta"><span>Source: kubeschool-kubernetes-primer, programming-kubernetes</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">kubernetes</span><span class="tag">architecture</span><span class="tag">cloud-native</span><span class="tag">control-plane</span><span class="tag">reconciliation</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Kubernetes Architecture</strong> is the design of a level-triggered control system that continuously reconciles actual state toward declared desired state. It splits into two layers: the <strong>control plane</strong> (decision-making) and <strong>worker nodes</strong> (execution). Every component coordinates through the API server as a single hub — no component orders another around. The architecture is deliberately extensible through plugin interfaces (CNI, CSI) and the same object-plus-controller pattern used by the core.</p>
+<h2 id="the-reconciliation-loop">The Reconciliation Loop</h2>
+<blockquote>You declare outcomes, the system enforces them. Stop thinking in commands and start thinking in the state you want to be true.</blockquote>
+<p>The loop is <strong>level-triggered</strong>, not edge-triggered. A controller that was asleep or disconnected simply looks at reality when it wakes up and corrects whatever gap it finds — it doesn't need a perfect event history. This is what makes Kubernetes hard to knock over.</p>
+<p>Every useful behavior follows from this one mechanism: self-healing (pod missing → create replacement), scaling (count changed → adjust), rollout (old state → new state in controlled steps).</p>
+<h2 id="the-object-model-spec--status">The Object Model: Spec + Status</h2>
+<p>Everything in Kubernetes is an API object with the same shape:</p>
+<ul>
+<li><strong>spec</strong>: the desired state you declared</li>
+<li><strong>status</strong>: the observed state the system reports back</li>
+</ul>
+<p>You write the spec. Controllers write the status. The gap between the two is the work the system is doing. Objects live in versioned API groups (<code>apps/v1</code>, <code>networking.k8s.io/v1</code>) — the version signals stability from alpha to stable.</p>
+<h2 id="the-hub-and-spoke-coordination-model">The Hub-and-Spoke Coordination Model</h2>
+<p>No component calls another in a chain for cluster state. Every component talks to the API server and nothing else. They stay current using <strong>watches</strong> — long-lived subscriptions where the API server streams changes. A component does talk directly to the things it drives on its own machine (the kubelet drives the container runtime), but it learns <em>what</em> to do only from the API server.</p>
+<h2 id="control-plane-components">Control Plane Components</h2>
+<table><thead><tr>
+<th>Component</th>
+<th>Role</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>API Server</strong></td>
+<td>Front door; auth → authorization → admission pipeline; only component touching etcd directly</td>
+</tr>
+<tr>
+<td><strong>etcd</strong></td>
+<td>Distributed KV store holding entire cluster state; Raft consensus (odd members: 3 or 5); sensitive to disk write latency — SSD/NVMe mandatory</td>
+</tr>
+<tr>
+<td><strong>Scheduler</strong></td>
+<td>Two-pass placement: filter infeasible nodes, score remaining; steered by taints/tolerations, affinities, topology spread, priority</td>
+</tr>
+<tr>
+<td><strong>Controller Manager</strong></td>
+<td>Runs many controllers side-by-side: node health, replicas, endpoints, namespace lifecycle</td>
+</tr>
+<tr>
+<td><strong>Cloud Controller Manager</strong></td>
+<td>Provider-specific logic (e.g., creating cloud load balancers); keeps core Kubernetes provider-agnostic</td>
+</tr>
+</tbody></table>
+<h2 id="worker-node-components">Worker Node Components</h2>
+<table><thead><tr>
+<th>Component</th>
+<th>Role</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Kubelet</strong></td>
+<td>Agent on every node; ensures assigned pods' containers are running and healthy; handles node-pressure eviction</td>
+</tr>
+<tr>
+<td><strong>Container Runtime</strong></td>
+<td>Actually runs containers via CRI; containerd or CRI-O with runc underneath</td>
+</tr>
+<tr>
+<td><strong>Kube-proxy</strong></td>
+<td>Makes service virtual IPs actually work; iptables (default), nftables (modern), or replaced entirely by eBPF-based CNI</td>
+</tr>
+</tbody></table>
+<h2 id="high-availability">High Availability</h2>
+<ul>
+<li><strong>API servers</strong>: active-active behind a load balancer</li>
+<li><strong>Scheduler + Controller Manager</strong>: active-passive with leader election</li>
+<li><strong>etcd</strong>: odd-numbered cluster (3 or 5) for Raft majority</li>
+</ul>
+<p>Managed Kubernetes services handle this redundancy — a large reason teams choose them.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="kubernetes-operator.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Kubernetes Operator</h4>
+      <p>operators reuse the same object-plus-controller pattern and reconcile loop</p>
+    </a>
+    <a class="connection-card" href="kubernetes-networking.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Kubernetes Networking</h4>
+      <p>the CNI plugin model extends the architecture's networking layer</p>
+    </a>
+    <a class="connection-card" href="kubernetes-security.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Kubernetes Security</h4>
+      <p>RBAC, admission control, and policy engines plug into the API server pipeline</p>
+    </a>
+    <a class="connection-card" href="distributed-consensus.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Distributed Consensus (Raft & Paxos)</h4>
+      <p>etcd uses Raft for consensus across control-plane nodes</p>
+    </a>
+    <a class="connection-card" href="containerization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Containerization</h4>
+      <p>Kubernetes orchestrates containers; understanding the runtime layer is prerequisite</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Containerization</h4>
+      <p>Portainer's architectural primer</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Containerization</h4>
+      <p>control loops, CRDs, extension patterns</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="knowledge-graph.html" class="prev">← Knowledge Graph</a><a href="kubernetes-networking.html" class="next">Kubernetes Networking →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<button id="focus-toggle" title="Focus mode">⛶</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

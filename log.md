@@ -4,6 +4,16 @@
 
 ---
 
+## [2026-07-13] ingest | KubeSchool — Understanding Kubernetes (Architectural Primer)
+
+- Source: Portainer's KubeSchool — 15-chapter web primer on Kubernetes architecture, principles, and sharp edges
+- Created sources/kubeschool-kubernetes-primer.md
+- New concepts: kubernetes-architecture, kubernetes-networking, kubernetes-security
+- Updated concepts: kubernetes-operator (+cross-ref to kubernetes-architecture)
+- Regenerated HTML via convert-to-html.py
+- Updated index.md: +3 concept entries, +1 source entry
+- Total pages: 274 (201 concepts + 73 sources)
+
 ## [2026-07-13] ingest | Fundamentals of Data Engineering, Introduction to ML Systems, Architecture of OSS Vol II, The Art of Readable Code, The Staff Engineer's Path
 
 - Source 1: "Fundamentals of Data Engineering" by Joe Reis & Matt Housley (ebook, 446 pages, finished 2026-03-22)

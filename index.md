@@ -111,7 +111,10 @@
 - [Software Quality Dimensions](concepts/software-quality-dimensions.html) — Multi-dimensional quality spectrum, four core trade-offs, YAGNI, analyzability, abstraction costs
 - [DataOps](concepts/dataops.html) — Applying software engineering practices (version control, testing, modularity) to data pipelines and transformations
 - [Object-Oriented Design](concepts/object-oriented-design.html) — Practical OO design: TRUE standard, design as discovery, messages over methods, SRP as foundation
-- [Kubernetes Operator](concepts/kubernetes-operator.html) — Control loop pattern (READ → CHANGE → UPDATE), CRDs, extension patterns, Go ecosystem for K8s-native apps
+- [Kubernetes Operator](concepts/kubernetes-operator.html)
+- [Kubernetes Architecture](concepts/kubernetes-architecture.html)
+- [Kubernetes Networking](concepts/kubernetes-networking.html)
+- [Kubernetes Security](concepts/kubernetes-security.html) — RBAC, admission control, policy engines (OPA/Kyverno), secrets encryption, OIDC integration, network policies — CNI plugin model; 4-layer model (container→pod→service→ingress); Services, CoreDNS, Ingress/Gateway API — Level-triggered control system: reconciliation loop, spec/status model, hub-and-spoke coordination, control plane vs worker nodes — Control loop pattern (READ → CHANGE → UPDATE), CRDs, extension patterns, Go ecosystem for K8s-native apps
 - [Middleware Pattern](concepts/middleware-pattern.html)
 - [MLOps](concepts/mlops.html) — Automating deployment, monitoring, and retraining of ML models; extends DevOps to address data drift, model staleness, and concept drift — Composable HTTP handler wrapping for cross-cutting concerns; Go's standard-library middleware chaining
 - [Data Engineer](concepts/data-engineer.html) — Specialized SWE role: builds data infrastructure, pipelines, and platforms; AI shifts role from writing pipelines to orchestrating AI that writes them
@@ -239,7 +242,8 @@
 - [Seriously Good Software](sources/seriously-good-software.md) — Marco Faella's 330-page deep dive: quality spectrum, trade-offs, YAGNI, and abstraction costs
 - [Data Engineering with dbt](sources/data-engineering-with-dbt.md) — Roberto Zagni's 603-page guide: DataOps mindset, 3-tier modeling, soft boundaries, Jinja-powered SQL
 - [Practical Object-Oriented Design](sources/practical-object-oriented-design.md) — Sandi Metz's 334-page guide: TRUE standard, design as discovery, messages in OOP
-- [Programming Kubernetes](sources/programming-kubernetes.md) — Schimanski & Hausenblas's 244-page guide: control loops, operators, CRDs, Go ecosystem for K8s-native development
+- [Programming Kubernetes](sources/programming-kubernetes.md)
+- [KubeSchool — Understanding Kubernetes](sources/kubeschool-kubernetes-primer.md) — Portainer's 15-chapter architectural primer: reconciliation, control plane, networking, security, operators, enterprise readiness — Schimanski & Hausenblas's 244-page guide: control loops, operators, CRDs, Go ecosystem for K8s-native development
 - [Data Engineer Role — Data Engineering Handbook](sources/data-engineer-role-handbook.md) — Vietnamese DE Handbook: role definition, differentiation from SWE/DA/DS, daily workflow, best practices
 - [Big Book of Data Engineering](sources/big-book-data-engineering.md) — Databricks' 125-page guide: 3 pillars (Ingest/Transform/Orchestrate), Medallion architecture, DLT, Unity Catalog, DatabricksIQ
 - [Semantic Layers Are Now for AI](sources/semantic-layers-for-ai.md) — Madison Mae on why semantic layers are critical for AI agents, testing ktx open-source context layer
@@ -284,4 +288,4 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 _Last updated: 2026-07-13_
-_Pages: 270 (198 concepts + 72 sources)_
+_Pages: 274 (201 concepts + 73 sources)_

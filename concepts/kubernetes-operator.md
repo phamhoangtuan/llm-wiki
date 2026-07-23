@@ -15,7 +15,7 @@ A Kubernetes Operator is a software extension that encodes domain-specific opera
 ## Running on K8s vs Programming K8s
 
 | Approach | Description | Example |
-|---|---|---|
+| --- | --- | --- |
 | **Run on K8s** 📦 | Deploy existing software onto a cluster | `kubectl apply -f deployment.yaml` |
 | **Program K8s** 🔧 | Build applications aware of K8s, using APIs to manage state | Write a controller that auto-scales a database on load |
 
@@ -46,11 +46,12 @@ Every Kubernetes controller and operator follows this universal pattern:
 An operator has two components:
 
 | Component | Role | Example |
-|---|---|---|
+| --- | --- | --- |
 | **Custom Resource Definition (CRD)** 📋 | Defines the schema for a domain-specific resource | `kind: PostgreSQLCluster` with fields: `replicas`, `storageSize`, `version` |
 | **Custom Controller** ⚙️ | Supervises those resources, manages their lifecycle | Auto-provisions, backs up, failovers, and upgrades the PostgreSQL cluster |
 
 Instead of 10 manual `kubectl` commands:
+
 ```yaml
 apiVersion: database.example.com/v1
 kind: PostgreSQLCluster
@@ -61,6 +62,7 @@ spec:
   storageSize: 100Gi
   backupSchedule: "0 2 * * *"
 ```
+
 → The operator handles everything: provisioning, scaling, backup, recovery, upgrade.
 
 > Operators turn tribal SRE knowledge into code that can be version-controlled, tested, and reused.
@@ -70,7 +72,7 @@ spec:
 Kubernetes is written in Go, and the ecosystem mirrors that:
 
 | Library | Purpose |
-|---|---|
+| --- | --- |
 | **client-go** 🚀 | Standard library for K8s API interaction — `clientset.CoreV1().Pods(ns).Get(ctx, name, opts)` |
 | **API Machinery** ⚙️ | Building blocks for K8s-like APIs — Kinds, Resources, Schemes (Go type ↔ API mapping) |
 
@@ -101,7 +103,7 @@ Three ways to extend Kubernetes, in order of complexity:
 Three pillars for deploying operators to production:
 
 | Pillar | Tools | Practice |
-|---|---|---|
+| --- | --- | --- |
 | **Packaging** | Helm (templating, rollback), Kustomize (overlays, native) | Versioned releases, dependency management |
 | **Security** | RBAC, ServiceAccounts | Least privilege — grant only required verbs on required resources |
 | **Observability** | Prometheus metrics, structured JSON logs, OpenTelemetry tracing | Track reconciliation counts, latency, error rates per controller |
@@ -114,6 +116,7 @@ reconcileDuration.WithLabelValues(controllerName).Observe(duration.Seconds())
 
 ---
 
+- Built on [[kubernetes-architecture]] — operators reuse the same reconcile loop, watch mechanism, and spec/status model as core controllers
 - Related to [[go-web-ecosystem]] — Go's standard-library philosophy, static binaries, and implicit interfaces power the K8s ecosystem
 - Related to [[goroutines]] — controllers leverage Go's lightweight concurrency for watch loops and parallel reconciliation
 - Related to [[observability]] — production operators require metrics, logs, and traces for cluster health visibility

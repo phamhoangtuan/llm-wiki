@@ -1187,6 +1187,7 @@
   "distributed-consensus": [
     "byzantine-fault-tolerance",
     "cap-theorem",
+    "kubernetes-architecture",
     "leader-election",
     "leader-election",
     "consensus-raft-paxos-handbook"
@@ -1235,6 +1236,7 @@
     "cache-strategy",
     "cdn",
     "database-replication",
+    "kubernetes-networking",
     "message-queue",
     "observability",
     "scalable-architecture",
@@ -1326,6 +1328,8 @@
   "containerization": [
     "cloud-service-models",
     "deployment-strategies",
+    "kubernetes-architecture",
+    "kubernetes-networking",
     "microservices",
     "microservices"
   ],
@@ -2025,6 +2029,7 @@
   "kubernetes-operator": [
     "go-web-ecosystem",
     "goroutines",
+    "kubernetes-architecture",
     "observability",
     "programming-kubernetes"
   ],
@@ -2045,8 +2050,36 @@
     "knowledge-graph",
     "sample-article"
   ],
+  "kubernetes-networking": [
+    "kubernetes-architecture",
+    "kubernetes-security"
+  ],
+  "kubernetes-security": [
+    "kubernetes-architecture",
+    "kubernetes-networking"
+  ],
+  "sources/kubeschool-kubernetes-primer": [
+    "kubernetes-architecture",
+    "kubernetes-networking",
+    "kubernetes-security"
+  ],
   "sources/programming-kubernetes": [
+    "kubernetes-architecture",
     "kubernetes-operator"
+  ],
+  "kubernetes-architecture": [
+    "kubernetes-networking",
+    "kubernetes-operator",
+    "kubernetes-security"
+  ],
+  "shift-left-security": [
+    "kubernetes-security",
+    "clean-code-principles-patterns-silen"
+  ],
+  "sso": [
+    "kubernetes-security",
+    "password-storage",
+    "tls-https"
   ],
   "llama-index": [
     "langchain",
@@ -2125,10 +2158,6 @@
     "object-oriented-design",
     "solid-principles",
     "dive-into-design-patterns"
-  ],
-  "sso": [
-    "password-storage",
-    "tls-https"
   ],
   "tls-https": [
     "password-storage",
@@ -2273,9 +2302,6 @@
   "knowledge-graph": [
     "wiki-maintenance",
     "wiki-maintenance"
-  ],
-  "shift-left-security": [
-    "clean-code-principles-patterns-silen"
   ],
   "data-scientist": [
     "how-ai-changes-4-core-data-roles",
