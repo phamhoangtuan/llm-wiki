@@ -4,6 +4,18 @@
 
 ---
 
+## [2025-07-23] redesign | Hallmark Cobalt theme
+
+- Redesigned styles/main.css: OKLCH palette (anchor hue 250), Space Grotesk + Inter + JetBrains Mono font pairing, 4pt spacing scale, SVG icons, reduced motion
+- Updated scripts/convert-to-html.py: SVG icon buttons, page footer on every page
+- Updated scripts/js/theme.js: sun/moon SVG icon swap
+- Updated index.html: new design system, footer
+- Regenerated all 194 concept HTML pages + syntheses
+
+## [2025-07-23] lint | Orphan fix
+
+- Fixed orphan source: architecture-of-open-source-applications-vol2 now referenced by risk-driven-architecture, architectural-characteristics, design-patterns, architectural-decision-records
+
 ## [2026-07-13] ingest | KubeSchool — Understanding Kubernetes (Architectural Primer)
 
 - Source: Portainer's KubeSchool — 15-chapter web primer on Kubernetes architecture, principles, and sharp edges

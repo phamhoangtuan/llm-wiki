@@ -80,7 +80,7 @@ def load_slug_map():
                         rel = f"syntheses/{f.stem}"
                     SLUG_MAP[rel] = {"title": title, "type": ptype, "tags": fm.get("tags", []), "sources": fm.get("sources", []), "concepts": fm.get("concepts", [])}
                     SLUG_MAP[f.stem] = {"title": title, "type": ptype, "tags": fm.get("tags", []), "sources": fm.get("sources", []), "concepts": fm.get("concepts", [])}
-                except:
+                except Exception:
                     pass
 
 def convert_wikilinks(text, output_dir):
@@ -258,17 +258,24 @@ PAGE_HEAD = '''<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{title} — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{css_href}">
 <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
 <link href="../pagefind/pagefind-ui.css" rel="stylesheet">
 </head>
 <body>
 <header class="site-header">
-  <button id="sidebar-toggle" aria-label="Toggle sidebar">☰</button>
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
   <a href="{index_href}" class="site-title">LLM Wiki</a>
   <div class="header-actions">
     <div id="search"></div>
-    <button id="theme-toggle" aria-label="Toggle theme">🌓</button>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
   </div>
 </header>
 <div id="sidebar-overlay"></div>
@@ -276,7 +283,7 @@ PAGE_HEAD = '''<!DOCTYPE html>
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-content">
     <h3>Concepts</h3>
-    <nav id="sidebar-nav"><p style="color:var(--text-dim);font-size:0.78rem;padding:0.5rem;">Loading…</p></nav>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
     <div class="sidebar-resize-handle"></div>
   </div>
 </aside>
@@ -290,7 +297,15 @@ PAGE_FOOT = '''</main>
   </div>
 </aside>
 </div>
-<button id="focus-toggle" title="Focus mode">⛶</button>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="{index_href}">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
 <script src="https://unpkg.com/@popperjs/core@2"></script>
 <script src="https://unpkg.com/tippy.js@6"></script>
 <script src="../pagefind/pagefind-ui.js"></script>
@@ -311,7 +326,8 @@ def build_page_head(title, depth):
 
 def build_page_tail(depth):
     scripts_href = "../scripts/js" if depth == 1 else "../../scripts/js"
-    return PAGE_FOOT.format(scripts_href=scripts_href)
+    index_href = "../index.html" if depth == 1 else "../../index.html"
+    return PAGE_FOOT.format(scripts_href=scripts_href, index_href=index_href)
 
 def build_connections_section(connections, output_dir):
     if not connections:
@@ -345,14 +361,16 @@ def build_connections_section(connections, output_dir):
             slug = target.replace("concepts/", "")
             href = f"../concepts/{slug}.html" if is_source else f"{slug}.html"
         elif target.startswith("sources/"):
-            cards_html += f'\n    <div class="connection-card text-ref">\n      <span class="connection-type related">{c["type"]}</span>\n      <h4>{title}</h4>\n      <p>{c["desc"]}</p>\n    </div>'
+            source_title = SLUG_MAP.get(target, {}).get("title", target)
+            cards_html += f'\n    <div class="connection-card text-ref">\n      <span class="connection-type related">{c["type"]}</span>\n      <h4>{source_title}</h4>\n      <p>{c["desc"]}</p>\n    </div>'
             continue
         elif is_source:
             href = f"../concepts/{target}.html"
         elif is_concept:
             entry = SLUG_MAP.get(target)
             if entry and entry["type"] == "source":
-                cards_html += f'\n    <div class="connection-card text-ref">\n      <span class="connection-type related">{c["type"]}</span>\n      <h4>{title}</h4>\n      <p>{c["desc"]}</p>\n    </div>'
+                source_title = SLUG_MAP.get(target, {}).get("title", target)
+                cards_html += f'\n    <div class="connection-card text-ref">\n      <span class="connection-type related">{c["type"]}</span>\n      <h4>{source_title}</h4>\n      <p>{c["desc"]}</p>\n    </div>'
                 continue
             href = f"{target}.html"
         else:

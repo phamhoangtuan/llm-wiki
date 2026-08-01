@@ -4,7 +4,7 @@ type: concept
 created: 2026-07-13
 updated: 2026-07-13
 tags: [software-architecture, non-functional-requirements, -ilities]
-sources: [head-first-software-architecture]
+sources: [head-first-software-architecture, architecture-of-open-source-applications-vol2]
 ---
 
 # Architectural Characteristics

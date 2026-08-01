@@ -4,7 +4,7 @@ type: concept
 created: 2026-07-13
 updated: 2026-07-13
 tags: [software-design, patterns, oop, gang-of-four]
-sources: [dive-into-design-patterns]
+sources: [dive-into-design-patterns, architecture-of-open-source-applications-vol2]
 ---
 
 # Design Patterns

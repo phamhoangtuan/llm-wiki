@@ -4,7 +4,7 @@ type: concept
 created: 2026-07-13
 updated: 2026-07-13
 tags: [software-architecture, documentation, decision-making, adr]
-sources: [head-first-software-architecture]
+sources: [head-first-software-architecture, architecture-of-open-source-applications-vol2]
 ---
 
 # Architectural Decision Records (ADRs)

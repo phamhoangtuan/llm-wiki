@@ -4,7 +4,7 @@ type: concept
 tags: [software-architecture, risk-management, design-methodology]
 created: 2026-06-26
 updated: 2026-06-26
-sources: [just-enough-software-architecture-fairbanks, head-first-software-architecture]
+sources: [just-enough-software-architecture-fairbanks, head-first-software-architecture, architecture-of-open-source-applications-vol2]
 aliases: [risk-driven-model, commensurate-effort]
 ---
 
