@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data Modeling — LLM Wiki</title>
+<title>Statistical Thinking — LLM Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles/main.css">
@@ -36,91 +36,90 @@
 <main class="main-content">
 <div class="breadcrumb-wrapper"><nav class="breadcrumb">
   <a href="../index.html">Home</a> <span class="sep">/</span>
-  <a href="../index.html#cat-data-engineering">Data Engineering</a> <span class="sep">/</span>
-  <span>Data Modeling</span>
+  <a href="../index.html#cat-statistics">Statistics</a> <span class="sep">/</span>
+  <span>Statistical Thinking</span>
 </nav></div>
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
-  <h1>Data Modeling</h1>
-  <div class="page-meta"><span>Source: data-fundamentals-matter-2026, data-engineering-handbook</span><span>Updated: 2026-06-15</span></div>
-  <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">data-modeling</span><span class="tag">sql</span><span class="tag">database-design</span></div>
+  <h1>Statistical Thinking</h1>
+  <div class="page-meta"><span>Source: becoming-data-head</span><span>Updated: 2026-07-14</span></div>
+  <div class="page-tags"><span class="tag">statistics</span><span class="tag">data-literacy</span><span class="tag">critical-thinking</span><span class="tag">decision-making</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
-<p><strong>Data Modeling</strong> is the practice of designing the structure, relationships, and constraints of data within a storage system. It determines whether queries are fast or impossible, whether analytics are accurate or misleading, and whether data systems are maintainable or a tangled mess. In the 2026 AI era, data modeling remains one of the most critical and enduring <a href="data-engineering-fundamentals.html" class="wiki-link">data engineering fundamentals</a> — AI can suggest schemas but cannot understand business semantics.</p>
-<h2 id="why-data-modeling-matters">Why Data Modeling Matters</h2>
+<p><strong>Statistical Thinking</strong> is the discipline of applying a critical, evidence-driven lens to data claims — understanding that variation exists in all things, that correlation is not causation, and that every number has a "data origin story" that must be interrogated (source: <span class="wiki-link source-ref">sources/becoming-data-head</span>).</p>
+<h2 id="core-principles">Core Principles</h2>
+<h3 id="1-variation-is-universal">1. Variation Is Universal</h3>
+<p>Everything varies — measurements, people, processes. Statistical thinking means expecting variation and designing analyses that account for it rather than being surprised by it.</p>
+<h3 id="2-problem-definition-comes-first">2. Problem Definition Comes First</h3>
+<p>The most critical and overlooked step: "Why is this problem important? Who does it affect? What decision will this analysis inform?" Statistical thinking starts <em>before</em> any data is collected.</p>
+<h3 id="3-skepticism-of-cold-hard-facts">3. Skepticism of "Cold Hard Facts"</h3>
+<p>No number is self-evident. Every statistic has:</p>
 <ul>
-<li><strong>Query performance</strong>: A well-modeled schema can be 100x faster than a poorly modeled one</li>
-<li><strong>Business accuracy</strong>: Models encode business rules and semantics — without them, "revenue" means different things to different teams</li>
-<li><strong>Maintainability</strong>: Good models evolve gracefully as requirements change; bad models require rewrites</li>
-<li><strong>AI consumption</strong>: AI agents querying data need clean, well-modeled structures — raw, unmodeled data drives token costs through the roof</li>
+<li>A <strong>collection method</strong> — who gathered it, how, and why?</li>
+<li>A <strong>sample</strong> — who was included? Who was excluded?</li>
+<li><strong>Assumptions</strong> — what was taken for granted?</li>
+<li>A <strong>definition</strong> — how were the terms operationalized?</li>
 </ul>
-<h2 id="key-approaches">Key Approaches</h2>
+<h3 id="4-context-over-absolutes">4. Context Over Absolutes</h3>
+<p>"Sales are up 20%" is meaningless without context. Statistical thinkers ask: "Compared to what? Over what period? Is this practically significant or just statistically significant?"</p>
+<h2 id="questioning-checklist">Questioning Checklist</h2>
 <table><thead><tr>
-<th>Approach</th>
-<th>Description</th>
-<th>Use Case</th>
+<th>Level</th>
+<th>Questions to Ask</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Dimensional Modeling</strong></td>
-<td>Star/snowflake schemas with fact and dimension tables</td>
-<td>Analytics, BI, data warehouses</td>
+<td><strong>Data</strong></td>
+<td>Where did it come from? What's the sample size? Is it representative?</td>
 </tr>
 <tr>
-<td><strong>Normalized Modeling</strong></td>
-<td>3NF/BCNF — minimal redundancy, maximum integrity</td>
-<td>OLTP systems, operational data stores</td>
+<td><strong>Statistics</strong></td>
+<td>Compared to what? What's the null hypothesis? What are the confidence intervals?</td>
 </tr>
 <tr>
-<td><strong>Data Vault</strong></td>
-<td>Hub-Link-Satellite pattern for auditable, scalable integration</td>
-<td>Enterprise data warehouses with many sources</td>
+<td><strong>Models</strong></td>
+<td>What assumptions does this model make? Could there be data leakage? Is it overfit?</td>
 </tr>
 <tr>
-<td><strong>Wide Tables / One Big Table</strong></td>
-<td>Denormalized for query speed</td>
-<td>Analytics on columnar stores, ML feature stores</td>
+<td><strong>Conclusions</strong></td>
+<td>Is this practically significant? Who benefits from this conclusion? What's missing?</td>
 </tr>
 </tbody></table>
-<h2 id="the-schema-on-read-trap">The Schema-on-Read Trap</h2>
-<p>The idea of "skip modeling and let AI figure it out later" (schema on read) was tried in 2010 and failed. It produces inconsistent results, explodes token costs, and guarantees that no two queries agree on what "customer" means. Modeling upfront is an investment that compounds.</p>
+<h2 id="application-to-data-science">Application to Data Science</h2>
+<p>Statistical thinking is the "human firewall" against:</p>
+<ul>
+<li><strong>p-hacking</strong>: selectively reporting significant results</li>
+<li><strong>Data dredging</strong>: finding patterns in noise through exhaustive searching</li>
+<li><strong>Survivorship bias</strong>: drawing conclusions from winners while ignoring losers</li>
+<li><strong>Simpson's paradox</strong>: trends that reverse when data is disaggregated</li>
+</ul>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="data-engineering-fundamentals.html">
+    <a class="connection-card" href="data-head.html">
       <span class="connection-type related">Related</span>
-      <h4>Data Engineering Fundamentals</h4>
-      <p>alongside SQL and Python, data modeling is one of the three enduring DE skills</p>
+      <h4>Data Head</h4>
+      <p>statistical thinking is the core competency of the Data Head persona</p>
     </a>
-    <a class="connection-card" href="analytics-engineer|Analytics Engineers.html">
+    <a class="connection-card" href="data-analyst|Data Analyst.html">
       <span class="connection-type related">Related</span>
-      <h4>analytics-engineer|Analytics Engineers</h4>
-      <p>they own the transformation layer where dimensional models are built</p>
+      <h4>data-analyst|Data Analyst</h4>
+      <p>analysis without statistical thinking is noise generation</p>
     </a>
-    <a class="connection-card" href="dbt.html">
-      <span class="connection-type related">Related</span>
-      <h4>dbt (data build tool)</h4>
-      <p>dbt models are the physical realization of data modeling decisions</p>
-    </a>
-    <a class="connection-card" href="data-governance.html">
+    <a class="connection-card" href="data-quality-monitoring.html">
       <span class="connection-type related">Related to</span>
-      <h4>Data Governance</h4>
-      <p>data models encode governance rules (naming conventions, entity definitions)</p>
+      <h4>Data Quality Monitoring</h4>
+      <p>statistical thinking catches silent quality issues</p>
     </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
-      <h4>In 2026 The Data Fundamentals Matter More Than Ever</h4>
-      <p>SeattleDataGuy on fundamentals</p>
-    </div>
-    <div class="connection-card text-ref">
-      <span class="connection-type related">Related</span>
-      <h4>Data Engineering — Data Engineering Handbook</h4>
-      <p>DE Handbook discipline overview</p>
+      <h4>Becoming a Data Head: How to Think, Speak & Understand Data Science, Statistics & Machine Learning</h4>
+      <p>Gutman & Goldmeier's framework</p>
     </div>
   </div>
 </section>
-<nav class="pagination"><a href="data-lifecycle.html" class="prev">← Data Lifecycle</a><a href="data-observability.html" class="next">Data Observability →</a></nav>
+<nav class="pagination"><a href="stateless-architecture.html" class="prev">← Stateless Architecture</a><a href="stream-processing.html" class="next">Stream Processing →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

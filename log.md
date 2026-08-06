@@ -4,6 +4,35 @@
 
 ---
 
+## [2026-07-14] lint | Post-ingest health check
+
+- Scanned all 291 wiki pages (209 concepts + 82 sources) across 5 lint dimensions
+- **Broken wikilinks**: 0 found — all wikilinks resolve correctly
+- **Frontmatter**: all concept and source pages have required fields (title, type, created/ingested, sources/concepts)
+- **Orphans**: 0 true orphans — all concept pages have ≥1 inbound link from another page; 30 near-orphans (1 inbound) including 7 newly created concepts (expected)
+- **Unindexed pages**: found 5 (1 concept + 4 sources) — all 5 added to index.md
+  - concept: software-construction (from Code Complete ingest on 2026-07-13)
+  - sources: code-complete, dive-into-design-patterns, game-theory-bonanno, head-first-software-architecture
+- **Contradictions**: 0 found — new content (DataOps, stream processing, observability) is complementary to existing pages
+- **Gaps**: no unreferenced concepts in source frontmatter — all sources' concepts: arrays resolve to existing concept pages
+- Fixed: added 5 missing entries to index.md; regenerated HTML
+- Total pages: 291 (209 concepts + 82 sources)
+
+---
+
+## [2026-07-14] ingest | 5 books batch
+
+- Created sources/500-lines-or-less.md — AOSA vol.4: design decisions "in the small"
+- Created sources/becoming-data-head.md — Gutman & Goldmeier on statistical thinking for non-technical professionals
+- Created sources/data-observability-for-data-engineering.md — Pinto & El Khammal on pipeline transparency, lineage, and incident management
+- Created sources/practical-dataops.md — Atwal's Lean/Agile/DevOps integration for data product delivery
+- Created sources/streaming-systems.md — Akidau's definitive framework: 4 questions, watermarks, stream-table duality
+- New concepts: data-observability, watermarks, stream-table-duality, statistical-thinking, data-head, t-shaped-skills, data-product
+- Updated concepts: dataops (Lean/Agile/DevOps foundations, DataOps Factory, Minimum Viable DataOps), stream-processing (4 questions, streaming ⊃ batch, stream-table duality, watermarks), observability (data observability cross-reference)
+- Updated index.md (208 concepts + 78 sources = 286 pages)
+
+---
+
 ## [2025-07-23] redesign | Hallmark Cobalt theme
 
 - Redesigned styles/main.css: OKLCH palette (anchor hue 250), Space Grotesk + Inter + JetBrains Mono font pairing, 4pt spacing scale, SVG icons, reduced motion
@@ -770,7 +799,7 @@
 ## [2026-06-29] lint | Post-ingest health check
 
 - Scanned all 207 wiki pages (153 concepts + 54 sources) across 3 lint dimensions (broken wikilinks, orphans, frontmatter)
-- Broken wikilinks: 0 found — all [[wikilinks]] resolve correctly
+- Broken wikilinks: 0 found — all wikilinks resolve correctly
 - Orphans: 14 near-orphans (1 inbound link each): ai-psychosis, apache-arrow, architecture-in-agile, bloom-filter, cloud-service-models, data-scientist, feedback, http-evolution, knowledge-graph, message-delivery-semantics, python-repl, redis, shift-left-security, snowflake-id — deferred to next lint pass
 - Frontmatter: all 10 new/updated files have complete frontmatter; 1 source (system-design-interview-volume-2) has empty `url: ""` — consistent with 18 other book sources
 - Fixed: stale comment in data-engineering-fundamentals.md (claimed `[[data-modeling]]` didn't exist; page was created in prior ingest)

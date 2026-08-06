@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>DataOps</h1>
-  <div class="page-meta"><span>Source: data-engineering-with-dbt</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: data-engineering-with-dbt, practical-dataops</span><span>Updated: 2026-07-14</span></div>
   <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">devops</span><span class="tag">dbt</span><span class="tag">analytics</span><span class="tag">methodology</span></div>
 </div>
 <div class="content-area concept">
@@ -153,6 +153,55 @@
 <pre><code>Ingestion (Fivetran, Airbyte) → Storage (Snowflake, BigQuery) → Transformation (dbt)
 → Orchestration (Airflow, Dagster) → BI (Looker, Metabase)</code></pre>
 <p>DataOps ensures each layer is versioned, tested, and maintainable.</p>
+<h2 id="the-dataops-factory-atwals-vision">The DataOps Factory (Atwal's Vision)</h2>
+<p>Atwal extends DataOps beyond the transformation layer into a full organizational methodology. The goal: move data science from "bespoke hand-crafted" to a mechanized, high-velocity <strong><a href="data-product.html" class="wiki-link">DataOps Factory</a></strong> — where data products are in continuous production, constantly monitored, and iteratively improved (source: <span class="wiki-link source-ref">sources/practical-dataops</span>).</p>
+<h2 id="foundational-disciplines">Foundational Disciplines</h2>
+<p>DataOps integrates three established methodologies:</p>
+<table><thead><tr>
+<th>Discipline</th>
+<th>DataOps Application</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Lean Thinking</strong></td>
+<td>Eliminate <em>muda</em> (waste): partially done work, waiting for data access, data quality defects. Use Value Stream Mapping to visualize the end-to-end journey</td>
+</tr>
+<tr>
+<td><strong>Agile Collaboration</strong></td>
+<td>Iterative delivery, MVPs for data uncertainty. DataOps Manifesto prioritizes "working analytics" over documentation, cross-functional ownership over silos</td>
+</tr>
+<tr>
+<td><strong>DevOps for Data</strong></td>
+<td>CI/CD + Infrastructure-as-Code for reproducible data environments. Addresses the "Data Conflict" — data adds complexity beyond code alone</td>
+</tr>
+</tbody></table>
+<h2 id="cultural-shift">Cultural Shift</h2>
+<table><thead><tr>
+<th>From</th>
+<th>To</th>
+</tr></thead><tbody>
+<tr>
+<td>IT as <strong>gatekeeper</strong> (locks down data)</td>
+<td>IT as <strong>shopkeeper</strong> (automated self-service access)</td>
+</tr>
+<tr>
+<td>Functional silos (DBA team, scientist team)</td>
+<td>Domain-oriented cross-functional teams</td>
+</tr>
+<tr>
+<td>I-shaped specialists (one deep skill)</td>
+<td>[[t-shaped-skills</td>
+<td>T-shaped]] generalized specialists</td>
+</tr>
+</tbody></table>
+<h2 id="data-veracity-trust-at-speed">Data Veracity (Trust at Speed)</h2>
+<p>Fast DataOps requires "brakes" — automated governance that builds confidence:</p>
+<ul>
+<li><strong>Automated data governance</strong>: RBAC, automated classification for sensitive data</li>
+<li><strong>Metadata-driven discovery</strong>: Data catalogs and lineage so users find, understand, and trust data</li>
+<li><strong>Circuit-breakers</strong>: Automated quality gates that halt pipelines on violation</li>
+</ul>
+<h2 id="minimum-viable-dataops">Minimum Viable DataOps</h2>
+<p>Start with a <strong>single thin slice</strong> — end-to-end delivery of one data product — to prove value before scaling. Choose a high-value use case, deliver, learn, then expand incrementally.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -192,10 +241,30 @@
       <h4>Data Engineering Fundamentals</h4>
       <p>DataOps applies software engineering rigor to the fundamental DE skills</p>
     </a>
+    <a class="connection-card" href="data-product.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Product</h4>
+      <p>the output of a mature DataOps operation is a continuously produced data product</p>
+    </a>
+    <a class="connection-card" href="t-shaped-skills.html">
+      <span class="connection-type related">Requires</span>
+      <h4>T-Shaped Skills</h4>
+      <p>cross-functional DataOps teams need generalized specialists</p>
+    </a>
+    <a class="connection-card" href="data-observability.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Observability</h4>
+      <p>observability is the feedback loop that makes DataOps safe at speed</p>
+    </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
       <h4>Data Engineering with dbt</h4>
       <p>Roberto Zagni's 603-page guide</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Practical DataOps: Delivering Agile Data Science at Scale</h4>
+      <p>Harvinder Atwal's Lean/Agile/DevOps integration for data</p>
     </div>
   </div>
 </section>

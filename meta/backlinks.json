@@ -330,6 +330,7 @@
     "real-time-analytics",
     "stateful-stream-processing",
     "stream-processing",
+    "watermarks",
     "windowing",
     "building-real-time-analytics-systems",
     "hugo-data-ingestion-platform-flink",
@@ -367,6 +368,8 @@
     "data-lifecycle",
     "data-lifecycle",
     "data-modeling",
+    "data-observability",
+    "data-product",
     "data-quality-monitoring",
     "differential-privacy",
     "self-service-analytics",
@@ -384,6 +387,7 @@
   "semantic-layer": [
     "analytics-engineer",
     "data-engineer",
+    "data-product",
     "reranking",
     "self-service-analytics",
     "self-service-analytics",
@@ -394,11 +398,13 @@
   ],
   "data-analyst": [
     "analytics-engineer",
+    "data-head",
     "data-scientist",
     "data-scientist",
     "self-service-analytics",
     "self-service-analytics",
     "semantic-layer",
+    "statistical-thinking",
     "how-ai-changes-4-core-data-roles",
     "how-ai-changes-4-core-data-roles"
   ],
@@ -406,6 +412,7 @@
     "analytics-engineer",
     "data-analyst",
     "data-analyst",
+    "data-head",
     "data-scientist",
     "semantic-layer",
     "how-ai-changes-4-core-data-roles",
@@ -455,10 +462,15 @@
     "data-engineer",
     "data-engineering-fundamentals",
     "data-governance",
+    "data-observability",
+    "data-product",
+    "data-product",
     "data-quality-monitoring",
     "dbt",
     "mlops",
     "semantic-layer",
+    "t-shaped-skills",
+    "t-shaped-skills",
     "data-engineering-with-dbt",
     "data-engineering-with-python",
     "data-fundamentals-matter-2026",
@@ -482,6 +494,7 @@
     "data-scientist",
     "data-scientist",
     "market-basket-analysis",
+    "t-shaped-skills",
     "building-llms-for-production",
     "data-engineer-role-handbook",
     "data-engineering-handbook",
@@ -702,6 +715,9 @@
     "delta-lake",
     "liquid-clustering",
     "stream-processing",
+    "stream-processing",
+    "stream-table-duality",
+    "stream-table-duality",
     "building-real-time-analytics-systems",
     "hugo-data-ingestion-platform-flink",
     "hugo-data-ingestion-platform-flink",
@@ -730,6 +746,8 @@
     "redis",
     "retrieval-augmented-generation",
     "stream-processing",
+    "stream-table-duality",
+    "stream-table-duality",
     "building-real-time-analytics-systems",
     "databricks-zerobus",
     "hugo-data-ingestion-platform-flink",
@@ -786,6 +804,10 @@
     "edge-computing",
     "event-time-processing",
     "stateful-stream-processing",
+    "stream-table-duality",
+    "stream-table-duality",
+    "watermarks",
+    "watermarks",
     "windowing",
     "building-real-time-analytics-systems",
     "stream-processing-apache-flink"
@@ -794,6 +816,8 @@
     "apache-flink",
     "stateful-stream-processing",
     "stream-processing",
+    "watermarks",
+    "watermarks",
     "windowing",
     "windowing",
     "stream-processing-apache-flink"
@@ -809,6 +833,8 @@
     "apache-flink",
     "event-time-processing",
     "stateful-stream-processing",
+    "stream-processing",
+    "watermarks",
     "stream-processing-apache-flink"
   ],
   "sources/stream-processing-apache-flink": [
@@ -890,6 +916,7 @@
     "kappa-architecture",
     "kappa-architecture",
     "real-time-analytics",
+    "stream-processing",
     "building-real-time-analytics-systems"
   ],
   "kappa-architecture": [
@@ -898,6 +925,7 @@
     "lambda-architecture",
     "lambda-architecture",
     "real-time-analytics",
+    "stream-processing",
     "building-real-time-analytics-systems"
   ],
   "lance-file-format": [
@@ -1018,6 +1046,8 @@
   ],
   "observability": [
     "architectural-characteristics",
+    "data-observability",
+    "data-observability",
     "kubernetes-operator",
     "llm-evaluation-metrics",
     "message-queue",
@@ -1295,6 +1325,7 @@
     "differential-dataflow",
     "incremental-view-maintenance",
     "incremental-view-maintenance",
+    "stream-table-duality",
     "timely-dataflow",
     "materialized-views-quick-insights"
   ],
@@ -1533,6 +1564,7 @@
     "self-service-analytics",
     "semantic-layer",
     "semantic-layer",
+    "t-shaped-skills",
     "data-engineering-with-dbt",
     "how-ai-changes-4-core-data-roles",
     "how-ai-changes-4-core-data-roles",
@@ -1567,10 +1599,14 @@
   ],
   "data-quality-monitoring": [
     "data-anonymization",
+    "data-observability",
+    "data-observability",
+    "data-product",
     "delta-live-tables",
     "differential-privacy",
     "fine-tuning",
     "llm-evaluation-metrics",
+    "statistical-thinking",
     "synthetic-data",
     "building-anonymization-pipeline",
     "data-engineering-with-python",
@@ -1650,6 +1686,21 @@
     "delta-grows-up-writes-unity-catalog",
     "delta-grows-up-writes-unity-catalog"
   ],
+  "sources/becoming-data-head": [
+    "data-head",
+    "data-head",
+    "statistical-thinking",
+    "statistical-thinking"
+  ],
+  "statistical-thinking": [
+    "data-head",
+    "data-head"
+  ],
+  "data-scientist": [
+    "data-head",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles"
+  ],
   "medallion-architecture": [
     "data-lakehouse",
     "data-lakehouse",
@@ -1676,6 +1727,18 @@
   "snowflake-data-cloud": [
     "data-lakehouse",
     "snowflake-the-definitive-guide"
+  ],
+  "sources/data-observability-for-data-engineering": [
+    "data-observability",
+    "data-observability"
+  ],
+  "sources/practical-dataops": [
+    "data-product",
+    "data-product",
+    "dataops",
+    "dataops",
+    "t-shaped-skills",
+    "t-shaped-skills"
   ],
   "sources/data-quality-traffic-lights-sahlin": [
     "data-quality-monitoring"
@@ -1705,6 +1768,18 @@
   ],
   "sources/system-design-interview-xu": [
     "database-sharding"
+  ],
+  "data-product": [
+    "dataops",
+    "dataops"
+  ],
+  "t-shaped-skills": [
+    "dataops",
+    "dataops"
+  ],
+  "data-observability": [
+    "dataops",
+    "observability"
   ],
   "sources/data-engineering-with-dbt": [
     "dataops"
@@ -1783,6 +1858,7 @@
     "metalearning",
     "spaced-repetition",
     "staff-engineering",
+    "t-shaped-skills",
     "testing-effect"
   ],
   "testing-effect": [
@@ -2281,6 +2357,28 @@
     "staff-plus-archetypes",
     "technical-leadership"
   ],
+  "data-head": [
+    "statistical-thinking"
+  ],
+  "sources/streaming-systems": [
+    "stream-processing",
+    "stream-processing",
+    "stream-processing",
+    "stream-table-duality",
+    "stream-table-duality",
+    "watermarks",
+    "watermarks"
+  ],
+  "watermarks": [
+    "stream-processing",
+    "stream-processing",
+    "stream-processing"
+  ],
+  "stream-table-duality": [
+    "stream-processing",
+    "stream-processing",
+    "stream-processing"
+  ],
   "case-interview": [
     "technical-interview",
     "the-1-percent-case-interview"
@@ -2302,10 +2400,6 @@
   "knowledge-graph": [
     "wiki-maintenance",
     "wiki-maintenance"
-  ],
-  "data-scientist": [
-    "how-ai-changes-4-core-data-roles",
-    "how-ai-changes-4-core-data-roles"
   ],
   "ai-psychosis": [
     "meta-destroying-engineering-org-orosz"

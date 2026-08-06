@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stateless Architecture — LLM Wiki</title>
+<title>Data Product — LLM Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles/main.css">
@@ -36,104 +36,100 @@
 <main class="main-content">
 <div class="breadcrumb-wrapper"><nav class="breadcrumb">
   <a href="../index.html">Home</a> <span class="sep">/</span>
-  <a href="../index.html#cat-system-design">System Design</a> <span class="sep">/</span>
-  <span>Stateless Architecture</span>
+  <a href="../index.html#cat-dataops">Dataops</a> <span class="sep">/</span>
+  <span>Data Product</span>
 </nav></div>
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
-  <h1>Stateless Architecture</h1>
-  <div class="page-meta"><span>Source: system-design-interview-xu</span><span>Updated: 2026-05-24</span></div>
-  <div class="page-tags"><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">sessions</span><span class="tag">distributed-systems</span></div>
+  <h1>Data Product</h1>
+  <div class="page-meta"><span>Source: practical-dataops</span><span>Updated: 2026-07-14</span></div>
+  <div class="page-tags"><span class="tag">dataops</span><span class="tag">data-engineering</span><span class="tag">product-thinking</span><span class="tag">data-mesh</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
-<p>A stateless architecture stores session data in a shared external store (Redis, database, or NoSQL) rather than on individual web servers. This enables any server to handle any request, which is a prerequisite for horizontal scaling, autoscaling, and simple failover.</p>
-<h2 id="stateful-vs-stateless">Stateful vs Stateless</h2>
+<p>A <strong>Data Product</strong> is the output of treating data not as a one-off project deliverable but as a continuously produced, monitored, and iteratively improved asset — analogous to a software product. This is the core goal of <a href="dataops.html" class="wiki-link">DataOps</a>: moving from "bespoke hand-crafted" data science to a high-velocity, factory-like operation (source: <span class="wiki-link source-ref">sources/practical-dataops</span>).</p>
+<h2 id="project-vs-product">Project vs Product</h2>
 <table><thead><tr>
 <th>Aspect</th>
-<th>Stateful</th>
-<th>Stateless</th>
+<th>Data Project</th>
+<th>Data Product</th>
 </tr></thead><tbody>
 <tr>
-<td>Session storage</td>
-<td>Local server memory</td>
-<td>Shared external store (Redis, DB)</td>
+<td><strong>Lifetime</strong></td>
+<td>Finite — ends at delivery</td>
+<td>Continuous — runs in production</td>
 </tr>
 <tr>
-<td>Routing requirement</td>
-<td>Sticky sessions (user → same server)</td>
-<td>Any server can handle any request</td>
+<td><strong>Ownership</strong></td>
+<td>Project team disbands after completion</td>
+<td>Cross-functional team maintains and improves</td>
 </tr>
 <tr>
-<td>Scaling</td>
-<td>Hard — must migrate sessions</td>
-<td>Easy — just add/remove servers</td>
+<td><strong>Quality</strong></td>
+<td>Tested once before handoff</td>
+<td>Monitored continuously with alerts</td>
 </tr>
 <tr>
-<td>Failover</td>
-<td>Complex — session data may be lost</td>
-<td>Simple — route to any healthy server</td>
+<td><strong>Improvement</strong></td>
+<td>Fixed scope; change = new project</td>
+<td>Iterative based on user feedback and experimentation</td>
 </tr>
 <tr>
-<td>Autoscaling</td>
-<td>Impractical</td>
-<td>Native — add servers when load increases</td>
+<td><strong>User trust</strong></td>
+<td>"Here's the report"</td>
+<td>"The dashboard is always accurate"</td>
 </tr>
 </tbody></table>
-<h2 id="stateless-flow">Stateless Flow</h2>
-<pre><code>User Request → Load Balancer → [Any Web Server]
-  ↓
-Fetch session from Redis → Process → Return</code></pre>
-<h2 id="shared-session-store-options">Shared Session Store Options</h2>
-<table><thead><tr>
-<th>Store</th>
-<th>Best For</th>
-</tr></thead><tbody>
-<tr>
-<td>Redis</td>
-<td>In-memory speed; ideal for session caching</td>
-</tr>
-<tr>
-<td>Memcached</td>
-<td>Simple key-value; good for ephemeral data</td>
-</tr>
-<tr>
-<td>Database</td>
-<td>Durability requirements; slower but persistent</td>
-</tr>
-<tr>
-<td>JWT (client-side)</td>
-<td>No server storage; token contains session state</td>
-</tr>
-</tbody></table>
-<blockquote><strong>Key insight</strong>: Autoscaling becomes viable only with stateless architecture. The system automatically adds servers when traffic increases and removes them when it decreases — zero manual intervention.</blockquote>
+<h2 id="characteristics-of-a-data-product">Characteristics of a Data Product</h2>
+<ol>
+<li><strong>In continuous production</strong> — not a one-time analysis or static dashboard</li>
+<li><strong>Monitored and measured</strong> — SLIs/SLOs for freshness, accuracy, uptime</li>
+<li><strong>Self-service</strong> — users can discover, access, and trust it without gatekeepers</li>
+<li><strong>Versioned and governed</strong> — schema changes are managed, not breaking</li>
+<li><strong>Iteratively improved</strong> — feedback drives the backlog, not a frozen requirements doc</li>
+</ol>
+<h2 id="the-dataops-factory">The DataOps Factory</h2>
+<p>The "factory" metaphor means:</p>
+<ul>
+<li><strong>Standardized inputs</strong> — data sources with known schemas, SLAs</li>
+<li><strong>Automated pipelines</strong> — no manual CSV exports, no email attachments</li>
+<li><strong>Quality gates</strong> — automated testing at each stage (like CI/CD for software)</li>
+<li><strong>Repeatable outcomes</strong> — same input → same output, no "it worked on my machine"</li>
+</ul>
+<h2 id="minimum-viable-data-product">Minimum Viable Data Product</h2>
+<p>Start with a <strong>single thin slice</strong> — an end-to-end delivery of one data product — to prove value before scaling. Choose a high-value use case with a supportive stakeholder. Learn, then expand.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Foundation for</span>
-      <h4>Scalable Architecture</h4>
-      <p>enables horizontal scaling</p>
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type core">Core to</span>
+      <h4>DataOps</h4>
+      <p>the product mindset is what distinguishes DataOps from ad-hoc data work</p>
     </a>
-    <a class="connection-card" href="load-balancer.html">
+    <a class="connection-card" href="data-quality-monitoring.html">
       <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>any server can receive any request</p>
+      <h4>Data Quality Monitoring</h4>
+      <p>continuous monitoring is a prerequisite for treating data as a product</p>
     </a>
-    <a class="connection-card" href="cache-strategy.html">
+    <a class="connection-card" href="data-governance.html">
       <span class="connection-type related">Related to</span>
-      <h4>Cache Strategy</h4>
-      <p>session data often stored in cache tier</p>
+      <h4>Data Governance</h4>
+      <p>governed data products build user trust</p>
     </a>
-    <a class="connection-card" href="database-replication.html">
+    <a class="connection-card" href="semantic-layer.html">
       <span class="connection-type related">Related to</span>
-      <h4>Database Replication</h4>
-      <p>session store may itself be replicated</p>
+      <h4>Semantic Layer</h4>
+      <p>the semantic layer makes data products discoverable and consistent</p>
     </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Practical DataOps: Delivering Agile Data Science at Scale</h4>
+      <p>Atwal on the DataOps factory</p>
+    </div>
   </div>
 </section>
-<nav class="pagination"><a href="stateful-stream-processing.html" class="prev">← Stateful Stream Processing</a><a href="statistical-thinking.html" class="next">Statistical Thinking →</a></nav>
+<nav class="pagination"><a href="data-observability.html" class="prev">← Data Observability</a><a href="data-quality-monitoring.html" class="next">Data Quality Monitoring →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

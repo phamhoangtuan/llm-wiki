@@ -23,7 +23,7 @@ Beyond the three pillars, production systems need standardized observability inf
 ## The Three Pillars
 
 | Pillar | What It Captures | Example |
-|--------|------------------|---------|
+| -------- | ------------------ | --------- |
 | **Metrics** | Numeric data over time | CPU usage, request latency, error rate |
 | **Logs** | Discrete events | "User login failed: wrong password", "DB connection timeout" |
 | **Traces** | Request path through services | `GET /api/users` → LB → Web → DB → Cache |
@@ -31,7 +31,7 @@ Beyond the three pillars, production systems need standardized observability inf
 ## Monitoring Levels
 
 | Level | Metrics | Purpose |
-|-------|---------|---------|
+| ------- | --------- | --------- |
 | **Host-level** | CPU, memory, disk I/O, network | Detect server overload or hardware failure |
 | **Aggregated-level** | DB query latency, cache hit rate, queue length | Evaluate health of each tier |
 | **Business-level** | DAU, conversion rate, revenue | Measure real-world system impact |
@@ -39,7 +39,7 @@ Beyond the three pillars, production systems need standardized observability inf
 ## Key Metrics to Track
 
 | Metric | Why It Matters |
-|--------|---------------|
+| -------- | --------------- |
 | **Latency** | p50, p95, p99 response times — users feel p95, not average |
 | **Throughput** | Requests per second — capacity planning |
 | **Error rate** | 4xx/5xx percentage — reliability indicator |
@@ -48,6 +48,7 @@ Beyond the three pillars, production systems need standardized observability inf
 > **Principle**: You can't scale what you can't measure. Manual operations don't scale — automate monitoring, alerting, and remediation.
 
 ---
+
 - Core to [[scalable-architecture]] — essential for operating distributed systems
 - Related to [[message-queue]] — queue depth and consumer lag are critical signals
 - Related to [[cache-strategy]] — hit rate and eviction rate reveal cache health
@@ -57,3 +58,4 @@ Beyond the three pillars, production systems need standardized observability inf
 - Required by [[microservices]] — distributed tracing across services is mandatory for debugging multi-service systems
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén on OpenTelemetry standardization, SLIs/SLOs, and automated alerting
 - Related to [[llm-evaluation-metrics]] — LLM observability extends traditional observability into non-deterministic AI systems
+- Distinct from [[data-observability]] — software observability monitors services; data observability monitors pipelines for freshness, lineage, and schema drift

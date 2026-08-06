@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stateless Architecture — LLM Wiki</title>
+<title>Data Head — LLM Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles/main.css">
@@ -36,104 +36,104 @@
 <main class="main-content">
 <div class="breadcrumb-wrapper"><nav class="breadcrumb">
   <a href="../index.html">Home</a> <span class="sep">/</span>
-  <a href="../index.html#cat-system-design">System Design</a> <span class="sep">/</span>
-  <span>Stateless Architecture</span>
+  <a href="../index.html#cat-data-literacy">Data Literacy</a> <span class="sep">/</span>
+  <span>Data Head</span>
 </nav></div>
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
-  <h1>Stateless Architecture</h1>
-  <div class="page-meta"><span>Source: system-design-interview-xu</span><span>Updated: 2026-05-24</span></div>
-  <div class="page-tags"><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">sessions</span><span class="tag">distributed-systems</span></div>
+  <h1>Data Head</h1>
+  <div class="page-meta"><span>Source: becoming-data-head</span><span>Updated: 2026-07-14</span></div>
+  <div class="page-tags"><span class="tag">data-literacy</span><span class="tag">statistics</span><span class="tag">business</span><span class="tag">decision-making</span><span class="tag">critical-thinking</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
-<p>A stateless architecture stores session data in a shared external store (Redis, database, or NoSQL) rather than on individual web servers. This enables any server to handle any request, which is a prerequisite for horizontal scaling, autoscaling, and simple failover.</p>
-<h2 id="stateful-vs-stateless">Stateful vs Stateless</h2>
+<p>A <strong>Data Head</strong> is a professional — manager, executive, or domain expert — who can think critically about data, statistics, and machine learning without necessarily being a technical practitioner. The term describes a mindset, not a job title: someone who moves from passive consumer of data claims to active, informed participant in data-driven decisions (source: <span class="wiki-link source-ref">sources/becoming-data-head</span>).</p>
+<h2 id="the-four-competencies">The Four Competencies</h2>
 <table><thead><tr>
-<th>Aspect</th>
-<th>Stateful</th>
-<th>Stateless</th>
+<th>Competency</th>
+<th>What It Means</th>
 </tr></thead><tbody>
 <tr>
-<td>Session storage</td>
-<td>Local server memory</td>
-<td>Shared external store (Redis, DB)</td>
+<td><strong>Think</strong></td>
+<td>Adopt a [[statistical-thinking</td>
+<td>statistical lens]]: expect variation, be skeptical, define problems before analyzing</td>
 </tr>
 <tr>
-<td>Routing requirement</td>
-<td>Sticky sessions (user → same server)</td>
-<td>Any server can handle any request</td>
+<td><strong>Speak</strong></td>
+<td>Challenge statistics: "compared to what?" — demand context, sample sizes, null hypotheses</td>
 </tr>
 <tr>
-<td>Scaling</td>
-<td>Hard — must migrate sessions</td>
-<td>Easy — just add/remove servers</td>
+<td><strong>Understand</strong></td>
+<td>Grasp what models do without coding: supervised vs unsupervised, regression vs classification, overfitting vs underfitting</td>
 </tr>
 <tr>
-<td>Failover</td>
-<td>Complex — session data may be lost</td>
-<td>Simple — route to any healthy server</td>
-</tr>
-<tr>
-<td>Autoscaling</td>
-<td>Impractical</td>
-<td>Native — add servers when load increases</td>
+<td><strong>Ensure</strong></td>
+<td>Manage human and technical risks: navigate data personalities, avoid data leakage, drive continuous learning</td>
 </tr>
 </tbody></table>
-<h2 id="stateless-flow">Stateless Flow</h2>
-<pre><code>User Request → Load Balancer → [Any Web Server]
-  ↓
-Fetch session from Redis → Process → Return</code></pre>
-<h2 id="shared-session-store-options">Shared Session Store Options</h2>
+<h2 id="what-a-data-head-is-not">What a Data Head Is NOT</h2>
+<p>A Data Head is not a "unicorn" with a PhD. The role is about <strong>critical engagement</strong> with data work, not the ability to write Python or train neural networks. A Data Head can:</p>
+<ul>
+<li>Ask whether a dataset is representative</li>
+<li>Question whether an effect size is practically significant</li>
+<li>Recognize when a model is being overhyped</li>
+<li>Bridge the communication gap between technical teams and business stakeholders</li>
+</ul>
+<h2 id="data-personalities">Data Personalities</h2>
+<p>Successful Data Heads understand and navigate different orientations toward data:</p>
 <table><thead><tr>
-<th>Store</th>
-<th>Best For</th>
+<th>Personality</th>
+<th>Behavior</th>
+<th>How to Engage</th>
 </tr></thead><tbody>
 <tr>
-<td>Redis</td>
-<td>In-memory speed; ideal for session caching</td>
+<td><strong>Enthusiast</strong></td>
+<td>Believes every AI claim uncritically</td>
+<td>Ground with concrete success criteria, failure modes</td>
 </tr>
 <tr>
-<td>Memcached</td>
-<td>Simple key-value; good for ephemeral data</td>
+<td><strong>Cynic</strong></td>
+<td>Rejects all data as manipulated</td>
+<td>Build trust with transparent methodology, small wins</td>
 </tr>
 <tr>
-<td>Database</td>
-<td>Durability requirements; slower but persistent</td>
-</tr>
-<tr>
-<td>JWT (client-side)</td>
-<td>No server storage; token contains session state</td>
+<td><strong>Indifferent</strong></td>
+<td>Ignores data entirely</td>
+<td>Connect data to their personal goals and metrics</td>
 </tr>
 </tbody></table>
-<blockquote><strong>Key insight</strong>: Autoscaling becomes viable only with stateless architecture. The system automatically adds servers when traffic increases and removes them when it decreases — zero manual intervention.</blockquote>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="scalable-architecture.html">
-      <span class="connection-type core">Foundation for</span>
-      <h4>Scalable Architecture</h4>
-      <p>enables horizontal scaling</p>
+    <a class="connection-card" href="statistical-thinking.html">
+      <span class="connection-type related">Relies on</span>
+      <h4>Statistical Thinking</h4>
+      <p>the core competency</p>
     </a>
-    <a class="connection-card" href="load-balancer.html">
+    <a class="connection-card" href="data-analyst.html">
       <span class="connection-type related">Related to</span>
-      <h4>Load Balancer</h4>
-      <p>any server can receive any request</p>
+      <h4>Data Analyst</h4>
+      <p>the analyst role that Data Heads collaborate with</p>
     </a>
-    <a class="connection-card" href="cache-strategy.html">
+    <a class="connection-card" href="data-scientist.html">
       <span class="connection-type related">Related to</span>
-      <h4>Cache Strategy</h4>
-      <p>session data often stored in cache tier</p>
+      <h4>Data Scientist</h4>
+      <p>Data Heads engage with scientists as informed stakeholders</p>
     </a>
-    <a class="connection-card" href="database-replication.html">
+    <a class="connection-card" href="self-service-analytics.html">
       <span class="connection-type related">Related to</span>
-      <h4>Database Replication</h4>
-      <p>session store may itself be replicated</p>
+      <h4>Self-Service Analytics</h4>
+      <p>Data Heads are the target audience for self-service tools</p>
     </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Becoming a Data Head: How to Think, Speak & Understand Data Science, Statistics & Machine Learning</h4>
+      <p>Gutman & Goldmeier's complete framework</p>
+    </div>
   </div>
 </section>
-<nav class="pagination"><a href="stateful-stream-processing.html" class="prev">← Stateful Stream Processing</a><a href="statistical-thinking.html" class="next">Statistical Thinking →</a></nav>
+<nav class="pagination"><a href="data-governance.html" class="prev">← Data Governance</a><a href="data-ingestion.html" class="next">Data Ingestion →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

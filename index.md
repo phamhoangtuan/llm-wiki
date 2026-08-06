@@ -101,6 +101,7 @@
 - [Go HTTP Handlers](concepts/go-http-handlers.html) — Handler interface, HandlerFunc, ServeMux routing, and middleware chaining — the building blocks of Go web apps
 - [Go Template Escaping](concepts/go-template-escaping.html) — Context-aware HTML escaping in `html/template`; XSS protection by default — understands HTML/JS/CSS contexts
 - [Go Web Ecosystem](concepts/go-web-ecosystem.html) — Go's philosophy: standard library over frameworks, static binary deployment, built-in testing, implicit interfaces
+- [T-Shaped Skills](concepts/t-shaped-skills.html) — Deep expertise + broad adjacent knowledge; generalized specialists remove DataOps bottlenecks
 - [TDD Methodology](concepts/tdd-methodology.html) — Red-Green-Refactor cycle, Outside-In TDD (Double Loop), YAGNI, the Testing Goat discipline
 - [Functional Testing](concepts/functional-testing.html) — User-perspective testing via Selenium/HTTP client; outer loop of TDD; test behavior not constants
 - [Game Theory](concepts/game-theory.html) — Mathematical study of strategic interaction among rational decision-makers; Nash equilibrium, backward induction, incomplete information
@@ -109,7 +110,8 @@
 - [Code Quality Pillars](concepts/code-quality-pillars.html)
 - [Code Readability](concepts/code-readability.html) — Discipline of minimizing time-to-understanding; Fundamental Theorem of Readability, 4 stages of improvement — Engineering vs Coding distinction, 4 goals and 6 tactical pillars for maintainable software
 - [Software Quality Dimensions](concepts/software-quality-dimensions.html) — Multi-dimensional quality spectrum, four core trade-offs, YAGNI, analyzability, abstraction costs
-- [DataOps](concepts/dataops.html) — Applying software engineering practices (version control, testing, modularity) to data pipelines and transformations
+- [Software Construction](concepts/software-construction.html) — Building robust, maintainable code by mastering complexity; McConnell's construction vs engineering distinction
+- [DataOps](concepts/dataops.html) — Lean/Agile/DevOps methodology for data; DataOps Factory, T-shaped teams, Minimum Viable DataOps, data veracity
 - [Object-Oriented Design](concepts/object-oriented-design.html) — Practical OO design: TRUE standard, design as discovery, messages over methods, SRP as foundation
 - [Kubernetes Operator](concepts/kubernetes-operator.html)
 - [Kubernetes Architecture](concepts/kubernetes-architecture.html)
@@ -117,7 +119,9 @@
 - [Kubernetes Security](concepts/kubernetes-security.html) — RBAC, admission control, policy engines (OPA/Kyverno), secrets encryption, OIDC integration, network policies — CNI plugin model; 4-layer model (container→pod→service→ingress); Services, CoreDNS, Ingress/Gateway API — Level-triggered control system: reconciliation loop, spec/status model, hub-and-spoke coordination, control plane vs worker nodes — Control loop pattern (READ → CHANGE → UPDATE), CRDs, extension patterns, Go ecosystem for K8s-native apps
 - [Middleware Pattern](concepts/middleware-pattern.html)
 - [MLOps](concepts/mlops.html) — Automating deployment, monitoring, and retraining of ML models; extends DevOps to address data drift, model staleness, and concept drift — Composable HTTP handler wrapping for cross-cutting concerns; Go's standard-library middleware chaining
+- [Data Head](concepts/data-head.html) — Non-technical professional who thinks critically about data, statistics, and ML without coding; 4 competencies (Think/Speak/Understand/Ensure), data personalities
 - [Data Engineer](concepts/data-engineer.html) — Specialized SWE role: builds data infrastructure, pipelines, and platforms; AI shifts role from writing pipelines to orchestrating AI that writes them
+- [Data Observability](concepts/data-observability.html) — Making pipelines transparent, traceable, and trustworthy; 3 principles, 4 techniques, 5-step incident workflow, field-level lineage
 - [Semantic Layer](concepts/semantic-layer.html) — Unified context layer standardizing metrics and business logic for AI agents across dbt, BI, docs, and query patterns; AE frontier in the AI era
 - [Staff Engineering](concepts/staff-engineering.html)
 - [Staff+ Archetypes](concepts/staff-plus-archetypes.html) — Four role shapes (Tech Lead, Architect, Solver, Right Hand); fluid movement between disciplines — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
@@ -147,6 +151,7 @@
 - [CI/CD for Data Pipelines](concepts/cicd-data-pipelines.html) — Linting, testing, and deployment automation for data engineering; tools, notebooks-vs-scripts debate
 - [Specification-Driven Development](concepts/specification-driven-development.html) — Define before build; antidote to random prompting in AI-native workflows
 - [Data Modeling](concepts/data-modeling.html) — Designing data structure, relationships, and constraints; the most enduring DE fundamental
+- [Data Product](concepts/data-product.html) — Data as continuously produced, monitored asset — not a one-off project; DataOps Factory, Minimum Viable Data Product
 - [Data Quality Monitoring](concepts/data-quality-monitoring.html) — Continuous detection, lineage, and trust signals for data quality; health badges, TimesFM anomaly detection, blast radius calculation
 - [Database Isolation Levels](concepts/database-isolation.html) — Serializable, Repeatable Read, Read Committed, Read Uncommitted; MVCC, optimistic locking with version numbers
 - [Code Overload](concepts/code-overload.html) — NYT term: AI-generated code exceeding review capacity; more bugs, more debt
@@ -195,12 +200,15 @@
 - [Real-Time Analytics](concepts/real-time-analytics.html) — Processing and analyzing unbounded data streams with sub-second latency
 - [Lambda Architecture](concepts/lambda-architecture.html) — Dual-path batch + stream processing paradigm for big data systems
 - [Kappa Architecture](concepts/kappa-architecture.html) — Simplified single-path streaming architecture eliminating the batch layer
-- [Stream Processing](concepts/stream-processing.html)
-- [Sustainable AI](concepts/sustainable-ai.html) — Measuring and minimizing AI carbon footprint; efficient architectures, carbon-aware scheduling — Computing on data as it flows, with managed state and time semantics
+- [Stream Processing](concepts/stream-processing.html) — Computing on data as it flows; streaming ⊃ batch, Akidau's 4 questions, stream-table duality, watermarks
+- [Statistical Thinking](concepts/statistical-thinking.html) — Critical evidence-driven lens on data claims; variation is universal, context over absolutes, questioning checklist
+- [Stream-Table Duality](concepts/stream-table-duality.html) — Streams and tables are two sides of the same coin; aggregation converts stream→table, CDC converts table→stream
+- [Sustainable AI](concepts/sustainable-ai.html) — Measuring and minimizing AI carbon footprint; efficient architectures, carbon-aware scheduling
 - [Apache Airflow](concepts/apache-airflow.html) — Python-native DAG orchestrator for scheduling and monitoring data pipelines
 - [Snowflake Data Cloud](concepts/snowflake-data-cloud.html) — Cloud-native data platform with separated storage, compute, and services layers
 - [Event Time Processing](concepts/event-time-processing.html) — Using event timestamps for deterministic, reproducible stream computation
 - [Stateful Stream Processing](concepts/stateful-stream-processing.html) — Stream computations requiring durable memory of past events with fault recovery
+- [Watermarks](concepts/watermarks.html) — Monotonically increasing timestamp tracking event-time progress in stream processing; the mechanism for handling out-of-order data
 - [Windowing](concepts/windowing.html) — Dividing infinite streams into finite chunks for bounded aggregation and analysis
 - [Apache Druid](concepts/apache-druid.html) — Open-source column-oriented OLAP for real-time streaming analytics
 - [Apache Pinot](concepts/apache-pinot.html) — LinkedIn-built distributed OLAP for low-latency user-facing analytics
@@ -221,10 +229,14 @@
 - [DuckDB: Up and Running](sources/duckdb-up-and-running.md)
 - [Fundamentals of Data Engineering](sources/fundamentals-of-data-engineering.md) — Reis & Housley's 446-page guide: Data Engineering Lifecycle (5 stages), 6 undercurrents, Lindy Effect for tool selection — Wei-Meng Lee's guide — 308 pages on architecture, performance, and ecosystem
 - [System Design Interview – An Insider's Guide](sources/system-design-interview-xu.md) — Alex Xu's 252-page ebook on designing scalable systems from single server to millions of users
+- [Code Complete (2nd Edition)](sources/code-complete.md) — Steve McConnell's definitive 914-page guide to software construction; information hiding, complexity management, testing strategy
 - [Benchmarking Vortex File Format vs Parquet, CSV](sources/benchmarking-vortex-file-format.md) — Daniel Beach benchmarks Vortex vs Parquet/CSV with DuckDB, Polars, DataFusion (Backblaze ~24 GB dataset, 2026-05)
 - [Hugo Data Ingestion Platform with Apache Flink](sources/hugo-data-ingestion-platform-flink.md) — Grab Engineering's evolution from siloed ingestion (Kafka Connect + Sprinkler) to unified Flink-based platform
 - [Unlocking dbt: Design and Deploy Transformations](sources/unlocking-dbt-design-deploy-transformations.md) — Cameron Cyr & Dustin Dorsey's 351-page guide to dbt fundamentals, modeling, testing, and deployment
 - [Dependency Injection Principles, Practices, and Patterns](sources/dependency-injection-principles-patterns.md) — van Deursen & Seemann's 643-page definitive guide to DI, Composition Root, and SOLID
+- [Dive Into Design Patterns](sources/dive-into-design-patterns.md) — Alexander Shvets' guide to all 22 GoF patterns with UML, pseudocode, and SOLID principles
+- [Game Theory: An Open Access Textbook](sources/game-theory-bonanno.md) — Giacomo Bonanno's textbook with 165 solved exercises; Nash equilibrium, extensive-form games, incomplete information
+- [Head First Software Architecture](sources/head-first-software-architecture.md) — Gandhi, Richards & Ford's brain-friendly guide to -ilities, ADRs, trade-offs, and architecture hoisting
 - [Delta Grows Up: Writes, Unity Catalog and Time Travel](sources/delta-grows-up-writes-unity-catalog.md) — DuckDB Labs announces stable Delta extension with writes, time travel, and Unity Catalog integration
 - [The Next Evolution of Delta — Catalog-Managed Tables](sources/delta-catalog-managed-tables.md) — Delta 4.1.0 + UC 0.4.0: catalog becomes authority for table state, inline commits, convergence with Iceberg
 - [Learn Harness Engineering](sources/learn-harness-engineering.md) — walkinglabs' guide: closed-loop AI agent systems, 4 primitives, 5-phase workflow, verification-first design
@@ -280,6 +292,11 @@
 - [Snowflake: The Definitive Guide](sources/snowflake-the-definitive-guide.md)
 - [The Staff Engineer's Path](sources/staff-engineers-path.md) — Tanya Reilly's 368-page roadmap: 3 pillars, 4 archetypes, "humaning" flying buttresses for technical leaders — Joyce Kay Avila's 467-page O'Reilly guide: architecture, semi-structured data, Time Travel, Zero-Copy Cloning, security, and cost optimization
 - [Stream Processing with Apache Flink](sources/stream-processing-apache-flink.md) — Fabian Hueske's 318-page guide: Flink architecture, DataStream API, stateful processing, time semantics, and deployment
+- [500 Lines Or Less](sources/500-lines-or-less.md) — Michael DiBernardo's 478-page fourth AOSA volume; design decisions "in the small", 22 chapters, code as literature
+- [Becoming a Data Head](sources/becoming-data-head.md) — Gutman & Goldmeier's 268-page guide to thinking, speaking, and understanding data without coding
+- [Data Observability for Data Engineering](sources/data-observability-for-data-engineering.md) — Pinto & El Khammal's 240-page guide; 3 principles, 4 implementation techniques, 5-step incident workflow
+- [Practical DataOps](sources/practical-dataops.md) — Atwal's 288-page methodology: Lean + Agile + DevOps for data, DataOps Factory, T-shaped teams
+- [Streaming Systems](sources/streaming-systems.md) — Akidau, Chernyak & Lax's 456-page definitive guide; 4-question model, watermarks, stream-table duality
 
 ## Syntheses
 
@@ -287,5 +304,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-_Last updated: 2026-07-13_
-_Pages: 274 (201 concepts + 73 sources)_
+_Last updated: 2026-07-14_
+_Pages: 291 (209 concepts + 82 sources)_

@@ -42,13 +42,15 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Stream Processing</h1>
-  <div class="page-meta"><span>Source: building-real-time-analytics-systems, stream-processing-apache-flink</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-meta"><span>Source: building-real-time-analytics-systems, stream-processing-apache-flink, streaming-systems</span><span>Updated: 2026-07-14</span></div>
   <div class="page-tags"><span class="tag">streaming</span><span class="tag">data-engineering</span><span class="tag">real-time</span><span class="tag">architecture</span><span class="tag">event-driven</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
-<p><strong>Stream Processing</strong> is the paradigm of computing on data as it flows — processing each event incrementally rather than waiting for a batch to accumulate. It is the engine layer of <a href="real-time-analytics.html" class="wiki-link">real-time-analytics</a> systems, transforming raw event streams into structured, queryable, and actionable outputs.</p>
-<h2 id="stream-processing-vs-batch-processing">Stream Processing vs Batch Processing</h2>
+<p><strong>Stream Processing</strong> is the paradigm of computing on data as it flows — processing each event incrementally rather than waiting for a batch to accumulate. It is the engine layer of <a href="real-time-analytics.html" class="wiki-link">real-time-analytics</a> systems, transforming raw event streams into structured, queryable, and actionable outputs (source: <span class="wiki-link source-ref">sources/streaming-systems</span>).</p>
+<blockquote><strong>Modern streaming is a strict superset of batch</strong>, not a fast-but-approximate alternative. One streaming system can deliver both low-latency real-time results and correct, repeatable historical analysis.</blockquote>
+<h2 id="streaming--batch">Streaming ⊃ Batch</h2>
+<p>Modern streaming engines (Flink, Beam) handle bounded datasets as a special case of unbounded streams. This eliminates the <a href="lambda-architecture.html" class="wiki-link">Lambda Architecture</a> — no need for separate batch and speed layers. The <a href="kappa-architecture.html" class="wiki-link">Kappa Architecture</a> runs everything on a single streaming engine.</p>
 <table><thead><tr>
 <th>Aspect</th>
 <th>Batch</th>
@@ -78,6 +80,34 @@
 <td>State model</td>
 <td>Stateless or external</td>
 <td>Stateful (windows, sessions, joins)</td>
+</tr>
+</tbody></table>
+<h2 id="the-4-questions-akidaus-model">The 4 Questions (Akidau's Model)</h2>
+<p>Every streaming pipeline must define answers to four fundamental questions (source: <span class="wiki-link source-ref">sources/streaming-systems</span>):</p>
+<table><thead><tr>
+<th>Question</th>
+<th>Concept</th>
+<th>What It Defines</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>What</strong> results are calculated?</td>
+<td>Transformations</td>
+<td>Sums, histograms, ML models — the business logic</td>
+</tr>
+<tr>
+<td><strong>Where</strong> in event time?</td>
+<td><a href="windowing.html" class="wiki-link">windowing</a></td>
+<td>Fixed, Sliding, or Session windows partition data in time</td>
+</tr>
+<tr>
+<td><strong>When</strong> in processing time?</td>
+<td>Triggers & <a href="watermarks.html" class="wiki-link">watermarks</a></td>
+<td>When to emit results; how to measure input completeness</td>
+</tr>
+<tr>
+<td><strong>How</strong> do refinements relate?</td>
+<td>Accumulation Modes</td>
+<td>Discarding (replace), Accumulating (add), or Retractions (correct)</td>
 </tr>
 </tbody></table>
 <h2 id="core-capabilities">Core Capabilities</h2>
@@ -156,12 +186,15 @@
 <li>Sessionization and behavioral analytics</li>
 <li>Stream-to-stream joins (ad impressions + conversions)</li>
 </ul>
+<h2 id="stream-table-duality">Stream-Table Duality</h2>
+<p>Streams and tables are two representations of the same data. Aggregating a stream yields a table; observing changes to a table yields a stream (<a href="change-data-capture.html" class="wiki-link">CDC</a>). This <a href="stream-table-duality.html" class="wiki-link">duality</a> is the theoretical foundation that makes SQL-on-streams possible.</p>
 <h2 id="key-takeaways">Key Takeaways</h2>
 <ol>
 <li>Stream processing is the compute layer of real-time data systems.</li>
+<li>Modern streaming is a <strong>strict superset of batch</strong> — one engine for both.</li>
 <li>State management and time semantics are the two hardest problems in stream processing.</li>
-<li>Event time processing is essential for correctness in distributed systems.</li>
-<li>Flink is the most capable open-source stream processor for production today.</li>
+<li>Event time processing is essential for correctness; <a href="watermarks.html" class="wiki-link">watermarks</a> are the mechanism.</li>
+<li><a href="stream-table-duality.html" class="wiki-link">stream-table-duality</a> makes SQL-on-streams a natural fit, not a special case.</li>
 </ol>
 </div>
 <section class="connections-section">
@@ -207,14 +240,29 @@
       <h4>Stream Processing with Apache Flink</h4>
       <p>Hueske's definitive guide to stream processing with Flink</p>
     </div>
+    <a class="connection-card" href="watermarks.html">
+      <span class="connection-type related">Depends on</span>
+      <h4>Watermarks</h4>
+      <p>the mechanism for tracking event-time progress</p>
+    </a>
+    <a class="connection-card" href="stream-table-duality.html">
+      <span class="connection-type related">Related</span>
+      <h4>Stream-Table Duality</h4>
+      <p>the theoretical foundation for stream processing correctness</p>
+    </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
       <h4>Building Real-Time Analytics Systems</h4>
       <p>Needham's architecture guide covering the stream processing layer</p>
     </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Streaming Systems: The What, Where, When, and How of Large-Scale Data Processing</h4>
+      <p>Akidau's definitive theoretical framework for streaming</p>
+    </div>
   </div>
 </section>
-<nav class="pagination"><a href="stateless-architecture.html" class="prev">← Stateless Architecture</a><a href="sustainable-ai.html" class="next">Sustainable AI →</a></nav>
+<nav class="pagination"><a href="statistical-thinking.html" class="prev">← Statistical Thinking</a><a href="stream-table-duality.html" class="next">Stream-Table Duality →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

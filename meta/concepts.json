@@ -634,6 +634,19 @@
         "data-quality"
       ]
     },
+    "data-head": {
+      "title": "Data Head",
+      "category": "Meta",
+      "url": "concepts/data-head.html",
+      "definition": "A **Data Head** is a professional — manager, executive, or domain expert — who can think critically about data, statistics, and machine learning without necessarily being a technical practitioner. The",
+      "tags": [
+        "data-literacy",
+        "statistics",
+        "business",
+        "decision-making",
+        "critical-thinking"
+      ]
+    },
     "data-ingestion": {
       "title": "Data Ingestion",
       "category": "Data Engineering",
@@ -681,6 +694,32 @@
         "data-modeling",
         "sql",
         "database-design"
+      ]
+    },
+    "data-observability": {
+      "title": "Data Observability",
+      "category": "Meta",
+      "url": "concepts/data-observability.html",
+      "definition": "**Data Observability** is the practice of making data pipelines transparent, traceable, and trustworthy in production. Unlike traditional [[data-quality-monitoring|data quality checks]] that only answ",
+      "tags": [
+        "data-observability",
+        "data-quality",
+        "lineage",
+        "monitoring",
+        "data-pipeline",
+        "incident-management"
+      ]
+    },
+    "data-product": {
+      "title": "Data Product",
+      "category": "Data Engineering",
+      "url": "concepts/data-product.html",
+      "definition": "A **Data Product** is the output of treating data not as a one-off project deliverable but as a continuously produced, monitored, and iteratively improved asset — analogous to a software product. This",
+      "tags": [
+        "dataops",
+        "data-engineering",
+        "product-thinking",
+        "data-mesh"
       ]
     },
     "data-quality-monitoring": {
@@ -2281,6 +2320,18 @@
         "distributed-systems"
       ]
     },
+    "statistical-thinking": {
+      "title": "Statistical Thinking",
+      "category": "Meta",
+      "url": "concepts/statistical-thinking.html",
+      "definition": "**Statistical Thinking** is the discipline of applying a critical, evidence-driven lens to data claims — understanding that variation exists in all things, that correlation is not causation, and that ",
+      "tags": [
+        "statistics",
+        "data-literacy",
+        "critical-thinking",
+        "decision-making"
+      ]
+    },
     "stream-processing": {
       "title": "Stream Processing",
       "category": "Data Engineering",
@@ -2292,6 +2343,19 @@
         "real-time",
         "architecture",
         "event-driven"
+      ]
+    },
+    "stream-table-duality": {
+      "title": "Stream-Table Duality",
+      "category": "Data Engineering",
+      "url": "concepts/stream-table-duality.html",
+      "definition": "**Stream-Table Duality** is the principle that streams and tables are two sides of the same coin — every stream can be converted into a table, and every table can be converted into a stream. This is t",
+      "tags": [
+        "streaming",
+        "data-modeling",
+        "kafka",
+        "tables",
+        "sql"
       ]
     },
     "sustainable-ai": {
@@ -2329,6 +2393,19 @@
         "interview",
         "methodology",
         "architecture"
+      ]
+    },
+    "t-shaped-skills": {
+      "title": "T-Shaped Skills",
+      "category": "Career & Growth",
+      "url": "concepts/t-shaped-skills.html",
+      "definition": "**T-Shaped Skills** describe a professional who has **deep expertise** in one area (the vertical bar of the T) and **broad, sufficient knowledge** across many adjacent areas (the horizontal bar). The ",
+      "tags": [
+        "career",
+        "team-structure",
+        "dataops",
+        "collaboration",
+        "professional-development"
       ]
     },
     "tdd-methodology": {
@@ -2498,6 +2575,19 @@
         "columnar",
         "rust",
         "data-engineering"
+      ]
+    },
+    "watermarks": {
+      "title": "Watermarks",
+      "category": "Data Engineering",
+      "url": "concepts/watermarks.html",
+      "definition": "A **Watermark** is a notion of input completeness in [[stream-processing|stream processing]] — a monotonically increasing timestamp that tells the system \"all events with event time less than the wate",
+      "tags": [
+        "streaming",
+        "event-time",
+        "data-engineering",
+        "apache-flink",
+        "apache-beam"
       ]
     },
     "wiki-maintenance": {
