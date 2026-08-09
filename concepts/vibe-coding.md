@@ -3,8 +3,8 @@ title: "Vibe Coding"
 type: concept
 tags: [ai-engineering, coding, methodology, terminology]
 created: 2026-06-15
-updated: 2026-06-20
-sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding]
+updated: 2026-08-06
+sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding, graph-engineering-karpathy]
 aliases: [vibe-coding]
 ---
 
@@ -15,7 +15,7 @@ aliases: [vibe-coding]
 ## Vibe Coding vs AI-Native Engineering
 
 | Dimension | Vibe Coding | AI-Native Engineering |
-|---|---|---|
+| --- | --- | --- |
 | **Who** | Non-engineers, domain experts | Professional software engineers |
 | **Requirement** | Ability to describe desired behavior | Deep coding knowledge + orchestration skills |
 | **Code understanding** | Not required | Essential — for verification, debugging, integration |
@@ -48,7 +48,7 @@ When professional engineers operate in vibe coding mode — generating code thro
 Software development now exists on a spectrum of discipline between two poles:
 
 | Dimension | Vibe Coding 🌊 | Agentic Engineering 🏗️ |
-|---|---|---|
+| --- | --- | --- |
 | **Intent Specification** | Casual natural language prompts | Formal specs, architecture docs, memory files |
 | **Verification** | Manual "Does it seem to work?" checks | Automated test suites + LM Judges/Evals |
 | **Error Handling** | Reactive copy-paste error messages | Autonomous self-diagnosis within bounds |
@@ -62,13 +62,23 @@ Software development now exists on a spectrum of discipline between two poles:
 Vibe coding appears cheap upfront but carries a "hidden interest rate" — the maintenance tax from trial-and-error loops, token burn, and accumulating technical debt:
 
 | Approach | CapEx (Upfront) | OpEx (Ongoing) | Long-Term Viability |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Vibe Coding 🌊 | 🟢 Low (just subscription) | 🔴 High ("Maintenance Tax" + token burn) | ❌ 3-10x cost crossover point |
 | Agentic Engineering 🏗️ | 🔴 High (system design, test suites) | 🟢 Low (sustainable marginal costs) | ✅ Scalable economic model |
 
 The financial insight: **high-signal context payloads (precise AGENTS.md) prevent trial-and-error loops that drive up API costs.** Investing in context engineering upfront pays for itself in reduced token burn and fewer wasted iterations.
 
 > "Vibe coding's low CapEx is a teaser rate. The real cost is in the OpEx."
+
+## Karpathy's Three-Stage Progression
+
+Vibe coding is stage one of a three-stage progression described in [[graph-engineering]]:
+
+1. **Vibe coding**: the human expresses intent and the model writes. No systematic verification, no durable state.
+2. **Agentic engineering**: the human specifies, orchestrates, verifies, and remains responsible for quality. Loops, harnesses, evals.
+3. **Graph engineering**: agents share durable state through typed, queryable graphs of work and knowledge. Memory and evaluation live outside context windows.
+
+Each stage addresses a limitation of the previous: vibe coding lacks verification → agentic engineering adds it → graph engineering externalizes state from context windows into persistent structures.
 
 ---
 
@@ -80,3 +90,5 @@ The financial insight: **high-signal context payloads (precise AGENTS.md) preven
 - Related to [[agent-quality-optimization]] — token economics reveal vibe coding's hidden OpEx costs
 - Benchmark source: [[sources/practical-guide-ai-native-engineer]] — ByteByteGo article placing vibe coding in context
 - Benchmark source: [[sources/new-sdlc-vibe-coding]] — spectrum comparison and token economics framework
+- Stage one of [[graph-engineering]] — Karpathy's three-stage progression (vibe → agentic → graph)
+- Source: [[sources/graph-engineering-karpathy]] — the three-stage framing

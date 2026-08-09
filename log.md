@@ -4,6 +4,32 @@
 
 ---
 
+## [2026-08-06] ingest | Graph Engineering: The Karpathy Loop, Improved 1000x by Itself
+
+- Created sources/graph-engineering-karpathy.md
+- Created concepts/graph-engineering.md — umbrella: vibe coding → agentic engineering → graph engineering
+- Created concepts/autoresearch.md — Karpathy's ratchet loop, program.md, 4 conditions for autonomous loops
+- Created concepts/agent-hub.md — agent-first collaboration, commit DAG, CLI as graph interface
+- Created concepts/dynamic-workflows.md — Anthropic's generated JavaScript orchestration, up to 1,000 sub-agents
+- Created concepts/graph-grounding.md — constraining agents with graph facts, structured evaluation
+- Created concepts/software-3.md — Karpathy's Software 3.0: prompts as programmable interface
+- Created concepts/entity-resolution.md — model-based canonical entity mapping for knowledge graphs
+- Updated concepts/agent-loop.md — added autoresearch as concrete implementation, ratchet loop section
+- Updated concepts/knowledge-graph.md — added agent shared memory, grounding layer, construction pipeline sections
+- Updated concepts/vibe-coding.md — added Karpathy's 3-stage progression to graph engineering
+- Updated index.md — added 8 new concept entries + 1 source entry
+
+## [2026-08-06] ingest | Fluent Python + Staff Engineer (Larson) + Tyranny of Metrics
+
+- Created sources/fluent-python.md — Luciano Ramalho's 1,831-page Python guide
+- Created sources/staff-engineer-larson.md — Will Larson's 215-page Staff+ guide
+- Created sources/tyranny-of-metrics.md — Jerry Z. Muller's 233-page critique of metric fixation
+- Created concepts/python-data-model.md — Python's unifying object model, dunder methods, protocols, goose typing
+- Created concepts/pythonic-code.md — Python idioms, duck typing, "use what's available"
+- Created concepts/metric-fixation.md — dysfunctional dominance of metrics over judgment, goal displacement, gaming
+- Created concepts/goodharts-law.md — "When a measure becomes a target, it ceases to be a good measure"
+- Updated index.md — added 4 concept + 3 source entries
+
 ## [2026-07-14] lint | Post-ingest health check
 
 - Scanned all 291 wiki pages (209 concepts + 82 sources) across 5 lint dimensions

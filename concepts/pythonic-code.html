@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pythonic Code — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-python">Python</a> <span class="sep">/</span>
+  <span>Pythonic Code</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Pythonic Code</h1>
+  <div class="page-meta"><span>Source: fluent-python</span><span>Updated: 2026-08-06</span></div>
+  <div class="page-tags"><span class="tag">python</span><span class="tag">programming</span><span class="tag">idioms</span><span class="tag">code-quality</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Pythonic code</strong> is code that uses Python's language idioms to be consistent, expressive, and effective — not just code that happens to run in Python. It's the difference between writing Python with a Java/C++ "accent" and writing code that feels native to the language. The concept is central to Luciano Ramalho's Fluent Python.</p>
+<h2 id="pythonic-vs-non-pythonic">Pythonic vs Non-Pythonic</h2>
+<table><thead><tr>
+<th>Non-Pythonic (translated)</th>
+<th>Pythonic (native)</th>
+</tr></thead><tbody>
+<tr>
+<td>Manual index loops</td>
+<td><code>for item in collection</code></td>
+</tr>
+<tr>
+<td><code>if len(lst) == 0</code></td>
+<td><code>if not lst</code></td>
+</tr>
+<tr>
+<td><code>if x in d.keys()</code></td>
+<td><code>if x in d</code></td>
+</tr>
+<tr>
+<td><code>list(map(f, data))</code></td>
+<td><code>[f(x) for x in data]</code></td>
+</tr>
+<tr>
+<td>Building your own iterator class</td>
+<td>Generator function with <code>yield</code></td>
+</tr>
+<tr>
+<td>Manually closing resources</td>
+<td><code>with</code> statement (context manager)</td>
+</tr>
+</tbody></table>
+<h2 id="core-principles">Core Principles</h2>
+<ol>
+<li><strong>Use what's available</strong>: Reach for built-ins (<code>collections</code>, <code>functools</code>, <code>itertools</code>) and standard library before building custom solutions. Python has "batteries included."</li>
+</ol>
+<ol>
+<li><strong>Follow the data model</strong>: Implement dunder methods so your objects behave like Python natives. If your class is a container, implement <code>__getitem__</code> — suddenly it works with <code>for</code>, <code>in</code>, slicing, and <code>len()</code>. See <a href="python-data-model.html" class="wiki-link">python-data-model</a>.</li>
+</ol>
+<ol>
+<li><strong>Embrace duck typing</strong>: Code against what objects do (their methods), not what they are (their type). Check behavior at interfaces, not inheritance hierarchies.</li>
+</ol>
+<ol>
+<li><strong>Prefer simple over clever</strong>: Pythonic code is readable first. <code>import this</code> in your REPL for the Zen of Python.</li>
+</ol>
+<h2 id="goose-typing">Goose Typing</h2>
+<p>A refinement of duck typing. Use Abstract Base Classes from <code>collections.abc</code> (<code>Sequence</code>, <code>Mapping</code>, <code>Iterable</code>) to make protocols explicit while keeping flexibility:</p>
+<pre><code class="language-python">from collections.abc import Sequence
+
+def process(items: Sequence):
+    # Accepts list, tuple, str, or anything sequence-like
+    return items[0]</code></pre>
+<p>This is more precise than bare duck typing but less rigid than class inheritance — "if it implements the Sequence protocol, it's a Sequence."</p>
+<h2 id="why-it-matters">Why It Matters</h2>
+<p>Pythonic code is more than aesthetics. It leverages Python's C-level optimizations (e.g., <code>len()</code> on a list is O(1) because it reads a cached field via <code>__len__</code>, not by counting). It's more readable to other Python programmers who expect the idioms. And it composes better — data model protocols like <code>__iter__</code> chain together naturally.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="python-data-model.html">
+      <span class="connection-type related">Related</span>
+      <h4>Python Data Model</h4>
+      <p>dunder methods and protocols are the mechanism behind Pythonic behavior</p>
+    </a>
+    <a class="connection-card" href="python-standard-library.html">
+      <span class="connection-type related">Related</span>
+      <h4>Python Standard Library</h4>
+      <p>"batteries included" means reaching for stdlib before custom code</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Fluent Python</h4>
+      <p>the definitive guide to Pythonic programming</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="python-static-analysis.html" class="prev">← Python Static Analysis</a><a href="quadtree.html" class="next">Quadtree →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

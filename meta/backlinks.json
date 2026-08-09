@@ -6,6 +6,8 @@
     "agent-verification",
     "agentic-development-life-cycle",
     "ai-native-engineering",
+    "autoresearch",
+    "dynamic-workflows",
     "harness-engineering",
     "langchain",
     "prompt-engineering",
@@ -82,6 +84,7 @@
     "agent-components",
     "agent-quality-optimization",
     "agentic-development-life-cycle",
+    "graph-grounding",
     "harness-engineering",
     "vibe-coding",
     "new-sdlc-vibe-coding"
@@ -95,6 +98,67 @@
     "ai-native-engineering",
     "context-engineering",
     "harness-engineering",
+    "vibe-coding"
+  ],
+  "autoresearch": [
+    "agent-hub",
+    "agent-loop",
+    "agent-loop",
+    "graph-engineering",
+    "graph-engineering",
+    "graph-grounding",
+    "software-3",
+    "software-3"
+  ],
+  "graph-engineering": [
+    "agent-hub",
+    "agent-loop",
+    "agent-loop",
+    "autoresearch",
+    "autoresearch",
+    "dynamic-workflows",
+    "graph-grounding",
+    "knowledge-graph",
+    "knowledge-graph",
+    "software-3",
+    "software-3",
+    "vibe-coding",
+    "vibe-coding"
+  ],
+  "knowledge-graph": [
+    "agent-hub",
+    "entity-resolution",
+    "entity-resolution",
+    "graph-engineering",
+    "graph-engineering",
+    "graph-grounding",
+    "wiki-maintenance",
+    "wiki-maintenance"
+  ],
+  "agentic-development-life-cycle": [
+    "agent-hub",
+    "agent-loop",
+    "ai-native-engineering",
+    "ai-psychosis",
+    "architecture-in-agile",
+    "graph-engineering",
+    "harness-engineering",
+    "specification-driven-development",
+    "specification-driven-development",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "sources/graph-engineering-karpathy": [
+    "agent-hub",
+    "agent-loop",
+    "autoresearch",
+    "dynamic-workflows",
+    "entity-resolution",
+    "graph-engineering",
+    "graph-grounding",
+    "knowledge-graph",
+    "software-3",
     "vibe-coding"
   ],
   "agent-components": [
@@ -117,18 +181,7 @@
     "code-overload",
     "code-overload",
     "context-engineering",
-    "specification-driven-development",
-    "new-sdlc-vibe-coding",
-    "practical-guide-ai-native-engineer",
-    "practical-guide-ai-native-engineer"
-  ],
-  "agentic-development-life-cycle": [
-    "agent-loop",
-    "ai-native-engineering",
-    "ai-psychosis",
-    "architecture-in-agile",
-    "harness-engineering",
-    "specification-driven-development",
+    "software-3",
     "specification-driven-development",
     "new-sdlc-vibe-coding",
     "practical-guide-ai-native-engineer",
@@ -1157,6 +1210,16 @@
     "model-code-gap",
     "learning-domain-driven-design"
   ],
+  "agent-hub": [
+    "autoresearch",
+    "autoresearch",
+    "dynamic-workflows",
+    "graph-engineering",
+    "graph-engineering"
+  ],
+  "software-3": [
+    "autoresearch"
+  ],
   "apache-airflow": [
     "batch-processing",
     "data-engineer",
@@ -1368,6 +1431,7 @@
     "code-archaeology",
     "code-quality-pillars",
     "essential-accidental-complexity",
+    "goodharts-law",
     "refactoring-at-scale",
     "refactoring-at-scale",
     "software-rot",
@@ -1397,6 +1461,7 @@
     "essential-accidental-complexity",
     "fail-fast",
     "functional-programming",
+    "metric-fixation",
     "object-oriented-design",
     "python-standard-library",
     "python-static-analysis",
@@ -1606,6 +1671,7 @@
     "differential-privacy",
     "fine-tuning",
     "llm-evaluation-metrics",
+    "metric-fixation",
     "statistical-thinking",
     "synthetic-data",
     "building-anonymization-pipeline",
@@ -1928,6 +1994,12 @@
     "sustainable-ai",
     "building-llms-for-production"
   ],
+  "graph-grounding": [
+    "entity-resolution",
+    "graph-engineering",
+    "knowledge-graph",
+    "knowledge-graph"
+  ],
   "code-archaeology": [
     "essential-accidental-complexity",
     "model-code-gap",
@@ -2109,6 +2181,17 @@
     "observability",
     "programming-kubernetes"
   ],
+  "metric-fixation": [
+    "goodharts-law",
+    "goodharts-law"
+  ],
+  "sources/tyranny-of-metrics": [
+    "goodharts-law",
+    "metric-fixation"
+  ],
+  "dynamic-workflows": [
+    "graph-engineering"
+  ],
   "sources/learn-harness-engineering": [
     "harness-engineering"
   ],
@@ -2119,8 +2202,14 @@
   ],
   "python-standard-library": [
     "immutability",
+    "python-data-model",
     "python-professional-practices",
-    "python-repl"
+    "python-repl",
+    "pythonic-code"
+  ],
+  "entity-resolution": [
+    "knowledge-graph",
+    "knowledge-graph"
   ],
   "wiki-maintenance": [
     "knowledge-graph",
@@ -2212,6 +2301,10 @@
     "testing-effect",
     "ultralearning"
   ],
+  "goodharts-law": [
+    "metric-fixation",
+    "metric-fixation"
+  ],
   "model-pruning": [
     "model-distillation",
     "model-quantization",
@@ -2302,6 +2395,14 @@
     "python-standard-library",
     "python-static-analysis"
   ],
+  "pythonic-code": [
+    "python-data-model",
+    "python-data-model"
+  ],
+  "sources/fluent-python": [
+    "python-data-model",
+    "pythonic-code"
+  ],
   "python-repl": [
     "python-debugging-pdb"
   ],
@@ -2313,6 +2414,10 @@
   "python-concurrency": [
     "python-professional-practices",
     "readability-vs-performance"
+  ],
+  "python-data-model": [
+    "pythonic-code",
+    "pythonic-code"
   ],
   "batch-processing": [
     "real-time-analytics",
@@ -2394,10 +2499,6 @@
     "vortex-file-format"
   ],
   "sources/sample-article": [
-    "wiki-maintenance",
-    "wiki-maintenance"
-  ],
-  "knowledge-graph": [
     "wiki-maintenance",
     "wiki-maintenance"
   ],

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Snowflake ID — LLM Wiki</title>
+<title>Software 3.0 — LLM Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles/main.css">
@@ -36,86 +36,55 @@
 <main class="main-content">
 <div class="breadcrumb-wrapper"><nav class="breadcrumb">
   <a href="../index.html">Home</a> <span class="sep">/</span>
-  <a href="../index.html#cat-distributed-systems">Distributed Systems</a> <span class="sep">/</span>
-  <span>Snowflake ID</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Software 3.0</span>
 </nav></div>
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
-  <h1>Snowflake ID</h1>
-  <div class="page-meta"><span>Source: system-design-big-archive</span><span>Updated: 2026-06-21</span></div>
-  <div class="page-tags"><span class="tag">distributed-systems</span><span class="tag">databases</span><span class="tag">system-design</span><span class="tag">uuid</span></div>
+  <h1>Software 3.0</h1>
+  <div class="page-meta"><span>Source: graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">programming-paradigm</span><span class="tag">karpathy</span></div>
 </div>
 <div class="content-area concept">
-<p>Snowflake is a distributed unique ID generation pattern created by Twitter. It produces 64-bit numeric IDs that are roughly time-ordered, efficient to store and index, and scalable without coordination.</p>
-<h2 id="design-requirements">Design Requirements</h2>
+<h2 id="summary">Summary</h2>
+<p><strong>Software 3.0</strong> is Andrej Karpathy's framing of a new programming paradigm where <strong>context and prompts become a programmable interface</strong> for AI systems. It extends the progression:</p>
 <ul>
-<li><strong>64-bit numeric values</strong>: Efficient storage (8 bytes) and B-tree indexing in databases</li>
-<li><strong>Roughly sorted by time</strong>: Good for range queries and time-based partitioning</li>
-<li><strong>Highly scalable</strong>: No central coordinator — each machine generates IDs independently</li>
+<li><strong>Software 1.0</strong>: developer writes explicit instructions (traditional code)</li>
+<li><strong>Software 2.0</strong>: developer shapes behavior through data and training (ML)</li>
+<li><strong>Software 3.0</strong>: developer shapes behavior through context, prompts, and natural-language control specifications</li>
 </ul>
-<h2 id="64-bit-structure">64-Bit Structure</h2>
-<pre><code>[1 bit unused] [41 bits timestamp] [10 bits machine ID] [12 bits sequence]</code></pre>
-<ul>
-<li><strong>41-bit timestamp</strong>: Milliseconds since custom epoch (~69 years of IDs)</li>
-<li><strong>10-bit machine ID</strong>: Supports 1,024 worker nodes</li>
-<li><strong>12-bit sequence number</strong>: 4,096 IDs per millisecond per machine</li>
-<li><strong>1 reserved bit</strong>: Always 0 (keeps IDs positive in signed 64-bit)</li>
-</ul>
-<h2 id="generation-simplified">Generation (Simplified)</h2>
-<pre><code>def generate_id(machine_id, sequence):
-    timestamp = current_time_millis()                    # 41 bits
-    return (timestamp &lt;&lt; 22) | (machine_id &lt;&lt; 12) | sequence</code></pre>
-<p>The timestamp component ensures time-ordering at millisecond granularity. The sequence number handles multiple IDs within the same millisecond.</p>
-<h2 id="comparison-with-uuid">Comparison with UUID</h2>
-<table><thead><tr>
-<th>Property</th>
-<th>Snowflake</th>
-<th>UUID v4</th>
-</tr></thead><tbody>
-<tr>
-<td>Size</td>
-<td>8 bytes (64-bit)</td>
-<td>16 bytes (128-bit)</td>
-</tr>
-<tr>
-<td>Sortability</td>
-<td>Time-ordered (roughly)</td>
-<td>Random</td>
-</tr>
-<tr>
-<td>Index efficiency</td>
-<td>Excellent (monotonic-ish)</td>
-<td>Poor (random, causes B-tree fragmentation)</td>
-</tr>
-<tr>
-<td>Central coordination</td>
-<td>Machine ID assignment only</td>
-<td>None</td>
-</tr>
-<tr>
-<td>Human readability</td>
-<td>Numeric</td>
-<td>Hex string</td>
-</tr>
-</tbody></table>
-<p>Snowflake IDs are preferred for primary keys in distributed databases where time-based range queries are common.</p>
+<h2 id="programming-the-program">Programming the Program</h2>
+<p>The key insight is that natural-language instructions can configure autonomous behavior. In <a href="autoresearch.html" class="wiki-link">autoresearch</a>, <code>program.md</code> serves as the control specification — it establishes mutable files, metrics, budgets, crash handling, and autonomy policy. The agent reads it as its constitution.</p>
+<p>This pattern generalizes: AGENTS.md files, system prompts, project instructions, and evaluation rubrics are all Software 3.0 artifacts. They "program" the agent's behavior without traditional code.</p>
+<h2 id="relationship-to-graph-engineering">Relationship to Graph Engineering</h2>
+<p>Software 3.0 is the paradigm that makes <a href="graph-engineering.html" class="wiki-link">graph-engineering</a> possible. When prompts and context become the interface, the engineering challenge shifts from writing code to designing durable, queryable state (graphs) that agents can read and write. The <code>program.md</code> pattern extends into typed schemas, graph schemas, evaluation rubrics, and workflow specifications.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="database-sharding.html">
+    <a class="connection-card" href="autoresearch.html">
       <span class="connection-type core">Foundation for</span>
-      <h4>Database Sharding</h4>
-      <p>Snowflake IDs serve as natural shard keys with time locality</p>
+      <h4>Autoresearch</h4>
+      <p>`program.md` is the canonical Software 3.0 artifact</p>
     </a>
-    <a class="connection-card" href="system-design-interview.html">
-      <span class="connection-type core">Foundation for</span>
-      <h4>System Design Interview</h4>
-      <p>"design a unique ID generator" is a classic interview question</p>
+    <a class="connection-card" href="graph-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Engineering</h4>
+      <p>graph schemas and control specs are Software 3.0 interfaces</p>
     </a>
+    <a class="connection-card" href="vibe-coding.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Vibe Coding</h4>
+      <p>vibe coding uses Software 3.0 without engineering discipline</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Engineering: The Karpathy Loop, Improved 1000x by Itself</h4>
+      <p></p>
+    </div>
   </div>
 </section>
-<nav class="pagination"><a href="snowflake-data-cloud.html" class="prev">← Snowflake Data Cloud</a><a href="software-3.html" class="next">Software 3.0 →</a></nav>
+<nav class="pagination"><a href="snowflake-id.html" class="prev">← Snowflake ID</a><a href="software-as-simulation.html" class="next">Software as Simulation →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

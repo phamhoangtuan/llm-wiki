@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Software as Simulation — LLM Wiki</title>
+<title>Entity Resolution — LLM Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles/main.css">
@@ -36,45 +36,72 @@
 <main class="main-content">
 <div class="breadcrumb-wrapper"><nav class="breadcrumb">
   <a href="../index.html">Home</a> <span class="sep">/</span>
-  <a href="../index.html#cat-architecture">Architecture</a> <span class="sep">/</span>
-  <span>Software as Simulation</span>
+  <a href="../index.html#cat-knowledge-graph">Knowledge Graph</a> <span class="sep">/</span>
+  <span>Entity Resolution</span>
 </nav></div>
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
-  <h1>Software as Simulation</h1>
-  <div class="page-meta"><span>Source: contieri-clean-code-cookbook</span><span>Updated: 2026-06-15</span></div>
-  <div class="page-tags"><span class="tag">architecture</span><span class="tag">philosophy</span><span class="tag">domain-modeling</span></div>
+  <h1>Entity Resolution</h1>
+  <div class="page-meta"><span>Source: graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
+  <div class="page-tags"><span class="tag">knowledge-graph</span><span class="tag">nlp</span><span class="tag">data-quality</span><span class="tag">agents</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
-<p>Software is not a list of commands for a computer. It is a <strong>simulator of reality</strong> — a computational model that must faithfully mirror the real-world domain it serves. When code stops reflecting reality accurately, it becomes fragile, incomprehensible, and dangerous.</p>
-<h2 id="core-thesis">Core Thesis</h2>
-<blockquote>"To program is to build theory and models" — Peter Naur</blockquote>
-<p>Code does not just run — it <strong>explains</strong> the business domain. A well-designed codebase is a living theory of how the world works, executable on a machine.</p>
-<h2 id="key-implications">Key Implications</h2>
+<p><strong>Entity Resolution</strong> is the process of mapping surface forms (names, abbreviations, aliases, spelling variants, partial names) to canonical entities in a knowledge graph. In the context of <a href="knowledge-graph.html" class="wiki-link">knowledge-graph</a> construction for agents, it is framed as a <strong>reasoning task</strong> rather than a string-matching problem — because simple similarity fails when labels differ substantially yet refer to the same entity.</p>
+<h2 id="why-string-matching-fails">Why String Matching Fails</h2>
 <ul>
-<li>Code must be a faithful mirror of the business domain</li>
-<li>Semantic errors (wrong model) are more dangerous than syntax errors (code doesn't compile)</li>
-<li>The real world is the ultimate source of truth for the simulation</li>
-<li>Language shapes thought — choosing the right types and patterns encourages rich modeling</li>
+<li>"Edwin Aldrin" vs "Buzz Aldrin" — zero character overlap, same person</li>
+<li>"IBM" vs "International Business Machines" — same entity, different lengths</li>
+<li>Different people can share the same name — similarity incorrectly merges them</li>
+</ul>
+<h2 id="model-based-resolution">Model-Based Resolution</h2>
+<p>Anthropic's cookbook approach:</p>
+<ol>
+<li><strong>Group candidates by entity type</strong> — all "Person" mentions, all "Organization" mentions</li>
+<li><strong>Use descriptions as contextual evidence</strong> — what does each surface form's context say about this entity?</li>
+<li><strong>Ask a stronger model (Sonnet) to propose canonical clusters</strong> — the model reasons about whether two surface forms refer to the same real-world entity</li>
+<li><strong>At scale</strong>: cheap blocking signals (shared words, type overlap) narrow the candidate set before model arbitration</li>
+</ol>
+<h2 id="resolution-must-be-reversible">Resolution Must Be Reversible</h2>
+<p>A canonical entity should retain:</p>
+<ul>
+<li>Its aliases (all surface forms)</li>
+<li>Source documents</li>
+<li>Resolution rationale</li>
+<li>Confidence score</li>
+<li>The run that created the merge</li>
+</ul>
+<p>This ensures incorrect merges can be reversed without reconstructing the entire pipeline. <strong>A false merge is catastrophic</strong> — if two people are collapsed into one node, every downstream query may combine their employers, projects, dates, and actions.</p>
+<h2 id="evaluation-metrics">Evaluation Metrics</h2>
+<ul>
+<li><strong>Compression ratio</strong>: raw surface forms / canonical entities (high is not automatically good — over-merging creates a connected but false graph)</li>
+<li><strong>Pairwise precision and recall</strong>: did we correctly pair surface forms?</li>
+<li><strong>False merge rate</strong>: how many distinct entities were incorrectly merged?</li>
+<li><strong>Missed merge rate</strong>: how many aliases of the same entity were not merged?</li>
+<li><strong>Manual review rate</strong>: how many decisions require human verification?</li>
 </ul>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="mapper-principles.html">
-      <span class="connection-type core">Foundation for</span>
-      <h4>MAPPER Principles</h4>
-      <p>the 6 principles that operationalize this philosophy</p>
+    <a class="connection-card" href="knowledge-graph.html">
+      <span class="connection-type related">Related</span>
+      <h4>Knowledge Graph</h4>
+      <p>construction — extracts produce surface forms, resolution produces canonical nodes</p>
+    </a>
+    <a class="connection-card" href="graph-grounding.html">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Grounding</h4>
+      <p>resolution quality determines whether queries traverse correct or false paths</p>
     </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
-      <h4>Clean Code Cookbook (Maximiliano Contieri)</h4>
-      <p>Contieri's Clean Code Cookbook</p>
+      <h4>Graph Engineering: The Karpathy Loop, Improved 1000x by Itself</h4>
+      <p></p>
     </div>
   </div>
 </section>
-<nav class="pagination"><a href="software-3.html" class="prev">← Software 3.0</a><a href="software-construction.html" class="next">Software Construction →</a></nav>
+<nav class="pagination"><a href="elt.html" class="prev">← ELT (Extract-Load-Transform)</a><a href="essential-accidental-complexity.html" class="next">Essential vs Accidental Complexity →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

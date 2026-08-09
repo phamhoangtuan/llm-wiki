@@ -3,8 +3,8 @@ title: "Agent Loop"
 type: concept
 tags: [ai-engineering, agents, autonomy, llm]
 created: 2026-06-20
-updated: 2026-06-20
-sources: [new-sdlc-vibe-coding]
+updated: 2026-08-06
+sources: [new-sdlc-vibe-coding, graph-engineering-karpathy]
 aliases: [perceive-plan-act-observe, agentic-loop, agent-cycle]
 ---
 
@@ -63,7 +63,7 @@ Agents don't "fear failure" — they use failure as fuel for the next iteration.
 ## Agent vs Chatbot
 
 | Chatbot | Agent |
-|---|---|
+| --- | --- |
 | Single prompt → single response | Iterative loop → multi-step execution |
 | Stateless (or limited context) | Stateful — tracks progress across steps |
 | No tool access | Invokes tools to interact with the world |
@@ -75,11 +75,26 @@ The agent loop is what transforms a reasoning model from a passive question-answ
 ## Relationship to Harness Engineering
 
 The [[harness-engineering]] discipline structures and enforces this loop. Without a harness:
+
 - The agent may skip verification (declare victory too early)
 - The loop may not close (loss of continuity)
 - Self-correction may go unbounded (overreach)
 
 The harness provides the scaffolding that ensures each stage of the loop completes before proceeding — making the loop a reliable production mechanism, not just an ad-hoc pattern.
+
+## Concrete Implementation: Karpathy's Autoresearch
+
+[[autoresearch]] is the canonical concrete implementation of the agent loop for ML experimentation. It specializes the generic perceive-plan-act-observe cycle into a **ratchet loop**:
+
+1. **Inspect** (perceive): read current `train.py` and recent history
+2. **Propose** (plan): one motivated change guided by `program.md`
+3. **Apply** (act): commit the candidate change, run ~5min training
+4. **Evaluate** (observe): measure `val_bpb` and peak memory
+5. **Keep or revert**: if metric improves → keep; else → `git reset`
+
+The key insight: every experiment becomes a node in a commit DAG with parent state, code diff, metric, and keep/discard decision. The loop converts human working memory into a machine-readable experiment lineage — the foundation of [[graph-engineering]].
+
+Karpathy's loop works because of four conditions: **verifiable output** (measurable metric), **reversible action** (git reset), **short horizon** (~5 min runs), and **bounded environment** (narrow repository). These form a reusable template for any autonomous agent loop.
 
 ---
 
@@ -88,4 +103,7 @@ The harness provides the scaffolding that ensures each stage of the loop complet
 - Distinct from [[vibe-coding]] — vibe coding skips the loop (prompt → output → done); agentic engineering runs it systematically
 - Implements [[agentic-development-life-cycle]] — ADLC adapts the loop for collaborative human-agent development
 - Related to [[fail-fast]] — self-correction catches failures early, preventing compound errors
+- Specialized by [[autoresearch]] — Karpathy's ratchet loop for ML experimentation
+- Foundation for [[graph-engineering]] — the loop generates the commit DAG
 - Benchmark source: [[sources/new-sdlc-vibe-coding]] — Part 3: "The Beating Heart — The Perceive-Plan-Act-Observe Loop"
+- Extended source: [[sources/graph-engineering-karpathy]] — Autoresearch as concrete loop implementation

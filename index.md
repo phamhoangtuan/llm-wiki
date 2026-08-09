@@ -8,7 +8,10 @@
 ## Concepts
 
 - [Wiki Maintenance](concepts/wiki-maintenance.html) — How this LLM-maintained wiki works, its conventions and workflows
-- [Knowledge Graph](concepts/knowledge-graph.html) — Lightweight knowledge graph via cross-linked pages, no vector DB needed
+- [Knowledge Graph](concepts/knowledge-graph.html) — Lightweight knowledge graph via cross-linked pages; agent shared memory and grounding layer for multi-agent systems
+- [Graph Engineering](concepts/graph-engineering.html) — Third stage in Karpathy's progression: agents share durable state through typed, queryable graphs of work and knowledge
+- [Entity Resolution](concepts/entity-resolution.html) — Mapping surface forms to canonical entities in knowledge graphs via model-based reasoning
+- [Graph Grounding](concepts/graph-grounding.html) — Constraining agent generation with facts retrieved from a graph; structured evaluation against graph edges
 - [Functional Programming](concepts/functional-programming.html) — FP paradigm: expressions, abstraction, immutability, dataflow; 4 pillars and the Yin-Yang learning philosophy
 - [Market Basket Analysis](concepts/market-basket-analysis.html) — Data mining technique for discovering item co-occurrence patterns; Support/Confidence metrics, MapReduce implementation
 - [KV Caching](concepts/kv-caching.html) — Inference optimization storing attention keys/values to avoid redundant recomputation; ~5× speedup
@@ -92,6 +95,9 @@
 - [Agent Quality Optimization](concepts/agent-quality-optimization.html) — Agent ROI over token counting; compound error, model selection, context engineering, Research-Plan-Implement workflow
 - [Agent Components](concepts/agent-components.html) — 5 pillars of AI agent architecture: Model, Tools, Memory, Orchestration, Deployment
 - [Agent Loop](concepts/agent-loop.html) — Perceive-Plan-Act-Observe cycle with self-correction; the heartbeat of agent autonomy
+- [Autoresearch](concepts/autoresearch.html) — Karpathy's autonomous ML experimentation: ratchet loop, program.md, ~700 experiments in 2 days
+- [Agent Hub](concepts/agent-hub.html) — Agent-first collaboration platform: commit DAG replaces main branch, `ah children/leaves/lineage` CLI
+- [Dynamic Workflows](concepts/dynamic-workflows.html) — Anthropic feature: Claude generates JavaScript orchestration scripts spawning up to 1,000 sub-agents
 - [Agent Verification](concepts/agent-verification.html) — Output + trajectory verification for non-deterministic agents; deterministic hooks as final safety layer
 - [ClickHouse](concepts/clickhouse.html) — High-performance column-oriented OLAP DBMS; data lake ready with Delta Lake and Iceberg support
 - [Delta Kernel](concepts/delta-kernel.html) — Rust abstraction layer for Delta Lake protocol; handles transaction logs, snapshots, schema evolution
@@ -135,6 +141,8 @@
 - [Risk-Driven Architecture](concepts/risk-driven-architecture.html) — Meta-framework for deciding how much architecture: Identify → Select → Evaluate, commensurate effort
 - [Case Interview](concepts/case-interview.html) — Consulting case interview methodology: MECE, Pyramid Principle, SCORE framework, 9-Step Math
 - [Python Professional Practices](concepts/python-professional-practices.html) — Transition from "code that runs" to production-grade Python via automated quality control
+- [Python Data Model](concepts/python-data-model.html) — Python's unifying object model: dunder methods, protocols, duck typing, goose typing
+- [Pythonic Code](concepts/pythonic-code.html) — Python idioms for expressive, native-feeling code; using what's available over reinventing
 - [Python Static Analysis](concepts/python-static-analysis.html) — Black + Flake8 + Mypy trifecta for automated code quality gates
 - [Quadtree](concepts/quadtree.html) — In-memory tree structure for adaptive 2D spatial subdivision; 1.71 GB for 200M businesses, fits on single server RAM
 - [Python Debugging with PDB](concepts/python-debugging-pdb.html) — Interactive debugging via breakpoint() and PDB: surgical state inspection over print()
@@ -146,7 +154,8 @@
 - [AI Scaling Laws](concepts/ai-scaling-laws.html) — Predictable relationships between model performance and data, parameters, and compute; power-law diminishing returns — Organizational pathology where leadership AI obsession destroys engineering culture; Meta case study, MTBF vs MTTR, profit center vs cost center
 - [Context Engineering](concepts/context-engineering.html) — 6 dimensions of context, static vs dynamic, agent skills pattern; supersedes prompt engineering
 - [Agentic Development Life Cycle (ADLC)](concepts/agentic-development-life-cycle.html) — Redefinition of SDLC for agent-human collaboration; 4-phase implementation roadmap
-- [Vibe Coding](concepts/vibe-coding.html) — Ad-hoc AI-assisted coding vs professional AI-native engineering; Agentic Engineering spectrum, hidden token economics
+- [Vibe Coding](concepts/vibe-coding.html) — Ad-hoc AI-assisted coding vs professional AI-native engineering; the first stage of Karpathy's 3-stage progression
+- [Software 3.0](concepts/software-3.html) — Karpathy's framing: context and prompts become a programmable interface for AI systems
 - [Data Engineering Fundamentals](concepts/data-engineering-fundamentals.html) — Enduring skills (SQL, Python, data modeling, glue skills) that matter more than ever in 2026
 - [CI/CD for Data Pipelines](concepts/cicd-data-pipelines.html) — Linting, testing, and deployment automation for data engineering; tools, notebooks-vs-scripts debate
 - [Specification-Driven Development](concepts/specification-driven-development.html) — Define before build; antidote to random prompting in AI-native workflows
@@ -158,6 +167,8 @@
 - [Refactoring at Scale](concepts/refactoring-at-scale.html) — Safe restructuring of large codebases; drive-by refactorer, Brownie effect, rollout modes
 - [Software Rot](concepts/software-rot.html) — Inevitable code degradation from environmental change and requirement shifts
 - [Complexity Metrics](concepts/complexity-metrics.html) — Halstead, Cyclomatic, NPath — quantitative measurement for refactoring business cases
+- [Metric Fixation](concepts/metric-fixation.html) — The dysfunctional dominance of standardized metrics over human judgment; goal displacement, gaming, creaming
+- [Goodhart's Law](concepts/goodharts-law.html) — "When a measure becomes a target, it ceases to be a good measure"
 - [Code Archaeology](concepts/code-archaeology.html) — Investigating historical context before refactoring; finding the "initial good"
 - [Bloom Filter](concepts/bloom-filter.html) — Space-efficient probabilistic set membership; cache miss prevention, URL deduplication at scale
 - [Byzantine Fault Tolerance (BFT)](concepts/byzantine-fault-tolerance.html) — Distributed consensus under adversarial node behavior; 3f+1 formula, PBFT protocol, CFT vs BFT trade-offs
@@ -224,6 +235,7 @@
 - [The Art of Functional Programming](sources/the-art-of-functional-programming.md) — Notes on Minh Quang Tran's book — 205 pages on FP thinking, 4 pillars, and the declarative paradigm shift
 - [Python Testing with pytest](sources/okken-python-testing-pytest.md) — Notes on "Python Testing with pytest (2nd Ed.)" by Brian Okken — 398 pages
 - [The LLM Wiki Pattern](sources/sample-article.md) — Karpathy's gist: LLM-maintained persistent wiki instead of RAG
+- [Graph Engineering: The Karpathy Loop, Improved 1000x by Itself](sources/graph-engineering-karpathy.md) — Independent synthesis mapping Karpathy's autoresearch → AgentHub → Anthropic workflows; graph as shared memory for agent systems
 - [Clean Code Cookbook](sources/contieri-clean-code-cookbook.md) — Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection
 - [Quick Insights on Materialized Views](sources/materialized-views-quick-insights.md) — Vu Trinh on MVs, IVM theory, freshness trade-offs, and streaming applications
 - [DuckDB: Up and Running](sources/duckdb-up-and-running.md)
@@ -279,6 +291,9 @@
 - [Data Quality Traffic Lights — Robert Sahlin](sources/data-quality-traffic-lights-sahlin.md) — Nordnet's Data Quality Health Badge: 5 failure modes, dbt+Looker lineage, TimesFM anomaly detection, programmatic trust for agents and ML pipelines
 - [Why Is Meta Destroying Its Engineering Org? — Gergely Orosz](sources/meta-destroying-engineering-org-orosz.md) — Pragmatic Engineer investigation: forced data labeling, keystroke tracking, tokenmaxxing, Instagram takeover outage, AI psychosis case study
 - [The New SDLC With Vibe Coding — Osmani, Saboo & Kartakis](sources/new-sdlc-vibe-coding.md) — 51-page ebook: 5-stage AI coding evolution, Agent Loop, 90% harness rule, vibe coding economics
+- [Fluent Python — Luciano Ramalho](sources/fluent-python.md) — 1,831-page definitive guide: data model, Pythonic code, duck typing, goose typing, metaprogramming
+- [Staff Engineer: Leadership Beyond the Management Track — Will Larson](sources/staff-engineer-larson.md) — 215-page guide: three pillars, humaning skills, navigating ambiguity, personal sustainability
+- [The Tyranny of Metrics — Jerry Z. Muller](sources/tyranny-of-metrics.md) — 233-page diagnosis: metric fixation, goal displacement, professional ethos vs managerialism
 - [System Design: The Big Archive — Alex Xu](sources/system-design-big-archive.md) — 159-page ebook: cloud infra, containers, deployment, databases, security, performance, architecture patterns
 - [System Design Interview – An Insider's Guide: Volume 2 — Alex Xu & Sahn Lam](sources/system-design-interview-volume-2.md) — 429-page ebook: proximity service architecture, geospatial indexing, Geohash vs Quadtree, cache stampede mitigation
 - [Databricks Certified DE Associate Study Guide — Derar Alhussein](sources/databricks-dea-study-guide.md) — 802-page ebook: Lakehouse architecture, 4-layer platform, control/data plane, Spark, DBFS, Unity Catalog

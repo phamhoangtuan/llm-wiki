@@ -12,6 +12,19 @@
         "llm"
       ]
     },
+    "agent-hub": {
+      "title": "Agent Hub",
+      "category": "AI & Agents",
+      "url": "concepts/agent-hub.html",
+      "definition": "**AgentHub** is Karpathy's sketch of an agent-first collaboration platform. Its central slogan: \"GitHub is for humans. AgentHub is for agents.\" It combines a bare Git repository, a SQLite database, an",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "collaboration",
+        "git",
+        "dag"
+      ]
+    },
     "agent-loop": {
       "title": "Agent Loop",
       "category": "AI & Agents",
@@ -300,6 +313,19 @@
         "agile",
         "project-management",
         "methodology"
+      ]
+    },
+    "autoresearch": {
+      "title": "Autoresearch",
+      "category": "AI & Agents",
+      "url": "concepts/autoresearch.html",
+      "definition": "**Autoresearch** is Andrej Karpathy's autonomous ML experimentation system. An agent is placed inside an executable research harness with a mutable training program, a fixed evaluation metric, a time ",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "ml-experimentation",
+        "autonomy",
+        "loop"
       ]
     },
     "batch-processing": {
@@ -1001,6 +1027,19 @@
         "data-engineering"
       ]
     },
+    "dynamic-workflows": {
+      "title": "Dynamic Workflows",
+      "category": "AI & Agents",
+      "url": "concepts/dynamic-workflows.html",
+      "definition": "**Dynamic Workflows** is an Anthropic feature (2026) where Claude generates a JavaScript orchestration program for the current task, rather than requiring the developer to write a static fan-out scrip",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "orchestration",
+        "anthropic",
+        "parallelism"
+      ]
+    },
     "edge-computing": {
       "title": "Edge Computing",
       "category": "Data Engineering",
@@ -1025,6 +1064,18 @@
         "etl",
         "data-warehouse",
         "architecture"
+      ]
+    },
+    "entity-resolution": {
+      "title": "Entity Resolution",
+      "category": "Meta",
+      "url": "concepts/entity-resolution.html",
+      "definition": "**Entity Resolution** is the process of mapping surface forms (names, abbreviations, aliases, spelling variants, partial names) to canonical entities in a knowledge graph. In the context of [[knowledg",
+      "tags": [
+        "knowledge-graph",
+        "nlp",
+        "data-quality",
+        "agents"
       ]
     },
     "essential-accidental-complexity": {
@@ -1208,6 +1259,18 @@
         "stdlib"
       ]
     },
+    "goodharts-law": {
+      "title": "Goodhart's Law",
+      "category": "Data Engineering",
+      "url": "concepts/goodharts-law.html",
+      "definition": "**Goodhart's Law** states: \"When a measure becomes a target, it ceases to be a good measure.\" Originally formulated by economist Charles Goodhart about monetary policy, it has become a universal princ",
+      "tags": [
+        "metrics",
+        "measurement",
+        "statistics",
+        "organizational-behavior"
+      ]
+    },
     "goroutines": {
       "title": "Goroutines",
       "category": "Go & Web",
@@ -1219,6 +1282,30 @@
         "concurrency",
         "goroutines",
         "performance"
+      ]
+    },
+    "graph-engineering": {
+      "title": "Graph Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/graph-engineering.html",
+      "definition": "**Graph Engineering** is the third stage in Karpathy's progression of AI-assisted development: vibe coding → agentic engineering → graph engineering. It is the discipline of building agent systems whe",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "knowledge-graph",
+        "agent-architecture"
+      ]
+    },
+    "graph-grounding": {
+      "title": "Graph Grounding",
+      "category": "AI & Agents",
+      "url": "concepts/graph-grounding.html",
+      "definition": "**Graph Grounding** is the practice of constraining agent generation with facts retrieved from a knowledge graph, and evaluating claims against graph edges with provenance. Instead of agents reasoning",
+      "tags": [
+        "ai-engineering",
+        "knowledge-graph",
+        "verification",
+        "agents"
       ]
     },
     "harness-engineering": {
@@ -1612,6 +1699,18 @@
         "skill-acquisition"
       ]
     },
+    "metric-fixation": {
+      "title": "Metric Fixation",
+      "category": "Data Engineering",
+      "url": "concepts/metric-fixation.html",
+      "definition": "**Metric Fixation** is the cultural pattern Jerry Z. Muller identifies as \"the seemingly irresistible pressure to measure, publicize, and reward performance, even when evidence suggests doing so is co",
+      "tags": [
+        "metrics",
+        "management",
+        "organizational-behavior",
+        "measurement"
+      ]
+    },
     "microservices": {
       "title": "Microservices",
       "category": "System Architecture",
@@ -1937,6 +2036,18 @@
         "gil"
       ]
     },
+    "python-data-model": {
+      "title": "Python Data Model",
+      "category": "Python & Tools",
+      "url": "concepts/python-data-model.html",
+      "definition": "The **Python Data Model** (also called the object model) is the unifying framework that formalizes interfaces for Python's building blocks — sequences, iterators, functions, classes, and context manag",
+      "tags": [
+        "python",
+        "programming",
+        "object-model",
+        "protocols"
+      ]
+    },
     "python-debugging-pdb": {
       "title": "Python Debugging with PDB",
       "category": "Python & Tools",
@@ -1987,6 +2098,18 @@
       "tags": [
         "python",
         "static-analysis",
+        "code-quality"
+      ]
+    },
+    "pythonic-code": {
+      "title": "Pythonic Code",
+      "category": "Python & Tools",
+      "url": "concepts/pythonic-code.html",
+      "definition": "**Pythonic code** is code that uses Python's language idioms to be consistent, expressive, and effective — not just code that happens to run in Python. It's the difference between writing Python with ",
+      "tags": [
+        "python",
+        "programming",
+        "idioms",
         "code-quality"
       ]
     },
@@ -2174,6 +2297,17 @@
         "databases",
         "system-design",
         "uuid"
+      ]
+    },
+    "software-3": {
+      "title": "Software 3.0",
+      "category": "AI & Agents",
+      "url": "concepts/software-3.html",
+      "definition": "**Software 3.0** is Andrej Karpathy's framing of a new programming paradigm where **context and prompts become a programmable interface** for AI systems. It extends the progression:",
+      "tags": [
+        "ai-engineering",
+        "programming-paradigm",
+        "karpathy"
       ]
     },
     "software-as-simulation": {

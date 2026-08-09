@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Essential vs Accidental Complexity — LLM Wiki</title>
+<title>Goodhart&#x27;s Law — LLM Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles/main.css">
@@ -36,100 +36,97 @@
 <main class="main-content">
 <div class="breadcrumb-wrapper"><nav class="breadcrumb">
   <a href="../index.html">Home</a> <span class="sep">/</span>
-  <a href="../index.html#cat-architecture">Architecture</a> <span class="sep">/</span>
-  <span>Essential vs Accidental Complexity</span>
+  <a href="../index.html#cat-metrics">Metrics</a> <span class="sep">/</span>
+  <span>Goodhart&#x27;s Law</span>
 </nav></div>
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
-  <h1>Essential vs Accidental Complexity</h1>
-  <div class="page-meta"><span>Source: contieri-clean-code-cookbook, good-code-bad-code, seriously-good-software, code-complete</span><span>Updated: 2026-06-08</span></div>
-  <div class="page-tags"><span class="tag">architecture</span><span class="tag">complexity</span><span class="tag">design-principles</span></div>
+  <h1>Goodhart&#x27;s Law</h1>
+  <div class="page-meta"><span>Source: tyranny-of-metrics</span><span>Updated: 2026-08-06</span></div>
+  <div class="page-tags"><span class="tag">metrics</span><span class="tag">measurement</span><span class="tag">statistics</span><span class="tag">organizational-behavior</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
-<p>Fred Brooks distinguished two types of complexity in software. Understanding the difference is critical for knowing what to accept and what to eliminate.</p>
-<h2 id="two-types-of-complexity">Two Types of Complexity</h2>
+<p><strong>Goodhart's Law</strong> states: "When a measure becomes a target, it ceases to be a good measure." Originally formulated by economist Charles Goodhart about monetary policy, it has become a universal principle of measurement dysfunction — applying to business KPIs, academic metrics, software engineering metrics, and any domain where numbers are used to drive behavior.</p>
+<h2 id="the-mechanism">The Mechanism</h2>
+<p>A metric has two roles:</p>
+<ol>
+<li><strong>Descriptive</strong>: It reflects some underlying reality (e.g., lines of code roughly correlates with project size)</li>
+<li><strong>Incentive</strong>: When people know they're evaluated on it, they optimize for the metric rather than the reality</li>
+</ol>
+<p>The moment a metric becomes a target (incentive role), the descriptive signal is corrupted. People find the shortest path to make the number look good — which is rarely the same as doing good work.</p>
+<h2 id="examples">Examples</h2>
 <table><thead><tr>
-<th>Type</th>
-<th>Definition</th>
-<th>Example</th>
-<th>Can Eliminate?</th>
+<th>Domain</th>
+<th>Metric</th>
+<th>Gaming</th>
 </tr></thead><tbody>
 <tr>
-<td><strong>Essential</strong></td>
-<td>Inherent complexity of the real-world problem</td>
-<td>Physics of landing a rover on Mars</td>
-<td>❌ No — must manage</td>
+<td>Software</td>
+<td>Lines of code</td>
+<td>Verbose, redundant code; no refactoring</td>
 </tr>
 <tr>
-<td><strong>Accidental</strong></td>
-<td>Complexity introduced by bad design/implementation</td>
-<td>Mutable Date auto-correcting Nov 31 → Dec 1</td>
-<td>✅ Yes — better design</td>
+<td>Software</td>
+<td>Bug count closed</td>
+<td>Closing trivial bugs, ignoring hard ones</td>
+</tr>
+<tr>
+<td>Medicine</td>
+<td>Surgical success rate</td>
+<td>Surgeons rejecting high-risk patients</td>
+</tr>
+<tr>
+<td>Policing</td>
+<td>Crime statistics</td>
+<td>Downgrading felonies to misdemeanors</td>
+</tr>
+<tr>
+<td>Education</td>
+<td>Test scores</td>
+<td>Teaching to the test, neglecting untested subjects</td>
+</tr>
+<tr>
+<td>Academia</td>
+<td>Citation count</td>
+<td>Citation rings, self-citation, salami slicing</td>
 </tr>
 </tbody></table>
+<h2 id="related-formulations">Related Formulations</h2>
+<ul>
+<li><strong>Campbell's Law</strong>: "The more any quantitative social indicator is used for social decision-making, the more subject it will be to corruption pressures and the more apt it will be to distort and corrupt the social processes it is intended to monitor."</li>
+<li><strong>Cobra effect</strong>: Named for a British colonial policy in India that offered bounties for dead cobras — people started breeding cobras to collect bounties. When the policy was scrapped, breeders released their cobras, making the problem worse.</li>
+</ul>
+<h2 id="mitigation">Mitigation</h2>
+<ul>
+<li>Use metrics for <strong>diagnostic monitoring</strong>, not external judgment (see <a href="metric-fixation.html" class="wiki-link">metric-fixation</a>)</li>
+<li>Combine quantitative metrics with qualitative judgment</li>
+<li>Rotate metrics regularly — don't let one number dominate for years</li>
+<li>Measure multiple dimensions — a single KPI is trivially gameable</li>
+<li>Trust professional ethos and intrinsic motivation where it exists</li>
+</ul>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="immutability.html">
-      <span class="connection-type related">Managed by</span>
-      <h4>Immutability of Essence</h4>
-      <p>eliminates accidental complexity from mutable state</p>
-    </a>
-    <a class="connection-card" href="rich-domain-model.html">
-      <span class="connection-type related">Reduced by</span>
-      <h4>Rich Domain Model</h4>
-      <p>eliminates scattered logic</p>
-    </a>
-    <a class="connection-card" href="bijection.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Bijection</h4>
-      <p>bijection violations create accidental complexity</p>
-    </a>
-    <a class="connection-card" href="code-quality-pillars.html">
-      <span class="connection-type related">Managed by</span>
-      <h4>Code Quality Pillars</h4>
-      <p>well-designed abstraction layers prevent accidental complexity from leaking</p>
-    </a>
-    <a class="connection-card" href="software-quality-dimensions.html">
+    <a class="connection-card" href="metric-fixation.html">
       <span class="connection-type related">Related</span>
-      <h4>Software Quality Dimensions</h4>
-      <p>YAGNI avoids accidental complexity introduced by over-engineering</p>
+      <h4>Metric Fixation</h4>
+      <p>Goodhart's Law is the mechanism; metric fixation is the organizational pathology</p>
     </a>
     <a class="connection-card" href="complexity-metrics.html">
-      <span class="connection-type related">Related</span>
-      <h4>Complexity Metrics</h4>
-      <p>Halstead, Cyclomatic, and NPath metrics measure accidental complexity growth</p>
-    </a>
-    <a class="connection-card" href="refactoring-at-scale.html">
-      <span class="connection-type related">Related</span>
-      <h4>Refactoring at Scale</h4>
-      <p>refactoring systematically reduces accidental complexity while preserving essential complexity</p>
-    </a>
-    <a class="connection-card" href="software-rot.html">
       <span class="connection-type related">Related to</span>
-      <h4>Software Rot</h4>
-      <p>rot primarily manifests as growing accidental complexity over time</p>
+      <h4>Complexity Metrics</h4>
+      <p>quantitative code metrics are subject to the same gaming</p>
     </a>
-    <a class="connection-card" href="code-archaeology.html">
+    <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
-      <h4>Code Archaeology</h4>
-      <p>archaeology distinguishes intentional (essential) complexity from accumulated (accidental) cruft</p>
-    </a>
-    <a class="connection-card" href="software-construction.html">
-      <span class="connection-type related">Related</span>
-      <h4>Software Construction</h4>
-      <p>managing complexity is the primary hurdle in construction (30-80% of project time, 50-75% of defects)</p>
-    </a>
-    <a class="connection-card" href="information-hiding.html">
-      <span class="connection-type related">Managed by</span>
-      <h4>Information Hiding</h4>
-      <p>hiding implementation details localizes the impact of change</p>
-    </a>
+      <h4>The Tyranny of Metrics</h4>
+      <p></p>
+    </div>
   </div>
 </section>
-<nav class="pagination"><a href="entity-resolution.html" class="prev">← Entity Resolution</a><a href="event-time-processing.html" class="next">Event Time Processing →</a></nav>
+<nav class="pagination"><a href="go-web-ecosystem.html" class="prev">← Go Web Ecosystem</a><a href="goroutines.html" class="next">Goroutines →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

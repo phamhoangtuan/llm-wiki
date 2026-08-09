@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Agent Loop</h1>
-  <div class="page-meta"><span>Source: new-sdlc-vibe-coding</span><span>Updated: 2026-06-20</span></div>
+  <div class="page-meta"><span>Source: new-sdlc-vibe-coding, graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
   <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">autonomy</span><span class="tag">llm</span></div>
 </div>
 <div class="content-area concept">
@@ -120,6 +120,17 @@ Loop continues until goal met OR stopping condition reached</code></pre>
 <li>Self-correction may go unbounded (overreach)</li>
 </ul>
 <p>The harness provides the scaffolding that ensures each stage of the loop completes before proceeding — making the loop a reliable production mechanism, not just an ad-hoc pattern.</p>
+<h2 id="concrete-implementation-karpathys-autore">Concrete Implementation: Karpathy's Autoresearch</h2>
+<p><a href="autoresearch.html" class="wiki-link">autoresearch</a> is the canonical concrete implementation of the agent loop for ML experimentation. It specializes the generic perceive-plan-act-observe cycle into a <strong>ratchet loop</strong>:</p>
+<ol>
+<li><strong>Inspect</strong> (perceive): read current <code>train.py</code> and recent history</li>
+<li><strong>Propose</strong> (plan): one motivated change guided by <code>program.md</code></li>
+<li><strong>Apply</strong> (act): commit the candidate change, run ~5min training</li>
+<li><strong>Evaluate</strong> (observe): measure <code>val_bpb</code> and peak memory</li>
+<li><strong>Keep or revert</strong>: if metric improves → keep; else → <code>git reset</code></li>
+</ol>
+<p>The key insight: every experiment becomes a node in a commit DAG with parent state, code diff, metric, and keep/discard decision. The loop converts human working memory into a machine-readable experiment lineage — the foundation of <a href="graph-engineering.html" class="wiki-link">graph-engineering</a>.</p>
+<p>Karpathy's loop works because of four conditions: <strong>verifiable output</strong> (measurable metric), <strong>reversible action</strong> (git reset), <strong>short horizon</strong> (~5 min runs), and <strong>bounded environment</strong> (narrow repository). These form a reusable template for any autonomous agent loop.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -149,14 +160,29 @@ Loop continues until goal met OR stopping condition reached</code></pre>
       <h4>Fail Fast</h4>
       <p>self-correction catches failures early, preventing compound errors</p>
     </a>
+    <a class="connection-card" href="autoresearch.html">
+      <span class="connection-type related">Related</span>
+      <h4>Autoresearch</h4>
+      <p>Karpathy's ratchet loop for ML experimentation</p>
+    </a>
+    <a class="connection-card" href="graph-engineering.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Graph Engineering</h4>
+      <p>the loop generates the commit DAG</p>
+    </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
       <h4>The New SDLC With Vibe Coding: From ad-hoc prompting to Agentic Engineering</h4>
       <p>Part 3: "The Beating Heart — The Perceive-Plan-Act-Observe Loop"</p>
     </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Engineering: The Karpathy Loop, Improved 1000x by Itself</h4>
+      <p>Autoresearch as concrete loop implementation</p>
+    </div>
   </div>
 </section>
-<nav class="pagination"><a href="agent-components.html" class="prev">← Agent Components</a><a href="agent-quality-optimization.html" class="next">Agent Quality Optimization →</a></nav>
+<nav class="pagination"><a href="agent-hub.html" class="prev">← Agent Hub</a><a href="agent-quality-optimization.html" class="next">Agent Quality Optimization →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

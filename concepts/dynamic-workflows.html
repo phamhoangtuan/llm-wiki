@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Knowledge Graph — LLM Wiki</title>
+<title>Dynamic Workflows — LLM Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles/main.css">
@@ -36,75 +36,95 @@
 <main class="main-content">
 <div class="breadcrumb-wrapper"><nav class="breadcrumb">
   <a href="../index.html">Home</a> <span class="sep">/</span>
-  <a href="../index.html#cat-architecture">Architecture</a> <span class="sep">/</span>
-  <span>Knowledge Graph</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Dynamic Workflows</span>
 </nav></div>
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
-  <h1>Knowledge Graph</h1>
-  <div class="page-meta"><span>Source: sample-article, graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
-  <div class="page-tags"><span class="tag">architecture</span><span class="tag">linking</span><span class="tag">index</span></div>
+  <h1>Dynamic Workflows</h1>
+  <div class="page-meta"><span>Source: graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">orchestration</span><span class="tag">anthropic</span><span class="tag">parallelism</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
-<p>A lightweight knowledge graph built from cross-linked markdown pages. Instead of a dedicated graph database or vector store, the wiki uses wikilinks, a content index (<code>index.md</code>), and consistent YAML frontmatter to achieve the same effect without infrastructure.</p>
+<p><strong>Dynamic Workflows</strong> is an Anthropic feature (2026) where Claude generates a JavaScript orchestration program for the current task, rather than requiring the developer to write a static fan-out script. The generated script spawns sub-agents with fresh contexts, gathers results, filters, re-dispatches, and synthesizes — collapsing what was previously a developer task into a single model call that produces the workflow itself.</p>
 <h2 id="how-it-works">How It Works</h2>
-<ol>
-<li><strong>Write-time linking</strong> — when the LLM ingests a source, it creates/updates concept pages with explicit links (<code><a href="..."></code>) to related pages. The connections are compiled once, not re-derived.</li>
-</ol>
-<ol>
-<li><strong>Index as entry point</strong> — <code>index.md</code> lists every page with a one-line summary. The LLM reads this first to find relevant pages, then drills in. This replaces vector search at moderate scale (~500 pages).</li>
-</ol>
-<ol>
-<li><strong>Frontmatter as metadata layer</strong> — YAML frontmatter stores tags, source backlinks, aliases, and dates. Tools like Obsidian Dataview can query this.</li>
-</ol>
-<h2 id="why-this-works">Why This Works</h2>
+<p>Instead of writing orchestration code, the developer triggers workflow generation. Claude writes JavaScript that:</p>
+<pre><code class="language-javascript">const files = await tools.glob(&quot;src/**/*.ts&quot;);
+const audits = await gather(
+  files.map((file) =&gt;
+    spawn(&quot;auditor&quot;, {
+      file,
+      instructions: &quot;Inspect for race conditions. Return JSON.&quot;
+    })
+  ),
+  { concurrency: 16 }
+);
+const suspicious = audits.filter((r) =&gt; r.confidence &gt;= 0.70);
+const reviews = await gather(
+  suspicious.map((r) =&gt;
+    spawn(&quot;reviewer&quot;, {
+      report: r,
+      instructions: &quot;Try to refute this finding.&quot;
+    })
+  ),
+  { concurrency: 16 }
+);
+return await spawn(&quot;synthesizer&quot;, {
+  audits, reviews,
+  instructions: &quot;Produce one cited report.&quot;
+});</code></pre>
+<h2 id="key-specifications">Key Specifications</h2>
 <ul>
-<li>No infrastructure — just markdown files in folders</li>
-<li>Git-trackable — every link is explicit in the source</li>
-<li>LLM-maintainable — the LLM writes the links as a natural part of ingest</li>
-<li>Scales to hundreds of pages before needing search tooling</li>
+<li>Up to 16 concurrent sub-agents</li>
+<li>Hard cap of 1,000 sub-agents per workflow</li>
+<li>Fresh context for each sub-agent (no shared transcript pollution)</li>
+<li>Intermediate state held in script variables</li>
+<li>Triggered via the word "workflow" or ultracode mode</li>
 </ul>
-<h2 id="agent-knowledge-graphs-shared-memory-and">Agent Knowledge Graphs: Shared Memory and Grounding</h2>
-<p>Beyond static wikis, knowledge graphs serve as <strong>infrastructure for agent systems</strong> in <a href="graph-engineering.html" class="wiki-link">graph-engineering</a>. Three roles:</p>
-<h3 id="shared-memory">Shared Memory</h3>
-<p>Workers write findings as structured graph updates. A synthesizer traverses the graph to combine findings even if no single worker saw all source documents. The graph persists across sessions — "the agent forgets, the graph does not."</p>
-<h3 id="grounding-layer">Grounding Layer</h3>
-<p>An evaluator checks claims against graph edges with provenance. A claim like "Vendor X supplied the component in Incident Y" can be verified by checking for edges <code>(Vendor X, supplied, Component Z)</code> and <code>(Component Z, involved_in, Incident Y)</code>. Missing edges produce structured, actionable feedback rather than free-form critique. See <a href="graph-grounding.html" class="wiki-link">graph-grounding</a>.</p>
-<h3 id="construction-pipeline">Construction Pipeline</h3>
-<p>Anthropic's cookbook replaces classical NLP with model calls: <strong>Haiku</strong> extracts typed entities and S-P-O relations against a Pydantic schema → <strong>Sonnet</strong> resolves surface forms (e.g., "Edwin Aldrin" → "Buzz Aldrin") into canonical entities → <strong>NetworkX MultiDiGraph</strong> assembly with provenance on every edge → <strong>Sonnet</strong> queries serialized subgraphs with edge-level citations. See <a href="entity-resolution.html" class="wiki-link">entity-resolution</a>.</p>
+<h2 id="from-you-build-to-claude-builds">From "You Build" to "Claude Builds"</h2>
+<p>The 2024 guidance says engineers should build simple workflows. The 2026 feature says Claude can build a workflow on the fly. This changes the abstraction boundary but does <strong>not</strong> remove engineering responsibility. The human still defines:</p>
+<ul>
+<li>The objective</li>
+<li>Files in scope</li>
+<li>Output contract</li>
+<li>Permissions</li>
+<li>Verification policy</li>
+<li>Concurrency and token budget</li>
+<li>Rollback rule</li>
+<li>Evidence required for synthesis</li>
+</ul>
+<h2 id="cost-consideration">Cost Consideration</h2>
+<p>Large fan-out consumes tokens quickly. A 1,000-sub-agent run can cost tens of dollars. Parallel workers also create correlated errors — a verification wave helps only if reviewers have a different prompt, evidence set, or role.</p>
+<h2 id="bun-runtime-port">Bun Runtime Port</h2>
+<p>A notable demonstration: approximately 750,000 lines of Zig ported to Rust in 11 days using Dynamic Workflows, with 99.8% tests passing. The workflow decomposed the port into parallelizable units, dispatched sub-agents for each, and synthesized results.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="wiki-maintenance.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Wiki Maintenance</h4>
-      <p>the operational model</p>
-    </a>
     <a class="connection-card" href="graph-engineering.html">
       <span class="connection-type related">Related</span>
       <h4>Graph Engineering</h4>
-      <p>shared memory and grounding layer for agent systems</p>
+      <p>generated orchestration for parallel exploration</p>
     </a>
-    <a class="connection-card" href="graph-grounding.html">
-      <span class="connection-type related">Related</span>
-      <h4>Graph Grounding</h4>
-      <p>constraining agent generation with graph facts</p>
-    </a>
-    <a class="connection-card" href="entity-resolution.html">
+    <a class="connection-card" href="agent-hub.html">
       <span class="connection-type related">Related to</span>
-      <h4>Entity Resolution</h4>
-      <p>mapping surface forms to canonical nodes</p>
+      <h4>Agent Hub</h4>
+      <p>both enable concurrent agent work, but Dynamic Workflows generate the orchestration script dynamically</p>
+    </a>
+    <a class="connection-card" href="agent-loop.html">
+      <span class="connection-type related">Related</span>
+      <h4>Agent Loop</h4>
+      <p>the loop is fixed; dynamic workflows adapt orchestration per task</p>
     </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
       <h4>Graph Engineering: The Karpathy Loop, Improved 1000x by Itself</h4>
-      <p>Anthropic's KG Construction Cookbook</p>
+      <p></p>
     </div>
   </div>
 </section>
-<nav class="pagination"><a href="kappa-architecture.html" class="prev">← Kappa Architecture</a><a href="kubernetes-architecture.html" class="next">Kubernetes Architecture →</a></nav>
+<nav class="pagination"><a href="duckdb.html" class="prev">← DuckDB</a><a href="edge-computing.html" class="next">Edge Computing →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

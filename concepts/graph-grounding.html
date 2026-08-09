@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Knowledge Graph — LLM Wiki</title>
+<title>Graph Grounding — LLM Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles/main.css">
@@ -36,75 +36,95 @@
 <main class="main-content">
 <div class="breadcrumb-wrapper"><nav class="breadcrumb">
   <a href="../index.html">Home</a> <span class="sep">/</span>
-  <a href="../index.html#cat-architecture">Architecture</a> <span class="sep">/</span>
-  <span>Knowledge Graph</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Graph Grounding</span>
 </nav></div>
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
-  <h1>Knowledge Graph</h1>
-  <div class="page-meta"><span>Source: sample-article, graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
-  <div class="page-tags"><span class="tag">architecture</span><span class="tag">linking</span><span class="tag">index</span></div>
+  <h1>Graph Grounding</h1>
+  <div class="page-meta"><span>Source: graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">knowledge-graph</span><span class="tag">verification</span><span class="tag">agents</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
-<p>A lightweight knowledge graph built from cross-linked markdown pages. Instead of a dedicated graph database or vector store, the wiki uses wikilinks, a content index (<code>index.md</code>), and consistent YAML frontmatter to achieve the same effect without infrastructure.</p>
-<h2 id="how-it-works">How It Works</h2>
-<ol>
-<li><strong>Write-time linking</strong> — when the LLM ingests a source, it creates/updates concept pages with explicit links (<code><a href="..."></code>) to related pages. The connections are compiled once, not re-derived.</li>
-</ol>
-<ol>
-<li><strong>Index as entry point</strong> — <code>index.md</code> lists every page with a one-line summary. The LLM reads this first to find relevant pages, then drills in. This replaces vector search at moderate scale (~500 pages).</li>
-</ol>
-<ol>
-<li><strong>Frontmatter as metadata layer</strong> — YAML frontmatter stores tags, source backlinks, aliases, and dates. Tools like Obsidian Dataview can query this.</li>
-</ol>
-<h2 id="why-this-works">Why This Works</h2>
+<p><strong>Graph Grounding</strong> is the practice of constraining agent generation with facts retrieved from a knowledge graph, and evaluating claims against graph edges with provenance. Instead of agents reasoning from memory or unanchored context, they cite specific graph paths. An evaluator can check whether a claim has a supported path through the graph, returning structured, actionable feedback rather than free-form critique.</p>
+<h2 id="three-roles-of-the-graph-for-agents">Three Roles of the Graph for Agents</h2>
+<h3 id="1-shared-memory">1. Shared Memory</h3>
+<p>Workers write findings as structured graph updates. A synthesizer traverses the graph to combine findings even if no single worker saw all source documents. This prevents context-window amnesia — the graph persists across sessions.</p>
+<h3 id="2-grounding-layer">2. Grounding Layer</h3>
+<p>An evaluator checks claims against evidence. Example:</p>
+<p>Claim: "Vendor X supplied the component involved in Incident Y."</p>
+<p>The evaluator checks for edges:</p>
 <ul>
-<li>No infrastructure — just markdown files in folders</li>
-<li>Git-trackable — every link is explicit in the source</li>
-<li>LLM-maintainable — the LLM writes the links as a natural part of ingest</li>
-<li>Scales to hundreds of pages before needing search tooling</li>
+<li><code>(Vendor X, supplied, Component Z)</code></li>
+<li><code>(Component Z, involved_in, Incident Y)</code></li>
 </ul>
-<h2 id="agent-knowledge-graphs-shared-memory-and">Agent Knowledge Graphs: Shared Memory and Grounding</h2>
-<p>Beyond static wikis, knowledge graphs serve as <strong>infrastructure for agent systems</strong> in <a href="graph-engineering.html" class="wiki-link">graph-engineering</a>. Three roles:</p>
-<h3 id="shared-memory">Shared Memory</h3>
-<p>Workers write findings as structured graph updates. A synthesizer traverses the graph to combine findings even if no single worker saw all source documents. The graph persists across sessions — "the agent forgets, the graph does not."</p>
-<h3 id="grounding-layer">Grounding Layer</h3>
-<p>An evaluator checks claims against graph edges with provenance. A claim like "Vendor X supplied the component in Incident Y" can be verified by checking for edges <code>(Vendor X, supplied, Component Z)</code> and <code>(Component Z, involved_in, Incident Y)</code>. Missing edges produce structured, actionable feedback rather than free-form critique. See <a href="graph-grounding.html" class="wiki-link">graph-grounding</a>.</p>
-<h3 id="construction-pipeline">Construction Pipeline</h3>
-<p>Anthropic's cookbook replaces classical NLP with model calls: <strong>Haiku</strong> extracts typed entities and S-P-O relations against a Pydantic schema → <strong>Sonnet</strong> resolves surface forms (e.g., "Edwin Aldrin" → "Buzz Aldrin") into canonical entities → <strong>NetworkX MultiDiGraph</strong> assembly with provenance on every edge → <strong>Sonnet</strong> queries serialized subgraphs with edge-level citations. See <a href="entity-resolution.html" class="wiki-link">entity-resolution</a>.</p>
+<p>When an edge is missing, it returns structured feedback:</p>
+<pre><code class="language-json">{
+  &quot;decision&quot;: &quot;revise&quot;,
+  &quot;claim&quot;: &quot;Vendor X supplied the component in Y&quot;,
+  &quot;reason&quot;: &quot;No supported path from Vendor X to Y&quot;,
+  &quot;required_evidence&quot;: [
+    &quot;A source-backed supplied relation&quot;,
+    &quot;A source-backed involved_in relation&quot;
+  ]
+}</code></pre>
+<p>This is more actionable than "looks wrong" — it tells the agent exactly which edges are missing.</p>
+<h3 id="3-persistent-world-model">3. Persistent World Model</h3>
+<p>></p>
+<blockquote>"The agent forgets, the graph does not."</blockquote>
+<p>Persistence enables: long-running investigations, cross-session planning, incremental document ingestion, contradiction tracking, temporal facts, versioned decisions, audit trails, handoff between different models, and recovery after a failed run.</p>
+<h2 id="context-construction-from-a-graph">Context Construction From a Graph</h2>
+<p>The graph should not become context dumping. A context builder:</p>
+<ol>
+<li>Resolves entities mentioned in the task</li>
+<li>Expands one or two hops over allowed edge types</li>
+<li>Includes current artifact versions</li>
+<li>Prioritizes recent verified claims</li>
+<li>Includes conflicts and uncertainty</li>
+<li>Serializes within a token budget</li>
+<li>Attaches stable edge identifiers for citation</li>
+</ol>
+<h2 id="graph-write-invariants">Graph Write Invariants</h2>
+<p>Every graph write must satisfy:</p>
+<ol>
+<li>Every claim has a source or is marked as inference</li>
+<li>Every artifact has an authoring run and version</li>
+<li>Every evaluation identifies a rubric</li>
+<li>Every superseded object remains addressable</li>
+</ol>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
   <div class="connections-grid">
-    <a class="connection-card" href="wiki-maintenance.html">
-      <span class="connection-type core">Core to</span>
-      <h4>Wiki Maintenance</h4>
-      <p>the operational model</p>
-    </a>
     <a class="connection-card" href="graph-engineering.html">
       <span class="connection-type related">Related</span>
       <h4>Graph Engineering</h4>
-      <p>shared memory and grounding layer for agent systems</p>
+      <p>the evaluation and memory layer</p>
     </a>
-    <a class="connection-card" href="graph-grounding.html">
-      <span class="connection-type related">Related</span>
-      <h4>Graph Grounding</h4>
-      <p>constraining agent generation with graph facts</p>
+    <a class="connection-card" href="knowledge-graph.html">
+      <span class="connection-type related">Depends on</span>
+      <h4>Knowledge Graph</h4>
+      <p>the graph being queried and updated</p>
     </a>
-    <a class="connection-card" href="entity-resolution.html">
+    <a class="connection-card" href="agent-verification.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Agent Verification</h4>
+      <p>graph grounding is structured verification against persistent facts</p>
+    </a>
+    <a class="connection-card" href="autoresearch.html">
       <span class="connection-type related">Related to</span>
-      <h4>Entity Resolution</h4>
-      <p>mapping surface forms to canonical nodes</p>
+      <h4>Autoresearch</h4>
+      <p>the evaluation step in the ratchet loop is a simple form of grounding</p>
     </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
       <h4>Graph Engineering: The Karpathy Loop, Improved 1000x by Itself</h4>
-      <p>Anthropic's KG Construction Cookbook</p>
+      <p></p>
     </div>
   </div>
 </section>
-<nav class="pagination"><a href="kappa-architecture.html" class="prev">← Kappa Architecture</a><a href="kubernetes-architecture.html" class="next">Kubernetes Architecture →</a></nav>
+<nav class="pagination"><a href="graph-engineering.html" class="prev">← Graph Engineering</a><a href="harness-engineering.html" class="next">Harness Engineering →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">
