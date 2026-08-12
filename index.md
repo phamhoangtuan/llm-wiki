@@ -12,12 +12,28 @@
 - [Graph Engineering](concepts/graph-engineering.html) — Third stage in Karpathy's progression: agents share durable state through typed, queryable graphs of work and knowledge
 - [Entity Resolution](concepts/entity-resolution.html) — Mapping surface forms to canonical entities in knowledge graphs via model-based reasoning
 - [Graph Grounding](concepts/graph-grounding.html) — Constraining agent generation with facts retrieved from a graph; structured evaluation against graph edges
+- [Architecture Fitness Functions](concepts/architecture-fitness-functions.html) — Executable integrity assessments preventing architecture drift; governance through automation
+- [Architecture Quantum](concepts/architecture-quantum.html) — Independently deployable artifact; the fundamental unit of distributed architecture analysis
+- [Data Architecture](concepts/data-architecture.html) — Blueprints aligning data assets with organizational strategy; DAMA Knowledge Area
+- [Data Integration](concepts/data-integration.html) — Movement, consolidation, and interoperability of data across systems; DAMA Knowledge Area
+- [Data Mesh](concepts/data-mesh.html) — Decentralized data architecture treating data as a product, aligned with domain boundaries
+- [Data Security](concepts/data-security.html) — Privacy, authentication, encryption, and compliance for data assets; DAMA Knowledge Area
+- [Data Sovereignty](concepts/data-sovereignty.html) — Each service owns its data exclusively; single-writer principle
+- [Data Storage and Operations](concepts/data-storage-operations.html) — Implementation, support, and lifecycle management of stored data; DAMA Knowledge Area
+- [Data Warehousing](concepts/data-warehousing.html) — Managing data for analysis and reporting (OLAP); DAMA Knowledge Area
+- [Decomposition Patterns](concepts/decomposition-patterns.html) — Strategies for breaking monoliths into distributed services; Tactical Forking, Component-Based Decomposition
+- [Document and Content Management](concepts/document-content-management.html) — Managing unstructured data lifecycles; DAMA Knowledge Area
+- [Flow and Zone Critique](concepts/flow-zone-critique.html) — The counterintuitive argument that Flow state is a diminished rational state
 - [Functional Programming](concepts/functional-programming.html) — FP paradigm: expressions, abstraction, immutability, dataflow; 4 pillars and the Yin-Yang learning philosophy
 - [Market Basket Analysis](concepts/market-basket-analysis.html) — Data mining technique for discovering item co-occurrence patterns; Support/Confidence metrics, MapReduce implementation
+- [Master Data Management](concepts/master-data-management.html) — Single version of truth for shared business entities; DAMA Knowledge Area
+- [Mentoring](concepts/mentoring.html) — Professional duty to pass craftsmanship through personal transmission
+- [Metadata Management](concepts/metadata-management.html) — Enabling access to data definitions, lineage, and flows; DAMA Knowledge Area
 - [KV Caching](concepts/kv-caching.html) — Inference optimization storing attention keys/values to avoid redundant recomputation; ~5× speedup
 - [LoRA](concepts/lora.html) — Low-Rank Adaptation for parameter-efficient fine-tuning; QLoRA enables fine-tuning on consumer GPUs
 - [Flash Attention](concepts/flash-attention.html) — IO-aware exact attention algorithm; optimizes GPU memory hierarchy for 2–4× training speedup
 - [PEFT](concepts/peft.html) — Parameter-Efficient Fine-Tuning family; LoRA, QLoRA, Adapters, Prefix Tuning — 1% parameters, 99% quality
+- [Personal Branding](concepts/personal-branding.html) — Deliberate cultivation of professional identity; CV, LinkedIn, narrative consistency
 - [Reranking](concepts/reranking.html) — Two-stage retrieval pattern: fast coarse search + expensive precise re-ranking for RAG efficiency
 - [pytest Basics](concepts/pytest-basics.html) — pytest fundamentals: test discovery, naming conventions, plain assert, CLI usage
 - [pytest Fixtures](concepts/pytest-fixtures.html) — Reusable setup/teardown via dependency injection, conftest.py, fixture scopes
@@ -44,6 +60,7 @@
 - [Essential vs Accidental Complexity](concepts/essential-accidental-complexity.html) — Fred Brooks' two types: inherent vs design-caused
 - [Technological Centaur](concepts/technological-centaur.html) — Human architect + AI assistant; clean code enables collaboration
 - [Testing Effect](concepts/testing-effect.html) — Retrieval practice as knowledge construction; Karpicke & Blunt study, desirable difficulty, free recall
+- [Testing Pyramid](concepts/testing-pyramid.html) — Professional testing hierarchy: Unit → Component → Integration → System → Manual
 - [Readability vs Performance](concepts/readability-vs-performance.html) — Write clean code first, optimize bottlenecks after profiling
 - [Materialized Views](concepts/materialized-views.html) — Pre-computed query results stored as physical tables — the hybrid of tables and views
 - [Medallion Architecture](concepts/medallion-architecture.html) — Data organization pattern: Bronze (raw) → Silver (cleaned) → Gold (business-ready); progressive refinement with quality gates
@@ -110,6 +127,7 @@
 - [T-Shaped Skills](concepts/t-shaped-skills.html) — Deep expertise + broad adjacent knowledge; generalized specialists remove DataOps bottlenecks
 - [TDD Methodology](concepts/tdd-methodology.html) — Red-Green-Refactor cycle, Outside-In TDD (Double Loop), YAGNI, the Testing Goat discipline
 - [Functional Testing](concepts/functional-testing.html) — User-perspective testing via Selenium/HTTP client; outer loop of TDD; test behavior not constants
+- [Job Search Strategy](concepts/job-search-strategy.html) — Structured 4-phase job search as marketing exercise; #ENTRYLEVELBOSS framework
 - [Game Theory](concepts/game-theory.html) — Mathematical study of strategic interaction among rational decision-makers; Nash equilibrium, backward induction, incomplete information
 - [Technical Interview](concepts/technical-interview.html)
 - [Technical Leadership](concepts/technical-leadership.html) — Leading through influence rather than authority; communication, organizational navigation, framing problems — Philosophy of coding interviews: relative evaluation, false positives/negatives, company cultures, BUD optimization, Talk Aloud
@@ -165,6 +183,9 @@
 - [Database Isolation Levels](concepts/database-isolation.html) — Serializable, Repeatable Read, Read Committed, Read Uncommitted; MVCC, optimistic locking with version numbers
 - [Code Overload](concepts/code-overload.html) — NYT term: AI-generated code exceeding review capacity; more bugs, more debt
 - [Refactoring at Scale](concepts/refactoring-at-scale.html) — Safe restructuring of large codebases; drive-by refactorer, Brownie effect, rollout modes
+- [Saga Pattern](concepts/saga-pattern.html) — Distributed transaction management via sequence of local transactions with compensating actions
+- [Saying No](concepts/saying-no.html) — Professional responsibility to push back against unrealistic deadlines and compromised quality
+- [Software Professionalism](concepts/software-professionalism.html) — Responsibility and accountability as the behavioral dimension of software craftsmanship
 - [Software Rot](concepts/software-rot.html) — Inevitable code degradation from environmental change and requirement shifts
 - [Complexity Metrics](concepts/complexity-metrics.html) — Halstead, Cyclomatic, NPath — quantitative measurement for refactoring business cases
 - [Metric Fixation](concepts/metric-fixation.html) — The dysfunctional dominance of standardized metrics over human judgment; goal displacement, gaming, creaming
@@ -207,11 +228,13 @@
 - [Model Quantization](concepts/model-quantization.html) — Reducing numerical precision of model weights to shrink size and accelerate inference
 - [Model Pruning](concepts/model-pruning.html) — Removing low-importance weights and connections to compress neural networks
 - [Nash Equilibrium](concepts/nash-equilibrium.html) — Foundational solution concept in game theory: a state where no player can improve by unilaterally changing strategy
+- [Networking Theory](concepts/networking-theory.html) — Theory of Weak Ties; strategic relationship-building for career opportunities
 - [LLM Evaluation Metrics](concepts/llm-evaluation-metrics.html) — Quantitative measures for assessing production LLM output quality and reliability
 - [Real-Time Analytics](concepts/real-time-analytics.html) — Processing and analyzing unbounded data streams with sub-second latency
 - [Lambda Architecture](concepts/lambda-architecture.html) — Dual-path batch + stream processing paradigm for big data systems
 - [Kappa Architecture](concepts/kappa-architecture.html) — Simplified single-path streaming architecture eliminating the batch layer
 - [Stream Processing](concepts/stream-processing.html) — Computing on data as it flows; streaming ⊃ batch, Akidau's 4 questions, stream-table duality, watermarks
+- [Static vs Dynamic Coupling](concepts/static-vs-dynamic-coupling.html) — Two dimensions of coupling: structural wiring vs runtime communication
 - [Statistical Thinking](concepts/statistical-thinking.html) — Critical evidence-driven lens on data claims; variation is universal, context over absolutes, questioning checklist
 - [Stream-Table Duality](concepts/stream-table-duality.html) — Streams and tables are two sides of the same coin; aggregation converts stream→table, CDC converts table→stream
 - [Sustainable AI](concepts/sustainable-ai.html) — Measuring and minimizing AI carbon footprint; efficient architectures, carbon-aware scheduling
@@ -231,9 +254,12 @@
 ## Sources
 
 - [Data Algorithms](sources/data-algorithms.md) — Notes on "Data Algorithms" by Mahmoud Parsian — 778 pages on distributed algorithms, MapReduce, and Market Basket Analysis
+- [DAMA-DMBOK (2nd Edition)](sources/dama-dmbok-2nd-edition.md) — DAMA International's 628-page reference; 11 Knowledge Areas, CDMP certification basis
+- [#ENTRYLEVELBOSS](sources/entrylevelboss.md) — Alexa Shoen's 298-page job search system; 4-phase framework, Theory of Weak Ties
 - [Hands-On Large Language Models](sources/hands-on-large-language-models.md) — Notes on Jay Alammar's guide — 431 pages on LLM optimization, quantization, PEFT, KV caching, and attention mechanisms
 - [The Art of Functional Programming](sources/the-art-of-functional-programming.md) — Notes on Minh Quang Tran's book — 205 pages on FP thinking, 4 pillars, and the declarative paradigm shift
 - [Python Testing with pytest](sources/okken-python-testing-pytest.md) — Notes on "Python Testing with pytest (2nd Ed.)" by Brian Okken — 398 pages
+- [Software Architecture: The Hard Parts](sources/software-architecture-hard-parts.md) — Ford, Richards, Sadalage & Dehghani's 906-page guide to distributed architecture trade-offs
 - [The LLM Wiki Pattern](sources/sample-article.md) — Karpathy's gist: LLM-maintained persistent wiki instead of RAG
 - [Graph Engineering: The Karpathy Loop, Improved 1000x by Itself](sources/graph-engineering-karpathy.md) — Independent synthesis mapping Karpathy's autoresearch → AgentHub → Anthropic workflows; graph as shared memory for agent systems
 - [Clean Code Cookbook](sources/contieri-clean-code-cookbook.md) — Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection
@@ -312,6 +338,7 @@
 - [Data Observability for Data Engineering](sources/data-observability-for-data-engineering.md) — Pinto & El Khammal's 240-page guide; 3 principles, 4 implementation techniques, 5-step incident workflow
 - [Practical DataOps](sources/practical-dataops.md) — Atwal's 288-page methodology: Lean + Agile + DevOps for data, DataOps Factory, T-shaped teams
 - [Streaming Systems](sources/streaming-systems.md) — Akidau, Chernyak & Lax's 456-page definitive guide; 4-question model, watermarks, stream-table duality
+- [The Clean Coder](sources/the-clean-coder.md) — Robert C. Martin on professional conduct; saying no, TDD, testing pyramid, mentoring
 
 ## Syntheses
 
@@ -320,4 +347,4 @@ _No syntheses yet. Ask a question and file the answer to add one._
 ---
 
 _Last updated: 2026-07-14_
-_Pages: 291 (209 concepts + 82 sources)_
+_Pages: 314 (232 concepts + 86 sources)_

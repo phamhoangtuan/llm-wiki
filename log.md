@@ -4,6 +4,17 @@
 
 ---
 
+## [2026-07-14] ingest | #ENTRYLEVELBOSS + DAMA-DMBOK + Software Architecture: The Hard Parts + The Clean Coder
+
+- Created sources/entrylevelboss.md, sources/dama-dmbok-2nd-edition.md, sources/software-architecture-hard-parts.md, sources/the-clean-coder.md
+- Created concepts/job-search-strategy.md, concepts/networking-theory.md, concepts/personal-branding.md (from #ENTRYLEVELBOSS)
+- Created concepts/data-architecture.md, concepts/data-security.md, concepts/data-integration.md, concepts/metadata-management.md, concepts/master-data-management.md, concepts/data-warehousing.md, concepts/document-content-management.md, concepts/data-storage-operations.md (from DAMA-DMBOK)
+- Created concepts/architecture-quantum.md, concepts/static-vs-dynamic-coupling.md, concepts/architecture-fitness-functions.md, concepts/data-mesh.md, concepts/saga-pattern.md, concepts/decomposition-patterns.md, concepts/data-sovereignty.md (from Software Architecture: The Hard Parts)
+- Created concepts/software-professionalism.md, concepts/saying-no.md, concepts/testing-pyramid.md, concepts/mentoring.md, concepts/flow-zone-critique.md (from The Clean Coder)
+- Updated index.md: +23 concepts, +4 sources, 314 total pages
+
+---
+
 ## [2026-08-06] ingest | Graph Engineering: The Karpathy Loop, Improved 1000x by Itself
 
 - Created sources/graph-engineering-karpathy.md
@@ -28,6 +39,15 @@
 - Created concepts/pythonic-code.md — Python idioms, duck typing, "use what's available"
 - Created concepts/metric-fixation.md — dysfunctional dominance of metrics over judgment, goal displacement, gaming
 - Created concepts/goodharts-law.md — "When a measure becomes a target, it ceases to be a good measure"
+- Updated index.md — added 4 concept + 3 source entries
+
+## [2026-08-06] lint | Health check
+
+- Broken wikilinks: 0 — all 223 wikilinks resolve correctly
+- Orphan concepts: 0 — all concept pages have at least one inbound link
+- Missing tags: 0
+- Missing sources (expected): 82 source pages (sources don't need a sources field)
+- Status: clean
 - Updated index.md — added 4 concept + 3 source entries
 
 ## [2026-07-14] lint | Post-ingest health check

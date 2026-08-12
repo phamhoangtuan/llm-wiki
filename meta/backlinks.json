@@ -346,6 +346,7 @@
     "data-ingestion",
     "data-modeling",
     "data-quality-monitoring",
+    "data-warehousing",
     "dataops",
     "elt",
     "elt",
@@ -1142,6 +1143,19 @@
     "software-quality-dimensions",
     "head-first-software-architecture"
   ],
+  "Architectural Decision Records (ADRs)": [
+    "architecture-fitness-functions"
+  ],
+  "Architecture Hoisting": [
+    "architecture-fitness-functions"
+  ],
+  "Model-Code Gap": [
+    "architecture-fitness-functions"
+  ],
+  "Shift Left Security": [
+    "architecture-fitness-functions",
+    "data-security"
+  ],
   "model-code-gap": [
     "architecture-hoisting",
     "architecture-in-agile",
@@ -1209,6 +1223,27 @@
     "microservices",
     "model-code-gap",
     "learning-domain-driven-design"
+  ],
+  "Static vs Dynamic Coupling": [
+    "architecture-quantum",
+    "decomposition-patterns"
+  ],
+  "Microservices": [
+    "architecture-quantum",
+    "data-mesh",
+    "data-sovereignty",
+    "decomposition-patterns",
+    "saga-pattern",
+    "static-vs-dynamic-coupling"
+  ],
+  "Decomposition Patterns": [
+    "architecture-quantum",
+    "data-sovereignty"
+  ],
+  "Data Sovereignty": [
+    "architecture-quantum",
+    "data-mesh",
+    "decomposition-patterns"
   ],
   "agent-hub": [
     "autoresearch",
@@ -1684,6 +1719,30 @@
     "data-governance",
     "data-lifecycle-handbook"
   ],
+  "Data Governance": [
+    "data-architecture",
+    "data-security",
+    "document-content-management",
+    "master-data-management",
+    "metadata-management"
+  ],
+  "Data Modeling": [
+    "data-architecture",
+    "master-data-management",
+    "metadata-management"
+  ],
+  "Data Integration": [
+    "data-architecture"
+  ],
+  "Data Lifecycle": [
+    "data-architecture",
+    "data-storage-operations",
+    "document-content-management"
+  ],
+  "Medallion Architecture": [
+    "data-architecture",
+    "data-warehousing"
+  ],
   "data-engineering-fundamentals": [
     "data-engineer",
     "data-engineer",
@@ -1767,6 +1826,19 @@
     "how-ai-changes-4-core-data-roles",
     "how-ai-changes-4-core-data-roles"
   ],
+  "ELT (Extract-Load-Transform)": [
+    "data-integration"
+  ],
+  "Change Data Capture (CDC)": [
+    "data-integration"
+  ],
+  "Data Ingestion": [
+    "data-integration",
+    "data-integration"
+  ],
+  "Apache Kafka": [
+    "data-integration"
+  ],
   "medallion-architecture": [
     "data-lakehouse",
     "data-lakehouse",
@@ -1794,6 +1866,15 @@
     "data-lakehouse",
     "snowflake-the-definitive-guide"
   ],
+  "Domain-Driven Design": [
+    "data-mesh"
+  ],
+  "Data Product": [
+    "data-mesh"
+  ],
+  "Architecture Fitness Functions": [
+    "data-mesh"
+  ],
   "sources/data-observability-for-data-engineering": [
     "data-observability",
     "data-observability"
@@ -1808,6 +1889,48 @@
   ],
   "sources/data-quality-traffic-lights-sahlin": [
     "data-quality-monitoring"
+  ],
+  "Data Anonymization": [
+    "data-security"
+  ],
+  "Differential Privacy": [
+    "data-security"
+  ],
+  "Password Storage": [
+    "data-security"
+  ],
+  "Architecture Quantum": [
+    "data-sovereignty",
+    "decomposition-patterns",
+    "static-vs-dynamic-coupling"
+  ],
+  "Data Mesh": [
+    "data-sovereignty"
+  ],
+  "Saga Pattern": [
+    "data-sovereignty",
+    "static-vs-dynamic-coupling"
+  ],
+  "Database Replication": [
+    "data-storage-operations"
+  ],
+  "Database Sharding": [
+    "data-storage-operations"
+  ],
+  "Containerization": [
+    "data-storage-operations"
+  ],
+  "Cloud Service Models": [
+    "data-storage-operations"
+  ],
+  "Data Lakehouse": [
+    "data-warehousing"
+  ],
+  "ELT": [
+    "data-warehousing"
+  ],
+  "Snowflake Data Cloud": [
+    "data-warehousing"
   ],
   "database-sharding": [
     "database-isolation",
@@ -1879,6 +2002,9 @@
     "incremental-view-maintenance",
     "materialized-views",
     "timely-dataflow"
+  ],
+  "Refactoring at Scale": [
+    "decomposition-patterns"
   ],
   "sources/delta-grows-up-writes-unity-catalog": [
     "delta-lake",
@@ -1952,6 +2078,13 @@
   "leader-election": [
     "distributed-consensus",
     "consensus-raft-paxos-handbook"
+  ],
+  "Data Storage and Operations": [
+    "document-content-management"
+  ],
+  "Metadata Management": [
+    "document-content-management",
+    "master-data-management"
   ],
   "software-as-simulation": [
     "domain-driven-design",
@@ -2097,6 +2230,27 @@
     "retrieval-augmented-generation",
     "building-llms-for-production"
   ],
+  "Software Professionalism": [
+    "flow-zone-critique",
+    "mentoring",
+    "personal-branding",
+    "saying-no",
+    "testing-pyramid"
+  ],
+  "TDD Methodology": [
+    "flow-zone-critique",
+    "software-professionalism",
+    "testing-pyramid"
+  ],
+  "Mentoring": [
+    "flow-zone-critique",
+    "software-professionalism"
+  ],
+  "Code Quality Pillars": [
+    "flow-zone-critique",
+    "saying-no",
+    "software-professionalism"
+  ],
   "sources/the-art-of-functional-programming": [
     "functional-programming",
     "immutability"
@@ -2207,6 +2361,21 @@
     "python-repl",
     "pythonic-code"
   ],
+  "Networking Theory": [
+    "job-search-strategy",
+    "personal-branding"
+  ],
+  "Personal Branding": [
+    "job-search-strategy",
+    "networking-theory"
+  ],
+  "T-Shaped Skills": [
+    "job-search-strategy",
+    "mentoring"
+  ],
+  "Directness": [
+    "job-search-strategy"
+  ],
   "entity-resolution": [
     "knowledge-graph",
     "knowledge-graph"
@@ -2287,6 +2456,31 @@
   "sources/data-algorithms": [
     "market-basket-analysis"
   ],
+  "Data Quality Monitoring": [
+    "master-data-management",
+    "metadata-management"
+  ],
+  "Entity Resolution": [
+    "master-data-management"
+  ],
+  "Technical Leadership": [
+    "mentoring",
+    "networking-theory",
+    "saying-no"
+  ],
+  "Code Readability": [
+    "mentoring"
+  ],
+  "Feedback": [
+    "mentoring",
+    "saying-no"
+  ],
+  "Semantic Layer": [
+    "metadata-management"
+  ],
+  "Data Observability": [
+    "metadata-management"
+  ],
   "spaced-repetition": [
     "metalearning",
     "testing-effect",
@@ -2316,6 +2510,10 @@
     "nash-equilibrium",
     "game-theory-bonanno"
   ],
+  "Job Search Strategy": [
+    "networking-theory",
+    "personal-branding"
+  ],
   "sources/practical-object-oriented-design": [
     "object-oriented-design"
   ],
@@ -2331,6 +2529,9 @@
   "tls-https": [
     "password-storage",
     "sso"
+  ],
+  "Technical Interview": [
+    "personal-branding"
   ],
   "pytest-test-results": [
     "pytest-assertions",
@@ -2431,12 +2632,28 @@
     "retrieval-augmented-generation",
     "retrieval-augmented-generation"
   ],
+  "Orchestration vs Choreography": [
+    "saga-pattern",
+    "static-vs-dynamic-coupling"
+  ],
+  "CAP Theorem": [
+    "saga-pattern"
+  ],
+  "Message Delivery Semantics": [
+    "saga-pattern"
+  ],
   "sources/semantic-layers-for-ai": [
     "self-service-analytics",
     "semantic-layer"
   ],
   "sources/snowflake-the-definitive-guide": [
     "snowflake-data-cloud"
+  ],
+  "Saying No": [
+    "software-professionalism"
+  ],
+  "Testing Pyramid": [
+    "software-professionalism"
   ],
   "sources/seriously-good-software": [
     "software-quality-dimensions"
@@ -2493,6 +2710,15 @@
   ],
   "sources/de-coding-technical-interview": [
     "technical-interview"
+  ],
+  "Functional Testing": [
+    "testing-pyramid"
+  ],
+  "Testing Strategy": [
+    "testing-pyramid"
+  ],
+  "pytest Basics": [
+    "testing-pyramid"
   ],
   "apache-arrow": [
     "vortex-file-format",

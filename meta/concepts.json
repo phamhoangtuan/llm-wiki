@@ -292,6 +292,18 @@
         "adr"
       ]
     },
+    "architecture-fitness-functions": {
+      "title": "Architecture Fitness Functions",
+      "category": "Testing",
+      "url": "concepts/architecture-fitness-functions.html",
+      "definition": "Executable specifications that perform objective integrity assessments of architecture characteristics. Introduced in *Software Architecture: The Hard Parts* as a governance mechanism.",
+      "tags": [
+        "software-architecture",
+        "quality",
+        "governance",
+        "testing"
+      ]
+    },
     "architecture-hoisting": {
       "title": "Architecture Hoisting",
       "category": "Software Design",
@@ -313,6 +325,17 @@
         "agile",
         "project-management",
         "methodology"
+      ]
+    },
+    "architecture-quantum": {
+      "title": "Architecture Quantum",
+      "category": "System Architecture",
+      "url": "concepts/architecture-quantum.html",
+      "definition": "An independently deployable artifact with high functional cohesion, high static coupling, and synchronous dynamic coupling. The fundamental unit of analysis in modern distributed architecture, introdu",
+      "tags": [
+        "software-architecture",
+        "distributed-systems",
+        "coupling"
       ]
     },
     "autoresearch": {
@@ -620,6 +643,17 @@
         "security"
       ]
     },
+    "data-architecture": {
+      "title": "Data Architecture",
+      "category": "System Architecture",
+      "url": "concepts/data-architecture.html",
+      "definition": "The blueprint for aligning data assets with organizational strategy. One of DAMA's eleven Knowledge Areas.",
+      "tags": [
+        "data-management",
+        "architecture",
+        "dama"
+      ]
+    },
     "data-engineer": {
       "title": "Data Engineer",
       "category": "Data Engineering",
@@ -686,6 +720,17 @@
         "data-lake"
       ]
     },
+    "data-integration": {
+      "title": "Data Integration",
+      "category": "Data Engineering",
+      "url": "concepts/data-integration.html",
+      "definition": "Movement and consolidation of data across systems. One of DAMA's eleven Knowledge Areas, also called \"Data Integration and Interoperability.\"",
+      "tags": [
+        "data-management",
+        "etl",
+        "dama"
+      ]
+    },
     "data-lakehouse": {
       "title": "Data Lakehouse",
       "category": "Data Engineering",
@@ -708,6 +753,17 @@
         "data-lifecycle",
         "governance",
         "infrastructure"
+      ]
+    },
+    "data-mesh": {
+      "title": "Data Mesh",
+      "category": "System Architecture",
+      "url": "concepts/data-mesh.html",
+      "definition": "A decentralized sociotechnical approach to data architecture that treats data as a product and aligns ownership with domain boundaries. Introduced by Zhamak Dehghani (co-author of *Software Architectu",
+      "tags": [
+        "data-architecture",
+        "distributed-systems",
+        "domain-driven-design"
       ]
     },
     "data-modeling": {
@@ -775,6 +831,53 @@
         "career",
         "python",
         "statistics"
+      ]
+    },
+    "data-security": {
+      "title": "Data Security",
+      "category": "Meta",
+      "url": "concepts/data-security.html",
+      "definition": "Maintaining privacy, confidentiality, and appropriate access to data assets. One of DAMA's eleven Knowledge Areas.",
+      "tags": [
+        "data-management",
+        "security",
+        "dama"
+      ]
+    },
+    "data-sovereignty": {
+      "title": "Data Sovereignty",
+      "category": "System Architecture",
+      "url": "concepts/data-sovereignty.html",
+      "definition": "The principle that each service owns its data exclusively — it is the sole writer and the authority for its domain. A central concept in *Software Architecture: The Hard Parts*.",
+      "tags": [
+        "software-architecture",
+        "data",
+        "microservices",
+        "distributed-systems"
+      ]
+    },
+    "data-storage-operations": {
+      "title": "Data Storage and Operations",
+      "category": "Infrastructure",
+      "url": "concepts/data-storage-operations.html",
+      "definition": "Implementation and support of stored data assets throughout their lifecycle. One of DAMA's eleven Knowledge Areas.",
+      "tags": [
+        "data-management",
+        "storage",
+        "infrastructure",
+        "dama"
+      ]
+    },
+    "data-warehousing": {
+      "title": "Data Warehousing",
+      "category": "Data Engineering",
+      "url": "concepts/data-warehousing.html",
+      "definition": "Managing data for analysis and reporting. One of DAMA's eleven Knowledge Areas, grouped with Business Intelligence.",
+      "tags": [
+        "data-management",
+        "olap",
+        "analytics",
+        "dama"
       ]
     },
     "database-isolation": {
@@ -873,6 +976,18 @@
         "elt",
         "sql",
         "data-modeling"
+      ]
+    },
+    "decomposition-patterns": {
+      "title": "Decomposition Patterns",
+      "category": "Meta",
+      "url": "concepts/decomposition-patterns.html",
+      "definition": "Strategies for breaking a monolithic system into distributed services. From *Software Architecture: The Hard Parts*, Part I: \"Pulling Things Apart.\"",
+      "tags": [
+        "software-architecture",
+        "refactoring",
+        "microservices",
+        "monolith"
       ]
     },
     "delta-kernel": {
@@ -999,6 +1114,17 @@
         "paxos",
         "fault-tolerance",
         "distributed-consensus"
+      ]
+    },
+    "document-content-management": {
+      "title": "Document and Content Management",
+      "category": "Meta",
+      "url": "concepts/document-content-management.html",
+      "definition": "Managing the lifecycle of unstructured data. One of DAMA's eleven Knowledge Areas.",
+      "tags": [
+        "data-management",
+        "unstructured-data",
+        "dama"
       ]
     },
     "domain-driven-design": {
@@ -1151,6 +1277,18 @@
         "optimization",
         "transformer",
         "gpu"
+      ]
+    },
+    "flow-zone-critique": {
+      "title": "Flow and Zone Critique",
+      "category": "Meta",
+      "url": "concepts/flow-zone-critique.html",
+      "definition": "The counterintuitive argument from *The Clean Coder* that \"the Zone\" or \"Flow\" state is a *diminished* rational state, not an ideal one. Professionals should avoid it, not seek it.",
+      "tags": [
+        "professionalism",
+        "productivity",
+        "software-engineering",
+        "psychology"
       ]
     },
     "functional-programming": {
@@ -1379,6 +1517,17 @@
         "complexity",
         "abstraction",
         "encapsulation"
+      ]
+    },
+    "job-search-strategy": {
+      "title": "Job Search Strategy",
+      "category": "Career & Growth",
+      "url": "concepts/job-search-strategy.html",
+      "definition": "A structured approach to job seeking that treats the search as a marketing exercise rather than a passive application process. Based on the #ENTRYLEVELBOSS system by Alexa Shoen.",
+      "tags": [
+        "career",
+        "job-search",
+        "networking"
       ]
     },
     "kappa-architecture": {
@@ -1639,6 +1788,17 @@
         "retail"
       ]
     },
+    "master-data-management": {
+      "title": "Master Data Management",
+      "category": "Meta",
+      "url": "concepts/master-data-management.html",
+      "definition": "Maintaining a single \"version of truth\" for shared business entities across the enterprise. One of DAMA's eleven Knowledge Areas, grouped with Reference Data.",
+      "tags": [
+        "data-management",
+        "mdm",
+        "dama"
+      ]
+    },
     "materialized-views": {
       "title": "Materialized Views",
       "category": "Infrastructure",
@@ -1661,6 +1821,17 @@
         "lakehouse",
         "databricks",
         "data-quality"
+      ]
+    },
+    "mentoring": {
+      "title": "Mentoring",
+      "category": "Career & Growth",
+      "url": "concepts/mentoring.html",
+      "definition": "The professional duty of senior programmers to pass craftsmanship to juniors. From *The Clean Coder*, which argues that technical acumen is a \"meme\" — it must be handed from person to person, not abso",
+      "tags": [
+        "career",
+        "craftsmanship",
+        "software-engineering"
       ]
     },
     "message-delivery-semantics": {
@@ -1686,6 +1857,17 @@
         "async",
         "decoupling",
         "resilience"
+      ]
+    },
+    "metadata-management": {
+      "title": "Metadata Management",
+      "category": "Meta",
+      "url": "concepts/metadata-management.html",
+      "definition": "Enabling access to definitions, lineage, and data flows. One of DAMA's eleven Knowledge Areas.",
+      "tags": [
+        "data-management",
+        "metadata",
+        "dama"
       ]
     },
     "metalearning": {
@@ -1816,6 +1998,17 @@
         "economics"
       ]
     },
+    "networking-theory": {
+      "title": "Networking Theory",
+      "category": "Career & Growth",
+      "url": "concepts/networking-theory.html",
+      "definition": "The strategic practice of building professional relationships, anchored by the **Theory of Weak Ties** — the idea that acquaintances and strangers are more likely to bridge you to new opportunities th",
+      "tags": [
+        "career",
+        "networking",
+        "social-capital"
+      ]
+    },
     "object-oriented-design": {
       "title": "Object-Oriented Design",
       "category": "Software Design",
@@ -1876,6 +2069,17 @@
         "training",
         "optimization",
         "ml"
+      ]
+    },
+    "personal-branding": {
+      "title": "Personal Branding",
+      "category": "Career & Growth",
+      "url": "concepts/personal-branding.html",
+      "definition": "The deliberate cultivation of a professional identity and presence. From #ENTRYLEVELBOSS, personal branding is the set of \"modern collateral\" that precedes and amplifies networking efforts.",
+      "tags": [
+        "career",
+        "branding",
+        "professional-presence"
       ]
     },
     "polars": {
@@ -2224,6 +2428,29 @@
         "design-methodology"
       ]
     },
+    "saga-pattern": {
+      "title": "Saga Pattern",
+      "category": "System Architecture",
+      "url": "concepts/saga-pattern.html",
+      "definition": "A pattern for managing distributed transactions across multiple services without relying on distributed ACID transactions. Central to *Software Architecture: The Hard Parts* for \"putting things back t",
+      "tags": [
+        "distributed-systems",
+        "transactions",
+        "microservices",
+        "patterns"
+      ]
+    },
+    "saying-no": {
+      "title": "Saying No",
+      "category": "Meta",
+      "url": "concepts/saying-no.html",
+      "definition": "The professional responsibility to push back against unrealistic deadlines, poor requirements, and compromised quality. A core discipline from *The Clean Coder*.",
+      "tags": [
+        "professionalism",
+        "communication",
+        "software-engineering"
+      ]
+    },
     "scalable-architecture": {
       "title": "Scalable Architecture",
       "category": "System Architecture",
@@ -2330,6 +2557,17 @@
         "software-engineering",
         "code-quality",
         "construction"
+      ]
+    },
+    "software-professionalism": {
+      "title": "Software Professionalism",
+      "category": "Career & Growth",
+      "url": "concepts/software-professionalism.html",
+      "definition": "A badge of honor tied to responsibility and accountability — not merely technical competence. Defined in *The Clean Coder* as the behavioral dimension that complements code quality.",
+      "tags": [
+        "career",
+        "professionalism",
+        "software-engineering"
       ]
     },
     "software-quality-dimensions": {
@@ -2451,6 +2689,17 @@
         "system-design",
         "scalability",
         "sessions",
+        "distributed-systems"
+      ]
+    },
+    "static-vs-dynamic-coupling": {
+      "title": "Static vs Dynamic Coupling",
+      "category": "System Architecture",
+      "url": "concepts/static-vs-dynamic-coupling.html",
+      "definition": "Two dimensions of coupling in distributed architectures, introduced in *Software Architecture: The Hard Parts*.",
+      "tags": [
+        "software-architecture",
+        "coupling",
         "distributed-systems"
       ]
     },
@@ -2612,6 +2861,18 @@
         "memory",
         "cognitive-science",
         "retrieval"
+      ]
+    },
+    "testing-pyramid": {
+      "title": "Testing Pyramid",
+      "category": "Testing",
+      "url": "concepts/testing-pyramid.html",
+      "definition": "A professional testing hierarchy balancing speed, coverage, and fidelity. Formalized in *The Clean Coder* as the structure of a professional testing strategy.",
+      "tags": [
+        "testing",
+        "quality",
+        "tdd",
+        "software-engineering"
       ]
     },
     "testing-strategy": {
