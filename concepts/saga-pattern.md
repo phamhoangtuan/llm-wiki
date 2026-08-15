@@ -49,7 +49,7 @@ Sagas acknowledge that perfect consistency is impossible in distributed systems 
 
 ## Connections
 
-- [[Orchestration vs Choreography]] — Two coordination styles for sagas
-- [[Microservices]] — The architecture that creates the need for sagas
-- [[CAP Theorem]] — Why distributed ACID is impossible
-- [[Message Delivery Semantics]] — At-least-once delivery for saga steps
+- [[orchestration-vs-choreography]] — Two coordination styles for sagas
+- [[microservices]] — The architecture that creates the need for sagas
+- [[cap-theorem]] — Why distributed ACID is impossible
+- [[message-delivery-semantics]] — At-least-once delivery for saga steps

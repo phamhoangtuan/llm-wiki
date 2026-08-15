@@ -55,3 +55,4 @@ This might mean writing a three-year strategy, aligning five teams on shared arc
 - Related to [[staff-plus-archetypes]] — different archetypes express leadership through different primary modes
 - Connected to [[information-hiding]] — good technical leaders hide complexity and expose clear interfaces, at organizational scale
 - Benchmark source: [[sources/staff-engineers-path]] — Reilly's guide defines the technical leadership track
+- Related to [[engineering-management]] — the people-management counterpart to influence-without-authority leadership

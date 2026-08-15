@@ -36,8 +36,8 @@ Data Architecture is a Phase 1 foundational discipline — without it, organizat
 
 ## Connections
 
-- [[Data Governance]] — Decision rights over data assets
-- [[Data Modeling]] — Discovery and communication of data requirements
-- [[Data Integration]] — Movement and consolidation patterns
-- [[Data Lifecycle]] — Six stages from generation to destruction
-- [[Medallion Architecture]] — Bronze/Silver/Gold pattern for data refinement
+- [[data-governance]] — Decision rights over data assets
+- [[data-modeling]] — Discovery and communication of data requirements
+- [[data-integration]] — Movement and consolidation patterns
+- [[data-lifecycle]] — Six stages from generation to destruction
+- [[medallion-architecture]] — Bronze/Silver/Gold pattern for data refinement

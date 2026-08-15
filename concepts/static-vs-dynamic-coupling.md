@@ -44,7 +44,7 @@ Decomposition inevitably reduces static coupling (independent codebases) but inc
 
 ## Connections
 
-- [[Architecture Quantum]] — The unit that encapsulates static coupling within its boundary
-- [[Orchestration vs Choreography]] — The coordination dimension of dynamic coupling
-- [[Microservices]] — Architecture that maximizes static decoupling
-- [[Saga Pattern]] — Managing dynamic coupling for distributed transactions
+- [[architecture-quantum]] — The unit that encapsulates static coupling within its boundary
+- [[orchestration-vs-choreography]] — The coordination dimension of dynamic coupling
+- [[microservices]] — Architecture that maximizes static decoupling
+- [[saga-pattern]] — Managing dynamic coupling for distributed transactions

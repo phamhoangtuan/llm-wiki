@@ -33,8 +33,8 @@ Phase 1 discipline — organizations must establish data security fundamentals b
 
 ## Connections
 
-- [[Data Governance]] — Security policies are enforced through governance
-- [[Data Anonymization]] — Techniques for protecting individual privacy in datasets
-- [[Differential Privacy]] — Mathematical guarantees for privacy preservation
-- [[Shift Left Security]] — Embedding security throughout the development lifecycle
-- [[Password Storage]] — Salting, hashing, and constant-time comparison
+- [[data-governance]] — Security policies are enforced through governance
+- [[data-anonymization]] — Techniques for protecting individual privacy in datasets
+- [[differential-privacy]] — Mathematical guarantees for privacy preservation
+- [[shift-left-security]] — Embedding security throughout the development lifecycle
+- [[password-storage]] — Salting, hashing, and constant-time comparison

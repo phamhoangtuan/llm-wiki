@@ -40,8 +40,8 @@ A Phase 1 foundational discipline. Without reliable storage and operational disc
 
 ## Connections
 
-- [[Database Replication]] — Master-slave and Primary-Secondary patterns
-- [[Database Sharding]] — Horizontal partitioning for write scalability
-- [[Containerization]] — Docker and the container-vs-VM abstraction
-- [[Data Lifecycle]] — Generation through destruction stages
-- [[Cloud Service Models]] — IaaS, PaaS, SaaS for storage infrastructure
+- [[database-replication]] — Master-slave and Primary-Secondary patterns
+- [[database-sharding]] — Horizontal partitioning for write scalability
+- [[containerization]] — Docker and the container-vs-VM abstraction
+- [[data-lifecycle]] — Generation through destruction stages
+- [[cloud-service-models]] — IaaS, PaaS, SaaS for storage infrastructure

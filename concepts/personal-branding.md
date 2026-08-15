@@ -46,7 +46,7 @@ Personal branding extends to behavior:
 
 ## Connections
 
-- [[Job Search Strategy]] — Branding is Phase 2 in the four-phase framework
-- [[Networking Theory]] — Your brand is what contacts find when they look you up
-- [[Software Professionalism]] — Professional conduct is a form of branding
-- [[Technical Interview]] — Interview performance must match the brand narrative
+- [[job-search-strategy]] — Branding is Phase 2 in the four-phase framework
+- [[networking-theory]] — Your brand is what contacts find when they look you up
+- [[software-professionalism]] — Professional conduct is a form of branding
+- [[technical-interview]] — Interview performance must match the brand narrative

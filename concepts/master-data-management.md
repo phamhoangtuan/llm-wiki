@@ -36,8 +36,8 @@ Part of the **Enable & Maintain** lifecycle phase. MDM depends heavily on Data G
 
 ## Connections
 
-- [[Data Governance]] — Decision rights and ownership for master data entities
-- [[Data Quality Monitoring]] — Ensuring master data is fit for use
-- [[Entity Resolution]] — Mapping surface forms to canonical entities
-- [[Data Modeling]] — Designing master data structures and relationships
-- [[Metadata Management]] — Tracking master data definitions and lineage
+- [[data-governance]] — Decision rights and ownership for master data entities
+- [[data-quality-monitoring]] — Ensuring master data is fit for use
+- [[entity-resolution]] — Mapping surface forms to canonical entities
+- [[data-modeling]] — Designing master data structures and relationships
+- [[metadata-management]] — Tracking master data definitions and lineage

@@ -36,8 +36,8 @@ Metadata is not optional documentation — it is the operating system of a data 
 
 ## Connections
 
-- [[Data Governance]] — Metadata enables policy enforcement and ownership
-- [[Data Quality Monitoring]] — Metadata tracks quality metrics and lineage
-- [[Data Modeling]] — Models produce metadata about data structure
-- [[Semantic Layer]] — Unified context layer standardizing business metrics
-- [[Data Observability]] — Making pipelines transparent through metadata
+- [[data-governance]] — Metadata enables policy enforcement and ownership
+- [[data-quality-monitoring]] — Metadata tracks quality metrics and lineage
+- [[data-modeling]] — Models produce metadata about data structure
+- [[semantic-layer]] — Unified context layer standardizing business metrics
+- [[data-observability]] — Making pipelines transparent through metadata

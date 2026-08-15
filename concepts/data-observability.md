@@ -3,14 +3,39 @@ title: "Data Observability"
 type: concept
 tags: [data-observability, data-quality, lineage, monitoring, data-pipeline, incident-management]
 created: 2026-07-14
-updated: 2026-07-14
-sources: [data-observability-for-data-engineering]
+updated: 2026-08-15
+sources: [data-observability-for-data-engineering, fundamentals-of-data-observability]
 aliases: [pipeline-observability, data-monitoring]
 ---
 
 ## Summary
 
 **Data Observability** is the practice of making data pipelines transparent, traceable, and trustworthy in production. Unlike traditional [[data-quality-monitoring|data quality checks]] that only answer "Is the data wrong?", data observability answers *where, why, who, and how to prevent* data failures. It is monitoring with **context, continuity, and causality** (source: [[sources/data-observability-for-data-engineering]]).
+
+## The Three Information Channels
+
+Petrella adapts the three IT observability signals for data (source: [[sources/fundamentals-of-data-observability]]):
+
+| Channel | Data manifestation |
+| ------- | ------------------ |
+| **Logs** | Text records of events during execution |
+| **Traces** | Reconnected process steps → **data lineage** (provenance) |
+| **Metrics** | Numerical state (row counts, null values) |
+
+## The Observations Model
+
+Observations are structured as an entity graph over three "spaces":
+
+- **Physical Space** — events linked to tangible entities (servers, users).
+- **Static Space** — slowly changing entities (sources, schemas, lineages, app versions).
+- **Dynamic Space** — runtime behavior (application execution, lineage execution, real-time metrics).
+
+## Expectations and Defensive Logic
+
+Encode business assumptions as **Expectations** (rules or automatic anomaly detection), then defend against GIGO:
+
+- **Pre/post-conditions** — in-code checks rejecting invalid data.
+- **Circuit breakers** — external wrappers stopping a pipeline when conditions fail.
 
 ## Data Observability vs Software Observability
 
@@ -73,3 +98,4 @@ Start with **one critical pipeline**, use **monkey patching** for quick wins, pr
 - Enables [[dataops]] — observability is the feedback loop that makes DataOps fast and safe
 - Relies on [[data-governance]] — governance metadata (ownership, classification) contextualizes alerts
 - Benchmark source: [[sources/data-observability-for-data-engineering]] — Pinto & El Khammal's guide
+- Benchmark source: [[sources/fundamentals-of-data-observability]] — Petrella's channels, observations model, and defensive logic

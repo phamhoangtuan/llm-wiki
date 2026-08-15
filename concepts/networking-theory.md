@@ -49,6 +49,6 @@ The core tactical principle: remove all friction for the person being asked:
 
 ## Connections
 
-- [[Job Search Strategy]] — Networking is the centerpiece of the four-phase framework
-- [[Personal Branding]] — What people find when they look you up
-- [[Technical Leadership]] — Influence through relationships, not authority
+- [[job-search-strategy]] — Networking is the centerpiece of the four-phase framework
+- [[personal-branding]] — What people find when they look you up
+- [[technical-leadership]] — Influence through relationships, not authority

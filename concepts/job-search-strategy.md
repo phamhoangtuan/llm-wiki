@@ -46,7 +46,7 @@ Remove all friction for contacts: provide specific time slots, travel to their l
 
 ## Connections
 
-- [[Networking Theory]] — The Theory of Weak Ties as a career strategy
-- [[Personal Branding]] — CV, LinkedIn, and professional presence
-- [[T-Shaped Skills]] — Skill hacking to close gaps
-- [[Directness]] — Learning by doing the exact target skill
+- [[networking-theory]] — The Theory of Weak Ties as a career strategy
+- [[personal-branding]] — CV, LinkedIn, and professional presence
+- [[t-shaped-skills]] — Skill hacking to close gaps
+- [[directness]] — Learning by doing the exact target skill

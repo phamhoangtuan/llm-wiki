@@ -35,8 +35,8 @@ Part of the **Use & Enhance** lifecycle phase. Data Warehousing sits atop Govern
 
 ## Connections
 
-- [[Data Lakehouse]] — Modern architecture combining lake economics with warehouse governance
-- [[ELT]] — Modern data loading paradigm
-- [[Medallion Architecture]] — Bronze/Silver/Gold progressive refinement
-- [[Snowflake Data Cloud]] — Cloud-native data platform with separated storage and compute
+- [[data-lakehouse]] — Modern architecture combining lake economics with warehouse governance
+- [[elt]] — Modern data loading paradigm
+- [[medallion-architecture]] — Bronze/Silver/Gold progressive refinement
+- [[snowflake-data-cloud]] — Cloud-native data platform with separated storage and compute
 - [[dbt]] — SQL transformation framework for warehouse data

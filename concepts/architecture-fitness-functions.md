@@ -42,7 +42,7 @@ Fitness functions shift architecture governance from manual review meetings to a
 
 ## Connections
 
-- [[Architectural Decision Records (ADRs)]] — Document the decisions that fitness functions enforce
-- [[Architecture Hoisting]] — Shifting quality guarantees into structural constraints
-- [[Model-Code Gap]] — Fitness functions close the gap between design intent and code reality
-- [[Shift Left Security]] — Security fitness functions embedded in CI/CD
+- [[architectural-decision-records]] — Document the decisions that fitness functions enforce
+- [[architecture-hoisting]] — Shifting quality guarantees into structural constraints
+- [[model-code-gap]] — Fitness functions close the gap between design intent and code reality
+- [[shift-left-security]] — Security fitness functions embedded in CI/CD

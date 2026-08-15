@@ -3,8 +3,8 @@ title: "SOLID Principles"
 type: concept
 tags: [design-principles, architecture, solid, oop, clean-code]
 created: 2026-05-31
-updated: 2026-06-27
-sources: [dependency-injection-principles-patterns, contieri-clean-code-cookbook, practical-object-oriented-design, clean-code-principles-patterns-silen, dive-into-design-patterns]
+updated: 2026-08-15
+sources: [clean-code-martin, dependency-injection-principles-patterns, contieri-clean-code-cookbook, practical-object-oriented-design, clean-code-principles-patterns-silen, dive-into-design-patterns]
 ---
 
 ## Summary
@@ -111,5 +111,6 @@ SOLID is guidance, not dogma:
 - Foundation for [[object-oriented-design]] — SRP anchors the TRUE framework; OCP/LSP/ISP/DIP enable practical, change-tolerant design
 - Benchmark source: [[sources/dependency-injection-principles-patterns]] — van Deursen & Seemann's definitive guide
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén's Python edition emphasizes SOLID as non-negotiable at every architectural level
+- Benchmark source: [[sources/clean-code-martin]] — Uncle Bob's original; SRP/OCP/LSP/ISP/DIP originate here
 - Benchmark source: [[sources/dive-into-design-patterns]] — Shvets' pattern catalog grounded in SOLID as the compass
 - Foundation for [[design-patterns]] — all 22 GoF patterns rest on SOLID principles

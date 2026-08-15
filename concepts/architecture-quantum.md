@@ -41,7 +41,7 @@ In microservices architecture, each service is typically one quantum — but the
 
 ## Connections
 
-- [[Static vs Dynamic Coupling]] — The two dimensions that define quantum boundaries
-- [[Microservices]] — Autopilot architecture where each service is a quantum
-- [[Decomposition Patterns]] — Patterns for identifying quantum boundaries in monoliths
-- [[Data Sovereignty]] — Data ownership moves inside quantum boundaries
+- [[static-vs-dynamic-coupling]] — The two dimensions that define quantum boundaries
+- [[microservices]] — Autopilot architecture where each service is a quantum
+- [[decomposition-patterns]] — Patterns for identifying quantum boundaries in monoliths
+- [[data-sovereignty]] — Data ownership moves inside quantum boundaries

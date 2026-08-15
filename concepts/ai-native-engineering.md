@@ -17,7 +17,7 @@ The distinction: AI-native engineering enables 10x→100x productivity through p
 ## The Orchestrator Model
 
 | Traditional Engineer | AI-Native Engineer |
-|---|---|
+| --- | --- |
 | Writes most code manually | Orchestrates agents that generate code |
 | Reviews human-written PRs | Reviews AI-generated PRs with separate rubrics |
 | Spends time on syntax and boilerplate | Spends time on context, specs, and verification |
@@ -30,12 +30,14 @@ The distinction: AI-native engineering enables 10x→100x productivity through p
 As agents assume the manual labor of coding, the engineer fluidly moves between two modes:
 
 ### The Conductor: Hands-On, Real-Time
+
 - 🎼 **Mode**: In-IDE, synchronous feedback
 - 🎯 **Focus**: Single-file tasks, keystroke-level control
 - 🛠️ **Tools**: Chat interface, inline suggestions
 - ✅ **Best for**: Quick iterations, learning, debugging with AI
 
 ### The Orchestrator: High-Leverage Delegation
+
 - 🎼 **Mode**: Asynchronous, goal-level specifications
 - 🎯 **Focus**: Outcomes, not lines of code; review PRs later
 - 🛠️ **Tools**: Multi-agent teams, harness configuration, eval suites
@@ -46,7 +48,7 @@ The shift from Conductor to Orchestrator is the defining career transition for A
 ## Four Orchestrator Skills
 
 | Skill | Description | Example |
-|---|---|---|
+| --- | --- | --- |
 | **Specification** 📝 | Defining tasks precisely to eliminate ambiguity | "Build login flow with OAuth2 + rate limiting + audit logging" |
 | **Decomposition** 🔪 | Breaking massive projects into agent-sized units | Split "Build e-commerce platform" → [Auth, Product Catalog, Cart, Checkout] |
 | **Evaluation** 🔍 | Quickly judging if agent's trajectory/output meet quality bar | Review PR: Does code pass tests? Match spec? Follow conventions? |
@@ -77,7 +79,7 @@ Break tasks into AI-manageable chunks. Humans handle edge cases, custom logic, a
 The recommended split for AI-native work:
 
 | Activity | Time % |
-|---|---|
+| --- | --- |
 | Context-setting | 40% |
 | Generation & testing iteration | 20% |
 | Reviewing & verification | 40% |
@@ -115,3 +117,4 @@ The security landscape is alarming: roughly one new insecure AI integration per 
 - Related to [[technological-centaur]] — both describe the human-AI collaborative model where expertise amplifies tool effectiveness
 - Benchmark source: [[sources/practical-guide-ai-native-engineer]] — Shah Rahman's guide on ByteByteGo
 - Benchmark source: [[sources/new-sdlc-vibe-coding]] — Conductor vs Orchestrator modes, 4 orchestrator skills
+- Related to [[ai-engineering]] — AI engineering is the broader field; AI-native engineering is its agent-orchestration paradigm

@@ -40,8 +40,8 @@ The **shared database** anti-pattern — multiple services reading/writing the s
 
 ## Connections
 
-- [[Architecture Quantum]] — The boundary within which data sovereignty applies
-- [[Decomposition Patterns]] — How to achieve data sovereignty during monolith decomposition
-- [[Data Mesh]] — Extends sovereignty to analytical data
-- [[Microservices]] — Architecture pattern where data sovereignty is fundamental
-- [[Saga Pattern]] — Managing transactions across sovereign data domains
+- [[architecture-quantum]] — The boundary within which data sovereignty applies
+- [[decomposition-patterns]] — How to achieve data sovereignty during monolith decomposition
+- [[data-mesh]] — Extends sovereignty to analytical data
+- [[microservices]] — Architecture pattern where data sovereignty is fundamental
+- [[saga-pattern]] — Managing transactions across sovereign data domains

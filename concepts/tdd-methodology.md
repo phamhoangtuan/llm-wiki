@@ -3,8 +3,8 @@ title: "TDD Methodology"
 type: concept
 tags: [tdd, testing, methodology, design, python, clean-code]
 created: 2026-06-03
-updated: 2026-07-13
-sources: [tdd-python-percival]
+updated: 2026-08-15
+sources: [tdd-python-percival, clean-code-martin]
 ---
 
 ## Summary
@@ -22,12 +22,13 @@ The "Testing Goat" is a metaphor for stubborn discipline: no application code is
 The heartbeat of TDD:
 
 | Phase | Action | Purpose |
-|-------|--------|---------|
+| ------- | -------- | --------- |
 | **Red** 🔴 | Write a failing test | Define desired behavior before implementation |
 | **Green** 🟢 | Write minimal code to pass | Satisfy the test — no more, no less |
 | **Refactor** 🔵 | Clean up code, reduce duplication | Improve design without changing behavior |
 
 Key rules:
+
 - Write the **minimal code** to pass — resist the urge to over-engineer.
 - Refactor is **mandatory**, not optional. The test safety net enables fearless cleanup.
 - Each cycle should take **seconds to minutes** — fast feedback is essential.
@@ -57,7 +58,7 @@ Key rules:
 ## Hacking vs Engineering
 
 | Hacking (No Tests) | Engineering (TDD) |
-|--------------------|-------------------|
+| -------------------- | ------------------- |
 | Fear of refactoring | Confidence — tests catch regressions |
 | Code complexity grows unchecked | Decoupled, clean design |
 | Manual verification, slow | Automated regression, fast |
@@ -70,9 +71,11 @@ Key rules:
 - **"Thanks, tests" moments**: when a test catches a regression you would never have predicted.
 
 ---
+
 - Informs [[functional-testing]] — functional tests form the outer loop of Outside-In TDD
 - Foundation for [[testing-strategy]] — TDD provides the methodology; testing strategy selects what to test
 - Enabled by [[pytest-basics]] — pytest is the tool that makes the Red-Green-Refactor cycle fast in Python
 - Benchmark source: [[sources/tdd-python-percival]] — Percival's hands-on TDD with Django and Selenium
+- Benchmark source: [[sources/clean-code-martin]] — the Three Laws of TDD
 - Related to [[fail-fast]] — both principles advocate catching problems at the earliest possible point
 - Complementary to [[architecture-in-agile]] — TDD and architecture-in-agile are both iterative methodologies that embed quality into the development rhythm

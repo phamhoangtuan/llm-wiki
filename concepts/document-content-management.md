@@ -41,7 +41,7 @@ Shares characteristics with both Data Storage (managing assets) and Data Governa
 
 ## Connections
 
-- [[Data Governance]] — Retention and disposal policies
-- [[Data Storage and Operations]] — Physical storage of document assets
-- [[Data Lifecycle]] — Six-stage journey from creation to destruction
-- [[Metadata Management]] — Document classification and tagging
+- [[data-governance]] — Retention and disposal policies
+- [[data-storage-operations]] — Physical storage of document assets
+- [[data-lifecycle]] — Six-stage journey from creation to destruction
+- [[metadata-management]] — Document classification and tagging

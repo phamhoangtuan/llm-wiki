@@ -47,8 +47,8 @@ The professional expectation: developers release code expecting QA to find nothi
 
 ## Connections
 
-- [[TDD Methodology]] — Red-Green-Refactor drives the unit test foundation
-- [[Functional Testing]] — User-perspective tests (top of pyramid)
-- [[Testing Strategy]] — API-first testing, 4 pillars of professional testing
-- [[pytest Basics]] — pytest as a tool for implementing the pyramid
-- [[Software Professionalism]] — Testing discipline as a professional obligation
+- [[tdd-methodology]] — Red-Green-Refactor drives the unit test foundation
+- [[functional-testing]] — User-perspective tests (top of pyramid)
+- [[testing-strategy]] — API-first testing, 4 pillars of professional testing
+- [[pytest-basics]] — pytest as a tool for implementing the pyramid
+- [[software-professionalism]] — Testing discipline as a professional obligation

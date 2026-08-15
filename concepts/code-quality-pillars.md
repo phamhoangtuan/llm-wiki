@@ -3,8 +3,8 @@ title: "Code Quality Pillars"
 type: concept
 tags: [design-principles, clean-code, engineering, maintainability]
 created: 2026-06-08
-updated: 2026-07-13
-sources: [good-code-bad-code, practical-object-oriented-design, clean-code-principles-patterns-silen, code-complete]
+updated: 2026-08-15
+sources: [good-code-bad-code, practical-object-oriented-design, clean-code-principles-patterns-silen, code-complete, clean-code-martin]
 aliases: [six-pillars-of-code-quality]
 ---
 
@@ -135,5 +135,6 @@ Code Change → Code Review (proofreading) → Commit → Pre-submit Checks (aut
 - Benchmark source: [[sources/good-code-bad-code]] — Tom Long's 338-page guide
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén on uniform naming, self-documenting code, and tactical quality practices
 - Benchmark source: [[sources/code-complete]] — McConnell on construction as the heart of software development
+- Benchmark source: [[sources/clean-code-martin]] — Uncle Bob on naming, smallness, and expressiveness
 - Related to [[software-construction]] — construction accounts for 30-80% of project time and 50-75% of defects
 - Related to [[information-hiding]] — information hiding is the core heuristic for managing construction complexity

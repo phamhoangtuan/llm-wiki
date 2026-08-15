@@ -43,8 +43,8 @@ Data Mesh is DDD applied to data architecture: bounded contexts own their data, 
 
 ## Connections
 
-- [[Domain-Driven Design]] — Bounded Contexts provide the organizational model for data ownership
-- [[Data Product]] — The unit of delivery in a Data Mesh
-- [[Architecture Fitness Functions]] — Governance mechanism for federated standards
-- [[Data Sovereignty]] — Data ownership within domain boundaries
-- [[Microservices]] — Service-aligned data ownership pattern
+- [[domain-driven-design]] — Bounded Contexts provide the organizational model for data ownership
+- [[data-product]] — The unit of delivery in a Data Mesh
+- [[architecture-fitness-functions]] — Governance mechanism for federated standards
+- [[data-sovereignty]] — Data ownership within domain boundaries
+- [[microservices]] — Service-aligned data ownership pattern

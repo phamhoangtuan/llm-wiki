@@ -4,6 +4,40 @@
 
 ---
 
+## [2026-08-15] chore | Allow raw documents in commit helper
+
+- Updated `scripts/commit-and-push.sh` to include tracked and untracked files under `raw/`; raw documents remain immutable to wiki operations but are now versioned by the commit workflow
+
+## [2026-08-15] chore | Add commit-and-push helper
+
+- Created `scripts/commit-and-push.sh` to stage all non-raw changes, validate the index, commit with a supplied message, and push the current branch to `origin`
+- Validated with `bash -n` and the missing-message guard; no commit or push executed
+
+## [2026-08-15] lint | Fixed stale index.html concept count
+
+- Root cause: `update_index_html()` in scripts/convert-to-html.py used a regex `<!-- MOC_DESC -->.*?</p>` without `re.DOTALL`, so it never matched across the newline before `</p>` — the count silently stayed stale
+- Fix: added `flags=re.DOTALL` to the MOC_DESC substitution
+- index.html count corrected: "202 concepts" → "246 concepts across 11 categories"
+
+## [2026-08-15] lint | Post-ingest health check + fix pass
+
+- Scanned 337 pages (246 concepts + 91 sources) across broken wikilinks, orphans, and frontmatter completeness
+- Fixed 103 broken wikilinks (Title Case → kebab-case slug) across 23 concept pages — pre-existing from the 2026-07-14 DAMA + Software Architecture: The Hard Parts batch
+- Broken wikilinks: 103 → 0
+- Orphans reduced: 19 → 6. Remaining 6 (data-architecture, data-security, data-warehousing, document-content-management, flow-zone-critique, master-data-management) have frontmatter-only backlinks via their source pages' `concepts:` field — not true orphans
+- Frontmatter: all 8 new pages complete; no new gaps; 0 contradictions introduced
+- HTML regenerated via convert-to-html.py
+
+## [2026-08-15] ingest | AI Engineering + Clean Code + Engineering Management + Fundamentals of Data Observability + Start With Why
+
+- Created sources/ai-engineering-chip-huyen.md, sources/clean-code-martin.md, sources/engineering-management-drasner.md, sources/fundamentals-of-data-observability.md, sources/start-with-why-sinek.md
+- Created concepts/ai-engineering.md (from AI Engineering), concepts/engineering-management.md (from Engineering Management for the Rest of Us), concepts/golden-circle.md (from Start With Why)
+- Updated concepts/data-observability.md (three channels, observations model, expectations & circuit breakers from Petrella)
+- Updated concepts/solid-principles.md, concepts/code-quality-pillars.md, concepts/tdd-methodology.md (clean-code-martin backlink)
+- Updated concepts/ai-native-engineering.md, concepts/technical-leadership.md (cross-links to new concepts)
+- Updated index.md: +3 concepts, +5 sources, 337 total pages
+- HTML regenerated via convert-to-html.py
+
 ## [2026-07-14] ingest | #ENTRYLEVELBOSS + DAMA-DMBOK + Software Architecture: The Hard Parts + The Clean Coder
 
 - Created sources/entrylevelboss.md, sources/dama-dmbok-2nd-edition.md, sources/software-architecture-hard-parts.md, sources/the-clean-coder.md

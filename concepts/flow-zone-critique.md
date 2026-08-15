@@ -42,7 +42,7 @@ A professional maintains *broad situational awareness* — periodically stepping
 
 ## Connections
 
-- [[Software Professionalism]] — Flow avoidance as a professional discipline
-- [[TDD Methodology]] — TDD provides the red-green structure that interrupts flow
-- [[Mentoring]] — Pair programming as an antidote to solo flow
-- [[Code Quality Pillars]] — Big-picture awareness over local optimization
+- [[software-professionalism]] — Flow avoidance as a professional discipline
+- [[tdd-methodology]] — TDD provides the red-green structure that interrupts flow
+- [[mentoring]] — Pair programming as an antidote to solo flow
+- [[code-quality-pillars]] — Big-picture awareness over local optimization

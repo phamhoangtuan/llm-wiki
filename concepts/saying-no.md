@@ -44,7 +44,7 @@ The adversarial dynamic is *healthy* — both sides aggressively defending their
 
 ## Connections
 
-- [[Software Professionalism]] — Saying no is a core professional discipline
-- [[Technical Leadership]] — Leading through influence, knowing when to push back
-- [[Code Quality Pillars]] — Quality is defended, not assumed
-- [[Feedback]] — Honest signals prevent larger failures
+- [[software-professionalism]] — Saying no is a core professional discipline
+- [[technical-leadership]] — Leading through influence, knowing when to push back
+- [[code-quality-pillars]] — Quality is defended, not assumed
+- [[feedback]] — Honest signals prevent larger failures

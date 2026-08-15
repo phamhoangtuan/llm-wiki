@@ -37,8 +37,8 @@ Part of the **Enable & Maintain** lifecycle phase. Data Integration implements t
 
 ## Connections
 
-- [[ELT (Extract-Load-Transform)|ELT]] — Modern paradigm loading raw data first
-- [[Change Data Capture (CDC)|Change Data Capture]] — Row-level change capture from transaction logs
-- [[Data Ingestion]] — Moving data from sources to data lake
-- [[Apache Kafka]] — Distributed event streaming platform for data movement
-- [[Data Ingestion]] — End-to-end flow from source to consumption
+- [[elt|ELT]] — Modern paradigm loading raw data first
+- [[change-data-capture|Change Data Capture]] — Row-level change capture from transaction logs
+- [[data-ingestion]] — Moving data from sources to data lake
+- [[apache-kafka]] — Distributed event streaming platform for data movement
+- [[data-ingestion]] — End-to-end flow from source to consumption

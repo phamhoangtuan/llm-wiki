@@ -76,6 +76,19 @@
         "process"
       ]
     },
+    "ai-engineering": {
+      "title": "AI Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/ai-engineering.html",
+      "definition": "**AI Engineering** is the discipline of building applications on top of readily available foundation models — large models trained by a few organizations and served via APIs — rather than training mod",
+      "tags": [
+        "ai-engineering",
+        "foundation-models",
+        "ml-engineering",
+        "rag",
+        "evaluation"
+      ]
+    },
     "ai-native-engineering": {
       "title": "AI-Native Engineering",
       "category": "AI & Agents",
@@ -1192,6 +1205,19 @@
         "architecture"
       ]
     },
+    "engineering-management": {
+      "title": "Engineering Management",
+      "category": "Career & Growth",
+      "url": "concepts/engineering-management.html",
+      "definition": "**Engineering Management** is the discipline of enabling the people around you to do their best work together. Unlike [[technical-leadership]], which leads through influence without authority on the S",
+      "tags": [
+        "engineering-management",
+        "leadership",
+        "people-management",
+        "career",
+        "trust"
+      ]
+    },
     "entity-resolution": {
       "title": "Entity Resolution",
       "category": "Meta",
@@ -1395,6 +1421,19 @@
         "deployment",
         "architecture",
         "stdlib"
+      ]
+    },
+    "golden-circle": {
+      "title": "Golden Circle",
+      "category": "Career & Growth",
+      "url": "concepts/golden-circle.html",
+      "definition": "The **Golden Circle** is Simon Sinek's framework for how inspired leaders think, act, and communicate — from the *inside out*. Its three concentric layers are **WHY** (purpose, cause, belief), **HOW**",
+      "tags": [
+        "leadership",
+        "purpose",
+        "inspiration",
+        "motivation",
+        "why"
       ]
     },
     "goodharts-law": {

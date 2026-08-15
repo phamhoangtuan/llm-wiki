@@ -581,7 +581,7 @@ def update_index_html():
     n_cats = rows.count('<tr id="row-')
     desc = f'{n_concepts} concepts across {n_cats} categories.'
 
-    content = re.sub(r'<!-- MOC_DESC -->.*?</p>', f'<!-- MOC_DESC -->{desc}</p>', content)
+    content = re.sub(r'<!-- MOC_DESC -->.*?</p>', f'<!-- MOC_DESC -->{desc}</p>', content, flags=re.DOTALL)
     content = content.replace('<!-- MOC_TABLE -->', rows)
     index_path.write_text(content)
 

@@ -46,8 +46,8 @@ The book frames mentoring not as optional generosity but as a professional oblig
 
 ## Connections
 
-- [[Software Professionalism]] — Mentoring as a professional duty
-- [[Technical Leadership]] — Leading through influence and teaching
-- [[T-Shaped Skills]] — Mentoring develops breadth beyond deep expertise
-- [[Code Readability]] — Writing code that juniors can understand
-- [[Feedback]] — Mentoring is corrective feedback at the career scale
+- [[software-professionalism]] — Mentoring as a professional duty
+- [[technical-leadership]] — Leading through influence and teaching
+- [[t-shaped-skills]] — Mentoring develops breadth beyond deep expertise
+- [[code-readability]] — Writing code that juniors can understand
+- [[feedback]] — Mentoring is corrective feedback at the career scale

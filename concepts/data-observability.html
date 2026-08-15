@@ -42,12 +42,44 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Observability</h1>
-  <div class="page-meta"><span>Source: data-observability-for-data-engineering</span><span>Updated: 2026-07-14</span></div>
+  <div class="page-meta"><span>Source: data-observability-for-data-engineering, fundamentals-of-data-observability</span><span>Updated: 2026-08-15</span></div>
   <div class="page-tags"><span class="tag">data-observability</span><span class="tag">data-quality</span><span class="tag">lineage</span><span class="tag">monitoring</span><span class="tag">data-pipeline</span><span class="tag">incident-management</span></div>
 </div>
 <div class="content-area concept">
 <h2 id="summary">Summary</h2>
 <p><strong>Data Observability</strong> is the practice of making data pipelines transparent, traceable, and trustworthy in production. Unlike traditional <a href="data-quality-monitoring.html" class="wiki-link">data quality checks</a> that only answer "Is the data wrong?", data observability answers <em>where, why, who, and how to prevent</em> data failures. It is monitoring with <strong>context, continuity, and causality</strong> (source: <span class="wiki-link source-ref">sources/data-observability-for-data-engineering</span>).</p>
+<h2 id="the-three-information-channels">The Three Information Channels</h2>
+<p>Petrella adapts the three IT observability signals for data (source: <span class="wiki-link source-ref">sources/fundamentals-of-data-observability</span>):</p>
+<table><thead><tr>
+<th>Channel</th>
+<th>Data manifestation</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Logs</strong></td>
+<td>Text records of events during execution</td>
+</tr>
+<tr>
+<td><strong>Traces</strong></td>
+<td>Reconnected process steps → <strong>data lineage</strong> (provenance)</td>
+</tr>
+<tr>
+<td><strong>Metrics</strong></td>
+<td>Numerical state (row counts, null values)</td>
+</tr>
+</tbody></table>
+<h2 id="the-observations-model">The Observations Model</h2>
+<p>Observations are structured as an entity graph over three "spaces":</p>
+<ul>
+<li><strong>Physical Space</strong> — events linked to tangible entities (servers, users).</li>
+<li><strong>Static Space</strong> — slowly changing entities (sources, schemas, lineages, app versions).</li>
+<li><strong>Dynamic Space</strong> — runtime behavior (application execution, lineage execution, real-time metrics).</li>
+</ul>
+<h2 id="expectations-and-defensive-logic">Expectations and Defensive Logic</h2>
+<p>Encode business assumptions as <strong>Expectations</strong> (rules or automatic anomaly detection), then defend against GIGO:</p>
+<ul>
+<li><strong>Pre/post-conditions</strong> — in-code checks rejecting invalid data.</li>
+<li><strong>Circuit breakers</strong> — external wrappers stopping a pipeline when conditions fail.</li>
+</ul>
 <h2 id="data-observability-vs-software-observabi">Data Observability vs Software Observability</h2>
 <table><thead><tr>
 <th>Aspect</th>
@@ -179,6 +211,11 @@
       <span class="connection-type related">Related</span>
       <h4>Data Observability for Data Engineering</h4>
       <p>Pinto & El Khammal's guide</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Fundamentals of Data Observability</h4>
+      <p>Petrella's channels, observations model, and defensive logic</p>
     </div>
   </div>
 </section>

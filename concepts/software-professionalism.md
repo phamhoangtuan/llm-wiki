@@ -43,8 +43,8 @@ Professionals use precise commitment language: "I will... by..." (three stages: 
 
 ## Connections
 
-- [[Saying No]] — The professional's responsibility to push back on unrealistic demands
-- [[TDD Methodology]] — The professional option for code certainty
-- [[Testing Pyramid]] — Professional testing hierarchy
-- [[Mentoring]] — The professional's duty to pass on craftsmanship
-- [[Code Quality Pillars]] — Engineering vs coding distinction
+- [[saying-no]] — The professional's responsibility to push back on unrealistic demands
+- [[tdd-methodology]] — The professional option for code certainty
+- [[testing-pyramid]] — Professional testing hierarchy
+- [[mentoring]] — The professional's duty to pass on craftsmanship
+- [[code-quality-pillars]] — Engineering vs coding distinction

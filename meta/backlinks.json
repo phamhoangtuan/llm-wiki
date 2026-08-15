@@ -59,6 +59,7 @@
     "agent-components",
     "agent-quality-optimization",
     "agentic-development-life-cycle",
+    "ai-engineering",
     "ai-psychosis",
     "code-overload",
     "code-overload",
@@ -75,6 +76,7 @@
     "vibe-coding",
     "vibe-coding",
     "vibe-coding",
+    "ai-engineering-chip-huyen",
     "how-ai-changes-4-core-data-roles",
     "new-sdlc-vibe-coding",
     "practical-guide-ai-native-engineer",
@@ -238,6 +240,7 @@
     "shift-left-security",
     "software-construction",
     "tdd-methodology",
+    "testing-pyramid",
     "clean-code-principles-patterns-silen",
     "code-complete",
     "okken-python-testing-pytest",
@@ -266,8 +269,13 @@
   "tdd-methodology": [
     "agentic-development-life-cycle",
     "fail-fast",
+    "flow-zone-critique",
     "functional-testing",
+    "software-professionalism",
+    "testing-pyramid",
     "testing-strategy",
+    "clean-code-martin",
+    "clean-code-martin",
     "tdd-python-percival",
     "tdd-python-percival"
   ],
@@ -278,6 +286,93 @@
     "context-engineering",
     "specification-driven-development",
     "vibe-coding"
+  ],
+  "sources/ai-engineering-chip-huyen": [
+    "ai-engineering",
+    "ai-engineering"
+  ],
+  "machine-learning-systems": [
+    "ai-engineering",
+    "ai-engineering",
+    "ai-scaling-laws",
+    "compound-ai-systems",
+    "mlops",
+    "sustainable-ai",
+    "ai-engineering-chip-huyen"
+  ],
+  "prompt-engineering": [
+    "ai-engineering",
+    "ai-engineering",
+    "ai-engineering",
+    "fine-tuning",
+    "langchain",
+    "llama-index",
+    "llm-evaluation-metrics",
+    "reranking",
+    "retrieval-augmented-generation",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen",
+    "building-llms-for-production"
+  ],
+  "retrieval-augmented-generation": [
+    "ai-engineering",
+    "ai-engineering",
+    "ai-engineering",
+    "compound-ai-systems",
+    "fine-tuning",
+    "langchain",
+    "langchain",
+    "llama-index",
+    "llama-index",
+    "llm-evaluation-metrics",
+    "lora",
+    "peft",
+    "prompt-engineering",
+    "reranking",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen",
+    "building-llms-for-production"
+  ],
+  "fine-tuning": [
+    "ai-engineering",
+    "ai-engineering",
+    "ai-engineering",
+    "flash-attention",
+    "lora",
+    "model-distillation",
+    "model-pruning",
+    "model-quantization",
+    "peft",
+    "prompt-engineering",
+    "retrieval-augmented-generation",
+    "retrieval-augmented-generation",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen",
+    "building-llms-for-production"
+  ],
+  "llm-evaluation-metrics": [
+    "ai-engineering",
+    "ai-engineering",
+    "llama-index",
+    "observability",
+    "prompt-engineering",
+    "reranking",
+    "retrieval-augmented-generation",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen",
+    "building-llms-for-production"
+  ],
+  "compound-ai-systems": [
+    "ai-engineering",
+    "ai-engineering",
+    "machine-learning-systems",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen"
+  ],
+  "ai-engineering": [
+    "ai-native-engineering",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen"
   ],
   "sources/meta-destroying-engineering-org-orosz": [
     "ai-psychosis"
@@ -290,8 +385,10 @@
   "staff-engineering": [
     "ai-psychosis",
     "case-interview",
+    "engineering-management",
     "staff-plus-archetypes",
     "technical-leadership",
+    "engineering-management-drasner",
     "senior-to-staff-engineer"
   ],
   "software-rot": [
@@ -305,18 +402,14 @@
     "microservices",
     "model-code-gap",
     "refactoring-at-scale",
+    "clean-code-martin",
+    "clean-code-martin",
     "clean-code-principles-patterns-silen"
   ],
   "sustainable-ai": [
     "ai-scaling-laws",
     "ai-scaling-laws",
     "machine-learning-systems"
-  ],
-  "machine-learning-systems": [
-    "ai-scaling-laws",
-    "compound-ai-systems",
-    "mlops",
-    "sustainable-ai"
   ],
   "model-distillation": [
     "ai-scaling-laws",
@@ -406,7 +499,10 @@
     "analytics-engineer",
     "data-analyst",
     "data-analyst",
+    "data-architecture",
     "data-engineering-fundamentals",
+    "master-data-management",
+    "metadata-management",
     "self-service-analytics",
     "self-service-analytics",
     "self-service-analytics",
@@ -419,13 +515,18 @@
     "byzantine-fault-tolerance",
     "cicd-data-pipelines",
     "data-anonymization",
+    "data-architecture",
     "data-lifecycle",
     "data-lifecycle",
     "data-modeling",
     "data-observability",
     "data-product",
     "data-quality-monitoring",
+    "data-security",
     "differential-privacy",
+    "document-content-management",
+    "master-data-management",
+    "metadata-management",
     "self-service-analytics",
     "self-service-analytics",
     "self-service-analytics",
@@ -434,6 +535,7 @@
     "building-anonymization-pipeline",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026",
+    "fundamentals-of-data-observability",
     "how-ai-changes-4-core-data-roles",
     "how-ai-changes-4-core-data-roles",
     "snowflake-the-definitive-guide"
@@ -442,6 +544,7 @@
     "analytics-engineer",
     "data-engineer",
     "data-product",
+    "metadata-management",
     "reranking",
     "self-service-analytics",
     "self-service-analytics",
@@ -478,6 +581,8 @@
     "data-engineer",
     "data-ingestion",
     "data-ingestion",
+    "data-integration",
+    "data-warehousing",
     "dataops",
     "dbt",
     "dbt",
@@ -495,6 +600,8 @@
     "data-anonymization",
     "data-engineer",
     "data-governance",
+    "data-integration",
+    "data-integration",
     "data-lifecycle",
     "dataops",
     "dbt",
@@ -529,6 +636,7 @@
     "data-engineering-with-python",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026",
+    "fundamentals-of-data-observability",
     "reddit-cicd-tips-data-engineering",
     "reddit-cicd-tips-data-engineering"
   ],
@@ -765,6 +873,7 @@
     "data-engineer",
     "data-ingestion",
     "data-ingestion",
+    "data-integration",
     "delta-lake",
     "delta-lake",
     "liquid-clustering",
@@ -785,6 +894,7 @@
     "data-engineer",
     "data-ingestion",
     "data-ingestion",
+    "data-integration",
     "distributed-consensus",
     "distributed-consensus",
     "edge-computing",
@@ -1018,6 +1128,7 @@
   ],
   "data-lakehouse": [
     "apache-spark",
+    "data-warehousing",
     "databricks-platform",
     "dbfs",
     "delta-lake",
@@ -1065,12 +1176,20 @@
     "message-delivery-semantics",
     "microservices",
     "microservices",
-    "microservices"
+    "microservices",
+    "saga-pattern",
+    "static-vs-dynamic-coupling"
   ],
   "microservices": [
     "architectural-characteristics",
     "architectural-characteristics",
+    "architecture-quantum",
+    "data-mesh",
+    "data-sovereignty",
+    "decomposition-patterns",
     "observability",
+    "saga-pattern",
+    "static-vs-dynamic-coupling",
     "clean-code-principles-patterns-silen",
     "head-first-software-architecture"
   ],
@@ -1092,6 +1211,7 @@
   ],
   "architectural-decision-records": [
     "architectural-characteristics",
+    "architecture-fitness-functions",
     "architecture-hoisting",
     "risk-driven-architecture",
     "risk-driven-architecture",
@@ -1114,6 +1234,7 @@
     "system-design-interview",
     "building-llms-for-production",
     "clean-code-principles-patterns-silen",
+    "fundamentals-of-data-observability",
     "system-design-interview-xu"
   ],
   "architecture-in-agile": [
@@ -1134,6 +1255,7 @@
   ],
   "architecture-hoisting": [
     "architectural-decision-records",
+    "architecture-fitness-functions",
     "architecture-in-agile",
     "fail-fast",
     "immutability",
@@ -1143,24 +1265,18 @@
     "software-quality-dimensions",
     "head-first-software-architecture"
   ],
-  "Architectural Decision Records (ADRs)": [
-    "architecture-fitness-functions"
-  ],
-  "Architecture Hoisting": [
-    "architecture-fitness-functions"
-  ],
-  "Model-Code Gap": [
-    "architecture-fitness-functions"
-  ],
-  "Shift Left Security": [
-    "architecture-fitness-functions",
-    "data-security"
-  ],
   "model-code-gap": [
+    "architecture-fitness-functions",
     "architecture-hoisting",
     "architecture-in-agile",
     "architecture-in-agile",
     "risk-driven-architecture"
+  ],
+  "shift-left-security": [
+    "architecture-fitness-functions",
+    "data-security",
+    "kubernetes-security",
+    "clean-code-principles-patterns-silen"
   ],
   "software-quality-dimensions": [
     "architecture-hoisting",
@@ -1204,7 +1320,9 @@
     "software-quality-dimensions",
     "solid-principles",
     "solid-principles",
-    "testing-strategy"
+    "testing-strategy",
+    "clean-code-martin",
+    "clean-code-martin"
   ],
   "refactoring-at-scale": [
     "architecture-in-agile",
@@ -1213,34 +1331,28 @@
     "code-quality-pillars",
     "complexity-metrics",
     "complexity-metrics",
+    "decomposition-patterns",
     "essential-accidental-complexity",
     "software-rot",
     "software-rot"
   ],
   "domain-driven-design": [
     "architecture-in-agile",
+    "data-mesh",
     "microservices",
     "microservices",
     "model-code-gap",
     "learning-domain-driven-design"
   ],
-  "Static vs Dynamic Coupling": [
+  "static-vs-dynamic-coupling": [
     "architecture-quantum",
     "decomposition-patterns"
   ],
-  "Microservices": [
-    "architecture-quantum",
-    "data-mesh",
-    "data-sovereignty",
-    "decomposition-patterns",
-    "saga-pattern",
-    "static-vs-dynamic-coupling"
-  ],
-  "Decomposition Patterns": [
+  "decomposition-patterns": [
     "architecture-quantum",
     "data-sovereignty"
   ],
-  "Data Sovereignty": [
+  "data-sovereignty": [
     "architecture-quantum",
     "data-mesh",
     "decomposition-patterns"
@@ -1340,6 +1452,7 @@
   "database-replication": [
     "cache-strategy",
     "cap-theorem",
+    "data-storage-operations",
     "database-isolation",
     "database-sharding",
     "database-sharding",
@@ -1399,6 +1512,7 @@
   ],
   "technical-interview": [
     "case-interview",
+    "personal-branding",
     "staff-engineering",
     "system-design-interview",
     "cracking-the-coding-interview",
@@ -1456,6 +1570,7 @@
   ],
   "containerization": [
     "cloud-service-models",
+    "data-storage-operations",
     "deployment-strategies",
     "kubernetes-architecture",
     "kubernetes-networking",
@@ -1495,6 +1610,7 @@
     "dataops",
     "essential-accidental-complexity",
     "fail-fast",
+    "flow-zone-critique",
     "functional-programming",
     "metric-fixation",
     "object-oriented-design",
@@ -1502,14 +1618,17 @@
     "python-static-analysis",
     "readability-vs-performance",
     "refactoring-at-scale",
+    "saying-no",
     "shift-left-security",
     "shift-left-security",
     "software-construction",
+    "software-professionalism",
     "software-quality-dimensions",
     "software-rot",
     "staff-engineering",
     "staff-plus-archetypes",
     "testing-strategy",
+    "clean-code-martin",
     "clean-code-principles-patterns-silen",
     "code-complete",
     "good-code-bad-code"
@@ -1540,6 +1659,8 @@
     "microservices",
     "model-code-gap",
     "object-oriented-design",
+    "clean-code-martin",
+    "clean-code-martin",
     "clean-code-principles-patterns-silen",
     "dependency-injection-principles-patterns",
     "dive-into-design-patterns",
@@ -1554,10 +1675,14 @@
     "rich-domain-model",
     "solid-principles",
     "solid-principles",
+    "clean-code-martin",
     "contieri-clean-code-cookbook"
   ],
   "code-readability": [
-    "code-quality-pillars"
+    "code-quality-pillars",
+    "mentoring",
+    "clean-code-martin",
+    "clean-code-martin"
   ],
   "object-oriented-design": [
     "code-quality-pillars",
@@ -1567,6 +1692,7 @@
     "software-quality-dimensions",
     "solid-principles",
     "tell-dont-ask",
+    "clean-code-martin",
     "clean-code-principles-patterns-silen",
     "dive-into-design-patterns",
     "practical-object-oriented-design"
@@ -1586,6 +1712,11 @@
   ],
   "sources/code-complete": [
     "code-quality-pillars"
+  ],
+  "sources/clean-code-martin": [
+    "code-quality-pillars",
+    "solid-principles",
+    "tdd-methodology"
   ],
   "software-construction": [
     "code-quality-pillars",
@@ -1615,22 +1746,9 @@
     "machine-learning-systems",
     "sustainable-ai"
   ],
-  "retrieval-augmented-generation": [
-    "compound-ai-systems",
-    "fine-tuning",
-    "langchain",
-    "langchain",
-    "llama-index",
-    "llama-index",
-    "llm-evaluation-metrics",
-    "lora",
-    "peft",
-    "prompt-engineering",
-    "reranking",
-    "building-llms-for-production"
-  ],
   "cloud-service-models": [
     "containerization",
+    "data-storage-operations",
     "snowflake-data-cloud",
     "snowflake-the-definitive-guide"
   ],
@@ -1692,6 +1810,7 @@
   "differential-privacy": [
     "data-anonymization",
     "data-anonymization",
+    "data-security",
     "synthetic-data",
     "synthetic-data",
     "synthetic-data",
@@ -1706,42 +1825,39 @@
     "differential-privacy",
     "fine-tuning",
     "llm-evaluation-metrics",
+    "master-data-management",
+    "metadata-management",
     "metric-fixation",
     "statistical-thinking",
     "synthetic-data",
     "building-anonymization-pipeline",
     "data-engineering-with-python",
-    "data-quality-traffic-lights-sahlin"
+    "data-quality-traffic-lights-sahlin",
+    "fundamentals-of-data-observability"
   ],
   "data-lifecycle": [
     "data-anonymization",
+    "data-architecture",
     "data-engineering-fundamentals",
     "data-governance",
-    "data-lifecycle-handbook"
-  ],
-  "Data Governance": [
-    "data-architecture",
-    "data-security",
+    "data-storage-operations",
     "document-content-management",
-    "master-data-management",
-    "metadata-management"
+    "data-lifecycle-handbook",
+    "fundamentals-of-data-observability"
   ],
-  "Data Modeling": [
-    "data-architecture",
-    "master-data-management",
-    "metadata-management"
-  ],
-  "Data Integration": [
+  "data-integration": [
     "data-architecture"
   ],
-  "Data Lifecycle": [
+  "medallion-architecture": [
     "data-architecture",
-    "data-storage-operations",
-    "document-content-management"
-  ],
-  "Medallion Architecture": [
-    "data-architecture",
-    "data-warehousing"
+    "data-lakehouse",
+    "data-lakehouse",
+    "data-warehousing",
+    "databricks-platform",
+    "delta-live-tables",
+    "delta-live-tables",
+    "big-book-data-engineering",
+    "big-book-data-engineering"
   ],
   "data-engineering-fundamentals": [
     "data-engineer",
@@ -1782,6 +1898,7 @@
     "data-governance",
     "data-governance",
     "data-quality-monitoring",
+    "data-security",
     "differential-privacy",
     "synthetic-data",
     "synthetic-data",
@@ -1826,28 +1943,6 @@
     "how-ai-changes-4-core-data-roles",
     "how-ai-changes-4-core-data-roles"
   ],
-  "ELT (Extract-Load-Transform)": [
-    "data-integration"
-  ],
-  "Change Data Capture (CDC)": [
-    "data-integration"
-  ],
-  "Data Ingestion": [
-    "data-integration",
-    "data-integration"
-  ],
-  "Apache Kafka": [
-    "data-integration"
-  ],
-  "medallion-architecture": [
-    "data-lakehouse",
-    "data-lakehouse",
-    "databricks-platform",
-    "delta-live-tables",
-    "delta-live-tables",
-    "big-book-data-engineering",
-    "big-book-data-engineering"
-  ],
   "delta-live-tables": [
     "data-lakehouse",
     "data-quality-monitoring",
@@ -1864,18 +1959,22 @@
   ],
   "snowflake-data-cloud": [
     "data-lakehouse",
+    "data-warehousing",
     "snowflake-the-definitive-guide"
   ],
-  "Domain-Driven Design": [
-    "data-mesh"
+  "data-product": [
+    "data-mesh",
+    "dataops",
+    "dataops"
   ],
-  "Data Product": [
-    "data-mesh"
-  ],
-  "Architecture Fitness Functions": [
+  "architecture-fitness-functions": [
     "data-mesh"
   ],
   "sources/data-observability-for-data-engineering": [
+    "data-observability",
+    "data-observability"
+  ],
+  "sources/fundamentals-of-data-observability": [
     "data-observability",
     "data-observability"
   ],
@@ -1890,49 +1989,25 @@
   "sources/data-quality-traffic-lights-sahlin": [
     "data-quality-monitoring"
   ],
-  "Data Anonymization": [
-    "data-security"
+  "password-storage": [
+    "data-security",
+    "sso",
+    "tls-https"
   ],
-  "Differential Privacy": [
-    "data-security"
-  ],
-  "Password Storage": [
-    "data-security"
-  ],
-  "Architecture Quantum": [
+  "architecture-quantum": [
     "data-sovereignty",
     "decomposition-patterns",
     "static-vs-dynamic-coupling"
   ],
-  "Data Mesh": [
+  "data-mesh": [
     "data-sovereignty"
   ],
-  "Saga Pattern": [
+  "saga-pattern": [
     "data-sovereignty",
     "static-vs-dynamic-coupling"
   ],
-  "Database Replication": [
-    "data-storage-operations"
-  ],
-  "Database Sharding": [
-    "data-storage-operations"
-  ],
-  "Containerization": [
-    "data-storage-operations"
-  ],
-  "Cloud Service Models": [
-    "data-storage-operations"
-  ],
-  "Data Lakehouse": [
-    "data-warehousing"
-  ],
-  "ELT": [
-    "data-warehousing"
-  ],
-  "Snowflake Data Cloud": [
-    "data-warehousing"
-  ],
   "database-sharding": [
+    "data-storage-operations",
     "database-isolation",
     "database-replication",
     "snowflake-id",
@@ -1943,6 +2018,7 @@
     "distributed-consensus",
     "leader-election",
     "risk-driven-architecture",
+    "saga-pattern",
     "cap-theorem-handbook"
   ],
   "database-isolation": [
@@ -1958,17 +2034,18 @@
   "sources/system-design-interview-xu": [
     "database-sharding"
   ],
-  "data-product": [
-    "dataops",
-    "dataops"
-  ],
   "t-shaped-skills": [
     "dataops",
-    "dataops"
+    "dataops",
+    "job-search-strategy",
+    "mentoring"
   ],
   "data-observability": [
     "dataops",
-    "observability"
+    "metadata-management",
+    "observability",
+    "fundamentals-of-data-observability",
+    "fundamentals-of-data-observability"
   ],
   "sources/data-engineering-with-dbt": [
     "dataops"
@@ -2002,9 +2079,6 @@
     "incremental-view-maintenance",
     "materialized-views",
     "timely-dataflow"
-  ],
-  "Refactoring at Scale": [
-    "decomposition-patterns"
   ],
   "sources/delta-grows-up-writes-unity-catalog": [
     "delta-lake",
@@ -2079,10 +2153,10 @@
     "distributed-consensus",
     "consensus-raft-paxos-handbook"
   ],
-  "Data Storage and Operations": [
+  "data-storage-operations": [
     "document-content-management"
   ],
-  "Metadata Management": [
+  "metadata-management": [
     "document-content-management",
     "master-data-management"
   ],
@@ -2127,6 +2201,55 @@
     "sustainable-ai",
     "building-llms-for-production"
   ],
+  "technical-leadership": [
+    "engineering-management",
+    "engineering-management",
+    "golden-circle",
+    "mentoring",
+    "networking-theory",
+    "saying-no",
+    "staff-engineering",
+    "staff-plus-archetypes",
+    "engineering-management-drasner",
+    "start-with-why-sinek"
+  ],
+  "sources/engineering-management-drasner": [
+    "engineering-management",
+    "engineering-management"
+  ],
+  "golden-circle": [
+    "engineering-management",
+    "engineering-management",
+    "engineering-management-drasner",
+    "start-with-why-sinek",
+    "start-with-why-sinek"
+  ],
+  "feedback": [
+    "engineering-management",
+    "engineering-management",
+    "mentoring",
+    "metalearning",
+    "saying-no",
+    "spaced-repetition",
+    "testing-effect",
+    "ultralearning",
+    "engineering-management-drasner",
+    "engineering-management-drasner"
+  ],
+  "mentoring": [
+    "engineering-management",
+    "flow-zone-critique",
+    "software-professionalism",
+    "clean-code-martin",
+    "engineering-management-drasner"
+  ],
+  "saying-no": [
+    "engineering-management",
+    "software-professionalism",
+    "clean-code-martin",
+    "clean-code-martin",
+    "engineering-management-drasner"
+  ],
   "graph-grounding": [
     "entity-resolution",
     "graph-engineering",
@@ -2143,6 +2266,7 @@
     "event-time-processing",
     "kappa-architecture",
     "message-queue",
+    "saga-pattern",
     "stateful-stream-processing",
     "stream-processing",
     "stream-processing-apache-flink"
@@ -2150,6 +2274,7 @@
   "functional-testing": [
     "fail-fast",
     "tdd-methodology",
+    "testing-pyramid",
     "testing-strategy",
     "tdd-python-percival",
     "tdd-python-percival"
@@ -2164,18 +2289,10 @@
   ],
   "directness": [
     "feedback",
+    "job-search-strategy",
     "ultralearning",
     "ultralearning",
     "ultralearning-scott-young"
-  ],
-  "prompt-engineering": [
-    "fine-tuning",
-    "langchain",
-    "llama-index",
-    "llm-evaluation-metrics",
-    "reranking",
-    "retrieval-augmented-generation",
-    "building-llms-for-production"
   ],
   "lora": [
     "fine-tuning",
@@ -2218,38 +2335,14 @@
     "flash-attention",
     "model-quantization"
   ],
-  "fine-tuning": [
-    "flash-attention",
-    "lora",
-    "model-distillation",
-    "model-pruning",
-    "model-quantization",
-    "peft",
-    "prompt-engineering",
-    "retrieval-augmented-generation",
-    "retrieval-augmented-generation",
-    "building-llms-for-production"
-  ],
-  "Software Professionalism": [
+  "software-professionalism": [
     "flow-zone-critique",
     "mentoring",
     "personal-branding",
     "saying-no",
-    "testing-pyramid"
-  ],
-  "TDD Methodology": [
-    "flow-zone-critique",
-    "software-professionalism",
-    "testing-pyramid"
-  ],
-  "Mentoring": [
-    "flow-zone-critique",
-    "software-professionalism"
-  ],
-  "Code Quality Pillars": [
-    "flow-zone-critique",
-    "saying-no",
-    "software-professionalism"
+    "testing-pyramid",
+    "clean-code-martin",
+    "clean-code-martin"
   ],
   "sources/the-art-of-functional-programming": [
     "functional-programming",
@@ -2264,6 +2357,7 @@
     "pytest-plugins",
     "pytest-test-results",
     "tdd-methodology",
+    "testing-pyramid",
     "testing-strategy",
     "okken-python-testing-pytest"
   ],
@@ -2335,6 +2429,23 @@
     "observability",
     "programming-kubernetes"
   ],
+  "sources/start-with-why-sinek": [
+    "golden-circle",
+    "golden-circle"
+  ],
+  "engineering-management": [
+    "golden-circle",
+    "technical-leadership",
+    "engineering-management-drasner",
+    "engineering-management-drasner",
+    "start-with-why-sinek"
+  ],
+  "personal-branding": [
+    "golden-circle",
+    "job-search-strategy",
+    "networking-theory",
+    "start-with-why-sinek"
+  ],
   "metric-fixation": [
     "goodharts-law",
     "goodharts-law"
@@ -2361,24 +2472,14 @@
     "python-repl",
     "pythonic-code"
   ],
-  "Networking Theory": [
+  "networking-theory": [
     "job-search-strategy",
     "personal-branding"
   ],
-  "Personal Branding": [
-    "job-search-strategy",
-    "networking-theory"
-  ],
-  "T-Shaped Skills": [
-    "job-search-strategy",
-    "mentoring"
-  ],
-  "Directness": [
-    "job-search-strategy"
-  ],
   "entity-resolution": [
     "knowledge-graph",
-    "knowledge-graph"
+    "knowledge-graph",
+    "master-data-management"
   ],
   "wiki-maintenance": [
     "knowledge-graph",
@@ -2406,10 +2507,6 @@
     "kubernetes-operator",
     "kubernetes-security"
   ],
-  "shift-left-security": [
-    "kubernetes-security",
-    "clean-code-principles-patterns-silen"
-  ],
   "sso": [
     "kubernetes-security",
     "password-storage",
@@ -2430,14 +2527,6 @@
     "llama-index",
     "building-llms-for-production"
   ],
-  "llm-evaluation-metrics": [
-    "llama-index",
-    "observability",
-    "prompt-engineering",
-    "reranking",
-    "retrieval-augmented-generation",
-    "building-llms-for-production"
-  ],
   "stateless-architecture": [
     "load-balancer",
     "message-queue",
@@ -2450,36 +2539,8 @@
   "mlops": [
     "machine-learning-systems"
   ],
-  "compound-ai-systems": [
-    "machine-learning-systems"
-  ],
   "sources/data-algorithms": [
     "market-basket-analysis"
-  ],
-  "Data Quality Monitoring": [
-    "master-data-management",
-    "metadata-management"
-  ],
-  "Entity Resolution": [
-    "master-data-management"
-  ],
-  "Technical Leadership": [
-    "mentoring",
-    "networking-theory",
-    "saying-no"
-  ],
-  "Code Readability": [
-    "mentoring"
-  ],
-  "Feedback": [
-    "mentoring",
-    "saying-no"
-  ],
-  "Semantic Layer": [
-    "metadata-management"
-  ],
-  "Data Observability": [
-    "metadata-management"
   ],
   "spaced-repetition": [
     "metalearning",
@@ -2488,12 +2549,6 @@
     "ultralearning",
     "ultralearning",
     "ultralearning-scott-young"
-  ],
-  "feedback": [
-    "metalearning",
-    "spaced-repetition",
-    "testing-effect",
-    "ultralearning"
   ],
   "goodharts-law": [
     "metric-fixation",
@@ -2510,7 +2565,7 @@
     "nash-equilibrium",
     "game-theory-bonanno"
   ],
-  "Job Search Strategy": [
+  "job-search-strategy": [
     "networking-theory",
     "personal-branding"
   ],
@@ -2529,9 +2584,6 @@
   "tls-https": [
     "password-storage",
     "sso"
-  ],
-  "Technical Interview": [
-    "personal-branding"
   ],
   "pytest-test-results": [
     "pytest-assertions",
@@ -2632,16 +2684,6 @@
     "retrieval-augmented-generation",
     "retrieval-augmented-generation"
   ],
-  "Orchestration vs Choreography": [
-    "saga-pattern",
-    "static-vs-dynamic-coupling"
-  ],
-  "CAP Theorem": [
-    "saga-pattern"
-  ],
-  "Message Delivery Semantics": [
-    "saga-pattern"
-  ],
   "sources/semantic-layers-for-ai": [
     "self-service-analytics",
     "semantic-layer"
@@ -2649,27 +2691,16 @@
   "sources/snowflake-the-definitive-guide": [
     "snowflake-data-cloud"
   ],
-  "Saying No": [
-    "software-professionalism"
-  ],
-  "Testing Pyramid": [
+  "testing-pyramid": [
     "software-professionalism"
   ],
   "sources/seriously-good-software": [
     "software-quality-dimensions"
   ],
-  "password-storage": [
-    "sso",
-    "tls-https"
-  ],
   "staff-plus-archetypes": [
     "staff-engineering",
     "staff-engineering",
     "technical-leadership"
-  ],
-  "technical-leadership": [
-    "staff-engineering",
-    "staff-plus-archetypes"
   ],
   "sources/senior-to-staff-engineer": [
     "staff-engineering"
@@ -2710,15 +2741,6 @@
   ],
   "sources/de-coding-technical-interview": [
     "technical-interview"
-  ],
-  "Functional Testing": [
-    "testing-pyramid"
-  ],
-  "Testing Strategy": [
-    "testing-pyramid"
-  ],
-  "pytest Basics": [
-    "testing-pyramid"
   ],
   "apache-arrow": [
     "vortex-file-format",

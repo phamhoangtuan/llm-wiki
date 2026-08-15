@@ -50,8 +50,8 @@ When to decompose:
 
 ## Connections
 
-- [[Architecture Quantum]] — The unit that guides decomposition boundaries
-- [[Microservices]] — Target architecture for decomposition
-- [[Static vs Dynamic Coupling]] — What decomposition reduces (static) and increases (dynamic)
-- [[Data Sovereignty]] — Each service owns its data post-decomposition
-- [[Refactoring at Scale]] — Safe restructuring of large codebases
+- [[architecture-quantum]] — The unit that guides decomposition boundaries
+- [[microservices]] — Target architecture for decomposition
+- [[static-vs-dynamic-coupling]] — What decomposition reduces (static) and increases (dynamic)
+- [[data-sovereignty]] — Each service owns its data post-decomposition
+- [[refactoring-at-scale]] — Safe restructuring of large codebases

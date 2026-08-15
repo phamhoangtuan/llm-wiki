@@ -250,6 +250,9 @@
 - [Edge Computing](concepts/edge-computing.html) — Processing data at the network edge to reduce latency and bandwidth
 - [LangChain](concepts/langchain.html) — Open-source framework for building LLM-powered applications with tool use and agents
 - [LlamaIndex](concepts/llama-index.html) — Data framework specialized in indexing and retrieval for RAG systems
+- [AI Engineering](concepts/ai-engineering.html) — Building applications on foundation models vs training your own; three-layer stack, adaptation techniques, evaluation-driven development
+- [Engineering Management](concepts/engineering-management.html) — Enabling people to do their best work; trust, alignment with why, feedback, OKRs, manager self-care
+- [Golden Circle](concepts/golden-circle.html) — Sinek's WHY/HOW/WHAT framework; inside-out communication grounded in limbic-brain decision-making
 
 ## Sources
 
@@ -339,6 +342,11 @@
 - [Practical DataOps](sources/practical-dataops.md) — Atwal's 288-page methodology: Lean + Agile + DevOps for data, DataOps Factory, T-shaped teams
 - [Streaming Systems](sources/streaming-systems.md) — Akidau, Chernyak & Lax's 456-page definitive guide; 4-question model, watermarks, stream-table duality
 - [The Clean Coder](sources/the-clean-coder.md) — Robert C. Martin on professional conduct; saying no, TDD, testing pyramid, mentoring
+- [AI Engineering: Building Applications with Foundation Models](sources/ai-engineering-chip-huyen.md) — Chip Huyen's 535-page map of AI engineering: AI vs ML engineering, 3-layer stack, adaptation techniques, evaluation-driven development
+- [Clean Code: A Handbook of Agile Software Craftsmanship](sources/clean-code-martin.md) — Robert C. Martin's foundational text: naming, smallness, SOLID, emergent design, Three Laws of TDD
+- [Engineering Management for the Rest of Us](sources/engineering-management-drasner.md) — Sarah Drasner's pragmatic EM guide: trust, collaboration, OKRs, scoping PRs, manager resilience
+- [Fundamentals of Data Observability](sources/fundamentals-of-data-observability.md) — Andy Petrella's guide: three channels, observations model, expectations & circuit breakers, DAMA-DMBOK2 extension
+- [Start With Why](sources/start-with-why-sinek.md) — Simon Sinek on the Golden Circle, manipulation vs inspiration, the Split, Law of Diffusion
 
 ## Syntheses
 
@@ -346,5 +354,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-_Last updated: 2026-07-14_
-_Pages: 314 (232 concepts + 86 sources)_
+_Last updated: 2026-08-15_
+_Pages: 337 (246 concepts + 91 sources)_
