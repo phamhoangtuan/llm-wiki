@@ -236,14 +236,18 @@
     "pytest-plugins",
     "python-debugging-pdb",
     "python-static-analysis",
+    "secure-system-design",
     "shift-left-security",
     "shift-left-security",
     "software-construction",
     "tdd-methodology",
     "testing-pyramid",
+    "building-secure-and-reliable-systems",
     "clean-code-principles-patterns-silen",
     "code-complete",
     "okken-python-testing-pytest",
+    "site-reliability-engineering",
+    "software-engineering-at-google",
     "tdd-python-percival",
     "tdd-python-percival"
   ],
@@ -388,6 +392,7 @@
     "engineering-management",
     "staff-plus-archetypes",
     "technical-leadership",
+    "an-elegant-puzzle",
     "engineering-management-drasner",
     "senior-to-staff-engineer"
   ],
@@ -402,6 +407,7 @@
     "microservices",
     "model-code-gap",
     "refactoring-at-scale",
+    "technical-debt-management",
     "clean-code-martin",
     "clean-code-martin",
     "clean-code-principles-patterns-silen"
@@ -885,7 +891,8 @@
     "hugo-data-ingestion-platform-flink",
     "hugo-data-ingestion-platform-flink",
     "integrating-rust-delta-kernel-clickhouse",
-    "stream-processing-apache-flink"
+    "stream-processing-apache-flink",
+    "the-accidental-cto"
   ],
   "apache-kafka": [
     "apache-flink",
@@ -1189,6 +1196,7 @@
     "decomposition-patterns",
     "observability",
     "saga-pattern",
+    "secure-system-design",
     "static-vs-dynamic-coupling",
     "clean-code-principles-patterns-silen",
     "head-first-software-architecture"
@@ -1231,10 +1239,12 @@
     "scalable-architecture",
     "shift-left-security",
     "shift-left-security",
+    "site-reliability-engineering",
     "system-design-interview",
     "building-llms-for-production",
     "clean-code-principles-patterns-silen",
     "fundamentals-of-data-observability",
+    "site-reliability-engineering",
     "system-design-interview-xu"
   ],
   "architecture-in-agile": [
@@ -1276,6 +1286,9 @@
     "architecture-fitness-functions",
     "data-security",
     "kubernetes-security",
+    "secure-system-design",
+    "secure-system-design",
+    "building-secure-and-reliable-systems",
     "clean-code-principles-patterns-silen"
   ],
   "software-quality-dimensions": [
@@ -1334,7 +1347,8 @@
     "decomposition-patterns",
     "essential-accidental-complexity",
     "software-rot",
-    "software-rot"
+    "software-rot",
+    "technical-debt-management"
   ],
   "domain-driven-design": [
     "architecture-in-agile",
@@ -1445,9 +1459,12 @@
     "message-queue",
     "observability",
     "proximity-service",
+    "site-reliability-engineering",
     "stateless-architecture",
     "system-design-interview",
-    "system-design-interview-xu"
+    "site-reliability-engineering",
+    "system-design-interview-xu",
+    "the-accidental-cto"
   ],
   "database-replication": [
     "cache-strategy",
@@ -1465,7 +1482,9 @@
     "stateful-stream-processing",
     "stateless-architecture",
     "system-design-interview",
-    "system-design-interview-xu"
+    "site-reliability-engineering",
+    "system-design-interview-xu",
+    "the-accidental-cto"
   ],
   "cdn": [
     "cache-strategy",
@@ -1483,6 +1502,7 @@
     "scalable-architecture",
     "stateless-architecture",
     "system-design-interview",
+    "site-reliability-engineering",
     "system-design-interview-xu"
   ],
   "redis": [
@@ -1552,6 +1572,11 @@
     "timely-dataflow",
     "materialized-views-quick-insights"
   ],
+  "sources/the-accidental-cto": [
+    "change-data-capture",
+    "continuous-delivery",
+    "database-replication"
+  ],
   "sources/reddit-cicd-tips-data-engineering": [
     "cicd-data-pipelines"
   ],
@@ -1570,12 +1595,14 @@
   ],
   "containerization": [
     "cloud-service-models",
+    "continuous-delivery",
     "data-storage-operations",
     "deployment-strategies",
     "kubernetes-architecture",
     "kubernetes-networking",
     "microservices",
-    "microservices"
+    "microservices",
+    "the-accidental-cto"
   ],
   "complexity-metrics": [
     "code-archaeology",
@@ -1721,7 +1748,8 @@
   "software-construction": [
     "code-quality-pillars",
     "essential-accidental-complexity",
-    "information-hiding"
+    "information-hiding",
+    "software-engineering-at-google"
   ],
   "information-hiding": [
     "code-quality-pillars",
@@ -1734,6 +1762,9 @@
     "code-complete"
   ],
   "sources/art-of-readable-code": [
+    "code-readability"
+  ],
+  "sources/500-lines-or-less": [
     "code-readability"
   ],
   "sources/dependency-injection-principles-patterns": [
@@ -1754,11 +1785,13 @@
   ],
   "deployment-strategies": [
     "containerization",
+    "continuous-delivery",
     "microservices",
     "microservices",
     "proximity-service",
     "quadtree",
-    "shift-left-security"
+    "shift-left-security",
+    "site-reliability-engineering"
   ],
   "goroutines": [
     "containerization",
@@ -1767,6 +1800,30 @@
     "kubernetes-operator",
     "go-web-programming",
     "go-web-programming"
+  ],
+  "concepts/site-reliability-engineering": [
+    "continuous-delivery",
+    "deployment-strategies",
+    "secure-system-design",
+    "building-secure-and-reliable-systems"
+  ],
+  "technical-debt-management": [
+    "continuous-delivery",
+    "engineering-management",
+    "an-elegant-puzzle",
+    "an-elegant-puzzle"
+  ],
+  "kubernetes-architecture": [
+    "continuous-delivery",
+    "kubernetes-networking",
+    "kubernetes-operator",
+    "kubernetes-security",
+    "the-accidental-cto"
+  ],
+  "sources/software-engineering-at-google": [
+    "continuous-delivery",
+    "technical-debt-management",
+    "testing-strategy"
   ],
   "analytics-engineer": [
     "data-analyst",
@@ -2011,7 +2068,8 @@
     "database-isolation",
     "database-replication",
     "snowflake-id",
-    "system-design-big-archive"
+    "system-design-big-archive",
+    "the-accidental-cto"
   ],
   "cap-theorem": [
     "database-isolation",
@@ -2027,6 +2085,16 @@
     "snowflake-data-cloud",
     "data-engineering-with-python",
     "snowflake-the-definitive-guide"
+  ],
+  "site-reliability-engineering": [
+    "database-replication",
+    "observability"
+  ],
+  "sources/site-reliability-engineering": [
+    "database-replication",
+    "observability",
+    "site-reliability-engineering",
+    "testing-strategy"
   ],
   "snowflake-id": [
     "database-sharding"
@@ -2106,6 +2174,18 @@
     "geospatial-indexing",
     "proximity-service",
     "system-design-interview"
+  ],
+  "continuous-delivery": [
+    "deployment-strategies",
+    "technical-debt-management",
+    "the-accidental-cto"
+  ],
+  "secure-system-design": [
+    "deployment-strategies",
+    "observability",
+    "site-reliability-engineering",
+    "building-secure-and-reliable-systems",
+    "building-secure-and-reliable-systems"
   ],
   "dbsp": [
     "differential-dataflow",
@@ -2246,9 +2326,14 @@
   "saying-no": [
     "engineering-management",
     "software-professionalism",
+    "an-elegant-puzzle",
     "clean-code-martin",
     "clean-code-martin",
     "engineering-management-drasner"
+  ],
+  "sources/an-elegant-puzzle": [
+    "engineering-management",
+    "technical-debt-management"
   ],
   "graph-grounding": [
     "entity-resolution",
@@ -2435,7 +2520,9 @@
   ],
   "engineering-management": [
     "golden-circle",
+    "technical-debt-management",
     "technical-leadership",
+    "an-elegant-puzzle",
     "engineering-management-drasner",
     "engineering-management-drasner",
     "start-with-why-sinek"
@@ -2491,7 +2578,8 @@
   ],
   "kubernetes-security": [
     "kubernetes-architecture",
-    "kubernetes-networking"
+    "kubernetes-networking",
+    "secure-system-design"
   ],
   "sources/kubeschool-kubernetes-primer": [
     "kubernetes-architecture",
@@ -2501,11 +2589,6 @@
   "sources/programming-kubernetes": [
     "kubernetes-architecture",
     "kubernetes-operator"
-  ],
-  "kubernetes-architecture": [
-    "kubernetes-networking",
-    "kubernetes-operator",
-    "kubernetes-security"
   ],
   "sso": [
     "kubernetes-security",
@@ -2580,6 +2663,13 @@
     "object-oriented-design",
     "solid-principles",
     "dive-into-design-patterns"
+  ],
+  "sources/building-secure-and-reliable-systems": [
+    "observability",
+    "secure-system-design",
+    "shift-left-security",
+    "site-reliability-engineering",
+    "testing-strategy"
   ],
   "tls-https": [
     "password-storage",
@@ -2684,6 +2774,9 @@
     "retrieval-augmented-generation",
     "retrieval-augmented-generation"
   ],
+  "the-accidental-cto": [
+    "scalable-architecture"
+  ],
   "sources/semantic-layers-for-ai": [
     "self-service-analytics",
     "semantic-layer"
@@ -2709,6 +2802,9 @@
     "staff-engineering",
     "staff-plus-archetypes",
     "technical-leadership"
+  ],
+  "sources/staff-engineer-larson": [
+    "staff-engineering"
   ],
   "data-head": [
     "statistical-thinking"
@@ -2752,5 +2848,11 @@
   ],
   "ai-psychosis": [
     "meta-destroying-engineering-org-orosz"
+  ],
+  "concepts/continuous-delivery": [
+    "software-engineering-at-google"
+  ],
+  "concepts/technical-debt-management": [
+    "software-engineering-at-google"
   ]
 }

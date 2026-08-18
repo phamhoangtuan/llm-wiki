@@ -3,6 +3,7 @@ title: "Fundamentals of Data Engineering"
 type: source
 source_type: book
 author: "Joe Reis & Matt Housley"
+url: ""
 source_date: 2022-01-01
 ingested: 2026-07-13
 tags: [data-engineering, lifecycle, architecture, dataops, career]

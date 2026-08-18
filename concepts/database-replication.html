@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Database Replication</h1>
-  <div class="page-meta"><span>Source: system-design-interview-xu, system-design-interview-volume-2</span><span>Updated: 2026-06-29</span></div>
+  <div class="page-meta"><span>Source: system-design-interview-xu, system-design-interview-volume-2, site-reliability-engineering, the-accidental-cto</span><span>Updated: 2026-06-29</span></div>
   <div class="page-tags"><span class="tag">databases</span><span class="tag">system-design</span><span class="tag">scalability</span><span class="tag">data-consistency</span></div>
 </div>
 <div class="content-area concept">
@@ -111,6 +111,7 @@
 │Reads    │Reads    │Reads    │Reads    │
 └─────────┴─────────┴─────────┴─────────┘</code></pre>
 <p><strong>When replication delay is acceptable</strong>: If data freshness can tolerate hours of lag (e.g., next-day SLA), replication simplifies significantly — nightly batch jobs handle the sync, avoiding real-time complexity.</p>
+<p><strong>Read-your-own-writes</strong>: When a user writes to the primary and immediately reads, temporarily route that user's reads to the primary or wait until the replica catches up. This prevents an otherwise correct eventually consistent system from showing the user their own update as missing.</p>
 <blockquote><strong>Rule of thumb</strong>: Start with a single database. Add replication when read load exceeds what one server can handle.</blockquote>
 </div>
 <section class="connections-section">
@@ -146,6 +147,16 @@
       <h4>Proximity Service</h4>
       <p>Primary-Secondary clustering handles read-heavy geospatial queries</p>
     </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related to</span>
+      <h4>Site Reliability Engineering: How Google Runs Production Systems</h4>
+      <p>replication improves availability, but backups and independent validation provide recoverability</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>The Accidental CTO</h4>
+      <p>and [[sources/site-reliability-engineering]]</p>
+    </div>
   </div>
 </section>
 <nav class="pagination"><a href="database-isolation.html" class="prev">← Database Isolation Levels</a><a href="database-sharding.html" class="next">Database Sharding →</a></nav>

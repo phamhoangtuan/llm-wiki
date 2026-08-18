@@ -3,6 +3,7 @@ title: "The Art of Readable Code"
 type: source
 source_type: book
 author: "Dustin Boswell & Trevor Foucher"
+url: ""
 source_date: 2011-01-01
 ingested: 2026-07-13
 tags: [code-quality, readability, software-engineering, best-practices]

@@ -253,6 +253,10 @@
 - [AI Engineering](concepts/ai-engineering.html) — Building applications on foundation models vs training your own; three-layer stack, adaptation techniques, evaluation-driven development
 - [Engineering Management](concepts/engineering-management.html) — Enabling people to do their best work; trust, alignment with why, feedback, OKRs, manager self-care
 - [Golden Circle](concepts/golden-circle.html) — Sinek's WHY/HOW/WHAT framework; inside-out communication grounded in limbic-brain decision-making
+- [Site Reliability Engineering](concepts/site-reliability-engineering.html) — Production operations as software engineering; SLIs, SLOs, error budgets, toil reduction, failure containment, and blameless learning
+- [Secure System Design](concepts/secure-system-design.html) — Security as an architectural property through explicit boundaries, least privilege, provenance, and safe recovery
+- [Technical Debt Management](concepts/technical-debt-management.html) — Treating debt as a migration and capacity problem; de-risk, enable, finish
+- [Continuous Delivery](concepts/continuous-delivery.html) — Small, tested, observable, and reversible changes through trunk-based development, CI, flags, and release trains
 
 ## Sources
 
@@ -347,6 +351,11 @@
 - [Engineering Management for the Rest of Us](sources/engineering-management-drasner.md) — Sarah Drasner's pragmatic EM guide: trust, collaboration, OKRs, scoping PRs, manager resilience
 - [Fundamentals of Data Observability](sources/fundamentals-of-data-observability.md) — Andy Petrella's guide: three channels, observations model, expectations & circuit breakers, DAMA-DMBOK2 extension
 - [Start With Why](sources/start-with-why-sinek.md) — Simon Sinek on the Golden Circle, manipulation vs inspiration, the Split, Law of Diffusion
+- [An Elegant Puzzle: Systems of Engineering Management](sources/an-elegant-puzzle.md) — Will Larson on team stability, health diagnosis, technical-debt migrations, policy, careers, and organizational scaling
+- [Building Secure and Reliable Systems](sources/building-secure-and-reliable-systems.md) — Google practices for secure boundaries, least privilege, supply-chain provenance, testing, recovery, and shared responsibility
+- [Site Reliability Engineering: How Google Runs Production Systems](sources/site-reliability-engineering.md) — SLIs, SLOs, error budgets, load balancing, failure containment, recoverability, testing, and toil reduction
+- [Software Engineering at Google](sources/software-engineering-at-google.md) — Code review, public-API testing, trunk-based development, CI/CD, build infrastructure, and learning culture
+- [The Accidental CTO](sources/the-accidental-cto.md) — Evolution from monolith to globally distributed architecture through measured scaling, replication, containers, CDC, and sharding
 
 ## Syntheses
 
@@ -354,5 +363,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-_Last updated: 2026-08-15_
-_Pages: 337 (246 concepts + 91 sources)_
+_Last updated: 2026-08-18_
+_Pages: 346 (250 concepts + 96 sources)_

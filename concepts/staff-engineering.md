@@ -4,7 +4,7 @@ type: concept
 tags: [career, engineering-leadership, growth, senior-to-staff]
 created: 2026-06-08
 updated: 2026-07-13
-sources: [senior-to-staff-engineer, staff-engineers-path]
+sources: [senior-to-staff-engineer, staff-engineers-path, staff-engineer-larson]
 aliases: [staff-plus, staff-engineer-role, senior-to-staff]
 ---
 
@@ -113,3 +113,4 @@ Build frameworks where value compounds without your ongoing involvement.
 - Related to [[ultralearning]] — continuous aggressive skill acquisition is the path from Senior to Staff; ultralearning's 9 principles apply to career transitions
 - Benchmark source: [[sources/senior-to-staff-engineer]] — Jordan Cutler's case study from Pinterest
 - Benchmark source: [[sources/staff-engineers-path]] — Tanya Reilly's three-pillar framework and mental models
+- Benchmark source: [[sources/staff-engineer-larson]] — Will Larson on Staff impact as multiplying the organization

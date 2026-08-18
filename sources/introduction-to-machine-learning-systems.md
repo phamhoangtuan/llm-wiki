@@ -3,6 +3,7 @@ title: "Introduction to Machine Learning Systems"
 type: source
 source_type: book
 author: "Vijay Janapa Reddi"
+url: ""
 source_date: 2024-01-01
 ingested: 2026-07-13
 tags: [machine-learning, ml-systems, mlops, ai-engineering, systems-design]

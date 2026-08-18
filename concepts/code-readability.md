@@ -4,7 +4,7 @@ type: concept
 tags: [code-quality, readability, software-engineering, best-practices]
 created: 2026-07-13
 updated: 2026-07-13
-sources: [art-of-readable-code]
+sources: [art-of-readable-code, 500-lines-or-less]
 aliases: [readable-code, code-clarity]
 ---
 
@@ -63,3 +63,4 @@ Reduce the cognitive load of tracking state and branching:
 - Complements [[readability-vs-performance]] — write clean first, optimize bottlenecks after profiling
 - Related to [[information-hiding]] — readable code reveals intent and hides implementation complexity
 - Benchmark source: [[sources/art-of-readable-code]] — Boswell & Foucher's 198-page guide
+- Benchmark source: [[sources/500-lines-or-less]] — AOSA vol. 4: design decisions under a 500-line constraint, code as literature

@@ -4,7 +4,7 @@ type: concept
 tags: [security, devsecops, ci-cd, cloud-native, clean-code]
 created: 2026-06-27
 updated: 2026-06-27
-sources: [clean-code-principles-patterns-silen]
+sources: [clean-code-principles-patterns-silen, building-secure-and-reliable-systems]
 aliases: [shift-left, devsecops]
 ---
 
@@ -25,7 +25,7 @@ Model   Lint   Dep    Fuzz   Testing   Config    Control   Detect
 ```
 
 | Phase | Security Activity |
-|---|---|
+| --- | --- |
 | **Plan** | Threat modeling, security requirements definition, risk assessment |
 | **Code** | SAST (Static Application Security Testing), IDE security linters, secrets scanning |
 | **Build** | SCA (Software Composition Analysis) for dependency vulnerabilities, image scanning |
@@ -38,7 +38,7 @@ Model   Lint   Dep    Fuzz   Testing   Config    Control   Detect
 ## Why Shift Left?
 
 | Traditional (Right-Side Security) | Shift Left Security |
-|---|---|
+| --- | --- |
 | Security review just before deployment | Security from Day 1 of planning |
 | Fixing vulnerabilities late = expensive rewrites | Catching issues early = cheap fixes |
 | Security team as gatekeeper bottleneck | Security as shared responsibility across all engineers |
@@ -58,6 +58,7 @@ Model   Lint   Dep    Fuzz   Testing   Config    Control   Detect
 ### Threat Modeling
 
 Before writing code, ask:
+
 - What are we building? (system diagram)
 - What can go wrong? (threat identification — STRIDE: Spoofing, Tampering, Repudiation, Information disclosure, Denial of service, Elevation of privilege)
 - What are we doing about it? (mitigations)
@@ -88,3 +89,4 @@ Shift Left Security is not a standalone discipline — it's the security dimensi
 - Aligned with [[fail-fast]] — reject insecure configurations immediately, not later
 - Enabled by [[deployment-strategies]] — canary and blue-green deployments reduce security change blast radius
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén's DevSecOps chapter
+- Benchmark source: [[sources/building-secure-and-reliable-systems]] — secure boundaries, zero touch, typed security, provenance, and fuzzing

@@ -3,6 +3,7 @@ title: "The Staff Engineer's Path"
 type: source
 source_type: book
 author: "Tanya Reilly"
+url: ""
 source_date: 2022-01-01
 ingested: 2026-07-13
 tags: [career, staff-engineering, technical-leadership, engineering-management]

@@ -4,7 +4,7 @@ type: concept
 tags: [engineering-management, leadership, people-management, career, trust]
 created: 2026-08-15
 updated: 2026-08-15
-sources: [engineering-management-drasner]
+sources: [engineering-management-drasner, an-elegant-puzzle]
 aliases: [em, people-management, engineering-leadership]
 ---
 
@@ -30,6 +30,12 @@ aliases: [em, people-management, engineering-leadership]
 - **Scope down PRs** — small reviewable units reduce reviewer cognitive load and make code easier to test.
 - **Speed ≠ rushing** — bias toward action without accumulating massive technical debt.
 
+## Operating the Organization
+
+Will Larson adds a systems lens to day-to-day management: diagnose whether a team is falling behind, treading water, repaying debt, or innovating before choosing an intervention. Use constraints and visible flow data to say no, change policies instead of accumulating exceptions, and treat peers as a first team rather than competing for resources. As scope grows, staff meetings, skip-level feedback, and directional dashboards preserve organizational awareness without turning the manager into a bottleneck.
+
+The manager's job is to create stable conditions — team size, resources, vision, opportunity, and membership — not to reward heroics. See [[technical-debt-management]].
+
 ## Manager Self-Care
 
 - **Decision fatigue** — build systems for high-level and day-to-day prioritization to preserve energy for complex calls.
@@ -44,3 +50,4 @@ aliases: [em, people-management, engineering-leadership]
 - Shares [[saying-no]] — the manager's counterpart to the engineer's professional "no"
 - Informed by [[golden-circle]] — alignment with purpose is the manager's leverage
 - Benchmark source: [[sources/engineering-management-drasner]] — Drasner's pragmatic EM guide
+- Benchmark source: [[sources/an-elegant-puzzle]] — Larson's systems approach to team design, management, and organizational scaling

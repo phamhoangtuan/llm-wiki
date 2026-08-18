@@ -4,7 +4,7 @@ type: concept
 tags: [system-design, monitoring, metrics, reliability, devops]
 created: 2026-05-24
 updated: 2026-06-27
-sources: [system-design-interview-xu, clean-code-principles-patterns-silen]
+sources: [system-design-interview-xu, clean-code-principles-patterns-silen, site-reliability-engineering, building-secure-and-reliable-systems]
 aliases: [monitoring, telemetry, system-observability]
 ---
 
@@ -59,3 +59,6 @@ Beyond the three pillars, production systems need standardized observability inf
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén on OpenTelemetry standardization, SLIs/SLOs, and automated alerting
 - Related to [[llm-evaluation-metrics]] — LLM observability extends traditional observability into non-deterministic AI systems
 - Distinct from [[data-observability]] — software observability monitors services; data observability monitors pipelines for freshness, lineage, and schema drift
+- Uses [[site-reliability-engineering]] — SLIs and SLOs turn telemetry into operating decisions
+- Supports [[secure-system-design]] — audit logs and anomaly detection are part of the security feedback loop
+- Benchmark sources: [[sources/site-reliability-engineering]] and [[sources/building-secure-and-reliable-systems]]

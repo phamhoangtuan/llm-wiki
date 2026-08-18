@@ -629,6 +629,19 @@
         "knowledge-management"
       ]
     },
+    "continuous-delivery": {
+      "title": "Continuous Delivery",
+      "category": "Infrastructure",
+      "url": "concepts/continuous-delivery.html",
+      "definition": "**Continuous delivery** keeps software in a releasable state by integrating, testing, and deploying small changes through an automated path. It is not simply frequent deployment; it is a system that m",
+      "tags": [
+        "ci-cd",
+        "software-engineering",
+        "deployment",
+        "release-management",
+        "testing"
+      ]
+    },
     "data-analyst": {
       "title": "Data Analyst",
       "category": "Data Engineering",
@@ -2502,6 +2515,20 @@
         "distributed-systems"
       ]
     },
+    "secure-system-design": {
+      "title": "Secure System Design",
+      "category": "Software Design",
+      "url": "concepts/secure-system-design.html",
+      "definition": "**Secure system design** makes security a property of architecture, code, delivery, and operations rather than a late review. It reduces the damage that a compromised component, bad configuration, or ",
+      "tags": [
+        "security",
+        "reliability",
+        "architecture",
+        "least-privilege",
+        "supply-chain",
+        "devsecops"
+      ]
+    },
     "self-service-analytics": {
       "title": "Self-Service Analytics",
       "category": "Data Engineering",
@@ -2538,6 +2565,20 @@
         "ci-cd",
         "cloud-native",
         "clean-code"
+      ]
+    },
+    "site-reliability-engineering": {
+      "title": "Site Reliability Engineering",
+      "category": "Software Design",
+      "url": "concepts/site-reliability-engineering.html",
+      "definition": "**Site Reliability Engineering (SRE)** applies software engineering to production operations. It replaces heroics with measurable reliability targets, automation, failure containment, and learning aft",
+      "tags": [
+        "reliability",
+        "SRE",
+        "operations",
+        "observability",
+        "SLO",
+        "distributed-systems"
       ]
     },
     "snowflake-data-cloud": {
@@ -2842,6 +2883,19 @@
         "design",
         "python",
         "clean-code"
+      ]
+    },
+    "technical-debt-management": {
+      "title": "Technical Debt Management",
+      "category": "Software Design",
+      "url": "concepts/technical-debt-management.html",
+      "definition": "**Technical debt management** is the deliberate control of design and implementation choices whose future cost threatens delivery, reliability, or changeability. It is not a cleanup queue to attack wh",
+      "tags": [
+        "technical-debt",
+        "migrations",
+        "engineering-management",
+        "maintainability",
+        "architecture"
       ]
     },
     "technical-interview": {

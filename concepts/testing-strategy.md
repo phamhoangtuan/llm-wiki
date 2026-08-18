@@ -4,7 +4,7 @@ type: concept
 tags: [python, testing, strategy, architecture, tdd]
 created: 2026-05-23
 updated: 2026-06-27
-sources: [okken-python-testing-pytest, tdd-python-percival, good-code-bad-code, clean-code-principles-patterns-silen]
+sources: [okken-python-testing-pytest, tdd-python-percival, good-code-bad-code, clean-code-principles-patterns-silen, software-engineering-at-google, building-secure-and-reliable-systems, site-reliability-engineering]
 ---
 
 ## Summary
@@ -26,7 +26,9 @@ A professional testing strategy focuses effort where it matters most — the API
 | API Tests | ✅ 70-80% effort | Validate core logic, stable interface, fast |
 | DB Tests | ❌ Avoid | Implementation-specific, hard to maintain |
 | Integration/E2E | ✅ 20-30% effort | Validate real-world flows |
+
 ---
+
 - Informs [[pytest-basics]] — strategy guides what to test first
 - Drives [[pytest-fixtures]] — usage — fixtures enable clean API testing
 - Drives [[pytest-mocking]] — usage — mocking isolates API from external deps
@@ -39,3 +41,6 @@ A professional testing strategy focuses effort where it matters most — the API
 - Benchmark source: [[sources/okken-python-testing-pytest]] — Okken's comprehensive pytest guide
 - Benchmark source: [[sources/tdd-python-percival]] — Percival's TDD with Django and Selenium
 - Benchmark source: [[sources/clean-code-principles-patterns-silen]] — Silén on testing pyramid, BDD with Gherkin, and non-functional testing (performance, stability, security)
+- Benchmark source: [[sources/software-engineering-at-google]] — public-API, state-based, fake-backed, deterministic tests
+- Benchmark source: [[sources/building-secure-and-reliable-systems]] — hermetic tests, fuzzing, and static/dynamic analysis
+- Benchmark source: [[sources/site-reliability-engineering]] — stress, canary, and negative-result testing

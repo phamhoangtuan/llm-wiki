@@ -896,3 +896,19 @@
   - Added missing `url: ""` to ultralearning-scott-young
 - Verified: 0 contradictions, 0 true orphans (14 near-orphans with 1 inbound link noted), 0 gaps (all source concept refs have pages), 100% frontmatter completeness
 - HTML regenerated via convert-to-html.py
+
+## [2026-08-18] ingest | Five engineering systems books
+
+- Created sources/an-elegant-puzzle.md, sources/building-secure-and-reliable-systems.md, sources/site-reliability-engineering.md, sources/software-engineering-at-google.md, and sources/the-accidental-cto.md
+- Created concepts/site-reliability-engineering.md, concepts/secure-system-design.md, concepts/technical-debt-management.md, and concepts/continuous-delivery.md
+- Updated engineering management, scalable architecture, database replication, CDC, observability, deployment strategies, testing strategy, and shift-left security concepts with new evidence and cross-references
+- Updated index.md and regenerated concept HTML plus meta indexes via uv run scripts/convert-to-html.py
+- Verified 0 missing wikilinks; total pages: 346 (250 concepts + 96 sources)
+
+## [2026-08-18] lint | Health check + fix pass
+
+- Scanned all 346 pages (250 concepts + 96 sources): broken wikilinks 0, dangling frontmatter refs 0, index coverage complete, 0 contradictions
+- Fixed 4 source pages missing the `url` frontmatter key (added `url: ""`): art-of-readable-code, fundamentals-of-data-engineering, introduction-to-machine-learning-systems, staff-engineers-path
+- Fixed 2 true orphans: wired staff-engineer-larson into concepts/staff-engineering.md and 500-lines-or-less into concepts/code-readability.md (sources frontmatter + benchmark wikilinks)
+- Regenerated HTML for 6 stale concept pages via uv run scripts/convert-to-html.py
+- Noted 28 near-orphans (single inbound reference), consistent with prior passes — no action
