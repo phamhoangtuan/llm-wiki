@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vibe Coding — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Vibe Coding</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Vibe Coding</h1>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, new-sdlc-vibe-coding, graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">coding</span><span class="tag">methodology</span><span class="tag">terminology</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Vibe Coding</strong> is a term coined by Andrej Karpathy in early 2025 to describe the practice of non-engineers building functional software by describing what they want to AI agents — without understanding the underlying code. It represents the democratization of software creation, but it is categorically different from professional <a href="ai-native-engineering.html" class="wiki-link">ai-native-engineering</a>.</p>
+<h2 id="vibe-coding-vs-ai-native-engineering">Vibe Coding vs AI-Native Engineering</h2>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Vibe Coding</th>
+<th>AI-Native Engineering</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Who</strong></td>
+<td>Non-engineers, domain experts</td>
+<td>Professional software engineers</td>
+</tr>
+<tr>
+<td><strong>Requirement</strong></td>
+<td>Ability to describe desired behavior</td>
+<td>Deep coding knowledge + orchestration skills</td>
+</tr>
+<tr>
+<td><strong>Code understanding</strong></td>
+<td>Not required</td>
+<td>Essential — for verification, debugging, integration</td>
+</tr>
+<tr>
+<td><strong>Verification</strong></td>
+<td>"Looks like it works"</td>
+<td>Rigorous testing, security review, performance validation</td>
+</tr>
+<tr>
+<td><strong>Context</strong></td>
+<td>One-off prompts</td>
+<td>Persistent, curated context layers</td>
+</tr>
+<tr>
+<td><strong>Specifications</strong></td>
+<td>Ad-hoc descriptions</td>
+<td>Structured, milestone-based specs</td>
+</tr>
+<tr>
+<td><strong>Failure mode</strong></td>
+<td>Produces working demo that breaks at scale</td>
+<td>Produces production-grade, maintainable systems</td>
+</tr>
+</tbody></table>
+<blockquote>"Vibe coding has its place, but it's not engineering."</blockquote>
+<h2 id="where-vibe-coding-adds-value">Where Vibe Coding Adds Value</h2>
+<ul>
+<li><strong>Prototyping</strong>: Non-technical founders can validate ideas before hiring engineers</li>
+<li><strong>Internal tools</strong>: Domain experts can build simple automation without involving engineering teams</li>
+<li><strong>Learning</strong>: Beginners can explore programming concepts through experimentation</li>
+</ul>
+<h2 id="where-vibe-coding-fails">Where Vibe Coding Fails</h2>
+<ul>
+<li><strong>Production systems</strong>: Security, performance, and reliability require engineering rigor</li>
+<li><strong>Scale</strong>: Vibe-coded apps break under real load or edge cases</li>
+<li><strong>Maintainability</strong>: Without code understanding, bugs compound and technical debt becomes irreversible</li>
+<li><strong>Team collaboration</strong>: No shared standards, no version control discipline, no review process</li>
+</ul>
+<h2 id="the-code-overload-connection">The "Code Overload" Connection</h2>
+<p>When professional engineers operate in vibe coding mode — generating code through AI without the four core practices of <a href="ai-native-engineering.html" class="wiki-link">ai-native-engineering</a> — the result is <a href="code-overload.html" class="wiki-link">code-overload</a>: more code velocity, more bugs, more incidents, more technical debt. Vibe coding is not wrong; it's wrong for production engineering.</p>
+<h2 id="the-agentic-engineering-spectrum">The Agentic Engineering Spectrum</h2>
+<p>Software development now exists on a spectrum of discipline between two poles:</p>
+<table><thead><tr>
+<th>Dimension</th>
+<th>Vibe Coding 🌊</th>
+<th>Agentic Engineering 🏗️</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Intent Specification</strong></td>
+<td>Casual natural language prompts</td>
+<td>Formal specs, architecture docs, memory files</td>
+</tr>
+<tr>
+<td><strong>Verification</strong></td>
+<td>Manual "Does it seem to work?" checks</td>
+<td>Automated test suites + LM Judges/Evals</td>
+</tr>
+<tr>
+<td><strong>Error Handling</strong></td>
+<td>Reactive copy-paste error messages</td>
+<td>Autonomous self-diagnosis within bounds</td>
+</tr>
+<tr>
+<td><strong>Risk Profile</strong></td>
+<td>🔴 High (fine for prototypes/hackathons)</td>
+<td>🟢 Low (systematic verification for production)</td>
+</tr>
+<tr>
+<td><strong>Token Economics</strong></td>
+<td>❌ High burn from trial-and-error loops</td>
+<td>✅ Optimized via high-signal context payloads</td>
+</tr>
+</tbody></table>
+<p><strong>Applied rule</strong>: "The higher the stakes, the tighter the harness." A weekend hackathon can be pure vibe coding. A production system handling financial transactions requires <a href="harness-engineering.html" class="wiki-link">agentic engineering</a>.</p>
+<h2 id="token-economics-the-hidden-interest-rate">Token Economics: The Hidden Interest Rate</h2>
+<p>Vibe coding appears cheap upfront but carries a "hidden interest rate" — the maintenance tax from trial-and-error loops, token burn, and accumulating technical debt:</p>
+<table><thead><tr>
+<th>Approach</th>
+<th>CapEx (Upfront)</th>
+<th>OpEx (Ongoing)</th>
+<th>Long-Term Viability</th>
+</tr></thead><tbody>
+<tr>
+<td>Vibe Coding 🌊</td>
+<td>🟢 Low (just subscription)</td>
+<td>🔴 High ("Maintenance Tax" + token burn)</td>
+<td>❌ 3-10x cost crossover point</td>
+</tr>
+<tr>
+<td>Agentic Engineering 🏗️</td>
+<td>🔴 High (system design, test suites)</td>
+<td>🟢 Low (sustainable marginal costs)</td>
+<td>✅ Scalable economic model</td>
+</tr>
+</tbody></table>
+<p>The financial insight: <strong>high-signal context payloads (precise AGENTS.md) prevent trial-and-error loops that drive up API costs.</strong> Investing in context engineering upfront pays for itself in reduced token burn and fewer wasted iterations.</p>
+<blockquote>"Vibe coding's low CapEx is a teaser rate. The real cost is in the OpEx."</blockquote>
+<h2 id="karpathys-three-stage-progression">Karpathy's Three-Stage Progression</h2>
+<p>Vibe coding is stage one of a three-stage progression described in <a href="graph-engineering.html" class="wiki-link">graph-engineering</a>:</p>
+<ol>
+<li><strong>Vibe coding</strong>: the human expresses intent and the model writes. No systematic verification, no durable state.</li>
+<li><strong>Agentic engineering</strong>: the human specifies, orchestrates, verifies, and remains responsible for quality. Loops, harnesses, evals.</li>
+<li><strong>Graph engineering</strong>: agents share durable state through typed, queryable graphs of work and knowledge. Memory and evaluation live outside context windows.</li>
+</ol>
+<p>Each stage addresses a limitation of the previous: vibe coding lacks verification → agentic engineering adds it → graph engineering externalizes state from context windows into persistent structures.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>AI-Native Engineering</h4>
+      <p>AI-native engineering is the professional discipline; vibe coding is the democratized subset</p>
+    </a>
+    <a class="connection-card" href="agent-loop.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Agent Loop</h4>
+      <p>vibe coding skips the Perceive-Plan-Act-Observe cycle; agentic engineering runs it systematically</p>
+    </a>
+    <a class="connection-card" href="agent-verification.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Agent Verification</h4>
+      <p>vibe coding relies on "seems to work"; agentic engineering verifies both output and trajectory</p>
+    </a>
+    <a class="connection-card" href="technological-centaur.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Technological Centaur</h4>
+      <p>vibe coding is pure AI reliance; the centaur model requires human expertise directing AI</p>
+    </a>
+    <a class="connection-card" href="code-overload.html">
+      <span class="connection-type related">Related</span>
+      <h4>Code Overload</h4>
+      <p>when professional teams adopt vibe coding practices, code overload follows</p>
+    </a>
+    <a class="connection-card" href="agent-quality-optimization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Quality Optimization</h4>
+      <p>token economics reveal vibe coding's hidden OpEx costs</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>A Practical Guide to Becoming an AI-Native Engineer</h4>
+      <p>ByteByteGo article placing vibe coding in context</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>The New SDLC With Vibe Coding: From ad-hoc prompting to Agentic Engineering</h4>
+      <p>spectrum comparison and token economics framework</p>
+    </div>
+    <a class="connection-card" href="graph-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Engineering</h4>
+      <p>Karpathy's three-stage progression (vibe → agentic → graph)</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Engineering: The Karpathy Loop, Improved 1000x by Itself</h4>
+      <p>the three-stage framing</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="vectorized-execution.html" class="prev">← Vectorized Execution</a><a href="vortex-file-format.html" class="next">Vortex File Format →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

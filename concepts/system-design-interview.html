@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Design Interview — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-system-design">System Design</a> <span class="sep">/</span>
+  <span>System Design Interview</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>System Design Interview</h1>
+  <div class="page-meta"><span>Source: system-design-interview-xu, system-design-big-archive, system-design-interview-volume-2</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">system-design</span><span class="tag">interview</span><span class="tag">methodology</span><span class="tag">architecture</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>System design interviews are open-ended technical conversations where candidates design scalable distributed systems. Unlike coding interviews with right/wrong answers, system design is about navigating trade-offs — balancing performance, reliability, cost, and maintainability within constraints.</p>
+<h2 id="the-framework">The Framework</h2>
+<p>The canonical 4S framework for system design interviews:</p>
+<ol>
+<li><strong>Scope (Clarify)</strong> — Ask clarifying questions: scale, read/write ratio, latency requirements</li>
+<li><strong>Sketch (Estimate)</strong> — Back-of-the-envelope math: DAU → RPS → storage → bandwidth</li>
+<li><strong>Structure (Design)</strong> — Draw high-level architecture: clients, load balancers, web servers, databases, caches</li>
+<li><strong>Scale (Optimize)</strong> — Identify bottlenecks, propose incremental improvements, discuss trade-offs</li>
+</ol>
+<h2 id="why-its-hard">Why It's Hard</h2>
+<table><thead><tr>
+<th>Challenge</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td>Open-ended</td>
+<td>No single correct answer — must define the problem space yourself</td>
+</tr>
+<tr>
+<td>Vague requirements</td>
+<td>"Design Twitter" — need to narrow scope with questions</td>
+</tr>
+<tr>
+<td>Multi-dimensional</td>
+<td>Must balance performance, reliability, cost, maintainability simultaneously</td>
+</tr>
+<tr>
+<td>Collaborative</td>
+<td>Interviewer acts as a colleague — must think out loud and incorporate feedback</td>
+</tr>
+</tbody></table>
+<h2 id="estimation-rules-of-thumb">Estimation Rules of Thumb</h2>
+<ul>
+<li>1M DAU ≈ 100 RPS peak (with 10:1 read/write ratio)</li>
+<li>1KB per request × 1B requests/day ≈ 1TB/day</li>
+<li>99.9% availability ≈ 8.76 hours downtime/year; 99.99% ≈ 52 minutes</li>
+<li><strong>QPS shortcut</strong>: <code>QPS = (DAU × Average Actions) / 10^5</code> — round 86,400 seconds/day to 100,000 for instant mental division</li>
+</ul>
+<h3 id="qps--architecture-decision-table">QPS → Architecture Decision Table</h3>
+<table><thead><tr>
+<th>QPS Range</th>
+<th>Architecture Implication</th>
+</tr></thead><tbody>
+<tr>
+<td>< 100 QPS</td>
+<td>Single server can handle</td>
+</tr>
+<tr>
+<td>100 – 1,000 QPS</td>
+<td>Load balancer + 2–3 servers</td>
+</tr>
+<tr>
+<td>1,000 – 10,000 QPS</td>
+<td>Stateless services + database replicas</td>
+</tr>
+<tr>
+<td>> 10,000 QPS</td>
+<td>Full distributed system + caching + sharding</td>
+</tr>
+</tbody></table>
+<h2 id="canonical-problems">Canonical Problems</h2>
+<p>System design interviews reuse a set of well-known architecture problems:</p>
+<ul>
+<li><strong><a href="proximity-service.html" class="wiki-link">proximity-service</a></strong> — Yelp/Google Maps: geolocation search at scale (<a href="geospatial-indexing.html" class="wiki-link">geospatial-indexing</a>, <a href="geohash.html" class="wiki-link">geohash</a>, <a href="quadtree.html" class="wiki-link">quadtree</a>)</li>
+<li>URL shortener (hash functions, key generation)</li>
+<li>Social media feed (fan-out, timeline generation)</li>
+<li>Chat system (WebSocket, message delivery)</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="scalable-architecture.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Scalable Architecture</h4>
+      <p>the output of a system design interview</p>
+    </a>
+    <a class="connection-card" href="load-balancer.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Load Balancer</h4>
+      <p>a component you must justify</p>
+    </a>
+    <a class="connection-card" href="database-replication.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Database Replication</h4>
+      <p>a scaling choice you must explain</p>
+    </a>
+    <a class="connection-card" href="cache-strategy.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Cache Strategy</h4>
+      <p>a performance optimization to discuss</p>
+    </a>
+    <a class="connection-card" href="observability.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Observability</h4>
+      <p>metrics to monitor the designed system</p>
+    </a>
+    <a class="connection-card" href="technical-interview.html">
+      <span class="connection-type related">Related</span>
+      <h4>Technical Interview</h4>
+      <p>system design tests architecture/scale, technical interviews test algorithms/PoC</p>
+    </a>
+    <a class="connection-card" href="proximity-service.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Proximity Service</h4>
+      <p>the canonical geolocation system design problem</p>
+    </a>
+    <a class="connection-card" href="geospatial-indexing.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Geospatial Indexing</h4>
+      <p>the core algorithmic challenge for location-based systems</p>
+    </a>
+    <a class="connection-card" href="risk-driven-architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Risk-Driven Architecture</h4>
+      <p>risk-driven thinking: identify the highest risks (performance, availability) and apply commensurate architecture effort</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="synthetic-data.html" class="prev">← Synthetic Data</a><a href="t-shaped-skills.html" class="next">T-Shaped Skills →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

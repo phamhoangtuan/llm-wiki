@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Machine Learning Systems — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-machine-learning">Machine Learning</a> <span class="sep">/</span>
+  <span>Machine Learning Systems</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Machine Learning Systems</h1>
+  <div class="page-meta"><span>Source: introduction-to-machine-learning-systems</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">machine-learning</span><span class="tag">systems-design</span><span class="tag">ml-engineering</span><span class="tag">ai-engineering</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Machine Learning Systems</strong> is the engineering discipline of building AI solutions that work reliably in production — not just achieving high accuracy in a notebook. It bridges the gap between ML theory and operational reality, organized around the <strong>AI Triangle</strong>: Data, Algorithms, and Computing Infrastructure. Ignoring any corner causes system failure.</p>
+<h2 id="the-ai-triangle">The AI Triangle</h2>
+<blockquote>Data • Algorithms • Computing Infrastructure</blockquote>
+<p>Success requires mastery of all three pillars. An algorithm with 99% accuracy on bad data is worthless. A perfectly clean dataset is useless without the compute to train on it.</p>
+<h2 id="ml-workflow-vs-traditional-software">ML Workflow vs Traditional Software</h2>
+<table><thead><tr>
+<th>Traditional Software</th>
+<th>ML Systems</th>
+</tr></thead><tbody>
+<tr>
+<td>Linear: code → ship</td>
+<td>Iterative loops: new data → retrain → re-evaluate → redeploy</td>
+</tr>
+<tr>
+<td>Deterministic outputs</td>
+<td>Probabilistic, data-dependent outputs</td>
+</tr>
+<tr>
+<td>Code is the asset</td>
+<td>Data + code + model are all assets</td>
+</tr>
+<tr>
+<td>Technical debt grows linearly</td>
+<td>Technical debt grows faster (data drift, model staleness, concept drift)</td>
+</tr>
+</tbody></table>
+<p>Design for iteration: build feedback loops in from the start. Production isn't a finish line — it's a new set of challenges.</p>
+<h2 id="six-part-engineering-framework">Six-Part Engineering Framework</h2>
+<table><thead><tr>
+<th>Part</th>
+<th>Domain</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Systems Foundations</strong></td>
+<td>Deployment spectrum (cloud → TinyML), DNN architectures as engineering decisions</td>
+</tr>
+<tr>
+<td><strong>Design Principles</strong></td>
+<td>Data engineering, AI frameworks, training orchestration</td>
+</tr>
+<tr>
+<td><strong>Performance Engineering</strong></td>
+<td>Scaling laws, model optimization (pruning/quantization/distillation), hardware acceleration</td>
+</tr>
+<tr>
+<td><strong>Robust Deployment</strong></td>
+<td>MLOps, on-device learning, security & privacy defenses</td>
+</tr>
+<tr>
+<td><strong>Trustworthy Systems</strong></td>
+<td>Responsible AI audits, sustainability metrics, fairness engineering</td>
+</tr>
+<tr>
+<td><strong>Frontiers</strong></td>
+<td>AGI as systems problem, compound AI systems, remaining barriers</td>
+</tr>
+</tbody></table>
+<h2 id="key-insight">Key Insight</h2>
+<blockquote>"Great AI isn't just smart — it's reliable, efficient, scalable, and trustworthy."</blockquote>
+<p>The bottleneck is shifting: from "Can we build a smarter model?" to "Can we build a scalable, sustainable, safe system around it?" Future AI won't be single models but orchestrated ensembles of specialized components.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="mlops.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>MLOps</h4>
+      <p>MLOps operationalizes ML systems for production</p>
+    </a>
+    <a class="connection-card" href="compound-ai-systems.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Compound AI Systems</h4>
+      <p>the frontier is orchestrated ensembles, not isolated models</p>
+    </a>
+    <a class="connection-card" href="sustainable-ai.html">
+      <span class="connection-type related">Related</span>
+      <h4>Sustainable AI</h4>
+      <p>efficiency metrics are a core engineering concern</p>
+    </a>
+    <a class="connection-card" href="ai-scaling-laws.html">
+      <span class="connection-type related">Related</span>
+      <h4>AI Scaling Laws</h4>
+      <p>predict how performance changes with resources</p>
+    </a>
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>AI-Native Engineering</h4>
+      <p>AI-native engineers apply systems thinking to ML pipelines</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Introduction to Machine Learning Systems</h4>
+      <p>Reddi's 2,020-page systems textbook</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="lora.html" class="prev">← LoRA</a><a href="mapper-principles.html" class="next">MAPPER Principles →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

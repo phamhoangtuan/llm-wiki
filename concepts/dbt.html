@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>dbt (data build tool) — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-dbt">Dbt</a> <span class="sep">/</span>
+  <span>dbt (data build tool)</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>dbt (data build tool)</h1>
+  <div class="page-meta"><span>Source: unlocking-dbt-design-deploy-transformations, data-engineering-with-dbt</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">dbt</span><span class="tag">data-engineering</span><span class="tag">analytics</span><span class="tag">elt</span><span class="tag">sql</span><span class="tag">data-modeling</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>dbt</strong> (data build tool) is an open-source data transformation framework that brings software engineering best practices to SQL. It handles the "T" in <a href="elt.html" class="wiki-link">ELT</a> (Extract-Load-Transform) — running transformations inside your cloud data warehouse rather than on external servers. dbt compiles SQL + Jinja templates into executable queries, manages dependencies between models, and provides built-in testing and documentation generation.</p>
+<h2 id="core-identity">Core Identity</h2>
+<blockquote>dbt is not a database. Not an ETL tool. It's a <strong>transformation framework</strong> that applies version control, testing, and collaboration to SQL workflows.</blockquote>
+<p>dbt has <strong>no compute engine of its own</strong> — it sends compiled SQL to your data warehouse (Snowflake, BigQuery, Redshift, Databricks) for execution. This compute-neutral architecture means you leverage the warehouse's scale without moving data.</p>
+<h2 id="three-architectural-pillars">Three Architectural Pillars</h2>
+<h3 id="1-compute-neutral-orchestrates-doesnt-ex">1. Compute-Neutral: Orchestrates, Doesn't Execute</h3>
+<pre><code>[dbt project] --(compiled SQL)--&gt; [Snowflake/BigQuery] --(results)--&gt; [Tables/Views]</code></pre>
+<p>dbt manages the <strong>lifecycle</strong> of data transformations: compilation, dependency resolution, materialization, testing, and documentation — but all computation happens in the warehouse.</p>
+<h3 id="2-declarative-write-select-not-ddl">2. Declarative: Write SELECT, Not DDL</h3>
+<p>Traditional SQL requires imperative DDL/DML:</p>
+<pre><code class="language-sql">-- Traditional: you say HOW
+CREATE TABLE analytics.customers AS
+SELECT id, name, email FROM raw.users WHERE active = true;</code></pre>
+<p>With dbt, you write only SELECT — dbt handles the materialization:</p>
+<pre><code class="language-sql">-- dbt models/customers.sql: you say WHAT
+SELECT id, name, email
+FROM {{ ref(&#x27;raw_users&#x27;) }}
+WHERE active = true</code></pre>
+<p>dbt automatically manages: <code>CREATE TABLE</code>, <code>CREATE VIEW</code>, <code>MERGE</code> (incremental), dependency ordering via <code>{{ ref() }}</code>.</p>
+<h3 id="3-automated-object-management">3. Automated Object Management</h3>
+<ul>
+<li><strong>Materializations</strong>: table, view, incremental, ephemeral, materialized view</li>
+<li><strong>Dependencies</strong>: <code>{{ ref('model') }}</code> builds a DAG; dbt runs models in correct order</li>
+<li><strong>Schema changes</strong>: <code>on_schema_change</code> config handles column additions/removals</li>
+</ul>
+<h2 id="3-tier-modeling-pattern">3-Tier Modeling Pattern</h2>
+<p>The recommended project structure follows a layered approach:</p>
+<pre><code>Raw Tables
+  ↓
+[stg_] Staging — Clean, rename columns, basic type casting
+  ↓
+[int_] Intermediate — Business logic, joins, aggregations
+  ↓
+[fct_/dim_] Marts — Business-ready fact and dimension tables for BI/ML</code></pre>
+<p>This modular design improves maintainability, allows reuse across projects, and makes testing targeted.</p>
+<h2 id="project-structure">Project Structure</h2>
+<pre><code>my_dbt_project/
+├── dbt_project.yml          # Project configuration
+├── models/                  # Transform logic (the heart)
+│   ├── staging/             # stg_ models: raw → cleaned
+│   ├── intermediate/        # int_ models: business logic
+│   └── marts/               # fct_/dim_ models: business-ready
+├── seeds/                   # CSV lookup tables (mapping, config)
+├── snapshots/               # SCD Type 2: track historical changes
+├── tests/                   # Custom data quality tests
+├── macros/                  # Reusable Jinja code blocks
+├── analyses/                # Ad-hoc queries (not models)
+└── dbt_packages/            # External dependencies (dbt hub)</code></pre>
+<h2 id="built-in-testing">Built-in Testing</h2>
+<p>Data quality testing is a <strong>first-class feature</strong>, configured via YAML:</p>
+<pre><code class="language-yaml"># models/schema.yml
+version: 2
+models:
+  - name: customers
+    columns:
+      - name: customer_id
+        tests:
+          - unique          # No duplicates
+          - not_null        # No null values
+      - name: email
+        tests:
+          - relationships:   # Foreign key validation
+              to: ref(&#x27;raw_users&#x27;)
+              field: user_id</code></pre>
+<ul>
+<li><strong>Generic tests</strong>: <code>unique</code>, <code>not_null</code>, <code>accepted_values</code>, <code>relationships</code></li>
+<li><strong>Singular tests</strong>: Custom SQL queries for complex assertions</li>
+<li><strong>Test execution</strong>: <code>dbt test</code> runs all tests; integrable into CI/CD</li>
+</ul>
+<h2 id="auto-generated-documentation">Auto-Generated Documentation</h2>
+<p><code>dbt docs generate</code> produces a static website with:</p>
+<ul>
+<li>Model and column descriptions from YAML</li>
+<li><strong>Lineage graph</strong> (DAG) showing dependencies visually</li>
+<li>Column-level metadata, test status, source table info</li>
+</ul>
+<p>Documentation stays in sync with code — no more outdated wikis.</p>
+<h2 id="dbt-core-vs-dbt-cloud">dbt Core vs dbt Cloud</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>dbt Core (OSS)</th>
+<th>dbt Cloud (Managed)</th>
+</tr></thead><tbody>
+<tr>
+<td>Cost</td>
+<td>Free</td>
+<td>Per-user/month</td>
+</tr>
+<tr>
+<td>Deployment</td>
+<td>CLI, self-managed infra</td>
+<td>Browser IDE, auto-scheduling</td>
+</tr>
+<tr>
+<td>Adapters</td>
+<td>Broadest (community + vendor)</td>
+<td>Official only</td>
+</tr>
+<tr>
+<td>Scheduling</td>
+<td>Manual / external (Airflow)</td>
+<td>Built-in job scheduler</td>
+</tr>
+<tr>
+<td>Best for</td>
+<td>Teams with DevOps capacity</td>
+<td>Teams wanting reduced ops</td>
+</tr>
+</tbody></table>
+<blockquote>Start with Core to learn fundamentals. Move to Cloud when you need collaboration, scheduling, or want to reduce operational overhead.</blockquote>
+<h2 id="platform-support">Platform Support</h2>
+<p>dbt uses an <strong>adapter</strong> plugin system:</p>
+<table><thead><tr>
+<th>Tier</th>
+<th>Examples</th>
+</tr></thead><tbody>
+<tr>
+<td>dbt Labs supported</td>
+<td>Snowflake, BigQuery, Redshift, Postgres, Spark</td>
+</tr>
+<tr>
+<td>Vendor supported</td>
+<td>Databricks, Oracle, ClickHouse, Teradata</td>
+</tr>
+<tr>
+<td>Community supported</td>
+<td>MySQL, SQL Server, [[duckdb</td>
+<td>DuckDB]], SQLite</td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>Any SQL engine via custom adapter</td>
+</tr>
+</tbody></table>
+<p>If your platform "speaks SQL", there's almost certainly a dbt adapter.</p>
+<h2 id="when-to-use-dbt">When to Use dbt</h2>
+<table><thead><tr>
+<th>✅ Use dbt</th>
+<th>❌ Don't Use dbt</th>
+</tr></thead><tbody>
+<tr>
+<td>Data transformations in cloud warehouses</td>
+<td>Data extraction/loading (use Fivetran, Airbyte)</td>
+</tr>
+<tr>
+<td>Applying software engineering to SQL</td>
+<td>Pipeline orchestration (use Airflow, Dagster — or pair with dbt)</td>
+</tr>
+<tr>
+<td>Building tested, documented data models</td>
+<td>Real-time streaming transforms (use [[apache-flink</td>
+<td>Flink]], Spark Streaming)</td>
+</tr>
+<tr>
+<td>Teams with SQL skills wanting version control</td>
+<td>No-code/low-code workflows</td>
+</tr>
+</tbody></table>
+<h2 id="key-skills-for-dbt">Key Skills for dbt</h2>
+<table><thead><tr>
+<th>Skill</th>
+<th>Importance (1-5)</th>
+</tr></thead><tbody>
+<tr>
+<td>SQL (SELECT, CTEs, window functions)</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Jinja templating</td>
+<td>2</td>
+</tr>
+<tr>
+<td>YAML configuration</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Git / version control</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Data modeling (dimensional, Data Vault)</td>
+<td>1-4 (role-dependent)</td>
+</tr>
+<tr>
+<td>Python (custom macros, hooks)</td>
+<td>1</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="elt.html">
+      <span class="connection-type related">Related</span>
+      <h4>ELT (Extract-Load-Transform)</h4>
+      <p>dbt is the canonical "T" (Transform) tool in the ELT paradigm</p>
+    </a>
+    <a class="connection-card" href="analytics-engineer.html">
+      <span class="connection-type related">Related</span>
+      <h4>Analytics Engineer</h4>
+      <p>dbt formalized the Analytics Engineer role in data teams</p>
+    </a>
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Ingestion</h4>
+      <p>dbt handles the transform step; ingestion tools handle extract/load</p>
+    </a>
+    <a class="connection-card" href="materialized-views.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Materialized Views</h4>
+      <p>dbt supports materialized views as a materialization strategy</p>
+    </a>
+    <a class="connection-card" href="duckdb.html">
+      <span class="connection-type related">Related</span>
+      <h4>DuckDB</h4>
+      <p>DuckDB has a community dbt adapter for local development</p>
+    </a>
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type related">Related</span>
+      <h4>DataOps</h4>
+      <p>dbt is the canonical tool that makes DataOps practical for SQL transformations</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Unlocking dbt: Design and Deploy Transformations in Your Cloud Data Warehouse</h4>
+      <p>Cameron Cyr & Dustin Dorsey's 351-page guide</p>
+    </div>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Flink</h4>
+      <p>Flink handles real-time streaming transforms; dbt handles batch SQL transforms in the warehouse</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="dbsp.html" class="prev">← DBSP</a><a href="decomposition-patterns.html" class="next">Decomposition Patterns →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

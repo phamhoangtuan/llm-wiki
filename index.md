@@ -1,0 +1,371 @@
+# Wiki Index
+
+> Auto-generated catalog. Updated on every ingest and lint pass.
+> Click any link to open the styled HTML page.
+
+---
+
+## Concepts
+
+- [Wiki Maintenance](concepts/wiki-maintenance.html) — How this LLM-maintained wiki works, its conventions and workflows
+- [Knowledge Graph](concepts/knowledge-graph.html) — Lightweight knowledge graph via cross-linked pages; agent shared memory and grounding layer for multi-agent systems
+- [Graph Engineering](concepts/graph-engineering.html) — Third stage in Karpathy's progression: agents share durable state through typed, queryable graphs of work and knowledge
+- [Entity Resolution](concepts/entity-resolution.html) — Mapping surface forms to canonical entities in knowledge graphs via model-based reasoning
+- [Graph Grounding](concepts/graph-grounding.html) — Constraining agent generation with facts retrieved from a graph; structured evaluation against graph edges
+- [Architecture Fitness Functions](concepts/architecture-fitness-functions.html) — Executable integrity assessments preventing architecture drift; governance through automation
+- [Architecture Quantum](concepts/architecture-quantum.html) — Independently deployable artifact; the fundamental unit of distributed architecture analysis
+- [Data Architecture](concepts/data-architecture.html) — Blueprints aligning data assets with organizational strategy; DAMA Knowledge Area
+- [Data Integration](concepts/data-integration.html) — Movement, consolidation, and interoperability of data across systems; DAMA Knowledge Area
+- [Data Mesh](concepts/data-mesh.html) — Decentralized data architecture treating data as a product, aligned with domain boundaries
+- [Data Security](concepts/data-security.html) — Privacy, authentication, encryption, and compliance for data assets; DAMA Knowledge Area
+- [Data Sovereignty](concepts/data-sovereignty.html) — Each service owns its data exclusively; single-writer principle
+- [Data Storage and Operations](concepts/data-storage-operations.html) — Implementation, support, and lifecycle management of stored data; DAMA Knowledge Area
+- [Data Warehousing](concepts/data-warehousing.html) — Managing data for analysis and reporting (OLAP); DAMA Knowledge Area
+- [Decomposition Patterns](concepts/decomposition-patterns.html) — Strategies for breaking monoliths into distributed services; Tactical Forking, Component-Based Decomposition
+- [Document and Content Management](concepts/document-content-management.html) — Managing unstructured data lifecycles; DAMA Knowledge Area
+- [Flow and Zone Critique](concepts/flow-zone-critique.html) — The counterintuitive argument that Flow state is a diminished rational state
+- [Functional Programming](concepts/functional-programming.html) — FP paradigm: expressions, abstraction, immutability, dataflow; 4 pillars and the Yin-Yang learning philosophy
+- [Market Basket Analysis](concepts/market-basket-analysis.html) — Data mining technique for discovering item co-occurrence patterns; Support/Confidence metrics, MapReduce implementation
+- [Master Data Management](concepts/master-data-management.html) — Single version of truth for shared business entities; DAMA Knowledge Area
+- [Mentoring](concepts/mentoring.html) — Professional duty to pass craftsmanship through personal transmission
+- [Metadata Management](concepts/metadata-management.html) — Enabling access to data definitions, lineage, and flows; DAMA Knowledge Area
+- [KV Caching](concepts/kv-caching.html) — Inference optimization storing attention keys/values to avoid redundant recomputation; ~5× speedup
+- [LoRA](concepts/lora.html) — Low-Rank Adaptation for parameter-efficient fine-tuning; QLoRA enables fine-tuning on consumer GPUs
+- [Flash Attention](concepts/flash-attention.html) — IO-aware exact attention algorithm; optimizes GPU memory hierarchy for 2–4× training speedup
+- [PEFT](concepts/peft.html) — Parameter-Efficient Fine-Tuning family; LoRA, QLoRA, Adapters, Prefix Tuning — 1% parameters, 99% quality
+- [Personal Branding](concepts/personal-branding.html) — Deliberate cultivation of professional identity; CV, LinkedIn, narrative consistency
+- [Reranking](concepts/reranking.html) — Two-stage retrieval pattern: fast coarse search + expensive precise re-ranking for RAG efficiency
+- [pytest Basics](concepts/pytest-basics.html) — pytest fundamentals: test discovery, naming conventions, plain assert, CLI usage
+- [pytest Fixtures](concepts/pytest-fixtures.html) — Reusable setup/teardown via dependency injection, conftest.py, fixture scopes
+- [pytest Parametrization](concepts/pytest-parametrization.html) — Run one test function with multiple data sets
+- [pytest Markers](concepts/pytest-markers.html) — Tag tests for selective execution: skip, xfail, custom markers
+- [pytest Mocking](concepts/pytest-mocking.html) — Isolate external dependencies via monkeypatch, pytest-mock, autospec
+- [pytest Plugins](concepts/pytest-plugins.html) — Essential plugins: cov, xdist, randomly, mock, asyncio
+- [pytest Configuration](concepts/pytest-configuration.html) — pyproject.toml and pytest.ini configuration
+- [pytest Assertions](concepts/pytest-assertions.html) — Assert rewriting mechanism: rich diffs without framework-specific syntax
+- [pytest Test Results](concepts/pytest-test-results.html) — Result symbols: PASSED, FAILED, SKIPPED, XFAIL, XPASS, ERROR
+- [Testing Strategy](concepts/testing-strategy.html) — API-first testing, test pyramid, 4 pillars of professional testing
+- [Software as Simulation](concepts/software-as-simulation.html) — Software is a simulator of reality, not a list of commands
+- [MAPPER Principles](concepts/mapper-principles.html)
+- [Machine Learning Systems](concepts/machine-learning-systems.html) — Engineering discipline bridging ML theory to production; AI Triangle (Data/Algorithms/Infrastructure), 6-part framework — 6 principles: Model, Abstract, Partial, Programmable, Explaining, Reality
+- [Bijection](concepts/bijection.html) — 1-1 mapping between reality and code; the golden design rule
+- [Rich Domain Model](concepts/rich-domain-model.html) — Objects encapsulate data + behavior; contrast with anemic domain model
+- [Tell, Don't Ask](concepts/tell-dont-ask.html) — Tell objects to act, don't ask for data to process outside
+- [Immutability](concepts/immutability.html) — Essential attributes should never change; create new objects instead
+- [Information Hiding](concepts/information-hiding.html) — Core design heuristic: hide implementation secrets behind stable interfaces to localize change impact
+- [Fail Fast](concepts/fail-fast.html) — Stop execution immediately on error; don't let errors propagate
+- [Feedback](concepts/feedback.html) — Three levels of feedback in skill acquisition (Outcome, Informational, Corrective); ego trap, Chris Rock's signal-seeking
+- [Geohash](concepts/geohash.html) — Base32 string encoding for geolocation; recursive grid subdivision, prefix matching, boundary issues
+- [Geospatial Indexing](concepts/geospatial-indexing.html) — Dimensionality reduction: 2D coordinates → 1D index for efficient spatial queries; Geohash + Quadtree strategies
+- [Essential vs Accidental Complexity](concepts/essential-accidental-complexity.html) — Fred Brooks' two types: inherent vs design-caused
+- [Algorithm Analysis](concepts/algorithm-analysis.html) — Predicting algorithm behavior by counting key operations, not clock time; doubling effect, best/worst case
+- [Big O Notation](concepts/big-o-notation.html) — Asymptotic growth classes: O(1), O(log N), O(N), O(N log N), O(N²); the "slower computer" paradox
+- [Time-Space Tradeoff](concepts/time-space-tradeoff.html) — Mathematical efficiency ≠ practical efficiency; memory allocation overhead can wipe out operation savings
+- [Technological Centaur](concepts/technological-centaur.html) — Human architect + AI assistant; clean code enables collaboration
+- [Testing Effect](concepts/testing-effect.html) — Retrieval practice as knowledge construction; Karpicke & Blunt study, desirable difficulty, free recall
+- [Testing Pyramid](concepts/testing-pyramid.html) — Professional testing hierarchy: Unit → Component → Integration → System → Manual
+- [Readability vs Performance](concepts/readability-vs-performance.html) — Write clean code first, optimize bottlenecks after profiling
+- [Materialized Views](concepts/materialized-views.html) — Pre-computed query results stored as physical tables — the hybrid of tables and views
+- [Medallion Architecture](concepts/medallion-architecture.html) — Data organization pattern: Bronze (raw) → Silver (cleaned) → Gold (business-ready); progressive refinement with quality gates
+- [Incremental View Maintenance](concepts/incremental-view-maintenance.html) — Updating MVs by processing only changed data, not full recompute
+- [Timely Dataflow](concepts/timely-dataflow.html) — Timestamp-based notification model for distributed incremental computation (Naiad)
+- [Differential Dataflow](concepts/differential-dataflow.html) — Versioned incremental computation built on Timely Dataflow
+- [DBSP](concepts/dbsp.html) — Signal-processing formalism for incremental view maintenance with 4 operators
+- [DuckDB](concepts/duckdb.html) — In-process OLAP database — "SQLite for analytics" — columnar, vectorized, zero-setup
+- [Vectorized Execution](concepts/vectorized-execution.html) — Processing data in vectors (chunks) not row-by-row; SIMD, cache-efficient
+- [In-Process OLAP](concepts/in-process-olap.html) — Analytical database runs as embedded library — no server, no network latency
+- [System Design Interview](concepts/system-design-interview.html) — Framework for designing scalable distributed systems under constraints; QPS estimation (10^5 shortcut), canonical problems (Proximity Service, URL Shortener)
+- [Scalable Architecture](concepts/scalable-architecture.html) — Evolution from single server to horizontal scaling; QPS-driven architecture decisions (100 → 10K+ ranges)
+- [Load Balancer](concepts/load-balancer.html) — Traffic distribution, security, and high availability across backend servers
+- [Database Replication](concepts/database-replication.html) — Master-slave pattern for read/write separation; Primary-Secondary clustering for read-heavy workloads with acceptable replication lag
+- [Cache Strategy](concepts/cache-strategy.html) — Read-through cache, TTL, eviction, invalidation; cache stampede mitigation via staggered invalidation and circuit breakers
+- [CDN](concepts/cdn.html) — Geographically distributed edge caching for static content delivery
+- [Stateless Architecture](concepts/stateless-architecture.html) — Externalized sessions enabling horizontal scaling and autoscaling
+- [Message Queue](concepts/message-queue.html) — Async decoupling of producers and consumers for resilience and independent scaling
+- [Metalearning](concepts/metalearning.html) — Learning how a subject is structured before learning it; Why/What/How framework, 10% Rule
+- [Observability](concepts/observability.html) — Metrics, logs, and traces for understanding distributed system health
+- [Vortex File Format](concepts/vortex-file-format.html) — Next-gen Rust-native columnar format; 100× random access claims vs Parquet, immature Python ecosystem as of 2026-05
+- [Polars](concepts/polars.html) — Rust-based DataFrame library with lazy evaluation; reported OOM reliability issues on large CSV
+- [Proximity Service](concepts/proximity-service.html) — Geolocation-based search architecture (Yelp, Google Maps); 2-service split, data freshness SLA, 5,000 QPS baseline
+- [Apache DataFusion](concepts/apache-datafusion.html) — Rust-native embeddable SQL query engine; fastest CSV scan in benchmarks (5.1s vs 25.5s DuckDB)
+- [Apache Parquet](concepts/apache-parquet.html) — Dominant columnar storage format for data lakes; ~200× faster than CSV for analytics
+- [Lance File Format](concepts/lance-file-format.html) — Columnar format optimized for ML/AI workloads; random access, versioning
+- [Apache Flink](concepts/apache-flink.html) — Distributed stream processing engine with exactly-once semantics; Flink 2.1 + DynamicIcebergSink (1.11.0) for multi-table routing and auto-schema evolution
+- [Change Data Capture (CDC)](concepts/change-data-capture.html) — Capturing row-level DB changes from transaction logs for real-time data sync
+- [Data Governance](concepts/data-governance.html) — Framework of policies, standards, and accountability for data as a strategic asset; access control, classification, retention, lineage, compliance
+- [Data Ingestion](concepts/data-ingestion.html) — Moving data from sources to data lake; self-service platforms, batch vs streaming patterns
+- [Data Lifecycle](concepts/data-lifecycle.html) — Six-stage data journey (Generation→Storage→Processing→Usage→Archival→Destruction); Hot vs Cold data, GDPR compliance, cloud lifecycle automation
+- [Domain-Driven Design](concepts/domain-driven-design.html) — Strategic software design discipline aligning code with business reality via Ubiquitous Language, Bounded Contexts, and subdomain classification
+- [Apache Kafka](concepts/apache-kafka.html) — Distributed event streaming platform; persistent log, high throughput, schema registry
+- [Apache Iceberg](concepts/apache-iceberg.html) — Open table format; V3 spec stabilized (1.11.0) with deletion vectors, table encryption, pluggable File Format API, server-side scan planning
+- [dbt (data build tool)](concepts/dbt.html) — SQL transformation framework for ELT; compute-neutral, declarative, with built-in testing and docs
+- [Analytics Engineer](concepts/analytics-engineer.html) — Bridge role between Data Engineer and Analyst; owns the transformation layer; AI increases demand for modeling and governance skills
+- [ELT (Extract-Load-Transform)](concepts/elt.html) — Modern data paradigm: load raw first, transform in-warehouse; dbt handles the "T"
+- [Delta Lake](concepts/delta-lake.html) — Open table format with ACID, time travel, schema enforcement; DuckDB supports reads + writes (stable)
+- [Unity Catalog](concepts/unity-catalog.html) — Open standard for data governance; Catalog Commits coordinate concurrent writes to Delta tables
+- [Apache Arrow](concepts/apache-arrow.html) — Language-agnostic columnar in-memory format; zero-copy interop across Python, C++, Rust, Java
+- [Database Sharding](concepts/database-sharding.html) — Horizontal partitioning for write scalability; contrasts with replication
+- [Dependency Injection](concepts/dependency-injection.html) — Design discipline for loose coupling; constructor/method/property injection, lifetime management, anti-patterns
+- [Directness](concepts/directness.html) — Learning by doing the exact target skill; four tactics (project-based, immersive, flight simulator, overkill)
+- [Composition Root](concepts/composition-root.html)
+- [Compound AI Systems](concepts/compound-ai-systems.html) — Orchestrated ensembles of specialized components (retrievers, reasoners, verifiers, tools) instead of monolithic models — Single centralized location where object graphs are wired; Pure DI vs DI Containers
+- [SOLID Principles](concepts/solid-principles.html) — SRP, OCP, LSP, ISP, DIP — the foundation for effective Dependency Injection
+- [Spaced Repetition](concepts/spaced-repetition.html) — Reviewing at the point of near-forgetting to maximize long-term retention; Ebbinghaus forgetting curve counter-strategy
+- [Harness Engineering](concepts/harness-engineering.html) — Closed-loop systems for reliable AI agents; 4 primitives, 5-phase workflow, 90% rule, 6-component anatomy
+- [Agent Quality Optimization](concepts/agent-quality-optimization.html) — Agent ROI over token counting; compound error, model selection, context engineering, Research-Plan-Implement workflow
+- [Agent Components](concepts/agent-components.html) — 5 pillars of AI agent architecture: Model, Tools, Memory, Orchestration, Deployment
+- [Agent Loop](concepts/agent-loop.html) — Perceive-Plan-Act-Observe cycle with self-correction; the heartbeat of agent autonomy
+- [Autoresearch](concepts/autoresearch.html) — Karpathy's autonomous ML experimentation: ratchet loop, program.md, ~700 experiments in 2 days
+- [Agent Hub](concepts/agent-hub.html) — Agent-first collaboration platform: commit DAG replaces main branch, `ah children/leaves/lineage` CLI
+- [Dynamic Workflows](concepts/dynamic-workflows.html) — Anthropic feature: Claude generates JavaScript orchestration scripts spawning up to 1,000 sub-agents
+- [Agent Verification](concepts/agent-verification.html) — Output + trajectory verification for non-deterministic agents; deterministic hooks as final safety layer
+- [ClickHouse](concepts/clickhouse.html) — High-performance column-oriented OLAP DBMS; data lake ready with Delta Lake and Iceberg support
+- [Delta Kernel](concepts/delta-kernel.html) — Rust abstraction layer for Delta Lake protocol; handles transaction logs, snapshots, schema evolution
+- [Delta Live Tables (DLT)](concepts/delta-live-tables.html) — Declarative ETL framework on Databricks; define “what” not “how” — built-in data quality expectations
+- [Liquid Clustering](concepts/liquid-clustering.html) — Modern data layout for Delta/Iceberg tables; replaces Hive-style partitioning with incremental, multi-dimensional clustering
+- [Goroutines](concepts/goroutines.html) — Go's lightweight concurrency primitive; concurrency vs parallelism distinction — handles 100K+ concurrent tasks
+- [Go HTTP Handlers](concepts/go-http-handlers.html) — Handler interface, HandlerFunc, ServeMux routing, and middleware chaining — the building blocks of Go web apps
+- [Go Template Escaping](concepts/go-template-escaping.html) — Context-aware HTML escaping in `html/template`; XSS protection by default — understands HTML/JS/CSS contexts
+- [Go Web Ecosystem](concepts/go-web-ecosystem.html) — Go's philosophy: standard library over frameworks, static binary deployment, built-in testing, implicit interfaces
+- [T-Shaped Skills](concepts/t-shaped-skills.html) — Deep expertise + broad adjacent knowledge; generalized specialists remove DataOps bottlenecks
+- [TDD Methodology](concepts/tdd-methodology.html) — Red-Green-Refactor cycle, Outside-In TDD (Double Loop), YAGNI, the Testing Goat discipline
+- [Functional Testing](concepts/functional-testing.html) — User-perspective testing via Selenium/HTTP client; outer loop of TDD; test behavior not constants
+- [Job Search Strategy](concepts/job-search-strategy.html) — Structured 4-phase job search as marketing exercise; #ENTRYLEVELBOSS framework
+- [Game Theory](concepts/game-theory.html) — Mathematical study of strategic interaction among rational decision-makers; Nash equilibrium, backward induction, incomplete information
+- [Technical Interview](concepts/technical-interview.html)
+- [Technical Leadership](concepts/technical-leadership.html) — Leading through influence rather than authority; communication, organizational navigation, framing problems — Philosophy of coding interviews: relative evaluation, false positives/negatives, company cultures, BUD optimization, Talk Aloud
+- [Code Quality Pillars](concepts/code-quality-pillars.html)
+- [Code Readability](concepts/code-readability.html) — Discipline of minimizing time-to-understanding; Fundamental Theorem of Readability, 4 stages of improvement — Engineering vs Coding distinction, 4 goals and 6 tactical pillars for maintainable software
+- [Software Quality Dimensions](concepts/software-quality-dimensions.html) — Multi-dimensional quality spectrum, four core trade-offs, YAGNI, analyzability, abstraction costs
+- [Software Construction](concepts/software-construction.html) — Building robust, maintainable code by mastering complexity; McConnell's construction vs engineering distinction
+- [DataOps](concepts/dataops.html) — Lean/Agile/DevOps methodology for data; DataOps Factory, T-shaped teams, Minimum Viable DataOps, data veracity
+- [Object-Oriented Design](concepts/object-oriented-design.html) — Practical OO design: TRUE standard, design as discovery, messages over methods, SRP as foundation
+- [Kubernetes Operator](concepts/kubernetes-operator.html)
+- [Kubernetes Architecture](concepts/kubernetes-architecture.html)
+- [Kubernetes Networking](concepts/kubernetes-networking.html)
+- [Kubernetes Security](concepts/kubernetes-security.html) — RBAC, admission control, policy engines (OPA/Kyverno), secrets encryption, OIDC integration, network policies — CNI plugin model; 4-layer model (container→pod→service→ingress); Services, CoreDNS, Ingress/Gateway API — Level-triggered control system: reconciliation loop, spec/status model, hub-and-spoke coordination, control plane vs worker nodes — Control loop pattern (READ → CHANGE → UPDATE), CRDs, extension patterns, Go ecosystem for K8s-native apps
+- [Middleware Pattern](concepts/middleware-pattern.html)
+- [MLOps](concepts/mlops.html) — Automating deployment, monitoring, and retraining of ML models; extends DevOps to address data drift, model staleness, and concept drift — Composable HTTP handler wrapping for cross-cutting concerns; Go's standard-library middleware chaining
+- [Data Head](concepts/data-head.html) — Non-technical professional who thinks critically about data, statistics, and ML without coding; 4 competencies (Think/Speak/Understand/Ensure), data personalities
+- [Data Engineer](concepts/data-engineer.html) — Specialized SWE role: builds data infrastructure, pipelines, and platforms; AI shifts role from writing pipelines to orchestrating AI that writes them
+- [Data Observability](concepts/data-observability.html) — Making pipelines transparent, traceable, and trustworthy; 3 principles, 4 techniques, 5-step incident workflow, field-level lineage
+- [Semantic Layer](concepts/semantic-layer.html) — Unified context layer standardizing metrics and business logic for AI agents across dbt, BI, docs, and query patterns; AE frontier in the AI era
+- [Staff Engineering](concepts/staff-engineering.html)
+- [Staff+ Archetypes](concepts/staff-plus-archetypes.html) — Four role shapes (Tech Lead, Architect, Solver, Right Hand); fluid movement between disciplines — Career level beyond Senior: expanding surface area, influencing across teams, building compounding systems
+- [Apache Spark](concepts/apache-spark.html) — Distributed data processing engine; internals, shuffle optimization, join strategies, data skew mitigation
+- [API Architectural Styles](concepts/api-architectural-styles.html) — Four major API styles (REST, GraphQL, gRPC, SOAP) — choosing the right paradigm for the use case
+- [Architectural Characteristics](concepts/architectural-characteristics.html) — Non-functional "-ilities" (scalability, availability, reliability) that drive architectural decisions; one of the 4 dimensions of architecture
+- [Architectural Decision Records (ADRs)](concepts/architectural-decision-records.html) — Lightweight documents capturing context, rationale, and consequences of architectural decisions; institutional memory of "Why"
+- [Architecture Hoisting](concepts/architecture-hoisting.html) — Shifting quality guarantees from manual code to structural system constraints
+- [Architecture in Agile](concepts/architecture-in-agile.html) — Reconciling architecture with iterative development: Iteration Zero, risk backlog, skeleton vs straitjacket
+- [Model-Code Gap](concepts/model-code-gap.html) — The disconnect between design intent and code reality; architecturally-evident coding as antidote
+- [Risk-Driven Architecture](concepts/risk-driven-architecture.html) — Meta-framework for deciding how much architecture: Identify → Select → Evaluate, commensurate effort
+- [Case Interview](concepts/case-interview.html) — Consulting case interview methodology: MECE, Pyramid Principle, SCORE framework, 9-Step Math
+- [Python Professional Practices](concepts/python-professional-practices.html) — Transition from "code that runs" to production-grade Python via automated quality control
+- [Python Data Model](concepts/python-data-model.html) — Python's unifying object model: dunder methods, protocols, duck typing, goose typing
+- [Pythonic Code](concepts/pythonic-code.html) — Python idioms for expressive, native-feeling code; using what's available over reinventing
+- [Python Static Analysis](concepts/python-static-analysis.html) — Black + Flake8 + Mypy trifecta for automated code quality gates
+- [Quadtree](concepts/quadtree.html) — In-memory tree structure for adaptive 2D spatial subdivision; 1.71 GB for 200M businesses, fits on single server RAM
+- [Python Debugging with PDB](concepts/python-debugging-pdb.html) — Interactive debugging via breakpoint() and PDB: surgical state inspection over print()
+- [Python Standard Library](concepts/python-standard-library.html) — Batteries-included: collections (defaultdict, namedtuple) and sqlite3
+- [Python Concurrency](concepts/python-concurrency.html) — Threads vs Processes, GIL, race condition dangers, and when to use concurrency
+- [Python REPL](concepts/python-repl.html) — Interactive console as a living laboratory: repr, dir(), help(), __mro__ for object exploration
+- [AI-Native Engineering](concepts/ai-native-engineering.html) — Engineers as AI agent orchestrators; four core practices, Conductor vs Orchestrator modes, code overload
+- [AI Psychosis](concepts/ai-psychosis.html)
+- [AI Scaling Laws](concepts/ai-scaling-laws.html) — Predictable relationships between model performance and data, parameters, and compute; power-law diminishing returns — Organizational pathology where leadership AI obsession destroys engineering culture; Meta case study, MTBF vs MTTR, profit center vs cost center
+- [Context Engineering](concepts/context-engineering.html) — 6 dimensions of context, static vs dynamic, agent skills pattern; supersedes prompt engineering
+- [Agentic Development Life Cycle (ADLC)](concepts/agentic-development-life-cycle.html) — Redefinition of SDLC for agent-human collaboration; 4-phase implementation roadmap
+- [Vibe Coding](concepts/vibe-coding.html) — Ad-hoc AI-assisted coding vs professional AI-native engineering; the first stage of Karpathy's 3-stage progression
+- [Software 3.0](concepts/software-3.html) — Karpathy's framing: context and prompts become a programmable interface for AI systems
+- [Data Engineering Fundamentals](concepts/data-engineering-fundamentals.html) — Enduring skills (SQL, Python, data modeling, glue skills) that matter more than ever in 2026
+- [CI/CD for Data Pipelines](concepts/cicd-data-pipelines.html) — Linting, testing, and deployment automation for data engineering; tools, notebooks-vs-scripts debate
+- [Specification-Driven Development](concepts/specification-driven-development.html) — Define before build; antidote to random prompting in AI-native workflows
+- [Data Modeling](concepts/data-modeling.html) — Designing data structure, relationships, and constraints; the most enduring DE fundamental
+- [Data Product](concepts/data-product.html) — Data as continuously produced, monitored asset — not a one-off project; DataOps Factory, Minimum Viable Data Product
+- [Data Quality Monitoring](concepts/data-quality-monitoring.html) — Continuous detection, lineage, and trust signals for data quality; health badges, TimesFM anomaly detection, blast radius calculation
+- [Database Isolation Levels](concepts/database-isolation.html) — Serializable, Repeatable Read, Read Committed, Read Uncommitted; MVCC, optimistic locking with version numbers
+- [Code Overload](concepts/code-overload.html) — NYT term: AI-generated code exceeding review capacity; more bugs, more debt
+- [Refactoring at Scale](concepts/refactoring-at-scale.html) — Safe restructuring of large codebases; drive-by refactorer, Brownie effect, rollout modes
+- [Saga Pattern](concepts/saga-pattern.html) — Distributed transaction management via sequence of local transactions with compensating actions
+- [Saying No](concepts/saying-no.html) — Professional responsibility to push back against unrealistic deadlines and compromised quality
+- [Software Professionalism](concepts/software-professionalism.html) — Responsibility and accountability as the behavioral dimension of software craftsmanship
+- [Software Rot](concepts/software-rot.html) — Inevitable code degradation from environmental change and requirement shifts
+- [Complexity Metrics](concepts/complexity-metrics.html) — Halstead, Cyclomatic, NPath — quantitative measurement for refactoring business cases
+- [Metric Fixation](concepts/metric-fixation.html) — The dysfunctional dominance of standardized metrics over human judgment; goal displacement, gaming, creaming
+- [Goodhart's Law](concepts/goodharts-law.html) — "When a measure becomes a target, it ceases to be a good measure"
+- [Code Archaeology](concepts/code-archaeology.html) — Investigating historical context before refactoring; finding the "initial good"
+- [Bloom Filter](concepts/bloom-filter.html) — Space-efficient probabilistic set membership; cache miss prevention, URL deduplication at scale
+- [Byzantine Fault Tolerance (BFT)](concepts/byzantine-fault-tolerance.html) — Distributed consensus under adversarial node behavior; 3f+1 formula, PBFT protocol, CFT vs BFT trade-offs
+- [CAP Theorem](concepts/cap-theorem.html) — Distributed data stores can guarantee at most 2 of 3: Consistency, Availability, Partition Tolerance; CP vs AP architectures, quorum mechanics, PACELC extension
+- [Deployment Strategies](concepts/deployment-strategies.html) — Blue-Green, Canary, A/B Testing, Multi-Service; incremental rollout for in-memory index rebuild safety
+- [Design Patterns](concepts/design-patterns.html) — All 22 GoF patterns in 3 categories (Creational, Structural, Behavioral); principles-first, composition over inheritance
+- [Distributed Consensus (Raft & Paxos)](concepts/distributed-consensus.html) — Raft and Paxos algorithms for cluster-wide agreement on data state; FLP impossibility, Safety vs Liveness, leader election, log replication, ecosystem comparison
+- [Leader Election](concepts/leader-election.html)
+- [Lindy Effect](concepts/lindy-effect.html) — Technology longevity heuristic: the longer a technology has survived, the longer it will continue to survive — Selecting a single coordinator node in distributed systems; Raft's randomized timeout mechanism, Term-based safety, split-brain prevention, production coordination services
+- [Cloud Service Models](concepts/cloud-service-models.html) — Three levels of cloud abstraction (IaaS, PaaS, SaaS) trading control for operational simplicity
+- [Containerization](concepts/containerization.html) — Docker and the container-vs-VM abstraction; isolation, portability, speed; "containerized on virtualized"
+- [Redis](concepts/redis.html) — In-memory data structure store achieving 100K+ req/s via RAM, single-threaded event loop, and IO multiplexing
+- [TLS & HTTPS](concepts/tls-https.html) — TLS handshake combining asymmetric and symmetric encryption for secure client-server communication
+- [HTTP Evolution](concepts/http-evolution.html) — HTTP/1.0 through HTTP/3 (QUIC): four versions solving Head-of-Line blocking at different layers
+- [Orchestration vs Choreography](concepts/orchestration-vs-choreography.html) — Two competing patterns for coordinating microservice interactions; centralized control vs decentralized events
+- [Password Storage](concepts/password-storage.html) — Salting, hashing, and constant-time comparison; why salt is stored in plaintext
+- [Message Delivery Semantics](concepts/message-delivery-semantics.html) — At-most-once, at-least-once, and effectively exactly-once delivery guarantees in distributed messaging systems
+- [Snowflake ID](concepts/snowflake-id.html) — Twitter's 64-bit distributed unique ID pattern: time-ordered, no coordination, efficient B-tree indexing
+- [Single Sign-On (SSO)](concepts/sso.html) — Centralized identity management; 4-step workflow, cross-domain propagation, password fatigue neutralization
+- [Data Lakehouse](concepts/data-lakehouse.html) — Modern architecture combining data lake economics with warehouse governance; five core benefits, open table formats
+- [DBFS](concepts/dbfs.html) — Databricks File System abstraction: local-feel cloud storage, ephemeral compute + durable data
+- [Databricks Platform](concepts/databricks-platform.html) — Unified Data Intelligence Platform with 4-layer architecture (infra, runtime, governance, workspace); control vs data plane separation; SQL-first strategy
+- [Ultralearning](concepts/ultralearning.html) — Aggressive self-directed skill acquisition; 9 principles, project framework, case studies (Scott Young, Nigel Richards)
+- [Data Analyst](concepts/data-analyst.html) — Business-facing role for metrics, dashboards, and ad-hoc queries; faces the biggest AI disruption — must upskill into data modeling
+- [Data Scientist](concepts/data-scientist.html) — Predictive models, ML, and statistical patterns; AI commoditizes Python coding, elevates business understanding
+- [Self-Service Analytics](concepts/self-service-analytics.html) — AI-powered direct data access for stakeholders; existential threat to analysts who don't learn data modeling
+- [Data Anonymization](concepts/data-anonymization.html) — Spectrum of identifiability; Five Safes framework, iterative measurement-and-transformation, Push/Pull/Functional pipeline architectures
+- [Differential Privacy](concepts/differential-privacy.html) — Mathematical noise injection with formal privacy guarantees; ε-budget, Laplace/Gaussian mechanisms, DP-SGD
+- [Microservices](concepts/microservices.html) — Autopilot architecture: stateless, resilient, SRP at service level; coupling reduction via encapsulation, facade pattern, DDD
+- [Shift Left Security](concepts/shift-left-security.html) — DevSecOps: embed security into every lifecycle phase; SAST, SCA, DAST, threat modeling, secure defaults
+- [Synthetic Data](concepts/synthetic-data.html) — Artificially generated data matching real statistical properties; zero re-identification risk; GANs, VAEs, statistical modeling
+- [Prompt Engineering](concepts/prompt-engineering.html) — Designing instructions to guide LLM behavior without modifying model weights
+- [Retrieval-Augmented Generation (RAG)](concepts/retrieval-augmented-generation.html) — Grounding LLM outputs in external, verifiable data sources to reduce hallucinations
+- [Fine-Tuning](concepts/fine-tuning.html) — Adapting pre-trained LLMs to specific domains via continued training on targeted datasets
+- [Model Distillation](concepts/model-distillation.html) — Training smaller student models to replicate larger teacher model behavior
+- [Model Quantization](concepts/model-quantization.html) — Reducing numerical precision of model weights to shrink size and accelerate inference
+- [Model Pruning](concepts/model-pruning.html) — Removing low-importance weights and connections to compress neural networks
+- [Nash Equilibrium](concepts/nash-equilibrium.html) — Foundational solution concept in game theory: a state where no player can improve by unilaterally changing strategy
+- [Networking Theory](concepts/networking-theory.html) — Theory of Weak Ties; strategic relationship-building for career opportunities
+- [LLM Evaluation Metrics](concepts/llm-evaluation-metrics.html) — Quantitative measures for assessing production LLM output quality and reliability
+- [Real-Time Analytics](concepts/real-time-analytics.html) — Processing and analyzing unbounded data streams with sub-second latency
+- [Lambda Architecture](concepts/lambda-architecture.html) — Dual-path batch + stream processing paradigm for big data systems
+- [Kappa Architecture](concepts/kappa-architecture.html) — Simplified single-path streaming architecture eliminating the batch layer
+- [Stream Processing](concepts/stream-processing.html) — Computing on data as it flows; streaming ⊃ batch, Akidau's 4 questions, stream-table duality, watermarks
+- [Static vs Dynamic Coupling](concepts/static-vs-dynamic-coupling.html) — Two dimensions of coupling: structural wiring vs runtime communication
+- [Statistical Thinking](concepts/statistical-thinking.html) — Critical evidence-driven lens on data claims; variation is universal, context over absolutes, questioning checklist
+- [Stream-Table Duality](concepts/stream-table-duality.html) — Streams and tables are two sides of the same coin; aggregation converts stream→table, CDC converts table→stream
+- [Sustainable AI](concepts/sustainable-ai.html) — Measuring and minimizing AI carbon footprint; efficient architectures, carbon-aware scheduling
+- [Apache Airflow](concepts/apache-airflow.html) — Python-native DAG orchestrator for scheduling and monitoring data pipelines
+- [Snowflake Data Cloud](concepts/snowflake-data-cloud.html) — Cloud-native data platform with separated storage, compute, and services layers
+- [Event Time Processing](concepts/event-time-processing.html) — Using event timestamps for deterministic, reproducible stream computation
+- [Stateful Stream Processing](concepts/stateful-stream-processing.html) — Stream computations requiring durable memory of past events with fault recovery
+- [Watermarks](concepts/watermarks.html) — Monotonically increasing timestamp tracking event-time progress in stream processing; the mechanism for handling out-of-order data
+- [Windowing](concepts/windowing.html) — Dividing infinite streams into finite chunks for bounded aggregation and analysis
+- [Apache Druid](concepts/apache-druid.html) — Open-source column-oriented OLAP for real-time streaming analytics
+- [Apache Pinot](concepts/apache-pinot.html) — LinkedIn-built distributed OLAP for low-latency user-facing analytics
+- [Batch Processing](concepts/batch-processing.html) — Traditional scheduled processing of bounded datasets
+- [Edge Computing](concepts/edge-computing.html) — Processing data at the network edge to reduce latency and bandwidth
+- [LangChain](concepts/langchain.html) — Open-source framework for building LLM-powered applications with tool use and agents
+- [LlamaIndex](concepts/llama-index.html) — Data framework specialized in indexing and retrieval for RAG systems
+- [AI Engineering](concepts/ai-engineering.html) — Building applications on foundation models vs training your own; three-layer stack, adaptation techniques, evaluation-driven development
+- [Engineering Management](concepts/engineering-management.html) — Enabling people to do their best work; trust, alignment with why, feedback, OKRs, manager self-care
+- [Golden Circle](concepts/golden-circle.html) — Sinek's WHY/HOW/WHAT framework; inside-out communication grounded in limbic-brain decision-making
+- [Site Reliability Engineering](concepts/site-reliability-engineering.html) — Production operations as software engineering; SLIs, SLOs, error budgets, toil reduction, failure containment, and blameless learning
+- [Secure System Design](concepts/secure-system-design.html) — Security as an architectural property through explicit boundaries, least privilege, provenance, and safe recovery
+- [Technical Debt Management](concepts/technical-debt-management.html) — Treating debt as a migration and capacity problem; de-risk, enable, finish
+- [Continuous Delivery](concepts/continuous-delivery.html) — Small, tested, observable, and reversible changes through trunk-based development, CI, flags, and release trains
+
+## Sources
+
+- [Data Algorithms](sources/data-algorithms.md) — Notes on "Data Algorithms" by Mahmoud Parsian — 778 pages on distributed algorithms, MapReduce, and Market Basket Analysis
+- [DAMA-DMBOK (2nd Edition)](sources/dama-dmbok-2nd-edition.md) — DAMA International's 628-page reference; 11 Knowledge Areas, CDMP certification basis
+- [#ENTRYLEVELBOSS](sources/entrylevelboss.md) — Alexa Shoen's 298-page job search system; 4-phase framework, Theory of Weak Ties
+- [Hands-On Large Language Models](sources/hands-on-large-language-models.md) — Notes on Jay Alammar's guide — 431 pages on LLM optimization, quantization, PEFT, KV caching, and attention mechanisms
+- [The Art of Functional Programming](sources/the-art-of-functional-programming.md) — Notes on Minh Quang Tran's book — 205 pages on FP thinking, 4 pillars, and the declarative paradigm shift
+- [Python Testing with pytest](sources/okken-python-testing-pytest.md) — Notes on "Python Testing with pytest (2nd Ed.)" by Brian Okken — 398 pages
+- [Software Architecture: The Hard Parts](sources/software-architecture-hard-parts.md) — Ford, Richards, Sadalage & Dehghani's 906-page guide to distributed architecture trade-offs
+- [The LLM Wiki Pattern](sources/sample-article.md) — Karpathy's gist: LLM-maintained persistent wiki instead of RAG
+- [Graph Engineering: The Karpathy Loop, Improved 1000x by Itself](sources/graph-engineering-karpathy.md) — Independent synthesis mapping Karpathy's autoresearch → AgentHub → Anthropic workflows; graph as shared memory for agent systems
+- [Clean Code Cookbook](sources/contieri-clean-code-cookbook.md) — Notes on Contieri's book — 374 pages on software as simulation, MAPPER, bijection
+- [Quick Insights on Materialized Views](sources/materialized-views-quick-insights.md) — Vu Trinh on MVs, IVM theory, freshness trade-offs, and streaming applications
+- [DuckDB: Up and Running](sources/duckdb-up-and-running.md)
+- [Fundamentals of Data Engineering](sources/fundamentals-of-data-engineering.md) — Reis & Housley's 446-page guide: Data Engineering Lifecycle (5 stages), 6 undercurrents, Lindy Effect for tool selection — Wei-Meng Lee's guide — 308 pages on architecture, performance, and ecosystem
+- [System Design Interview – An Insider's Guide](sources/system-design-interview-xu.md) — Alex Xu's 252-page ebook on designing scalable systems from single server to millions of users
+- [Code Complete (2nd Edition)](sources/code-complete.md) — Steve McConnell's definitive 914-page guide to software construction; information hiding, complexity management, testing strategy
+- [Benchmarking Vortex File Format vs Parquet, CSV](sources/benchmarking-vortex-file-format.md) — Daniel Beach benchmarks Vortex vs Parquet/CSV with DuckDB, Polars, DataFusion (Backblaze ~24 GB dataset, 2026-05)
+- [Hugo Data Ingestion Platform with Apache Flink](sources/hugo-data-ingestion-platform-flink.md) — Grab Engineering's evolution from siloed ingestion (Kafka Connect + Sprinkler) to unified Flink-based platform
+- [Unlocking dbt: Design and Deploy Transformations](sources/unlocking-dbt-design-deploy-transformations.md) — Cameron Cyr & Dustin Dorsey's 351-page guide to dbt fundamentals, modeling, testing, and deployment
+- [Dependency Injection Principles, Practices, and Patterns](sources/dependency-injection-principles-patterns.md) — van Deursen & Seemann's 643-page definitive guide to DI, Composition Root, and SOLID
+- [Dive Into Design Patterns](sources/dive-into-design-patterns.md) — Alexander Shvets' guide to all 22 GoF patterns with UML, pseudocode, and SOLID principles
+- [Game Theory: An Open Access Textbook](sources/game-theory-bonanno.md) — Giacomo Bonanno's textbook with 165 solved exercises; Nash equilibrium, extensive-form games, incomplete information
+- [Head First Software Architecture](sources/head-first-software-architecture.md) — Gandhi, Richards & Ford's brain-friendly guide to -ilities, ADRs, trade-offs, and architecture hoisting
+- [Delta Grows Up: Writes, Unity Catalog and Time Travel](sources/delta-grows-up-writes-unity-catalog.md) — DuckDB Labs announces stable Delta extension with writes, time travel, and Unity Catalog integration
+- [The Next Evolution of Delta — Catalog-Managed Tables](sources/delta-catalog-managed-tables.md) — Delta 4.1.0 + UC 0.4.0: catalog becomes authority for table state, inline commits, convergence with Iceberg
+- [Learn Harness Engineering](sources/learn-harness-engineering.md) — walkinglabs' guide: closed-loop AI agent systems, 4 primitives, 5-phase workflow, verification-first design
+- [Agent Quality & Token Optimization — GitHub Workshop](sources/agent-quality-token-optimization.md) — Felix Gozali, Lakshya Tyagi: agent ROI, compound error, model selection, context engineering, deterministic guardrails
+- [Integrating the Rust Delta Kernel into ClickHouse](sources/integrating-rust-delta-kernel-clickhouse.md)
+- [Introduction to Machine Learning Systems](sources/introduction-to-machine-learning-systems.md) — Reddi's 2,020-page textbook: AI Triangle, 6-part framework from foundations to compound AI systems — ClickHouse's journey from native Delta protocol to Rust Kernel; FFI build challenges, CDF support
+- [Debunking 8 Data Layout Myths](sources/debunking-data-layout-myths-liquid-clustering.md) — Databricks' case for Liquid Clustering over partitioning; PB-scale benchmarks, 8 myths debunked
+- [Go Web Programming](sources/go-web-programming.md) — Sau Sheong Chang's guide to building web apps with Go's standard library — 314 pages
+- [Test-Driven Development with Python](sources/tdd-python-percival.md) — Harry Percival's hands-on journey through TDD with Django and Selenium — 662 pages
+- [Apache Iceberg 1.11.0 Release](sources/apache-iceberg-1.11.0-release.md)
+- [The Architecture of Open Source Applications, Volume II](sources/architecture-of-open-source-applications-vol2.md)
+- [The Art of Readable Code](sources/art-of-readable-code.md) — Boswell & Foucher's 198-page guide: Fundamental Theorem of Readability, 4 stages of improvement — Amy Brown & Greg Wilson's 390-page study of real OSS architectures (nginx, Git, GDB, FreeRTOS) — Major release: V3 spec stabilization, table encryption, File Format API, server-side scan planning, SQL UDFs
+- [Cracking the Coding Interview](sources/cracking-the-coding-interview.md) — McDowell's 708-page guide to technical interview philosophy, company cultures, and problem-solving strategies
+- [Good Code, Bad Code](sources/good-code-bad-code.md) — Tom Long's 338-page guide: 4 goals, 6 pillars, and the engineering mindset
+- [Seriously Good Software](sources/seriously-good-software.md) — Marco Faella's 330-page deep dive: quality spectrum, trade-offs, YAGNI, and abstraction costs
+- [Data Engineering with dbt](sources/data-engineering-with-dbt.md) — Roberto Zagni's 603-page guide: DataOps mindset, 3-tier modeling, soft boundaries, Jinja-powered SQL
+- [Practical Object-Oriented Design](sources/practical-object-oriented-design.md) — Sandi Metz's 334-page guide: TRUE standard, design as discovery, messages in OOP
+- [Programming Kubernetes](sources/programming-kubernetes.md)
+- [KubeSchool — Understanding Kubernetes](sources/kubeschool-kubernetes-primer.md) — Portainer's 15-chapter architectural primer: reconciliation, control plane, networking, security, operators, enterprise readiness — Schimanski & Hausenblas's 244-page guide: control loops, operators, CRDs, Go ecosystem for K8s-native development
+- [Data Engineer Role — Data Engineering Handbook](sources/data-engineer-role-handbook.md) — Vietnamese DE Handbook: role definition, differentiation from SWE/DA/DS, daily workflow, best practices
+- [Big Book of Data Engineering](sources/big-book-data-engineering.md) — Databricks' 125-page guide: 3 pillars (Ingest/Transform/Orchestrate), Medallion architecture, DLT, Unity Catalog, DatabricksIQ
+- [Semantic Layers Are Now for AI](sources/semantic-layers-for-ai.md) — Madison Mae on why semantic layers are critical for AI agents, testing ktx open-source context layer
+- [How to Grow From Senior to Staff Engineer](sources/senior-to-staff-engineer.md) — Jordan Cutler's Pinterest case study: 3 dimensions of Staff-level impact in the AI era
+- [Databricks Zerobus — Event Streams + Lake House](sources/databricks-zerobus.md) — Daniel Beach explores serverless streaming into Delta Lake without Kafka infrastructure
+- [Data Engineering — Data Engineering Handbook](sources/data-engineering-handbook.md) — Vietnamese DE Handbook: discipline overview, four pillars, pipeline flow, best practices
+- [Data Lifecycle — Data Engineering Handbook](sources/data-lifecycle-handbook.md) — Vietnamese DE Handbook: six lifecycle stages, Hot/Cold data, GDPR right-to-be-forgotten, cloud automation
+- [De-Coding the Technical Interview Process](sources/de-coding-technical-interview.md) — Emma Bostian's 138-page guide: 5-stage interview lifecycle, 5-step problem-solving cycle
+- [High Performance Spark](sources/high-performance-spark.md) — Karau & Warren's 356-page optimization guide: shuffles, joins, skew, Catalyst, Tungsten
+- [The 1%: Conquer Your Consulting Case Interview](sources/the-1-percent-case-interview.md) — Smeritschnig's 294-page insider's guide: MECE, SCORE, Pyramid Principle
+- [Intuitive Python](sources/intuitive-python.md) — David Muller's 137-page guide to professional Python: static analysis, PDB debugging, standard library, concurrency
+- [Just Enough Software Architecture](sources/just-enough-software-architecture-fairbanks.md) — George Fairbanks' 378-page book on risk-driven architecture: commensurate effort, 3-step model, hoisting, model-code gap
+- [Learning Domain-Driven Design](sources/learning-domain-driven-design.md) — Vlad Khononov's 340-page guide to strategic DDD: subdomain classification, Ubiquitous Language, Bounded Contexts
+- [A Practical Guide to Becoming an AI-Native Engineer](sources/practical-guide-ai-native-engineer.md) — Shah Rahman (Meta) on AI-native engineering: orchestrator model, context engineering, ADLC, security guardrails
+- [In 2026 The Data Fundamentals Matter More Than Ever](sources/data-fundamentals-matter-2026.md) — SeattleDataGuy: SQL/Python/data modeling still critical, glue skills, messy data reality
+- [CI/CD Tips — r/dataengineering](sources/reddit-cicd-tips-data-engineering.md) — Community discussion: Ruff, SQLFluff, SQLMesh, notebooks-vs-scripts debate, testing philosophy
+- [Refactoring at Scale](sources/refactoring-at-scale-lemaire.md) — Maude Lemaire's 245-page guide: strategic refactoring, code rot, complexity metrics, code archaeology
+- [Byzantine Fault Tolerance (BFT) — Data Engineering Handbook](sources/bft-data-engineering-handbook.md) — Vietnamese DE Handbook: Byzantine Generals Problem, 3f+1 formula, PBFT protocol, BFT applications in data engineering
+- [Đồng thuận phân tán (Raft & Paxos) — Data Engineering Handbook](sources/consensus-raft-paxos-handbook.md) — Vietnamese DE Handbook: distributed consensus problem, FLP impossibility, Paxos two-phase protocol, Raft leader election and log replication, comparison and ecosystem
+- [CAP Theorem — Data Engineering Handbook](sources/cap-theorem-handbook.md) — Vietnamese DE Handbook: Brewer's theorem, CP vs AP architectures, quorum mechanics, PACELC extension, CAP-C vs ACID-C distinction
+- [Data Quality Traffic Lights — Robert Sahlin](sources/data-quality-traffic-lights-sahlin.md) — Nordnet's Data Quality Health Badge: 5 failure modes, dbt+Looker lineage, TimesFM anomaly detection, programmatic trust for agents and ML pipelines
+- [Why Is Meta Destroying Its Engineering Org? — Gergely Orosz](sources/meta-destroying-engineering-org-orosz.md) — Pragmatic Engineer investigation: forced data labeling, keystroke tracking, tokenmaxxing, Instagram takeover outage, AI psychosis case study
+- [The New SDLC With Vibe Coding — Osmani, Saboo & Kartakis](sources/new-sdlc-vibe-coding.md) — 51-page ebook: 5-stage AI coding evolution, Agent Loop, 90% harness rule, vibe coding economics
+- [Fluent Python — Luciano Ramalho](sources/fluent-python.md) — 1,831-page definitive guide: data model, Pythonic code, duck typing, goose typing, metaprogramming
+- [Staff Engineer: Leadership Beyond the Management Track — Will Larson](sources/staff-engineer-larson.md) — 215-page guide: three pillars, humaning skills, navigating ambiguity, personal sustainability
+- [The Tyranny of Metrics — Jerry Z. Muller](sources/tyranny-of-metrics.md) — 233-page diagnosis: metric fixation, goal displacement, professional ethos vs managerialism
+- [System Design: The Big Archive — Alex Xu](sources/system-design-big-archive.md) — 159-page ebook: cloud infra, containers, deployment, databases, security, performance, architecture patterns
+- [System Design Interview – An Insider's Guide: Volume 2 — Alex Xu & Sahn Lam](sources/system-design-interview-volume-2.md) — 429-page ebook: proximity service architecture, geospatial indexing, Geohash vs Quadtree, cache stampede mitigation
+- [Databricks Certified DE Associate Study Guide — Derar Alhussein](sources/databricks-dea-study-guide.md) — 802-page ebook: Lakehouse architecture, 4-layer platform, control/data plane, Spark, DBFS, Unity Catalog
+- [Ultralearning — Scott Young](sources/ultralearning-scott-young.md) — Notes on "Ultralearning" by Scott Young — 250 pages; 9 principles, case studies, project execution framework
+- [How AI Changes 4 Core Data Roles](sources/how-ai-changes-4-core-data-roles.md) — Madison Mae maps how AI reshapes Data Analyst, Data Engineer, Data Scientist, and Analytics Engineer roles
+- [Clean Code Principles And Patterns](sources/clean-code-principles-patterns-silen.md) — Petri Silen's 676-page Python edition: microservices architecture, SOLID, testing pyramid, DevSecOps
+- [Building an Anonymization Pipeline](sources/building-anonymization-pipeline.md) — Arbuckle & El Emam's 167-page guide: Five Safes, differential privacy, synthetic data, pipeline architectures
+- [Building LLMs for Production](sources/building-llms-for-production.md) — Peters & Bouchard's 423-page guide: prompt engineering, RAG, fine-tuning, model optimization, evaluation, and deployment
+- [Building Real-Time Analytics Systems](sources/building-real-time-analytics-systems.md) — Mark Needham's 221-page guide: streaming stack architecture, Kafka, Flink, OLAP serving, and scaling
+- [Data Engineering with Python](sources/data-engineering-with-python.md) — Paul Crickard's 299-page guide: Python data pipelines, Airflow, Spark, database interaction, and production principles
+- [Snowflake: The Definitive Guide](sources/snowflake-the-definitive-guide.md)
+- [The Staff Engineer's Path](sources/staff-engineers-path.md) — Tanya Reilly's 368-page roadmap: 3 pillars, 4 archetypes, "humaning" flying buttresses for technical leaders — Joyce Kay Avila's 467-page O'Reilly guide: architecture, semi-structured data, Time Travel, Zero-Copy Cloning, security, and cost optimization
+- [Stream Processing with Apache Flink](sources/stream-processing-apache-flink.md) — Fabian Hueske's 318-page guide: Flink architecture, DataStream API, stateful processing, time semantics, and deployment
+- [500 Lines Or Less](sources/500-lines-or-less.md) — Michael DiBernardo's 478-page fourth AOSA volume; design decisions "in the small", 22 chapters, code as literature
+- [Becoming a Data Head](sources/becoming-data-head.md) — Gutman & Goldmeier's 268-page guide to thinking, speaking, and understanding data without coding
+- [Data Observability for Data Engineering](sources/data-observability-for-data-engineering.md) — Pinto & El Khammal's 240-page guide; 3 principles, 4 implementation techniques, 5-step incident workflow
+- [Practical DataOps](sources/practical-dataops.md) — Atwal's 288-page methodology: Lean + Agile + DevOps for data, DataOps Factory, T-shaped teams
+- [Streaming Systems](sources/streaming-systems.md) — Akidau, Chernyak & Lax's 456-page definitive guide; 4-question model, watermarks, stream-table duality
+- [The Clean Coder](sources/the-clean-coder.md) — Robert C. Martin on professional conduct; saying no, TDD, testing pyramid, mentoring
+- [AI Engineering: Building Applications with Foundation Models](sources/ai-engineering-chip-huyen.md) — Chip Huyen's 535-page map of AI engineering: AI vs ML engineering, 3-layer stack, adaptation techniques, evaluation-driven development
+- [Clean Code: A Handbook of Agile Software Craftsmanship](sources/clean-code-martin.md) — Robert C. Martin's foundational text: naming, smallness, SOLID, emergent design, Three Laws of TDD
+- [Engineering Management for the Rest of Us](sources/engineering-management-drasner.md) — Sarah Drasner's pragmatic EM guide: trust, collaboration, OKRs, scoping PRs, manager resilience
+- [Fundamentals of Data Observability](sources/fundamentals-of-data-observability.md) — Andy Petrella's guide: three channels, observations model, expectations & circuit breakers, DAMA-DMBOK2 extension
+- [Start With Why](sources/start-with-why-sinek.md) — Simon Sinek on the Golden Circle, manipulation vs inspiration, the Split, Law of Diffusion
+- [An Elegant Puzzle: Systems of Engineering Management](sources/an-elegant-puzzle.md) — Will Larson on team stability, health diagnosis, technical-debt migrations, policy, careers, and organizational scaling
+- [Building Secure and Reliable Systems](sources/building-secure-and-reliable-systems.md) — Google practices for secure boundaries, least privilege, supply-chain provenance, testing, recovery, and shared responsibility
+- [Site Reliability Engineering: How Google Runs Production Systems](sources/site-reliability-engineering.md) — SLIs, SLOs, error budgets, load balancing, failure containment, recoverability, testing, and toil reduction
+- [Software Engineering at Google](sources/software-engineering-at-google.md) — Code review, public-API testing, trunk-based development, CI/CD, build infrastructure, and learning culture
+- [The Accidental CTO](sources/the-accidental-cto.md) — Evolution from monolith to globally distributed architecture through measured scaling, replication, containers, CDC, and sharding
+- [Learning Algorithms — George T. Heineman](sources/learning-algorithms-heineman.md) — 281-page guide: operation counting, Big O, doubling effect, 4 layers of CS, time-space tradeoff
+
+## Syntheses
+
+_No syntheses yet. Ask a question and file the answer to add one._
+
+---
+
+_Last updated: 2026-08-23_
+_Pages: 350 (253 concepts + 97 sources)_

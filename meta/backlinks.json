@@ -1,0 +1,2886 @@
+{
+  "agent-loop": [
+    "agent-components",
+    "agent-components",
+    "agent-components",
+    "agent-verification",
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "autoresearch",
+    "dynamic-workflows",
+    "harness-engineering",
+    "langchain",
+    "prompt-engineering",
+    "vibe-coding",
+    "building-llms-for-production",
+    "new-sdlc-vibe-coding"
+  ],
+  "harness-engineering": [
+    "agent-components",
+    "agent-loop",
+    "agent-loop",
+    "agent-quality-optimization",
+    "agent-verification",
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "ai-native-engineering",
+    "ai-native-engineering",
+    "ai-native-engineering",
+    "code-overload",
+    "code-overload",
+    "compound-ai-systems",
+    "context-engineering",
+    "domain-driven-design",
+    "fail-fast",
+    "semantic-layer",
+    "technological-centaur",
+    "testing-strategy",
+    "vibe-coding",
+    "learn-harness-engineering",
+    "learn-harness-engineering",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer"
+  ],
+  "context-engineering": [
+    "agent-components",
+    "agent-quality-optimization",
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "ai-native-engineering",
+    "code-overload",
+    "harness-engineering",
+    "prompt-engineering",
+    "specification-driven-development",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "ai-native-engineering": [
+    "agent-components",
+    "agent-quality-optimization",
+    "agentic-development-life-cycle",
+    "ai-engineering",
+    "ai-psychosis",
+    "code-overload",
+    "code-overload",
+    "code-overload",
+    "code-overload",
+    "context-engineering",
+    "data-engineer",
+    "data-engineering-fundamentals",
+    "data-scientist",
+    "harness-engineering",
+    "machine-learning-systems",
+    "mlops",
+    "specification-driven-development",
+    "vibe-coding",
+    "vibe-coding",
+    "vibe-coding",
+    "ai-engineering-chip-huyen",
+    "how-ai-changes-4-core-data-roles",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "agent-verification": [
+    "agent-components",
+    "agent-quality-optimization",
+    "agentic-development-life-cycle",
+    "graph-grounding",
+    "harness-engineering",
+    "vibe-coding",
+    "new-sdlc-vibe-coding"
+  ],
+  "sources/new-sdlc-vibe-coding": [
+    "agent-components",
+    "agent-loop",
+    "agent-quality-optimization",
+    "agent-verification",
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "context-engineering",
+    "harness-engineering",
+    "vibe-coding"
+  ],
+  "autoresearch": [
+    "agent-hub",
+    "agent-loop",
+    "agent-loop",
+    "graph-engineering",
+    "graph-engineering",
+    "graph-grounding",
+    "software-3",
+    "software-3"
+  ],
+  "graph-engineering": [
+    "agent-hub",
+    "agent-loop",
+    "agent-loop",
+    "autoresearch",
+    "autoresearch",
+    "dynamic-workflows",
+    "graph-grounding",
+    "knowledge-graph",
+    "knowledge-graph",
+    "software-3",
+    "software-3",
+    "vibe-coding",
+    "vibe-coding"
+  ],
+  "knowledge-graph": [
+    "agent-hub",
+    "entity-resolution",
+    "entity-resolution",
+    "graph-engineering",
+    "graph-engineering",
+    "graph-grounding",
+    "wiki-maintenance",
+    "wiki-maintenance"
+  ],
+  "agentic-development-life-cycle": [
+    "agent-hub",
+    "agent-loop",
+    "ai-native-engineering",
+    "ai-psychosis",
+    "architecture-in-agile",
+    "graph-engineering",
+    "harness-engineering",
+    "specification-driven-development",
+    "specification-driven-development",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "sources/graph-engineering-karpathy": [
+    "agent-hub",
+    "agent-loop",
+    "autoresearch",
+    "dynamic-workflows",
+    "entity-resolution",
+    "graph-engineering",
+    "graph-grounding",
+    "knowledge-graph",
+    "software-3",
+    "vibe-coding"
+  ],
+  "agent-components": [
+    "agent-loop",
+    "ai-native-engineering",
+    "compound-ai-systems",
+    "context-engineering",
+    "context-engineering",
+    "harness-engineering",
+    "harness-engineering",
+    "new-sdlc-vibe-coding"
+  ],
+  "vibe-coding": [
+    "agent-loop",
+    "agent-quality-optimization",
+    "agent-verification",
+    "ai-native-engineering",
+    "ai-native-engineering",
+    "ai-psychosis",
+    "code-overload",
+    "code-overload",
+    "context-engineering",
+    "software-3",
+    "specification-driven-development",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer",
+    "practical-guide-ai-native-engineer"
+  ],
+  "fail-fast": [
+    "agent-loop",
+    "agent-quality-optimization",
+    "agent-verification",
+    "architecture-hoisting",
+    "bijection",
+    "bijection",
+    "code-quality-pillars",
+    "dependency-injection",
+    "harness-engineering",
+    "immutability",
+    "python-concurrency",
+    "python-debugging-pdb",
+    "python-professional-practices",
+    "python-static-analysis",
+    "refactoring-at-scale",
+    "shift-left-security",
+    "shift-left-security",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "tdd-methodology",
+    "contieri-clean-code-cookbook"
+  ],
+  "technological-centaur": [
+    "agent-quality-optimization",
+    "ai-native-engineering",
+    "harness-engineering",
+    "readability-vs-performance",
+    "vibe-coding",
+    "contieri-clean-code-cookbook"
+  ],
+  "testing-strategy": [
+    "agent-quality-optimization",
+    "agent-verification",
+    "cicd-data-pipelines",
+    "code-quality-pillars",
+    "functional-testing",
+    "harness-engineering",
+    "llm-evaluation-metrics",
+    "pytest-fixtures",
+    "pytest-markers",
+    "pytest-mocking",
+    "pytest-parametrization",
+    "pytest-plugins",
+    "python-debugging-pdb",
+    "python-static-analysis",
+    "secure-system-design",
+    "shift-left-security",
+    "shift-left-security",
+    "software-construction",
+    "tdd-methodology",
+    "testing-pyramid",
+    "building-secure-and-reliable-systems",
+    "clean-code-principles-patterns-silen",
+    "code-complete",
+    "okken-python-testing-pytest",
+    "site-reliability-engineering",
+    "software-engineering-at-google",
+    "tdd-python-percival",
+    "tdd-python-percival"
+  ],
+  "sources/agent-quality-token-optimization": [
+    "agent-quality-optimization",
+    "context-engineering"
+  ],
+  "agent-quality-optimization": [
+    "agent-verification",
+    "ai-native-engineering",
+    "context-engineering",
+    "vibe-coding",
+    "agent-quality-token-optimization",
+    "new-sdlc-vibe-coding",
+    "practical-guide-ai-native-engineer"
+  ],
+  "specification-driven-development": [
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "code-overload",
+    "new-sdlc-vibe-coding"
+  ],
+  "tdd-methodology": [
+    "agentic-development-life-cycle",
+    "fail-fast",
+    "flow-zone-critique",
+    "functional-testing",
+    "software-professionalism",
+    "testing-pyramid",
+    "testing-strategy",
+    "clean-code-martin",
+    "clean-code-martin",
+    "tdd-python-percival",
+    "tdd-python-percival"
+  ],
+  "sources/practical-guide-ai-native-engineer": [
+    "agentic-development-life-cycle",
+    "ai-native-engineering",
+    "code-overload",
+    "context-engineering",
+    "specification-driven-development",
+    "vibe-coding"
+  ],
+  "sources/ai-engineering-chip-huyen": [
+    "ai-engineering",
+    "ai-engineering"
+  ],
+  "machine-learning-systems": [
+    "ai-engineering",
+    "ai-engineering",
+    "ai-scaling-laws",
+    "compound-ai-systems",
+    "mlops",
+    "sustainable-ai",
+    "ai-engineering-chip-huyen"
+  ],
+  "prompt-engineering": [
+    "ai-engineering",
+    "ai-engineering",
+    "ai-engineering",
+    "fine-tuning",
+    "langchain",
+    "llama-index",
+    "llm-evaluation-metrics",
+    "reranking",
+    "retrieval-augmented-generation",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen",
+    "building-llms-for-production"
+  ],
+  "retrieval-augmented-generation": [
+    "ai-engineering",
+    "ai-engineering",
+    "ai-engineering",
+    "compound-ai-systems",
+    "fine-tuning",
+    "langchain",
+    "langchain",
+    "llama-index",
+    "llama-index",
+    "llm-evaluation-metrics",
+    "lora",
+    "peft",
+    "prompt-engineering",
+    "reranking",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen",
+    "building-llms-for-production"
+  ],
+  "fine-tuning": [
+    "ai-engineering",
+    "ai-engineering",
+    "ai-engineering",
+    "flash-attention",
+    "lora",
+    "model-distillation",
+    "model-pruning",
+    "model-quantization",
+    "peft",
+    "prompt-engineering",
+    "retrieval-augmented-generation",
+    "retrieval-augmented-generation",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen",
+    "building-llms-for-production"
+  ],
+  "llm-evaluation-metrics": [
+    "ai-engineering",
+    "ai-engineering",
+    "llama-index",
+    "observability",
+    "prompt-engineering",
+    "reranking",
+    "retrieval-augmented-generation",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen",
+    "building-llms-for-production"
+  ],
+  "compound-ai-systems": [
+    "ai-engineering",
+    "ai-engineering",
+    "machine-learning-systems",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen"
+  ],
+  "ai-engineering": [
+    "ai-native-engineering",
+    "ai-engineering-chip-huyen",
+    "ai-engineering-chip-huyen"
+  ],
+  "sources/meta-destroying-engineering-org-orosz": [
+    "ai-psychosis"
+  ],
+  "code-overload": [
+    "ai-psychosis",
+    "vibe-coding",
+    "vibe-coding"
+  ],
+  "staff-engineering": [
+    "ai-psychosis",
+    "case-interview",
+    "engineering-management",
+    "staff-plus-archetypes",
+    "technical-leadership",
+    "an-elegant-puzzle",
+    "engineering-management-drasner",
+    "senior-to-staff-engineer"
+  ],
+  "software-rot": [
+    "ai-psychosis",
+    "architecture-in-agile",
+    "code-archaeology",
+    "code-quality-pillars",
+    "complexity-metrics",
+    "essential-accidental-complexity",
+    "microservices",
+    "microservices",
+    "model-code-gap",
+    "refactoring-at-scale",
+    "technical-debt-management",
+    "clean-code-martin",
+    "clean-code-martin",
+    "clean-code-principles-patterns-silen"
+  ],
+  "sustainable-ai": [
+    "ai-scaling-laws",
+    "ai-scaling-laws",
+    "machine-learning-systems"
+  ],
+  "model-distillation": [
+    "ai-scaling-laws",
+    "fine-tuning",
+    "model-pruning",
+    "model-quantization",
+    "sustainable-ai",
+    "building-llms-for-production"
+  ],
+  "sources/introduction-to-machine-learning-systems": [
+    "ai-scaling-laws",
+    "compound-ai-systems",
+    "machine-learning-systems",
+    "mlops",
+    "sustainable-ai"
+  ],
+  "learning-algorithms-heineman": [
+    "algorithm-analysis",
+    "big-o-notation",
+    "time-space-tradeoff"
+  ],
+  "big-o-notation": [
+    "algorithm-analysis",
+    "algorithm-analysis",
+    "time-space-tradeoff"
+  ],
+  "time-space-tradeoff": [
+    "algorithm-analysis",
+    "big-o-notation"
+  ],
+  "complexity-metrics": [
+    "algorithm-analysis",
+    "big-o-notation",
+    "code-archaeology",
+    "code-quality-pillars",
+    "essential-accidental-complexity",
+    "goodharts-law",
+    "refactoring-at-scale",
+    "refactoring-at-scale",
+    "software-rot",
+    "software-rot",
+    "learning-algorithms-heineman"
+  ],
+  "readability-vs-performance": [
+    "algorithm-analysis",
+    "code-quality-pillars",
+    "code-readability",
+    "python-concurrency",
+    "python-professional-practices",
+    "software-quality-dimensions",
+    "technological-centaur",
+    "time-space-tradeoff",
+    "contieri-clean-code-cookbook",
+    "learning-algorithms-heineman"
+  ],
+  "dbt": [
+    "analytics-engineer",
+    "analytics-engineer",
+    "analytics-engineer",
+    "apache-airflow",
+    "batch-processing",
+    "data-engineer",
+    "data-engineer",
+    "data-engineer",
+    "data-ingestion",
+    "data-ingestion",
+    "data-modeling",
+    "data-quality-monitoring",
+    "data-warehousing",
+    "dataops",
+    "elt",
+    "elt",
+    "elt",
+    "elt",
+    "self-service-analytics",
+    "semantic-layer",
+    "data-engineering-with-dbt",
+    "unlocking-dbt-design-deploy-transformations"
+  ],
+  "apache-flink": [
+    "analytics-engineer",
+    "analytics-engineer",
+    "apache-iceberg",
+    "apache-iceberg",
+    "apache-kafka",
+    "apache-kafka",
+    "apache-spark",
+    "batch-processing",
+    "change-data-capture",
+    "change-data-capture",
+    "data-engineer",
+    "data-ingestion",
+    "data-ingestion",
+    "data-ingestion",
+    "dbt",
+    "dbt",
+    "event-time-processing",
+    "kappa-architecture",
+    "kappa-architecture",
+    "kappa-architecture",
+    "lambda-architecture",
+    "lambda-architecture",
+    "model-distillation",
+    "real-time-analytics",
+    "stateful-stream-processing",
+    "stream-processing",
+    "watermarks",
+    "windowing",
+    "building-real-time-analytics-systems",
+    "hugo-data-ingestion-platform-flink",
+    "hugo-data-ingestion-platform-flink",
+    "stream-processing-apache-flink"
+  ],
+  "sources/how-ai-changes-4-core-data-roles": [
+    "analytics-engineer",
+    "data-analyst",
+    "data-analyst",
+    "data-engineer",
+    "data-scientist",
+    "data-scientist",
+    "self-service-analytics",
+    "self-service-analytics",
+    "semantic-layer"
+  ],
+  "data-modeling": [
+    "analytics-engineer",
+    "data-analyst",
+    "data-analyst",
+    "data-architecture",
+    "data-engineering-fundamentals",
+    "master-data-management",
+    "metadata-management",
+    "self-service-analytics",
+    "self-service-analytics",
+    "self-service-analytics",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles"
+  ],
+  "data-governance": [
+    "analytics-engineer",
+    "byzantine-fault-tolerance",
+    "cicd-data-pipelines",
+    "data-anonymization",
+    "data-architecture",
+    "data-lifecycle",
+    "data-lifecycle",
+    "data-modeling",
+    "data-observability",
+    "data-product",
+    "data-quality-monitoring",
+    "data-security",
+    "differential-privacy",
+    "document-content-management",
+    "master-data-management",
+    "metadata-management",
+    "self-service-analytics",
+    "self-service-analytics",
+    "self-service-analytics",
+    "snowflake-data-cloud",
+    "synthetic-data",
+    "building-anonymization-pipeline",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026",
+    "fundamentals-of-data-observability",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "snowflake-the-definitive-guide"
+  ],
+  "semantic-layer": [
+    "analytics-engineer",
+    "data-engineer",
+    "data-product",
+    "metadata-management",
+    "reranking",
+    "self-service-analytics",
+    "self-service-analytics",
+    "self-service-analytics",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "semantic-layers-for-ai"
+  ],
+  "data-analyst": [
+    "analytics-engineer",
+    "data-head",
+    "data-scientist",
+    "data-scientist",
+    "self-service-analytics",
+    "self-service-analytics",
+    "semantic-layer",
+    "statistical-thinking",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles"
+  ],
+  "self-service-analytics": [
+    "analytics-engineer",
+    "data-analyst",
+    "data-analyst",
+    "data-head",
+    "data-scientist",
+    "semantic-layer",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles"
+  ],
+  "elt": [
+    "analytics-engineer",
+    "apache-airflow",
+    "data-engineer",
+    "data-ingestion",
+    "data-ingestion",
+    "data-integration",
+    "data-warehousing",
+    "dataops",
+    "dbt",
+    "dbt",
+    "unlocking-dbt-design-deploy-transformations",
+    "unlocking-dbt-design-deploy-transformations"
+  ],
+  "data-ingestion": [
+    "analytics-engineer",
+    "apache-flink",
+    "apache-iceberg",
+    "apache-iceberg",
+    "apache-kafka",
+    "byzantine-fault-tolerance",
+    "change-data-capture",
+    "data-anonymization",
+    "data-engineer",
+    "data-governance",
+    "data-integration",
+    "data-integration",
+    "data-lifecycle",
+    "dataops",
+    "dbt",
+    "elt",
+    "medallion-architecture",
+    "retrieval-augmented-generation",
+    "synthetic-data",
+    "hugo-data-ingestion-platform-flink",
+    "hugo-data-ingestion-platform-flink"
+  ],
+  "dataops": [
+    "analytics-engineer",
+    "apache-airflow",
+    "cicd-data-pipelines",
+    "cicd-data-pipelines",
+    "code-quality-pillars",
+    "data-anonymization",
+    "data-engineer",
+    "data-engineer",
+    "data-engineering-fundamentals",
+    "data-governance",
+    "data-observability",
+    "data-product",
+    "data-product",
+    "data-quality-monitoring",
+    "dbt",
+    "mlops",
+    "semantic-layer",
+    "t-shaped-skills",
+    "t-shaped-skills",
+    "data-engineering-with-dbt",
+    "data-engineering-with-python",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026",
+    "fundamentals-of-data-observability",
+    "reddit-cicd-tips-data-engineering",
+    "reddit-cicd-tips-data-engineering"
+  ],
+  "sources/unlocking-dbt-design-deploy-transformations": [
+    "analytics-engineer",
+    "dbt",
+    "elt"
+  ],
+  "data-engineer": [
+    "apache-airflow",
+    "apache-spark",
+    "cicd-data-pipelines",
+    "data-analyst",
+    "data-engineering-fundamentals",
+    "data-governance",
+    "data-lifecycle",
+    "data-scientist",
+    "data-scientist",
+    "market-basket-analysis",
+    "t-shaped-skills",
+    "building-llms-for-production",
+    "data-engineer-role-handbook",
+    "data-engineering-handbook",
+    "data-engineering-with-python",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "reddit-cicd-tips-data-engineering",
+    "reddit-cicd-tips-data-engineering"
+  ],
+  "cicd-data-pipelines": [
+    "apache-airflow",
+    "data-engineer",
+    "data-engineer",
+    "data-governance",
+    "data-quality-monitoring",
+    "dataops",
+    "shift-left-security",
+    "shift-left-security",
+    "reddit-cicd-tips-data-engineering",
+    "reddit-cicd-tips-data-engineering"
+  ],
+  "apache-spark": [
+    "apache-airflow",
+    "batch-processing",
+    "batch-processing",
+    "data-lakehouse",
+    "data-lakehouse",
+    "databricks-platform",
+    "databricks-platform",
+    "functional-programming",
+    "lambda-architecture",
+    "market-basket-analysis",
+    "building-real-time-analytics-systems",
+    "data-engineering-with-python",
+    "databricks-dea-study-guide",
+    "high-performance-spark"
+  ],
+  "sources/data-engineering-with-python": [
+    "apache-airflow"
+  ],
+  "polars": [
+    "apache-arrow",
+    "apache-arrow",
+    "apache-arrow",
+    "apache-parquet",
+    "apache-parquet",
+    "duckdb",
+    "vortex-file-format",
+    "vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format"
+  ],
+  "apache-datafusion": [
+    "apache-arrow",
+    "apache-arrow",
+    "apache-arrow",
+    "apache-parquet",
+    "apache-parquet",
+    "duckdb",
+    "duckdb",
+    "polars",
+    "polars",
+    "vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format"
+  ],
+  "vortex-file-format": [
+    "apache-arrow",
+    "apache-arrow",
+    "apache-arrow",
+    "apache-datafusion",
+    "apache-datafusion",
+    "apache-parquet",
+    "apache-parquet",
+    "duckdb",
+    "duckdb",
+    "lance-file-format",
+    "lance-file-format",
+    "lance-file-format",
+    "polars",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format"
+  ],
+  "duckdb": [
+    "apache-arrow",
+    "apache-arrow",
+    "apache-datafusion",
+    "apache-datafusion",
+    "apache-parquet",
+    "apache-parquet",
+    "clickhouse",
+    "clickhouse",
+    "dbt",
+    "dbt",
+    "delta-lake",
+    "delta-lake",
+    "in-process-olap",
+    "in-process-olap",
+    "liquid-clustering",
+    "liquid-clustering",
+    "polars",
+    "polars",
+    "unity-catalog",
+    "vectorized-execution",
+    "vectorized-execution",
+    "vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "delta-grows-up-writes-unity-catalog",
+    "delta-grows-up-writes-unity-catalog",
+    "duckdb-up-and-running",
+    "unlocking-dbt-design-deploy-transformations"
+  ],
+  "apache-parquet": [
+    "apache-arrow",
+    "apache-datafusion",
+    "clickhouse",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "lance-file-format",
+    "lance-file-format",
+    "lance-file-format",
+    "liquid-clustering",
+    "liquid-clustering",
+    "polars",
+    "vortex-file-format",
+    "vortex-file-format",
+    "vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format"
+  ],
+  "vectorized-execution": [
+    "apache-datafusion",
+    "apache-datafusion",
+    "apache-parquet",
+    "clickhouse",
+    "clickhouse",
+    "duckdb",
+    "duckdb",
+    "duckdb",
+    "in-process-olap",
+    "model-pruning",
+    "duckdb-up-and-running",
+    "duckdb-up-and-running"
+  ],
+  "sources/benchmarking-vortex-file-format": [
+    "apache-datafusion",
+    "apache-parquet",
+    "duckdb",
+    "lance-file-format",
+    "polars",
+    "vortex-file-format"
+  ],
+  "real-time-analytics": [
+    "apache-druid",
+    "apache-druid",
+    "apache-kafka",
+    "apache-pinot",
+    "batch-processing",
+    "clickhouse",
+    "data-engineer",
+    "edge-computing",
+    "event-time-processing",
+    "kappa-architecture",
+    "lambda-architecture",
+    "stream-processing",
+    "stream-processing",
+    "windowing",
+    "building-real-time-analytics-systems"
+  ],
+  "clickhouse": [
+    "apache-druid",
+    "apache-druid",
+    "apache-parquet",
+    "apache-pinot",
+    "apache-pinot",
+    "change-data-capture",
+    "change-data-capture",
+    "delta-kernel",
+    "delta-kernel",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "real-time-analytics",
+    "building-real-time-analytics-systems",
+    "integrating-rust-delta-kernel-clickhouse"
+  ],
+  "apache-pinot": [
+    "apache-druid",
+    "apache-druid",
+    "building-real-time-analytics-systems"
+  ],
+  "sources/building-real-time-analytics-systems": [
+    "apache-druid",
+    "apache-kafka",
+    "apache-pinot",
+    "batch-processing",
+    "edge-computing",
+    "kappa-architecture",
+    "lambda-architecture",
+    "real-time-analytics",
+    "stream-processing"
+  ],
+  "change-data-capture": [
+    "apache-flink",
+    "apache-flink",
+    "apache-kafka",
+    "apache-spark",
+    "byzantine-fault-tolerance",
+    "data-engineer",
+    "data-ingestion",
+    "data-ingestion",
+    "data-integration",
+    "delta-lake",
+    "delta-lake",
+    "liquid-clustering",
+    "stream-processing",
+    "stream-processing",
+    "stream-table-duality",
+    "stream-table-duality",
+    "building-real-time-analytics-systems",
+    "hugo-data-ingestion-platform-flink",
+    "hugo-data-ingestion-platform-flink",
+    "integrating-rust-delta-kernel-clickhouse",
+    "stream-processing-apache-flink",
+    "the-accidental-cto"
+  ],
+  "apache-kafka": [
+    "apache-flink",
+    "byzantine-fault-tolerance",
+    "change-data-capture",
+    "data-engineer",
+    "data-ingestion",
+    "data-ingestion",
+    "data-integration",
+    "distributed-consensus",
+    "distributed-consensus",
+    "edge-computing",
+    "kappa-architecture",
+    "kappa-architecture",
+    "leader-election",
+    "leader-election",
+    "message-delivery-semantics",
+    "message-queue",
+    "message-queue",
+    "orchestration-vs-choreography",
+    "real-time-analytics",
+    "redis",
+    "retrieval-augmented-generation",
+    "stream-processing",
+    "stream-table-duality",
+    "stream-table-duality",
+    "building-real-time-analytics-systems",
+    "databricks-zerobus",
+    "hugo-data-ingestion-platform-flink",
+    "hugo-data-ingestion-platform-flink",
+    "stream-processing-apache-flink",
+    "system-design-big-archive"
+  ],
+  "apache-iceberg": [
+    "apache-flink",
+    "apache-parquet",
+    "apache-parquet",
+    "apache-spark",
+    "batch-processing",
+    "clickhouse",
+    "clickhouse",
+    "data-ingestion",
+    "data-ingestion",
+    "data-lakehouse",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "duckdb",
+    "duckdb",
+    "liquid-clustering",
+    "liquid-clustering",
+    "medallion-architecture",
+    "snowflake-data-cloud",
+    "unity-catalog",
+    "unity-catalog",
+    "debunking-data-layout-myths-liquid-clustering",
+    "delta-catalog-managed-tables",
+    "delta-catalog-managed-tables",
+    "delta-grows-up-writes-unity-catalog",
+    "hugo-data-ingestion-platform-flink",
+    "hugo-data-ingestion-platform-flink",
+    "snowflake-the-definitive-guide"
+  ],
+  "sources/hugo-data-ingestion-platform-flink": [
+    "apache-flink",
+    "apache-kafka",
+    "change-data-capture",
+    "data-ingestion"
+  ],
+  "sources/apache-iceberg-1.11.0-release": [
+    "apache-flink",
+    "apache-iceberg"
+  ],
+  "stream-processing": [
+    "apache-flink",
+    "apache-kafka",
+    "batch-processing",
+    "batch-processing",
+    "edge-computing",
+    "event-time-processing",
+    "stateful-stream-processing",
+    "stream-table-duality",
+    "stream-table-duality",
+    "watermarks",
+    "watermarks",
+    "windowing",
+    "building-real-time-analytics-systems",
+    "stream-processing-apache-flink"
+  ],
+  "event-time-processing": [
+    "apache-flink",
+    "stateful-stream-processing",
+    "stream-processing",
+    "watermarks",
+    "watermarks",
+    "windowing",
+    "windowing",
+    "stream-processing-apache-flink"
+  ],
+  "stateful-stream-processing": [
+    "apache-flink",
+    "event-time-processing",
+    "stream-processing",
+    "windowing",
+    "stream-processing-apache-flink"
+  ],
+  "windowing": [
+    "apache-flink",
+    "event-time-processing",
+    "stateful-stream-processing",
+    "stream-processing",
+    "watermarks",
+    "stream-processing-apache-flink"
+  ],
+  "sources/stream-processing-apache-flink": [
+    "apache-flink",
+    "event-time-processing",
+    "stateful-stream-processing",
+    "stream-processing",
+    "windowing"
+  ],
+  "liquid-clustering": [
+    "apache-iceberg",
+    "apache-iceberg",
+    "apache-parquet",
+    "delta-lake",
+    "delta-lake",
+    "debunking-data-layout-myths-liquid-clustering"
+  ],
+  "delta-lake": [
+    "apache-iceberg",
+    "apache-parquet",
+    "apache-parquet",
+    "batch-processing",
+    "change-data-capture",
+    "clickhouse",
+    "clickhouse",
+    "data-lakehouse",
+    "data-lakehouse",
+    "databricks-platform",
+    "databricks-platform",
+    "delta-kernel",
+    "delta-kernel",
+    "delta-live-tables",
+    "duckdb",
+    "duckdb",
+    "liquid-clustering",
+    "liquid-clustering",
+    "medallion-architecture",
+    "medallion-architecture",
+    "snowflake-data-cloud",
+    "unity-catalog",
+    "big-book-data-engineering",
+    "big-book-data-engineering",
+    "databricks-dea-study-guide",
+    "databricks-zerobus",
+    "debunking-data-layout-myths-liquid-clustering",
+    "delta-catalog-managed-tables",
+    "delta-catalog-managed-tables",
+    "delta-grows-up-writes-unity-catalog",
+    "delta-grows-up-writes-unity-catalog",
+    "integrating-rust-delta-kernel-clickhouse",
+    "snowflake-the-definitive-guide"
+  ],
+  "message-queue": [
+    "apache-kafka",
+    "apache-kafka",
+    "cap-theorem",
+    "cdn",
+    "message-delivery-semantics",
+    "microservices",
+    "microservices",
+    "observability",
+    "orchestration-vs-choreography",
+    "scalable-architecture",
+    "system-design-big-archive",
+    "system-design-interview-xu"
+  ],
+  "sources/databricks-zerobus": [
+    "apache-kafka",
+    "delta-lake"
+  ],
+  "sources/system-design-big-archive": [
+    "apache-kafka",
+    "database-sharding"
+  ],
+  "lambda-architecture": [
+    "apache-kafka",
+    "batch-processing",
+    "data-lakehouse",
+    "kappa-architecture",
+    "kappa-architecture",
+    "real-time-analytics",
+    "stream-processing",
+    "building-real-time-analytics-systems"
+  ],
+  "kappa-architecture": [
+    "apache-kafka",
+    "data-lakehouse",
+    "lambda-architecture",
+    "lambda-architecture",
+    "real-time-analytics",
+    "stream-processing",
+    "building-real-time-analytics-systems"
+  ],
+  "lance-file-format": [
+    "apache-parquet",
+    "apache-parquet",
+    "vortex-file-format",
+    "benchmarking-vortex-file-format",
+    "benchmarking-vortex-file-format"
+  ],
+  "apache-druid": [
+    "apache-pinot",
+    "apache-pinot",
+    "building-real-time-analytics-systems"
+  ],
+  "market-basket-analysis": [
+    "apache-spark",
+    "apache-spark"
+  ],
+  "sources/high-performance-spark": [
+    "apache-spark"
+  ],
+  "sources/databricks-dea-study-guide": [
+    "apache-spark",
+    "delta-lake",
+    "unity-catalog"
+  ],
+  "databricks-platform": [
+    "apache-spark",
+    "data-lakehouse",
+    "dbfs",
+    "dbfs",
+    "delta-lake",
+    "delta-live-tables",
+    "unity-catalog",
+    "databricks-dea-study-guide"
+  ],
+  "data-lakehouse": [
+    "apache-spark",
+    "data-warehousing",
+    "databricks-platform",
+    "dbfs",
+    "delta-lake",
+    "lambda-architecture",
+    "medallion-architecture",
+    "medallion-architecture",
+    "real-time-analytics",
+    "snowflake-data-cloud",
+    "unity-catalog",
+    "big-book-data-engineering",
+    "building-real-time-analytics-systems",
+    "databricks-dea-study-guide",
+    "snowflake-the-definitive-guide"
+  ],
+  "functional-programming": [
+    "apache-spark",
+    "immutability"
+  ],
+  "http-evolution": [
+    "api-architectural-styles"
+  ],
+  "system-design-interview": [
+    "api-architectural-styles",
+    "bloom-filter",
+    "cloud-service-models",
+    "deployment-strategies",
+    "geohash",
+    "geospatial-indexing",
+    "http-evolution",
+    "message-delivery-semantics",
+    "orchestration-vs-choreography",
+    "proximity-service",
+    "quadtree",
+    "redis",
+    "risk-driven-architecture",
+    "scalable-architecture",
+    "snowflake-id",
+    "technical-interview",
+    "tls-https",
+    "system-design-big-archive",
+    "system-design-interview-xu"
+  ],
+  "orchestration-vs-choreography": [
+    "api-architectural-styles",
+    "message-delivery-semantics",
+    "microservices",
+    "microservices",
+    "microservices",
+    "saga-pattern",
+    "static-vs-dynamic-coupling"
+  ],
+  "microservices": [
+    "architectural-characteristics",
+    "architectural-characteristics",
+    "architecture-quantum",
+    "data-mesh",
+    "data-sovereignty",
+    "decomposition-patterns",
+    "observability",
+    "saga-pattern",
+    "secure-system-design",
+    "static-vs-dynamic-coupling",
+    "clean-code-principles-patterns-silen",
+    "head-first-software-architecture"
+  ],
+  "sources/head-first-software-architecture": [
+    "architectural-characteristics",
+    "architectural-decision-records",
+    "risk-driven-architecture"
+  ],
+  "risk-driven-architecture": [
+    "architectural-characteristics",
+    "architectural-decision-records",
+    "architecture-hoisting",
+    "architecture-in-agile",
+    "lindy-effect",
+    "model-code-gap",
+    "software-quality-dimensions",
+    "system-design-interview",
+    "head-first-software-architecture"
+  ],
+  "architectural-decision-records": [
+    "architectural-characteristics",
+    "architecture-fitness-functions",
+    "architecture-hoisting",
+    "risk-driven-architecture",
+    "risk-driven-architecture",
+    "head-first-software-architecture",
+    "head-first-software-architecture"
+  ],
+  "observability": [
+    "architectural-characteristics",
+    "data-observability",
+    "data-observability",
+    "kubernetes-operator",
+    "llm-evaluation-metrics",
+    "message-queue",
+    "microservices",
+    "microservices",
+    "mlops",
+    "scalable-architecture",
+    "shift-left-security",
+    "shift-left-security",
+    "site-reliability-engineering",
+    "system-design-interview",
+    "building-llms-for-production",
+    "clean-code-principles-patterns-silen",
+    "fundamentals-of-data-observability",
+    "site-reliability-engineering",
+    "system-design-interview-xu"
+  ],
+  "architecture-in-agile": [
+    "architectural-decision-records",
+    "architectural-decision-records",
+    "code-quality-pillars",
+    "refactoring-at-scale",
+    "risk-driven-architecture",
+    "tdd-methodology"
+  ],
+  "architectural-characteristics": [
+    "architectural-decision-records",
+    "microservices",
+    "risk-driven-architecture",
+    "risk-driven-architecture",
+    "head-first-software-architecture",
+    "head-first-software-architecture"
+  ],
+  "architecture-hoisting": [
+    "architectural-decision-records",
+    "architecture-fitness-functions",
+    "architecture-in-agile",
+    "fail-fast",
+    "immutability",
+    "information-hiding",
+    "model-code-gap",
+    "risk-driven-architecture",
+    "software-quality-dimensions",
+    "head-first-software-architecture"
+  ],
+  "model-code-gap": [
+    "architecture-fitness-functions",
+    "architecture-hoisting",
+    "architecture-in-agile",
+    "architecture-in-agile",
+    "risk-driven-architecture"
+  ],
+  "shift-left-security": [
+    "architecture-fitness-functions",
+    "data-security",
+    "kubernetes-security",
+    "secure-system-design",
+    "secure-system-design",
+    "building-secure-and-reliable-systems",
+    "clean-code-principles-patterns-silen"
+  ],
+  "software-quality-dimensions": [
+    "architecture-hoisting",
+    "code-quality-pillars",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "functional-programming",
+    "object-oriented-design",
+    "readability-vs-performance",
+    "risk-driven-architecture",
+    "staff-engineering",
+    "seriously-good-software"
+  ],
+  "immutability": [
+    "architecture-hoisting",
+    "bijection",
+    "code-quality-pillars",
+    "dependency-injection",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "functional-programming",
+    "python-standard-library",
+    "rich-domain-model",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "tell-dont-ask",
+    "contieri-clean-code-cookbook"
+  ],
+  "dependency-injection": [
+    "architecture-hoisting",
+    "code-quality-pillars",
+    "composition-root",
+    "composition-root",
+    "composition-root",
+    "design-patterns",
+    "go-http-handlers",
+    "go-web-ecosystem",
+    "object-oriented-design",
+    "pytest-fixtures",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "testing-strategy",
+    "clean-code-martin",
+    "clean-code-martin"
+  ],
+  "refactoring-at-scale": [
+    "architecture-in-agile",
+    "code-archaeology",
+    "code-quality-pillars",
+    "code-quality-pillars",
+    "complexity-metrics",
+    "complexity-metrics",
+    "decomposition-patterns",
+    "essential-accidental-complexity",
+    "software-rot",
+    "software-rot",
+    "technical-debt-management"
+  ],
+  "domain-driven-design": [
+    "architecture-in-agile",
+    "data-mesh",
+    "microservices",
+    "microservices",
+    "model-code-gap",
+    "learning-domain-driven-design"
+  ],
+  "static-vs-dynamic-coupling": [
+    "architecture-quantum",
+    "decomposition-patterns"
+  ],
+  "decomposition-patterns": [
+    "architecture-quantum",
+    "data-sovereignty"
+  ],
+  "data-sovereignty": [
+    "architecture-quantum",
+    "data-mesh",
+    "decomposition-patterns"
+  ],
+  "agent-hub": [
+    "autoresearch",
+    "autoresearch",
+    "dynamic-workflows",
+    "graph-engineering",
+    "graph-engineering"
+  ],
+  "software-3": [
+    "autoresearch"
+  ],
+  "apache-airflow": [
+    "batch-processing",
+    "data-engineer",
+    "data-engineering-with-python"
+  ],
+  "algorithm-analysis": [
+    "big-o-notation",
+    "time-space-tradeoff"
+  ],
+  "scalable-architecture": [
+    "big-o-notation",
+    "cache-strategy",
+    "cap-theorem",
+    "cdn",
+    "cloud-service-models",
+    "database-replication",
+    "database-sharding",
+    "deployment-strategies",
+    "distributed-consensus",
+    "load-balancer",
+    "message-queue",
+    "observability",
+    "proximity-service",
+    "site-reliability-engineering",
+    "stateless-architecture",
+    "system-design-interview",
+    "learning-algorithms-heineman",
+    "site-reliability-engineering",
+    "system-design-interview-xu",
+    "the-accidental-cto"
+  ],
+  "rich-domain-model": [
+    "bijection",
+    "code-quality-pillars",
+    "domain-driven-design",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "mapper-principles",
+    "object-oriented-design",
+    "software-quality-dimensions",
+    "solid-principles",
+    "solid-principles",
+    "technological-centaur",
+    "contieri-clean-code-cookbook"
+  ],
+  "mapper-principles": [
+    "bijection",
+    "domain-driven-design",
+    "software-as-simulation",
+    "solid-principles",
+    "solid-principles",
+    "contieri-clean-code-cookbook"
+  ],
+  "sources/contieri-clean-code-cookbook": [
+    "bijection",
+    "fail-fast",
+    "immutability",
+    "mapper-principles",
+    "readability-vs-performance",
+    "rich-domain-model",
+    "software-as-simulation",
+    "technological-centaur",
+    "tell-dont-ask"
+  ],
+  "cache-strategy": [
+    "bloom-filter",
+    "cap-theorem",
+    "cdn",
+    "database-replication",
+    "database-sharding",
+    "load-balancer",
+    "observability",
+    "proximity-service",
+    "redis",
+    "scalable-architecture",
+    "stateless-architecture",
+    "system-design-interview",
+    "system-design-big-archive",
+    "system-design-interview-xu"
+  ],
+  "sources/bft-data-engineering-handbook": [
+    "byzantine-fault-tolerance"
+  ],
+  "distributed-consensus": [
+    "byzantine-fault-tolerance",
+    "cap-theorem",
+    "kubernetes-architecture",
+    "leader-election",
+    "leader-election",
+    "consensus-raft-paxos-handbook"
+  ],
+  "database-replication": [
+    "cache-strategy",
+    "cap-theorem",
+    "data-storage-operations",
+    "database-isolation",
+    "database-sharding",
+    "database-sharding",
+    "distributed-consensus",
+    "leader-election",
+    "load-balancer",
+    "observability",
+    "proximity-service",
+    "scalable-architecture",
+    "stateful-stream-processing",
+    "stateless-architecture",
+    "system-design-interview",
+    "site-reliability-engineering",
+    "system-design-interview-xu",
+    "the-accidental-cto"
+  ],
+  "cdn": [
+    "cache-strategy",
+    "load-balancer",
+    "scalable-architecture",
+    "system-design-interview-xu"
+  ],
+  "load-balancer": [
+    "cache-strategy",
+    "cdn",
+    "database-replication",
+    "kubernetes-networking",
+    "message-queue",
+    "observability",
+    "scalable-architecture",
+    "stateless-architecture",
+    "system-design-interview",
+    "site-reliability-engineering",
+    "system-design-interview-xu"
+  ],
+  "redis": [
+    "cache-strategy"
+  ],
+  "bloom-filter": [
+    "cache-strategy"
+  ],
+  "proximity-service": [
+    "cache-strategy",
+    "database-replication",
+    "geohash",
+    "geospatial-indexing",
+    "quadtree",
+    "scalable-architecture",
+    "system-design-interview",
+    "system-design-interview"
+  ],
+  "sources/cap-theorem-handbook": [
+    "cap-theorem"
+  ],
+  "byzantine-fault-tolerance": [
+    "cap-theorem",
+    "distributed-consensus",
+    "leader-election",
+    "bft-data-engineering-handbook"
+  ],
+  "technical-interview": [
+    "case-interview",
+    "personal-branding",
+    "staff-engineering",
+    "system-design-interview",
+    "cracking-the-coding-interview",
+    "de-coding-technical-interview"
+  ],
+  "sources/the-1-percent-case-interview": [
+    "case-interview"
+  ],
+  "delta-kernel": [
+    "change-data-capture",
+    "change-data-capture",
+    "clickhouse",
+    "clickhouse",
+    "delta-lake",
+    "delta-lake",
+    "integrating-rust-delta-kernel-clickhouse"
+  ],
+  "materialized-views": [
+    "change-data-capture",
+    "dbsp",
+    "dbt",
+    "differential-dataflow",
+    "incremental-view-maintenance",
+    "incremental-view-maintenance",
+    "stream-table-duality",
+    "timely-dataflow",
+    "materialized-views-quick-insights"
+  ],
+  "incremental-view-maintenance": [
+    "change-data-capture",
+    "dbsp",
+    "differential-dataflow",
+    "differential-dataflow",
+    "materialized-views",
+    "materialized-views",
+    "materialized-views",
+    "timely-dataflow",
+    "materialized-views-quick-insights"
+  ],
+  "sources/the-accidental-cto": [
+    "change-data-capture",
+    "continuous-delivery",
+    "database-replication"
+  ],
+  "sources/reddit-cicd-tips-data-engineering": [
+    "cicd-data-pipelines"
+  ],
+  "in-process-olap": [
+    "clickhouse",
+    "clickhouse",
+    "duckdb",
+    "model-quantization",
+    "vectorized-execution",
+    "duckdb-up-and-running"
+  ],
+  "sources/integrating-rust-delta-kernel-clickhouse": [
+    "clickhouse",
+    "delta-kernel",
+    "delta-lake"
+  ],
+  "containerization": [
+    "cloud-service-models",
+    "continuous-delivery",
+    "data-storage-operations",
+    "deployment-strategies",
+    "kubernetes-architecture",
+    "kubernetes-networking",
+    "microservices",
+    "microservices",
+    "the-accidental-cto"
+  ],
+  "essential-accidental-complexity": [
+    "code-archaeology",
+    "code-quality-pillars",
+    "complexity-metrics",
+    "fail-fast",
+    "game-theory",
+    "immutability",
+    "lindy-effect",
+    "readability-vs-performance",
+    "refactoring-at-scale",
+    "risk-driven-architecture",
+    "software-construction",
+    "software-quality-dimensions",
+    "software-rot",
+    "time-space-tradeoff",
+    "code-complete",
+    "learning-algorithms-heineman"
+  ],
+  "code-quality-pillars": [
+    "code-archaeology",
+    "code-readability",
+    "complexity-metrics",
+    "dataops",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "flow-zone-critique",
+    "functional-programming",
+    "metric-fixation",
+    "object-oriented-design",
+    "python-standard-library",
+    "python-static-analysis",
+    "readability-vs-performance",
+    "refactoring-at-scale",
+    "saying-no",
+    "shift-left-security",
+    "shift-left-security",
+    "software-construction",
+    "software-professionalism",
+    "software-quality-dimensions",
+    "software-rot",
+    "staff-engineering",
+    "staff-plus-archetypes",
+    "testing-strategy",
+    "clean-code-martin",
+    "clean-code-principles-patterns-silen",
+    "code-complete",
+    "good-code-bad-code"
+  ],
+  "sources/refactoring-at-scale-lemaire": [
+    "code-archaeology",
+    "complexity-metrics",
+    "refactoring-at-scale",
+    "software-rot"
+  ],
+  "solid-principles": [
+    "code-quality-pillars",
+    "composition-root",
+    "dependency-injection",
+    "dependency-injection",
+    "design-patterns",
+    "design-patterns",
+    "information-hiding",
+    "microservices",
+    "model-code-gap",
+    "object-oriented-design",
+    "clean-code-martin",
+    "clean-code-martin",
+    "clean-code-principles-patterns-silen",
+    "dependency-injection-principles-patterns",
+    "dive-into-design-patterns",
+    "dive-into-design-patterns",
+    "practical-object-oriented-design"
+  ],
+  "tell-dont-ask": [
+    "code-quality-pillars",
+    "domain-driven-design",
+    "mapper-principles",
+    "object-oriented-design",
+    "rich-domain-model",
+    "solid-principles",
+    "solid-principles",
+    "clean-code-martin",
+    "contieri-clean-code-cookbook"
+  ],
+  "code-readability": [
+    "code-quality-pillars",
+    "mentoring",
+    "clean-code-martin",
+    "clean-code-martin"
+  ],
+  "object-oriented-design": [
+    "code-quality-pillars",
+    "design-patterns",
+    "domain-driven-design",
+    "functional-programming",
+    "software-quality-dimensions",
+    "solid-principles",
+    "tell-dont-ask",
+    "clean-code-martin",
+    "clean-code-principles-patterns-silen",
+    "dive-into-design-patterns",
+    "practical-object-oriented-design"
+  ],
+  "sources/good-code-bad-code": [
+    "code-quality-pillars"
+  ],
+  "sources/clean-code-principles-patterns-silen": [
+    "code-quality-pillars",
+    "microservices",
+    "object-oriented-design",
+    "observability",
+    "shift-left-security",
+    "software-rot",
+    "solid-principles",
+    "testing-strategy"
+  ],
+  "sources/code-complete": [
+    "code-quality-pillars"
+  ],
+  "sources/clean-code-martin": [
+    "code-quality-pillars",
+    "solid-principles",
+    "tdd-methodology"
+  ],
+  "software-construction": [
+    "code-quality-pillars",
+    "essential-accidental-complexity",
+    "information-hiding",
+    "software-engineering-at-google"
+  ],
+  "information-hiding": [
+    "code-quality-pillars",
+    "code-readability",
+    "essential-accidental-complexity",
+    "software-construction",
+    "software-construction",
+    "technical-leadership",
+    "code-complete",
+    "code-complete"
+  ],
+  "sources/art-of-readable-code": [
+    "code-readability"
+  ],
+  "sources/500-lines-or-less": [
+    "code-readability"
+  ],
+  "sources/dependency-injection-principles-patterns": [
+    "composition-root",
+    "dependency-injection",
+    "solid-principles"
+  ],
+  "ai-scaling-laws": [
+    "compound-ai-systems",
+    "machine-learning-systems",
+    "sustainable-ai"
+  ],
+  "cloud-service-models": [
+    "containerization",
+    "data-storage-operations",
+    "snowflake-data-cloud",
+    "snowflake-the-definitive-guide"
+  ],
+  "deployment-strategies": [
+    "containerization",
+    "continuous-delivery",
+    "microservices",
+    "microservices",
+    "proximity-service",
+    "quadtree",
+    "shift-left-security",
+    "site-reliability-engineering"
+  ],
+  "goroutines": [
+    "containerization",
+    "go-http-handlers",
+    "go-web-ecosystem",
+    "kubernetes-operator",
+    "go-web-programming",
+    "go-web-programming"
+  ],
+  "concepts/site-reliability-engineering": [
+    "continuous-delivery",
+    "deployment-strategies",
+    "secure-system-design",
+    "building-secure-and-reliable-systems"
+  ],
+  "technical-debt-management": [
+    "continuous-delivery",
+    "engineering-management",
+    "an-elegant-puzzle",
+    "an-elegant-puzzle"
+  ],
+  "kubernetes-architecture": [
+    "continuous-delivery",
+    "kubernetes-networking",
+    "kubernetes-operator",
+    "kubernetes-security",
+    "the-accidental-cto"
+  ],
+  "sources/software-engineering-at-google": [
+    "continuous-delivery",
+    "technical-debt-management",
+    "testing-strategy"
+  ],
+  "analytics-engineer": [
+    "data-analyst",
+    "data-analyst",
+    "data-engineer",
+    "data-modeling",
+    "data-scientist",
+    "dataops",
+    "dataops",
+    "dbt",
+    "elt",
+    "self-service-analytics",
+    "self-service-analytics",
+    "semantic-layer",
+    "semantic-layer",
+    "t-shaped-skills",
+    "data-engineering-with-dbt",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles",
+    "unlocking-dbt-design-deploy-transformations",
+    "unlocking-dbt-design-deploy-transformations"
+  ],
+  "sources/building-anonymization-pipeline": [
+    "data-anonymization",
+    "data-anonymization",
+    "data-governance",
+    "data-governance",
+    "data-quality-monitoring",
+    "differential-privacy",
+    "differential-privacy",
+    "synthetic-data"
+  ],
+  "synthetic-data": [
+    "data-anonymization",
+    "data-anonymization",
+    "differential-privacy",
+    "building-anonymization-pipeline"
+  ],
+  "differential-privacy": [
+    "data-anonymization",
+    "data-anonymization",
+    "data-security",
+    "synthetic-data",
+    "synthetic-data",
+    "synthetic-data",
+    "building-anonymization-pipeline"
+  ],
+  "data-quality-monitoring": [
+    "data-anonymization",
+    "data-observability",
+    "data-observability",
+    "data-product",
+    "delta-live-tables",
+    "differential-privacy",
+    "fine-tuning",
+    "llm-evaluation-metrics",
+    "master-data-management",
+    "metadata-management",
+    "metric-fixation",
+    "statistical-thinking",
+    "synthetic-data",
+    "building-anonymization-pipeline",
+    "data-engineering-with-python",
+    "data-quality-traffic-lights-sahlin",
+    "fundamentals-of-data-observability"
+  ],
+  "data-lifecycle": [
+    "data-anonymization",
+    "data-architecture",
+    "data-engineering-fundamentals",
+    "data-governance",
+    "data-storage-operations",
+    "document-content-management",
+    "data-lifecycle-handbook",
+    "fundamentals-of-data-observability"
+  ],
+  "data-integration": [
+    "data-architecture"
+  ],
+  "medallion-architecture": [
+    "data-architecture",
+    "data-lakehouse",
+    "data-lakehouse",
+    "data-warehousing",
+    "databricks-platform",
+    "delta-live-tables",
+    "delta-live-tables",
+    "big-book-data-engineering",
+    "big-book-data-engineering"
+  ],
+  "data-engineering-fundamentals": [
+    "data-engineer",
+    "data-engineer",
+    "data-engineer",
+    "data-governance",
+    "data-modeling",
+    "data-modeling",
+    "dataops",
+    "lindy-effect",
+    "data-engineering-with-python",
+    "data-fundamentals-matter-2026",
+    "data-fundamentals-matter-2026"
+  ],
+  "sources/data-engineer-role-handbook": [
+    "data-engineer",
+    "data-engineering-fundamentals"
+  ],
+  "sources/data-engineering-handbook": [
+    "data-engineer",
+    "data-governance",
+    "data-lifecycle",
+    "data-modeling"
+  ],
+  "lindy-effect": [
+    "data-engineering-fundamentals",
+    "data-engineering-fundamentals"
+  ],
+  "sources/data-fundamentals-matter-2026": [
+    "data-engineering-fundamentals",
+    "data-modeling"
+  ],
+  "sources/fundamentals-of-data-engineering": [
+    "data-engineering-fundamentals",
+    "lindy-effect"
+  ],
+  "data-anonymization": [
+    "data-governance",
+    "data-governance",
+    "data-quality-monitoring",
+    "data-security",
+    "differential-privacy",
+    "synthetic-data",
+    "synthetic-data",
+    "synthetic-data",
+    "building-anonymization-pipeline"
+  ],
+  "sources/data-lifecycle-handbook": [
+    "data-governance",
+    "data-governance",
+    "data-lifecycle"
+  ],
+  "unity-catalog": [
+    "data-governance",
+    "data-lakehouse",
+    "databricks-platform",
+    "databricks-platform",
+    "delta-lake",
+    "delta-lake",
+    "delta-lake",
+    "duckdb",
+    "duckdb",
+    "big-book-data-engineering",
+    "big-book-data-engineering",
+    "databricks-dea-study-guide",
+    "delta-catalog-managed-tables",
+    "delta-catalog-managed-tables",
+    "delta-grows-up-writes-unity-catalog",
+    "delta-grows-up-writes-unity-catalog"
+  ],
+  "sources/becoming-data-head": [
+    "data-head",
+    "data-head",
+    "statistical-thinking",
+    "statistical-thinking"
+  ],
+  "statistical-thinking": [
+    "data-head",
+    "data-head"
+  ],
+  "data-scientist": [
+    "data-head",
+    "how-ai-changes-4-core-data-roles",
+    "how-ai-changes-4-core-data-roles"
+  ],
+  "delta-live-tables": [
+    "data-lakehouse",
+    "data-quality-monitoring",
+    "databricks-platform",
+    "databricks-platform",
+    "medallion-architecture",
+    "medallion-architecture",
+    "big-book-data-engineering",
+    "big-book-data-engineering"
+  ],
+  "dbfs": [
+    "data-lakehouse",
+    "databricks-platform"
+  ],
+  "snowflake-data-cloud": [
+    "data-lakehouse",
+    "data-warehousing",
+    "snowflake-the-definitive-guide"
+  ],
+  "data-product": [
+    "data-mesh",
+    "dataops",
+    "dataops"
+  ],
+  "architecture-fitness-functions": [
+    "data-mesh"
+  ],
+  "sources/data-observability-for-data-engineering": [
+    "data-observability",
+    "data-observability"
+  ],
+  "sources/fundamentals-of-data-observability": [
+    "data-observability",
+    "data-observability"
+  ],
+  "sources/practical-dataops": [
+    "data-product",
+    "data-product",
+    "dataops",
+    "dataops",
+    "t-shaped-skills",
+    "t-shaped-skills"
+  ],
+  "sources/data-quality-traffic-lights-sahlin": [
+    "data-quality-monitoring"
+  ],
+  "password-storage": [
+    "data-security",
+    "sso",
+    "tls-https"
+  ],
+  "architecture-quantum": [
+    "data-sovereignty",
+    "decomposition-patterns",
+    "static-vs-dynamic-coupling"
+  ],
+  "data-mesh": [
+    "data-sovereignty"
+  ],
+  "saga-pattern": [
+    "data-sovereignty",
+    "static-vs-dynamic-coupling"
+  ],
+  "database-sharding": [
+    "data-storage-operations",
+    "database-isolation",
+    "database-replication",
+    "snowflake-id",
+    "system-design-big-archive",
+    "the-accidental-cto"
+  ],
+  "cap-theorem": [
+    "database-isolation",
+    "distributed-consensus",
+    "leader-election",
+    "risk-driven-architecture",
+    "saga-pattern",
+    "cap-theorem-handbook"
+  ],
+  "database-isolation": [
+    "database-replication",
+    "database-sharding",
+    "snowflake-data-cloud",
+    "data-engineering-with-python",
+    "snowflake-the-definitive-guide"
+  ],
+  "site-reliability-engineering": [
+    "database-replication",
+    "observability"
+  ],
+  "sources/site-reliability-engineering": [
+    "database-replication",
+    "observability",
+    "site-reliability-engineering",
+    "testing-strategy"
+  ],
+  "snowflake-id": [
+    "database-sharding"
+  ],
+  "sources/system-design-interview-xu": [
+    "database-sharding"
+  ],
+  "t-shaped-skills": [
+    "dataops",
+    "dataops",
+    "job-search-strategy",
+    "mentoring"
+  ],
+  "data-observability": [
+    "dataops",
+    "metadata-management",
+    "observability",
+    "fundamentals-of-data-observability",
+    "fundamentals-of-data-observability"
+  ],
+  "sources/data-engineering-with-dbt": [
+    "dataops"
+  ],
+  "timely-dataflow": [
+    "dbsp",
+    "dbsp",
+    "differential-dataflow",
+    "differential-dataflow",
+    "incremental-view-maintenance",
+    "incremental-view-maintenance",
+    "materialized-views",
+    "windowing",
+    "materialized-views-quick-insights",
+    "materialized-views-quick-insights"
+  ],
+  "differential-dataflow": [
+    "dbsp",
+    "dbsp",
+    "incremental-view-maintenance",
+    "incremental-view-maintenance",
+    "materialized-views",
+    "timely-dataflow",
+    "timely-dataflow",
+    "materialized-views-quick-insights",
+    "materialized-views-quick-insights"
+  ],
+  "sources/materialized-views-quick-insights": [
+    "dbsp",
+    "differential-dataflow",
+    "incremental-view-maintenance",
+    "materialized-views",
+    "timely-dataflow"
+  ],
+  "sources/delta-grows-up-writes-unity-catalog": [
+    "delta-lake",
+    "unity-catalog"
+  ],
+  "sources/delta-catalog-managed-tables": [
+    "delta-lake",
+    "unity-catalog"
+  ],
+  "composition-root": [
+    "dependency-injection",
+    "dependency-injection",
+    "dependency-injection",
+    "dependency-injection",
+    "harness-engineering",
+    "solid-principles",
+    "solid-principles"
+  ],
+  "quadtree": [
+    "deployment-strategies",
+    "deployment-strategies",
+    "geohash",
+    "geohash",
+    "geospatial-indexing",
+    "geospatial-indexing",
+    "proximity-service",
+    "system-design-interview"
+  ],
+  "continuous-delivery": [
+    "deployment-strategies",
+    "technical-debt-management",
+    "the-accidental-cto"
+  ],
+  "secure-system-design": [
+    "deployment-strategies",
+    "observability",
+    "site-reliability-engineering",
+    "building-secure-and-reliable-systems",
+    "building-secure-and-reliable-systems"
+  ],
+  "dbsp": [
+    "differential-dataflow",
+    "incremental-view-maintenance",
+    "incremental-view-maintenance",
+    "materialized-views",
+    "materialized-views-quick-insights",
+    "materialized-views-quick-insights"
+  ],
+  "ultralearning": [
+    "directness",
+    "directness",
+    "feedback",
+    "feedback",
+    "metalearning",
+    "metalearning",
+    "spaced-repetition",
+    "staff-engineering",
+    "t-shaped-skills",
+    "testing-effect"
+  ],
+  "testing-effect": [
+    "directness",
+    "feedback",
+    "metalearning",
+    "spaced-repetition",
+    "spaced-repetition",
+    "ultralearning",
+    "ultralearning",
+    "ultralearning-scott-young"
+  ],
+  "metalearning": [
+    "directness",
+    "spaced-repetition",
+    "testing-effect",
+    "ultralearning",
+    "ultralearning",
+    "ultralearning-scott-young"
+  ],
+  "sources/consensus-raft-paxos-handbook": [
+    "distributed-consensus",
+    "leader-election"
+  ],
+  "leader-election": [
+    "distributed-consensus",
+    "consensus-raft-paxos-handbook"
+  ],
+  "data-storage-operations": [
+    "document-content-management"
+  ],
+  "metadata-management": [
+    "document-content-management",
+    "master-data-management"
+  ],
+  "software-as-simulation": [
+    "domain-driven-design",
+    "mapper-principles",
+    "model-code-gap",
+    "readability-vs-performance",
+    "technological-centaur",
+    "contieri-clean-code-cookbook"
+  ],
+  "bijection": [
+    "domain-driven-design",
+    "essential-accidental-complexity",
+    "fail-fast",
+    "immutability",
+    "information-hiding",
+    "mapper-principles",
+    "object-oriented-design",
+    "rich-domain-model",
+    "technological-centaur",
+    "tell-dont-ask",
+    "contieri-clean-code-cookbook"
+  ],
+  "sources/learning-domain-driven-design": [
+    "domain-driven-design"
+  ],
+  "sources/duckdb-up-and-running": [
+    "duckdb",
+    "in-process-olap",
+    "vectorized-execution"
+  ],
+  "model-quantization": [
+    "edge-computing",
+    "edge-computing",
+    "flash-attention",
+    "kv-caching",
+    "lora",
+    "model-distillation",
+    "model-pruning",
+    "peft",
+    "sustainable-ai",
+    "building-llms-for-production"
+  ],
+  "technical-leadership": [
+    "engineering-management",
+    "engineering-management",
+    "golden-circle",
+    "mentoring",
+    "networking-theory",
+    "saying-no",
+    "staff-engineering",
+    "staff-plus-archetypes",
+    "engineering-management-drasner",
+    "start-with-why-sinek"
+  ],
+  "sources/engineering-management-drasner": [
+    "engineering-management",
+    "engineering-management"
+  ],
+  "golden-circle": [
+    "engineering-management",
+    "engineering-management",
+    "engineering-management-drasner",
+    "start-with-why-sinek",
+    "start-with-why-sinek"
+  ],
+  "feedback": [
+    "engineering-management",
+    "engineering-management",
+    "mentoring",
+    "metalearning",
+    "saying-no",
+    "spaced-repetition",
+    "testing-effect",
+    "ultralearning",
+    "engineering-management-drasner",
+    "engineering-management-drasner"
+  ],
+  "mentoring": [
+    "engineering-management",
+    "flow-zone-critique",
+    "software-professionalism",
+    "clean-code-martin",
+    "engineering-management-drasner"
+  ],
+  "saying-no": [
+    "engineering-management",
+    "software-professionalism",
+    "an-elegant-puzzle",
+    "clean-code-martin",
+    "clean-code-martin",
+    "engineering-management-drasner"
+  ],
+  "sources/an-elegant-puzzle": [
+    "engineering-management",
+    "technical-debt-management"
+  ],
+  "graph-grounding": [
+    "entity-resolution",
+    "graph-engineering",
+    "knowledge-graph",
+    "knowledge-graph"
+  ],
+  "code-archaeology": [
+    "essential-accidental-complexity",
+    "model-code-gap",
+    "refactoring-at-scale",
+    "software-rot"
+  ],
+  "message-delivery-semantics": [
+    "event-time-processing",
+    "kappa-architecture",
+    "message-queue",
+    "saga-pattern",
+    "stateful-stream-processing",
+    "stream-processing",
+    "stream-processing-apache-flink"
+  ],
+  "functional-testing": [
+    "fail-fast",
+    "tdd-methodology",
+    "testing-pyramid",
+    "testing-strategy",
+    "tdd-python-percival",
+    "tdd-python-percival"
+  ],
+  "python-static-analysis": [
+    "fail-fast",
+    "python-professional-practices",
+    "python-professional-practices",
+    "python-professional-practices",
+    "python-professional-practices",
+    "clean-code-principles-patterns-silen"
+  ],
+  "directness": [
+    "feedback",
+    "job-search-strategy",
+    "ultralearning",
+    "ultralearning",
+    "ultralearning-scott-young"
+  ],
+  "lora": [
+    "fine-tuning",
+    "kv-caching",
+    "model-quantization",
+    "peft",
+    "retrieval-augmented-generation"
+  ],
+  "peft": [
+    "fine-tuning",
+    "lora"
+  ],
+  "flash-attention": [
+    "fine-tuning",
+    "kv-caching",
+    "model-quantization"
+  ],
+  "sources/building-llms-for-production": [
+    "fine-tuning",
+    "langchain",
+    "llama-index",
+    "llm-evaluation-metrics",
+    "model-distillation",
+    "model-pruning",
+    "model-quantization",
+    "prompt-engineering",
+    "retrieval-augmented-generation"
+  ],
+  "sources/hands-on-large-language-models": [
+    "fine-tuning",
+    "flash-attention",
+    "kv-caching",
+    "lora",
+    "model-quantization",
+    "peft",
+    "reranking",
+    "retrieval-augmented-generation"
+  ],
+  "kv-caching": [
+    "flash-attention",
+    "model-quantization"
+  ],
+  "software-professionalism": [
+    "flow-zone-critique",
+    "mentoring",
+    "personal-branding",
+    "saying-no",
+    "testing-pyramid",
+    "clean-code-martin",
+    "clean-code-martin"
+  ],
+  "sources/the-art-of-functional-programming": [
+    "functional-programming",
+    "immutability"
+  ],
+  "pytest-basics": [
+    "functional-testing",
+    "pytest-assertions",
+    "pytest-configuration",
+    "pytest-fixtures",
+    "pytest-markers",
+    "pytest-plugins",
+    "pytest-test-results",
+    "tdd-methodology",
+    "testing-pyramid",
+    "testing-strategy",
+    "okken-python-testing-pytest"
+  ],
+  "sources/tdd-python-percival": [
+    "functional-testing",
+    "tdd-methodology",
+    "testing-strategy"
+  ],
+  "nash-equilibrium": [
+    "game-theory",
+    "game-theory",
+    "game-theory-bonanno",
+    "game-theory-bonanno"
+  ],
+  "geospatial-indexing": [
+    "geohash",
+    "proximity-service",
+    "quadtree",
+    "system-design-interview",
+    "system-design-interview"
+  ],
+  "geohash": [
+    "geospatial-indexing",
+    "geospatial-indexing",
+    "proximity-service",
+    "quadtree",
+    "quadtree",
+    "quadtree",
+    "system-design-interview"
+  ],
+  "go-web-ecosystem": [
+    "go-http-handlers",
+    "go-template-escaping",
+    "goroutines",
+    "kubernetes-operator",
+    "middleware-pattern",
+    "go-web-programming"
+  ],
+  "middleware-pattern": [
+    "go-http-handlers",
+    "microservices",
+    "microservices",
+    "go-web-programming"
+  ],
+  "sources/go-web-programming": [
+    "go-http-handlers",
+    "go-template-escaping",
+    "go-web-ecosystem",
+    "goroutines",
+    "middleware-pattern"
+  ],
+  "go-http-handlers": [
+    "go-template-escaping",
+    "go-web-ecosystem",
+    "goroutines",
+    "middleware-pattern",
+    "go-web-programming",
+    "go-web-programming"
+  ],
+  "go-template-escaping": [
+    "go-web-ecosystem",
+    "go-web-programming",
+    "go-web-programming"
+  ],
+  "kubernetes-operator": [
+    "go-web-ecosystem",
+    "goroutines",
+    "kubernetes-architecture",
+    "observability",
+    "programming-kubernetes"
+  ],
+  "sources/start-with-why-sinek": [
+    "golden-circle",
+    "golden-circle"
+  ],
+  "engineering-management": [
+    "golden-circle",
+    "technical-debt-management",
+    "technical-leadership",
+    "an-elegant-puzzle",
+    "engineering-management-drasner",
+    "engineering-management-drasner",
+    "start-with-why-sinek"
+  ],
+  "personal-branding": [
+    "golden-circle",
+    "job-search-strategy",
+    "networking-theory",
+    "start-with-why-sinek"
+  ],
+  "metric-fixation": [
+    "goodharts-law",
+    "goodharts-law"
+  ],
+  "sources/tyranny-of-metrics": [
+    "goodharts-law",
+    "metric-fixation"
+  ],
+  "dynamic-workflows": [
+    "graph-engineering"
+  ],
+  "sources/learn-harness-engineering": [
+    "harness-engineering"
+  ],
+  "api-architectural-styles": [
+    "http-evolution",
+    "microservices",
+    "microservices"
+  ],
+  "python-standard-library": [
+    "immutability",
+    "python-data-model",
+    "python-professional-practices",
+    "python-repl",
+    "pythonic-code"
+  ],
+  "networking-theory": [
+    "job-search-strategy",
+    "personal-branding"
+  ],
+  "entity-resolution": [
+    "knowledge-graph",
+    "knowledge-graph",
+    "master-data-management"
+  ],
+  "wiki-maintenance": [
+    "knowledge-graph",
+    "sample-article"
+  ],
+  "kubernetes-networking": [
+    "kubernetes-architecture",
+    "kubernetes-security"
+  ],
+  "kubernetes-security": [
+    "kubernetes-architecture",
+    "kubernetes-networking",
+    "secure-system-design"
+  ],
+  "sources/kubeschool-kubernetes-primer": [
+    "kubernetes-architecture",
+    "kubernetes-networking",
+    "kubernetes-security"
+  ],
+  "sources/programming-kubernetes": [
+    "kubernetes-architecture",
+    "kubernetes-operator"
+  ],
+  "sso": [
+    "kubernetes-security",
+    "password-storage",
+    "tls-https"
+  ],
+  "llama-index": [
+    "langchain",
+    "langchain",
+    "langchain",
+    "building-llms-for-production"
+  ],
+  "sources/debunking-data-layout-myths-liquid-clustering": [
+    "liquid-clustering"
+  ],
+  "langchain": [
+    "llama-index",
+    "llama-index",
+    "llama-index",
+    "building-llms-for-production"
+  ],
+  "stateless-architecture": [
+    "load-balancer",
+    "message-queue",
+    "microservices",
+    "microservices",
+    "proximity-service",
+    "scalable-architecture",
+    "system-design-interview-xu"
+  ],
+  "mlops": [
+    "machine-learning-systems"
+  ],
+  "sources/data-algorithms": [
+    "market-basket-analysis"
+  ],
+  "spaced-repetition": [
+    "metalearning",
+    "testing-effect",
+    "testing-effect",
+    "ultralearning",
+    "ultralearning",
+    "ultralearning-scott-young"
+  ],
+  "goodharts-law": [
+    "metric-fixation",
+    "metric-fixation"
+  ],
+  "model-pruning": [
+    "model-distillation",
+    "model-quantization",
+    "sustainable-ai",
+    "building-llms-for-production"
+  ],
+  "game-theory": [
+    "nash-equilibrium",
+    "nash-equilibrium",
+    "game-theory-bonanno"
+  ],
+  "job-search-strategy": [
+    "networking-theory",
+    "personal-branding"
+  ],
+  "sources/practical-object-oriented-design": [
+    "object-oriented-design"
+  ],
+  "sources/dive-into-design-patterns": [
+    "object-oriented-design",
+    "solid-principles"
+  ],
+  "design-patterns": [
+    "object-oriented-design",
+    "solid-principles",
+    "dive-into-design-patterns"
+  ],
+  "sources/building-secure-and-reliable-systems": [
+    "observability",
+    "secure-system-design",
+    "shift-left-security",
+    "site-reliability-engineering",
+    "testing-strategy"
+  ],
+  "tls-https": [
+    "password-storage",
+    "sso"
+  ],
+  "pytest-test-results": [
+    "pytest-assertions",
+    "pytest-basics"
+  ],
+  "pytest-fixtures": [
+    "pytest-basics",
+    "pytest-mocking",
+    "pytest-parametrization",
+    "testing-strategy",
+    "okken-python-testing-pytest"
+  ],
+  "pytest-parametrization": [
+    "pytest-basics",
+    "pytest-fixtures",
+    "okken-python-testing-pytest"
+  ],
+  "pytest-markers": [
+    "pytest-basics",
+    "pytest-configuration",
+    "pytest-test-results",
+    "okken-python-testing-pytest"
+  ],
+  "pytest-assertions": [
+    "pytest-basics",
+    "pytest-test-results"
+  ],
+  "pytest-configuration": [
+    "pytest-basics",
+    "pytest-plugins"
+  ],
+  "sources/okken-python-testing-pytest": [
+    "pytest-basics",
+    "pytest-fixtures",
+    "pytest-markers",
+    "pytest-mocking",
+    "pytest-parametrization",
+    "testing-strategy"
+  ],
+  "pytest-plugins": [
+    "pytest-configuration",
+    "testing-strategy"
+  ],
+  "pytest-mocking": [
+    "pytest-fixtures",
+    "testing-strategy",
+    "okken-python-testing-pytest"
+  ],
+  "python-professional-practices": [
+    "python-concurrency",
+    "python-debugging-pdb",
+    "python-repl",
+    "python-standard-library",
+    "python-static-analysis",
+    "data-engineering-with-python"
+  ],
+  "sources/intuitive-python": [
+    "python-concurrency",
+    "python-debugging-pdb",
+    "python-professional-practices",
+    "python-repl",
+    "python-standard-library",
+    "python-static-analysis"
+  ],
+  "pythonic-code": [
+    "python-data-model",
+    "python-data-model"
+  ],
+  "sources/fluent-python": [
+    "python-data-model",
+    "pythonic-code"
+  ],
+  "python-repl": [
+    "python-debugging-pdb"
+  ],
+  "python-debugging-pdb": [
+    "python-professional-practices",
+    "python-professional-practices",
+    "python-repl"
+  ],
+  "python-concurrency": [
+    "python-professional-practices",
+    "readability-vs-performance"
+  ],
+  "python-data-model": [
+    "pythonic-code",
+    "pythonic-code"
+  ],
+  "batch-processing": [
+    "real-time-analytics",
+    "building-real-time-analytics-systems"
+  ],
+  "edge-computing": [
+    "real-time-analytics",
+    "building-real-time-analytics-systems"
+  ],
+  "reranking": [
+    "retrieval-augmented-generation",
+    "retrieval-augmented-generation"
+  ],
+  "the-accidental-cto": [
+    "scalable-architecture"
+  ],
+  "sources/semantic-layers-for-ai": [
+    "self-service-analytics",
+    "semantic-layer"
+  ],
+  "sources/snowflake-the-definitive-guide": [
+    "snowflake-data-cloud"
+  ],
+  "testing-pyramid": [
+    "software-professionalism"
+  ],
+  "sources/seriously-good-software": [
+    "software-quality-dimensions"
+  ],
+  "staff-plus-archetypes": [
+    "staff-engineering",
+    "staff-engineering",
+    "technical-leadership"
+  ],
+  "sources/senior-to-staff-engineer": [
+    "staff-engineering"
+  ],
+  "sources/staff-engineers-path": [
+    "staff-engineering",
+    "staff-plus-archetypes",
+    "technical-leadership"
+  ],
+  "sources/staff-engineer-larson": [
+    "staff-engineering"
+  ],
+  "data-head": [
+    "statistical-thinking"
+  ],
+  "sources/streaming-systems": [
+    "stream-processing",
+    "stream-processing",
+    "stream-processing",
+    "stream-table-duality",
+    "stream-table-duality",
+    "watermarks",
+    "watermarks"
+  ],
+  "watermarks": [
+    "stream-processing",
+    "stream-processing",
+    "stream-processing"
+  ],
+  "stream-table-duality": [
+    "stream-processing",
+    "stream-processing",
+    "stream-processing"
+  ],
+  "case-interview": [
+    "technical-interview",
+    "the-1-percent-case-interview"
+  ],
+  "sources/cracking-the-coding-interview": [
+    "technical-interview"
+  ],
+  "sources/de-coding-technical-interview": [
+    "technical-interview"
+  ],
+  "apache-arrow": [
+    "vortex-file-format",
+    "vortex-file-format"
+  ],
+  "sources/sample-article": [
+    "wiki-maintenance",
+    "wiki-maintenance"
+  ],
+  "ai-psychosis": [
+    "meta-destroying-engineering-org-orosz"
+  ],
+  "concepts/continuous-delivery": [
+    "software-engineering-at-google"
+  ],
+  "concepts/technical-debt-management": [
+    "software-engineering-at-google"
+  ]
+}

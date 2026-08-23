@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vectorized Execution — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-olap">Olap</a> <span class="sep">/</span>
+  <span>Vectorized Execution</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Vectorized Execution</h1>
+  <div class="page-meta"><span>Source: duckdb-up-and-running</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">olap</span><span class="tag">query-optimization</span><span class="tag">database-engines</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Vectorized execution</strong> is a query execution model where the database engine processes data in <strong>vectors</strong> — chunks of rows (typically 1K–64K rows at a time) — instead of processing one row at a time (the "Volcano" iterator model). This is a key architectural pillar of modern OLAP databases like <a href="duckdb.html" class="wiki-link">DuckDB</a>, ClickHouse, and Velox (Meta).</p>
+<h2 id="how-it-works">How It Works</h2>
+<ul>
+<li><strong>Traditional (row-at-a-time)</strong>: The engine calls <code>next()</code> on each operator for every single row. One function call per row, per operator → high CPU instruction overhead.</li>
+<li><strong>Vectorized (chunk-at-a-time)</strong>: The engine processes a block of rows at once. One function call per <em>vector</em> of rows → dramatically fewer function calls per operation.</li>
+</ul>
+<h2 id="why-its-faster">Why It's Faster</h2>
+<table><thead><tr>
+<th>Factor</th>
+<th>Mechanism</th>
+<th>Impact</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Reduced instruction overhead</strong></td>
+<td>One function call per vector instead of per row</td>
+<td>10–100x fewer virtual function dispatches</td>
+</tr>
+<tr>
+<td><strong>Cache efficiency</strong></td>
+<td>Data is processed in contiguous blocks that fit CPU cache lines</td>
+<td>Fewer cache misses per row processed</td>
+</tr>
+<tr>
+<td><strong>SIMD utilization</strong></td>
+<td>Modern CPUs can apply one instruction to multiple data elements simultaneously (AVX, AVX-512)</td>
+<td>Up to 8–16 operations per instruction vs. 1</td>
+</tr>
+<tr>
+<td><strong>Branch predictability</strong></td>
+<td>Loop-based processing over arrays has predictable branches</td>
+<td>CPU branch predictor accuracy → fewer pipeline stalls</td>
+</tr>
+</tbody></table>
+<h2 id="relationship-to-other-execution-models">Relationship to Other Execution Models</h2>
+<table><thead><tr>
+<th>Model</th>
+<th>Granularity</th>
+<th>Strengths</th>
+<th>Used By</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Volcano (Iterator)</strong></td>
+<td>Row-at-a-time</td>
+<td>Simple, composable, low memory</td>
+<td>MySQL, PostgreSQL, SQLite</td>
+</tr>
+<tr>
+<td><strong>Vectorized</strong></td>
+<td>Column-chunks (vectors)</td>
+<td>High throughput on analytical queries</td>
+<td>DuckDB, ClickHouse, Velox, DataFusion</td>
+</tr>
+<tr>
+<td><strong>JIT-compiled</strong></td>
+<td>Query-at-a-time</td>
+<td>Lowest overhead for complex expressions</td>
+<td>HyPer, SingleStore</td>
+</tr>
+</tbody></table>
+<h2 id="vectorized-execution-in-duckdb">Vectorized Execution in DuckDB</h2>
+<p>In DuckDB, the vectorized engine works hand-in-hand with <strong>columnar storage</strong>: data is already laid out column-by-column on disk, so reading a column produces a contiguous array ready for vectorized operations. Together with <strong>parallel execution</strong> (splitting work across CPU cores) and <strong>late materialization</strong> (postponing full row assembly), this creates a highly efficient analytical pipeline.</p>
+<h2 id="limitations">Limitations</h2>
+<ul>
+<li>Vectorized engines are optimized for <strong>analytical (OLAP)</strong> queries with large scans and aggregations — not row-level lookups (OLTP).</li>
+<li>Vector size must be tuned: too small → not enough amortization; too large → doesn't fit in CPU cache.</li>
+<li>Some operations (e.g., correlated subqueries with row-dependent logic) don't vectorize cleanly.</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="duckdb.html">
+      <span class="connection-type related">Used by</span>
+      <h4>DuckDB</h4>
+      <p>one of four architectural pillars of DuckDB's performance</p>
+    </a>
+    <a class="connection-card" href="in-process-olap.html">
+      <span class="connection-type extends">Supports</span>
+      <h4>In-Process OLAP</h4>
+      <p>vectorized execution makes laptop-scale analytics practical</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related to</span>
+      <h4>DuckDB: Up and Running</h4>
+      <p>Wei-Meng Lee's guide on DuckDB architecture</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="unity-catalog.html" class="prev">← Unity Catalog</a><a href="vibe-coding.html" class="next">Vibe Coding →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

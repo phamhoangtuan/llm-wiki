@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Knowledge Graph — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-architecture">Architecture</a> <span class="sep">/</span>
+  <span>Knowledge Graph</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Knowledge Graph</h1>
+  <div class="page-meta"><span>Source: sample-article, graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
+  <div class="page-tags"><span class="tag">architecture</span><span class="tag">linking</span><span class="tag">index</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>A lightweight knowledge graph built from cross-linked markdown pages. Instead of a dedicated graph database or vector store, the wiki uses wikilinks, a content index (<code>index.md</code>), and consistent YAML frontmatter to achieve the same effect without infrastructure.</p>
+<h2 id="how-it-works">How It Works</h2>
+<ol>
+<li><strong>Write-time linking</strong> — when the LLM ingests a source, it creates/updates concept pages with explicit links (<code><a href="..."></code>) to related pages. The connections are compiled once, not re-derived.</li>
+</ol>
+<ol>
+<li><strong>Index as entry point</strong> — <code>index.md</code> lists every page with a one-line summary. The LLM reads this first to find relevant pages, then drills in. This replaces vector search at moderate scale (~500 pages).</li>
+</ol>
+<ol>
+<li><strong>Frontmatter as metadata layer</strong> — YAML frontmatter stores tags, source backlinks, aliases, and dates. Tools like Obsidian Dataview can query this.</li>
+</ol>
+<h2 id="why-this-works">Why This Works</h2>
+<ul>
+<li>No infrastructure — just markdown files in folders</li>
+<li>Git-trackable — every link is explicit in the source</li>
+<li>LLM-maintainable — the LLM writes the links as a natural part of ingest</li>
+<li>Scales to hundreds of pages before needing search tooling</li>
+</ul>
+<h2 id="agent-knowledge-graphs-shared-memory-and">Agent Knowledge Graphs: Shared Memory and Grounding</h2>
+<p>Beyond static wikis, knowledge graphs serve as <strong>infrastructure for agent systems</strong> in <a href="graph-engineering.html" class="wiki-link">graph-engineering</a>. Three roles:</p>
+<h3 id="shared-memory">Shared Memory</h3>
+<p>Workers write findings as structured graph updates. A synthesizer traverses the graph to combine findings even if no single worker saw all source documents. The graph persists across sessions — "the agent forgets, the graph does not."</p>
+<h3 id="grounding-layer">Grounding Layer</h3>
+<p>An evaluator checks claims against graph edges with provenance. A claim like "Vendor X supplied the component in Incident Y" can be verified by checking for edges <code>(Vendor X, supplied, Component Z)</code> and <code>(Component Z, involved_in, Incident Y)</code>. Missing edges produce structured, actionable feedback rather than free-form critique. See <a href="graph-grounding.html" class="wiki-link">graph-grounding</a>.</p>
+<h3 id="construction-pipeline">Construction Pipeline</h3>
+<p>Anthropic's cookbook replaces classical NLP with model calls: <strong>Haiku</strong> extracts typed entities and S-P-O relations against a Pydantic schema → <strong>Sonnet</strong> resolves surface forms (e.g., "Edwin Aldrin" → "Buzz Aldrin") into canonical entities → <strong>NetworkX MultiDiGraph</strong> assembly with provenance on every edge → <strong>Sonnet</strong> queries serialized subgraphs with edge-level citations. See <a href="entity-resolution.html" class="wiki-link">entity-resolution</a>.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="wiki-maintenance.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Wiki Maintenance</h4>
+      <p>the operational model</p>
+    </a>
+    <a class="connection-card" href="graph-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Engineering</h4>
+      <p>shared memory and grounding layer for agent systems</p>
+    </a>
+    <a class="connection-card" href="graph-grounding.html">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Grounding</h4>
+      <p>constraining agent generation with graph facts</p>
+    </a>
+    <a class="connection-card" href="entity-resolution.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Entity Resolution</h4>
+      <p>mapping surface forms to canonical nodes</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Engineering: The Karpathy Loop, Improved 1000x by Itself</h4>
+      <p>Anthropic's KG Construction Cookbook</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="kappa-architecture.html" class="prev">← Kappa Architecture</a><a href="kubernetes-architecture.html" class="next">Kubernetes Architecture →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Engineer — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-engineering">Data Engineering</a> <span class="sep">/</span>
+  <span>Data Engineer</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Data Engineer</h1>
+  <div class="page-meta"><span>Source: data-engineer-role-handbook, data-engineering-handbook, how-ai-changes-4-core-data-roles</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">roles</span><span class="tag">career</span><span class="tag">infrastructure</span><span class="tag">ai</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>A Data Engineer is a specialized software engineer who designs, builds, and maintains the infrastructure and pipelines that transport data from source systems to analytical destinations. They are the "road pavers" of the data world — ensuring data flows reliably, is clean, query-optimized, and ready for analysts and data scientists to derive value from.</p>
+<h2 id="the-rise-of-the-data-engineer">The Rise of the Data Engineer</h2>
+<p>The role emerged around the 2010s when organizations realized a painful truth: <strong>Data Scientists were spending up to 80% of their time on data wrangling</strong> — collecting, cleaning, and formatting raw data — rather than building models. This gap drove the specialization of Data Engineering, fueled by:</p>
+<ul>
+<li><strong>Need for deep infrastructure skills</strong>: Managing distributed systems (Hadoop, Spark) and designing optimized data warehouses requires systems thinking and strong programming — not the core strengths of statisticians and mathematicians.</li>
+<li><strong>Data quality as a gatekeeper</strong>: "Garbage in, garbage out." DEs prevent bad data from entering analytical systems.</li>
+</ul>
+<h2 id="role-differentiation">Role Differentiation</h2>
+<table><thead><tr>
+<th>Role</th>
+<th>Focus</th>
+<th>Data Perspective</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Software Engineer</strong></td>
+<td>User-facing apps, APIs</td>
+<td>Transactional (OLTP) — immediate state</td>
+</tr>
+<tr>
+<td><strong>Data Engineer</strong> ✅</td>
+<td>Data movement, transformation, infrastructure</td>
+<td>Analytical (OLAP) — batch/stream processing</td>
+</tr>
+<tr>
+<td><strong>Data Analyst</strong></td>
+<td>Business questions, dashboards, SQL queries</td>
+<td>Consumes clean data from DE</td>
+</tr>
+<tr>
+<td><strong>Data Scientist</strong></td>
+<td>Predictive models, ML, forecasting</td>
+<td>Consumes clean data from DE</td>
+</tr>
+</tbody></table>
+<pre><code>[SWE: Web/App → OLTP DB] → [DE: Pipeline → Data Warehouse/Lake] → [DA/DS: Dashboards/ML Models]</code></pre>
+<h2 id="a-day-in-the-life">A Day in the Life</h2>
+<table><thead><tr>
+<th>Activity</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Architecture Design</strong></td>
+<td>Choose batch vs streaming, define table structures (dimensional modeling)</td>
+</tr>
+<tr>
+<td><strong>Pipeline Coding</strong></td>
+<td>Python/Scala scripts extracting from REST APIs, Kafka, relational DBs</td>
+</tr>
+<tr>
+<td><strong>Transformation</strong></td>
+<td>SQL models in <a href="dbt.html" class="wiki-link">dbt</a> to clean, join, and create business metrics</td>
+</tr>
+<tr>
+<td><strong>Orchestration</strong></td>
+<td>Schedule automated pipeline runs via Airflow (e.g., nightly)</td>
+</tr>
+<tr>
+<td><strong>Maintenance & Optimization</strong></td>
+<td>Tune slow queries, handle schema changes, optimize cloud costs</td>
+</tr>
+</tbody></table>
+<h2 id="the-four-pillars-of-data-engineering">The Four Pillars of Data Engineering</h2>
+<p>Every DE system rests on four foundational capabilities:</p>
+<table><thead><tr>
+<th>Pillar</th>
+<th>Description</th>
+<th>Examples</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Ingestion</strong></td>
+<td>Pulling data from sources — batch or streaming</td>
+<td>REST APIs, Kafka, Fivetran, Airbyte</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>Choosing where and how data lives</td>
+<td>Data Warehouse, Data Lake, Lakehouse</td>
+</tr>
+<tr>
+<td><strong>Processing & Transformation</strong></td>
+<td>Cleaning, normalizing, aggregating</td>
+<td>SQL, Spark, <a href="dbt.html" class="wiki-link">dbt</a>, Python</td>
+</tr>
+<tr>
+<td><strong>Orchestration</strong></td>
+<td>Scheduling and dependency management</td>
+<td>Airflow, Dagster, Prefect</td>
+</tr>
+</tbody></table>
+<h2 id="the-data-pipeline-flow-6-steps">The Data Pipeline Flow (6 Steps)</h2>
+<pre><code>1. Survey needs → 2. Build connections → 3. Load to staging
+→ 4. Transform (business rules) → 5. Serve to consumers → 6. Monitor &amp; alert</code></pre>
+<h2 id="best-practices">Best Practices</h2>
+<ul>
+<li><strong>Master the fundamentals</strong>: SQL, Python, Bash, distributed computing thinking. Tools change — these don't. In 2026, these <a href="data-engineering-fundamentals.html" class="wiki-link">fundamentals</a> are more critical than ever — they're what let you distinguish AI-generated garbage from viable solutions.</li>
+<li><strong>Develop glue technical skills</strong>: Docker, file format wrangling, legacy protocol integration, infrastructure setup. These "in-between" skills — picked up through struggle — give you intuition about when AI output is directionally correct vs dangerously wrong.</li>
+<li><strong>Business acumen</strong>: Understand what data means to the business to design accurate, intuitive models.</li>
+<li><strong>Apply SWE discipline</strong>: Git version control, automated data testing, CI/CD for pipelines — this is <a href="dataops.html" class="wiki-link">DataOps</a> in practice. See <a href="cicd-data-pipelines.html" class="wiki-link">cicd-data-pipelines</a> for concrete tool recommendations (Ruff, SQLFluff, SQLMesh, Great Expectations).</li>
+<li><strong>Build self-service</strong>: Invest in architectures where analysts can self-serve, rather than becoming a "SQL writer for others."</li>
+<li><strong>Design for idempotency</strong>: Pipelines must produce the same result no matter how many times they run — use UPSERT/MERGE or delete-write patterns to prevent duplicates on retry.</li>
+<li><strong>Infrastructure as Code (IaC)</strong>: Define cloud resources (servers, databases) via Terraform — version-controlled, reproducible, disaster-recoverable.</li>
+<li><strong>Automated quality testing</strong>: Integrate data quality checks (null checks, uniqueness, referential integrity) via Great Expectations or dbt tests — catch issues before stakeholders do.</li>
+<li><strong>Decouple storage and compute</strong>: Scale them independently to optimize costs — store cheaply, compute on-demand.</li>
+</ul>
+<h2 id="common-mistakes">Common Mistakes</h2>
+<ul>
+<li><strong>Tool-driven</strong>: Chasing every new technology (Spark, Flink, Kafka) while forgetting the core goal: reliable, quality data.</li>
+<li><strong>Becoming a report factory</strong>: Writing ad-hoc SQL extracts for every department instead of building self-service data platforms.</li>
+<li><strong>No alerting</strong>: Silent pipeline failures — stakeholders view stale data for days without knowing.</li>
+<li><strong>Over-engineering</strong>: Deploying Kafka, Spark, Kubernetes for workloads a simple cron job + SQL script could handle.</li>
+<li><strong>Ignoring data governance</strong>: Building pipelines without metadata, data dictionaries, or lineage → data swamp.</li>
+</ul>
+<h2 id="trade-offs">Trade-offs</h2>
+<table><thead><tr>
+<th>Advantage</th>
+<th>Challenge</th>
+</tr></thead><tbody>
+<tr>
+<td>Reliable foundation for all analytics and AI/ML</td>
+<td>High upfront cloud infra and specialist personnel cost</td>
+</tr>
+<tr>
+<td>Automation eliminates manual reporting labor</td>
+<td>Long initial build time; indirect ROI hard to measure immediately</td>
+</tr>
+<tr>
+<td>Single source of truth across the organization</td>
+<td>Fragile when source systems change schemas unexpectedly</td>
+</tr>
+</tbody></table>
+<h2 id="pros--cons">Pros & Cons</h2>
+<table><thead><tr>
+<th>Pros</th>
+<th>Cons</th>
+</tr></thead><tbody>
+<tr>
+<td>High demand, strong compensation</td>
+<td>On-call pressure — pipelines run 24/7</td>
+</tr>
+<tr>
+<td>Deep technical work at scale</td>
+<td>Invisible when things work, first blamed when they don't</td>
+</tr>
+<tr>
+<td>Less end-user/frontline pressure</td>
+<td>Must respond to incidents regardless of time</td>
+</tr>
+</tbody></table>
+<h2 id="when-does-a-business-need-a-data-enginee">When Does a Business Need a Data Engineer?</h2>
+<p><strong>Yes, when:</strong></p>
+<ul>
+<li>Data is large, distributed, and analysts waste too much time on manual cleaning</li>
+<li>The organization plans to build a Data Science team requiring clean, automated data foundations</li>
+</ul>
+<p><strong>Not yet, when:</strong></p>
+<ul>
+<li>Data fits in a single database with acceptable query performance</li>
+<li>A skilled Data Analyst with strong SQL can handle everything</li>
+</ul>
+<h2 id="how-ai-is-changing-the-role">How AI Is Changing the Role</h2>
+<p>AI is transforming the data engineer's workflow at the implementation level (source: <span class="wiki-link source-ref">sources/how-ai-changes-4-core-data-roles</span>):</p>
+<ol>
+<li><strong>AI builds pipelines</strong>: AI thrives at building and applying logic to systems. Data engineers no longer write Python scripts and pipelines from scratch — AI generates them. The role shifts from <em>writing</em> to <em>directing and reviewing</em>.</li>
+</ol>
+<ol>
+<li><strong>Focus moves to complex problems</strong>: With routine pipeline coding handled by AI, DEs focus on higher-leverage work: handling large data cost-effectively, optimizing performance at scale, and architecting systems that AI can't fully reason about.</li>
+</ol>
+<ol>
+<li><strong>AI tool proficiency is mandatory</strong>: The new core skill is knowing how to use AI tools to do the building. DEs who can orchestrate AI agents effectively outperform those who code everything manually.</li>
+</ol>
+<ol>
+<li><strong>Foundational knowledge still required</strong>: AI agents aren't data experts — the DE must judge whether AI-generated pipelines are correct, performant, and maintainable. The <a href="data-engineering-fundamentals.html" class="wiki-link">fundamentals</a> (SQL, Python, data modeling) remain the differentiator between competent engineers and those who can't tell when AI produces garbage.</li>
+</ol>
+<p>This aligns with the broader <a href="ai-native-engineering.html" class="wiki-link">ai-native-engineering</a> shift: engineers become orchestrators of AI agents rather than manual coders.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="analytics-engineer.html">
+      <span class="connection-type related">Related</span>
+      <h4>Analytics Engineer</h4>
+      <p>Analytics Engineers specialize in the transformation layer within the DE domain</p>
+    </a>
+    <a class="connection-card" href="data-engineering-fundamentals.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineering Fundamentals</h4>
+      <p>the enduring skills (SQL, Python, data modeling, glue skills) that underpin all DE work</p>
+    </a>
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type related">Related</span>
+      <h4>DataOps</h4>
+      <p>applying SWE discipline to data pipelines</p>
+    </a>
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Ingestion</h4>
+      <p>ingesting raw data from sources is a core DE responsibility</p>
+    </a>
+    <a class="connection-card" href="elt.html">
+      <span class="connection-type related">Related</span>
+      <h4>ELT (Extract-Load-Transform)</h4>
+      <p>ELT is the modern paradigm DEs use for cloud warehouses</p>
+    </a>
+    <a class="connection-card" href="dbt.html">
+      <span class="connection-type related">Related</span>
+      <h4>dbt (data build tool)</h4>
+      <p>dbt is the canonical transformation tool in the modern DE toolkit</p>
+    </a>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Flink</h4>
+      <p>Flink handles streaming workloads in DE architectures</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Kafka</h4>
+      <p>Kafka is the event backbone many DE pipelines consume from</p>
+    </a>
+    <a class="connection-card" href="change-data-capture.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>CDC is a key ingestion pattern for DEs</p>
+    </a>
+    <a class="connection-card" href="semantic-layer.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Semantic Layer</h4>
+      <p>semantic layers are the emerging bridge between DE infrastructure and AI agent consumption</p>
+    </a>
+    <a class="connection-card" href="cicd-data-pipelines.html">
+      <span class="connection-type related">Related to</span>
+      <h4>CI/CD for Data Pipelines</h4>
+      <p>CI/CD discipline applied to pipeline code (linting, testing, deployment automation)</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineer Role — Data Engineering Handbook</h4>
+      <p>Data Engineering Handbook (role definition)</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineering — Data Engineering Handbook</h4>
+      <p>Data Engineering Handbook (discipline overview)</p>
+    </div>
+    <a class="connection-card" href="apache-airflow.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Airflow</h4>
+      <p>orchestration is a core pillar of the data engineering toolkit</p>
+    </a>
+    <a class="connection-card" href="real-time-analytics.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Real-Time Analytics</h4>
+      <p>data engineers design and build RTA pipelines as a specialized domain</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="data-architecture.html" class="prev">← Data Architecture</a><a href="data-engineering-fundamentals.html" class="next">Data Engineering Fundamentals →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

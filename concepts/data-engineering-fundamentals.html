@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Engineering Fundamentals — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-engineering">Data Engineering</a> <span class="sep">/</span>
+  <span>Data Engineering Fundamentals</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Data Engineering Fundamentals</h1>
+  <div class="page-meta"><span>Source: data-fundamentals-matter-2026, data-engineer-role-handbook, fundamentals-of-data-engineering</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">fundamentals</span><span class="tag">sql</span><span class="tag">python</span><span class="tag">data-modeling</span><span class="tag">career</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Data Engineering Fundamentals</strong> are the enduring technical skills — SQL, Python, data modeling, and "glue technical skills" — that remain essential regardless of tool evolution or AI adoption. As the data landscape shifts toward AI engineers and FDEs (Future Data Engineers) in 2026, these fundamentals are more critical than ever: they are what allow engineers to distinguish AI-generated garbage from viable solutions and to build reliable systems on top of messy, real-world data.</p>
+<blockquote>"You know what that dish is missing for garnish, a little solid technique."</blockquote>
+<p>Data Engineering is the discipline of building systems that turn chaotic raw data into trustworthy information for analytics, ML, and business impact. It sits at the intersection of six disciplines: Security, Data Management, DataOps, Data Architecture, Orchestration, and Software Engineering.</p>
+<h2 id="the-data-engineering-lifecycle">The Data Engineering Lifecycle</h2>
+<p>Every piece of data flows through five stages (Reis & Housley):</p>
+<table><thead><tr>
+<th>Stage</th>
+<th>What Happens</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Generation</strong></td>
+<td>Source systems (IoT, apps, databases) create and persist raw data</td>
+</tr>
+<tr>
+<td><strong>Ingestion</strong></td>
+<td>Moving data from sources into storage — batch or streaming, push or pull</td>
+</tr>
+<tr>
+<td><strong>Storage</strong></td>
+<td>The bedrock layer — data lives here at multiple points as it moves through the pipeline</td>
+</tr>
+<tr>
+<td><strong>Transformation</strong></td>
+<td>Cleaning, normalizing, and applying business logic</td>
+</tr>
+<tr>
+<td><strong>Serving</strong></td>
+<td>Delivering value — BI dashboards, ML models, operational analytics, reverse ETL</td>
+</tr>
+</tbody></table>
+<p>Storage isn't just one place — it appears at multiple points as data flows from generation to serving.</p>
+<h2 id="six-undercurrents">Six Undercurrents</h2>
+<p>These principles support every stage of the lifecycle:</p>
+<ol>
+<li><strong>Security</strong>: Principle of least privilege at every layer — top of mind, not an afterthought</li>
+<li><strong>Data Management</strong>: Governance, quality, metadata, privacy — ensures data is trustworthy and discoverable</li>
+<li><strong>DataOps</strong>: Agile, DevOps, and statistical control for data workflows — automation, observability, fast incident response</li>
+<li><strong>Data Architecture</strong>: Design for change, favor reversible "two-way door" decisions</li>
+<li><strong>Orchestration</strong>: The "center of gravity" of the data platform — coordinates jobs by dependency</li>
+<li><strong>Software Engineering</strong>: Production-grade SQL, Python, JVM languages, bash — testing and design patterns matter</li>
+</ol>
+<h2 id="data-maturity-model">Data Maturity Model</h2>
+<table><thead><tr>
+<th>Stage</th>
+<th>Organization Focus</th>
+<th>Engineer Role</th>
+</tr></thead><tbody>
+<tr>
+<td>Starting with Data</td>
+<td>Building basic infrastructure</td>
+<td>Generalist who moves fast, wears many hats</td>
+</tr>
+<tr>
+<td>Scaling with Data</td>
+<td>Formalizing practices</td>
+<td>Specialist introducing DataOps/DevOps rigor</td>
+</tr>
+<tr>
+<td>Leading with Data</td>
+<td>Data as competitive advantage</td>
+<td>Deep expert building custom tools, driving strategy</td>
+</tr>
+</tbody></table>
+<h2 id="the-lindy-effect-in-tool-selection">The Lindy Effect in Tool Selection</h2>
+<p>The <a href="lindy-effect.html" class="wiki-link">Lindy Effect</a> governs technology choices: the longer a technology has been around, the longer it's likely to stay. Build foundations on immutable tech (SQL, object storage, Unix principles); be cautious with transitory tools. When choosing, evaluate <strong>TCO</strong> (total cost including maintenance and training) and <strong>TOCO</strong> (total opportunity cost — what you lose by picking one tool over another).</p>
+<h2 id="the-core-triad">The Core Triad</h2>
+<table><thead><tr>
+<th>Skill</th>
+<th>Why It Endures</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>SQL</strong></td>
+<td>The universal data language. Every warehouse, lakehouse, and query engine speaks it. AI can generate SQL, but only domain knowledge knows what query to write.</td>
+</tr>
+<tr>
+<td><strong>Python</strong></td>
+<td>The glue language of data engineering. Pipelines, transformations, API integrations, and AI agent orchestration all run on Python.</td>
+</tr>
+<tr>
+<td><strong>Data Modeling</strong></td>
+<td>Understanding entities, relationships, and normal forms. Determines whether queries are fast or impossible. AI can suggest schemas but cannot understand business semantics.</td>
+</tr>
+</tbody></table>
+<h2 id="glue-technical-skills">Glue Technical Skills</h2>
+<p>The "stuff in between" — skills picked up through struggle that separate engineers who understand systems from those who only understand syntax:</p>
+<ul>
+<li><strong>Docker and containerization</strong>: Spinning up reproducible environments</li>
+<li><strong>File format wrangling</strong>: Parsing wonky CSV files, jagged rows, semi-structured JSON</li>
+<li><strong>Legacy protocols</strong>: SFTP, ancient APIs, proprietary connectors</li>
+<li><strong>Infrastructure setup</strong>: Networking, firewall rules, server provisioning</li>
+<li><strong>Orchestration bootstrapping</strong>: Setting up Airflow, Dagster, or Prefect from scratch</li>
+</ul>
+<p>These skills give engineers the intuition to sense when AI output is garbage versus directionally correct — because they've debugged the same problems manually.</p>
+<h2 id="schema-on-read-a-cautionary-tale">Schema on Read: A Cautionary Tale</h2>
+<p>The idea of "just leave data in source systems and query with AI" (schema on read) was tried around 2010. It failed for the same reasons it fails now:</p>
+<ul>
+<li><strong>Token costs explode</strong> when AI must parse raw, unmodeled data</li>
+<li><strong>Inconsistent results</strong> across queries — no single source of truth</li>
+<li><strong>Query performance degrades</strong> without optimized storage layouts</li>
+</ul>
+<p>Data centralization — bringing data into a warehouse or lakehouse with proper modeling — remains the foundation for reliable analytics, whether consumed by humans or AI agents.</p>
+<h2 id="the-messy-data-reality">The Messy Data Reality</h2>
+<p>Data is getting messier, not cleaner. Engineers moving faster under AI pressure produce:</p>
+<ul>
+<li>Missing ID fields and timestamps</li>
+<li>Poor integrations between systems</li>
+<li>Semi-structured JSON designed for a single application, never meant for analytics</li>
+<li>No update/create tracking fields</li>
+</ul>
+<p>The ability to parse, clean, and integrate messy data is becoming <em>more</em> valuable, not less.</p>
+<h2 id="building-end-to-end">Building End-to-End</h2>
+<p>The advice for breaking into data engineering in 2026: <strong>build something end-to-end</strong>. Tutorials are a trap — re-watching Airflow setup won't teach you what building a full system will:</p>
+<ol>
+<li>Find a free API or generate raw data with an LLM</li>
+<li>Build ingestion pipelines</li>
+<li>Model the data in a warehouse</li>
+<li>Create a frontend or dashboard</li>
+<li>Have fun with it — D3.js, Tableau trials, or a full website</li>
+</ol>
+<h2 id="the-ai-impact-question">The AI Impact Question</h2>
+<p>Key reflection for aspiring data engineers: "How would you run a migration today differently than a decade ago? Where would AI perform well? Where would it fail? How would you reduce known issues?"</p>
+<p>The fundamentals provide the judgment to answer these questions. Without them, you're just trusting a magic eight ball.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-engineer.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineer</h4>
+      <p>the fundamentals are the foundation every Data Engineer builds upon</p>
+    </a>
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type related">Related</span>
+      <h4>DataOps</h4>
+      <p>DataOps applies software engineering discipline to these fundamentals</p>
+    </a>
+    <a class="connection-card" href="data-modeling.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Modeling</h4>
+      <p>data modeling is the most critical and enduring of the fundamental skills</p>
+    </a>
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Informs</span>
+      <h4>AI-Native Engineering</h4>
+      <p>understanding fundamentals is what separates AI-native engineers from vibe coders</p>
+    </a>
+    <a class="connection-card" href="data-lifecycle.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Lifecycle</h4>
+      <p>the five lifecycle stages provide the operational framework for DE work</p>
+    </a>
+    <a class="connection-card" href="lindy-effect.html">
+      <span class="connection-type related">Related</span>
+      <h4>Lindy Effect</h4>
+      <p>Lindy heuristic governs technology selection in data architecture</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>In 2026 The Data Fundamentals Matter More Than Ever</h4>
+      <p>SeattleDataGuy on fundamentals in 2026</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineer Role — Data Engineering Handbook</h4>
+      <p>Data Engineering Handbook (core skills)</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Fundamentals of Data Engineering</h4>
+      <p>Reis & Housley's lifecycle framework</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="data-engineer.html" class="prev">← Data Engineer</a><a href="data-governance.html" class="next">Data Governance →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

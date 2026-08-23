@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time-Space Tradeoff — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-algorithms">Algorithms</a> <span class="sep">/</span>
+  <span>Time-Space Tradeoff</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Time-Space Tradeoff</h1>
+  <div class="page-meta"><span>Source: learning-algorithms-heineman</span><span>Updated: 2026-08-23</span></div>
+  <div class="page-tags"><span class="tag">algorithms</span><span class="tag">complexity</span><span class="tag">memory</span><span class="tag">performance</span></div>
+</div>
+<div class="content-area concept">
+<p>The time-space tradeoff is the principle that reducing an algorithm's time complexity often increases its space complexity, and vice versa. Mathematical efficiency in one dimension can cause practical inefficiency in the other.</p>
+<h2 id="the-tournament-algorithm-lesson">The Tournament Algorithm Lesson</h2>
+<p>The canonical example: finding the two largest values in an array.</p>
+<table><thead><tr>
+<th>Approach</th>
+<th>Comparisons</th>
+<th>Extra Memory</th>
+<th>Practical Speed</th>
+</tr></thead><tbody>
+<tr>
+<td>Standard scan</td>
+<td>2N − 3</td>
+<td>Minimal</td>
+<td>Fast</td>
+</tr>
+<tr>
+<td>Tournament</td>
+<td>N + log N − 2</td>
+<td>winners[], losers[], prior[] arrays</td>
+<td><strong>Slowest</strong></td>
+</tr>
+</tbody></table>
+<p>The tournament algorithm is mathematically superior (fewer comparisons) but practically worse. Memory allocation overhead — the cost of managing multiple arrays — wipes out the comparison savings.</p>
+<blockquote>"Mathematical efficiency ≠ Practical efficiency." (source: <span class="wiki-link source-ref">learning-algorithms-heineman</span>)</blockquote>
+<h2 id="the-hidden-cost-of-memory">The Hidden Cost of Memory</h2>
+<p>Memory allocation is not free. The computer spends time:</p>
+<ul>
+<li>Allocating contiguous blocks</li>
+<li>Managing metadata for each allocation</li>
+<li>Potentially triggering garbage collection</li>
+<li>Causing cache misses when data is scattered</li>
+</ul>
+<p>An algorithm that uses fewer operations but more memory can be slower than one that uses more operations but less memory.</p>
+<h2 id="general-principle">General Principle</h2>
+<p>When evaluating an algorithm, measure <strong>both</strong> dimensions:</p>
+<ul>
+<li><strong>Time complexity</strong>: C(N) — how operations grow with N</li>
+<li><strong>Space complexity</strong>: S(N) — how extra memory grows with N</li>
+</ul>
+<p>Both use <a href="big-o-notation.html" class="wiki-link">big-o-notation</a>. Both matter for production systems. Optimizing one at the expense of the other requires explicit justification.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>A core concern of <a href="algorithm-analysis.html" class="wiki-link">algorithm-analysis</a> — operation counting alone is incomplete without space analysis</li>
+<li>Relates to <a href="essential-accidental-complexity.html" class="wiki-link">essential-accidental-complexity</a> — space overhead from data structures is often essential; space wasted by poor design is accidental</li>
+<li>Contrasts with <a href="readability-vs-performance.html" class="wiki-link">readability-vs-performance</a> — sometimes trading space for readability is the right call (caching, lookup tables)</li>
+</ul>
+</div>
+
+<nav class="pagination"><a href="testing-strategy.html" class="prev">← Testing Strategy</a><a href="timely-dataflow.html" class="next">Timely Dataflow →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

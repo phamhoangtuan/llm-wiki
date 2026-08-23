@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proximity Service — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-system-design">System Design</a> <span class="sep">/</span>
+  <span>Proximity Service</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Proximity Service</h1>
+  <div class="page-meta"><span>Source: system-design-interview-volume-2</span><span>Updated: 2026-06-29</span></div>
+  <div class="page-tags"><span class="tag">system-design</span><span class="tag">geospatial</span><span class="tag">scalability</span><span class="tag">architecture</span></div>
+</div>
+<div class="content-area concept">
+<p>Proximity service architecture enables users to discover nearby points of interest (businesses, people, locations) based on their latitude/longitude. It's one of the canonical system design problems — powering Yelp, Google Maps, Uber, and Tinder. The core challenge is not a simple <code>SELECT * WHERE lat/long BETWEEN</code> query; it's the art of mapping 2D coordinates to a 1D index to find k-nearest neighbors at scale.</p>
+<h2 id="three-core-functions">Three Core Functions</h2>
+<table><thead><tr>
+<th>Function</th>
+<th>Description</th>
+<th>Requirements</th>
+</tr></thead><tbody>
+<tr>
+<td>Location-Based Search</td>
+<td>Find all businesses within a radius from a lat/long point</td>
+<td>Low latency, geospatial indexing</td>
+</tr>
+<tr>
+<td>Business Lifecycle (CRUD)</td>
+<td>Create, update, delete business listings</td>
+<td>Low QPS writes, data consistency</td>
+</tr>
+<tr>
+<td>Metadata Retrieval</td>
+<td>Read detailed business profiles (images, reviews, ratings)</td>
+<td>High-frequency reads, cache optimization</td>
+</tr>
+</tbody></table>
+<h2 id="two-service-architecture">Two-Service Architecture</h2>
+<pre><code>┌────────────────────────────────────────────────────┐
+│               Load Balancer (DNS)                   │
+│         Path-based routing: /v1/* → Services        │
+└──────────┬──────────────────────┬───────────────────┘
+           ▼                      ▼
+┌──────────────────────┐  ┌──────────────────────┐
+│  Location-Based      │  │   Business Service   │
+│  Service (LBS)       │  │                      │
+│  • Read-heavy        │  │  • CRUD operations   │
+│  • Stateless         │  │  • Low-QPS writes    │
+│  • Geospatial queries│  │  • High-QPS reads    │
+│  • Elastic scaling   │  │  • Metadata retrieval│
+└──────────────────────┘  └──────────────────────┘</code></pre>
+<p>Separation benefits: resource isolation, independent scaling, specialized optimization, failure containment.</p>
+<h2 id="strategic-compromise-data-freshness-sla">Strategic Compromise: Data Freshness SLA</h2>
+<p>A key architectural decision — relaxing data freshness from real-time to <strong>next-day SLA</strong> dramatically simplifies the system:</p>
+<table><thead><tr>
+<th>Trade-off</th>
+<th>Benefit</th>
+</tr></thead><tbody>
+<tr>
+<td>Accept 24-hour staleness</td>
+<td>Nightly batch jobs for index/cache rebuilds</td>
+</tr>
+<tr>
+<td>Skip real-time cache invalidation</td>
+<td>Avoid thundering herd problem</td>
+</tr>
+<tr>
+<td>No instant update propagation</td>
+<td>Simpler write path, no real-time sync</td>
+</tr>
+</tbody></table>
+<h2 id="scale-estimation">Scale Estimation</h2>
+<p><strong>QPS Formula</strong> (using <code>10^5</code> = 100,000 seconds/day shortcut):</p>
+<pre><code>QPS = (DAU × Average Actions) / 10^5</code></pre>
+<p>Example: 100M DAU × 5 searches/user/day → 500M queries/day → <strong>5,000 QPS baseline</strong>.</p>
+<p>This dictates the architecture: stateless services, database replicas, caching layers.</p>
+<h2 id="key-design-decisions">Key Design Decisions</h2>
+<table><thead><tr>
+<th>Decision</th>
+<th>Rationale</th>
+</tr></thead><tbody>
+<tr>
+<td>Stateless LBS</td>
+<td>Elastic scaling, simple load balancing, no sticky sessions</td>
+</tr>
+<tr>
+<td>Primary-Secondary DB cluster</td>
+<td>Read >> Write workload, horizontal read scaling</td>
+</tr>
+<tr>
+<td>In-memory Quadtree + DB Geohash</td>
+<td>Speed (cache) + persistence (DB) hybrid approach</td>
+</tr>
+<tr>
+<td>Next-day freshness SLA</td>
+<td>Simpler write path, avoids cache stampede risk</td>
+</tr>
+<tr>
+<td>Incremental rollouts</td>
+<td>Prevents database overload when rebuilding in-memory index</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="geospatial-indexing.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Geospatial Indexing</h4>
+      <p>the indexing strategy that makes proximity search scalable</p>
+    </a>
+    <a class="connection-card" href="geohash.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Geohash</h4>
+      <p>database-level geospatial encoding with prefix matching</p>
+    </a>
+    <a class="connection-card" href="quadtree.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Quadtree</h4>
+      <p>in-memory adaptive spatial subdivision</p>
+    </a>
+    <a class="connection-card" href="database-replication.html">
+      <span class="connection-type related">Related</span>
+      <h4>Database Replication</h4>
+      <p>Primary-Secondary clustering for read-optimized workloads</p>
+    </a>
+    <a class="connection-card" href="stateless-architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Stateless Architecture</h4>
+      <p>stateless LBS enables elastic scaling</p>
+    </a>
+    <a class="connection-card" href="cache-strategy.html">
+      <span class="connection-type related">Related</span>
+      <h4>Cache Strategy</h4>
+      <p>cache stampede mitigation for nightly index rebuilds</p>
+    </a>
+    <a class="connection-card" href="deployment-strategies.html">
+      <span class="connection-type related">Related</span>
+      <h4>Deployment Strategies</h4>
+      <p>incremental rollout over Blue/Green for index initialization</p>
+    </a>
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type related">Related</span>
+      <h4>System Design Interview</h4>
+      <p>a canonical system design interview problem</p>
+    </a>
+    <a class="connection-card" href="scalable-architecture.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Scalable Architecture</h4>
+      <p>QPS estimation drives architecture decisions</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="prompt-engineering.html" class="prev">← Prompt Engineering</a><a href="pytest-assertions.html" class="next">pytest Assertions →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

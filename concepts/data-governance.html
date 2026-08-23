@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Governance — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-governance">Data Governance</a> <span class="sep">/</span>
+  <span>Data Governance</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Data Governance</h1>
+  <div class="page-meta"><span>Source: data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">data-governance</span><span class="tag">compliance</span><span class="tag">security</span><span class="tag">metadata</span><span class="tag">data-quality</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Data Governance</strong> is the framework of policies, standards, and accountability structures that ensures data is managed as a strategic organizational asset. It defines who can take what action, on what data, under what circumstances — covering access control, classification, retention, quality standards, lineage tracking, and regulatory compliance.</p>
+<p>While Data Engineering builds the pipelines that move and transform data, Data Governance ensures those pipelines operate within legal, ethical, and business boundaries.</p>
+<h2 id="core-pillars">Core Pillars</h2>
+<table><thead><tr>
+<th>Pillar</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Access Control</strong></td>
+<td>Who can read, write, or delete data — enforced via RBAC, ABAC</td>
+</tr>
+<tr>
+<td><strong>Data Classification</strong></td>
+<td>Labeling data by sensitivity (PII, confidential, public)</td>
+</tr>
+<tr>
+<td><strong>Retention & Lifecycle</strong></td>
+<td>How long data is kept, when it's archived or destroyed</td>
+</tr>
+<tr>
+<td><strong>Data Quality Standards</strong></td>
+<td>Rules for completeness, accuracy, timeliness, consistency</td>
+</tr>
+<tr>
+<td><strong>Lineage & Metadata</strong></td>
+<td>Tracking where data came from, how it was transformed</td>
+</tr>
+<tr>
+<td><strong>Compliance</strong></td>
+<td>Meeting legal requirements: GDPR, CCPA, HIPAA, SOC2</td>
+</tr>
+<tr>
+<td><strong>Data Ownership</strong></td>
+<td>Clear accountability: who owns each data domain</td>
+</tr>
+</tbody></table>
+<h2 id="why-governance-matters">Why Governance Matters</h2>
+<p>Without governance:</p>
+<ul>
+<li><strong>Cost</strong>: Uncontrolled data hoarding inflates storage bills; no one knows what's safe to delete.</li>
+<li><strong>Legal Risk</strong>: GDPR "right to be forgotten" becomes nearly impossible without knowing where user data lives.</li>
+<li><strong>Trust Erosion</strong>: Analysts make decisions on data they can't verify — lineage gaps destroy confidence.</li>
+<li><strong>Security</strong>: Unclassified data means sensitive information may sit unprotected in dev environments.</li>
+<li><strong>Agent Sprawl</strong> (2026): Without governance, AI agents produce minor data inconsistencies that compound into indecision and leadership pushback — the LLM-era equivalent of dashboard sprawl.</li>
+</ul>
+<h2 id="the-five-safes-framework-privacy-governa">The Five Safes Framework (Privacy Governance)</h2>
+<p>For data anonymization specifically, the Five Safes framework from Arbuckle & El Emam provides a holistic governance model (source: <span class="wiki-link source-ref">sources/building-anonymization-pipeline</span>):</p>
+<table><thead><tr>
+<th>Safe</th>
+<th>Question</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Safe Projects</strong></td>
+<td>Is this project legal and ethical?</td>
+</tr>
+<tr>
+<td><strong>Safe People</strong></td>
+<td>Who receives the data — what's their motivation and re-identification capability?</td>
+</tr>
+<tr>
+<td><strong>Safe Settings</strong></td>
+<td>Is the sharing environment technically secured?</td>
+</tr>
+<tr>
+<td><strong>Safe Data</strong></td>
+<td>Has identifiability been quantitatively reduced to an acceptable level?</td>
+</tr>
+<tr>
+<td><strong>Safe Outputs</strong></td>
+<td>Could aggregate analysis results inadvertently disclose individual information?</td>
+</tr>
+</tbody></table>
+<p>The framework ensures governance evaluates the entire ecosystem — not just the data itself. See <a href="data-anonymization.html" class="wiki-link">data-anonymization</a> for the full anonymization workflow.</p>
+<h2 id="governance-in-practice">Governance in Practice</h2>
+<p>Data Engineers implement governance through:</p>
+<ul>
+<li><strong>Automated lifecycle policies</strong> (e.g., S3 lifecycle rules, BigQuery partition expiration) — <code>(source: <span class="wiki-link source-ref">sources/data-lifecycle-handbook</span>)</code></li>
+<li><strong>Data catalogs</strong> (Unity Catalog, Apache Atlas, DataHub) for lineage and discovery</li>
+<li><strong>Schema enforcement</strong> with contract testing</li>
+<li><strong>Audit logging</strong> for all data access and mutations</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-lifecycle.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Data Lifecycle</h4>
+      <p>Data Lifecycle Management operationalizes governance retention and archiving policies</p>
+    </a>
+    <a class="connection-card" href="data-anonymization.html">
+      <span class="connection-type related">Informs</span>
+      <h4>Data Anonymization</h4>
+      <p>Five Safes framework bridges governance policy and anonymization execution</p>
+    </a>
+    <a class="connection-card" href="data-engineer.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Engineer</h4>
+      <p>DEs implement governance automation through pipeline design and infrastructure</p>
+    </a>
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type related">Related to</span>
+      <h4>DataOps</h4>
+      <p>DataOps applies software engineering discipline to governance enforcement</p>
+    </a>
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Ingestion</h4>
+      <p>Governance classification should begin at ingestion, not as an afterthought</p>
+    </a>
+    <a class="connection-card" href="unity-catalog.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Unity Catalog</h4>
+      <p>Unity Catalog is a catalog-centric governance implementation for Delta Lake</p>
+    </a>
+    <a class="connection-card" href="cicd-data-pipelines.html">
+      <span class="connection-type related">Related to</span>
+      <h4>CI/CD for Data Pipelines</h4>
+      <p>CI/CD gates enforce governance rules (schema contracts, data quality thresholds) at deployment time</p>
+    </a>
+    <a class="connection-card" href="data-engineering-fundamentals.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineering Fundamentals</h4>
+      <p>the messy data reality (2026) makes governance more critical, not less</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Lifecycle — Data Engineering Handbook</h4>
+      <p>Data Engineering Handbook (data lifecycle)</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Engineering — Data Engineering Handbook</h4>
+      <p>Data Engineering Handbook (discipline overview)</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Building an Anonymization Pipeline</h4>
+      <p>Arbuckle & El Emam on Five Safes, ethics committees, and trust-based governance</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="data-engineering-fundamentals.html" class="prev">← Data Engineering Fundamentals</a><a href="data-head.html" class="next">Data Head →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

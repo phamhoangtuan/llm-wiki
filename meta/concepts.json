@@ -1,0 +1,3142 @@
+{
+  "concepts": {
+    "agent-components": {
+      "title": "Agent Components",
+      "category": "AI & Agents",
+      "url": "concepts/agent-components.html",
+      "definition": "An AI agent is built from **5 foundational components** — Model, Tools, Memory, Orchestration, and Deployment. These components are static by themselves; they only gain value when set in motion by the",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "architecture",
+        "llm"
+      ]
+    },
+    "agent-hub": {
+      "title": "Agent Hub",
+      "category": "AI & Agents",
+      "url": "concepts/agent-hub.html",
+      "definition": "**AgentHub** is Karpathy's sketch of an agent-first collaboration platform. Its central slogan: \"GitHub is for humans. AgentHub is for agents.\" It combines a bare Git repository, a SQLite database, an",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "collaboration",
+        "git",
+        "dag"
+      ]
+    },
+    "agent-loop": {
+      "title": "Agent Loop",
+      "category": "AI & Agents",
+      "url": "concepts/agent-loop.html",
+      "definition": "The **Agent Loop** is the iterative cycle that powers autonomous AI agents — the mechanism that distinguishes agents from chatbots. Rather than guessing an answer from a single prompt, an agent works ",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "autonomy",
+        "llm"
+      ]
+    },
+    "agent-quality-optimization": {
+      "title": "Agent Quality Optimization",
+      "category": "AI & Agents",
+      "url": "concepts/agent-quality-optimization.html",
+      "definition": "**Agent Quality Optimization** is the discipline of maximizing the return on investment from AI agents by engineering output quality rather than minimizing token count. It treats agent reliability as ",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "token-optimization",
+        "llm",
+        "reliability"
+      ]
+    },
+    "agent-verification": {
+      "title": "Agent Verification",
+      "category": "AI & Agents",
+      "url": "concepts/agent-verification.html",
+      "definition": "**Agent Verification** is the discipline of validating both the *output* and the *trajectory* of AI agents — going beyond traditional software testing to account for the non-deterministic, multi-step ",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "testing",
+        "reliability",
+        "quality"
+      ]
+    },
+    "agentic-development-life-cycle": {
+      "title": "Agentic Development Life Cycle",
+      "category": "AI & Agents",
+      "url": "concepts/agentic-development-life-cycle.html",
+      "definition": "The **Agentic Development Life Cycle (ADLC)** is a redefinition of the traditional Software Development Life Cycle for environments where AI agents collaborate with humans to produce software. Traditi",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "sdlc",
+        "methodology",
+        "process"
+      ]
+    },
+    "ai-engineering": {
+      "title": "AI Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/ai-engineering.html",
+      "definition": "**AI Engineering** is the discipline of building applications on top of readily available foundation models — large models trained by a few organizations and served via APIs — rather than training mod",
+      "tags": [
+        "ai-engineering",
+        "foundation-models",
+        "ml-engineering",
+        "rag",
+        "evaluation"
+      ]
+    },
+    "ai-native-engineering": {
+      "title": "AI-Native Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/ai-native-engineering.html",
+      "definition": "**AI-Native Engineering** is a professional engineering discipline where developers operate as orchestrators of AI agents rather than manual coders. It fundamentally differs from [[vibe-coding]] — whi",
+      "tags": [
+        "ai-engineering",
+        "software-engineering",
+        "agents",
+        "methodology"
+      ]
+    },
+    "ai-psychosis": {
+      "title": "AI Psychosis",
+      "category": "AI & Agents",
+      "url": "concepts/ai-psychosis.html",
+      "definition": "**AI Psychosis** is an organizational pathology where leadership becomes so fixated on AI — building it, adopting it, or optimizing for it — that they systematically destroy the engineering culture, o",
+      "tags": [
+        "ai",
+        "engineering-culture",
+        "leadership",
+        "organizational-behavior",
+        "risk"
+      ]
+    },
+    "ai-scaling-laws": {
+      "title": "AI Scaling Laws",
+      "category": "Meta",
+      "url": "concepts/ai-scaling-laws.html",
+      "definition": "**AI Scaling Laws** describe predictable relationships between model performance and three key resources: **data size**, **model size** (parameters), and **compute** (FLOPs). They enable engineers to ",
+      "tags": [
+        "machine-learning",
+        "scaling",
+        "compute",
+        "performance"
+      ]
+    },
+    "algorithm-analysis": {
+      "title": "Algorithm Analysis",
+      "category": "Career & Growth",
+      "url": "concepts/algorithm-analysis.html",
+      "definition": "Algorithm analysis is the discipline of predicting how an algorithm behaves as input grows, without running it. The core method: **count key operations, not clock time**.",
+      "tags": [
+        "algorithms",
+        "performance",
+        "operation-counting",
+        "doubling-effect"
+      ]
+    },
+    "analytics-engineer": {
+      "title": "Analytics Engineer",
+      "category": "Data Engineering",
+      "url": "concepts/analytics-engineer.html",
+      "definition": "The **Analytics Engineer** is a role formalized by the [[dbt|dbt (data build tool)]] ecosystem — a bridge between Data Engineers (who build infrastructure and pipelines) and Data Analysts (who generat",
+      "tags": [
+        "data-engineering",
+        "analytics",
+        "roles",
+        "dbt",
+        "data-modeling",
+        "ai"
+      ]
+    },
+    "apache-airflow": {
+      "title": "Apache Airflow",
+      "category": "Data Engineering",
+      "url": "concepts/apache-airflow.html",
+      "definition": "**Apache Airflow** is an open-source platform for programmatically authoring, scheduling, and monitoring data pipelines. It represents workflows as **Directed Acyclic Graphs (DAGs)** written in Python",
+      "tags": [
+        "data-engineering",
+        "orchestration",
+        "workflow",
+        "python",
+        "dag"
+      ]
+    },
+    "apache-arrow": {
+      "title": "Apache Arrow",
+      "category": "Data Engineering",
+      "url": "concepts/apache-arrow.html",
+      "definition": "**Apache Arrow** is an open-source, language-agnostic columnar in-memory format designed for efficient data interchange between systems. It provides zero-copy data sharing across languages (Python, C+",
+      "tags": [
+        "data-engineering",
+        "columnar",
+        "apache",
+        "in-memory"
+      ]
+    },
+    "apache-datafusion": {
+      "title": "Apache DataFusion",
+      "category": "Data Engineering",
+      "url": "concepts/apache-datafusion.html",
+      "definition": "**Apache DataFusion** is an extensible, Rust-native query engine that provides SQL and DataFrame APIs for building high-performance data systems. It is designed to be embedded into other applications ",
+      "tags": [
+        "query-engines",
+        "rust",
+        "apache",
+        "sql",
+        "data-engineering"
+      ]
+    },
+    "apache-druid": {
+      "title": "Apache Druid",
+      "category": "Data Engineering",
+      "url": "concepts/apache-druid.html",
+      "definition": "**Apache Druid** is an open-source, column-oriented, distributed data store designed for high-performance real-time analytics on event-driven data. It is optimized for low-latency OLAP queries on stre",
+      "tags": [
+        "olap",
+        "database",
+        "streaming",
+        "analytics",
+        "real-time"
+      ]
+    },
+    "apache-flink": {
+      "title": "Apache Flink",
+      "category": "Stream Processing",
+      "url": "concepts/apache-flink.html",
+      "definition": "**Apache Flink** is an open-source, distributed stream processing framework for stateful computations over data streams. It provides exactly-once semantics, low-latency processing, and a unified API f",
+      "tags": [
+        "stream-processing",
+        "apache",
+        "flink",
+        "data-engineering",
+        "cdc"
+      ]
+    },
+    "apache-iceberg": {
+      "title": "Apache Iceberg",
+      "category": "Data Engineering",
+      "url": "concepts/apache-iceberg.html",
+      "definition": "**Apache Iceberg** is an open-source table format for large analytic datasets, designed to bring ACID transactions, schema evolution, and time travel to data lakes. As of the **1.11.0 release (May 202",
+      "tags": [
+        "table-formats",
+        "data-lake",
+        "iceberg",
+        "data-engineering",
+        "lakehouse"
+      ]
+    },
+    "apache-kafka": {
+      "title": "Apache Kafka",
+      "category": "Data Engineering",
+      "url": "concepts/apache-kafka.html",
+      "definition": "**Apache Kafka** is an open-source distributed event streaming platform used for high-throughput, low-latency data pipelines, streaming analytics, and event-driven architectures. Unlike traditional [[",
+      "tags": [
+        "streaming",
+        "messaging",
+        "kafka",
+        "data-engineering",
+        "event-driven"
+      ]
+    },
+    "apache-parquet": {
+      "title": "Apache Parquet",
+      "category": "Data Engineering",
+      "url": "concepts/apache-parquet.html",
+      "definition": "**Apache Parquet** is the dominant open-source columnar storage format for the big data ecosystem. It stores data column-by-column (rather than row-by-row like CSV), enabling highly efficient compress",
+      "tags": [
+        "file-formats",
+        "columnar",
+        "big-data",
+        "data-engineering",
+        "delta-lake"
+      ]
+    },
+    "apache-pinot": {
+      "title": "Apache Pinot",
+      "category": "Data Engineering",
+      "url": "concepts/apache-pinot.html",
+      "definition": "**Apache Pinot** is an open-source, distributed OLAP datastore designed for low-latency, high-concurrency analytical queries on streaming and batch data. Originally built at LinkedIn to power real-tim",
+      "tags": [
+        "olap",
+        "database",
+        "streaming",
+        "analytics",
+        "real-time",
+        "linkedin"
+      ]
+    },
+    "apache-spark": {
+      "title": "Apache Spark",
+      "category": "Data Engineering",
+      "url": "concepts/apache-spark.html",
+      "definition": "Apache Spark is a distributed data processing engine designed for large-scale analytics. While Spark's high-level APIs (DataFrames, Spark SQL) make it accessible, writing high-performance Spark requir",
+      "tags": [
+        "apache-spark",
+        "data-engineering",
+        "big-data",
+        "performance",
+        "optimization"
+      ]
+    },
+    "api-architectural-styles": {
+      "title": "API Architectural Styles",
+      "category": "System Architecture",
+      "url": "concepts/api-architectural-styles.html",
+      "definition": "API architectural styles define how clients and servers communicate. Each style optimizes for different use cases — no single style is universally best.",
+      "tags": [
+        "api",
+        "architecture",
+        "system-design",
+        "web"
+      ]
+    },
+    "architectural-characteristics": {
+      "title": "Architectural Characteristics",
+      "category": "Meta",
+      "url": "concepts/architectural-characteristics.html",
+      "definition": "The non-functional \"-ilities\" that a system must exhibit — the quality attributes that define how a system behaves, not what it does. They form one of the 4 dimensions of software architecture (alongs",
+      "tags": [
+        "software-architecture",
+        "non-functional-requirements",
+        "-ilities"
+      ]
+    },
+    "architectural-decision-records": {
+      "title": "Architectural Decision Records (ADRs)",
+      "category": "Meta",
+      "url": "concepts/architectural-decision-records.html",
+      "definition": "Lightweight documents that capture the context, rationale, and consequences of significant architectural decisions. ADRs are institutional memory — \"Why\" preserved long after the \"How\" (code) has been",
+      "tags": [
+        "software-architecture",
+        "documentation",
+        "decision-making",
+        "adr"
+      ]
+    },
+    "architecture-fitness-functions": {
+      "title": "Architecture Fitness Functions",
+      "category": "Testing",
+      "url": "concepts/architecture-fitness-functions.html",
+      "definition": "Executable specifications that perform objective integrity assessments of architecture characteristics. Introduced in *Software Architecture: The Hard Parts* as a governance mechanism.",
+      "tags": [
+        "software-architecture",
+        "quality",
+        "governance",
+        "testing"
+      ]
+    },
+    "architecture-hoisting": {
+      "title": "Architecture Hoisting",
+      "category": "Software Design",
+      "url": "concepts/architecture-hoisting.html",
+      "definition": "Architecture Hoisting is the strategy of **shifting quality attribute guarantees from manual developer discipline to structural system constraints**. Instead of relying on every developer to follow ru",
+      "tags": [
+        "software-architecture",
+        "quality-attributes",
+        "design-patterns"
+      ]
+    },
+    "architecture-in-agile": {
+      "title": "Architecture in Agile",
+      "category": "Meta",
+      "url": "concepts/architecture-in-agile.html",
+      "definition": "Architecture in Agile reconciles the perceived tension between upfront design and iterative development. Architecture is not Agile's enemy — it's the **skeleton that makes agility possible**. Without ",
+      "tags": [
+        "software-architecture",
+        "agile",
+        "project-management",
+        "methodology"
+      ]
+    },
+    "architecture-quantum": {
+      "title": "Architecture Quantum",
+      "category": "System Architecture",
+      "url": "concepts/architecture-quantum.html",
+      "definition": "An independently deployable artifact with high functional cohesion, high static coupling, and synchronous dynamic coupling. The fundamental unit of analysis in modern distributed architecture, introdu",
+      "tags": [
+        "software-architecture",
+        "distributed-systems",
+        "coupling"
+      ]
+    },
+    "autoresearch": {
+      "title": "Autoresearch",
+      "category": "AI & Agents",
+      "url": "concepts/autoresearch.html",
+      "definition": "**Autoresearch** is Andrej Karpathy's autonomous ML experimentation system. An agent is placed inside an executable research harness with a mutable training program, a fixed evaluation metric, a time ",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "ml-experimentation",
+        "autonomy",
+        "loop"
+      ]
+    },
+    "batch-processing": {
+      "title": "Batch Processing",
+      "category": "Data Engineering",
+      "url": "concepts/batch-processing.html",
+      "definition": "**Batch Processing** is the traditional paradigm of collecting data over a period of time and processing it all at once in a scheduled job. Unlike [[stream-processing|stream processing]] which handles",
+      "tags": [
+        "data-engineering",
+        "batch",
+        "etl",
+        "hadoop",
+        "spark",
+        "traditional"
+      ]
+    },
+    "big-o-notation": {
+      "title": "Big O Notation",
+      "category": "Career & Growth",
+      "url": "concepts/big-o-notation.html",
+      "definition": "Big O notation is the standard vocabulary for describing how an algorithm's resource consumption grows as input size (N) increases. It abstracts away hardware, language, and constants to focus on the ",
+      "tags": [
+        "algorithms",
+        "complexity",
+        "performance",
+        "asymptotic-analysis"
+      ]
+    },
+    "bijection": {
+      "title": "Bijection",
+      "category": "System Architecture",
+      "url": "concepts/bijection.html",
+      "definition": "Bijection is the golden design rule: **each domain object must be represented by a single object in the computable model and vice versa.** A one-to-one mapping between reality and code.",
+      "tags": [
+        "architecture",
+        "design-principles",
+        "domain-modeling"
+      ]
+    },
+    "bloom-filter": {
+      "title": "Bloom Filter",
+      "category": "Career & Growth",
+      "url": "concepts/bloom-filter.html",
+      "definition": "A Bloom filter is a space-efficient probabilistic data structure for set membership testing. Its defining characteristic: it can tell you something is **definitely not** in a set, but only **probably*",
+      "tags": [
+        "data-structures",
+        "algorithms",
+        "caching",
+        "system-design",
+        "probabilistic"
+      ]
+    },
+    "byzantine-fault-tolerance": {
+      "title": "Byzantine Fault Tolerance (BFT)",
+      "category": "System Architecture",
+      "url": "concepts/byzantine-fault-tolerance.html",
+      "definition": "**Byzantine Fault Tolerance (BFT)** is the property of a distributed system to maintain correct operation and reach consensus even when some of its components fail — not just by crashing, but by activ",
+      "tags": [
+        "distributed-systems",
+        "consensus",
+        "fault-tolerance",
+        "security"
+      ]
+    },
+    "cache-strategy": {
+      "title": "Cache Strategy",
+      "category": "System Architecture",
+      "url": "concepts/cache-strategy.html",
+      "definition": "A cache is temporary in-memory storage for frequently accessed data. Proper caching can reduce database load by 90%+ and cut response times from hundreds of milliseconds to single-digit milliseconds. ",
+      "tags": [
+        "system-design",
+        "performance",
+        "caching",
+        "scalability"
+      ]
+    },
+    "cap-theorem": {
+      "title": "CAP Theorem",
+      "category": "System Architecture",
+      "url": "concepts/cap-theorem.html",
+      "definition": "**CAP Theorem** (also known as Brewer's Theorem) states that any distributed data store can provide at most two of three guarantees simultaneously: **Consistency**, **Availability**, and **Partition T",
+      "tags": [
+        "distributed-systems",
+        "consistency",
+        "availability",
+        "architecture",
+        "database-design"
+      ]
+    },
+    "case-interview": {
+      "title": "Case Interview",
+      "category": "Career & Growth",
+      "url": "concepts/case-interview.html",
+      "definition": "The consulting case interview is a structured problem-solving conversation that simulates a real client engagement. Unlike technical interviews that test coding ability, case interviews test analytica",
+      "tags": [
+        "interview",
+        "consulting",
+        "case-interview",
+        "problem-solving",
+        "career"
+      ]
+    },
+    "cdn": {
+      "title": "CDN",
+      "category": "System Architecture",
+      "url": "concepts/cdn.html",
+      "definition": "A Content Delivery Network (CDN) is a geographically distributed network of servers that cache static content (images, CSS, JavaScript, videos) close to end users. By serving content from edge locatio",
+      "tags": [
+        "system-design",
+        "networking",
+        "performance",
+        "global-scale"
+      ]
+    },
+    "change-data-capture": {
+      "title": "Change Data Capture (CDC)",
+      "category": "Data Engineering",
+      "url": "concepts/change-data-capture.html",
+      "definition": "**Change Data Capture (CDC)** is a data integration pattern that captures row-level changes (inserts, updates, deletes) from a source database's transaction log and streams them to downstream systems ",
+      "tags": [
+        "data-engineering",
+        "cdc",
+        "streaming",
+        "databases",
+        "data-lake",
+        "delta-lake",
+        "clickhouse"
+      ]
+    },
+    "cicd-data-pipelines": {
+      "title": "CI/CD for Data Pipelines",
+      "category": "Data Engineering",
+      "url": "concepts/cicd-data-pipelines.html",
+      "definition": "**CI/CD for Data Pipelines** applies continuous integration and continuous deployment practices — linting, automated testing, quality gates, and deployment automation — to data engineering workflows. ",
+      "tags": [
+        "data-engineering",
+        "cicd",
+        "devops",
+        "testing",
+        "linting"
+      ]
+    },
+    "clickhouse": {
+      "title": "ClickHouse",
+      "category": "Infrastructure",
+      "url": "concepts/clickhouse.html",
+      "definition": "**ClickHouse** is a high-performance, column-oriented SQL database management system (DBMS) for online analytical processing (OLAP). It processes billions to trillions of rows in milliseconds, making ",
+      "tags": [
+        "olap",
+        "databases",
+        "columnar",
+        "clickhouse",
+        "data-engineering",
+        "delta-lake"
+      ]
+    },
+    "cloud-service-models": {
+      "title": "Cloud Service Models",
+      "category": "Infrastructure",
+      "url": "concepts/cloud-service-models.html",
+      "definition": "Cloud service models represent three levels of infrastructure abstraction, each trading control for operational simplicity.",
+      "tags": [
+        "cloud",
+        "infrastructure",
+        "system-design"
+      ]
+    },
+    "code-archaeology": {
+      "title": "Code Archaeology",
+      "category": "Meta",
+      "url": "concepts/code-archaeology.html",
+      "definition": "**Code Archaeology** is the practice of investigating the historical context of existing code before modifying it — understanding why it was written, under what constraints, and what \"initial good\" it",
+      "tags": [
+        "software-design",
+        "refactoring",
+        "maintenance",
+        "code-quality",
+        "engineering-culture"
+      ]
+    },
+    "code-overload": {
+      "title": "Code Overload",
+      "category": "AI & Agents",
+      "url": "concepts/code-overload.html",
+      "definition": "**Code Overload** is a term coined by the *New York Times* (April 2026) describing the phenomenon where AI-assisted engineering teams produce code so rapidly that it becomes unmanageable — code churn,",
+      "tags": [
+        "ai-engineering",
+        "software-engineering",
+        "technical-debt",
+        "quality"
+      ]
+    },
+    "code-quality-pillars": {
+      "title": "Code Quality Pillars",
+      "category": "Software Design",
+      "url": "concepts/code-quality-pillars.html",
+      "definition": "Quality code isn't a matter of aesthetics — it's a practical necessity for business stability and user safety. Software engineering is distinct from mere coding: it produces code that lives for years,",
+      "tags": [
+        "design-principles",
+        "clean-code",
+        "engineering",
+        "maintainability"
+      ]
+    },
+    "code-readability": {
+      "title": "Code Readability",
+      "category": "Meta",
+      "url": "concepts/code-readability.html",
+      "definition": "**Code Readability** is the discipline of writing code that minimizes the time it takes for someone else to understand it. The **Fundamental Theorem of Readability** states that the primary metric of ",
+      "tags": [
+        "code-quality",
+        "readability",
+        "software-engineering",
+        "best-practices"
+      ]
+    },
+    "complexity-metrics": {
+      "title": "Complexity Metrics",
+      "category": "Data Engineering",
+      "url": "concepts/complexity-metrics.html",
+      "definition": "**Complexity Metrics** are quantitative measurements of code difficulty — how hard it is to understand, test, and modify a piece of software. They transform subjective developer frustration (\"this cod",
+      "tags": [
+        "software-design",
+        "code-quality",
+        "metrics",
+        "refactoring",
+        "static-analysis"
+      ]
+    },
+    "composition-root": {
+      "title": "Composition Root",
+      "category": "Software Design",
+      "url": "concepts/composition-root.html",
+      "definition": "The **Composition Root** is the single, centralized location in an application where the entire object graph is wired together — where all [[dependency-injection|Dependency Injection]] composition hap",
+      "tags": [
+        "design-patterns",
+        "architecture",
+        "di",
+        "composition-root"
+      ]
+    },
+    "compound-ai-systems": {
+      "title": "Compound AI Systems",
+      "category": "AI & Agents",
+      "url": "concepts/compound-ai-systems.html",
+      "definition": "**Compound AI Systems** are the paradigm shift from single monolithic models to orchestrated ensembles of specialized components — retrievers, reasoners, verifiers, tools, and agents working together.",
+      "tags": [
+        "machine-learning",
+        "ai-engineering",
+        "orchestration",
+        "systems-design"
+      ]
+    },
+    "containerization": {
+      "title": "Containerization",
+      "category": "Infrastructure",
+      "url": "concepts/containerization.html",
+      "definition": "Containerization packages software code with all its dependencies (libraries, frameworks) into an isolated unit called a container. Unlike virtual machines, containers share the host OS kernel — no gu",
+      "tags": [
+        "containers",
+        "docker",
+        "virtualization",
+        "infrastructure",
+        "system-design"
+      ]
+    },
+    "context-engineering": {
+      "title": "Context Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/context-engineering.html",
+      "definition": "**Context Engineering** is the systematic discipline of curating and injecting project-specific information into AI agent working memory to maximize output quality. It is the next evolution beyond pro",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "prompt-engineering",
+        "llm",
+        "knowledge-management"
+      ]
+    },
+    "continuous-delivery": {
+      "title": "Continuous Delivery",
+      "category": "Infrastructure",
+      "url": "concepts/continuous-delivery.html",
+      "definition": "**Continuous delivery** keeps software in a releasable state by integrating, testing, and deploying small changes through an automated path. It is not simply frequent deployment; it is a system that m",
+      "tags": [
+        "ci-cd",
+        "software-engineering",
+        "deployment",
+        "release-management",
+        "testing"
+      ]
+    },
+    "data-analyst": {
+      "title": "Data Analyst",
+      "category": "Data Engineering",
+      "url": "concepts/data-analyst.html",
+      "definition": "A **Data Analyst** works closely with business stakeholders to define metrics and dimensions, creating dashboards, reports, and ad-hoc queries to answer business questions. They typically focus on a s",
+      "tags": [
+        "data-analytics",
+        "roles",
+        "career",
+        "bi",
+        "sql",
+        "ai"
+      ]
+    },
+    "data-anonymization": {
+      "title": "Data Anonymization",
+      "category": "Data Engineering",
+      "url": "concepts/data-anonymization.html",
+      "definition": "**Data Anonymization** is the process of transforming data to reduce the risk of re-identifying individuals while preserving analytical utility. It is fundamentally a risk management discipline — not ",
+      "tags": [
+        "data-privacy",
+        "anonymization",
+        "data-governance",
+        "data-pipeline",
+        "security"
+      ]
+    },
+    "data-architecture": {
+      "title": "Data Architecture",
+      "category": "System Architecture",
+      "url": "concepts/data-architecture.html",
+      "definition": "The blueprint for aligning data assets with organizational strategy. One of DAMA's eleven Knowledge Areas.",
+      "tags": [
+        "data-management",
+        "architecture",
+        "dama"
+      ]
+    },
+    "data-engineer": {
+      "title": "Data Engineer",
+      "category": "Data Engineering",
+      "url": "concepts/data-engineer.html",
+      "definition": "A Data Engineer is a specialized software engineer who designs, builds, and maintains the infrastructure and pipelines that transport data from source systems to analytical destinations. They are the ",
+      "tags": [
+        "data-engineering",
+        "roles",
+        "career",
+        "infrastructure",
+        "ai"
+      ]
+    },
+    "data-engineering-fundamentals": {
+      "title": "Data Engineering Fundamentals",
+      "category": "Data Engineering",
+      "url": "concepts/data-engineering-fundamentals.html",
+      "definition": "**Data Engineering Fundamentals** are the enduring technical skills — SQL, Python, data modeling, and \"glue technical skills\" — that remain essential regardless of tool evolution or AI adoption. As th",
+      "tags": [
+        "data-engineering",
+        "fundamentals",
+        "sql",
+        "python",
+        "data-modeling",
+        "career"
+      ]
+    },
+    "data-governance": {
+      "title": "Data Governance",
+      "category": "Data Engineering",
+      "url": "concepts/data-governance.html",
+      "definition": "**Data Governance** is the framework of policies, standards, and accountability structures that ensures data is managed as a strategic organizational asset. It defines who can take what action, on wha",
+      "tags": [
+        "data-governance",
+        "compliance",
+        "security",
+        "metadata",
+        "data-quality"
+      ]
+    },
+    "data-head": {
+      "title": "Data Head",
+      "category": "Meta",
+      "url": "concepts/data-head.html",
+      "definition": "A **Data Head** is a professional — manager, executive, or domain expert — who can think critically about data, statistics, and machine learning without necessarily being a technical practitioner. The",
+      "tags": [
+        "data-literacy",
+        "statistics",
+        "business",
+        "decision-making",
+        "critical-thinking"
+      ]
+    },
+    "data-ingestion": {
+      "title": "Data Ingestion",
+      "category": "Data Engineering",
+      "url": "concepts/data-ingestion.html",
+      "definition": "**Data ingestion** is the process of moving data from source systems (databases, message queues, APIs, files) into a centralized destination (data lake, warehouse, or streaming platform) where it can ",
+      "tags": [
+        "data-engineering",
+        "ingestion",
+        "etl",
+        "streaming",
+        "data-lake"
+      ]
+    },
+    "data-integration": {
+      "title": "Data Integration",
+      "category": "Data Engineering",
+      "url": "concepts/data-integration.html",
+      "definition": "Movement and consolidation of data across systems. One of DAMA's eleven Knowledge Areas, also called \"Data Integration and Interoperability.\"",
+      "tags": [
+        "data-management",
+        "etl",
+        "dama"
+      ]
+    },
+    "data-lakehouse": {
+      "title": "Data Lakehouse",
+      "category": "Data Engineering",
+      "url": "concepts/data-lakehouse.html",
+      "definition": "Data Lakehouse is a modern data architecture that combines the economics and scalability of data lakes with the governance and performance of data warehouses into a single unified platform.",
+      "tags": [
+        "databricks",
+        "data-engineering",
+        "architecture",
+        "lakehouse"
+      ]
+    },
+    "data-lifecycle": {
+      "title": "Data Lifecycle",
+      "category": "Data Engineering",
+      "url": "concepts/data-lifecycle.html",
+      "definition": "The **Data Lifecycle** is the sequence of stages data traverses from initial creation to final destruction. It is a core pillar of [[data-governance|Data Governance]] that ensures data is treated as a",
+      "tags": [
+        "data-engineering",
+        "data-lifecycle",
+        "governance",
+        "infrastructure"
+      ]
+    },
+    "data-mesh": {
+      "title": "Data Mesh",
+      "category": "System Architecture",
+      "url": "concepts/data-mesh.html",
+      "definition": "A decentralized sociotechnical approach to data architecture that treats data as a product and aligns ownership with domain boundaries. Introduced by Zhamak Dehghani (co-author of *Software Architectu",
+      "tags": [
+        "data-architecture",
+        "distributed-systems",
+        "domain-driven-design"
+      ]
+    },
+    "data-modeling": {
+      "title": "Data Modeling",
+      "category": "Data Engineering",
+      "url": "concepts/data-modeling.html",
+      "definition": "**Data Modeling** is the practice of designing the structure, relationships, and constraints of data within a storage system. It determines whether queries are fast or impossible, whether analytics ar",
+      "tags": [
+        "data-engineering",
+        "data-modeling",
+        "sql",
+        "database-design"
+      ]
+    },
+    "data-observability": {
+      "title": "Data Observability",
+      "category": "Meta",
+      "url": "concepts/data-observability.html",
+      "definition": "**Data Observability** is the practice of making data pipelines transparent, traceable, and trustworthy in production. Unlike traditional [[data-quality-monitoring|data quality checks]] that only answ",
+      "tags": [
+        "data-observability",
+        "data-quality",
+        "lineage",
+        "monitoring",
+        "data-pipeline",
+        "incident-management"
+      ]
+    },
+    "data-product": {
+      "title": "Data Product",
+      "category": "Data Engineering",
+      "url": "concepts/data-product.html",
+      "definition": "A **Data Product** is the output of treating data not as a one-off project deliverable but as a continuously produced, monitored, and iteratively improved asset — analogous to a software product. This",
+      "tags": [
+        "dataops",
+        "data-engineering",
+        "product-thinking",
+        "data-mesh"
+      ]
+    },
+    "data-quality-monitoring": {
+      "title": "Data Quality Monitoring",
+      "category": "Data Engineering",
+      "url": "concepts/data-quality-monitoring.html",
+      "definition": "**Data Quality Monitoring** is the practice of continuously detecting, tracking, and communicating data quality incidents across a data platform — going beyond simple test failures to provide end-to-e",
+      "tags": [
+        "data-quality",
+        "data-observability",
+        "lineage",
+        "monitoring",
+        "dbt",
+        "data-platform"
+      ]
+    },
+    "data-scientist": {
+      "title": "Data Scientist",
+      "category": "AI & Agents",
+      "url": "concepts/data-scientist.html",
+      "definition": "A **Data Scientist** builds predictive and machine learning models, uncovers statistically significant patterns in large-scale datasets, and enables the business to predict future behaviors. Their sup",
+      "tags": [
+        "data-science",
+        "ml",
+        "ai",
+        "roles",
+        "career",
+        "python",
+        "statistics"
+      ]
+    },
+    "data-security": {
+      "title": "Data Security",
+      "category": "Meta",
+      "url": "concepts/data-security.html",
+      "definition": "Maintaining privacy, confidentiality, and appropriate access to data assets. One of DAMA's eleven Knowledge Areas.",
+      "tags": [
+        "data-management",
+        "security",
+        "dama"
+      ]
+    },
+    "data-sovereignty": {
+      "title": "Data Sovereignty",
+      "category": "System Architecture",
+      "url": "concepts/data-sovereignty.html",
+      "definition": "The principle that each service owns its data exclusively — it is the sole writer and the authority for its domain. A central concept in *Software Architecture: The Hard Parts*.",
+      "tags": [
+        "software-architecture",
+        "data",
+        "microservices",
+        "distributed-systems"
+      ]
+    },
+    "data-storage-operations": {
+      "title": "Data Storage and Operations",
+      "category": "Infrastructure",
+      "url": "concepts/data-storage-operations.html",
+      "definition": "Implementation and support of stored data assets throughout their lifecycle. One of DAMA's eleven Knowledge Areas.",
+      "tags": [
+        "data-management",
+        "storage",
+        "infrastructure",
+        "dama"
+      ]
+    },
+    "data-warehousing": {
+      "title": "Data Warehousing",
+      "category": "Data Engineering",
+      "url": "concepts/data-warehousing.html",
+      "definition": "Managing data for analysis and reporting. One of DAMA's eleven Knowledge Areas, grouped with Business Intelligence.",
+      "tags": [
+        "data-management",
+        "olap",
+        "analytics",
+        "dama"
+      ]
+    },
+    "database-isolation": {
+      "title": "Database Isolation Levels",
+      "category": "Infrastructure",
+      "url": "concepts/database-isolation.html",
+      "definition": "Database isolation allows transactions to execute as if no other concurrent transactions exist. Guaranteed by MVCC (Multi-Version Concurrency Control) and locks.",
+      "tags": [
+        "databases",
+        "transactions",
+        "concurrency",
+        "system-design"
+      ]
+    },
+    "database-replication": {
+      "title": "Database Replication",
+      "category": "Infrastructure",
+      "url": "concepts/database-replication.html",
+      "definition": "Database replication is the process of copying data from a primary database (master) to one or more secondary databases (slaves/replicas). The master-slave pattern separates write operations from read",
+      "tags": [
+        "databases",
+        "system-design",
+        "scalability",
+        "data-consistency"
+      ]
+    },
+    "database-sharding": {
+      "title": "Database Sharding",
+      "category": "System Architecture",
+      "url": "concepts/database-sharding.html",
+      "definition": "**Database sharding** is a horizontal partitioning technique that splits a large database into smaller, independent \"shards,\" each holding a subset of the data. Unlike [[database-replication|replicati",
+      "tags": [
+        "system-design",
+        "databases",
+        "scalability",
+        "partitioning"
+      ]
+    },
+    "databricks-platform": {
+      "title": "Databricks Platform",
+      "category": "Data Engineering",
+      "url": "concepts/databricks-platform.html",
+      "definition": "Databricks is a unified Data Intelligence Platform built on a 4-layer architecture, delivering a Lakehouse experience for data engineers, scientists, and analysts across AWS, Azure, and GCP.",
+      "tags": [
+        "databricks",
+        "data-engineering",
+        "lakehouse",
+        "platform"
+      ]
+    },
+    "dataops": {
+      "title": "DataOps",
+      "category": "Data Engineering",
+      "url": "concepts/dataops.html",
+      "definition": "DataOps applies software engineering best practices — version control, automated testing, modularity, CI/CD — to data pipelines and transformations. It represents the shift from ad-hoc data wrangling ",
+      "tags": [
+        "data-engineering",
+        "devops",
+        "dbt",
+        "analytics",
+        "methodology"
+      ]
+    },
+    "dbfs": {
+      "title": "DBFS (Databricks File System)",
+      "category": "Data Engineering",
+      "url": "concepts/dbfs.html",
+      "definition": "DBFS is an abstraction layer in the [[databricks-platform|Databricks platform]] that allows users to interact with cloud files using local filesystem syntax. It bridges the gap between ephemeral compu",
+      "tags": [
+        "databricks",
+        "storage",
+        "cloud",
+        "data-engineering"
+      ]
+    },
+    "dbsp": {
+      "title": "DBSP",
+      "category": "Stream Processing",
+      "url": "concepts/dbsp.html",
+      "definition": "**DBSP (Database Stream Processor)** is a computational model for incremental view maintenance that takes a fundamentally different approach from [[timely-dataflow|Timely Dataflow]] and [[differential",
+      "tags": [
+        "stream-processing",
+        "incremental-computation",
+        "formal-methods"
+      ]
+    },
+    "dbt": {
+      "title": "dbt (data build tool)",
+      "category": "Data Engineering",
+      "url": "concepts/dbt.html",
+      "definition": "**dbt** (data build tool) is an open-source data transformation framework that brings software engineering best practices to SQL. It handles the \"T\" in [[elt|ELT]] (Extract-Load-Transform) — running t",
+      "tags": [
+        "dbt",
+        "data-engineering",
+        "analytics",
+        "elt",
+        "sql",
+        "data-modeling"
+      ]
+    },
+    "decomposition-patterns": {
+      "title": "Decomposition Patterns",
+      "category": "Meta",
+      "url": "concepts/decomposition-patterns.html",
+      "definition": "Strategies for breaking a monolithic system into distributed services. From *Software Architecture: The Hard Parts*, Part I: \"Pulling Things Apart.\"",
+      "tags": [
+        "software-architecture",
+        "refactoring",
+        "microservices",
+        "monolith"
+      ]
+    },
+    "delta-kernel": {
+      "title": "Delta Kernel",
+      "category": "Data Engineering",
+      "url": "concepts/delta-kernel.html",
+      "definition": "The **Delta Kernel** (specifically `delta-kernel-rs`) is a Rust library that provides a shared, maintained abstraction layer for the [[delta-lake|Delta Lake]] protocol. Instead of each query engine im",
+      "tags": [
+        "delta-lake",
+        "delta-kernel",
+        "rust",
+        "table-formats",
+        "data-engineering"
+      ]
+    },
+    "delta-lake": {
+      "title": "Delta Lake",
+      "category": "Data Engineering",
+      "url": "concepts/delta-lake.html",
+      "definition": "**Delta Lake** is an open-source storage framework that brings ACID transactions, time travel, and schema enforcement to data lakes. It is one of the three major open table formats (alongside [[apache",
+      "tags": [
+        "table-formats",
+        "data-lake",
+        "delta-lake",
+        "lakehouse",
+        "duckdb",
+        "data-engineering",
+        "clickhouse"
+      ]
+    },
+    "delta-live-tables": {
+      "title": "Delta Live Tables (DLT)",
+      "category": "Data Engineering",
+      "url": "concepts/delta-live-tables.html",
+      "definition": "Declarative ETL framework on Databricks that lets you define *what* data transformations to perform, not *how* to execute them. DLT automatically handles cluster management, monitoring, and data quali",
+      "tags": [
+        "data-engineering",
+        "databricks",
+        "etl",
+        "data-quality"
+      ]
+    },
+    "dependency-injection": {
+      "title": "Dependency Injection",
+      "category": "Software Design",
+      "url": "concepts/dependency-injection.html",
+      "definition": "**Dependency Injection (DI)** is a set of software design principles and patterns that enable **loose coupling** between components. Rather than a library or framework, DI is a discipline: classes dec",
+      "tags": [
+        "design-patterns",
+        "architecture",
+        "testing",
+        "di",
+        "solid"
+      ]
+    },
+    "deployment-strategies": {
+      "title": "Deployment Strategies",
+      "category": "Infrastructure",
+      "url": "concepts/deployment-strategies.html",
+      "definition": "Deployment is the highest-risk phase of the software lifecycle. A small bug can cause outages for millions of users. Strategy choice should match the stakes.",
+      "tags": [
+        "deployment",
+        "devops",
+        "system-design",
+        "reliability"
+      ]
+    },
+    "design-patterns": {
+      "title": "Design Patterns",
+      "category": "Software Design",
+      "url": "concepts/design-patterns.html",
+      "definition": "Reusable, customizable blueprints for solving recurring software design problems — not copy-paste code, but architectural templates. The 22 classic Gang of Four (GoF) patterns are organized into three",
+      "tags": [
+        "software-design",
+        "patterns",
+        "oop",
+        "gang-of-four"
+      ]
+    },
+    "differential-dataflow": {
+      "title": "Differential Dataflow",
+      "category": "System Architecture",
+      "url": "concepts/differential-dataflow.html",
+      "definition": "**Differential Dataflow (DD)** is a programming model built on top of [[timely-dataflow|Timely Dataflow]]. It answers the question: *given that we know when a computation is complete (via TD's notific",
+      "tags": [
+        "distributed-systems",
+        "stream-processing",
+        "incremental-computation"
+      ]
+    },
+    "differential-privacy": {
+      "title": "Differential Privacy",
+      "category": "Meta",
+      "url": "concepts/differential-privacy.html",
+      "definition": "**Differential Privacy** is a mathematical framework that provides formal guarantees about individual privacy in statistical data analysis. It ensures that an attacker cannot determine whether any spe",
+      "tags": [
+        "data-privacy",
+        "anonymization",
+        "mathematics",
+        "machine-learning",
+        "security"
+      ]
+    },
+    "directness": {
+      "title": "Directness",
+      "category": "Meta",
+      "url": "concepts/directness.html",
+      "definition": "**Directness** is the principle of learning by doing the exact thing you want to become good at. It is the third principle of [[ultralearning|Ultralearning]] and serves as the strategic antidote to **",
+      "tags": [
+        "learning",
+        "skill-acquisition",
+        "ultralearning"
+      ]
+    },
+    "distributed-consensus": {
+      "title": "Distributed Consensus (Raft & Paxos)",
+      "category": "System Architecture",
+      "url": "concepts/distributed-consensus.html",
+      "definition": "**Distributed consensus** is the process by which multiple nodes in a network reach unanimous agreement on a value or sequence of actions, even when some nodes fail, the network partitions, or message",
+      "tags": [
+        "distributed-systems",
+        "consensus",
+        "raft",
+        "paxos",
+        "fault-tolerance",
+        "distributed-consensus"
+      ]
+    },
+    "document-content-management": {
+      "title": "Document and Content Management",
+      "category": "Meta",
+      "url": "concepts/document-content-management.html",
+      "definition": "Managing the lifecycle of unstructured data. One of DAMA's eleven Knowledge Areas.",
+      "tags": [
+        "data-management",
+        "unstructured-data",
+        "dama"
+      ]
+    },
+    "domain-driven-design": {
+      "title": "Domain-Driven Design",
+      "category": "Meta",
+      "url": "concepts/domain-driven-design.html",
+      "definition": "**Domain-Driven Design (DDD)** is a strategic software design discipline that aligns code with business reality. It treats software as a simulation of the business domain — not a mechanical translatio",
+      "tags": [
+        "domain-driven-design",
+        "software-architecture",
+        "strategic-design",
+        "modeling",
+        "business-strategy"
+      ]
+    },
+    "duckdb": {
+      "title": "DuckDB",
+      "category": "Infrastructure",
+      "url": "concepts/duckdb.html",
+      "definition": "**DuckDB** is an open-source (MIT), in-process OLAP database management system — often described as \"SQLite for analytics.\" It runs as an embedded library inside your application (Python, R, Node.js, ",
+      "tags": [
+        "databases",
+        "olap",
+        "analytics",
+        "python",
+        "data-engineering"
+      ]
+    },
+    "dynamic-workflows": {
+      "title": "Dynamic Workflows",
+      "category": "AI & Agents",
+      "url": "concepts/dynamic-workflows.html",
+      "definition": "**Dynamic Workflows** is an Anthropic feature (2026) where Claude generates a JavaScript orchestration program for the current task, rather than requiring the developer to write a static fan-out scrip",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "orchestration",
+        "anthropic",
+        "parallelism"
+      ]
+    },
+    "edge-computing": {
+      "title": "Edge Computing",
+      "category": "Data Engineering",
+      "url": "concepts/edge-computing.html",
+      "definition": "**Edge Computing** is the paradigm of processing data near its source — at the \"edge\" of the network — rather than sending all data to a centralized cloud or data center. By analyzing data locally (on",
+      "tags": [
+        "iot",
+        "distributed",
+        "latency",
+        "streaming",
+        "analytics"
+      ]
+    },
+    "elt": {
+      "title": "ELT (Extract-Load-Transform)",
+      "category": "Data Engineering",
+      "url": "concepts/elt.html",
+      "definition": "**ELT** (Extract-Load-Transform) is a data integration paradigm where raw data is extracted from source systems, loaded directly into the data warehouse (or data lake) with minimal processing, and the",
+      "tags": [
+        "data-engineering",
+        "elt",
+        "etl",
+        "data-warehouse",
+        "architecture"
+      ]
+    },
+    "engineering-management": {
+      "title": "Engineering Management",
+      "category": "Career & Growth",
+      "url": "concepts/engineering-management.html",
+      "definition": "**Engineering Management** is the discipline of enabling the people around you to do their best work together. Unlike [[technical-leadership]], which leads through influence without authority on the S",
+      "tags": [
+        "engineering-management",
+        "leadership",
+        "people-management",
+        "career",
+        "trust"
+      ]
+    },
+    "entity-resolution": {
+      "title": "Entity Resolution",
+      "category": "Meta",
+      "url": "concepts/entity-resolution.html",
+      "definition": "**Entity Resolution** is the process of mapping surface forms (names, abbreviations, aliases, spelling variants, partial names) to canonical entities in a knowledge graph. In the context of [[knowledg",
+      "tags": [
+        "knowledge-graph",
+        "nlp",
+        "data-quality",
+        "agents"
+      ]
+    },
+    "essential-accidental-complexity": {
+      "title": "Essential vs Accidental Complexity",
+      "category": "System Architecture",
+      "url": "concepts/essential-accidental-complexity.html",
+      "definition": "Fred Brooks distinguished two types of complexity in software. Understanding the difference is critical for knowing what to accept and what to eliminate.",
+      "tags": [
+        "architecture",
+        "complexity",
+        "design-principles"
+      ]
+    },
+    "event-time-processing": {
+      "title": "Event Time Processing",
+      "category": "Stream Processing",
+      "url": "concepts/event-time-processing.html",
+      "definition": "**Event Time Processing** is the practice of using the timestamp embedded in each data record (when the event actually occurred) rather than the time the system processes it. In distributed stream pro",
+      "tags": [
+        "stream-processing",
+        "time",
+        "distributed-systems",
+        "flink",
+        "correctness"
+      ]
+    },
+    "fail-fast": {
+      "title": "Fail Fast",
+      "category": "Software Design",
+      "url": "concepts/fail-fast.html",
+      "definition": "The system should stop execution immediately when an error is detected, rather than letting the error propagate silently. This makes debugging easier — the error occurs near its root cause.",
+      "tags": [
+        "design-principles",
+        "error-handling",
+        "reliability",
+        "tdd"
+      ]
+    },
+    "feedback": {
+      "title": "Feedback",
+      "category": "Meta",
+      "url": "concepts/feedback.html",
+      "definition": "**Feedback** in the context of skill acquisition is the information returned to a learner about their performance. In [[ultralearning|Ultralearning]], it is the sixth principle: the discipline of seek",
+      "tags": [
+        "learning",
+        "skill-acquisition",
+        "ultralearning",
+        "psychology"
+      ]
+    },
+    "fine-tuning": {
+      "title": "Fine-Tuning",
+      "category": "AI & Agents",
+      "url": "concepts/fine-tuning.html",
+      "definition": "**Fine-Tuning** is the process of adapting a pre-trained general-purpose Large Language Model to a specific task or domain by continuing training on a smaller, targeted dataset. It embeds domain exper",
+      "tags": [
+        "llm",
+        "ml",
+        "training",
+        "lora",
+        "domain-adaptation",
+        "production"
+      ]
+    },
+    "flash-attention": {
+      "title": "Flash Attention",
+      "category": "AI & Agents",
+      "url": "concepts/flash-attention.html",
+      "definition": "**Flash Attention** is an IO-aware attention algorithm that dramatically speeds up the self-attention computation in transformer models by optimizing data movement between different levels of GPU memo",
+      "tags": [
+        "llm",
+        "attention",
+        "optimization",
+        "transformer",
+        "gpu"
+      ]
+    },
+    "flow-zone-critique": {
+      "title": "Flow and Zone Critique",
+      "category": "Meta",
+      "url": "concepts/flow-zone-critique.html",
+      "definition": "The counterintuitive argument from *The Clean Coder* that \"the Zone\" or \"Flow\" state is a *diminished* rational state, not an ideal one. Professionals should avoid it, not seek it.",
+      "tags": [
+        "professionalism",
+        "productivity",
+        "software-engineering",
+        "psychology"
+      ]
+    },
+    "functional-programming": {
+      "title": "Functional Programming",
+      "category": "Meta",
+      "url": "concepts/functional-programming.html",
+      "definition": "**Functional Programming (FP)** is a programming paradigm where computation is treated as the evaluation of mathematical functions — avoiding mutable state, side effects, and imperative control flow. ",
+      "tags": [
+        "functional-programming",
+        "programming-paradigms",
+        "software-design",
+        "immutability",
+        "declarative"
+      ]
+    },
+    "functional-testing": {
+      "title": "Functional Testing",
+      "category": "Testing",
+      "url": "concepts/functional-testing.html",
+      "definition": "Functional tests (also called end-to-end or acceptance tests) verify that an application works from the **user's perspective**. They simulate real user interactions — clicking buttons, filling forms, ",
+      "tags": [
+        "testing",
+        "tdd",
+        "selenium",
+        "e2e",
+        "quality",
+        "python"
+      ]
+    },
+    "game-theory": {
+      "title": "Game Theory",
+      "category": "Testing",
+      "url": "concepts/game-theory.html",
+      "definition": "The mathematical study of strategic interaction among rational decision-makers — where each player's outcome depends on the actions of others. Focus on **non-cooperative game theory**: each player opt",
+      "tags": [
+        "game-theory",
+        "strategy",
+        "economics",
+        "decision-making",
+        "mathematics"
+      ]
+    },
+    "geohash": {
+      "title": "Geohash",
+      "category": "Infrastructure",
+      "url": "concepts/geohash.html",
+      "definition": "Geohash is a geospatial indexing system that recursively subdivides the world into grids and encodes each grid as a base32 string. Longer strings represent smaller, more precise grid cells. The key pr",
+      "tags": [
+        "geospatial",
+        "indexing",
+        "databases",
+        "algorithms"
+      ]
+    },
+    "geospatial-indexing": {
+      "title": "Geospatial Indexing",
+      "category": "Infrastructure",
+      "url": "concepts/geospatial-indexing.html",
+      "definition": "Geospatial indexing solves a fundamental dimensionality mismatch: standard database indexes (B-trees, hash indexes) are 1-dimensional, but location data exists in 2-dimensional space (latitude + longi",
+      "tags": [
+        "databases",
+        "geospatial",
+        "indexing",
+        "system-design"
+      ]
+    },
+    "go-http-handlers": {
+      "title": "Go HTTP Handlers",
+      "category": "Go & Web",
+      "url": "concepts/go-http-handlers.html",
+      "definition": "In Go's standard library, HTTP handlers are the core abstraction for processing web requests. A handler receives a request, executes business logic, and writes a response. Combined with `ServeMux` (th",
+      "tags": [
+        "go",
+        "golang",
+        "http",
+        "handlers",
+        "middleware",
+        "web"
+      ]
+    },
+    "go-template-escaping": {
+      "title": "Go Template Escaping",
+      "category": "Go & Web",
+      "url": "concepts/go-template-escaping.html",
+      "definition": "Go's `html/template` package provides **context-aware escaping** — it automatically escapes output based on where the data appears in the HTML document (element content, attribute value, JavaScript bl",
+      "tags": [
+        "go",
+        "golang",
+        "templates",
+        "security",
+        "xss",
+        "html"
+      ]
+    },
+    "go-web-ecosystem": {
+      "title": "Go Web Ecosystem",
+      "category": "Go & Web",
+      "url": "concepts/go-web-ecosystem.html",
+      "definition": "Go's web ecosystem is built on the principle that the **standard library is sufficient** for most web applications. Rather than relying on heavy frameworks with deep abstraction layers, Go provides mo",
+      "tags": [
+        "go",
+        "golang",
+        "web",
+        "deployment",
+        "architecture",
+        "stdlib"
+      ]
+    },
+    "golden-circle": {
+      "title": "Golden Circle",
+      "category": "Career & Growth",
+      "url": "concepts/golden-circle.html",
+      "definition": "The **Golden Circle** is Simon Sinek's framework for how inspired leaders think, act, and communicate — from the *inside out*. Its three concentric layers are **WHY** (purpose, cause, belief), **HOW**",
+      "tags": [
+        "leadership",
+        "purpose",
+        "inspiration",
+        "motivation",
+        "why"
+      ]
+    },
+    "goodharts-law": {
+      "title": "Goodhart's Law",
+      "category": "Data Engineering",
+      "url": "concepts/goodharts-law.html",
+      "definition": "**Goodhart's Law** states: \"When a measure becomes a target, it ceases to be a good measure.\" Originally formulated by economist Charles Goodhart about monetary policy, it has become a universal princ",
+      "tags": [
+        "metrics",
+        "measurement",
+        "statistics",
+        "organizational-behavior"
+      ]
+    },
+    "goroutines": {
+      "title": "Goroutines",
+      "category": "Go & Web",
+      "url": "concepts/goroutines.html",
+      "definition": "Goroutines are Go's lightweight concurrency primitive — functions that run concurrently with other goroutines. Managed by the Go runtime (not the OS), they enable handling hundreds of thousands of con",
+      "tags": [
+        "go",
+        "golang",
+        "concurrency",
+        "goroutines",
+        "performance"
+      ]
+    },
+    "graph-engineering": {
+      "title": "Graph Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/graph-engineering.html",
+      "definition": "**Graph Engineering** is the third stage in Karpathy's progression of AI-assisted development: vibe coding → agentic engineering → graph engineering. It is the discipline of building agent systems whe",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "knowledge-graph",
+        "agent-architecture"
+      ]
+    },
+    "graph-grounding": {
+      "title": "Graph Grounding",
+      "category": "AI & Agents",
+      "url": "concepts/graph-grounding.html",
+      "definition": "**Graph Grounding** is the practice of constraining agent generation with facts retrieved from a knowledge graph, and evaluating claims against graph edges with provenance. Instead of agents reasoning",
+      "tags": [
+        "ai-engineering",
+        "knowledge-graph",
+        "verification",
+        "agents"
+      ]
+    },
+    "harness-engineering": {
+      "title": "Harness Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/harness-engineering.html",
+      "definition": "**Harness Engineering** is a discipline for building reliable, closed-loop systems around AI agents. Rather than trying to make models \"smarter\" through better prompts, harness engineering focuses on ",
+      "tags": [
+        "ai-engineering",
+        "agents",
+        "reliability",
+        "testing",
+        "workflow"
+      ]
+    },
+    "http-evolution": {
+      "title": "HTTP Evolution",
+      "category": "Go & Web",
+      "url": "concepts/http-evolution.html",
+      "definition": "HTTP has evolved across four major versions, each solving a specific performance bottleneck. The central problem has always been Head-of-Line (HOL) blocking.",
+      "tags": [
+        "http",
+        "networking",
+        "protocol",
+        "web",
+        "system-design"
+      ]
+    },
+    "immutability": {
+      "title": "Immutability of Essence",
+      "category": "Software Design",
+      "url": "concepts/immutability.html",
+      "definition": "Essential attributes of a domain object should never change. If a change is needed, create a new object instead. This prevents ripple effects and preserves the integrity of the simulation.",
+      "tags": [
+        "design-principles",
+        "immutability",
+        "domain-modeling",
+        "functional-programming"
+      ]
+    },
+    "in-process-olap": {
+      "title": "In-Process OLAP",
+      "category": "Data Engineering",
+      "url": "concepts/in-process-olap.html",
+      "definition": "**In-process OLAP** is an architectural pattern where an analytical database runs as an **embedded library** inside the application process — no separate server, no network communication, no infrastru",
+      "tags": [
+        "database-architecture",
+        "olap",
+        "analytics",
+        "embedded-database"
+      ]
+    },
+    "incremental-view-maintenance": {
+      "title": "Incremental View Maintenance",
+      "category": "Infrastructure",
+      "url": "concepts/incremental-view-maintenance.html",
+      "definition": "**Incremental View Maintenance (IVM)** is the technique of updating a [[materialized-views|materialized view]] by processing only the data that has changed, rather than recomputing the entire view fro",
+      "tags": [
+        "databases",
+        "incremental-computation",
+        "streaming"
+      ]
+    },
+    "information-hiding": {
+      "title": "Information Hiding",
+      "category": "Software Design",
+      "url": "concepts/information-hiding.html",
+      "definition": "A core design heuristic: hide implementation secrets (data structures, algorithms, internal state) behind stable interfaces so that changes don't cascade through the system.",
+      "tags": [
+        "software-design",
+        "complexity",
+        "abstraction",
+        "encapsulation"
+      ]
+    },
+    "job-search-strategy": {
+      "title": "Job Search Strategy",
+      "category": "Career & Growth",
+      "url": "concepts/job-search-strategy.html",
+      "definition": "A structured approach to job seeking that treats the search as a marketing exercise rather than a passive application process. Based on the #ENTRYLEVELBOSS system by Alexa Shoen.",
+      "tags": [
+        "career",
+        "job-search",
+        "networking"
+      ]
+    },
+    "kappa-architecture": {
+      "title": "Kappa Architecture",
+      "category": "System Architecture",
+      "url": "concepts/kappa-architecture.html",
+      "definition": "**Kappa Architecture** is a simplified data processing paradigm proposed by Jay Kreps (co-creator of Apache Kafka) that eliminates the batch layer entirely. All data is treated as a stream — even \"bat",
+      "tags": [
+        "big-data",
+        "architecture",
+        "streaming",
+        "simplification",
+        "kafka"
+      ]
+    },
+    "knowledge-graph": {
+      "title": "Knowledge Graph",
+      "category": "System Architecture",
+      "url": "concepts/knowledge-graph.html",
+      "definition": "A lightweight knowledge graph built from cross-linked markdown pages. Instead of a dedicated graph database or vector store, the wiki uses wikilinks, a content index (`index.md`), and consistent YAML ",
+      "tags": [
+        "architecture",
+        "linking",
+        "index"
+      ]
+    },
+    "kubernetes-architecture": {
+      "title": "Kubernetes Architecture",
+      "category": "Go & Web",
+      "url": "concepts/kubernetes-architecture.html",
+      "definition": "**Kubernetes Architecture** is the design of a level-triggered control system that continuously reconciles actual state toward declared desired state. It splits into two layers: the **control plane** ",
+      "tags": [
+        "kubernetes",
+        "architecture",
+        "cloud-native",
+        "control-plane",
+        "reconciliation"
+      ]
+    },
+    "kubernetes-networking": {
+      "title": "Kubernetes Networking",
+      "category": "Go & Web",
+      "url": "concepts/kubernetes-networking.html",
+      "definition": "**Kubernetes Networking** follows a simple model — every pod gets its own IP, pods talk directly across nodes without NAT, and a pod sees itself at the same address others use — but delegates implemen",
+      "tags": [
+        "kubernetes",
+        "networking",
+        "cni",
+        "services",
+        "dns",
+        "cloud-native"
+      ]
+    },
+    "kubernetes-operator": {
+      "title": "Kubernetes Operator",
+      "category": "Go & Web",
+      "url": "concepts/kubernetes-operator.html",
+      "definition": "A Kubernetes Operator is a software extension that encodes domain-specific operational knowledge into automated controllers. Built on the control loop pattern (READ → CHANGE → UPDATE), operators watch",
+      "tags": [
+        "kubernetes",
+        "operators",
+        "controllers",
+        "cloud-native",
+        "golang",
+        "automation"
+      ]
+    },
+    "kubernetes-security": {
+      "title": "Kubernetes Security",
+      "category": "Go & Web",
+      "url": "concepts/kubernetes-security.html",
+      "definition": "**Kubernetes Security** is the set of controls that protect the cluster at every layer of the API request pipeline — authentication, authorization, admission control — plus the runtime concerns of sec",
+      "tags": [
+        "kubernetes",
+        "security",
+        "rbac",
+        "policy",
+        "secrets",
+        "cloud-native"
+      ]
+    },
+    "kv-caching": {
+      "title": "KV Caching",
+      "category": "AI & Agents",
+      "url": "concepts/kv-caching.html",
+      "definition": "**KV Caching** is an inference optimization technique for autoregressive transformer models that stores previously computed Key and Value vectors so they don't need to be recomputed for each new token",
+      "tags": [
+        "llm",
+        "inference",
+        "optimization",
+        "attention",
+        "transformer"
+      ]
+    },
+    "lambda-architecture": {
+      "title": "Lambda Architecture",
+      "category": "System Architecture",
+      "url": "concepts/lambda-architecture.html",
+      "definition": "**Lambda Architecture** is a big data processing paradigm that maintains two parallel data paths — a **batch layer** for comprehensive, accurate historical processing and a **speed layer** for real-ti",
+      "tags": [
+        "big-data",
+        "architecture",
+        "batch",
+        "streaming",
+        "historical"
+      ]
+    },
+    "lance-file-format": {
+      "title": "Lance File Format",
+      "category": "Data Engineering",
+      "url": "concepts/lance-file-format.html",
+      "definition": "**Lance** is a modern columnar file format optimized for machine learning and AI workloads. It was mentioned as another \"[[apache-parquet|Parquet]] alternative\" alongside [[vortex-file-format|Vortex]]",
+      "tags": [
+        "file-formats",
+        "columnar",
+        "ml",
+        "data-engineering"
+      ]
+    },
+    "langchain": {
+      "title": "LangChain",
+      "category": "AI & Agents",
+      "url": "concepts/langchain.html",
+      "definition": "**LangChain** is an open-source Python/JS framework for building applications powered by Large Language Models. It provides modular components for chaining together LLM calls, integrating external too",
+      "tags": [
+        "llm",
+        "framework",
+        "agents",
+        "orchestration",
+        "python"
+      ]
+    },
+    "leader-election": {
+      "title": "Leader Election",
+      "category": "System Architecture",
+      "url": "concepts/leader-election.html",
+      "definition": "**Leader Election** is the process by which a distributed system selects a single node to act as the coordinator — exclusively handling writes, assigning work, or maintaining cluster state — ensuring ",
+      "tags": [
+        "distributed-systems",
+        "consensus",
+        "raft",
+        "fault-tolerance",
+        "coordination"
+      ]
+    },
+    "lindy-effect": {
+      "title": "Lindy Effect",
+      "category": "System Architecture",
+      "url": "concepts/lindy-effect.html",
+      "definition": "The **Lindy Effect** is a heuristic for technology selection: **the longer a technology has been around, the longer it's likely to stay around.** Future life expectancy is proportional to current age ",
+      "tags": [
+        "technology-selection",
+        "architecture",
+        "heuristics",
+        "data-engineering"
+      ]
+    },
+    "liquid-clustering": {
+      "title": "Liquid Clustering",
+      "category": "Data Engineering",
+      "url": "concepts/liquid-clustering.html",
+      "definition": "**Liquid Clustering** is Databricks' modern data layout technique for open table formats ([[delta-lake|Delta Lake]] and [[apache-iceberg|Apache Iceberg]]). Unlike Hive-style partitioning — which force",
+      "tags": [
+        "data-layout",
+        "liquid-clustering",
+        "delta-lake",
+        "iceberg",
+        "partitioning",
+        "databricks",
+        "data-engineering"
+      ]
+    },
+    "llama-index": {
+      "title": "LlamaIndex",
+      "category": "AI & Agents",
+      "url": "concepts/llama-index.html",
+      "definition": "**LlamaIndex** (formerly GPT Index) is an open-source data framework for connecting LLMs with external data sources. Unlike [[langchain|LangChain]] which is a general orchestration framework, LlamaInd",
+      "tags": [
+        "llm",
+        "rag",
+        "indexing",
+        "retrieval",
+        "data"
+      ]
+    },
+    "llm-evaluation-metrics": {
+      "title": "LLM Evaluation Metrics",
+      "category": "AI & Agents",
+      "url": "concepts/llm-evaluation-metrics.html",
+      "definition": "**LLM Evaluation Metrics** are quantitative measures used to assess the quality, reliability, and usefulness of Large Language Model outputs in production systems. Unlike academic benchmarks (e.g., MM",
+      "tags": [
+        "llm",
+        "evaluation",
+        "metrics",
+        "production",
+        "reliability"
+      ]
+    },
+    "load-balancer": {
+      "title": "Load Balancer",
+      "category": "System Architecture",
+      "url": "concepts/load-balancer.html",
+      "definition": "A load balancer is a reverse proxy that distributes incoming traffic across multiple backend servers. It acts as the \"traffic cop\" of a distributed system — ensuring no single server becomes a bottlen",
+      "tags": [
+        "system-design",
+        "networking",
+        "high-availability",
+        "scalability"
+      ]
+    },
+    "lora": {
+      "title": "LoRA",
+      "category": "AI & Agents",
+      "url": "concepts/lora.html",
+      "definition": "**LoRA (Low-Rank Adaptation)** is a parameter-efficient fine-tuning (PEFT) technique that injects small, trainable rank-decomposition matrices into the layers of a pre-trained model. Instead of updati",
+      "tags": [
+        "llm",
+        "fine-tuning",
+        "peft",
+        "optimization",
+        "training"
+      ]
+    },
+    "machine-learning-systems": {
+      "title": "Machine Learning Systems",
+      "category": "AI & Agents",
+      "url": "concepts/machine-learning-systems.html",
+      "definition": "**Machine Learning Systems** is the engineering discipline of building AI solutions that work reliably in production — not just achieving high accuracy in a notebook. It bridges the gap between ML the",
+      "tags": [
+        "machine-learning",
+        "systems-design",
+        "ml-engineering",
+        "ai-engineering"
+      ]
+    },
+    "mapper-principles": {
+      "title": "MAPPER Principles",
+      "category": "System Architecture",
+      "url": "concepts/mapper-principles.html",
+      "definition": "MAPPER is an acronym for 6 principles that define the \"software as simulation\" philosophy. Each letter represents a guideline for building faithful computational models of reality.",
+      "tags": [
+        "architecture",
+        "design-principles",
+        "clean-code"
+      ]
+    },
+    "market-basket-analysis": {
+      "title": "Market Basket Analysis",
+      "category": "Career & Growth",
+      "url": "concepts/market-basket-analysis.html",
+      "definition": "**Market Basket Analysis (MBA)** is a data mining technique that discovers co-occurrence patterns — items that frequently appear together in transactions. The output is a set of **association rules** ",
+      "tags": [
+        "data-mining",
+        "algorithms",
+        "association-rules",
+        "mapreduce",
+        "spark",
+        "retail"
+      ]
+    },
+    "master-data-management": {
+      "title": "Master Data Management",
+      "category": "Meta",
+      "url": "concepts/master-data-management.html",
+      "definition": "Maintaining a single \"version of truth\" for shared business entities across the enterprise. One of DAMA's eleven Knowledge Areas, grouped with Reference Data.",
+      "tags": [
+        "data-management",
+        "mdm",
+        "dama"
+      ]
+    },
+    "materialized-views": {
+      "title": "Materialized Views",
+      "category": "Infrastructure",
+      "url": "concepts/materialized-views.html",
+      "definition": "A **materialized view (MV)** is a pre-computed query result stored as a physical table. It combines the \"awareness\" of a view (it knows the query that defines it) with the storage of a table (the resu",
+      "tags": [
+        "databases",
+        "data-engineering",
+        "streaming",
+        "caching"
+      ]
+    },
+    "medallion-architecture": {
+      "title": "Medallion Architecture",
+      "category": "Data Engineering",
+      "url": "concepts/medallion-architecture.html",
+      "definition": "A data organization pattern that organizes data into three progressive quality tiers: Bronze (raw), Silver (cleaned), and Gold (business-ready). Like water flowing through filtration, data moves from ",
+      "tags": [
+        "data-engineering",
+        "lakehouse",
+        "databricks",
+        "data-quality"
+      ]
+    },
+    "mentoring": {
+      "title": "Mentoring",
+      "category": "Career & Growth",
+      "url": "concepts/mentoring.html",
+      "definition": "The professional duty of senior programmers to pass craftsmanship to juniors. From *The Clean Coder*, which argues that technical acumen is a \"meme\" — it must be handed from person to person, not abso",
+      "tags": [
+        "career",
+        "craftsmanship",
+        "software-engineering"
+      ]
+    },
+    "message-delivery-semantics": {
+      "title": "Message Delivery Semantics",
+      "category": "System Architecture",
+      "url": "concepts/message-delivery-semantics.html",
+      "definition": "Message delivery semantics define the guarantees a messaging system provides about whether messages are delivered, and whether they can be duplicated. The right choice depends on the business impact o",
+      "tags": [
+        "distributed-systems",
+        "messaging",
+        "system-design",
+        "reliability"
+      ]
+    },
+    "message-queue": {
+      "title": "Message Queue",
+      "category": "System Architecture",
+      "url": "concepts/message-queue.html",
+      "definition": "A message queue is an asynchronous communication mechanism that decouples producers (services that create jobs) from consumers (services that process jobs). By introducing a buffer between components,",
+      "tags": [
+        "system-design",
+        "messaging",
+        "async",
+        "decoupling",
+        "resilience"
+      ]
+    },
+    "metadata-management": {
+      "title": "Metadata Management",
+      "category": "Meta",
+      "url": "concepts/metadata-management.html",
+      "definition": "Enabling access to definitions, lineage, and data flows. One of DAMA's eleven Knowledge Areas.",
+      "tags": [
+        "data-management",
+        "metadata",
+        "dama"
+      ]
+    },
+    "metalearning": {
+      "title": "Metalearning",
+      "category": "Meta",
+      "url": "concepts/metalearning.html",
+      "definition": "**Metalearning** is the practice of learning _how a subject is structured_ before attempting to learn the subject itself. It is the first principle of [[ultralearning|Ultralearning]], and its purpose ",
+      "tags": [
+        "learning",
+        "metacognition",
+        "skill-acquisition"
+      ]
+    },
+    "metric-fixation": {
+      "title": "Metric Fixation",
+      "category": "Data Engineering",
+      "url": "concepts/metric-fixation.html",
+      "definition": "**Metric Fixation** is the cultural pattern Jerry Z. Muller identifies as \"the seemingly irresistible pressure to measure, publicize, and reward performance, even when evidence suggests doing so is co",
+      "tags": [
+        "metrics",
+        "management",
+        "organizational-behavior",
+        "measurement"
+      ]
+    },
+    "microservices": {
+      "title": "Microservices",
+      "category": "System Architecture",
+      "url": "concepts/microservices.html",
+      "definition": "**Microservices** is an architectural style where an application is composed of small, independent services — each with a single responsibility, running in its own process, and communicating via light",
+      "tags": [
+        "architecture",
+        "microservices",
+        "cloud-native",
+        "distributed-systems",
+        "clean-code"
+      ]
+    },
+    "middleware-pattern": {
+      "title": "Middleware Pattern",
+      "category": "Go & Web",
+      "url": "concepts/middleware-pattern.html",
+      "definition": "The Middleware Pattern wraps HTTP handlers with composable layers of cross-cutting behavior — authentication, logging, rate limiting, compression. Each middleware is a function that takes a handler an",
+      "tags": [
+        "go",
+        "golang",
+        "http",
+        "middleware",
+        "web",
+        "design-patterns"
+      ]
+    },
+    "mlops": {
+      "title": "MLOps",
+      "category": "Infrastructure",
+      "url": "concepts/mlops.html",
+      "definition": "**MLOps** (Machine Learning Operations) is the discipline of automating deployment, monitoring, and retraining of ML models in production. It extends DevOps principles to ML systems, addressing the un",
+      "tags": [
+        "machine-learning",
+        "mlops",
+        "devops",
+        "deployment",
+        "monitoring"
+      ]
+    },
+    "model-code-gap": {
+      "title": "Model-Code Gap",
+      "category": "Meta",
+      "url": "concepts/model-code-gap.html",
+      "definition": "The Model-Code Gap is the disconnect between **design intent** (what the architect intended) and **code reality** (what the code actually does). Code alone cannot express *why* a decision was made — i",
+      "tags": [
+        "software-architecture",
+        "design-intent",
+        "code-quality"
+      ]
+    },
+    "model-distillation": {
+      "title": "Model Distillation",
+      "category": "AI & Agents",
+      "url": "concepts/model-distillation.html",
+      "definition": "**Model Distillation** is a compression technique where a smaller \"student\" model is trained to replicate the behavior of a larger, more capable \"teacher\" model. The student learns from the teacher's ",
+      "tags": [
+        "llm",
+        "ml",
+        "optimization",
+        "compression",
+        "teacher-student",
+        "production"
+      ]
+    },
+    "model-pruning": {
+      "title": "Model Pruning",
+      "category": "AI & Agents",
+      "url": "concepts/model-pruning.html",
+      "definition": "**Model Pruning** is a neural network compression technique that removes weights, connections, or entire neurons that contribute minimally to the model's output. By eliminating redundancy, pruning red",
+      "tags": [
+        "llm",
+        "ml",
+        "optimization",
+        "compression",
+        "inference",
+        "production"
+      ]
+    },
+    "model-quantization": {
+      "title": "Model Quantization",
+      "category": "AI & Agents",
+      "url": "concepts/model-quantization.html",
+      "definition": "**Model Quantization** reduces the numerical precision of a model's weights and activations — for example, from 32-bit floating point (FP32) to 8-bit integers (INT8) or 4-bit formats. This shrinks mod",
+      "tags": [
+        "llm",
+        "ml",
+        "optimization",
+        "compression",
+        "inference",
+        "production"
+      ]
+    },
+    "nash-equilibrium": {
+      "title": "Nash Equilibrium",
+      "category": "Testing",
+      "url": "concepts/nash-equilibrium.html",
+      "definition": "The foundational solution concept in non-cooperative [[game-theory|game theory]]: a strategy profile where no player can improve their payoff by *unilaterally* changing their strategy, given what ever",
+      "tags": [
+        "game-theory",
+        "strategy",
+        "equilibrium",
+        "economics"
+      ]
+    },
+    "networking-theory": {
+      "title": "Networking Theory",
+      "category": "Career & Growth",
+      "url": "concepts/networking-theory.html",
+      "definition": "The strategic practice of building professional relationships, anchored by the **Theory of Weak Ties** — the idea that acquaintances and strangers are more likely to bridge you to new opportunities th",
+      "tags": [
+        "career",
+        "networking",
+        "social-capital"
+      ]
+    },
+    "object-oriented-design": {
+      "title": "Object-Oriented Design",
+      "category": "Software Design",
+      "url": "concepts/object-oriented-design.html",
+      "definition": "Object-oriented design is the practice of arranging code to minimize the cost of change — the one thing guaranteed over a software system's lifetime. It is not a separate phase before coding but a con",
+      "tags": [
+        "oop",
+        "design-principles",
+        "maintainability",
+        "agile"
+      ]
+    },
+    "observability": {
+      "title": "Observability",
+      "category": "System Architecture",
+      "url": "concepts/observability.html",
+      "definition": "Observability is the ability to understand a system's internal state by examining its outputs — metrics, logs, and traces. In distributed systems, observability is not optional: without it, you cannot",
+      "tags": [
+        "system-design",
+        "monitoring",
+        "metrics",
+        "reliability",
+        "devops"
+      ]
+    },
+    "orchestration-vs-choreography": {
+      "title": "Orchestration vs Choreography",
+      "category": "System Architecture",
+      "url": "concepts/orchestration-vs-choreography.html",
+      "definition": "Two competing patterns for coordinating interactions between microservices. Neither is universally better — the choice depends on the workflow's complexity and reliability requirements.",
+      "tags": [
+        "microservices",
+        "architecture",
+        "system-design",
+        "distributed-systems"
+      ]
+    },
+    "password-storage": {
+      "title": "Password Storage",
+      "category": "System Architecture",
+      "url": "concepts/password-storage.html",
+      "definition": "Secure password storage requires defending against rainbow table attacks — precomputed lookup tables mapping hashes to plaintext passwords. The defense: salting.",
+      "tags": [
+        "security",
+        "authentication",
+        "cryptography",
+        "system-design"
+      ]
+    },
+    "peft": {
+      "title": "PEFT",
+      "category": "AI & Agents",
+      "url": "concepts/peft.html",
+      "definition": "**PEFT (Parameter-Efficient Fine-Tuning)** is a family of techniques that adapt pre-trained large language models to specific tasks by training only a small fraction of the model's parameters. Instead",
+      "tags": [
+        "llm",
+        "fine-tuning",
+        "training",
+        "optimization",
+        "ml"
+      ]
+    },
+    "personal-branding": {
+      "title": "Personal Branding",
+      "category": "Career & Growth",
+      "url": "concepts/personal-branding.html",
+      "definition": "The deliberate cultivation of a professional identity and presence. From #ENTRYLEVELBOSS, personal branding is the set of \"modern collateral\" that precedes and amplifies networking efforts.",
+      "tags": [
+        "career",
+        "branding",
+        "professional-presence"
+      ]
+    },
+    "polars": {
+      "title": "Polars",
+      "category": "Data Engineering",
+      "url": "concepts/polars.html",
+      "definition": "**Polars** is an open-source DataFrame library written in Rust with Python bindings, designed for high-performance data manipulation. It uses a lazy execution model (queries are optimized before execu",
+      "tags": [
+        "dataframes",
+        "query-engines",
+        "rust",
+        "python",
+        "data-engineering"
+      ]
+    },
+    "prompt-engineering": {
+      "title": "Prompt Engineering",
+      "category": "AI & Agents",
+      "url": "concepts/prompt-engineering.html",
+      "definition": "**Prompt Engineering** is the practice of designing and refining input instructions (prompts) to guide Large Language Models (LLMs) toward desired outputs without modifying the underlying model weight",
+      "tags": [
+        "llm",
+        "ai",
+        "prompting",
+        "nlp",
+        "production"
+      ]
+    },
+    "proximity-service": {
+      "title": "Proximity Service",
+      "category": "System Architecture",
+      "url": "concepts/proximity-service.html",
+      "definition": "Proximity service architecture enables users to discover nearby points of interest (businesses, people, locations) based on their latitude/longitude. It's one of the canonical system design problems —",
+      "tags": [
+        "system-design",
+        "geospatial",
+        "scalability",
+        "architecture"
+      ]
+    },
+    "pytest-assertions": {
+      "title": "pytest Assertions",
+      "category": "Python & Tools",
+      "url": "concepts/pytest-assertions.html",
+      "definition": "Assert rewriting is pytest's secret weapon — it intercepts `assert` statements at runtime, analyzes the expression, and generates rich diffs when assertions fail. You get framework-specific assertion ",
+      "tags": [
+        "python",
+        "testing",
+        "pytest",
+        "assertions"
+      ]
+    },
+    "pytest-basics": {
+      "title": "pytest Basics",
+      "category": "Python & Tools",
+      "url": "concepts/pytest-basics.html",
+      "definition": "pytest is a command-line testing framework for Python that automatically discovers, runs, and reports test results. Its core philosophy is simplicity and readability — \"Tests are easy to read\" (stated",
+      "tags": [
+        "python",
+        "testing",
+        "pytest",
+        "fundamentals"
+      ]
+    },
+    "pytest-configuration": {
+      "title": "pytest Configuration",
+      "category": "Python & Tools",
+      "url": "concepts/pytest-configuration.html",
+      "definition": "pytest configuration unifies flags and settings across a team. Modern pytest supports native TOML configuration in `pyproject.toml`.",
+      "tags": [
+        "python",
+        "testing",
+        "pytest",
+        "configuration"
+      ]
+    },
+    "pytest-fixtures": {
+      "title": "pytest Fixtures",
+      "category": "Python & Tools",
+      "url": "concepts/pytest-fixtures.html",
+      "definition": "Fixtures are pytest's killer feature — reusable setup/teardown logic via dependency injection. They replace `setUp()`/`tearDown()` from unittest with a more flexible, composable system.",
+      "tags": [
+        "python",
+        "testing",
+        "pytest",
+        "dependency-injection"
+      ]
+    },
+    "pytest-markers": {
+      "title": "pytest Markers",
+      "category": "Python & Tools",
+      "url": "concepts/pytest-markers.html",
+      "definition": "Markers categorize tests and control which ones run. Built-in markers handle common scenarios; custom markers enable project-specific test selection.",
+      "tags": [
+        "python",
+        "testing",
+        "pytest",
+        "test-selection"
+      ]
+    },
+    "pytest-mocking": {
+      "title": "pytest Mocking",
+      "category": "Python & Tools",
+      "url": "concepts/pytest-mocking.html",
+      "definition": "Mocking isolates tests from external dependencies (APIs, databases, files). pytest provides two approaches: the built-in `monkeypatch` fixture and the `pytest-mock` plugin wrapping `unittest.mock`.",
+      "tags": [
+        "python",
+        "testing",
+        "pytest",
+        "mocking",
+        "isolation"
+      ]
+    },
+    "pytest-parametrization": {
+      "title": "pytest Parametrization",
+      "category": "Python & Tools",
+      "url": "concepts/pytest-parametrization.html",
+      "definition": "Parametrization allows running the same test function with multiple input data sets, eliminating copy-paste test methods.",
+      "tags": [
+        "python",
+        "testing",
+        "pytest",
+        "data-driven"
+      ]
+    },
+    "pytest-plugins": {
+      "title": "pytest Plugins",
+      "category": "Python & Tools",
+      "url": "concepts/pytest-plugins.html",
+      "definition": "pytest has a rich plugin ecosystem (1000+ plugins on PyPI). Essential plugins extend pytest for production use.",
+      "tags": [
+        "python",
+        "testing",
+        "pytest",
+        "ecosystem"
+      ]
+    },
+    "pytest-test-results": {
+      "title": "pytest Test Results",
+      "category": "Python & Tools",
+      "url": "concepts/pytest-test-results.html",
+      "definition": "pytest provides a rich symbol system for understanding test suite status at a glance — beyond simple pass/fail.",
+      "tags": [
+        "python",
+        "testing",
+        "pytest",
+        "output"
+      ]
+    },
+    "python-concurrency": {
+      "title": "Python Concurrency",
+      "category": "Python & Tools",
+      "url": "concepts/python-concurrency.html",
+      "definition": "Python's concurrency model, constrained by the Global Interpreter Lock (GIL), offers two distinct paradigms — threads and processes — each suited to different workloads. The professional instinct is t",
+      "tags": [
+        "python",
+        "concurrency",
+        "gil"
+      ]
+    },
+    "python-data-model": {
+      "title": "Python Data Model",
+      "category": "Python & Tools",
+      "url": "concepts/python-data-model.html",
+      "definition": "The **Python Data Model** (also called the object model) is the unifying framework that formalizes interfaces for Python's building blocks — sequences, iterators, functions, classes, and context manag",
+      "tags": [
+        "python",
+        "programming",
+        "object-model",
+        "protocols"
+      ]
+    },
+    "python-debugging-pdb": {
+      "title": "Python Debugging with PDB",
+      "category": "Python & Tools",
+      "url": "concepts/python-debugging-pdb.html",
+      "definition": "Interactive debugging using Python's built-in debugger (PDB) as a surgical tool, replacing the reactive and limited `print()`-based debugging approach. The debugger transforms debugging from guessing ",
+      "tags": [
+        "python",
+        "debugging",
+        "pdb"
+      ]
+    },
+    "python-professional-practices": {
+      "title": "Python Professional Practices",
+      "category": "Python & Tools",
+      "url": "concepts/python-professional-practices.html",
+      "definition": "The transition from writing \"code that runs\" to building production-grade software in Python. The core insight: professionalism isn't about knowing obscure syntax — it's about replacing **guessing** w",
+      "tags": [
+        "python",
+        "software-engineering"
+      ]
+    },
+    "python-repl": {
+      "title": "Python REPL",
+      "category": "Python & Tools",
+      "url": "concepts/python-repl.html",
+      "definition": "The Read-Eval-Print Loop (REPL) is Python's interactive console — a zero-cost sandbox for exploring code, inspecting objects, and testing ideas without creating files. Professional developers treat th",
+      "tags": [
+        "python",
+        "repl",
+        "exploration"
+      ]
+    },
+    "python-standard-library": {
+      "title": "Python Standard Library",
+      "category": "Python & Tools",
+      "url": "concepts/python-standard-library.html",
+      "definition": "Python's \"batteries-included\" philosophy: a rich set of built-in modules that solve common problems without external dependencies. Professional Python developers reach for standard library tools befor",
+      "tags": [
+        "python",
+        "standard-library"
+      ]
+    },
+    "python-static-analysis": {
+      "title": "Python Static Analysis",
+      "category": "Python & Tools",
+      "url": "concepts/python-static-analysis.html",
+      "definition": "Automated tools that inspect source code without executing it, catching errors, inconsistencies, and structural problems before they reach runtime or code review. The Python ecosystem's \"quality trife",
+      "tags": [
+        "python",
+        "static-analysis",
+        "code-quality"
+      ]
+    },
+    "pythonic-code": {
+      "title": "Pythonic Code",
+      "category": "Python & Tools",
+      "url": "concepts/pythonic-code.html",
+      "definition": "**Pythonic code** is code that uses Python's language idioms to be consistent, expressive, and effective — not just code that happens to run in Python. It's the difference between writing Python with ",
+      "tags": [
+        "python",
+        "programming",
+        "idioms",
+        "code-quality"
+      ]
+    },
+    "quadtree": {
+      "title": "Quadtree",
+      "category": "Data Engineering",
+      "url": "concepts/quadtree.html",
+      "definition": "A Quadtree is an in-memory tree data structure that recursively subdivides 2D space into four quadrants — but only when a grid's business density exceeds a threshold (e.g., 100 businesses). This adapt",
+      "tags": [
+        "geospatial",
+        "data-structures",
+        "in-memory",
+        "algorithms"
+      ]
+    },
+    "readability-vs-performance": {
+      "title": "Readability vs Performance",
+      "category": "Software Design",
+      "url": "concepts/readability-vs-performance.html",
+      "definition": "Many teams fall into the trap of premature optimization — sacrificing readability to chase performance gains that aren't significant. The correct priority: clean, readable code first, then measure and",
+      "tags": [
+        "design-principles",
+        "optimization",
+        "clean-code"
+      ]
+    },
+    "real-time-analytics": {
+      "title": "Real-Time Analytics",
+      "category": "Data Engineering",
+      "url": "concepts/real-time-analytics.html",
+      "definition": "**Real-Time Analytics (RTA)** is the paradigm of processing and analyzing data as it arrives — continuously, without waiting for batch windows to close. Unlike traditional batch processing which opera",
+      "tags": [
+        "analytics",
+        "streaming",
+        "real-time",
+        "data-engineering",
+        "decision-making"
+      ]
+    },
+    "redis": {
+      "title": "Redis",
+      "category": "Infrastructure",
+      "url": "concepts/redis.html",
+      "definition": "Redis is an in-memory data structure store that achieves extreme throughput (100K+ requests/second) through a combination of architectural choices.",
+      "tags": [
+        "caching",
+        "performance",
+        "databases",
+        "system-design"
+      ]
+    },
+    "refactoring-at-scale": {
+      "title": "Refactoring at Scale",
+      "category": "Software Design",
+      "url": "concepts/refactoring-at-scale.html",
+      "definition": "**Refactoring at Scale** is the disciplined practice of restructuring large codebases safely — improving internal structure without changing external behavior — when the system is too large for any on",
+      "tags": [
+        "refactoring",
+        "software-design",
+        "code-quality",
+        "technical-debt",
+        "engineering"
+      ]
+    },
+    "reranking": {
+      "title": "Reranking",
+      "category": "AI & Agents",
+      "url": "concepts/reranking.html",
+      "definition": "**Reranking** is a two-stage retrieval pattern where a fast, cheap retriever (e.g., keyword search, vector similarity) first produces a broad candidate set, and then a more expensive but more accurate",
+      "tags": [
+        "llm",
+        "rag",
+        "retrieval",
+        "search",
+        "optimization",
+        "pipeline"
+      ]
+    },
+    "retrieval-augmented-generation": {
+      "title": "Retrieval-Augmented Generation (RAG)",
+      "category": "AI & Agents",
+      "url": "concepts/retrieval-augmented-generation.html",
+      "definition": "**Retrieval-Augmented Generation (RAG)** is an architecture pattern that grounds Large Language Model outputs in external, verifiable data sources. Instead of relying solely on parametric knowledge (w",
+      "tags": [
+        "llm",
+        "rag",
+        "vector-database",
+        "search",
+        "knowledge",
+        "production"
+      ]
+    },
+    "rich-domain-model": {
+      "title": "Rich Domain Model",
+      "category": "Software Design",
+      "url": "concepts/rich-domain-model.html",
+      "definition": "Rich domain models encapsulate both data and behavior within objects. The alternative — **Anemic Domain Model** — is a data holder with only getters/setters, which is procedural programming in disguis",
+      "tags": [
+        "oop",
+        "architecture",
+        "domain-driven-design"
+      ]
+    },
+    "risk-driven-architecture": {
+      "title": "Risk-Driven Architecture",
+      "category": "Meta",
+      "url": "concepts/risk-driven-architecture.html",
+      "definition": "Risk-Driven Architecture is a meta-framework for deciding **how much** architecture to do and **when to stop**. Instead of prescribing a fixed amount of upfront design, it ties architectural effort di",
+      "tags": [
+        "software-architecture",
+        "risk-management",
+        "design-methodology"
+      ]
+    },
+    "saga-pattern": {
+      "title": "Saga Pattern",
+      "category": "System Architecture",
+      "url": "concepts/saga-pattern.html",
+      "definition": "A pattern for managing distributed transactions across multiple services without relying on distributed ACID transactions. Central to *Software Architecture: The Hard Parts* for \"putting things back t",
+      "tags": [
+        "distributed-systems",
+        "transactions",
+        "microservices",
+        "patterns"
+      ]
+    },
+    "saying-no": {
+      "title": "Saying No",
+      "category": "Meta",
+      "url": "concepts/saying-no.html",
+      "definition": "The professional responsibility to push back against unrealistic deadlines, poor requirements, and compromised quality. A core discipline from *The Clean Coder*.",
+      "tags": [
+        "professionalism",
+        "communication",
+        "software-engineering"
+      ]
+    },
+    "scalable-architecture": {
+      "title": "Scalable Architecture",
+      "category": "System Architecture",
+      "url": "concepts/scalable-architecture.html",
+      "definition": "A scalable architecture is a system design that can handle growing load by adding resources rather than requiring complete redesign. The canonical evolution path: single server → separated tiers → ver",
+      "tags": [
+        "system-design",
+        "scalability",
+        "architecture",
+        "distributed-systems"
+      ]
+    },
+    "secure-system-design": {
+      "title": "Secure System Design",
+      "category": "Software Design",
+      "url": "concepts/secure-system-design.html",
+      "definition": "**Secure system design** makes security a property of architecture, code, delivery, and operations rather than a late review. It reduces the damage that a compromised component, bad configuration, or ",
+      "tags": [
+        "security",
+        "reliability",
+        "architecture",
+        "least-privilege",
+        "supply-chain",
+        "devsecops"
+      ]
+    },
+    "self-service-analytics": {
+      "title": "Self-Service Analytics",
+      "category": "Data Engineering",
+      "url": "concepts/self-service-analytics.html",
+      "definition": "**Self-Service Analytics** is the capability for non-technical business stakeholders to answer their own data questions without relying on data analysts or engineers. Traditional self-service tools (B",
+      "tags": [
+        "analytics",
+        "ai",
+        "data-democratization",
+        "bi"
+      ]
+    },
+    "semantic-layer": {
+      "title": "Semantic Layer",
+      "category": "Data Engineering",
+      "url": "concepts/semantic-layer.html",
+      "definition": "A semantic layer is a unified context layer that standardizes metric definitions, business logic, and data relationships across an organization's data stack. Originally built for human stakeholders (w",
+      "tags": [
+        "data-engineering",
+        "analytics",
+        "ai",
+        "dbt",
+        "metrics"
+      ]
+    },
+    "shift-left-security": {
+      "title": "Shift Left Security",
+      "category": "Go & Web",
+      "url": "concepts/shift-left-security.html",
+      "definition": "**Shift Left Security** is the practice of integrating security into every phase of the software development lifecycle — from planning through monitoring — rather than treating it as a final gate befo",
+      "tags": [
+        "security",
+        "devsecops",
+        "ci-cd",
+        "cloud-native",
+        "clean-code"
+      ]
+    },
+    "site-reliability-engineering": {
+      "title": "Site Reliability Engineering",
+      "category": "Software Design",
+      "url": "concepts/site-reliability-engineering.html",
+      "definition": "**Site Reliability Engineering (SRE)** applies software engineering to production operations. It replaces heroics with measurable reliability targets, automation, failure containment, and learning aft",
+      "tags": [
+        "reliability",
+        "SRE",
+        "operations",
+        "observability",
+        "SLO",
+        "distributed-systems"
+      ]
+    },
+    "snowflake-data-cloud": {
+      "title": "Snowflake Data Cloud",
+      "category": "Data Engineering",
+      "url": "concepts/snowflake-data-cloud.html",
+      "definition": "**Snowflake** is a cloud-native data platform that decouples **storage**, **compute**, and **cloud services** into independently scalable layers. Unlike traditional data warehouses where storage and c",
+      "tags": [
+        "data-warehouse",
+        "cloud",
+        "snowflake",
+        "analytics",
+        "governance"
+      ]
+    },
+    "snowflake-id": {
+      "title": "Snowflake ID",
+      "category": "System Architecture",
+      "url": "concepts/snowflake-id.html",
+      "definition": "Snowflake is a distributed unique ID generation pattern created by Twitter. It produces 64-bit numeric IDs that are roughly time-ordered, efficient to store and index, and scalable without coordinatio",
+      "tags": [
+        "distributed-systems",
+        "databases",
+        "system-design",
+        "uuid"
+      ]
+    },
+    "software-3": {
+      "title": "Software 3.0",
+      "category": "AI & Agents",
+      "url": "concepts/software-3.html",
+      "definition": "**Software 3.0** is Andrej Karpathy's framing of a new programming paradigm where **context and prompts become a programmable interface** for AI systems. It extends the progression:",
+      "tags": [
+        "ai-engineering",
+        "programming-paradigm",
+        "karpathy"
+      ]
+    },
+    "software-as-simulation": {
+      "title": "Software as Simulation",
+      "category": "System Architecture",
+      "url": "concepts/software-as-simulation.html",
+      "definition": "Software is not a list of commands for a computer. It is a **simulator of reality** — a computational model that must faithfully mirror the real-world domain it serves. When code stops reflecting real",
+      "tags": [
+        "architecture",
+        "philosophy",
+        "domain-modeling"
+      ]
+    },
+    "software-construction": {
+      "title": "Software Construction",
+      "category": "Meta",
+      "url": "concepts/software-construction.html",
+      "definition": "The central activity of software development where ideas transform into working products — far broader than \"coding.\" Construction encompasses detailed design, coding, debugging, integration, and deve",
+      "tags": [
+        "software-engineering",
+        "code-quality",
+        "construction"
+      ]
+    },
+    "software-professionalism": {
+      "title": "Software Professionalism",
+      "category": "Career & Growth",
+      "url": "concepts/software-professionalism.html",
+      "definition": "A badge of honor tied to responsibility and accountability — not merely technical competence. Defined in *The Clean Coder* as the behavioral dimension that complements code quality.",
+      "tags": [
+        "career",
+        "professionalism",
+        "software-engineering"
+      ]
+    },
+    "software-quality-dimensions": {
+      "title": "Software Quality Dimensions",
+      "category": "Software Design",
+      "url": "concepts/software-quality-dimensions.html",
+      "definition": "Software quality is a multi-criteria optimization problem, not a binary toggle. Every line of code is a trade-off between competing dimensions. There is no \"perfect\" implementation in a vacuum — only ",
+      "tags": [
+        "design-principles",
+        "architecture",
+        "engineering",
+        "optimization"
+      ]
+    },
+    "software-rot": {
+      "title": "Software Rot",
+      "category": "Meta",
+      "url": "concepts/software-rot.html",
+      "definition": "**Software Rot** is the inevitable degradation of code quality over time — even when no one touches the code. It occurs because the environment evolves around static code: hardware changes, security v",
+      "tags": [
+        "software-design",
+        "technical-debt",
+        "maintenance",
+        "code-quality"
+      ]
+    },
+    "solid-principles": {
+      "title": "SOLID Principles",
+      "category": "Software Design",
+      "url": "concepts/solid-principles.html",
+      "definition": "**SOLID** is an acronym for five object-oriented design principles that together enable maintainable, extensible, and testable software. They form the theoretical foundation for [[dependency-injection",
+      "tags": [
+        "design-principles",
+        "architecture",
+        "solid",
+        "oop",
+        "clean-code"
+      ]
+    },
+    "spaced-repetition": {
+      "title": "Spaced Repetition",
+      "category": "Meta",
+      "url": "concepts/spaced-repetition.html",
+      "definition": "**Spaced repetition** is a learning technique that schedules review sessions at increasing intervals — specifically at the point of near-forgetting — to maximize long-term retention. It is the primary",
+      "tags": [
+        "learning",
+        "memory",
+        "retention",
+        "cognitive-science"
+      ]
+    },
+    "specification-driven-development": {
+      "title": "Specification-Driven Development",
+      "category": "AI & Agents",
+      "url": "concepts/specification-driven-development.html",
+      "definition": "**Specification-Driven Development** is the discipline of defining what you want *before* asking AI (or humans) to build it. In the AI-native era, it's the antidote to random prompting and vibe coding",
+      "tags": [
+        "ai-engineering",
+        "software-engineering",
+        "methodology",
+        "requirements"
+      ]
+    },
+    "sso": {
+      "title": "Single Sign-On (SSO)",
+      "category": "System Architecture",
+      "url": "concepts/sso.html",
+      "definition": "Single Sign-On allows users to navigate multiple service domains (e.g., Gmail, YouTube, Drive) with a single set of credentials. It neutralizes \"password fatigue\" — reducing attack surface while incre",
+      "tags": [
+        "security",
+        "authentication",
+        "identity",
+        "system-design"
+      ]
+    },
+    "staff-engineering": {
+      "title": "Staff Engineering",
+      "category": "Career & Growth",
+      "url": "concepts/staff-engineering.html",
+      "definition": "Staff Engineering is a career level beyond Senior where impact shifts from individual technical contribution to **multiplying others**. It's not about deeper technical skills, faster execution, or mor",
+      "tags": [
+        "career",
+        "engineering-leadership",
+        "growth",
+        "senior-to-staff"
+      ]
+    },
+    "staff-plus-archetypes": {
+      "title": "Staff+ Archetypes",
+      "category": "Career & Growth",
+      "url": "concepts/staff-plus-archetypes.html",
+      "definition": "**Staff+ Archetypes** are the four primary \"shapes\" a Staff Engineer role can take, as defined by Tanya Reilly. Not all Staff roles look the same — understanding your archetype helps navigate ambiguit",
+      "tags": [
+        "career",
+        "staff-engineering",
+        "technical-leadership",
+        "roles"
+      ]
+    },
+    "stateful-stream-processing": {
+      "title": "Stateful Stream Processing",
+      "category": "Stream Processing",
+      "url": "concepts/stateful-stream-processing.html",
+      "definition": "**Stateful Stream Processing** is the class of stream computations that require memory of past events to produce correct results. Unlike stateless transformations (e.g., filtering, mapping), stateful ",
+      "tags": [
+        "stream-processing",
+        "state",
+        "distributed-systems",
+        "flink",
+        "fault-tolerance"
+      ]
+    },
+    "stateless-architecture": {
+      "title": "Stateless Architecture",
+      "category": "System Architecture",
+      "url": "concepts/stateless-architecture.html",
+      "definition": "A stateless architecture stores session data in a shared external store (Redis, database, or NoSQL) rather than on individual web servers. This enables any server to handle any request, which is a pre",
+      "tags": [
+        "system-design",
+        "scalability",
+        "sessions",
+        "distributed-systems"
+      ]
+    },
+    "static-vs-dynamic-coupling": {
+      "title": "Static vs Dynamic Coupling",
+      "category": "System Architecture",
+      "url": "concepts/static-vs-dynamic-coupling.html",
+      "definition": "Two dimensions of coupling in distributed architectures, introduced in *Software Architecture: The Hard Parts*.",
+      "tags": [
+        "software-architecture",
+        "coupling",
+        "distributed-systems"
+      ]
+    },
+    "statistical-thinking": {
+      "title": "Statistical Thinking",
+      "category": "Meta",
+      "url": "concepts/statistical-thinking.html",
+      "definition": "**Statistical Thinking** is the discipline of applying a critical, evidence-driven lens to data claims — understanding that variation exists in all things, that correlation is not causation, and that ",
+      "tags": [
+        "statistics",
+        "data-literacy",
+        "critical-thinking",
+        "decision-making"
+      ]
+    },
+    "stream-processing": {
+      "title": "Stream Processing",
+      "category": "Data Engineering",
+      "url": "concepts/stream-processing.html",
+      "definition": "**Stream Processing** is the paradigm of computing on data as it flows — processing each event incrementally rather than waiting for a batch to accumulate. It is the engine layer of [[real-time-analyt",
+      "tags": [
+        "streaming",
+        "data-engineering",
+        "real-time",
+        "architecture",
+        "event-driven"
+      ]
+    },
+    "stream-table-duality": {
+      "title": "Stream-Table Duality",
+      "category": "Data Engineering",
+      "url": "concepts/stream-table-duality.html",
+      "definition": "**Stream-Table Duality** is the principle that streams and tables are two sides of the same coin — every stream can be converted into a table, and every table can be converted into a stream. This is t",
+      "tags": [
+        "streaming",
+        "data-modeling",
+        "kafka",
+        "tables",
+        "sql"
+      ]
+    },
+    "sustainable-ai": {
+      "title": "Sustainable AI",
+      "category": "Meta",
+      "url": "concepts/sustainable-ai.html",
+      "definition": "**Sustainable AI** is the practice of measuring and minimizing the environmental footprint of AI training and inference — treating carbon cost as a first-class engineering constraint alongside latency",
+      "tags": [
+        "machine-learning",
+        "sustainability",
+        "green-computing",
+        "ai-ethics"
+      ]
+    },
+    "synthetic-data": {
+      "title": "Synthetic Data",
+      "category": "Testing",
+      "url": "concepts/synthetic-data.html",
+      "definition": "**Synthetic Data** is artificially generated data that preserves the statistical properties, distributions, and relationships of real data but contains no actual individual records. Because no real pe",
+      "tags": [
+        "data-privacy",
+        "machine-learning",
+        "anonymization",
+        "testing",
+        "ai"
+      ]
+    },
+    "system-design-interview": {
+      "title": "System Design Interview",
+      "category": "System Architecture",
+      "url": "concepts/system-design-interview.html",
+      "definition": "System design interviews are open-ended technical conversations where candidates design scalable distributed systems. Unlike coding interviews with right/wrong answers, system design is about navigati",
+      "tags": [
+        "system-design",
+        "interview",
+        "methodology",
+        "architecture"
+      ]
+    },
+    "t-shaped-skills": {
+      "title": "T-Shaped Skills",
+      "category": "Career & Growth",
+      "url": "concepts/t-shaped-skills.html",
+      "definition": "**T-Shaped Skills** describe a professional who has **deep expertise** in one area (the vertical bar of the T) and **broad, sufficient knowledge** across many adjacent areas (the horizontal bar). The ",
+      "tags": [
+        "career",
+        "team-structure",
+        "dataops",
+        "collaboration",
+        "professional-development"
+      ]
+    },
+    "tdd-methodology": {
+      "title": "TDD Methodology",
+      "category": "Testing",
+      "url": "concepts/tdd-methodology.html",
+      "definition": "Test-Driven Development (TDD) is a software discipline where you **write a failing test before writing any application code**. The cycle — Red, Green, Refactor — drives design from the outside in, ens",
+      "tags": [
+        "tdd",
+        "testing",
+        "methodology",
+        "design",
+        "python",
+        "clean-code"
+      ]
+    },
+    "technical-debt-management": {
+      "title": "Technical Debt Management",
+      "category": "Software Design",
+      "url": "concepts/technical-debt-management.html",
+      "definition": "**Technical debt management** is the deliberate control of design and implementation choices whose future cost threatens delivery, reliability, or changeability. It is not a cleanup queue to attack wh",
+      "tags": [
+        "technical-debt",
+        "migrations",
+        "engineering-management",
+        "maintainability",
+        "architecture"
+      ]
+    },
+    "technical-interview": {
+      "title": "Technical Interview",
+      "category": "Career & Growth",
+      "url": "concepts/technical-interview.html",
+      "definition": "Technical interviews are not knowledge tests — they assess problem-solving ability under pressure. The interviewer evaluates relative performance (comparing against their \"mental database\" of past can",
+      "tags": [
+        "interview",
+        "algorithms",
+        "problem-solving",
+        "career"
+      ]
+    },
+    "technical-leadership": {
+      "title": "Technical Leadership",
+      "category": "Career & Growth",
+      "url": "concepts/technical-leadership.html",
+      "definition": "**Technical Leadership** is the practice of leading through influence rather than authority — the core mechanism of the Staff+ engineering path. Unlike management, which leads through direct reports, ",
+      "tags": [
+        "career",
+        "leadership",
+        "staff-engineering",
+        "influence"
+      ]
+    },
+    "technological-centaur": {
+      "title": "Technological Centaur",
+      "category": "AI & Agents",
+      "url": "concepts/technological-centaur.html",
+      "definition": "The \"Technological Centaur\" is the model of human architect + AI coding assistant working together. AI does not make architects obsolete — it makes clean code more important than ever.",
+      "tags": [
+        "ai",
+        "architecture",
+        "developer-role"
+      ]
+    },
+    "tell-dont-ask": {
+      "title": "Tell, Don't Ask",
+      "category": "Software Design",
+      "url": "concepts/tell-dont-ask.html",
+      "definition": "\"Don't ask an object for data to process logic outside it. Tell the object to perform its behavior.\" This principle protects encapsulation and localizes change.",
+      "tags": [
+        "oop",
+        "design-principles",
+        "encapsulation"
+      ]
+    },
+    "testing-effect": {
+      "title": "Testing Effect",
+      "category": "Meta",
+      "url": "concepts/testing-effect.html",
+      "definition": "The **testing effect** (also called **retrieval practice** or **active recall**) is the finding that retrieving information from memory strengthens that memory far more effectively than re-reading or ",
+      "tags": [
+        "learning",
+        "memory",
+        "cognitive-science",
+        "retrieval"
+      ]
+    },
+    "testing-pyramid": {
+      "title": "Testing Pyramid",
+      "category": "Testing",
+      "url": "concepts/testing-pyramid.html",
+      "definition": "A professional testing hierarchy balancing speed, coverage, and fidelity. Formalized in *The Clean Coder* as the structure of a professional testing strategy.",
+      "tags": [
+        "testing",
+        "quality",
+        "tdd",
+        "software-engineering"
+      ]
+    },
+    "testing-strategy": {
+      "title": "Testing Strategy",
+      "category": "Python & Tools",
+      "url": "concepts/testing-strategy.html",
+      "definition": "A professional testing strategy focuses effort where it matters most — the API layer — while avoiding the brittleness of UI tests and the maintenance burden of database tests.",
+      "tags": [
+        "python",
+        "testing",
+        "strategy",
+        "architecture",
+        "tdd"
+      ]
+    },
+    "time-space-tradeoff": {
+      "title": "Time-Space Tradeoff",
+      "category": "Career & Growth",
+      "url": "concepts/time-space-tradeoff.html",
+      "definition": "The time-space tradeoff is the principle that reducing an algorithm's time complexity often increases its space complexity, and vice versa. Mathematical efficiency in one dimension can cause practical",
+      "tags": [
+        "algorithms",
+        "complexity",
+        "memory",
+        "performance"
+      ]
+    },
+    "timely-dataflow": {
+      "title": "Timely Dataflow",
+      "category": "System Architecture",
+      "url": "concepts/timely-dataflow.html",
+      "definition": "**Timely Dataflow (TD)** is a general computational model introduced in the **Naiad** paper (2013). It provides a low-level substrate where every message in the system carries a logical timestamp, and",
+      "tags": [
+        "distributed-systems",
+        "stream-processing",
+        "incremental-computation"
+      ]
+    },
+    "tls-https": {
+      "title": "TLS & HTTPS",
+      "category": "System Architecture",
+      "url": "concepts/tls-https.html",
+      "definition": "HTTPS uses Transport Layer Security (TLS) to encrypt data between client and server. The handshake combines asymmetric and symmetric encryption — leveraging each for what it does best.",
+      "tags": [
+        "security",
+        "encryption",
+        "networking",
+        "system-design"
+      ]
+    },
+    "ultralearning": {
+      "title": "Ultralearning",
+      "category": "Career & Growth",
+      "url": "concepts/ultralearning.html",
+      "definition": "**Ultralearning** is a strategy for aggressive, self-directed skill acquisition — mastering hard subjects in compressed timeframes through intense, focused practice. Coined by Scott Young, it combines",
+      "tags": [
+        "learning",
+        "skill-acquisition",
+        "career",
+        "self-improvement"
+      ]
+    },
+    "unity-catalog": {
+      "title": "Unity Catalog",
+      "category": "Data Engineering",
+      "url": "concepts/unity-catalog.html",
+      "definition": "**Unity Catalog (UC)** is an open standard (and open-source implementation) for governing data and AI assets — tables, volumes, models, and functions — across engines and clouds. It provides a single ",
+      "tags": [
+        "data-governance",
+        "catalog",
+        "unity-catalog",
+        "delta-lake",
+        "lakehouse",
+        "duckdb"
+      ]
+    },
+    "vectorized-execution": {
+      "title": "Vectorized Execution",
+      "category": "Meta",
+      "url": "concepts/vectorized-execution.html",
+      "definition": "**Vectorized execution** is a query execution model where the database engine processes data in **vectors** — chunks of rows (typically 1K–64K rows at a time) — instead of processing one row at a time",
+      "tags": [
+        "olap",
+        "query-optimization",
+        "database-engines"
+      ]
+    },
+    "vibe-coding": {
+      "title": "Vibe Coding",
+      "category": "AI & Agents",
+      "url": "concepts/vibe-coding.html",
+      "definition": "**Vibe Coding** is a term coined by Andrej Karpathy in early 2025 to describe the practice of non-engineers building functional software by describing what they want to AI agents — without understandi",
+      "tags": [
+        "ai-engineering",
+        "coding",
+        "methodology",
+        "terminology"
+      ]
+    },
+    "vortex-file-format": {
+      "title": "Vortex File Format",
+      "category": "Data Engineering",
+      "url": "concepts/vortex-file-format.html",
+      "definition": "**Vortex** is a next-generation columnar file format and toolkit written in Rust, designed for high-performance data processing on object storage (S3, GCS, etc.). It claims significant speed improveme",
+      "tags": [
+        "file-formats",
+        "columnar",
+        "rust",
+        "data-engineering"
+      ]
+    },
+    "watermarks": {
+      "title": "Watermarks",
+      "category": "Data Engineering",
+      "url": "concepts/watermarks.html",
+      "definition": "A **Watermark** is a notion of input completeness in [[stream-processing|stream processing]] — a monotonically increasing timestamp that tells the system \"all events with event time less than the wate",
+      "tags": [
+        "streaming",
+        "event-time",
+        "data-engineering",
+        "apache-flink",
+        "apache-beam"
+      ]
+    },
+    "wiki-maintenance": {
+      "title": "Wiki Maintenance",
+      "category": "Meta",
+      "url": "concepts/wiki-maintenance.html",
+      "definition": "Wiki Maintenance describes the operational model of this LLM-maintained knowledge base. The core insight (from [[sources/sample-article|sample-article]]) is that the LLM handles all bookkeeping — upda",
+      "tags": [
+        "meta",
+        "workflow",
+        "agents"
+      ]
+    },
+    "windowing": {
+      "title": "Windowing",
+      "category": "Stream Processing",
+      "url": "concepts/windowing.html",
+      "definition": "**Windowing** is the technique of dividing an infinite data stream into finite, manageable chunks (\"windows\") over which aggregations and computations can be performed. Because streams are unbounded, ",
+      "tags": [
+        "stream-processing",
+        "time",
+        "aggregation",
+        "analytics",
+        "flink"
+      ]
+    }
+  }
+}

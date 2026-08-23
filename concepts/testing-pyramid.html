@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Testing Pyramid — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-testing">Testing</a> <span class="sep">/</span>
+  <span>Testing Pyramid</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Testing Pyramid</h1>
+  <div class="page-meta"><span>Source: the-clean-coder</span><span>Updated: 2026-07-14</span></div>
+  <div class="page-tags"><span class="tag">testing</span><span class="tag">quality</span><span class="tag">tdd</span><span class="tag">software-engineering</span></div>
+</div>
+<div class="content-area concept">
+<p># Testing Pyramid</p>
+<p>A professional testing hierarchy balancing speed, coverage, and fidelity. Formalized in <em>The Clean Coder</em> as the structure of a professional testing strategy.</p>
+<h2 id="the-hierarchy-bottom-to-top">The Hierarchy (Bottom to Top)</h2>
+<ol>
+<li><strong>Unit Tests</strong> (~100% coverage) — Fast, precise, run on every commit. The foundation.</li>
+<li><strong>Component Tests</strong> — Test service/component boundaries with external dependencies mocked</li>
+<li><strong>Integration Tests</strong> — Test interactions between real components (database, APIs)</li>
+<li><strong>System Tests</strong> — End-to-end through the full stack</li>
+<li><strong>Manual Exploratory Tests</strong> — Human judgment for edge cases and UX</li>
+</ol>
+<h2 id="the-shape">The Shape</h2>
+<p>The pyramid shape reflects both <em>quantity</em> and <em>speed</em>:</p>
+<ul>
+<li>Many fast unit tests at the bottom</li>
+<li>Fewer, slower integration tests in the middle</li>
+<li>Very few, slowest end-to-end tests at the top</li>
+</ul>
+<h2 id="inverted-pyramid-anti-pattern">Inverted Pyramid Anti-Pattern</h2>
+<p>An inverted pyramid (many E2E tests, few unit tests) is a common mistake:</p>
+<ul>
+<li>E2E tests are slow, flaky, and hard to debug</li>
+<li>They provide poor defect localization</li>
+<li>A healthy suite should be mostly fast unit tests</li>
+</ul>
+<h2 id="tdd-and-the-pyramid">TDD and the Pyramid</h2>
+<p>TDD primarily drives unit tests (the base), but Outside-In TDD uses integration tests to drive unit tests from above — a "double loop."</p>
+<h2 id="the-zero-defect-goal">The Zero-Defect Goal</h2>
+<p>The professional expectation: developers release code expecting QA to find nothing. Post-release bugs trigger process investigation, not just a fix.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="tdd-methodology.html">
+      <span class="connection-type related">Related</span>
+      <h4>TDD Methodology</h4>
+      <p>Red-Green-Refactor drives the unit test foundation</p>
+    </a>
+    <a class="connection-card" href="functional-testing.html">
+      <span class="connection-type related">Related</span>
+      <h4>Functional Testing</h4>
+      <p>User-perspective tests (top of pyramid)</p>
+    </a>
+    <a class="connection-card" href="testing-strategy.html">
+      <span class="connection-type related">Related</span>
+      <h4>Testing Strategy</h4>
+      <p>API-first testing, 4 pillars of professional testing</p>
+    </a>
+    <a class="connection-card" href="pytest-basics.html">
+      <span class="connection-type related">Related</span>
+      <h4>pytest Basics</h4>
+      <p>pytest as a tool for implementing the pyramid</p>
+    </a>
+    <a class="connection-card" href="software-professionalism.html">
+      <span class="connection-type related">Related</span>
+      <h4>Software Professionalism</h4>
+      <p>Testing discipline as a professional obligation</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="testing-effect.html" class="prev">← Testing Effect</a><a href="testing-strategy.html" class="next">Testing Strategy →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

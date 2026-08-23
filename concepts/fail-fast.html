@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fail Fast — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-design-principles">Design Principles</a> <span class="sep">/</span>
+  <span>Fail Fast</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Fail Fast</h1>
+  <div class="page-meta"><span>Source: contieri-clean-code-cookbook, tdd-python-percival, good-code-bad-code</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">design-principles</span><span class="tag">error-handling</span><span class="tag">reliability</span><span class="tag">tdd</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>The system should stop execution immediately when an error is detected, rather than letting the error propagate silently. This makes debugging easier — the error occurs near its root cause.</p>
+<h2 id="the-principle">The Principle</h2>
+<blockquote>"The system should stop execution as soon as an error is detected, rather than letting the error continue to propagate."</blockquote>
+<h2 id="benefits">Benefits</h2>
+<ul>
+<li><strong>Easier debugging</strong>: Error occurs close to root cause</li>
+<li><strong>No silent corruption</strong>: Errors don't manifest hours later in a batch job</li>
+<li><strong>Clear contracts</strong>: Invalid input is rejected at the boundary</li>
+</ul>
+<h2 id="anti-pattern-silent-failure">Anti-pattern: Silent Failure</h2>
+<pre><code>// ❌ Auto-corrects invalid data → hides the error
+LocalDate date = LocalDate.of(2024, 11, 31); // Silently becomes Dec 1</code></pre>
+<h2 id="correct-fail-fast">Correct: Fail Fast</h2>
+<pre><code>// ✅ Throws exception immediately
+LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException</code></pre>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="immutability.html">
+      <span class="connection-type extends">Enforced by</span>
+      <h4>Immutability of Essence</h4>
+      <p>immutable objects fail fast on invalid construction</p>
+    </a>
+    <a class="connection-card" href="bijection.html">
+      <span class="connection-type drives">Prevents</span>
+      <h4>Bijection</h4>
+      <p>violations — implicit transformations hide errors</p>
+    </a>
+    <a class="connection-card" href="rich-domain-model.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Rich Domain Model</h4>
+      <p>rich objects validate their own state</p>
+    </a>
+    <a class="connection-card" href="essential-accidental-complexity.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Essential vs Accidental Complexity</h4>
+      <p>silent failures add accidental complexity</p>
+    </a>
+    <a class="connection-card" href="harness-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Harness Engineering</h4>
+      <p>harnesses prevent AI agents from declaring victory before verification</p>
+    </a>
+    <a class="connection-card" href="tdd-methodology.html">
+      <span class="connection-type related">Related</span>
+      <h4>TDD Methodology</h4>
+      <p>write a failing test before code (Red phase) to fail fast on missing behavior</p>
+    </a>
+    <a class="connection-card" href="functional-testing.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Functional Testing</h4>
+      <p>functional tests fail fast at the user level when integration breaks</p>
+    </a>
+    <a class="connection-card" href="code-quality-pillars.html">
+      <span class="connection-type related">Related</span>
+      <h4>Code Quality Pillars</h4>
+      <p>pillar 2 (no surprises) and pillar 3 (hard to misuse) both align with fail-fast philosophy</p>
+    </a>
+    <a class="connection-card" href="python-static-analysis.html">
+      <span class="connection-type extends">Enforced by</span>
+      <h4>Python Static Analysis</h4>
+      <p>Flake8 catches undefined names (F821), duplicate dict keys (F601), and mutable defaults (B006) before runtime</p>
+    </a>
+    <a class="connection-card" href="software-quality-dimensions.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Software Quality Dimensions</h4>
+      <p>choosing robustness (fail fast) over silent efficiency is a deliberate trade-off</p>
+    </a>
+    <a class="connection-card" href="architecture-hoisting.html">
+      <span class="connection-type related">Related</span>
+      <h4>Architecture Hoisting</h4>
+      <p>hoisting enforces fail-fast at architectural boundaries as a structural guarantee, not manual discipline</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Clean Code Cookbook (Maximiliano Contieri)</h4>
+      <p>Contieri's Clean Code Cookbook</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="event-time-processing.html" class="prev">← Event Time Processing</a><a href="feedback.html" class="next">Feedback →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

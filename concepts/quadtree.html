@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quadtree — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-geospatial">Geospatial</a> <span class="sep">/</span>
+  <span>Quadtree</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Quadtree</h1>
+  <div class="page-meta"><span>Source: system-design-interview-volume-2</span><span>Updated: 2026-06-29</span></div>
+  <div class="page-tags"><span class="tag">geospatial</span><span class="tag">data-structures</span><span class="tag">in-memory</span><span class="tag">algorithms</span></div>
+</div>
+<div class="content-area concept">
+<p>A Quadtree is an in-memory tree data structure that recursively subdivides 2D space into four quadrants — but only when a grid's business density exceeds a threshold (e.g., 100 businesses). This adaptive behavior creates granular grids in dense urban centers and large, efficient grids in sparse areas.</p>
+<h2 id="how-it-works">How It Works</h2>
+<pre><code>World → 4 quadrants → recurse into each quadrant
+         ↓ only if business count &gt; threshold
+      → Subdivide further → leaf nodes store businesses</code></pre>
+<p>Unlike <a href="geohash.html" class="wiki-link">geohash</a>'s fixed grid, Quadtree subdivision is <strong>data-driven</strong> — it adapts to actual business distribution. Manhattan gets deep subdivisions; the Sahara gets a single large grid.</p>
+<h2 id="memory-footprint-mic-drop-calculation">Memory Footprint ("Mic Drop" Calculation)</h2>
+<p>For 200 million businesses with a threshold of 100 businesses per leaf:</p>
+<table><thead><tr>
+<th>Component</th>
+<th>Nodes</th>
+<th>Bytes/Node</th>
+<th>Total Memory</th>
+</tr></thead><tbody>
+<tr>
+<td>Leaf nodes</td>
+<td>2,000,000</td>
+<td>~832 bytes</td>
+<td>~1.66 GB</td>
+</tr>
+<tr>
+<td>Internal nodes</td>
+<td>~666,000</td>
+<td>~64 bytes</td>
+<td>~0.05 GB</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td></td>
+<td></td>
+<td><strong>~1.71 GB</strong></td>
+</tr>
+</tbody></table>
+<p>The entire global business index fits on a <strong>single server's RAM</strong>. No distributed sharding needed for the index itself. Read-replicas are still needed for high QPS traffic volume, but not for index size.</p>
+<h2 id="advantages-over-geohash">Advantages over Geohash</h2>
+<table><thead><tr>
+<th>Criterion</th>
+<th>Quadtree</th>
+<th>Geohash</th>
+</tr></thead><tbody>
+<tr>
+<td>Boundary issues</td>
+<td>None (adaptive subdivision)</td>
+<td>Yes (fixed grid boundaries)</td>
+</tr>
+<tr>
+<td>Density adaptation</td>
+<td>Automatic in dense/sparse areas</td>
+<td>Fixed grid, uniform precision</td>
+</tr>
+<tr>
+<td>Query speed</td>
+<td>Faster (in-memory)</td>
+<td>Fast (database index)</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>~1.71 GB in RAM</td>
+<td>Stored in database (disk)</td>
+</tr>
+<tr>
+<td>Implementation</td>
+<td>More complex (tree structure)</td>
+<td>Simple (string prefix match)</td>
+</tr>
+</tbody></table>
+<h2 id="operational-challenges">Operational Challenges</h2>
+<p><strong>Index Rebuild Time</strong>: Building the Quadtree from scratch (scanning 200M DB rows) takes several minutes — a problem during deployments:</p>
+<ul>
+<li><strong>Risk</strong>: Blue/Green deployment where an entire fresh cluster fetches 200M businesses simultaneously could crash the database</li>
+<li><strong>Solution</strong>: <strong>Incremental rollouts</strong> — new instances initialize gradually while maintaining service capacity</li>
+</ul>
+<p><strong>Radius Expansion</strong>: When a search returns insufficient results, traverse upward from the current leaf to its parent node, gathering businesses from the other three sibling quadrants. This intelligently expands the search area without user intervention.</p>
+<h2 id="best-used-for">Best Used For</h2>
+<ul>
+<li><strong>In-memory cache layer</strong>: Speed for high-QPS queries</li>
+<li><strong>Adaptive density areas</strong>: Cities with highly uneven business distribution</li>
+<li><strong>Zero boundary issues</strong>: Fixed-grid edge cases are eliminated</li>
+</ul>
+<p>Complement with <a href="geohash.html" class="wiki-link">geohash</a> for database persistence — the hybrid approach gives both speed and durability.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="geospatial-indexing.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Geospatial Indexing</h4>
+      <p>the in-memory strategy for 2D → 1D mapping</p>
+    </a>
+    <a class="connection-card" href="proximity-service.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Proximity Service</h4>
+      <p>powers location-based search at the cache layer</p>
+    </a>
+    <a class="connection-card" href="geohash.html">
+      <span class="connection-type related">Related</span>
+      <h4>Geohash</h4>
+      <p>Quadtree (in-memory, speed) + Geohash (database, persistence)</p>
+    </a>
+    <a class="connection-card" href="deployment-strategies.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Deployment Strategies</h4>
+      <p>incremental rollouts prevent DB overload during index rebuild</p>
+    </a>
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type related">Related to</span>
+      <h4>System Design Interview</h4>
+      <p>a core data structure discussed in interviews</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="pythonic-code.html" class="prev">← Pythonic Code</a><a href="readability-vs-performance.html" class="next">Readability vs Performance →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

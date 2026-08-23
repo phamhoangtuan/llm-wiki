@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI-Native Engineering — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>AI-Native Engineering</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>AI-Native Engineering</h1>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, new-sdlc-vibe-coding</span><span>Updated: 2026-06-20</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">software-engineering</span><span class="tag">agents</span><span class="tag">methodology</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>AI-Native Engineering</strong> is a professional engineering discipline where developers operate as orchestrators of AI agents rather than manual coders. It fundamentally differs from <a href="vibe-coding.html" class="wiki-link">vibe-coding</a> — while vibe coding democratizes software creation for non-engineers, AI-native engineering demands deep coding knowledge to command, verify, and compose AI-generated output into systems that were previously impossible to build.</p>
+<p>The distinction: AI-native engineering enables 10x→100x productivity through proper agent orchestration, while undisciplined AI usage produces "code overload" — more code velocity but also more bugs, incidents, and technical debt.</p>
+<h2 id="the-orchestrator-model">The Orchestrator Model</h2>
+<table><thead><tr>
+<th>Traditional Engineer</th>
+<th>AI-Native Engineer</th>
+</tr></thead><tbody>
+<tr>
+<td>Writes most code manually</td>
+<td>Orchestrates agents that generate code</td>
+</tr>
+<tr>
+<td>Reviews human-written PRs</td>
+<td>Reviews AI-generated PRs with separate rubrics</td>
+</tr>
+<tr>
+<td>Spends time on syntax and boilerplate</td>
+<td>Spends time on context, specs, and verification</td>
+</tr>
+<tr>
+<td>Ships features by coding them</td>
+<td>Ships features by decomposing and delegating</td>
+</tr>
+</tbody></table>
+<blockquote>"Coding has always been a small part of engineering (20-30% max). This underappreciated reality is more visible when AI agents produce more code — but more code is not necessarily more productive."</blockquote>
+<h2 id="conductor-vs-orchestrator-two-modes">Conductor vs Orchestrator: Two Modes</h2>
+<p>As agents assume the manual labor of coding, the engineer fluidly moves between two modes:</p>
+<h3 id="the-conductor-hands-on-real-time">The Conductor: Hands-On, Real-Time</h3>
+<ul>
+<li>🎼 <strong>Mode</strong>: In-IDE, synchronous feedback</li>
+<li>🎯 <strong>Focus</strong>: Single-file tasks, keystroke-level control</li>
+<li>🛠️ <strong>Tools</strong>: Chat interface, inline suggestions</li>
+<li>✅ <strong>Best for</strong>: Quick iterations, learning, debugging with AI</li>
+</ul>
+<h3 id="the-orchestrator-high-leverage-delegatio">The Orchestrator: High-Leverage Delegation</h3>
+<ul>
+<li>🎼 <strong>Mode</strong>: Asynchronous, goal-level specifications</li>
+<li>🎯 <strong>Focus</strong>: Outcomes, not lines of code; review PRs later</li>
+<li>🛠️ <strong>Tools</strong>: Multi-agent teams, harness configuration, eval suites</li>
+<li>✅ <strong>Best for</strong>: Production features, complex projects, scaling output</li>
+</ul>
+<p>The shift from Conductor to Orchestrator is the defining career transition for AI-native engineers. The output is no longer code — it's the <a href="harness-engineering.html" class="wiki-link">Harness</a> that produces the code.</p>
+<h2 id="four-orchestrator-skills">Four Orchestrator Skills</h2>
+<table><thead><tr>
+<th>Skill</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Specification</strong> 📝</td>
+<td>Defining tasks precisely to eliminate ambiguity</td>
+<td>"Build login flow with OAuth2 + rate limiting + audit logging"</td>
+</tr>
+<tr>
+<td><strong>Decomposition</strong> 🔪</td>
+<td>Breaking massive projects into agent-sized units</td>
+<td>Split "Build e-commerce platform" → [Auth, Product Catalog, Cart, Checkout]</td>
+</tr>
+<tr>
+<td><strong>Evaluation</strong> 🔍</td>
+<td>Quickly judging if agent's trajectory/output meet quality bar</td>
+<td>Review PR: Does code pass tests? Match spec? Follow conventions?</td>
+</tr>
+<tr>
+<td><strong>System Design</strong> 🏗️</td>
+<td>Designing harnesses that keep agents productive + safe</td>
+<td>Write AGENTS.md, configure guardrails, setup observability</td>
+</tr>
+</tbody></table>
+<p>These four skills map to the four core practices: Specification → <a href="specification-driven-development.html" class="wiki-link">specification-driven-development</a>, Decomposition → Problem Decomposition, Evaluation → Critical Verification, System Design → <a href="harness-engineering.html" class="wiki-link">harness-engineering</a>.</p>
+<h2 id="the-four-core-practices">The Four Core Practices</h2>
+<h3 id="1-context-engineering">1. Context Engineering</h3>
+<p>The systematic curation of project-specific information injected into AI working memory: architectural diagrams, coding standards, business rules, team conventions, development workflows. This supersedes basic "prompt engineering" by recognizing that <strong>the quality of AI output is bounded by the quality of context it receives</strong>. Teams practicing rigorous context engineering report 40-50% speed increases. See <a href="context-engineering.html" class="wiki-link">context-engineering</a>.</p>
+<h3 id="2-specification-driven-development">2. Specification-Driven Development</h3>
+<p>Define what you want <em>before</em> asking AI to build it. Break problems into discrete milestones with clear success criteria. Execute incrementally with validation at each checkpoint. This prevents agents from getting stuck in circular reasoning or running off with bad assumptions.</p>
+<h3 id="3-critical-verification">3. Critical Verification</h3>
+<p>With ~45% of AI-generated code containing security flaws (and developers <em>more confident</em> it's secure), verification is non-negotiable. The bottleneck has permanently shifted from writing code to proving it works at scale. See <a href="harness-engineering.html" class="wiki-link">harness-engineering</a> for structural verification approaches.</p>
+<h3 id="4-problem-decomposition">4. Problem Decomposition</h3>
+<p>Break tasks into AI-manageable chunks. Humans handle edge cases, custom logic, and domain-specific aspects; agents handle 70-80% of routine implementation. Over-trusting AI with large complex problems causes context pollution and "slop generation" that agents struggle to recover from.</p>
+<h2 id="time-allocation">Time Allocation</h2>
+<p>The recommended split for AI-native work:</p>
+<table><thead><tr>
+<th>Activity</th>
+<th>Time %</th>
+</tr></thead><tbody>
+<tr>
+<td>Context-setting</td>
+<td>40%</td>
+</tr>
+<tr>
+<td>Generation & testing iteration</td>
+<td>20%</td>
+</tr>
+<tr>
+<td>Reviewing & verification</td>
+<td>40%</td>
+</tr>
+</tbody></table>
+<p>Generation is fast. Verification and context work are the new rate-limiting factors.</p>
+<h2 id="code-overload">Code Overload</h2>
+<p>A term coined by the <em>New York Times</em> (April 2026) describing the phenomenon where AI-assisted teams produce so much code so quickly that it becomes unmanageable — code churn, security holes, and technical debt accumulate faster than human review processes can handle. Code overload is the predictable outcome of AI usage without the four core practices.</p>
+<h2 id="security-imperative">Security Imperative</h2>
+<p>The security landscape is alarming: roughly one new insecure AI integration per week in production environments. Real incidents include:</p>
+<ul>
+<li><strong>Chat Integration RCE</strong>: Built in 2 days with AI, achieved remote code execution by bypassing 2FA</li>
+<li><strong>Unauthorized DB Access</strong>: AI agent accessed ~1,500 unauthorized database tables</li>
+<li><strong>Google Docs Prompt Injection</strong>: AI agent achieved RCE through prompt injection embedded in a document</li>
+<li><strong>Slopsquatting</strong>: Attackers register package names that AI models hallucinate</li>
+</ul>
+<h2 id="individual-transformation-path">Individual Transformation Path</h2>
+<ol>
+<li><strong>Foundation</strong> (weeks): Pick one AI assistant, build intuition, develop judgment</li>
+<li><strong>Integration</strong> (month): Structured prompting frameworks, context files, small verification loops</li>
+<li><strong>Mastery</strong> (ongoing): Multi-agent workflows, 80%+ AI-generated code with <20% rewrite rate</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="vibe-coding.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Vibe Coding</h4>
+      <p>AI-native engineering requires coding expertise; vibe coding does not</p>
+    </a>
+    <a class="connection-card" href="context-engineering.html">
+      <span class="connection-type related">Depends on</span>
+      <h4>Context Engineering</h4>
+      <p>context engineering is the foundational skill of AI-native development</p>
+    </a>
+    <a class="connection-card" href="agentic-development-life-cycle.html">
+      <span class="connection-type related">Related</span>
+      <h4>Agentic Development Life Cycle</h4>
+      <p>ADLC is the process framework for AI-native teams</p>
+    </a>
+    <a class="connection-card" href="harness-engineering.html">
+      <span class="connection-type extends">Enforced by</span>
+      <h4>Harness Engineering</h4>
+      <p>harness engineering provides structural guardrails for AI-native workflows</p>
+    </a>
+    <a class="connection-card" href="agent-quality-optimization.html">
+      <span class="connection-type related">Related</span>
+      <h4>Agent Quality Optimization</h4>
+      <p>quality optimization governs model selection, token strategy, and compound error prevention</p>
+    </a>
+    <a class="connection-card" href="agent-loop.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Loop</h4>
+      <p>the Orchestrator mode delegates to agents running the Perceive-Plan-Act-Observe cycle</p>
+    </a>
+    <a class="connection-card" href="agent-components.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Components</h4>
+      <p>the 5 pillars define the architecture that AI-native engineers design and configure</p>
+    </a>
+    <a class="connection-card" href="technological-centaur.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Technological Centaur</h4>
+      <p>both describe the human-AI collaborative model where expertise amplifies tool effectiveness</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>A Practical Guide to Becoming an AI-Native Engineer</h4>
+      <p>Shah Rahman's guide on ByteByteGo</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>The New SDLC With Vibe Coding: From ad-hoc prompting to Agentic Engineering</h4>
+      <p>Conductor vs Orchestrator modes, 4 orchestrator skills</p>
+    </div>
+    <a class="connection-card" href="ai-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>AI Engineering</h4>
+      <p>AI engineering is the broader field; AI-native engineering is its agent-orchestration paradigm</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="ai-engineering.html" class="prev">← AI Engineering</a><a href="ai-psychosis.html" class="next">AI Psychosis →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Quality Monitoring — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-quality">Data Quality</a> <span class="sep">/</span>
+  <span>Data Quality Monitoring</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Data Quality Monitoring</h1>
+  <div class="page-meta"><span>Source: data-quality-traffic-lights-sahlin, building-anonymization-pipeline, big-book-data-engineering</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">data-quality</span><span class="tag">data-observability</span><span class="tag">lineage</span><span class="tag">monitoring</span><span class="tag">dbt</span><span class="tag">data-platform</span></div>
+</div>
+<div class="content-area concept">
+<p><strong>Data Quality Monitoring</strong> is the practice of continuously detecting, tracking, and communicating data quality incidents across a data platform — going beyond simple test failures to provide end-to-end visibility into data trustworthiness (source: <span class="wiki-link source-ref">sources/data-quality-traffic-lights-sahlin</span>).</p>
+<p>Unlike traditional data testing (which catches violations at build time), data quality monitoring operates continuously, tracks incident lifecycles, calculates downstream impact (blast radius), and surfaces trust signals directly where users consume data — in dashboards, catalogs, and automated systems.</p>
+<h2 id="the-three-pillars-of-data-quality-monito">The Three Pillars of Data Quality Monitoring</h2>
+<h3 id="1-detection-knowing-what-broke">1. Detection: Knowing What Broke</h3>
+<p>Comprehensive monitoring detects multiple failure modes, not just explicit test failures:</p>
+<table><thead><tr>
+<th>Failure Mode</th>
+<th>Detection Method</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Failed tests</strong></td>
+<td>dbt run results parsed into incident records with start/end boundaries via window functions</td>
+<td>Uniqueness test fails Monday, passes Wednesday → single 3-day incident</td>
+</tr>
+<tr>
+<td><strong>Failed runs</strong></td>
+<td>Cross-reference planned models vs completed models in audit logs</td>
+<td>Cloud Run crashes mid-execution; models planned but never executed</td>
+</tr>
+<tr>
+<td><strong>Source freshness</strong></td>
+<td>dbt source freshness checks flagging late-arriving external data</td>
+<td>Upstream system stops delivering; freshness threshold exceeded</td>
+</tr>
+<tr>
+<td><strong>Volume anomalies</strong></td>
+<td>ML-based time series forecasting (BigQuery TimesFM) detecting silent drops</td>
+<td>Daily 50K rows drops to 200; pipeline succeeds but data incomplete</td>
+</tr>
+<tr>
+<td><strong>Manual incidents</strong></td>
+<td>Human-reported issues via UI for known problems not caught by automation</td>
+<td>Planned maintenance, known upstream outages, false positive overrides</td>
+</tr>
+</tbody></table>
+<h3 id="2-lineage-knowing-whats-affected">2. Lineage: Knowing What's Affected</h3>
+<p>Detection alone is insufficient — the critical question is <em>what else is impacted?</em></p>
+<p><strong>dbt lineage extraction</strong>: Parse the dbt manifest (JSON artifact) to build a complete recursive dependency graph — every table's full downstream tree, not just immediate children.</p>
+<p><strong>BI/semantic layer lineage</strong>: Parse LookML (or equivalent) to map explores and dashboards back to their underlying warehouse tables.</p>
+<p><strong>Blast radius calculation</strong>: Join the two lineage graphs. When a core customer table breaks, instantly surface which downstream models, explores, and dashboards inherit that incident.</p>
+<p><strong>Batch lineage refresh</strong> (daily) is sufficient for most platforms — production DAG changes are infrequent.</p>
+<h3 id="3-communication-telling-the-right-people">3. Communication: Telling the Right People at the Right Time</h3>
+<p>Trust signals must appear where users actually work:</p>
+<ul>
+<li><strong>In-dashboard health badges</strong>: Green (healthy), yellow (warnings), red (active errors) — visible when users load dashboards</li>
+<li><strong>Dashboard-specific filtering</strong>: Health badge scoped to explores used on that specific dashboard, not platform-wide noise</li>
+<li><strong>Platform dashboard</strong>: Centralized bird's-eye view sorted by severity, showing every explore's status</li>
+<li><strong>Data catalog enrichment</strong>: Incident status attached as asset metadata for discovery-time awareness</li>
+<li><strong>Proactive notifications</strong>: Push alerts to team channels for high-severity incidents affecting owned data</li>
+</ul>
+<h2 id="incident-lifecycle">Incident Lifecycle</h2>
+<p>Incidents progress through four states, managed entirely in SQL:</p>
+<ol>
+<li><strong>Active</strong> — end time is null or in the future; currently failing</li>
+<li><strong>Resolved</strong> — first successful run after a failure detected via window functions</li>
+<li><strong>Expired</strong> — no execution for 30 days (likely test renamed or removed); auto-closed</li>
+<li><strong>Manually closed</strong> — overridden by operations via incident management UI</li>
+</ol>
+<p>The implementation uses <code>QUALIFY</code> and window functions to detect state transitions (first success after failure, 30-day expiration) without external state management.</p>
+<h2 id="volume-anomaly-detection">Volume Anomaly Detection</h2>
+<p>Silent failures — where pipelines succeed but data is incomplete — are caught via volume anomaly detection:</p>
+<ul>
+<li><strong>Foundation model approach</strong>: BigQuery's TimesFM handles seasonality, trends, and patterns automatically</li>
+<li><strong>Per-table configuration</strong>: User-driven tables (login events, searches) suppress weekend anomalies; system-driven tables (balances, positions) maintain consistent thresholds</li>
+<li><strong>Tuning is critical</strong>: Holiday awareness, adjustable sensitivity, domain-specific thresholds</li>
+<li><strong>Auto-resolution</strong>: Anomalies auto-close after 2 days to prevent stale warnings</li>
+</ul>
+<p>Traditional statistical thresholds (standard deviation from mean) are simpler but produce more false positives than ML-based approaches for real-world data with complex seasonal patterns.</p>
+<h2 id="beyond-dashboards-programmatic-trust">Beyond Dashboards: Programmatic Trust</h2>
+<p>The incident status data becomes a foundational primitive for automated decision-making:</p>
+<table><thead><tr>
+<th>Consumer</th>
+<th>Quality-Aware Behavior</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Analytics agents (LLMs)</strong></td>
+<td>Check incident status before generating SQL; warn users or suggest alternatives</td>
+</tr>
+<tr>
+<td><strong>ML retraining pipelines</strong></td>
+<td>Gate on data quality; abort retraining and keep previous model if training data has active incidents</td>
+</tr>
+<tr>
+<td><strong>Operational services</strong></td>
+<td>Pricing services check rate tables; report generators defer if source data compromised</td>
+</tr>
+<tr>
+<td><strong>Data catalog</strong></td>
+<td>Enrich asset metadata with health status for discovery-time awareness</td>
+</tr>
+<tr>
+<td><strong>Self-service incident mgmt</strong></td>
+<td>Data producers close/acknowledge incidents directly, decentralizing ownership</td>
+</tr>
+</tbody></table>
+<h2 id="anonymization-output-monitoring">Anonymization Output Monitoring</h2>
+<p>In anonymization pipelines (source: <span class="wiki-link source-ref">sources/building-anonymization-pipeline</span>), data quality monitoring takes on a privacy-specific dimension:</p>
+<ul>
+<li><strong>Output validation</strong>: After anonymization transformation (generalization, suppression, randomization), monitor that outputs still satisfy the identifiability threshold</li>
+<li><strong>Continuous risk assessment</strong>: Anonymization is not "set and forget" — ongoing monitoring detects when risk drifts above acceptable levels as new data arrives</li>
+<li><strong>Safe Outputs check</strong>: Verify that aggregate analysis results don't inadvertently disclose information about individuals or small groups — the fifth dimension of the Five Safes framework</li>
+</ul>
+<p>This extends traditional quality monitoring (detecting broken pipelines, missing data) to include privacy-preservation validation.</p>
+<h2 id="key-principles">Key Principles</h2>
+<ol>
+<li><strong>Actionability over accuracy</strong> — showing context (team ownership, links, descriptions) matters more than perfect detection</li>
+<li><strong>Automation is non-negotiable</strong> — daily lineage, detection, and badge refreshes must run without human intervention</li>
+<li><strong>Start simple, add gradually</strong> — launch with test/run failures only; add volume anomalies, manual overrides, silent failure detection incrementally</li>
+<li><strong>Tune relentlessly</strong> — anomaly detection ships with false positives; expect continuous iteration based on real-world feedback</li>
+<li><strong>Choose tools that reduce complexity</strong> — TimesFM abstracted away ML infrastructure while delivering production-grade anomaly detection</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type related">Related</span>
+      <h4>DataOps</h4>
+      <p>DataOps applies software engineering practices to data; quality monitoring is a key DataOps practice</p>
+    </a>
+    <a class="connection-card" href="data-governance.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Governance</h4>
+      <p>Governance frameworks that data quality monitoring enforces and validates</p>
+    </a>
+    <a class="connection-card" href="dbt.html">
+      <span class="connection-type related">Related</span>
+      <h4>dbt (data build tool)</h4>
+      <p>dbt's testing framework and manifest are foundational to quality monitoring infrastructure</p>
+    </a>
+    <a class="connection-card" href="cicd-data-pipelines.html">
+      <span class="connection-type related">Related</span>
+      <h4>CI/CD for Data Pipelines</h4>
+      <p>CI/CD practices that prevent quality regressions at build time; monitoring catches what CI/CD misses at runtime</p>
+    </a>
+    <a class="connection-card" href="delta-live-tables|DLT Expectations.html">
+      <span class="connection-type related">Related</span>
+      <h4>delta-live-tables|DLT Expectations</h4>
+      <p>declarative quality rules enforced at each Medallion pipeline stage (warn, drop, or halt)</p>
+    </a>
+    <a class="connection-card" href="data-anonymization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Anonymization</h4>
+      <p>output validation and continuous risk monitoring are quality dimensions specific to anonymization pipelines</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="data-product.html" class="prev">← Data Product</a><a href="data-scientist.html" class="next">Data Scientist →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Go Web Ecosystem — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-go">Go</a> <span class="sep">/</span>
+  <span>Go Web Ecosystem</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Go Web Ecosystem</h1>
+  <div class="page-meta"><span>Source: go-web-programming</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">go</span><span class="tag">golang</span><span class="tag">web</span><span class="tag">deployment</span><span class="tag">architecture</span><span class="tag">stdlib</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>Go's web ecosystem is built on the principle that the <strong>standard library is sufficient</strong> for most web applications. Rather than relying on heavy frameworks with deep abstraction layers, Go provides modular building blocks — HTTP, templates, routing, testing — that compose into production systems. The result: simpler deployment, faster performance, and code you actually understand.</p>
+<h2 id="core-philosophy-simplicity-as-superpower">Core Philosophy: Simplicity as Superpower</h2>
+<blockquote>"The beauty of Go lies in its simplicity. By relying on powerful standard libraries, you avoid the cargo cult confusion of heavy frameworks."</blockquote>
+<p>Go rejects "Cargo Cult Programming" — the practice of adopting patterns and frameworks without understanding the underlying plumbing. Instead, developers learn HTTP from the ground up through the standard library.</p>
+<h2 id="integrated-server-model">Integrated Server Model</h2>
+<p>Go's deployment model eliminates the traditional app server:</p>
+<table><thead><tr>
+<th>Traditional</th>
+<th>Go</th>
+</tr></thead><tbody>
+<tr>
+<td>App (WAR/JAR) → Deploy to Tomcat → Configure → Start</td>
+<td><code>go build</code> → single static binary → <code>./myapp</code> → Running</td>
+</tr>
+</tbody></table>
+<p><strong>Benefits of static binary deployment:</strong></p>
+<ul>
+<li><strong>No "works on my machine"</strong>: identical binary in dev, staging, production.</li>
+<li><strong>No version drift</strong>: no separate app server to patch or mismatch.</li>
+<li><strong>Smaller attack surface</strong>: no standalone app server to secure.</li>
+<li><strong>Instant startup</strong>: fast auto-scaling, quick disaster recovery.</li>
+<li><strong>Zero-dependency deployment</strong>: copy the binary, run it — done.</li>
+</ul>
+<h2 id="https--http2-native">HTTPS + HTTP/2 Native</h2>
+<pre><code>http.ListenAndServeTLS(&quot;:443&quot;, &quot;cert.pem&quot;, &quot;key.pem&quot;, nil)</code></pre>
+<p>HTTP/2 benefits (auto-enabled with TLS in Go 1.6+):</p>
+<ul>
+<li>Binary framing — efficient parsing</li>
+<li>Header compression (HPACK) — less bandwidth</li>
+<li>Multiplexed streams — multiple requests on one TCP connection</li>
+<li>Server push — proactively send assets</li>
+</ul>
+<h2 id="testing-built-in">Testing Built-In</h2>
+<ul>
+<li><code>httptest</code>: Record responses without a live server — no third-party framework needed.</li>
+<li><code>go test</code>: Unit, integration, benchmark, and coverage — all built into the toolchain.</li>
+<li>Fast feedback loop — tests compile and run in seconds.</li>
+</ul>
+<h2 id="the-four-pillars-for-enterprise-backend">The Four Pillars for Enterprise Backend</h2>
+<table><thead><tr>
+<th>Pillar</th>
+<th>Go Advantage</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Scalability</strong></td>
+<td>Goroutines + static binary → easy vertical and horizontal scaling</td>
+</tr>
+<tr>
+<td><strong>Modularity</strong></td>
+<td>Implicit interfaces → interchangeable components, microservices-friendly</td>
+</tr>
+<tr>
+<td><strong>Maintainability</strong></td>
+<td><code>gofmt</code>, <code>godoc</code>, <code>gotest</code> built-in → uniform code, auto-generated docs</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>Compiles to native code, no VM overhead → C-level speed</td>
+</tr>
+</tbody></table>
+<h2 id="deployment-flexibility">Deployment Flexibility</h2>
+<table><thead><tr>
+<th>Environment</th>
+<th>Approach</th>
+<th>Benefit</th>
+</tr></thead><tbody>
+<tr>
+<td>Standalone</td>
+<td><code>./myapp</code></td>
+<td>Simple, full control, no orchestration overhead</td>
+</tr>
+<tr>
+<td>Docker/K8s</td>
+<td>Dockerize binary → deploy pod</td>
+<td>Consistent env, auto-scaling, self-healing</td>
+</tr>
+<tr>
+<td>Cloud</td>
+<td>Heroku, GAE, AWS Lambda</td>
+<td>Managed infra, pay-per-use</td>
+</tr>
+</tbody></table>
+<h2 id="when-to-use-a-framework">When to Use a Framework</h2>
+<ul>
+<li>Start with the standard library. It handles routing, templates, middleware, and testing.</li>
+<li>Add a framework only when the standard library genuinely becomes a bottleneck — and you'll understand <strong>why</strong> you need it.</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="goroutines.html">
+      <span class="connection-type related">Related</span>
+      <h4>Goroutines</h4>
+      <p>concurrency model enables vertical scaling</p>
+    </a>
+    <a class="connection-card" href="go-http-handlers.html">
+      <span class="connection-type related">Related</span>
+      <h4>Go HTTP Handlers</h4>
+      <p>handler pattern is the core building block</p>
+    </a>
+    <a class="connection-card" href="go-template-escaping.html">
+      <span class="connection-type related">Related</span>
+      <h4>Go Template Escaping</h4>
+      <p>security-first templating</p>
+    </a>
+    <a class="connection-card" href="dependency-injection.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Dependency Injection</h4>
+      <p>DI patterns are implemented naturally through Go interfaces (implicit satisfaction)</p>
+    </a>
+    <a class="connection-card" href="kubernetes-operator.html">
+      <span class="connection-type related">Related</span>
+      <h4>Kubernetes Operator</h4>
+      <p>Go's standard-library philosophy, static binaries, and implicit interfaces make it the native language of K8s controllers</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Go Web Programming</h4>
+      <p>Sau Sheong Chang's guide to Go web apps</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="go-template-escaping.html" class="prev">← Go Template Escaping</a><a href="golden-circle.html" class="next">Golden Circle →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>
