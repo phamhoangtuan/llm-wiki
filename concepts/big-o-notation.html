@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bijection — LLM Wiki</title>
+<title>Big O Notation — LLM Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles/main.css">
@@ -36,87 +36,69 @@
 <main class="main-content">
 <div class="breadcrumb-wrapper"><nav class="breadcrumb">
   <a href="../index.html">Home</a> <span class="sep">/</span>
-  <a href="../index.html#cat-architecture">Architecture</a> <span class="sep">/</span>
-  <span>Bijection</span>
+  <a href="../index.html#cat-algorithms">Algorithms</a> <span class="sep">/</span>
+  <span>Big O Notation</span>
 </nav></div>
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
-  <h1>Bijection</h1>
-  <div class="page-meta"><span>Source: contieri-clean-code-cookbook</span><span>Updated: 2026-06-15</span></div>
-  <div class="page-tags"><span class="tag">architecture</span><span class="tag">design-principles</span><span class="tag">domain-modeling</span></div>
+  <h1>Big O Notation</h1>
+  <div class="page-meta"><span>Source: learning-algorithms-heineman</span><span>Updated: 2026-08-23</span></div>
+  <div class="page-tags"><span class="tag">algorithms</span><span class="tag">complexity</span><span class="tag">performance</span><span class="tag">asymptotic-analysis</span></div>
 </div>
 <div class="content-area concept">
-<h2 id="summary">Summary</h2>
-<p>Bijection is the golden design rule: <strong>each domain object must be represented by a single object in the computable model and vice versa.</strong> A one-to-one mapping between reality and code.</p>
-<h2 id="the-rule">The Rule</h2>
-<pre><code>Reality: [Bank Account #123]  ↔  Code: [new BankAccount(id=&quot;123&quot;)]
-Reality: [10 meters]          ↔  Code: [new Length(10, Unit.METERS)]</code></pre>
-<h2 id="when-bijection-fails-mars-climate-orbite">When Bijection Fails: Mars Climate Orbiter (1999)</h2>
-<ul>
-<li><strong>Reality</strong>: Ground control used English units (pound-force), spacecraft expected metric (Newtons)</li>
-<li><strong>Code flaw</strong>: Both sides used <code>double force = 10.5;</code> — a bare number with no semantic meaning</li>
-<li><strong>Result</strong>: Spacecraft deviated from orbit, burned up in Mars' atmosphere — $125M loss</li>
-</ul>
-<blockquote>A semantic error is more dangerous than a syntax error. Code that "runs" is not code that is "correct."</blockquote>
-<h2 id="4-common-bijection-violations">4 Common Bijection Violations</h2>
+<p>Big O notation is the standard vocabulary for describing how an algorithm's resource consumption grows as input size (N) increases. It abstracts away hardware, language, and constants to focus on the <strong>growth pattern</strong>.</p>
+<h2 id="performance-classes">Performance Classes</h2>
 <table><thead><tr>
-<th>Violation</th>
-<th>Description</th>
-<th>Consequence</th>
+<th>Class</th>
+<th>Notation</th>
+<th>Growth on N doubling</th>
+<th>Example</th>
 </tr></thead><tbody>
 <tr>
-<td>Many entities, one object</td>
-<td>Using <code>int</code> for both "10 meters" and "10 inches"</td>
-<td>Unit mismatch → wrong calculations</td>
+<td>Constant</td>
+<td>O(1)</td>
+<td>No change</td>
+<td>Array access <code>A[i]</code></td>
 </tr>
 <tr>
-<td>One entity, many objects</td>
-<td><code>Person</code> appears as separate <code>Athlete</code> and <code>Judge</code> objects</td>
-<td>Data inconsistency, sync nightmare</td>
+<td>Logarithmic</td>
+<td>O(log N)</td>
+<td>+1 step</td>
+<td>Binary search</td>
 </tr>
 <tr>
-<td>Anemic representation</td>
-<td>Object is just a "data holder" with getters/setters</td>
-<td>Logic leaks outside, violates encapsulation</td>
+<td>Linear</td>
+<td>O(N)</td>
+<td>Work doubles</td>
+<td>Single scan for max</td>
 </tr>
 <tr>
-<td>Implicit transformations</td>
-<td>Language "auto-corrects" invalid data (Nov 31 → Dec 1)</td>
-<td>Hides errors, violates <a href="fail-fast.html" class="wiki-link">fail-fast</a></td>
+<td>Linear-log</td>
+<td>O(N log N)</td>
+<td>Slightly more than double</td>
+<td>Merge sort, quicksort</td>
+</tr>
+<tr>
+<td>Quadratic</td>
+<td>O(N²)</td>
+<td>Work quadruples</td>
+<td>Bubble sort, nested comparisons</td>
 </tr>
 </tbody></table>
+<h2 id="why-it-matters">Why It Matters</h2>
+<p>At N = 1,000, O(N²) means 1,000,000 operations — manageable. At N = 1,000,000, it means 1,000,000,000,000 — catastrophic. The growth pattern, not the absolute speed, determines whether code survives contact with real data.</p>
+<h2 id="the-slower-computer-paradox">The "Slower Computer" Paradox</h2>
+<p>An efficient algorithm (O(N log N)) on a slow machine will eventually outperform an inefficient algorithm (O(N²)) on a supercomputer. No amount of hardware can compensate for asymptotic inferiority at scale. (source: <span class="wiki-link source-ref">learning-algorithms-heineman</span>)</p>
+<h2 id="relationship-to-other-concepts">Relationship to Other Concepts</h2>
+<ul>
+<li><strong>Operation counting</strong> is the method; Big O is the classification. Count key operations, observe the doubling pattern, then classify. See <a href="algorithm-analysis.html" class="wiki-link">algorithm-analysis</a>.</li>
+<li>Big O describes <a href="time-space-tradeoff.html" class="wiki-link">time complexity</a> specifically; space complexity uses the same notation for memory growth.</li>
+<li>Distinct from <a href="complexity-metrics.html" class="wiki-link">complexity-metrics</a> like Halstead or Cyclomatic complexity, which measure code structure rather than algorithmic growth.</li>
+<li>System-level scaling (<a href="scalable-architecture.html" class="wiki-link">scalable-architecture</a>) addresses different problems than algorithm-level scaling (Big O), but both matter for production systems.</li>
+</ul>
 </div>
-<section class="connections-section">
-  <h2>Connections</h2>
-  <div class="connections-grid">
-    <a class="connection-card" href="rich-domain-model.html">
-      <span class="connection-type drives">Prevents</span>
-      <h4>Rich Domain Model</h4>
-      <p>violations — anemic objects are a bijection failure</p>
-    </a>
-    <a class="connection-card" href="immutability.html">
-      <span class="connection-type extends">Enforced by</span>
-      <h4>Immutability of Essence</h4>
-      <p>mutable essence attributes break the 1-1 mapping</p>
-    </a>
-    <a class="connection-card" href="fail-fast.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Fail Fast</h4>
-      <p>implicit transformations that hide errors (e.g., Nov 31 → Dec 1) violate fail-fast principles</p>
-    </a>
-    <a class="connection-card" href="mapper-principles.html">
-      <span class="connection-type related">Related to</span>
-      <h4>MAPPER Principles</h4>
-      <p>Model and Reality principles</p>
-    </a>
-    <div class="connection-card text-ref">
-      <span class="connection-type related">Related</span>
-      <h4>Clean Code Cookbook (Maximiliano Contieri)</h4>
-      <p>Contieri's Clean Code Cookbook</p>
-    </div>
-  </div>
-</section>
-<nav class="pagination"><a href="big-o-notation.html" class="prev">← Big O Notation</a><a href="bloom-filter.html" class="next">Bloom Filter →</a></nav>
+
+<nav class="pagination"><a href="batch-processing.html" class="prev">← Batch Processing</a><a href="bijection.html" class="next">Bijection →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

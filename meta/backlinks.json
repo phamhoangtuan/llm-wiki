@@ -432,6 +432,45 @@
     "mlops",
     "sustainable-ai"
   ],
+  "learning-algorithms-heineman": [
+    "algorithm-analysis",
+    "big-o-notation",
+    "time-space-tradeoff"
+  ],
+  "big-o-notation": [
+    "algorithm-analysis",
+    "algorithm-analysis",
+    "time-space-tradeoff"
+  ],
+  "time-space-tradeoff": [
+    "algorithm-analysis",
+    "big-o-notation"
+  ],
+  "complexity-metrics": [
+    "algorithm-analysis",
+    "big-o-notation",
+    "code-archaeology",
+    "code-quality-pillars",
+    "essential-accidental-complexity",
+    "goodharts-law",
+    "refactoring-at-scale",
+    "refactoring-at-scale",
+    "software-rot",
+    "software-rot",
+    "learning-algorithms-heineman"
+  ],
+  "readability-vs-performance": [
+    "algorithm-analysis",
+    "code-quality-pillars",
+    "code-readability",
+    "python-concurrency",
+    "python-professional-practices",
+    "software-quality-dimensions",
+    "technological-centaur",
+    "time-space-tradeoff",
+    "contieri-clean-code-cookbook",
+    "learning-algorithms-heineman"
+  ],
   "dbt": [
     "analytics-engineer",
     "analytics-engineer",
@@ -1386,6 +1425,32 @@
     "data-engineer",
     "data-engineering-with-python"
   ],
+  "algorithm-analysis": [
+    "big-o-notation",
+    "time-space-tradeoff"
+  ],
+  "scalable-architecture": [
+    "big-o-notation",
+    "cache-strategy",
+    "cap-theorem",
+    "cdn",
+    "cloud-service-models",
+    "database-replication",
+    "database-sharding",
+    "deployment-strategies",
+    "distributed-consensus",
+    "load-balancer",
+    "message-queue",
+    "observability",
+    "proximity-service",
+    "site-reliability-engineering",
+    "stateless-architecture",
+    "system-design-interview",
+    "learning-algorithms-heineman",
+    "site-reliability-engineering",
+    "system-design-interview-xu",
+    "the-accidental-cto"
+  ],
   "rich-domain-model": [
     "bijection",
     "code-quality-pillars",
@@ -1445,26 +1510,6 @@
     "leader-election",
     "leader-election",
     "consensus-raft-paxos-handbook"
-  ],
-  "scalable-architecture": [
-    "cache-strategy",
-    "cap-theorem",
-    "cdn",
-    "cloud-service-models",
-    "database-replication",
-    "database-sharding",
-    "deployment-strategies",
-    "distributed-consensus",
-    "load-balancer",
-    "message-queue",
-    "observability",
-    "proximity-service",
-    "site-reliability-engineering",
-    "stateless-architecture",
-    "system-design-interview",
-    "site-reliability-engineering",
-    "system-design-interview-xu",
-    "the-accidental-cto"
   ],
   "database-replication": [
     "cache-strategy",
@@ -1604,16 +1649,6 @@
     "microservices",
     "the-accidental-cto"
   ],
-  "complexity-metrics": [
-    "code-archaeology",
-    "code-quality-pillars",
-    "essential-accidental-complexity",
-    "goodharts-law",
-    "refactoring-at-scale",
-    "refactoring-at-scale",
-    "software-rot",
-    "software-rot"
-  ],
   "essential-accidental-complexity": [
     "code-archaeology",
     "code-quality-pillars",
@@ -1628,7 +1663,9 @@
     "software-construction",
     "software-quality-dimensions",
     "software-rot",
-    "code-complete"
+    "time-space-tradeoff",
+    "code-complete",
+    "learning-algorithms-heineman"
   ],
   "code-quality-pillars": [
     "code-archaeology",
@@ -1665,15 +1702,6 @@
     "complexity-metrics",
     "refactoring-at-scale",
     "software-rot"
-  ],
-  "readability-vs-performance": [
-    "code-quality-pillars",
-    "code-readability",
-    "python-concurrency",
-    "python-professional-practices",
-    "software-quality-dimensions",
-    "technological-centaur",
-    "contieri-clean-code-cookbook"
   ],
   "solid-principles": [
     "code-quality-pillars",

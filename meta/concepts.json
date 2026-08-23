@@ -126,6 +126,18 @@
         "performance"
       ]
     },
+    "algorithm-analysis": {
+      "title": "Algorithm Analysis",
+      "category": "Career & Growth",
+      "url": "concepts/algorithm-analysis.html",
+      "definition": "Algorithm analysis is the discipline of predicting how an algorithm behaves as input grows, without running it. The core method: **count key operations, not clock time**.",
+      "tags": [
+        "algorithms",
+        "performance",
+        "operation-counting",
+        "doubling-effect"
+      ]
+    },
     "analytics-engineer": {
       "title": "Analytics Engineer",
       "category": "Data Engineering",
@@ -376,6 +388,18 @@
         "hadoop",
         "spark",
         "traditional"
+      ]
+    },
+    "big-o-notation": {
+      "title": "Big O Notation",
+      "category": "Career & Growth",
+      "url": "concepts/big-o-notation.html",
+      "definition": "Big O notation is the standard vocabulary for describing how an algorithm's resource consumption grows as input size (N) increases. It abstracts away hardware, language, and constants to focus on the ",
+      "tags": [
+        "algorithms",
+        "complexity",
+        "performance",
+        "asymptotic-analysis"
       ]
     },
     "bijection": {
@@ -2979,6 +3003,18 @@
         "strategy",
         "architecture",
         "tdd"
+      ]
+    },
+    "time-space-tradeoff": {
+      "title": "Time-Space Tradeoff",
+      "category": "Career & Growth",
+      "url": "concepts/time-space-tradeoff.html",
+      "definition": "The time-space tradeoff is the principle that reducing an algorithm's time complexity often increases its space complexity, and vice versa. Mathematical efficiency in one dimension can cause practical",
+      "tags": [
+        "algorithms",
+        "complexity",
+        "memory",
+        "performance"
       ]
     },
     "timely-dataflow": {

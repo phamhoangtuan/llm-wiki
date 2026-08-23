@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bijection — LLM Wiki</title>
+<title>Time-Space Tradeoff — LLM Wiki</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="../styles/main.css">
@@ -36,87 +36,65 @@
 <main class="main-content">
 <div class="breadcrumb-wrapper"><nav class="breadcrumb">
   <a href="../index.html">Home</a> <span class="sep">/</span>
-  <a href="../index.html#cat-architecture">Architecture</a> <span class="sep">/</span>
-  <span>Bijection</span>
+  <a href="../index.html#cat-algorithms">Algorithms</a> <span class="sep">/</span>
+  <span>Time-Space Tradeoff</span>
 </nav></div>
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
-  <h1>Bijection</h1>
-  <div class="page-meta"><span>Source: contieri-clean-code-cookbook</span><span>Updated: 2026-06-15</span></div>
-  <div class="page-tags"><span class="tag">architecture</span><span class="tag">design-principles</span><span class="tag">domain-modeling</span></div>
+  <h1>Time-Space Tradeoff</h1>
+  <div class="page-meta"><span>Source: learning-algorithms-heineman</span><span>Updated: 2026-08-23</span></div>
+  <div class="page-tags"><span class="tag">algorithms</span><span class="tag">complexity</span><span class="tag">memory</span><span class="tag">performance</span></div>
 </div>
 <div class="content-area concept">
-<h2 id="summary">Summary</h2>
-<p>Bijection is the golden design rule: <strong>each domain object must be represented by a single object in the computable model and vice versa.</strong> A one-to-one mapping between reality and code.</p>
-<h2 id="the-rule">The Rule</h2>
-<pre><code>Reality: [Bank Account #123]  ↔  Code: [new BankAccount(id=&quot;123&quot;)]
-Reality: [10 meters]          ↔  Code: [new Length(10, Unit.METERS)]</code></pre>
-<h2 id="when-bijection-fails-mars-climate-orbite">When Bijection Fails: Mars Climate Orbiter (1999)</h2>
-<ul>
-<li><strong>Reality</strong>: Ground control used English units (pound-force), spacecraft expected metric (Newtons)</li>
-<li><strong>Code flaw</strong>: Both sides used <code>double force = 10.5;</code> — a bare number with no semantic meaning</li>
-<li><strong>Result</strong>: Spacecraft deviated from orbit, burned up in Mars' atmosphere — $125M loss</li>
-</ul>
-<blockquote>A semantic error is more dangerous than a syntax error. Code that "runs" is not code that is "correct."</blockquote>
-<h2 id="4-common-bijection-violations">4 Common Bijection Violations</h2>
+<p>The time-space tradeoff is the principle that reducing an algorithm's time complexity often increases its space complexity, and vice versa. Mathematical efficiency in one dimension can cause practical inefficiency in the other.</p>
+<h2 id="the-tournament-algorithm-lesson">The Tournament Algorithm Lesson</h2>
+<p>The canonical example: finding the two largest values in an array.</p>
 <table><thead><tr>
-<th>Violation</th>
-<th>Description</th>
-<th>Consequence</th>
+<th>Approach</th>
+<th>Comparisons</th>
+<th>Extra Memory</th>
+<th>Practical Speed</th>
 </tr></thead><tbody>
 <tr>
-<td>Many entities, one object</td>
-<td>Using <code>int</code> for both "10 meters" and "10 inches"</td>
-<td>Unit mismatch → wrong calculations</td>
+<td>Standard scan</td>
+<td>2N − 3</td>
+<td>Minimal</td>
+<td>Fast</td>
 </tr>
 <tr>
-<td>One entity, many objects</td>
-<td><code>Person</code> appears as separate <code>Athlete</code> and <code>Judge</code> objects</td>
-<td>Data inconsistency, sync nightmare</td>
-</tr>
-<tr>
-<td>Anemic representation</td>
-<td>Object is just a "data holder" with getters/setters</td>
-<td>Logic leaks outside, violates encapsulation</td>
-</tr>
-<tr>
-<td>Implicit transformations</td>
-<td>Language "auto-corrects" invalid data (Nov 31 → Dec 1)</td>
-<td>Hides errors, violates <a href="fail-fast.html" class="wiki-link">fail-fast</a></td>
+<td>Tournament</td>
+<td>N + log N − 2</td>
+<td>winners[], losers[], prior[] arrays</td>
+<td><strong>Slowest</strong></td>
 </tr>
 </tbody></table>
+<p>The tournament algorithm is mathematically superior (fewer comparisons) but practically worse. Memory allocation overhead — the cost of managing multiple arrays — wipes out the comparison savings.</p>
+<blockquote>"Mathematical efficiency ≠ Practical efficiency." (source: <span class="wiki-link source-ref">learning-algorithms-heineman</span>)</blockquote>
+<h2 id="the-hidden-cost-of-memory">The Hidden Cost of Memory</h2>
+<p>Memory allocation is not free. The computer spends time:</p>
+<ul>
+<li>Allocating contiguous blocks</li>
+<li>Managing metadata for each allocation</li>
+<li>Potentially triggering garbage collection</li>
+<li>Causing cache misses when data is scattered</li>
+</ul>
+<p>An algorithm that uses fewer operations but more memory can be slower than one that uses more operations but less memory.</p>
+<h2 id="general-principle">General Principle</h2>
+<p>When evaluating an algorithm, measure <strong>both</strong> dimensions:</p>
+<ul>
+<li><strong>Time complexity</strong>: C(N) — how operations grow with N</li>
+<li><strong>Space complexity</strong>: S(N) — how extra memory grows with N</li>
+</ul>
+<p>Both use <a href="big-o-notation.html" class="wiki-link">big-o-notation</a>. Both matter for production systems. Optimizing one at the expense of the other requires explicit justification.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>A core concern of <a href="algorithm-analysis.html" class="wiki-link">algorithm-analysis</a> — operation counting alone is incomplete without space analysis</li>
+<li>Relates to <a href="essential-accidental-complexity.html" class="wiki-link">essential-accidental-complexity</a> — space overhead from data structures is often essential; space wasted by poor design is accidental</li>
+<li>Contrasts with <a href="readability-vs-performance.html" class="wiki-link">readability-vs-performance</a> — sometimes trading space for readability is the right call (caching, lookup tables)</li>
+</ul>
 </div>
-<section class="connections-section">
-  <h2>Connections</h2>
-  <div class="connections-grid">
-    <a class="connection-card" href="rich-domain-model.html">
-      <span class="connection-type drives">Prevents</span>
-      <h4>Rich Domain Model</h4>
-      <p>violations — anemic objects are a bijection failure</p>
-    </a>
-    <a class="connection-card" href="immutability.html">
-      <span class="connection-type extends">Enforced by</span>
-      <h4>Immutability of Essence</h4>
-      <p>mutable essence attributes break the 1-1 mapping</p>
-    </a>
-    <a class="connection-card" href="fail-fast.html">
-      <span class="connection-type related">Related to</span>
-      <h4>Fail Fast</h4>
-      <p>implicit transformations that hide errors (e.g., Nov 31 → Dec 1) violate fail-fast principles</p>
-    </a>
-    <a class="connection-card" href="mapper-principles.html">
-      <span class="connection-type related">Related to</span>
-      <h4>MAPPER Principles</h4>
-      <p>Model and Reality principles</p>
-    </a>
-    <div class="connection-card text-ref">
-      <span class="connection-type related">Related</span>
-      <h4>Clean Code Cookbook (Maximiliano Contieri)</h4>
-      <p>Contieri's Clean Code Cookbook</p>
-    </div>
-  </div>
-</section>
-<nav class="pagination"><a href="big-o-notation.html" class="prev">← Big O Notation</a><a href="bloom-filter.html" class="next">Bloom Filter →</a></nav>
+
+<nav class="pagination"><a href="testing-strategy.html" class="prev">← Testing Strategy</a><a href="timely-dataflow.html" class="next">Timely Dataflow →</a></nav>
 </main>
 <aside class="right-sidebar" id="right-sidebar">
   <div class="toc-container">

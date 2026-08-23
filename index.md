@@ -58,6 +58,9 @@
 - [Geohash](concepts/geohash.html) — Base32 string encoding for geolocation; recursive grid subdivision, prefix matching, boundary issues
 - [Geospatial Indexing](concepts/geospatial-indexing.html) — Dimensionality reduction: 2D coordinates → 1D index for efficient spatial queries; Geohash + Quadtree strategies
 - [Essential vs Accidental Complexity](concepts/essential-accidental-complexity.html) — Fred Brooks' two types: inherent vs design-caused
+- [Algorithm Analysis](concepts/algorithm-analysis.html) — Predicting algorithm behavior by counting key operations, not clock time; doubling effect, best/worst case
+- [Big O Notation](concepts/big-o-notation.html) — Asymptotic growth classes: O(1), O(log N), O(N), O(N log N), O(N²); the "slower computer" paradox
+- [Time-Space Tradeoff](concepts/time-space-tradeoff.html) — Mathematical efficiency ≠ practical efficiency; memory allocation overhead can wipe out operation savings
 - [Technological Centaur](concepts/technological-centaur.html) — Human architect + AI assistant; clean code enables collaboration
 - [Testing Effect](concepts/testing-effect.html) — Retrieval practice as knowledge construction; Karpicke & Blunt study, desirable difficulty, free recall
 - [Testing Pyramid](concepts/testing-pyramid.html) — Professional testing hierarchy: Unit → Component → Integration → System → Manual
@@ -356,6 +359,7 @@
 - [Site Reliability Engineering: How Google Runs Production Systems](sources/site-reliability-engineering.md) — SLIs, SLOs, error budgets, load balancing, failure containment, recoverability, testing, and toil reduction
 - [Software Engineering at Google](sources/software-engineering-at-google.md) — Code review, public-API testing, trunk-based development, CI/CD, build infrastructure, and learning culture
 - [The Accidental CTO](sources/the-accidental-cto.md) — Evolution from monolith to globally distributed architecture through measured scaling, replication, containers, CDC, and sharding
+- [Learning Algorithms — George T. Heineman](sources/learning-algorithms-heineman.md) — 281-page guide: operation counting, Big O, doubling effect, 4 layers of CS, time-space tradeoff
 
 ## Syntheses
 
@@ -363,5 +367,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-_Last updated: 2026-08-18_
-_Pages: 346 (250 concepts + 96 sources)_
+_Last updated: 2026-08-23_
+_Pages: 350 (253 concepts + 97 sources)_

@@ -4,6 +4,24 @@
 
 ---
 
+## [2026-08-23] lint | Post-ingest link fix pass
+
+- Fixed 10 Title Case wikilinks → kebab-case slugs across 4 files (algorithm-analysis, big-o-notation, time-space-tradeoff, learning-algorithms-heineman)
+- Broken wikilinks: 10 → 0
+- Orphans: 6 (pre-existing, unchanged — data-architecture, data-security, data-warehousing, document-content-management, flow-zone-critique, master-data-management)
+- Frontmatter: all pages complete
+- Index: 350 pages (253 concepts + 97 sources) — consistent with disk
+- Contradictions: 0
+- HTML regenerated via convert-to-html.py
+
+## [2026-08-23] ingest | Learning Algorithms — George T. Heineman
+
+- Created sources/learning-algorithms-heineman.md
+- New concepts: algorithm-analysis, big-o-notation, time-space-tradeoff
+- Cross-linked to: complexity-metrics, readability-vs-performance, scalable-architecture, essential-accidental-complexity
+- Updated index.md: +3 concepts, +1 source, 350 total pages
+- HTML regenerated via convert-to-html.py
+
 ## [2026-08-15] chore | Allow raw documents in commit helper
 
 - Updated `scripts/commit-and-push.sh` to include tracked and untracked files under `raw/`; raw documents remain immutable to wiki operations but are now versioned by the commit workflow
