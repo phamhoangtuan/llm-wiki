@@ -17,7 +17,7 @@ While Data Engineering builds the pipelines that move and transform data, Data G
 ## Core Pillars
 
 | Pillar | Description |
-|---|---|
+| --- | --- |
 | **Access Control** | Who can read, write, or delete data — enforced via RBAC, ABAC |
 | **Data Classification** | Labeling data by sensitivity (PII, confidential, public) |
 | **Retention & Lifecycle** | How long data is kept, when it's archived or destroyed |
@@ -29,6 +29,7 @@ While Data Engineering builds the pipelines that move and transform data, Data G
 ## Why Governance Matters
 
 Without governance:
+
 - **Cost**: Uncontrolled data hoarding inflates storage bills; no one knows what's safe to delete.
 - **Legal Risk**: GDPR "right to be forgotten" becomes nearly impossible without knowing where user data lives.
 - **Trust Erosion**: Analysts make decisions on data they can't verify — lineage gaps destroy confidence.
@@ -40,7 +41,7 @@ Without governance:
 For data anonymization specifically, the Five Safes framework from Arbuckle & El Emam provides a holistic governance model (source: [[sources/building-anonymization-pipeline]]):
 
 | Safe | Question |
-|---|---|
+| --- | --- |
 | **Safe Projects** | Is this project legal and ethical? |
 | **Safe People** | Who receives the data — what's their motivation and re-identification capability? |
 | **Safe Settings** | Is the sharing environment technically secured? |
@@ -52,6 +53,7 @@ The framework ensures governance evaluates the entire ecosystem — not just the
 ## Governance in Practice
 
 Data Engineers implement governance through:
+
 - **Automated lifecycle policies** (e.g., S3 lifecycle rules, BigQuery partition expiration) — `(source: [[sources/data-lifecycle-handbook]])`
 - **Data catalogs** (Unity Catalog, Apache Atlas, DataHub) for lineage and discovery
 - **Schema enforcement** with contract testing

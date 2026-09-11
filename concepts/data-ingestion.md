@@ -19,7 +19,7 @@ aliases: [data-onboarding, data-pipeline-onboarding]
 Data is extracted on a schedule (hourly, daily), typically as full snapshots or incremental dumps.
 
 | Characteristic | Typical Values |
-|---|---|
+| --- | --- |
 | Latency | Hours to days |
 | Source impact | Full table scans can load the source DB |
 | Complexity | Low (simple scheduled jobs) |
@@ -30,11 +30,11 @@ Data is extracted on a schedule (hourly, daily), typically as full snapshots or 
 Data is captured continuously as it changes, using CDC or event streams.
 
 | Characteristic | Typical Values |
-|---|---|
+| --- | --- |
 | Latency | Seconds to minutes |
 | Source impact | Minimal (reads transaction log, not source tables) |
 | Complexity | Higher (stateful pipelines, checkpointing, schema evolution) |
-| Example | MySQL binlog → [[apache-flink|Flink CDC]] → S3 → Hive (Hugo's evolved design) |
+| Example | MySQL binlog → [[apache-flink | Flink CDC]] → S3 → Hive (Hugo's evolved design) |
 
 → See [[change-data-capture]] for CDC specifically.
 
@@ -43,7 +43,7 @@ Data is captured continuously as it changes, using CDC or event streams.
 Data ingestion platforms evolve through stages:
 
 | Stage | Hallmarks | Onboarding Time |
-|---|---|---|
+| --- | --- | --- |
 | **Stage 1: Manual** | Engineers write custom scripts per pipeline; no platform | Days to weeks |
 | **Stage 2: Siloed** | Multiple platforms (Kafka Connect, custom apps, Spark); users coordinate across systems | Days (multi-team tickets) |
 | **Stage 3: Unified** | Single self-service platform; one-click onboarding; automated schema handling | Minutes |
@@ -55,7 +55,7 @@ Grab's Hugo evolved from Stage 2 (Kafka Connect + Sprinkler + Spark) to Stage 3 
 ### 1. Self-Service vs Central Team
 
 | Self-Service | Central Team |
-|---|---|
+| --- | --- |
 | Source teams configure their own pipelines via UI/API | Data platform team writes and maintains all pipelines |
 | Faster onboarding (minutes) | Higher quality control |
 | Requires validation guardrails | Bottleneck on team bandwidth |
@@ -64,6 +64,7 @@ Grab's Hugo evolved from Stage 2 (Kafka Connect + Sprinkler + Spark) to Stage 3 
 ### 2. Schema Handling
 
 The hardest part of ingestion is schema evolution:
+
 - **Hardcoded DTOs** — brittle; every schema change requires code change (Hugo's legacy Sprinkler)
 - **Schema registry** — schemas versioned in Confluent Schema Registry; pipelines fetch at runtime (Hugo's Flink approach)
 - **Automated inference** — connector reads schema from source at runtime (Flink CDC)
@@ -72,6 +73,7 @@ The hardest part of ingestion is schema evolution:
 ### 3. Validation Guardrails
 
 Hugo's onboarding UI validates prerequisites **before** pipeline creation, preventing wasted attempts:
+
 - For Kafka: topic ownership verification, non-zero message volume, no duplicate table names
 - For MySQL CDC: credential setup, binlog user config, binlog format (ROW required), binlog expiration settings
 
@@ -108,14 +110,16 @@ Hugo unified two previously siloed ingestion patterns under one platform:
 ## Tooling Landscape
 
 | Category | Tools |
-|---|---|
-| **Streaming engines** | [[apache-flink|Apache Flink]], Spark Streaming, Kafka Streams |
+| --- | --- |
+| **Streaming engines** | [[apache-flink | Apache Flink]], Spark Streaming, Kafka Streams |
 | **CDC connectors** | Flink CDC, Debezium (Kafka Connect), AWS DMS |
-| **Transformation (T in [[elt|ELT]])** | [[dbt|dbt (data build tool)]], Apache Spark, Dataform |
-| **Message queues** | [[apache-kafka|Apache Kafka]], Amazon Kinesis, Google Pub/Sub |
+| **Transformation (T in [[elt | ELT]])** | [[dbt | dbt (data build tool)]], Apache Spark, Dataform |
+| **Message queues** | [[apache-kafka | Apache Kafka]], Amazon Kinesis, Google Pub/Sub |
 | **Schema registry** | Confluent Schema Registry, AWS Glue Schema Registry |
-| **Table formats** | Hive, [[apache-iceberg|Apache Iceberg]], Delta Lake, Hudi |
+| **Table formats** | Hive, [[apache-iceberg | Apache Iceberg]], Delta Lake, Hudi |
+
 ---
+
 - Powered by [[apache-flink]] — Flink is the streaming engine in Hugo's unified ingestion platform
 - Implements [[change-data-capture]] — CDC is the primary pattern for database ingestion
 - Integrates with [[apache-kafka]] — Kafka is both a source (topic ingestion) and was the legacy intermediary (replaced by direct CDC)

@@ -17,7 +17,7 @@ aliases: [feedback in learning, corrective feedback]
 ## Three Levels of Feedback
 
 | Level | Signal Type | Example | Use Case |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | **Outcome** 🚦 | Stop/Go (pass/fail) | Sales figures, grades, public reaction | Quick assessment of overall success |
 | **Informational** 🔍 | What is wrong? | Error messages, real-time results, audience confusion | Identify specific problem areas |
 | **Corrective** 🛠️ | How to fix it? | Mentor pointing out technical error, solution keys | When actionable improvement steps are needed |

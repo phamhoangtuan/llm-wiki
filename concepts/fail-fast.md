@@ -27,13 +27,16 @@ The system should stop execution immediately when an error is detected, rather t
 // ❌ Auto-corrects invalid data → hides the error
 LocalDate date = LocalDate.of(2024, 11, 31); // Silently becomes Dec 1
 ```
+
 ## Correct: Fail Fast
 
 ```
 // ✅ Throws exception immediately
 LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException
 ```
+
 ---
+
 - Enforced by [[immutability]] — immutable objects fail fast on invalid construction
 - Prevents [[bijection]] violations — implicit transformations hide errors
 - Related to [[rich-domain-model]] — rich objects validate their own state
