@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Byzantine Fault Tolerance (BFT) — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-distributed-systems">Distributed Systems</a> <span class="sep">/</span>
+  <span>Byzantine Fault Tolerance (BFT)</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Byzantine Fault Tolerance (BFT)</h1>
+  <div class="page-meta"><span>Source: bft-data-engineering-handbook</span><span>Updated: 2026-06-17</span></div>
+  <div class="page-tags"><span class="tag">distributed-systems</span><span class="tag">consensus</span><span class="tag">fault-tolerance</span><span class="tag">security</span></div>
+</div>
+<div class="content-area concept">
+<p><strong>Byzantine Fault Tolerance (BFT)</strong> is the property of a distributed system to maintain correct operation and reach consensus even when some of its components fail — not just by crashing, but by actively sending contradictory, incorrect, or malicious information (source: <span class="wiki-link source-ref">sources/bft-data-engineering-handbook</span>).</p>
+<p>Unlike <strong>Crash Fault Tolerance (CFT)</strong> — which handles nodes that simply stop responding — BFT addresses <em>Byzantine failures</em>: hardware bit-flips, corrupted network packets, software bugs producing wrong outputs, and compromised nodes under attacker control.</p>
+<h2 id="the-byzantine-generals-problem">The Byzantine Generals Problem</h2>
+<p>The concept originates from the <strong>Byzantine Generals Problem</strong>, formalized by Leslie Lamport, Robert Shostak, and Marshall Pease in 1982. The thought experiment: several Byzantine generals surround a city and must unanimously decide whether to attack or retreat. They communicate only via messengers, and some generals are traitors who send conflicting messages to different recipients to prevent consensus.</p>
+<p>In distributed systems, the "traitors" are:</p>
+<ul>
+<li><strong>Hardware faults</strong>: RAM bit-flips (cosmic radiation), bad disk sectors</li>
+<li><strong>Network corruption</strong>: Packet loss, extreme latency (network partitions), garbled data</li>
+<li><strong>Software bugs</strong>: Logic errors producing incorrect responses</li>
+<li><strong>Compromised nodes</strong>: Hackers controlling servers and injecting malicious data</li>
+</ul>
+<h2 id="mathematical-foundation-3f--1">Mathematical Foundation: 3f + 1</h2>
+<p>BFT systems require <code>N = 3f + 1</code> total nodes to tolerate <code>f</code> Byzantine faults. The derivation:</p>
+<ul>
+<li><code>f</code> nodes are actively Byzantine (lying)</li>
+<li>Up to <code>f</code> additional nodes may be unreachable due to network delays</li>
+<li>Honest, responsive nodes: <code>N - 2f</code></li>
+<li>For honest majority over liars: <code>N - 2f > f</code> → <code>N > 3f</code> → <code>N = 3f + 1</code></li>
+</ul>
+<p><strong>Example</strong>: To survive 1 compromised node, you need at least 4 total nodes. To survive 2, you need at least 7.</p>
+<p>Contrast with CFT (Raft/Paxos), which only needs <code>N = 2f + 1</code> — e.g., 3 nodes tolerate 1 crash.</p>
+<h2 id="pbft-practical-byzantine-fault-tolerance">PBFT: Practical Byzantine Fault Tolerance</h2>
+<p><strong>Practical Byzantine Fault Tolerance (PBFT)</strong>, introduced by Miguel Castro and Barbara Liskov in 1999, is the most widely cited BFT algorithm. It operates in three phases:</p>
+<ol>
+<li><strong>Pre-prepare</strong>: The leader broadcasts a proposal to all replicas</li>
+<li><strong>Prepare</strong>: Each replica acknowledges the proposal and cross-checks by multicasting to all other replicas</li>
+<li><strong>Commit</strong>: Once a replica receives <code>2f</code> matching valid messages from peers, it commits the transaction</li>
+</ol>
+<p>The protocol has <strong>O(N²) message complexity</strong> — every node must communicate with every other node during the prepare phase. This is the central performance bottleneck: BFT cannot scale to thousands of nodes with millisecond latency.</p>
+<h2 id="bft-vs-cft-comparison">BFT vs CFT: Comparison</h2>
+<table><thead><tr>
+<th></th>
+<th>Crash-Tolerant (Raft/Paxos)</th>
+<th>Byzantine-Tolerant (PBFT)</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Failure model</strong></td>
+<td>Node stops, network drops</td>
+<td>Any arbitrary behavior, including lies</td>
+</tr>
+<tr>
+<td><strong>Nodes required</strong></td>
+<td><code>2f + 1</code></td>
+<td><code>3f + 1</code></td>
+</tr>
+<tr>
+<td><strong>Message complexity</strong></td>
+<td>O(N) — leader→follower</td>
+<td>O(N²) — all-to-all cross-check</td>
+</tr>
+<tr>
+<td><strong>Performance</strong></td>
+<td>High throughput, low latency</td>
+<td>Lower throughput, higher latency</td>
+</tr>
+<tr>
+<td><strong>Environment</strong></td>
+<td>Trusted (data center, internal)</td>
+<td>Untrusted (public network, blockchain)</td>
+</tr>
+</tbody></table>
+<h2 id="data-engineering-applications">Data Engineering Applications</h2>
+<h3 id="1-silent-data-corruption-detection">1. Silent Data Corruption Detection</h3>
+<p>Data lakes and storage systems apply BFT-inspired thinking through cryptographic hashing:</p>
+<ul>
+<li><strong>Checksums</strong> (CRC32C, MD5): Amazon S3 and HDFS compute checksums on every read/write to detect bit-rot silently introduced by failing hardware</li>
+<li><strong>Merkle Trees</strong>: Apache Cassandra and Amazon DynamoDB use Merkle Trees for anti-entropy repair — comparing data across replicas without transferring entire datasets</li>
+</ul>
+<h3 id="2-zero-trust-data-mesh">2. Zero-Trust Data Mesh</h3>
+<p>In cross-organizational Data Mesh architectures, BFT principles inspire cross-validation mechanisms ensuring that a compromised domain doesn't corrupt the entire data warehouse. Compromised data products are detected and isolated before their poison propagates.</p>
+<h3 id="3-mission-critical-financial-ledgers">3. Mission-Critical Financial Ledgers</h3>
+<p>Core banking and aerospace systems — where a single flipped bit can cause catastrophic financial loss — may deploy hybrid BFT architectures at the ledger layer for maximum integrity guarantees.</p>
+<h2 id="why-not-bft-everywhere">Why Not BFT Everywhere?</h2>
+<p>The O(N²) message overhead makes BFT impractical for most data engineering workloads. Kafka and Cassandra run thousands of nodes with CFT because:</p>
+<ul>
+<li>They operate in trusted data centers, not adversarial environments</li>
+<li>Throughput and latency requirements (millions of msgs/sec, sub-ms response) exceed BFT's capabilities</li>
+<li>Hardware errors at scale are handled by checksums and replication, not full consensus</li>
+</ul>
+<p>BFT is the right tool for small, high-value quorums in adversarial environments — blockchain validators, cross-org governance committees, and cryptographic notaries.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="distributed-consensus.html">
+      <span class="connection-type related">Related</span>
+      <h4>Distributed Consensus (Raft & Paxos)</h4>
+      <p>Raft and Paxos are Crash Fault Tolerance (CFT) algorithms that assume fail-stop behavior; BFT extends this model to adversarial failures with `3f+1` nodes vs `2f+1` for CFT. Raft's leader election and log replication assume honest nodes, making BFT necessary for untrusted environments</p>
+    </a>
+    <a class="connection-card" href="data-governance.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Governance</h4>
+      <p>Governance frameworks that benefit from cross-validation and integrity guarantees</p>
+    </a>
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Ingestion</h4>
+      <p>Pipelines where idempotency and data integrity are critical</p>
+    </a>
+    <a class="connection-card" href="change-data-capture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>CDC systems where corrupted WAL entries could silently poison downstream</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Kafka</h4>
+      <p>Uses CFT with replication, not BFT; checksums guard against corruption</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="bloom-filter.html" class="prev">← Bloom Filter</a><a href="cache-strategy.html" class="next">Cache Strategy →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Architecture in Agile — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-software-architecture">Software Architecture</a> <span class="sep">/</span>
+  <span>Architecture in Agile</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Architecture in Agile</h1>
+  <div class="page-meta"><span>Source: just-enough-software-architecture-fairbanks</span><span>Updated: 2026-06-26</span></div>
+  <div class="page-tags"><span class="tag">software-architecture</span><span class="tag">agile</span><span class="tag">project-management</span><span class="tag">methodology</span></div>
+</div>
+<div class="content-area concept">
+<p>Architecture in Agile reconciles the perceived tension between upfront design and iterative development. Architecture is not Agile's enemy — it's the <strong>skeleton that makes agility possible</strong>. Without architectural bones, iterative development collapses into a Big Ball of Mud.</p>
+<h2 id="the-false-dichotomy">The False Dichotomy</h2>
+<table><thead><tr>
+<th>Misconception</th>
+<th>Reality</th>
+</tr></thead><tbody>
+<tr>
+<td>"Agile means no architecture"</td>
+<td>Agile needs <em>just enough</em> architecture to guide iterations</td>
+</tr>
+<tr>
+<td>"Architecture means BDUF"</td>
+<td>Architecture can be risk-driven, incremental, and adaptive</td>
+</tr>
+<tr>
+<td>"Architects slow down teams"</td>
+<td>Architects reduce the risk of building the wrong thing</td>
+</tr>
+</tbody></table>
+<h2 id="three-integration-strategies">Three Integration Strategies</h2>
+<h3 id="1-iteration-zero">1. Iteration Zero</h3>
+<p>Reserve the first iteration (or portion of it) for <strong>architecture drivers</strong> — the requirements that shape the system's structure. This is not BDUF: you design only what's needed to establish the skeleton, not every detail.</p>
+<p>Activities in Iteration Zero:</p>
+<ul>
+<li>Identify architecture drivers (top 3-5 risks)</li>
+<li>Set up development environment and CI/CD</li>
+<li>Establish architectural conventions and constraints</li>
+<li>Create lightweight architecture decision records (ADRs)</li>
+</ul>
+<h3 id="2-feature--risk-backlog">2. Feature & Risk Backlog</h3>
+<p>The Product Backlog must contain both <strong>user features</strong> and <strong>risk mitigation tasks</strong>. Educate the Product Owner that technical risk reduction deserves equal priority to user-visible functionality.</p>
+<table><thead><tr>
+<th>Traditional Backlog</th>
+<th>Risk-Aware Backlog</th>
+</tr></thead><tbody>
+<tr>
+<td>"User login page"</td>
+<td>"User login page"</td>
+</tr>
+<tr>
+<td>"Search functionality"</td>
+<td>"Authenticate against OAuth provider"</td>
+</tr>
+<tr>
+<td>"Shopping cart"</td>
+<td><strong>"Benchmark query performance under 10K concurrent users"</strong></td>
+</tr>
+<tr>
+<td></td>
+<td><strong>"Implement circuit breaker for payment service"</strong></td>
+</tr>
+</tbody></table>
+<p>Risk mitigation tasks are <strong>not optional</strong> — they are the architecture work that prevents catastrophic failure.</p>
+<h3 id="3-model-code-gap-management">3. Model-Code Gap Management</h3>
+<p>Iterative development amplifies the <a href="model-code-gap.html" class="wiki-link">model-code-gap</a> because code changes rapidly while design intent drifts. Counter-strategies:</p>
+<ul>
+<li><strong>"Just enough" modeling</strong> — lightweight diagrams updated alongside code, not massive upfront specs</li>
+<li><strong>Architecturally-evident coding</strong> — code structure reflects architectural intent</li>
+<li><strong>Architecture reviews as part of Definition of Done</strong> — not a separate phase</li>
+</ul>
+<h2 id="architecture-as-skeleton-not-straitjacke">Architecture as Skeleton, Not Straitjacket</h2>
+<p>Good architecture in Agile:</p>
+<ul>
+<li>Provides <strong>guide rails</strong> that reduce needless creativity on solved problems</li>
+<li>Enables <strong>parallel work</strong> by defining clear module boundaries</li>
+<li>Makes <strong>refactoring safer</strong> by establishing invariants</li>
+<li>Does <strong>not</strong> dictate implementation details that should be discovered iteratively</li>
+</ul>
+<h2 id="success-metrics">Success Metrics</h2>
+<blockquote>"Architecture is not about drawing diagrams; it is about reducing the chance of failure so you can get back to the truth of the code."</blockquote>
+<p>In Agile terms: architecture work is successful when it <strong>reduces the risk</strong> of future sprints being derailed by structural problems.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="risk-driven-architecture|Risk-Driven Architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>risk-driven-architecture|Risk-Driven Architecture</h4>
+      <p>The decision framework for what architecture to do and when</p>
+    </a>
+    <a class="connection-card" href="model-code-gap|Model-Code Gap.html">
+      <span class="connection-type related">Related</span>
+      <h4>model-code-gap|Model-Code Gap</h4>
+      <p>The gap that Agile iterations amplify without architectural discipline</p>
+    </a>
+    <a class="connection-card" href="architecture-hoisting|Architecture Hoisting.html">
+      <span class="connection-type related">Related</span>
+      <h4>architecture-hoisting|Architecture Hoisting</h4>
+      <p>Structural guarantees that persist across iterations</p>
+    </a>
+    <a class="connection-card" href="software-rot|Software Rot.html">
+      <span class="connection-type related">Related</span>
+      <h4>software-rot|Software Rot</h4>
+      <p>What happens when Agile proceeds without architecture</p>
+    </a>
+    <a class="connection-card" href="refactoring-at-scale|Refactoring at Scale.html">
+      <span class="connection-type related">Related</span>
+      <h4>refactoring-at-scale|Refactoring at Scale</h4>
+      <p>Correcting architectural drift in Agile codebases</p>
+    </a>
+    <a class="connection-card" href="domain-driven-design|Domain-Driven Design.html">
+      <span class="connection-type related">Related</span>
+      <h4>domain-driven-design|Domain-Driven Design</h4>
+      <p>Bounded Contexts provide the skeleton for Agile teams</p>
+    </a>
+    <a class="connection-card" href="agentic-development-life-cycle|Agentic Development Life Cycle (ADLC).html">
+      <span class="connection-type related">Related</span>
+      <h4>agentic-development-life-cycle|Agentic Development Life Cycle (ADLC)</h4>
+      <p>AI-era evolution of SDLC with architectural considerations</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="architecture-hoisting.html" class="prev">← Architecture Hoisting</a><a href="architecture-quantum.html" class="next">Architecture Quantum →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

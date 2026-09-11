@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Geohash — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-geospatial">Geospatial</a> <span class="sep">/</span>
+  <span>Geohash</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Geohash</h1>
+  <div class="page-meta"><span>Source: system-design-interview-volume-2</span><span>Updated: 2026-06-29</span></div>
+  <div class="page-tags"><span class="tag">geospatial</span><span class="tag">indexing</span><span class="tag">databases</span><span class="tag">algorithms</span></div>
+</div>
+<div class="content-area concept">
+<p>Geohash is a geospatial indexing system that recursively subdivides the world into grids and encodes each grid as a base32 string. Longer strings represent smaller, more precise grid cells. The key property: points that are geographically close share a common prefix — enabling 2D proximity search via string prefix matching on a standard database index.</p>
+<h2 id="how-it-works">How It Works</h2>
+<pre><code>World → 2 partitions → 4 → 8 → ... → Grid cell identified by base32 string</code></pre>
+<p>Example:</p>
+<ul>
+<li>Geohash <code>u000</code> = grid containing La Roche-Chalais, France</li>
+<li>Geohash <code>ezzz</code> = grid containing Pomerol, France (~30km away)</li>
+</ul>
+<p>Longer shared prefix = greater geographic proximity. A query becomes <code>LIKE 'u000%'</code> — a simple, index-friendly string operation.</p>
+<h2 id="precision-mapping">Precision Mapping</h2>
+<table><thead><tr>
+<th>Length</th>
+<th>Grid Width × Height</th>
+<th>Use Case</th>
+</tr></thead><tbody>
+<tr>
+<td>1</td>
+<td>5,009.4 km × 4,992.6 km</td>
+<td>Continental</td>
+</tr>
+<tr>
+<td>2</td>
+<td>1,252.3 km × 624.1 km</td>
+<td>Country</td>
+</tr>
+<tr>
+<td>3</td>
+<td>156.5 km × 156 km</td>
+<td>Regional</td>
+</tr>
+<tr>
+<td>4</td>
+<td>39.1 km × 19.5 km</td>
+<td>City</td>
+</tr>
+<tr>
+<td>5</td>
+<td>4.9 km × 4.9 km</td>
+<td>Neighborhood</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1.2 km × 609.4 m</td>
+<td>Street</td>
+</tr>
+</tbody></table>
+<h2 id="advantages">Advantages</h2>
+<ul>
+<li><strong>Simple implementation</strong>: Just string prefix matching in SQL (<code>LIKE 'prefix%'</code>)</li>
+<li><strong>Database-native</strong>: Works with any database that supports string indexes</li>
+<li><strong>No special infrastructure</strong>: Stored as a regular string column</li>
+<li><strong>Intuitive precision</strong>: Longer string = smaller area = more precise</li>
+</ul>
+<h2 id="the-boundary-issue-critical-weakness">The Boundary Issue (Critical Weakness)</h2>
+<p>Two physically adjacent locations can share <strong>no common prefix</strong> at all:</p>
+<pre><code>La Roche-Chalais: u000
+Pomerol (30km away): ezzz
+→ Shared prefix = NONE
+→ LIKE &#x27;u000%&#x27; query would MISS nearby results in &#x27;ezzz&#x27;</code></pre>
+<p>This happens because grid boundaries are fixed and arbitrary — two points on opposite sides of a high-level grid partition will have completely different hash prefixes, even if they're meters apart.</p>
+<p><strong>Solution</strong>: Search all 8 neighboring grids in addition to the target grid. This ensures comprehensive results but adds query complexity and latency (9 queries instead of 1).</p>
+<h2 id="best-used-for">Best Used For</h2>
+<ul>
+<li><strong>Database-level indexing</strong>: Persistence, SQL compatibility</li>
+<li><strong>Read-optimized workloads</strong>: String prefix queries are fast with B-tree indexes</li>
+<li><strong>Coarse-grain filtering</strong>: Narrow down candidates before finer-grained processing</li>
+</ul>
+<p>Complement with <a href="quadtree.html" class="wiki-link">quadtree</a> for in-memory cache layer — the hybrid approach gives both speed and persistence.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="geospatial-indexing.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Geospatial Indexing</h4>
+      <p>the database-level strategy for 2D → 1D mapping</p>
+    </a>
+    <a class="connection-card" href="proximity-service.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Proximity Service</h4>
+      <p>powers location-based search at database level</p>
+    </a>
+    <a class="connection-card" href="quadtree.html">
+      <span class="connection-type related">Related</span>
+      <h4>Quadtree</h4>
+      <p>Geohash (database, persistence) + Quadtree (in-memory, speed)</p>
+    </a>
+    <a class="connection-card" href="system-design-interview.html">
+      <span class="connection-type related">Related to</span>
+      <h4>System Design Interview</h4>
+      <p>a core algorithm discussed in interviews</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="game-theory.html" class="prev">← Game Theory</a><a href="geospatial-indexing.html" class="next">Geospatial Indexing →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spaced Repetition — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-learning">Learning</a> <span class="sep">/</span>
+  <span>Spaced Repetition</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Spaced Repetition</h1>
+  <div class="page-meta"><span>Source: ultralearning-scott-young</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">learning</span><span class="tag">memory</span><span class="tag">retention</span><span class="tag">cognitive-science</span></div>
+</div>
+<div class="content-area concept">
+<p># Spaced Repetition</p>
+<p><strong>Spaced repetition</strong> is a learning technique that schedules review sessions at increasing intervals — specifically at the point of near-forgetting — to maximize long-term retention. It is the primary counter-strategy to the <strong>Ebbinghaus forgetting curve</strong>, which shows that memories decay exponentially without reinforcement.</p>
+<h2 id="the-forgetting-curve">The Forgetting Curve</h2>
+<p>Hermann Ebbinghaus (1885) demonstrated that memory fades rapidly after initial learning, with the steepest drop occurring within the first 24 hours. Without review, most information is lost within days. Each successful retrieval at the point of near-forgetting _repairs and strengthens_ the memory, flattening the decay curve.</p>
+<h2 id="three-theories-of-forgetting">Three Theories of Forgetting</h2>
+<table><thead><tr>
+<th>Theory</th>
+<th>Mechanism</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Decay</strong></td>
+<td>Memories fade with time</td>
+<td>Learn vocabulary → forget after 2 weeks without review</td>
+</tr>
+<tr>
+<td><strong>Interference</strong></td>
+<td>New and old memories compete</td>
+<td>Proactive: old software shortcuts block new ones. Retroactive: new language syntax overwrites previous language</td>
+</tr>
+<tr>
+<td><strong>Forgotten Cues</strong></td>
+<td>Memory exists but retrieval key is lost</td>
+<td>"Locked box" — you know you know it, can't access it</td>
+</tr>
+</tbody></table>
+<p>Spaced repetition addresses all three: decay by re-encoding before loss, interference by strengthening target memories, and cue loss by varied retrieval contexts.</p>
+<h2 id="optimal-spacing-schedule">Optimal Spacing Schedule</h2>
+<p>Young recommends a practical schedule for self-directed learners:</p>
+<table><thead><tr>
+<th>Interval</th>
+<th>Review Timing</th>
+</tr></thead><tbody>
+<tr>
+<td>Initial</td>
+<td>Day 1 (first learning session)</td>
+</tr>
+<tr>
+<td>1st Review</td>
+<td>Day 2 (24 hours later)</td>
+</tr>
+<tr>
+<td>2nd Review</td>
+<td>Day 7 (1 week later)</td>
+</tr>
+<tr>
+<td>3rd Review</td>
+<td>Day 30 (1 month later)</td>
+</tr>
+<tr>
+<td>4th Review</td>
+<td>Day 90 (3 months later)</td>
+</tr>
+</tbody></table>
+<p>The core principle: <strong>review at the point of near-forgetting</strong>. Too soon, and retrieval is too easy (shallow encoding). Too late, and the memory is already lost (requiring re-learning rather than strengthening).</p>
+<p>This aligns with Bjork's concept of <a href="testing-effect.html" class="wiki-link">desirable difficulty</a> — harder retrieval produces deeper, more durable encoding.</p>
+<h2 id="the-scrabble-champion-case">The Scrabble Champion Case</h2>
+<p>Nigel Richards provides a dramatic demonstration: he memorized the entire French Scrabble dictionary in 9 weeks — without speaking French — and won the French Scrabble World Championship. His method:</p>
+<ul>
+<li>Active recall during cycling trips (retrieval practice)</li>
+<li>Rehearsal sessions spread over time (spacing)</li>
+<li>Allowing memory to weaken before strengthening (near-forgetting)</li>
+</ul>
+<h2 id="tools">Tools</h2>
+<p>Dedicated spaced repetition software automates the scheduling:</p>
+<ul>
+<li><strong>Anki</strong> — Open-source flashcard app using the SM-2 algorithm (derived from SuperMemo)</li>
+<li><strong>SuperMemo</strong> — The original algorithm, developed by Piotr Woźniak, with more sophisticated scheduling</li>
+<li><strong>Manual tracking</strong> — For project-based learning, Young recommends manually scheduling review dates in a calendar</li>
+</ul>
+<h2 id="spacing-vs-cramming">Spacing vs. Cramming</h2>
+<p>Research consistently shows that spaced practice produces _superior long-term retention_ compared to massed practice (cramming), even when total study time is equal. Cramming may produce short-term performance gains (useful for tomorrow's exam) but results in rapid decay. Spacing trades short-term fluency for durable knowledge.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="ultralearning|Ultralearning.html">
+      <span class="connection-type related">Related</span>
+      <h4>ultralearning|Ultralearning</h4>
+      <p>Retention (Principle 7) relies on spaced repetition to secure knowledge assets</p>
+    </a>
+    <a class="connection-card" href="testing-effect|Testing Effect.html">
+      <span class="connection-type related">Related</span>
+      <h4>testing-effect|Testing Effect</h4>
+      <p>Retrieval practice is _what_ you do during review sessions; spacing determines _when_ you do them</p>
+    </a>
+    <a class="connection-card" href="metalearning|Metalearning.html">
+      <span class="connection-type related">Related</span>
+      <h4>metalearning|Metalearning</h4>
+      <p>Identifies _what_ needs to be retained; spacing schedules _when_ to reinforce it</p>
+    </a>
+    <a class="connection-card" href="feedback|Feedback.html">
+      <span class="connection-type related">Related</span>
+      <h4>feedback|Feedback</h4>
+      <p>Spaced retrieval generates feedback on what has been retained vs. forgotten, enabling adaptive review strategies</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="solid-principles.html" class="prev">← SOLID Principles</a><a href="specification-driven-development.html" class="next">Specification-Driven Development →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

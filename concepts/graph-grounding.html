@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graph Grounding — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Graph Grounding</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Graph Grounding</h1>
+  <div class="page-meta"><span>Source: graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">knowledge-graph</span><span class="tag">verification</span><span class="tag">agents</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Graph Grounding</strong> is the practice of constraining agent generation with facts retrieved from a knowledge graph, and evaluating claims against graph edges with provenance. Instead of agents reasoning from memory or unanchored context, they cite specific graph paths. An evaluator can check whether a claim has a supported path through the graph, returning structured, actionable feedback rather than free-form critique.</p>
+<h2 id="three-roles-of-the-graph-for-agents">Three Roles of the Graph for Agents</h2>
+<h3 id="1-shared-memory">1. Shared Memory</h3>
+<p>Workers write findings as structured graph updates. A synthesizer traverses the graph to combine findings even if no single worker saw all source documents. This prevents context-window amnesia — the graph persists across sessions.</p>
+<h3 id="2-grounding-layer">2. Grounding Layer</h3>
+<p>An evaluator checks claims against evidence. Example:</p>
+<p>Claim: "Vendor X supplied the component involved in Incident Y."</p>
+<p>The evaluator checks for edges:</p>
+<ul>
+<li><code>(Vendor X, supplied, Component Z)</code></li>
+<li><code>(Component Z, involved_in, Incident Y)</code></li>
+</ul>
+<p>When an edge is missing, it returns structured feedback:</p>
+<pre><code class="language-json">{
+  &quot;decision&quot;: &quot;revise&quot;,
+  &quot;claim&quot;: &quot;Vendor X supplied the component in Y&quot;,
+  &quot;reason&quot;: &quot;No supported path from Vendor X to Y&quot;,
+  &quot;required_evidence&quot;: [
+    &quot;A source-backed supplied relation&quot;,
+    &quot;A source-backed involved_in relation&quot;
+  ]
+}</code></pre>
+<p>This is more actionable than "looks wrong" — it tells the agent exactly which edges are missing.</p>
+<h3 id="3-persistent-world-model">3. Persistent World Model</h3>
+<p>></p>
+<blockquote>"The agent forgets, the graph does not."</blockquote>
+<p>Persistence enables: long-running investigations, cross-session planning, incremental document ingestion, contradiction tracking, temporal facts, versioned decisions, audit trails, handoff between different models, and recovery after a failed run.</p>
+<h2 id="context-construction-from-a-graph">Context Construction From a Graph</h2>
+<p>The graph should not become context dumping. A context builder:</p>
+<ol>
+<li>Resolves entities mentioned in the task</li>
+<li>Expands one or two hops over allowed edge types</li>
+<li>Includes current artifact versions</li>
+<li>Prioritizes recent verified claims</li>
+<li>Includes conflicts and uncertainty</li>
+<li>Serializes within a token budget</li>
+<li>Attaches stable edge identifiers for citation</li>
+</ol>
+<h2 id="graph-write-invariants">Graph Write Invariants</h2>
+<p>Every graph write must satisfy:</p>
+<ol>
+<li>Every claim has a source or is marked as inference</li>
+<li>Every artifact has an authoring run and version</li>
+<li>Every evaluation identifies a rubric</li>
+<li>Every superseded object remains addressable</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="graph-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Engineering</h4>
+      <p>the evaluation and memory layer</p>
+    </a>
+    <a class="connection-card" href="knowledge-graph.html">
+      <span class="connection-type related">Depends on</span>
+      <h4>Knowledge Graph</h4>
+      <p>the graph being queried and updated</p>
+    </a>
+    <a class="connection-card" href="agent-verification.html">
+      <span class="connection-type related">Complements</span>
+      <h4>Agent Verification</h4>
+      <p>graph grounding is structured verification against persistent facts</p>
+    </a>
+    <a class="connection-card" href="autoresearch.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Autoresearch</h4>
+      <p>the evaluation step in the ratchet loop is a simple form of grounding</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Engineering: The Karpathy Loop, Improved 1000x by Itself</h4>
+      <p></p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="graph-engineering.html" class="prev">← Graph Engineering</a><a href="harness-engineering.html" class="next">Harness Engineering →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

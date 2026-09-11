@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Anonymization — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-privacy">Data Privacy</a> <span class="sep">/</span>
+  <span>Data Anonymization</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Data Anonymization</h1>
+  <div class="page-meta"><span>Source: building-anonymization-pipeline</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">data-privacy</span><span class="tag">anonymization</span><span class="tag">data-governance</span><span class="tag">data-pipeline</span><span class="tag">security</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Data Anonymization</strong> is the process of transforming data to reduce the risk of re-identifying individuals while preserving analytical utility. It is fundamentally a risk management discipline — not a binary state of "anonymous" or "not anonymous" — operating on a <strong>spectrum of identifiability</strong> where the goal is to drive risk below an acceptable threshold.</p>
+<blockquote>"Anonymization is not a binary state. It's a spectrum of identifiability — reduce re-identification probability to an acceptable level." (source: <span class="wiki-link source-ref">sources/building-anonymization-pipeline</span>)</blockquote>
+<h2 id="the-five-safes-framework">The Five Safes Framework</h2>
+<p>A holistic governance model that evaluates anonymization risk across five interdependent dimensions:</p>
+<table><thead><tr>
+<th>Safe</th>
+<th>Core Question</th>
+<th>Why It Matters</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>1. Safe Projects</strong></td>
+<td>Is the project legal and ethical?</td>
+<td>Determines whether anonymization is legally mandated or a best practice</td>
+</tr>
+<tr>
+<td><strong>2. Safe People</strong></td>
+<td>Who receives the data?</td>
+<td>Assesses recipient's motivation, technical skill for re-identification, and relationship to data subjects</td>
+</tr>
+<tr>
+<td><strong>3. Safe Settings</strong></td>
+<td>Is the sharing environment secure?</td>
+<td>Technical controls — logging, secure portals, access restrictions — prevent unauthorized access or leakage</td>
+</tr>
+<tr>
+<td><strong>4. Safe Data</strong></td>
+<td>Is the data "safe enough"?</td>
+<td>The quantitative heart of the pipeline — measures identifiability to verify sufficient transformation</td>
+</tr>
+<tr>
+<td><strong>5. Safe Outputs</strong></td>
+<td>Could analysis results cause harm?</td>
+<td>Checks aggregate statistics for inadvertent disclosure about specific individuals or small groups</td>
+</tr>
+</tbody></table>
+<blockquote>The Five Safes framework ensures you don't obsess over Safe Data while neglecting Safe People or Safe Outputs. All five must be satisfied simultaneously.</blockquote>
+<h2 id="the-iterative-anonymization-loop">The Iterative Anonymization Loop</h2>
+<p>Anonymization is a scientific process, not a one-time operation:</p>
+<pre><code>Set Threshold → Measure Identifiability → Transform → Re-Measure → Repeat
+     │                │                      │              │
+     ▼                ▼                      ▼              ▼
+  Define max       Quantify how          Generalize      Until risk
+  acceptable       individuals           Suppress        ≤ threshold
+  risk (e.g.,      cluster together      Randomize
+  &lt;1% re-id)       in the dataset</code></pre>
+<h3 id="measurement-identifiability-metrics">Measurement: Identifiability Metrics</h3>
+<p>Before transforming data, you must quantify the current risk:</p>
+<ul>
+<li><strong>k-anonymity</strong>: Each record is indistinguishable from at least k-1 other records on quasi-identifier attributes</li>
+<li><strong>l-diversity</strong>: Each equivalence class has at least l "well-represented" values for sensitive attributes</li>
+<li><strong>t-closeness</strong>: Distribution of sensitive attributes in each class is close to the overall distribution</li>
+</ul>
+<h3 id="transformation-techniques">Transformation Techniques</h3>
+<table><thead><tr>
+<th>Technique</th>
+<th>How It Works</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Generalization</strong></td>
+<td>Reduce precision by mapping to broader categories</td>
+<td>Age 25 → "20-30", "Hà Nội" → "Northern Region"</td>
+</tr>
+<tr>
+<td><strong>Suppression</strong></td>
+<td>Remove entire sensitive fields</td>
+<td>Delete name, phone number, exact address</td>
+</tr>
+<tr>
+<td><strong>Randomization</strong></td>
+<td>Add statistical noise to obscure individual values</td>
+<td>Salary $75,000 → $75,000 ± random(2000)</td>
+</tr>
+</tbody></table>
+<h2 id="pipeline-architectures">Pipeline Architectures</h2>
+<p>Three deployment models for different organizational needs:</p>
+<table><thead><tr>
+<th>Architecture</th>
+<th>Description</th>
+<th>Best For</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Push Model</strong> (Anonymization at Source)</td>
+<td>Data custodian transforms data in their own environment before sending out</td>
+<td>Single-source delivery to trusted partners</td>
+</tr>
+<tr>
+<td><strong>Pull Model</strong> (Networked)</td>
+<td>Lightweight engines at each source strip direct identifiers; centralized safe zone performs final anonymization</td>
+<td>Pooling data from multiple parties (hospitals, IoT) where no one shares raw data</td>
+</tr>
+<tr>
+<td><strong>Functional Anonymization</strong> (Information Barriers)</td>
+<td>Same organization processes both identified data (core services) and anonymized data (research) with strict separation</td>
+<td>Dual-use scenarios requiring different teams, physical/virtual isolation to prevent cross-contamination</td>
+</tr>
+</tbody></table>
+<h3 id="information-barriers">Information Barriers</h3>
+<p>For Functional Anonymization, information barriers are mandatory — not optional:</p>
+<ul>
+<li><strong>Different teams</strong> working on identified vs anonymized datasets</li>
+<li><strong>Physical or virtual separation</strong> of access environments</li>
+<li><strong>Audit logging</strong> of all cross-boundary access attempts</li>
+</ul>
+<h2 id="emerging-privacy-enhancing-technologies">Emerging Privacy-Enhancing Technologies</h2>
+<p>Modern anonymization pipelines increasingly integrate:</p>
+<ul>
+<li><strong><a href="synthetic-data.html" class="wiki-link">Synthetic Data</a></strong>: Generate fake data matching real statistical properties — zero re-identification risk, ideal for dev/test and AI training</li>
+<li><strong><a href="differential-privacy.html" class="wiki-link">Differential Privacy</a></strong>: Inject mathematical noise so attackers cannot determine individual presence — strong formal guarantees</li>
+<li><strong>Secure Computation</strong>: Analyze encrypted data without decryption — end-to-end security where data is never exposed during analysis</li>
+</ul>
+<h2 id="governance--trust">Governance & Trust</h2>
+<p>Technology alone is insufficient. Anonymization requires:</p>
+<ul>
+<li><strong>Ethics committees</strong> (Privacy-Ethics oversight bodies): review AI/ML model usage for privacy violations</li>
+<li><strong>Continuous monitoring</strong>: pipelines are not "set and forget" — ongoing output monitoring preserves integrity and predicts emerging risk</li>
+<li><strong>Trust foundation</strong>: built on honesty, discretion, protection, and loyalty — governance matters more than code</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-governance.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Governance</h4>
+      <p>Five Safes framework bridges governance policy and anonymization execution</p>
+    </a>
+    <a class="connection-card" href="data-quality-monitoring.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Quality Monitoring</h4>
+      <p>output monitoring ensures anonymized data maintains quality and integrity</p>
+    </a>
+    <a class="connection-card" href="differential-privacy.html">
+      <span class="connection-type related">Related</span>
+      <h4>Differential Privacy</h4>
+      <p>mathematical privacy guarantees beyond traditional anonymization</p>
+    </a>
+    <a class="connection-card" href="synthetic-data.html">
+      <span class="connection-type related">Related</span>
+      <h4>Synthetic Data</h4>
+      <p>zero-risk alternative when statistical properties suffice</p>
+    </a>
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Ingestion</h4>
+      <p>anonymization often occurs at the ingestion boundary in data pipelines</p>
+    </a>
+    <a class="connection-card" href="data-lifecycle.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Lifecycle</h4>
+      <p>anonymization is a critical step in the data lifecycle before sharing or archival</p>
+    </a>
+    <a class="connection-card" href="dataops.html">
+      <span class="connection-type related">Requires</span>
+      <h4>DataOps</h4>
+      <p>iterative measurement loops and automated monitoring demand DataOps discipline</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Building an Anonymization Pipeline</h4>
+      <p>Arbuckle & El Emam's 167-page guide</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="data-analyst.html" class="prev">← Data Analyst</a><a href="data-architecture.html" class="next">Data Architecture →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>
