@@ -3,8 +3,8 @@ title: "Feedback"
 type: concept
 tags: [learning, skill-acquisition, ultralearning, psychology]
 created: 2026-06-25
-updated: 2026-06-25
-sources: [ultralearning-scott-young]
+updated: 2026-08-24
+sources: [ultralearning-scott-young, high-output-management-grove, scaling-people-hughes-johnson]
 aliases: [feedback in learning, corrective feedback]
 ---
 
@@ -46,3 +46,6 @@ Comedian Chris Rock exemplifies the feedback-seeking mindset: he tests jokes ano
 - [[ultralearning|Ultralearning]] — Feedback is Principle 6 of the methodology
 - [[directness|Directness]] — Direct practice generates higher-quality feedback than indirect study
 - [[testing-effect|Testing Effect]] — Retrieval testing provides immediate feedback on what you know vs. what you think you know
+- [[high-output-management]] — Grove's TRM-based management adapts feedback delivery to subordinate maturity (task-oriented → communicating → monitoring)
+- [[scaling-people]] — Hughes Johnson's hypothesis-based coaching: gather data → form theory → test with individual; "no surprises" rule for low performance
+- [[engineering-management]] — Feedback as partnership: growth-oriented, not top-down critique

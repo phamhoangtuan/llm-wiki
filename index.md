@@ -260,6 +260,9 @@
 - [Secure System Design](concepts/secure-system-design.html) — Security as an architectural property through explicit boundaries, least privilege, provenance, and safe recovery
 - [Technical Debt Management](concepts/technical-debt-management.html) — Treating debt as a migration and capacity problem; de-risk, enable, finish
 - [Continuous Delivery](concepts/continuous-delivery.html) — Small, tested, observable, and reversible changes through trunk-based development, CI, flags, and release trains
+- [Data Quality Engineering](concepts/data-quality-engineering.html) — Manufacturing-lens data quality: DQS contracts, template libraries, scorecards, operational cost model
+- [High Output Management](concepts/high-output-management.html) — Grove's framework: leverage, TRM, meetings, bottleneck-focused management, factory discipline
+- [Scaling People](concepts/scaling-people.html) — Hughes Johnson's 4 core frameworks: planning, hiring, team development, feedback/performance
 
 ## Sources
 
@@ -360,6 +363,11 @@
 - [Software Engineering at Google](sources/software-engineering-at-google.md) — Code review, public-API testing, trunk-based development, CI/CD, build infrastructure, and learning culture
 - [The Accidental CTO](sources/the-accidental-cto.md) — Evolution from monolith to globally distributed architecture through measured scaling, replication, containers, CDC, and sharding
 - [Learning Algorithms — George T. Heineman](sources/learning-algorithms-heineman.md) — 281-page guide: operation counting, Big O, doubling effect, 4 layers of CS, time-space tradeoff
+- [Beyond Vibe Coding — Addy Osmani](sources/beyond-vibe-coding-osmani.md) — 387-page guide: 5 disciplines for professional AI-assisted coding, the 70% problem, role evolution
+- [Data Engineering Design Patterns — Bartosz Konieczny](sources/data-engineering-design-patterns-konieczny.md) — 150-page catalog: 8 pattern categories (ingestion, error mgmt, idempotency, value, flow, security, quality, observability)
+- [Data Quality Engineering in Financial Services — Brian Buzzelli](sources/data-quality-engineering-financial-services-buzzelli.md) — 177-page guide: manufacturing mindset, DQS contracts, scorecards, governance, MDM
+- [High Output Management — Andrew S. Grove](sources/high-output-management-grove.md) — 400-page classic: leverage, TRM, meetings, factory discipline, peak performance
+- [Scaling People — Claire Hughes Johnson](sources/scaling-people-hughes-johnson.md) — 825-page tactical guide: 4 operating principles, 4 core frameworks, hypothesis-based coaching
 
 ## Syntheses
 
@@ -367,5 +375,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-_Last updated: 2026-08-23_
-_Pages: 350 (253 concepts + 97 sources)_
+_Last updated: 2026-08-24_
+_Pages: 358 (256 concepts + 102 sources)_

@@ -3,8 +3,8 @@ title: "Engineering Management"
 type: concept
 tags: [engineering-management, leadership, people-management, career, trust]
 created: 2026-08-15
-updated: 2026-08-15
-sources: [engineering-management-drasner, an-elegant-puzzle]
+updated: 2026-08-24
+sources: [engineering-management-drasner, an-elegant-puzzle, high-output-management-grove, scaling-people-hughes-johnson]
 aliases: [em, people-management, engineering-leadership]
 ---
 
@@ -51,3 +51,5 @@ The manager's job is to create stable conditions — team size, resources, visio
 - Informed by [[golden-circle]] — alignment with purpose is the manager's leverage
 - Benchmark source: [[sources/engineering-management-drasner]] — Drasner's pragmatic EM guide
 - Benchmark source: [[sources/an-elegant-puzzle]] — Larson's systems approach to team design, management, and organizational scaling
+- Benchmark source: [[sources/high-output-management-grove]] — Grove's factory model: leverage, TRM, meetings, bottleneck-focused management
+- Benchmark source: [[sources/scaling-people-hughes-johnson]] — Hughes Johnson's 4 core frameworks: planning, hiring, team development, feedback/performance

@@ -4,6 +4,18 @@
 
 ---
 
+## [2026-08-24] ingest | Beyond Vibe Coding + DE Design Patterns + DQ Engineering + High Output Management + Scaling People
+
+- Created sources/beyond-vibe-coding-osmani.md — Osmani's 387-page guide: 5 disciplines for professional AI-assisted coding
+- Created sources/data-engineering-design-patterns-konieczny.md — Konieczny's 150-page catalog: 8 DE pattern categories
+- Created sources/data-quality-engineering-financial-services-buzzelli.md — Buzzelli's 177-page guide: manufacturing-lens DQ, DQS contracts
+- Created sources/high-output-management-grove.md — Grove's 400-page classic: leverage, TRM, meetings
+- Created sources/scaling-people-hughes-johnson.md — Hughes Johnson's 825-page tactical guide: 4 core frameworks
+- New concepts: data-quality-engineering, high-output-management, scaling-people
+- Updated concepts: vibe-coding, ai-native-engineering, data-ingestion, data-quality-monitoring, engineering-management, fail-fast, master-data-management, data-governance, feedback, data-engineering-fundamentals
+- Updated index.md: +3 concepts, +5 sources, 358 total pages (256 concepts + 102 sources)
+- HTML regenerated via convert-to-html.py
+
 ## [2026-08-23] lint | Post-ingest link fix pass
 
 - Fixed 10 Title Case wikilinks → kebab-case slugs across 4 files (algorithm-analysis, big-o-notation, time-space-tradeoff, learning-algorithms-heineman)

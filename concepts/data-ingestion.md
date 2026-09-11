@@ -3,8 +3,8 @@ title: "Data Ingestion"
 type: concept
 tags: [data-engineering, ingestion, etl, streaming, data-lake]
 created: 2026-05-26
-updated: 2026-06-15
-sources: [hugo-data-ingestion-platform-flink, unlocking-dbt-design-deploy-transformations]
+updated: 2026-08-24
+sources: [hugo-data-ingestion-platform-flink, unlocking-dbt-design-deploy-transformations, data-engineering-design-patterns-konieczny]
 aliases: [data-onboarding, data-pipeline-onboarding]
 ---
 
@@ -123,3 +123,4 @@ Hugo unified two previously siloed ingestion patterns under one platform:
 - Benchmark source: [[sources/hugo-data-ingestion-platform-flink]] — Grab's platform evolution case study
 - Related to [[elt]] — data ingestion provides the "EL" (Extract-Load); dbt handles the "T" (Transform)
 - Feeds [[dbt]] — ingested raw data is the input for dbt's transformation models
+- Source: [[sources/data-engineering-design-patterns-konieczny]] — 8 ingestion patterns (Full Loader, Incremental, CDC, Passthrough Replicator, Transformation Replicator, Compactor, Readiness Marker, External Triggers)

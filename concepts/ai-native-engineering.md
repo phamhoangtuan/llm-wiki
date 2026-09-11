@@ -3,8 +3,8 @@ title: "AI-Native Engineering"
 type: concept
 tags: [ai-engineering, software-engineering, agents, methodology]
 created: 2026-06-15
-updated: 2026-06-20
-sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding]
+updated: 2026-08-24
+sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding, beyond-vibe-coding-osmani]
 aliases: [ai-native, ai-orchestrated-development]
 ---
 
@@ -117,4 +117,5 @@ The security landscape is alarming: roughly one new insecure AI integration per 
 - Related to [[technological-centaur]] — both describe the human-AI collaborative model where expertise amplifies tool effectiveness
 - Benchmark source: [[sources/practical-guide-ai-native-engineer]] — Shah Rahman's guide on ByteByteGo
 - Benchmark source: [[sources/new-sdlc-vibe-coding]] — Conductor vs Orchestrator modes, 4 orchestrator skills
+- Benchmark source: [[sources/beyond-vibe-coding-osmani]] — Osmani's 5 disciplines: engineering mindset, programming with intent, QA, security/ethics, role evolution
 - Related to [[ai-engineering]] — AI engineering is the broader field; AI-native engineering is its agent-orchestration paradigm

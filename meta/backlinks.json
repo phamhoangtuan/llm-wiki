@@ -36,6 +36,7 @@
     "technological-centaur",
     "testing-strategy",
     "vibe-coding",
+    "beyond-vibe-coding-osmani",
     "learn-harness-engineering",
     "learn-harness-engineering",
     "new-sdlc-vibe-coding",
@@ -51,6 +52,7 @@
     "harness-engineering",
     "prompt-engineering",
     "specification-driven-development",
+    "beyond-vibe-coding-osmani",
     "new-sdlc-vibe-coding",
     "practical-guide-ai-native-engineer",
     "practical-guide-ai-native-engineer"
@@ -77,6 +79,7 @@
     "vibe-coding",
     "vibe-coding",
     "ai-engineering-chip-huyen",
+    "beyond-vibe-coding-osmani",
     "how-ai-changes-4-core-data-roles",
     "new-sdlc-vibe-coding",
     "practical-guide-ai-native-engineer",
@@ -100,7 +103,8 @@
     "ai-native-engineering",
     "context-engineering",
     "harness-engineering",
-    "vibe-coding"
+    "vibe-coding",
+    "beyond-vibe-coding-osmani"
   ],
   "autoresearch": [
     "agent-hub",
@@ -185,6 +189,8 @@
     "context-engineering",
     "software-3",
     "specification-driven-development",
+    "beyond-vibe-coding-osmani",
+    "beyond-vibe-coding-osmani",
     "new-sdlc-vibe-coding",
     "practical-guide-ai-native-engineer",
     "practical-guide-ai-native-engineer"
@@ -197,6 +203,7 @@
     "bijection",
     "bijection",
     "code-quality-pillars",
+    "data-quality-engineering",
     "dependency-injection",
     "harness-engineering",
     "immutability",
@@ -211,7 +218,9 @@
     "solid-principles",
     "solid-principles",
     "tdd-methodology",
-    "contieri-clean-code-cookbook"
+    "contieri-clean-code-cookbook",
+    "data-engineering-design-patterns-konieczny",
+    "data-quality-engineering-financial-services-buzzelli"
   ],
   "technological-centaur": [
     "agent-quality-optimization",
@@ -268,6 +277,7 @@
     "agentic-development-life-cycle",
     "ai-native-engineering",
     "code-overload",
+    "beyond-vibe-coding-osmani",
     "new-sdlc-vibe-coding"
   ],
   "tdd-methodology": [
@@ -289,7 +299,8 @@
     "code-overload",
     "context-engineering",
     "specification-driven-development",
-    "vibe-coding"
+    "vibe-coding",
+    "beyond-vibe-coding-osmani"
   ],
   "sources/ai-engineering-chip-huyen": [
     "ai-engineering",
@@ -373,6 +384,10 @@
     "ai-engineering-chip-huyen",
     "ai-engineering-chip-huyen"
   ],
+  "sources/beyond-vibe-coding-osmani": [
+    "ai-native-engineering",
+    "vibe-coding"
+  ],
   "ai-engineering": [
     "ai-native-engineering",
     "ai-engineering-chip-huyen",
@@ -384,7 +399,8 @@
   "code-overload": [
     "ai-psychosis",
     "vibe-coding",
-    "vibe-coding"
+    "vibe-coding",
+    "beyond-vibe-coding-osmani"
   ],
   "staff-engineering": [
     "ai-psychosis",
@@ -566,6 +582,7 @@
     "data-modeling",
     "data-observability",
     "data-product",
+    "data-quality-engineering",
     "data-quality-monitoring",
     "data-security",
     "differential-privacy",
@@ -578,8 +595,10 @@
     "snowflake-data-cloud",
     "synthetic-data",
     "building-anonymization-pipeline",
+    "data-engineering-design-patterns-konieczny",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026",
+    "data-quality-engineering-financial-services-buzzelli",
     "fundamentals-of-data-observability",
     "how-ai-changes-4-core-data-roles",
     "how-ai-changes-4-core-data-roles",
@@ -654,6 +673,7 @@
     "medallion-architecture",
     "retrieval-augmented-generation",
     "synthetic-data",
+    "data-engineering-design-patterns-konieczny",
     "hugo-data-ingestion-platform-flink",
     "hugo-data-ingestion-platform-flink"
   ],
@@ -719,10 +739,12 @@
     "data-engineer",
     "data-engineer",
     "data-governance",
+    "data-quality-engineering",
     "data-quality-monitoring",
     "dataops",
     "shift-left-security",
     "shift-left-security",
+    "data-quality-engineering-financial-services-buzzelli",
     "reddit-cicd-tips-data-engineering",
     "reddit-cicd-tips-data-engineering"
   ],
@@ -927,6 +949,7 @@
     "stream-table-duality",
     "stream-table-duality",
     "building-real-time-analytics-systems",
+    "data-engineering-design-patterns-konieczny",
     "hugo-data-ingestion-platform-flink",
     "hugo-data-ingestion-platform-flink",
     "integrating-rust-delta-kernel-clickhouse",
@@ -1906,6 +1929,7 @@
     "data-observability",
     "data-observability",
     "data-product",
+    "data-quality-engineering",
     "delta-live-tables",
     "differential-privacy",
     "fine-tuning",
@@ -1916,7 +1940,9 @@
     "statistical-thinking",
     "synthetic-data",
     "building-anonymization-pipeline",
+    "data-engineering-design-patterns-konieczny",
     "data-engineering-with-python",
+    "data-quality-engineering-financial-services-buzzelli",
     "data-quality-traffic-lights-sahlin",
     "fundamentals-of-data-observability"
   ],
@@ -1953,6 +1979,7 @@
     "data-modeling",
     "dataops",
     "lindy-effect",
+    "data-engineering-design-patterns-konieczny",
     "data-engineering-with-python",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026"
@@ -1977,7 +2004,13 @@
   ],
   "sources/fundamentals-of-data-engineering": [
     "data-engineering-fundamentals",
-    "lindy-effect"
+    "lindy-effect",
+    "data-engineering-design-patterns-konieczny"
+  ],
+  "sources/data-engineering-design-patterns-konieczny": [
+    "data-engineering-fundamentals",
+    "data-ingestion",
+    "fail-fast"
   ],
   "data-anonymization": [
     "data-governance",
@@ -2012,6 +2045,12 @@
     "delta-catalog-managed-tables",
     "delta-grows-up-writes-unity-catalog",
     "delta-grows-up-writes-unity-catalog"
+  ],
+  "sources/data-quality-engineering-financial-services-buzzelli": [
+    "data-governance",
+    "data-quality-engineering",
+    "data-quality-engineering",
+    "data-quality-monitoring"
   ],
   "sources/becoming-data-head": [
     "data-head",
@@ -2071,8 +2110,29 @@
     "t-shaped-skills",
     "t-shaped-skills"
   ],
+  "master-data-management": [
+    "data-quality-engineering",
+    "data-quality-engineering-financial-services-buzzelli"
+  ],
+  "data-observability": [
+    "data-quality-engineering",
+    "dataops",
+    "metadata-management",
+    "observability",
+    "data-engineering-design-patterns-konieczny",
+    "fundamentals-of-data-observability",
+    "fundamentals-of-data-observability"
+  ],
   "sources/data-quality-traffic-lights-sahlin": [
-    "data-quality-monitoring"
+    "data-quality-engineering",
+    "data-quality-monitoring",
+    "data-quality-engineering-financial-services-buzzelli"
+  ],
+  "data-quality-engineering": [
+    "data-quality-monitoring",
+    "fail-fast",
+    "master-data-management",
+    "data-quality-engineering-financial-services-buzzelli"
   ],
   "password-storage": [
     "data-security",
@@ -2135,13 +2195,6 @@
     "dataops",
     "job-search-strategy",
     "mentoring"
-  ],
-  "data-observability": [
-    "dataops",
-    "metadata-management",
-    "observability",
-    "fundamentals-of-data-observability",
-    "fundamentals-of-data-observability"
   ],
   "sources/data-engineering-with-dbt": [
     "dataops"
@@ -2323,33 +2376,48 @@
   ],
   "sources/engineering-management-drasner": [
     "engineering-management",
-    "engineering-management"
+    "engineering-management",
+    "high-output-management",
+    "scaling-people",
+    "high-output-management-grove",
+    "scaling-people-hughes-johnson"
   ],
   "golden-circle": [
     "engineering-management",
     "engineering-management",
+    "high-output-management",
+    "scaling-people",
     "engineering-management-drasner",
+    "high-output-management-grove",
+    "scaling-people-hughes-johnson",
     "start-with-why-sinek",
     "start-with-why-sinek"
   ],
   "feedback": [
     "engineering-management",
     "engineering-management",
+    "high-output-management",
     "mentoring",
     "metalearning",
     "saying-no",
+    "scaling-people",
     "spaced-repetition",
     "testing-effect",
     "ultralearning",
     "engineering-management-drasner",
-    "engineering-management-drasner"
+    "engineering-management-drasner",
+    "high-output-management-grove",
+    "scaling-people-hughes-johnson"
   ],
   "mentoring": [
     "engineering-management",
     "flow-zone-critique",
+    "high-output-management",
+    "scaling-people",
     "software-professionalism",
     "clean-code-martin",
-    "engineering-management-drasner"
+    "engineering-management-drasner",
+    "high-output-management-grove"
   ],
   "saying-no": [
     "engineering-management",
@@ -2361,7 +2429,21 @@
   ],
   "sources/an-elegant-puzzle": [
     "engineering-management",
-    "technical-debt-management"
+    "technical-debt-management",
+    "high-output-management-grove",
+    "scaling-people-hughes-johnson"
+  ],
+  "sources/high-output-management-grove": [
+    "engineering-management",
+    "high-output-management",
+    "high-output-management",
+    "scaling-people"
+  ],
+  "sources/scaling-people-hughes-johnson": [
+    "engineering-management",
+    "high-output-management",
+    "scaling-people",
+    "scaling-people"
   ],
   "graph-grounding": [
     "entity-resolution",
@@ -2406,6 +2488,31 @@
     "ultralearning",
     "ultralearning",
     "ultralearning-scott-young"
+  ],
+  "high-output-management": [
+    "feedback",
+    "scaling-people",
+    "high-output-management-grove",
+    "scaling-people-hughes-johnson"
+  ],
+  "scaling-people": [
+    "feedback",
+    "high-output-management",
+    "scaling-people-hughes-johnson"
+  ],
+  "engineering-management": [
+    "feedback",
+    "golden-circle",
+    "high-output-management",
+    "scaling-people",
+    "technical-debt-management",
+    "technical-leadership",
+    "an-elegant-puzzle",
+    "engineering-management-drasner",
+    "engineering-management-drasner",
+    "high-output-management-grove",
+    "scaling-people-hughes-johnson",
+    "start-with-why-sinek"
   ],
   "lora": [
     "fine-tuning",
@@ -2546,15 +2653,6 @@
     "golden-circle",
     "golden-circle"
   ],
-  "engineering-management": [
-    "golden-circle",
-    "technical-debt-management",
-    "technical-leadership",
-    "an-elegant-puzzle",
-    "engineering-management-drasner",
-    "engineering-management-drasner",
-    "start-with-why-sinek"
-  ],
   "personal-branding": [
     "golden-circle",
     "job-search-strategy",
@@ -2574,6 +2672,15 @@
   ],
   "sources/learn-harness-engineering": [
     "harness-engineering"
+  ],
+  "staff-plus-archetypes": [
+    "high-output-management",
+    "scaling-people",
+    "staff-engineering",
+    "staff-engineering",
+    "technical-leadership",
+    "high-output-management-grove",
+    "scaling-people-hughes-johnson"
   ],
   "api-architectural-styles": [
     "http-evolution",
@@ -2818,11 +2925,6 @@
   "sources/seriously-good-software": [
     "software-quality-dimensions"
   ],
-  "staff-plus-archetypes": [
-    "staff-engineering",
-    "staff-engineering",
-    "technical-leadership"
-  ],
   "sources/senior-to-staff-engineer": [
     "staff-engineering"
   ],
@@ -2873,6 +2975,12 @@
   "sources/sample-article": [
     "wiki-maintenance",
     "wiki-maintenance"
+  ],
+  "sources/big-book-data-engineering": [
+    "data-engineering-design-patterns-konieczny"
+  ],
+  "sources/dama-dmbok-2nd-edition": [
+    "data-quality-engineering-financial-services-buzzelli"
   ],
   "ai-psychosis": [
     "meta-destroying-engineering-org-orosz"

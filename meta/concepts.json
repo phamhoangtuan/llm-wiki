@@ -854,6 +854,19 @@
         "data-mesh"
       ]
     },
+    "data-quality-engineering": {
+      "title": "Data Quality Engineering",
+      "category": "Data Engineering",
+      "url": "concepts/data-quality-engineering.html",
+      "definition": "**Data Quality Engineering** is the discipline of treating data like manufactured material — with inspection, tolerances, and control points at every stage of the pipeline. Pioneered by Brian Buzzelli",
+      "tags": [
+        "data-quality",
+        "data-engineering",
+        "governance",
+        "manufacturing",
+        "specifications"
+      ]
+    },
     "data-quality-monitoring": {
       "title": "Data Quality Monitoring",
       "category": "Data Engineering",
@@ -1533,6 +1546,20 @@
         "reliability",
         "testing",
         "workflow"
+      ]
+    },
+    "high-output-management": {
+      "title": "High Output Management",
+      "category": "Career & Growth",
+      "url": "concepts/high-output-management.html",
+      "definition": "**High Output Management** is Andrew Grove's framework for maximizing organizational output through discipline, leverage, and people development. The core equation: a manager's output = the output of ",
+      "tags": [
+        "management",
+        "leadership",
+        "leverage",
+        "organizational-design",
+        "motivation",
+        "meetings"
       ]
     },
     "http-evolution": {
@@ -2537,6 +2564,20 @@
         "scalability",
         "architecture",
         "distributed-systems"
+      ]
+    },
+    "scaling-people": {
+      "title": "Scaling People",
+      "category": "Meta",
+      "url": "concepts/scaling-people.html",
+      "definition": "**Scaling People** is Claire Hughes Johnson's tactical framework for organizing chaos in fast-growing companies. The core message: \"You can't build a strong house on weak soil.\" Before tackling system",
+      "tags": [
+        "management",
+        "scaling",
+        "hiring",
+        "team-development",
+        "feedback",
+        "operating-system"
       ]
     },
     "secure-system-design": {

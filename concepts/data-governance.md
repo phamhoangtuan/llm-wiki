@@ -3,8 +3,8 @@ title: "Data Governance"
 type: concept
 tags: [data-governance, compliance, security, metadata, data-quality]
 created: 2026-06-14
-updated: 2026-06-27
-sources: [data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline]
+updated: 2026-08-24
+sources: [data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline, data-quality-engineering-financial-services-buzzelli]
 aliases: [governance]
 ---
 
@@ -70,3 +70,4 @@ Data Engineers implement governance through:
 - Benchmark source: [[sources/data-lifecycle-handbook]] — Data Engineering Handbook (data lifecycle)
 - Benchmark source: [[sources/data-engineering-handbook]] — Data Engineering Handbook (discipline overview)
 - Benchmark source: [[sources/building-anonymization-pipeline]] — Arbuckle & El Emam on Five Safes, ethics committees, and trust-based governance
+- Benchmark source: [[sources/data-quality-engineering-financial-services-buzzelli]] — Buzzelli's governance playbook: owners/stewards per dataset, DQS signoff, lightweight monthly council

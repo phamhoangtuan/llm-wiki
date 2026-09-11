@@ -3,8 +3,8 @@ title: "Vibe Coding"
 type: concept
 tags: [ai-engineering, coding, methodology, terminology]
 created: 2026-06-15
-updated: 2026-08-06
-sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding, graph-engineering-karpathy]
+updated: 2026-08-24
+sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding, graph-engineering-karpathy, beyond-vibe-coding-osmani]
 aliases: [vibe-coding]
 ---
 
@@ -92,3 +92,4 @@ Each stage addresses a limitation of the previous: vibe coding lacks verificatio
 - Benchmark source: [[sources/new-sdlc-vibe-coding]] — spectrum comparison and token economics framework
 - Stage one of [[graph-engineering]] — Karpathy's three-stage progression (vibe → agentic → graph)
 - Source: [[sources/graph-engineering-karpathy]] — the three-stage framing
+- Source: [[sources/beyond-vibe-coding-osmani]] — Osmani's 5-discipline framework for professional AI-assisted coding; the 70% problem (AI handles majority, final 30% demands human expertise)

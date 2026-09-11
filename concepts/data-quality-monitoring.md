@@ -3,8 +3,8 @@ title: "Data Quality Monitoring"
 type: concept
 tags: [data-quality, data-observability, lineage, monitoring, dbt, data-platform]
 created: 2026-06-17
-updated: 2026-06-27
-sources: [data-quality-traffic-lights-sahlin, building-anonymization-pipeline, big-book-data-engineering]
+updated: 2026-08-24
+sources: [data-quality-traffic-lights-sahlin, building-anonymization-pipeline, big-book-data-engineering, data-quality-engineering-financial-services-buzzelli]
 aliases: [Data Quality Health Badge, Data Quality Traffic Lights, DQ Monitoring]
 ---
 
@@ -111,3 +111,5 @@ This extends traditional quality monitoring (detecting broken pipelines, missing
 - [[delta-live-tables|DLT Expectations]] — declarative quality rules enforced at each Medallion pipeline stage (warn, drop, or halt)
 - Data observability — Monitoring, alerting, and lineage together form data observability; a natural next concept to formalize from this source
 - Related to [[data-anonymization]] — output validation and continuous risk monitoring are quality dimensions specific to anonymization pipelines
+- Related to [[data-quality-engineering]] — DQS framework provides the specification contract; monitoring provides the detection and communication layer
+- Source: [[sources/data-quality-engineering-financial-services-buzzelli]] — Buzzelli's manufacturing-lens DQ: DQS contracts, template library, scorecards, operational cost model

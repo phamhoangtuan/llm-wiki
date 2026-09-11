@@ -3,8 +3,8 @@ title: "Master Data Management"
 type: concept
 tags: [data-management, mdm, dama]
 created: 2026-07-14
-updated: 2026-07-14
-sources: [dama-dmbok-2nd-edition]
+updated: 2026-08-24
+sources: [dama-dmbok-2nd-edition, data-quality-engineering-financial-services-buzzelli]
 ---
 
 # Master Data Management
@@ -41,3 +41,4 @@ Part of the **Enable & Maintain** lifecycle phase. MDM depends heavily on Data G
 - [[entity-resolution]] — Mapping surface forms to canonical entities
 - [[data-modeling]] — Designing master data structures and relationships
 - [[metadata-management]] — Tracking master data definitions and lineage
+- [[data-quality-engineering]] — Buzzelli's MDM playbook: staged pipelines (ingest → staged → mastered) with DQS at each stage, deterministic de-dupe rules

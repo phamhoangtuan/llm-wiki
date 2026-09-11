@@ -3,8 +3,8 @@ title: "Fail Fast"
 type: concept
 tags: [design-principles, error-handling, reliability, tdd]
 created: 2026-05-23
-updated: 2026-07-13
-sources: [contieri-clean-code-cookbook, tdd-python-percival, good-code-bad-code]
+updated: 2026-08-24
+sources: [contieri-clean-code-cookbook, tdd-python-percival, good-code-bad-code, data-engineering-design-patterns-konieczny, data-quality-engineering-financial-services-buzzelli]
 ---
 
 ## Summary
@@ -46,3 +46,5 @@ LocalDate date = LocalDate.of(2024, 11, 31); // DateTimeException
 - Related to [[software-quality-dimensions]] — choosing robustness (fail fast) over silent efficiency is a deliberate trade-off
 - Implemented via [[architecture-hoisting]] — hoisting enforces fail-fast at architectural boundaries as a structural guarantee, not manual discipline
 - Benchmark source: [[sources/contieri-clean-code-cookbook]] — Contieri's Clean Code Cookbook
+- Source: [[sources/data-engineering-design-patterns-konieczny]] — Fail-Fast is one of the error management patterns in DE pipelines
+- Related to [[data-quality-engineering]] — "move checks left" is the data-quality expression of fail-fast

@@ -3,8 +3,8 @@ title: "Data Engineering Fundamentals"
 type: concept
 tags: [data-engineering, fundamentals, sql, python, data-modeling, career]
 created: 2026-06-15
-updated: 2026-07-13
-sources: [data-fundamentals-matter-2026, data-engineer-role-handbook, fundamentals-of-data-engineering]
+updated: 2026-08-24
+sources: [data-fundamentals-matter-2026, data-engineer-role-handbook, fundamentals-of-data-engineering, data-engineering-design-patterns-konieczny]
 aliases: [de-fundamentals, data-engineering-basics]
 ---
 
@@ -121,3 +121,4 @@ The fundamentals provide the judgment to answer these questions. Without them, y
 - Benchmark source: [[sources/data-fundamentals-matter-2026]] — SeattleDataGuy on fundamentals in 2026
 - Benchmark source: [[sources/data-engineer-role-handbook]] — Data Engineering Handbook (core skills)
 - Benchmark source: [[sources/fundamentals-of-data-engineering]] — Reis & Housley's lifecycle framework
+- Benchmark source: [[sources/data-engineering-design-patterns-konieczny]] — Konieczny's 8 pattern categories: ingestion, error management, idempotency, data value, data flow, security, quality, observability
