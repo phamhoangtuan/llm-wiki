@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Site Reliability Engineering — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-reliability">Reliability</a> <span class="sep">/</span>
+  <span>Site Reliability Engineering</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Site Reliability Engineering</h1>
+  <div class="page-meta"><span>Source: site-reliability-engineering, building-secure-and-reliable-systems</span><span>Updated: 2026-08-18</span></div>
+  <div class="page-tags"><span class="tag">reliability</span><span class="tag">SRE</span><span class="tag">operations</span><span class="tag">observability</span><span class="tag">SLO</span><span class="tag">distributed-systems</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Site Reliability Engineering (SRE)</strong> applies software engineering to production operations. It replaces heroics with measurable reliability targets, automation, failure containment, and learning after incidents. The practical goal is to scale human operations more slowly than system load.</p>
+<h2 id="reliability-contract">Reliability Contract</h2>
+<ul>
+<li><strong>SLI</strong> — a measurement of user-visible service behavior, such as latency, availability, or error rate.</li>
+<li><strong>SLO</strong> — the target for an SLI over a defined period.</li>
+<li><strong>Error budget</strong> — the allowed unreliability, commonly <code>1 - SLO</code>; it makes the pace-versus-stability trade-off explicit.</li>
+</ul>
+<p>SLOs are useful only when connected to decisions: spend the budget on safe change, slow releases when the budget is exhausted, and choose indicators users actually experience.</p>
+<h2 id="failure-containment">Failure Containment</h2>
+<p>Reliable systems assume components fail:</p>
+<ul>
+<li>Load shedding rejects work early when capacity is exhausted.</li>
+<li>Graceful degradation serves a reduced result instead of taking down the whole system.</li>
+<li>Exponential backoff with jitter prevents retry storms.</li>
+<li>Deadline propagation stops doomed work in downstream services.</li>
+<li>Failure domains, canaries, and rate-limited rollouts limit blast radius.</li>
+<li>Backups, soft deletion, and independent validation protect recoverability; replication alone is not a backup.</li>
+</ul>
+<h2 id="operational-practice">Operational Practice</h2>
+<p>Measure services with metrics, logs, and traces; automate repetitive work; and keep toil below half of engineering time. Stress tests, canary tests, and documented negative results turn reliability into an empirical discipline. Blameless postmortems ask which system conditions made the incident possible rather than who deserves blame.</p>
+<h2 id="connections">Connections</h2>
+<ul>
+<li>Supplies targets and incident practice for <a href="observability.html" class="wiki-link">observability</a>.</li>
+<li>Extends <a href="scalable-architecture.html" class="wiki-link">scalable-architecture</a> with failure containment and recoverability.</li>
+<li>Complements <a href="secure-system-design.html" class="wiki-link">secure-system-design</a> because security and reliability share boundaries, automation, and recovery controls.</li>
+<li>Uses <a href="deployment-strategies.html" class="wiki-link">deployment-strategies</a> for canary and rate-limited rollout safety.</li>
+<li>Benchmark sources: <span class="wiki-link source-ref">sources/site-reliability-engineering</span> and <span class="wiki-link source-ref">sources/building-secure-and-reliable-systems</span>.</li>
+</ul>
+</div>
+
+<nav class="pagination"><a href="shift-left-security.html" class="prev">← Shift Left Security</a><a href="snowflake-data-cloud.html" class="next">Snowflake Data Cloud →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

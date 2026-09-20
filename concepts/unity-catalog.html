@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unity Catalog — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-data-governance">Data Governance</a> <span class="sep">/</span>
+  <span>Unity Catalog</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Unity Catalog</h1>
+  <div class="page-meta"><span>Source: delta-grows-up-writes-unity-catalog, delta-catalog-managed-tables, databricks-dea-study-guide</span><span>Updated: 2026-06-23</span></div>
+  <div class="page-tags"><span class="tag">data-governance</span><span class="tag">catalog</span><span class="tag">unity-catalog</span><span class="tag">delta-lake</span><span class="tag">lakehouse</span><span class="tag">duckdb</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Unity Catalog (UC)</strong> is an open standard (and open-source implementation) for governing data and AI assets — tables, volumes, models, and functions — across engines and clouds. It provides a single place to discover, audit, and control access to data, turning a data lake into a governed lakehouse. DuckDB's Unity Catalog extension graduated from experimental status in 2026-05, supporting both reads and writes through UC.</p>
+<h2 id="what-unity-catalog-provides">What Unity Catalog Provides</h2>
+<table><thead><tr>
+<th>Capability</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Discovery</strong></td>
+<td>Single catalog of all data assets across engines and storage locations</td>
+</tr>
+<tr>
+<td><strong>Access control</strong></td>
+<td>Fine-grained permissions on tables, schemas, catalogs</td>
+</tr>
+<tr>
+<td><strong>Audit trail</strong></td>
+<td>Who accessed what, when — unified across engines</td>
+</tr>
+<tr>
+<td><strong>Metadata sync</strong></td>
+<td>Table schemas, statistics, and lineage kept in sync</td>
+</tr>
+<tr>
+<td><strong>Write coordination</strong></td>
+<td>Catalog Commits arbitrate concurrent writes to Delta tables</td>
+</tr>
+</tbody></table>
+<h2 id="two-implementations">Two Implementations</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>OSS Unity Catalog</th>
+<th>Databricks Unity Catalog</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Deployment</strong></td>
+<td>Self-hosted (Docker, K8s)</td>
+<td>Managed SaaS (Databricks)</td>
+</tr>
+<tr>
+<td><strong>Cost</strong></td>
+<td>Free (open source)</td>
+<td>Part of Databricks platform</td>
+</tr>
+<tr>
+<td><strong>API</strong></td>
+<td>UC Open API</td>
+<td>UC Open API + Databricks extensions</td>
+</tr>
+<tr>
+<td><strong>Best for</strong></td>
+<td>Custom lakehouse stacks, experimentation</td>
+<td>Databricks-centric organizations</td>
+</tr>
+</tbody></table>
+<p>OSS Unity Catalog can be Docker-ified in minutes — DuckDB Labs provides a <a href="https://github.com/benfleis/duckdb-unitycatalog-playground/" target="_blank" rel="noopener">playground image</a> bundling UC + DuckDB.</p>
+<h2 id="duckdb-integration">DuckDB Integration</h2>
+<p>Connecting DuckDB to Unity Catalog:</p>
+<pre><code class="language-sql">LOAD unity_catalog;
+
+CREATE SECRET (
+    TYPE     unity_catalog,
+    TOKEN    &#x27;your-token&#x27;,
+    ENDPOINT &#x27;https://your-workspace.cloud.databricks.com&#x27;
+);
+
+ATTACH &#x27;unity&#x27; AS my_catalog
+    (TYPE unity_catalog, DEFAULT_SCHEMA &#x27;my_schema&#x27;);
+
+-- Read through UC
+SELECT * FROM my_catalog.pets;
+
+-- Write through UC (INSERT, Delta tables)
+INSERT INTO my_catalog.pets (name, age) VALUES (&#x27;Luna&#x27;, 3);</code></pre>
+<h2 id="catalog-managed-tables--catalog-commits">Catalog Managed Tables & Catalog Commits</h2>
+<p>With Delta Lake 4.1.0 and Unity Catalog 0.4.0, catalog-managed tables represent a fundamental architectural shift: the catalog (not the filesystem) becomes the <strong>authority</strong> for table state.</p>
+<h3 id="how-the-protocol-works">How the Protocol Works</h3>
+<h4 id="table-discovery">Table Discovery</h4>
+<p>Clients resolve tables by <strong>logical name</strong> (<code>catalog.schema.table</code>) through the catalog — not by filesystem path. The catalog provides identity, location, and access credentials.</p>
+<h4 id="reads-catalog-mediated">Reads (Catalog-Mediated)</h4>
+<pre><code>1. Client → get_catalog_commits API → latest ratified commits (0ms to catalog, skip storage)
+2. If older history needed → LIST filesystem for published commits + checkpoints
+3. Merge catalog commits + filesystem commits → complete snapshot</code></pre>
+<p>This eliminates the 100ms+ filesystem round-trip for metadata resolution on every query.</p>
+<h4 id="writes-catalog-ratified">Writes (Catalog-Ratified)</h4>
+<pre><code>1. Client stages commit → _delta_log/_staged_commits/ (or sends inline to catalog)
+2. Client requests ratification from UC
+3. UC inspects commit contents, enforces constraints, applies policies
+4. UC ratifies or rejects the commit
+5. Ratified commits periodically published to the filesystem _delta_log/</code></pre>
+<p><strong>Inline commits</strong>: Commit payload is sent directly to the catalog, skipping filesystem write entirely → sub-100ms commit latency.</p>
+<h3 id="filesystem-managed-legacy-vs-catalog-man">Filesystem-Managed (Legacy) vs Catalog-Managed</h3>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Without Catalog Commits</th>
+<th>With Catalog Commits</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Discovery</strong></td>
+<td>Clients need exact filesystem path</td>
+<td>Clients resolve by name through catalog</td>
+</tr>
+<tr>
+<td><strong>Authorization</strong></td>
+<td>Coarse-grained storage credentials</td>
+<td>Fine-grained catalog-level access control</td>
+</tr>
+<tr>
+<td><strong>Writes</strong></td>
+<td>Filesystem "PUT-if-absent" determines winner</td>
+<td>Catalog ratifies; inspects content, enforces constraints</td>
+</tr>
+<tr>
+<td><strong>Schema changes</strong></td>
+<td>Unvalidated — incompatible changes can break pipelines</td>
+<td>Catalog validates before accepting commits</td>
+</tr>
+<tr>
+<td><strong>Metadata latency</strong></td>
+<td>Replay <code>_delta_log</code> from filesystem (100ms+)</td>
+<td><code>get_catalog_commits</code> direct from catalog</td>
+</tr>
+</tbody></table>
+<h3 id="concurrency-test-20-writers-8-parallel">Concurrency Test (20 writers, 8 parallel)</h3>
+<p>In DuckDB Labs' test:</p>
+<ul>
+<li>5 writers committed successfully</li>
+<li>15 received clear conflict signals (not silent failures)</li>
+<li>In a real workload, conflicted writers would retry</li>
+</ul>
+<pre><code>[worker 6] OK - inserted 5 rows
+[worker 5] CONFLICT - another writer won this version, retry needed
+[worker 2] CONFLICT - another writer won this version, retry needed
+...</code></pre>
+<p>Catalog Commits coordinate <strong>per table</strong> — no cross-table atomicity. Two tables in the same <code>BEGIN</code>/<code>COMMIT</code> block commit independently.</p>
+<h2 id="convergence-with-iceberg">Convergence with Iceberg</h2>
+<p>Delta's catalog-managed design closely resembles <a href="apache-iceberg.html" class="wiki-link">Iceberg</a>'s catalog model. Since Unity Catalog can govern both formats, this convergence enables:</p>
+<ul>
+<li><strong>Consistent governance</strong> across Delta and Iceberg from a single catalog</li>
+<li><strong>Multi-engine interoperability</strong> — any engine speaking UC's API can access either format</li>
+<li><strong>Simplified operations</strong> — no format-specific access patterns to manage</li>
+</ul>
+<h2 id="enabling-catalog-managed-tables">Enabling Catalog Managed Tables</h2>
+<p>Set the table property at creation time (via Spark or UC CLI; DuckDB's <code>CREATE TABLE</code> DDL via UC is on the roadmap):</p>
+<pre><code class="language-sql">-- Via Spark
+CREATE TABLE my_catalog.my_schema.concurrent_tbl (...)
+TBLPROPERTIES (&#x27;delta.feature.catalogManaged&#x27; = &#x27;supported&#x27;);</code></pre>
+<p>Once enabled, DuckDB INSERTs automatically route through UC's commit staging.</p>
+<h2 id="when-to-use-unity-catalog">When to Use Unity Catalog</h2>
+<table><thead><tr>
+<th>✅ Use Unity Catalog</th>
+<th>❌ Skip Unity Catalog</th>
+</tr></thead><tbody>
+<tr>
+<td>Multi-engine lakehouse (DuckDB + Spark + Trino)</td>
+<td>Single-engine setup</td>
+</tr>
+<tr>
+<td>Need governance (access control, audit)</td>
+<td>No regulatory/compliance requirements</td>
+</tr>
+<tr>
+<td>Concurrent writers to same Delta table</td>
+<td>Single-writer pipelines</td>
+</tr>
+<tr>
+<td>Databricks shop wanting open standards</td>
+<td>Custom metadata store already in place</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="delta-lake.html">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Lake</h4>
+      <p>UC is the native catalog for Delta tables; Catalog Commits coordinate concurrent writes</p>
+    </a>
+    <a class="connection-card" href="duckdb.html">
+      <span class="connection-type related">Related</span>
+      <h4>DuckDB</h4>
+      <p>DuckDB's UC extension (stable) supports reads and writes through UC-managed catalogs</p>
+    </a>
+    <a class="connection-card" href="apache-iceberg.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Iceberg</h4>
+      <p>UC can catalog Iceberg tables too; Iceberg also has its own catalog ecosystem (REST catalog, Hive, Glue)</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Grows Up: Writes, Unity Catalog and Time Travel</h4>
+      <p>DuckDB Labs announces stable UC extension with Catalog Commits</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>The Next Evolution of Delta — Catalog-Managed Tables</h4>
+      <p>architectural shift: filesystem-managed → catalog-managed (Delta 4.1.0 + UC 0.4.0)</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Databricks Certified Data Engineer Associate Study Guide</h4>
+      <p>progression from Hive Metastore (simple, learning-friendly) to Unity Catalog (centralized, fine-grained access control, multi-cloud, audit logging); Unity Catalog is Layer 3 of the Databricks architecture</p>
+    </div>
+    <a class="connection-card" href="databricks-platform.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Databricks Platform</h4>
+      <p>Unity Catalog governs Layer 3 of the Databricks 4-layer architecture</p>
+    </a>
+    <a class="connection-card" href="data-lakehouse.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Data Lakehouse</h4>
+      <p>centralized governance is a core Lakehouse benefit; Unity Catalog is the reference implementation</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="ultralearning.html" class="prev">← Ultralearning</a><a href="vectorized-execution.html" class="next">Vectorized Execution →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,743 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Python Testing with pytest</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+
+	table.collection-content {
+		width: 100%;
+		table-layout: fixed;
+	}
+
+	table.collection-content th,
+	table.collection-content td {
+		overflow-wrap: anywhere;
+	}
+
+	table.collection-content td > .user,
+	table.collection-content td > time {
+		white-space: pre-wrap;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content-wrapper {
+	overflow-x: auto;
+}
+
+@media only print {
+	.collection-content-wrapper {
+		overflow-x: visible;
+	}
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	gap: 46px;
+}
+
+.column {
+	min-width: 0;
+	overflow: hidden;
+}
+
+.column > *:first-child {
+	margin-top: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+table {
+	border-collapse: collapse;
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol.numbered-list.numbered-list-digits-2 {
+	padding-inline-start: 2em;
+}
+
+ol.numbered-list.numbered-list-digits-3plus {
+	padding-inline-start: 2.4em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3688a4ce-a48e-809d-b8c6-f73d8a71fe8e" class="page sans"><header><h1 class="page-title" dir="auto">Python Testing with pytest</h1><p class="page-description" dir="auto"></p><table class="properties"><tbody><tr class="property-row property-row-date"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/calendar_gray.svg" style="width:14px;height:14px;display:block"/></span>Finished date</th><td><time>2026/05/22</time></td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Author</th><td>Brian Okken</td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>Language</th><td><span class="selected-value select-value-color-pink">English</span></td></tr><tr class="property-row property-row-select"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/arrow-circle-down_gray.svg" style="width:14px;height:14px;display:block"/></span>Type</th><td><span class="selected-value select-value-color-yellow">Ebook</span></td></tr><tr class="property-row property-row-number"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/hashtag_gray.svg" style="width:14px;height:14px;display:block"/></span>Number of pages</th><td>398</td></tr><tr class="property-row property-row-text"><th><span class="icon property-icon"><img src="https://www.notion.so/icons/description_gray.svg" style="width:14px;height:14px;display:block"/></span>Notes</th><td># Cẩm Nang Python Testing với pytest: Biến Việc Kiểm Thử Thành Niềm Vui<br/><br/>Chào mừng bạn đến với hướng dẫn essential về <strong>Python Testing with pytest (Second Edition)</strong> của <strong>Brian Okken</strong> — cuốn sách không chỉ dạy bạn cách viết test, mà còn thay đổi hoàn toàn thái độ của bạn với việc kiểm thử phần mềm.<br/><br/>&gt; 💡 <strong>Thông điệp cốt lõi:</strong> Testing không phải là &quot;thuế năng suất&quot; bạn phải trả. Khi dùng đúng công cụ, nó trở thành <strong>niềm vui</strong> — một phần tự nhiên trong flow sáng tạo của developer.<br/><br/>Nếu ví viết code mà không có test như lái xe không có gương chiếu hậu, thì pytest chính là hệ thống camera 360° giúp bạn thấy rõ mọi góc, phát hiện rủi ro sớm, và tự tin tăng tốc.<br/><br/>---<br/><br/>## 🎯 pytest Là Gì &amp; Tại Sao Nó Đặc Biệt?<br/><strong>pytest</strong> là một command-line tool tự động tìm, chạy và báo cáo kết quả test. Nhưng điều khiến nó trở thành &quot;con cưng&quot; của Python ecosystem không nằm ở tính năng, mà ở <strong>triết lý thiết kế</strong>:<br/><br/>| Đặc Điểm | Giải Thích | Lợi Ích Thực Tế |<br/>|----------|------------|----------------|<br/>| <strong>Simplicity</strong> | Test đơn giản thì dễ viết, test phức tạp vẫn manageable | Bắt đầu trong vài giây, scale lên enterprise không đau đầu |<br/>| <strong>Readability</strong> | Code test được viết để <strong>con người đọc hiểu</strong>, không chỉ máy chạy | New member onboard nhanh, review code dễ dàng |<br/>| <strong>Standard Assertions</strong> | Dùng <code>assert</code> thuần Python, không cần <code>self.assertEqual()</code> | Giảm boilerplate, tăng focus vào logic nghiệp vụ |<br/>| <strong>Compatibility</strong> | Chạy được test viết cho <code>unittest</code> hoặc <code>nose</code> | Migration từ framework cũ không cần rewrite toàn bộ |<br/>| <strong>Extensibility</strong> | Hệ sinh thái plugin khổng lồ + hỗ trợ viết plugin custom | Tùy biến theo nhu cầu project, không bị giới hạn bởi framework |<br/><br/>&gt; 🎯 <em>Triết lý then chốt:</em> &quot;Tests are easy to read. Tests are easy to read.&quot; (Quan trọng đến mức tác giả liệt kê 2 lần!)<br/><br/>---<br/><br/>## 🚀 Bắt Đầu Trong 3 Phút: Setup &amp; Chạy Test Đầu Tiên<br/><br/>### Bước 1: Tạo &quot;Phòng Thí Nghiệm&quot; Sạch Sẽ<br/>Luôn dùng <strong>virtual environment</strong> để tránh dependency conflict:<br/><br/><code>bash # Tạo virtual environment python -m venv venv  # Activate (POSIX/macOS/Linux) source venv/bin/activate  # Activate (Windows) venv\\Scripts\\activate.bat  # Cài đặt pytest pip install pytest </code><br/><br/>### Bước 2: Viết Test Đầu Tiên — Không Boilerplate!<br/><code>python # test_example.py def test_addition():     assert 2 + 2 == 4  def test_string_contains():     assert &quot;pytest&quot; in &quot;Python testing with pytest&quot; </code><br/><br/>### Bước 3: Chạy &amp; Xem Kết Quả<br/><code>bash $ pytest ============================= test session starts ============================= platform linux -- Python 3.10.0, pytest-7.0.0 collected 2 items  test_example.py ..                                                      [100%]  ============================== 2 passed in 0.01s ============================== </code><br/><br/>&gt; 💡 <strong>Magic:</strong> Bạn chỉ cần viết <code>assert</code> thuần Python. Khi test fail, pytest tự động &quot;rewrite&quot; assertion để cung cấp <strong>detailed diff</strong> — không cần học framework-specific methods.<br/><br/>---<br/><br/>## 🔍 Quy Tắc &quot;Discovery&quot;: pytest Tự Tìm Test Của Bạn<br/>pytest hoạt động theo nguyên tắc <strong>convention over configuration</strong>. Chỉ cần tuân thủ 3 quy tắc đặt tên, framework sẽ tự động tìm và chạy test:<br/><br/>| Loại | Quy Tắc Đặt Tên | Ví Dụ Hợp Lệ | Ví Dụ Không Hợp Lệ |<br/>|------|----------------|-------------|-------------------|<br/>| <strong>File</strong> | <code>test_*.py</code> hoặc <code>*_test.py</code> | <code>test_user.py</code>, <code>user_test.py</code> | <code>user.py</code>, <code>tests.py</code> |<br/>| <strong>Function</strong> | Bắt đầu bằng <code>test_</code> | <code>test_login_success()</code> | <code>check_login()</code>, <code>verify_user()</code> |<br/>| <strong>Class</strong> | Bắt đầu bằng <code>Test</code> (không có <code>__init__</code>) | <code>TestUserAPI</code>, <code>TestPaymentFlow</code> | <code>UserTests</code>, <code>LoginChecker</code> |<br/><br/>&gt; ⚠️ <em>Lưu ý:</em> Nếu không tuân thủ naming convention, pytest sẽ <strong>bỏ qua</strong> test của bạn mà không báo lỗi — một &quot;silent failure&quot; nguy hiểm!<br/><br/>---<br/><br/>## 📊 Hiểu Kết Quả Test: Không Chỉ Là Pass/Fail<br/>pytest cung cấp hệ thống ký hiệu giàu thông tin để bạn nắm bắt trạng thái test suite ngay lập tức:<br/><br/>| Ký Hiệu | Tên | Ý Nghĩa | Khi Nào Xuất Hiện |<br/>|---------|-----|---------|------------------|<br/>| <code>.</code> | <strong>PASSED</strong> | Test chạy thành công, không exception | Logic đúng, assertion pass |<br/>| <code>F</code> | <strong>FAILED</strong> | Test fail do <code>AssertionError</code> | Logic sai, data mismatch |<br/>| <code>s</code> | <strong>SKIPPED</strong> | Test bị bỏ qua cố ý | Dùng <code>@pytest.mark.skip()</code> hoặc <code>skipif</code> |<br/>| <code>x</code> | <strong>XFAIL</strong> | Expected failure — test fail như dự kiến | Dùng <code>@pytest.mark.xfail()</code> cho known issues |<br/>| <code>X</code> | <strong>XPASS</strong> | Unexpected pass — test marked xfail nhưng lại pass | Có thể bug đã được fix, cần review marker |<br/>| <code>E</code> | <strong>ERROR</strong> | Exception xảy ra ngoài test function (fixture, hook) | Infrastructure problem — test framework bị lỗi |<br/><br/>### Flags Hữu Ích Khi Chạy Test<br/><code>bash # Verbose mode: Xem chi tiết từng test pytest -v  # Hide tracebacks: Chỉ xem summary khi có nhiều lỗi pytest --tb=no  # Chạy một test cụ thể pytest test_file.py::test_function_name  # Chạy tests có marker cụ thể pytest -m smoke  # Chỉ chạy tests đánh dấu &quot;smoke&quot; </code><br/><br/>---<br/><br/>## 🎨 &quot;Assert Rewriting&quot;: Vũ Khí Bí Mật Của pytest<br/>Đây là tính năng khiến developer &quot;yêu&quot; pytest ngay từ lần đầu dùng.<br/><br/>### So Sánh: unittest vs pytest<br/><code>python # ❌ Traditional unittest: Verbose, khó đọc self.assertEqual(actual_result, expected_result, &quot;Error message&quot;)  # ✅ pytest: Clean, tự nhiên như Python thường assert actual_result == expected_result </code><br/><br/>### Khi Test Fail: pytest &quot;Hiển Phép&quot;<br/><code>E       assert (3, 2, 1) == (1, 2, 3) E         Full diff: E         - (3, 2, 1) E         ?  ^     ^ E         + (1, 2, 3) E         ?  ^     ^</code><br/><br/>&gt; 💡 <strong>Cơ chế:</strong> pytest intercepts các <code>assert</code> statements tại runtime, phân tích expression và generate <strong>rich diff</strong> khi fail. Bạn được lợi ích của framework-specific assertions mà không cần học cú pháp mới.<br/><br/>---<br/><br/>## 🃏 Case Study: Ứng Dụng &quot;Cards&quot; — Học Qua Thực Hành<br/>Cuốn sách dùng một task-tracking app tên <strong>Cards</strong> để minh họa principles. Kiến trúc 3 layers:<br/><br/><code>┌─────────────────┐ │     CLI Layer    │ ← Built with Typer + Rich (user-facing) ├─────────────────┤ │     API Layer    │ ← Core business logic (TEST HERE FIRST!) ✅ ├─────────────────┤ │     DB Layer     │ ← TinyDB for persistence └─────────────────┘</code><br/><br/>### Core Data Structure: Card Dataclass<br/><code>python from dataclasses import dataclass, field  @dataclass class Card:     summary: str = None     owner: str = None     state: str = &quot;todo&quot;  # todo, in_progress, done     id: int = field(default=None, compare=False)  # 👈 compare=False!          def to_dict(self):         return {k: v for k, v in self.__dict__.items() if v is not None} </code><br/><br/>&gt; 🎯 <strong>Architectural Insight:</strong> <code>compare=False</code> trên field <code>id</code> cho phép so sánh 2 <code>Card</code> objects dựa trên content (summary, owner, state) mà không quan tâm đến database-generated ID. Một design decision nhỏ nhưng giúp test assertions <strong>clean hơn rất nhiều</strong>.<br/><br/>---<br/><br/>## 🧭 Lộ Trình Học pytest: 4 Phase Từ Beginner Đến Architect<br/><br/>### Phase 1: The Launchpad (Setup &amp; First Test)<br/><code>✅ Tạo virtual environment với venv ✅ Cài pytest qua pip ✅ Viết test đầu tiên với plain assert ✅ Chạy pytest và đọc kết quả cơ bản</code><br/><br/>### Phase 2: Primary Power (Fixtures, Parametrization, Markers)<br/>| Concept | Mục Đích | Ví Dụ |<br/>|---------|----------|-------|<br/>| <strong>Fixtures</strong> | Reusable setup/teardown logic | <code>@pytest.fixture</code> để tạo DB connection cho nhiều tests |<br/>| <strong>Parametrization</strong> | Run 1 test function với nhiều data sets | <code>@pytest.mark.parametrize(&quot;input,expected&quot;, [(2,4), (3,9)])</code> |<br/>| <strong>Markers</strong> | Tag tests để selective execution | <code>@pytest.mark.slow</code>, <code>@pytest.mark.integration</code> |<br/><br/>### Phase 3: Project Strategy (API-First Testing, Mocking, CI)<br/>*   <strong>Test Strategy:</strong> Ưu tiên test <strong>API layer</strong> — validate core logic, tránh brittleness của UI tests.<br/>*   <strong>Mocking:</strong> Dùng <code>monkeypatch</code> hoặc <code>unittest.mock</code> để isolate external dependencies (API calls, DB).<br/>*   <strong>CI Integration:</strong> Dùng <code>tox</code> để test across multiple Python versions, <code>pytest-cov</code> cho coverage reports.<br/><br/>### Phase 4: Booster Rockets (Plugins, Customization, Scale)<br/>*   <strong>Third-party plugins:</strong> <code>pytest-xdist</code> (parallel execution), <code>pytest-randomly</code> (detect hidden state dependencies).<br/>*   <strong>Custom plugins:</strong> Biến <code>conftest.py</code> logic thành installable package cho toàn organization.<br/>*   <strong>Advanced parametrization:</strong> Indirect parametrization để offload complex setup vào fixtures.<br/><br/>---<br/><br/>## 🏢 Enterprise Strategy: Xây Dựng Test Suite Đáng Tin Cậy Cho Tổ Chức<br/><br/>### 4 Pillars Của Professional Testing<br/><code>✅ Simple: Test dễ viết, dễ đọc — phục vụ như living documentation ✅ Rapid: Start trong vài giây — minimize friction trong dev cycle   ✅ Effective: Feedback loop tight — actionable failure info, giảm MTTR ✅ Scalable: Từ script đơn lẻ đến multi-layer enterprise system</code><br/><br/>### API Layer: &quot;Sweet Spot&quot; Cho Testing<br/><code>❌ UI/CLI Tests: Brittle, slow, dễ break khi UI thay đổi ✅ API Tests: Validate core logic, stable interface, fast execution ❌ DB Tests: Implementation-specific, hard to maintain</code><br/><br/>&gt; 🎯 <em>Chiến lược:</em> Dành 70-80% effort cho API layer tests, 20-30% cho integration/E2E tests.<br/><br/>### Mocking với autospec: Defense-in-Depth<br/><code>python from unittest.mock import create_autospec  # ❌ Mock thông thường: Có thể pass với stale interface mock_db = Mock() mock_db.get_user.return_value = {&quot;id&quot;: 1}  # ✅ autospec=True: Mock phải khớp signature thật mock_db = create_autospec(Database, instance=True) mock_db.get_user.return_value = {&quot;id&quot;: 1}  # Sẽ error nếu signature sai </code><br/><br/>&gt; 💡 <em>Lợi ích:</em> Prevent &quot;green tests that mask real bugs&quot; — một rủi ro lớn khi refactor hệ thống lớn.<br/><br/>---<br/><br/>## ✨ 5 Bài Học Gây Ngạc Nhiên Từ Cuốn Sách<br/><br/>### 1. &quot;Just Assert&quot; Revolution<br/>&gt; <em>&quot;Bạn chỉ cần biết một keyword: </em><em><code>assert</code></em><em>. Mọi thứ khác pytest sẽ lo.&quot;</em><br/><br/>Không cần học <code>assertEqual</code>, <code>assertTrue</code>, <code>assertRaises</code>... Chỉ <code>assert</code> thuần Python + assert rewriting = detailed failures.<br/><br/>### 2. Discovery is Automatic (Nếu Bạn Follow Rules)<br/>&gt; <em>&quot;Convention over configuration&quot; thực sự hoạt động.</em><br/><br/>Đặt tên đúng → pytest tự tìm test → focus vào logic, không vào config.<br/><br/>### 3. Failure is a Feature, Not a Bug<br/>&gt; <em>&quot;Traceback của pytest là diagnostic tool độ phân giải cao.&quot;</em><br/><br/>Carets <code>^</code> chỉ exact index fail, diff rõ ràng, verbose flag tùy chỉnh — failure trở thành cơ hội học, không phải brick wall.<br/><br/>### 4. Testing Không Chỉ Dành Cho &quot;Software Developers&quot;<br/>&gt; <em>&quot;Data scientists, researchers, analysts cũng cần tin tưởng vào code của họ.&quot;</em><br/><br/>pytest đơn giản đủ để researcher học trong buổi chiều, mạnh đủ để làm heart của production CI pipeline.<br/><br/>### 5. &quot;Joy of Testing&quot; Mindset Shift<br/>&gt; <em>&quot;Testing không phải nghĩa vụ — nó có thể là niềm vui.&quot;</em><br/><br/>Khi tool làm cho code dễ đọc, output đẹp (Rich), CLI thân thiện (Typer), friction biến mất. Developer bắt đầu <em>muốn</em> viết test.<br/><br/>---<br/><br/>## 🧰 Glossary: Thuật Ngữ Cần Nhớ<br/><br/>| Thuật Ngữ | Định Nghĩa Ngắn |<br/>|-----------|----------------|<br/>| <strong>Assert Rewriting</strong> | Cơ chế pytest intercepts <code>assert</code> để generate rich diff khi fail |<br/>| <strong>Fixture</strong> | Reusable setup/teardown logic, dùng dependency injection |<br/>| <strong>Parametrization</strong> | Run 1 test function với nhiều data sets qua <code>@pytest.mark.parametrize</code> |<br/>| <strong>Marker</strong> | Tag để selective test execution: <code>@pytest.mark.slow</code>, <code>@pytest.mark.integration</code> |<br/>| <strong><a href="http://conftest.py/">conftest.py</a></strong> | Local plugin file để share fixtures/hooks across test directory |<br/>| <strong>Monkeypatching</strong> | Patch attributes/classes tại runtime để isolate dependencies |<br/>| <strong>autospec</strong> | Tạo mock objects phải khớp signature thật, prevent stale interface bugs |<br/>| <strong>XFAIL/XPASS</strong> | Expected failure / Unexpected pass — quản lý known issues |<br/>| <strong>Editable Mode</strong> | <code>pip install -e .</code> để test code changes mà không cần reinstall package |<br/><br/>---<br/><br/>## ✨ Key Takeaways (Bài Cốt Lõi)<br/><br/>1.  <strong>pytest = Simplicity + Power:</strong> Bắt đầu với plain <code>assert</code>, scale lên enterprise với fixtures, plugins, parametrization.<br/>2.  <strong>Naming Conventions là bắt buộc:</strong> <code>test_*.py</code>, <code>test_*()</code>, <code>Test*</code> — không tuân thủ = test bị ignore silently.<br/>3.  <strong>Assert Rewriting là game-changer:</strong> Detailed failures mà không cần học framework-specific assertions.<br/>4.  <strong>API Layer là sweet spot:</strong> Test core logic ở API, tránh brittleness của UI tests.<br/>5.  <strong>Fixtures &gt; Setup Code:</strong> Reusable, composable, clean separation of concerns.<br/>6.  <strong>Mock với autospec:</strong> Prevent &quot;green tests that mask real bugs&quot; khi refactor.<br/>7.  <strong>CI Integration là bắt buộc:</strong> Dùng <code>tox</code>, <code>pytest-cov</code>, GitHub Actions để đảm bảo quality ở scale.<br/>8.  <strong>Joy of Testing là mục tiêu:</strong> Khi tool tốt, testing trở thành phần tự nhiên của creative flow, không phải chore.<br/><br/>---<br/><br/>## 🧭 Lời Khuyên Cho Developer &amp; Architect<br/><br/><code>Khi bắt đầu với pytest: ✅ Luôn dùng virtual environment (venv) để tránh dependency conflict ✅ Tuân thủ naming conventions ngay từ đầu — không &quot;để sau fix&quot; ✅ Ưu tiên test API layer trước, UI tests sau ✅ Dùng fixtures cho setup logic, không copy-paste trong mỗi test ✅ Mock external dependencies với autospec=True để prevent stale interface bugs ✅ Cấu hình pytest.ini hoặc pyproject.toml để unify flags across team ✅ Chạy pytest -v khi debug failure để xem detailed diff</code><br/><br/>&gt; 🎯 <em>Câu hỏi phản tư:</em><br/>&gt; Test suite hiện tại của bạn đang là <strong>tài sản</strong> giúp bạn ship code tự tin, hay là <strong>gánh nặng</strong> khiến bạn trì hoãn việc thêm test mới?<br/><br/>---<br/><br/>## 🔮 Kết Luận: Testing Là Đầu Tư, Không Phải Chi Phí<br/>&gt; <em>&quot;Teams need to be able to trust the tests being run by the continuous integration servers to tell them if they can trust their software enough to release it.&quot;</em><br/><br/>pytest không chỉ là một framework — nó là <strong>enabler</strong> cho một văn hóa engineering nơi:<br/>*   Developer tự tin refactor vì có test suite bảo vệ<br/>*   Team ship nhanh hơn vì feedback loop tight<br/>*   Product ổn định hơn vì bugs được catch sớm<br/><br/>&gt; 🚀 <em>Hãy bắt đầu hôm nay:</em> Tạo một file <code>test_example.py</code>, viết một test với plain <code>assert</code>, chạy <code>pytest -v</code>, và cảm nhận sự khác biệt. Một bước nhỏ có thể mở ra hành trình transform cách bạn xây dựng phần mềm.<br/><br/>---<br/><em>Chúc bạn tìm thấy &quot;niềm vui kiểm thử&quot; — nơi mỗi assert không phải là nghĩa vụ, mà là một lời cam kết với chất lượng và sự tự tin trong từng dòng code bạn viết.</em> 🐍🧪✨</td></tr></tbody></table></header><div class="page-body"></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

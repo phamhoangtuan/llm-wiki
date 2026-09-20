@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apache Iceberg — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-table-formats">Table Formats</a> <span class="sep">/</span>
+  <span>Apache Iceberg</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Apache Iceberg</h1>
+  <div class="page-meta"><span>Source: hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog, debunking-data-layout-myths-liquid-clustering, apache-iceberg-1.11.0-release</span><span>Updated: 2026-06-05</span></div>
+  <div class="page-tags"><span class="tag">table-formats</span><span class="tag">data-lake</span><span class="tag">iceberg</span><span class="tag">data-engineering</span><span class="tag">lakehouse</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Apache Iceberg</strong> is an open-source table format for large analytic datasets, designed to bring ACID transactions, schema evolution, and time travel to data lakes. As of the <strong>1.11.0 release (May 2026)</strong>, Iceberg has stabilized its V3 specification with deletion vectors, variant types, built-in encryption, and a pluggable file format API — marking its evolution from a foundational format to a full-featured lakehouse platform.</p>
+<h2 id="core-features">Core Features</h2>
+<ul>
+<li><strong>ACID transactions</strong> — serializable isolation for concurrent reads and writes</li>
+<li><strong>Schema evolution</strong> — add, drop, rename, reorder columns without rewriting data</li>
+<li><strong>Partition evolution</strong> — change partition scheme without rewriting existing data (unique among table formats)</li>
+<li><strong>Time travel</strong> — query data as it existed at any point in time</li>
+<li><strong>Hidden partitioning</strong> — partition values derived automatically; no need for users to specify partition columns in queries</li>
+<li><strong>Engine-agnostic</strong> — works with Spark, Flink, Trino, Presto, Hive, Impala, DuckDB</li>
+</ul>
+<h2 id="v3-specification-stabilized-in-1110">V3 Specification (Stabilized in 1.11.0)</h2>
+<p>The V3 spec focuses on optimized read paths, secured metadata, and complex data types:</p>
+<table><thead><tr>
+<th>Feature</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Deletion Vectors</strong></td>
+<td>Roaring bitmaps replace positional delete files; faster row-level deletes without new files per update</td>
+</tr>
+<tr>
+<td><strong>Variant type</strong></td>
+<td>Semi-structured JSON data with predicate pushdown; Trino maps native JSON → Iceberg Variant</td>
+</tr>
+<tr>
+<td><strong>Geospatial types</strong></td>
+<td>Bounding box types with intersects checking</td>
+</tr>
+<tr>
+<td><strong>Nanosecond timestamps</strong></td>
+<td>Precision beyond milliseconds (<code>TimestampNTZ</code>)</td>
+</tr>
+<tr>
+<td><strong>Manifest list encryption</strong></td>
+<td>GCM stream cipher on manifest lists; prevents metadata inference attacks</td>
+</tr>
+</tbody></table>
+<p>V3 requires explicit table upgrade from V2. Java 17 is the new minimum runtime (Java 11 dropped).</p>
+<h2 id="1110-major-new-capabilities">1.11.0 Major New Capabilities</h2>
+<h3 id="built-in-table-encryption">Built-in Table Encryption</h3>
+<p>Envelope encryption with three-tier key hierarchy:</p>
+<pre><code>KMS (Master Key, never touches storage)
+  └─ wraps → Key Encryption Keys (KEKs, stored in table metadata)
+       └─ wraps → Data Encryption Keys (DEKs, unique per file)</code></pre>
+<ul>
+<li><strong>Zero-trust storage</strong> — data unreadable even with direct bucket access</li>
+<li><strong>Total index protection</strong> — manifest lists encrypted too; statistics cannot be inferred</li>
+<li><strong>Tamper-proof</strong> — authentication tags on encrypted data</li>
+<li><strong>Auto key rotation</strong> — no data rewrite needed; satisfies compliance mandates</li>
+</ul>
+<p>KMS support: AWS KMS, Azure Key Vault, Google Cloud KMS.</p>
+<h3 id="pluggable-file-format-api">Pluggable File Format API</h3>
+<p>Decouples Iceberg metadata from physical storage layouts:</p>
+<ul>
+<li><strong>FormatModel</strong> — standardized interface for reader/writer per format (Parquet, ORC, Avro)</li>
+<li><strong>FormatModelRegistry</strong> — engines fetch builders from a central directory</li>
+<li>Enables third-party format plugins (Vortex, Lance) without core Iceberg changes</li>
+<li>Foundation for <strong>Column Families</strong> — vertical partitioning for isolated column rewrites</li>
+<li>Lays groundwork for <strong>V4 manifest specification</strong> — format-agnostic, scales to millions of files</li>
+</ul>
+<h3 id="server-side-scan-planning-rest-catalog">Server-Side Scan Planning (REST Catalog)</h3>
+<p>Shifts metadata traversal from engine to catalog:</p>
+<table><thead><tr>
+<th>Scan Size</th>
+<th>Mode</th>
+<th>Mechanism</th>
+</tr></thead><tbody>
+<tr>
+<td>Small</td>
+<td>Immediate</td>
+<td>Single <code>POST …/plan</code> → <code>FileScanTask</code> objects</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>Polling</td>
+<td><code>POST …/plan</code> → <code>plan-id</code> → poll for results</td>
+</tr>
+<tr>
+<td>Massive</td>
+<td>Parallel</td>
+<td><code>POST …/plan</code> → <code>plan-id</code> → <code>POST …/tasks</code> for parallel retrieval</td>
+</tr>
+</tbody></table>
+<p>Reduces client-side manifest list/manifest file traversal overhead significantly.</p>
+<h3 id="sql-udf-specification">SQL UDF Specification</h3>
+<ul>
+<li>Versioned JSON metadata files in object store</li>
+<li>Parameters map to Iceberg Type JSON (nested structs, maps, Variant)</li>
+<li>Atomic rollback to previous versions on buggy UDF deployments</li>
+<li>Engine-specific function implementations per UDF</li>
+</ul>
+<h2 id="engine-support-1110">Engine Support (1.11.0)</h2>
+<table><thead><tr>
+<th>Engine</th>
+<th>Status</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Spark 4.1</strong></td>
+<td>Default build target; <code>MERGE INTO</code> with <code>WITH SCHEMA EVOLUTION</code>; async micro-batch planner</td>
+</tr>
+<tr>
+<td><strong>Spark 4.0, 3.5, 3.4</strong></td>
+<td>Backports: <code>AvailableNow</code> trigger, partition stats</td>
+</tr>
+<tr>
+<td><strong>Flink 2.1</strong></td>
+<td>Default build target; DynamicIcebergSink, post-commit maintenance</td>
+</tr>
+<tr>
+<td><strong>Flink 1.20</strong></td>
+<td>Active support</td>
+</tr>
+<tr>
+<td><strong>Flink 1.19</strong></td>
+<td><strong>Deprecated</strong></td>
+</tr>
+<tr>
+<td><strong>Spark 3.4</strong></td>
+<td><strong>Deprecated</strong></td>
+</tr>
+</tbody></table>
+<h2 id="comparison-with-other-table-formats">Comparison with Other Table Formats</h2>
+<table><thead><tr>
+<th>Feature</th>
+<th>Iceberg</th>
+<th>Hive</th>
+<th>Delta Lake</th>
+<th>Hudi</th>
+</tr></thead><tbody>
+<tr>
+<td>ACID</td>
+<td>✅</td>
+<td>❌</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Schema evolution</td>
+<td>✅</td>
+<td>❌ (manual)</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Partition evolution</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Time travel</td>
+<td>✅</td>
+<td>❌ (manual snapshots)</td>
+<td>✅</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Hidden partitioning</td>
+<td>✅</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Table-level encryption</td>
+<td>✅ (1.11.0)</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Deletion Vectors</td>
+<td>✅ (V3)</td>
+<td>❌</td>
+<td>❌ (file rewriting)</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Pluggable file formats</td>
+<td>✅ (1.11.0)</td>
+<td>❌</td>
+<td>❌</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Engine support</td>
+<td>Broad (5+ engines)</td>
+<td>Broad</td>
+<td>Spark-primary</td>
+<td>Spark-primary</td>
+</tr>
+</tbody></table>
+<h2 id="hugo-use-case-grab">Hugo Use Case (Grab)</h2>
+<p>Hugo currently writes to Hive tables (with Spark compaction). Iceberg would address:</p>
+<ul>
+<li><strong>SLA improvements</strong> — ACID transactions prevent inconsistent reads during compaction</li>
+<li><strong>Cost reduction</strong> — hidden partitioning eliminates expensive full-table scans caused by incorrect partition filters</li>
+<li><strong>Schema evolution</strong> — current Hive schema changes require manual intervention; Iceberg supports online, non-blocking schema changes</li>
+</ul>
+<p>→ See <a href="data-ingestion.html" class="wiki-link">data-ingestion</a> for Hugo's current architecture and <a href="apache-flink.html" class="wiki-link">apache-flink</a> for Flink's Iceberg sink connector (including DynamicIcebergSink in 1.11.0).</p>
+<h2 id="liquid-clustering-support">Liquid Clustering Support</h2>
+<p>On Databricks, Iceberg tables in Unity Catalog support <strong><a href="liquid-clustering.html" class="wiki-link">Liquid Clustering</a></strong> — the same modern data layout available for Delta tables. Liquid Clustering is a write-side optimization that produces standard Parquet files with min/max statistics, so any Iceberg-compatible reader benefits from data skipping regardless of whether it runs on Databricks.</p>
+<h2 id="performance-1110">Performance (1.11.0)</h2>
+<ul>
+<li><strong>GCS Analytics Core</strong> — footer prefetching, vectored I/O, small-object caching for Google Cloud Storage</li>
+<li><strong>Deletion Vector pruning</strong> — manifest partition pruning during DV validation</li>
+<li><strong>Overwrite-aware table registration</strong> — idempotent catalog operations</li>
+<li><strong>Scheduled credential refresh</strong> — for S3FileIO and GCSFileIO, eliminating auth expiration failures in long-running jobs</li>
+<li><strong>Async micro-batch planner</strong> (Spark) — faster Structured Streaming execution</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="data-ingestion.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Data Ingestion</h4>
+      <p>Iceberg is the planned next-gen table format for Hugo's data lake</p>
+    </a>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Flink</h4>
+      <p>Flink 2.1 is the default build target; DynamicIcebergSink enables multi-table routing and auto-schema evolution</p>
+    </a>
+    <a class="connection-card" href="delta-lake.html">
+      <span class="connection-type related">Related</span>
+      <h4>Delta Lake</h4>
+      <p>both dominate the open table format landscape; Iceberg has partition evolution, built-in encryption (1.11.0), and broader engine support; Delta has deeper Databricks integration</p>
+    </a>
+    <a class="connection-card" href="liquid-clustering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Liquid Clustering</h4>
+      <p>modern data layout available for Iceberg tables on Databricks; write-side optimization</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Iceberg 1.11.0 Release</h4>
+      <p>1.11.0 release blog post with full feature list</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="apache-flink.html" class="prev">← Apache Flink</a><a href="apache-kafka.html" class="next">Apache Kafka →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>
