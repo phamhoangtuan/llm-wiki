@@ -3,8 +3,8 @@ title: "Metadata Management"
 type: concept
 tags: [data-management, metadata, dama]
 created: 2026-07-14
-updated: 2026-07-14
-sources: [dama-dmbok-2nd-edition]
+updated: 2026-09-20
+sources: [dama-dmbok-2nd-edition, the-data-lakehouse-inmon]
 ---
 
 # Metadata Management
@@ -32,6 +32,10 @@ Metadata Management is the connective tissue of the DAMA Wheel. Every other KA d
 
 Metadata is not optional documentation — it is the operating system of a data organization.
 
+## The Every-Step Lineage Rule (Inmon)
+
+Inmon's *The Data Lakehouse* hardens the requirement (source: [[sources/the-data-lakehouse-inmon]]): lineage documentation must cover **every single step** in the data's journey. Documenting only one or two steps is insufficient — end-to-end lineage is the trust layer that makes outputs verifiable, and a calculated value is meaningless without its context triad (what was calculated, what data was used, how it was computed). See [[data-lineage]].
+
 ---
 
 ## Connections
@@ -41,3 +45,4 @@ Metadata is not optional documentation — it is the operating system of a data 
 - [[data-modeling]] — Models produce metadata about data structure
 - [[semantic-layer]] — Unified context layer standardizing business metrics
 - [[data-observability]] — Making pipelines transparent through metadata
+- [[data-lineage]] — End-to-end lineage as the every-step traceability requirement

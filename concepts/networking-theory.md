@@ -3,8 +3,8 @@ title: "Networking Theory"
 type: concept
 tags: [career, networking, social-capital]
 created: 2026-07-14
-updated: 2026-07-14
-sources: [entrylevelboss]
+updated: 2026-09-20
+sources: [entrylevelboss, the-start-up-of-you-hoffman]
 ---
 
 # Networking Theory
@@ -45,6 +45,10 @@ The core tactical principle: remove all friction for the person being asked:
 | What can you do for me? | What can I learn from you? |
 | One-time transactions | Long-term connections |
 
+## Relationships, Not Networks (The Start-Up of You)
+
+Reid Hoffman extends the same divide into an investment model (source: [[sources/the-start-up-of-you-hoffman]]): **invest in relationships, not just networks** — prioritize *quality* connections, reciprocity, and proactive maintenance over raw contact counts. Relationships are the "raw material" of career pivots: Plan B transitions leverage existing relationships, and "seize risky, people-centric opportunities" means evaluating the *people*, not just the role. See [[abz-planning]].
+
 ---
 
 ## Connections
@@ -52,3 +56,4 @@ The core tactical principle: remove all friction for the person being asked:
 - [[job-search-strategy]] — Networking is the centerpiece of the four-phase framework
 - [[personal-branding]] — What people find when they look you up
 - [[technical-leadership]] — Influence through relationships, not authority
+- [[abz-planning]] — Relationships as the raw material for career pivots and Plan B

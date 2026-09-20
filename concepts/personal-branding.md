@@ -3,8 +3,8 @@ title: "Personal Branding"
 type: concept
 tags: [career, branding, professional-presence]
 created: 2026-07-14
-updated: 2026-07-14
-sources: [entrylevelboss]
+updated: 2026-09-20
+sources: [entrylevelboss, the-start-up-of-you-hoffman]
 ---
 
 # Personal Branding
@@ -42,6 +42,10 @@ Personal branding extends to behavior:
 - How you handle rejection and follow-up
 - The "dream employee" behaviors demonstrated before being hired (24-hour thank-you notes, prepared questions, follow-through)
 
+## Specialize to Differentiate (The Start-Up of You)
+
+Hoffman adds a strategic core (source: [[sources/the-start-up-of-you-hoffman]]): the strongest brand is built on **specialization** — "specialize, don't generalize" — and on positioning where your **existing assets outperform others** (competitive advantage). A coherent brand narrative is the public face of that advantage; see also [[abz-planning]] for aligning assets, aspirations, and market realities.
+
 ---
 
 ## Connections
@@ -50,3 +54,4 @@ Personal branding extends to behavior:
 - [[networking-theory]] — Your brand is what contacts find when they look you up
 - [[software-professionalism]] — Professional conduct is a form of branding
 - [[technical-interview]] — Interview performance must match the brand narrative
+- [[abz-planning]] — Specialize and position where your assets outperform others

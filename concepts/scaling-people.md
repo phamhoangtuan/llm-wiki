@@ -3,8 +3,8 @@ title: "Scaling People"
 type: concept
 tags: [management, scaling, hiring, team-development, feedback, operating-system]
 created: 2026-08-24
-updated: 2026-08-24
-sources: [scaling-people-hughes-johnson]
+updated: 2026-09-20
+sources: [scaling-people-hughes-johnson, the-coaching-habit-stanier, what-got-you-here-goldsmith]
 aliases: [Scaling People Tactics, Hughes Johnson Frameworks]
 ---
 
@@ -66,3 +66,6 @@ aliases: [Scaling People Tactics, Hughes Johnson Frameworks]
 - Benchmark source: [[sources/scaling-people-hughes-johnson]] — Hughes Johnson's tactical scaling guide
 - Benchmark source: [[sources/high-output-management-grove]] — Grove's foundational management framework
 - Benchmark source: [[sources/engineering-management-drasner]] — Drasner's pragmatic EM guide
+- Related to [[coaching]] — hypothesis-based coaching runs on Stanier's question habit
+- Related to [[behavioral-habits]] — "say the thing you think you cannot say" is Goldsmith's honesty habit
+- Related to [[the-making-of-a-manager-zhuo|The Making of a Manager]] — Zhuo's skill vs. motivation diagnosis matches the skill-will matrix

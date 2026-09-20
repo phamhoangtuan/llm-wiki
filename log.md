@@ -4,6 +4,31 @@
 
 ---
 
+## [2026-09-20] lint | Post-ingest health check + link fix pass
+
+- Scanned 369 pages (261 concepts + 108 sources) across broken wikilinks, HTML hrefs, orphans, frontmatter, gaps
+- Broken wikilinks: 0 — all [[links]] in concepts/sources resolve correctly
+- Broken HTML hrefs: 35 → 0 — fixed convert-to-html.py `build_connections_section` to strip aliases (`[[slug|Label]]`) from connection-card targets, which had produced `slug|Label.html` hrefs on 22 concept pages
+- Fixed concepts/data-lineage.md frontmatter: removed `data-governance` from `sources:` (it is a concept, not a source)
+- Orphans: 0 — every page has an inbound link or frontmatter backlink
+- Frontmatter: all 369 pages complete; gaps: 0
+- Contradictions: 0 — Zhuo/skill-will (engineering-management ↔ scaling-people) and Inmon lineage/context (data-lineage ↔ data-lakehouse ↔ metadata-management ↔ data-governance) cross-checked consistent
+- Index: 369 pages (261 concepts + 108 sources) — consistent with disk
+- HTML regenerated via convert-to-html.py
+
+## [2026-09-20] ingest | The Making of a Manager + Fearless Salary Negotiation + The Coaching Habit + The Data Lakehouse + The Start-Up of You + What Got You Here Won't Get You There
+
+- Created sources/the-making-of-a-manager-zhuo.md — Zhuo's 285-page Vietnamese-edition guide, 8 core management principles
+- Created sources/fearless-salary-negotiation-doody.md — Doody's 286-page salary negotiation playbook
+- Created sources/the-coaching-habit-stanier.md — Stanier's 185-page question-based coaching toolkit
+- Created sources/the-data-lakehouse-inmon.md — Inmon/Srivastava/Levins' 256-page lakehouse guide: text storage, data-type suitability, calculated-value context, full lineage
+- Created sources/the-start-up-of-you-hoffman.md — Hoffman's 312-page career-as-start-up guide: permanent beta, ABZ planning
+- Created sources/what-got-you-here-goldsmith.md — Goldsmith & Reiter's 379-page 9-step behavioral improvement guide
+- New concepts: salary-negotiation, coaching, data-lineage, abz-planning, behavioral-habits
+- Updated concepts: engineering-management, feedback, mentoring, technical-leadership, data-lakehouse, metadata-management, data-governance, job-search-strategy, networking-theory, personal-branding, t-shaped-skills, high-output-management, scaling-people
+- Updated index.md: +5 concepts, +6 sources, 369 total pages (261 concepts + 108 sources)
+- HTML regenerated via convert-to-html.py
+
 ## [2026-08-24] ingest | Beyond Vibe Coding + DE Design Patterns + DQ Engineering + High Output Management + Scaling People
 
 - Created sources/beyond-vibe-coding-osmani.md — Osmani's 387-page guide: 5 disciplines for professional AI-assisted coding

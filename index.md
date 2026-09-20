@@ -263,6 +263,11 @@
 - [Data Quality Engineering](concepts/data-quality-engineering.html) — Manufacturing-lens data quality: DQS contracts, template libraries, scorecards, operational cost model
 - [High Output Management](concepts/high-output-management.html) — Grove's framework: leverage, TRM, meetings, bottleneck-focused management, factory discipline
 - [Scaling People](concepts/scaling-people.html) — Hughes Johnson's 4 core frameworks: planning, hiring, team development, feedback/performance
+- [Salary Negotiation](concepts/salary-negotiation.html) — Market-value research, walk-away number, counter-offer strategy; the offer stage of the job search
+- [Coaching](concepts/coaching.html) — Question-based development: "What's on your mind?", "And what else?"; the manager as coach
+- [Data Lineage](concepts/data-lineage.html) — End-to-end traceability of data's journey; the every-step rule and context for calculated values
+- [ABZ Planning](concepts/abz-planning.html) — Hoffman's career-as-start-up: Plan A experiments, adjacent Plan B pivots, Plan Z safety net
+- [Behavioral Habits](concepts/behavioral-habits.html) — Goldsmith's 9-step behavioral improvement: communication, accountability, emotional mastery
 
 ## Sources
 
@@ -368,6 +373,12 @@
 - [Data Quality Engineering in Financial Services — Brian Buzzelli](sources/data-quality-engineering-financial-services-buzzelli.md) — 177-page guide: manufacturing mindset, DQS contracts, scorecards, governance, MDM
 - [High Output Management — Andrew S. Grove](sources/high-output-management-grove.md) — 400-page classic: leverage, TRM, meetings, factory discipline, peak performance
 - [Scaling People — Claire Hughes Johnson](sources/scaling-people-hughes-johnson.md) — 825-page tactical guide: 4 operating principles, 4 core frameworks, hypothesis-based coaching
+- [Bí quyết trở thành nhà quản lý tài ba (The Making of a Manager) — Julie Zhuo](sources/the-making-of-a-manager-zhuo.md) — 285-page Vietnamese-edition guide: 8 core management principles for teams
+- [Fearless Salary Negotiation — Josh Doody](sources/fearless-salary-negotiation-doody.md) — 286-page step-by-step guide: market value, walk-away number, counter-offer, raises & promotions
+- [The Coaching Habit — Michael Bungay Stanier](sources/the-coaching-habit-stanier.md) — 185-page question toolkit: "What" questions for curious, advice-free management
+- [The Data Lakehouse — Bill Inmon, Ranjeet Srivastava & Mary Levins](sources/the-data-lakehouse-inmon.md) — 256-page guide: text storage, data-type suitability, calculated-value context, full lineage
+- [The Start-Up of You — Reid Hoffman](sources/the-start-up-of-you-hoffman.md) — 312-page career-as-start-up guide: permanent beta, ABZ planning, relationships
+- [What Got You Here Won't Get You There — Marshall Goldsmith & Mark Reiter](sources/what-got-you-here-goldsmith.md) — 379-page 9-step behavioral improvement guide for successful people
 
 ## Syntheses
 
@@ -375,5 +386,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-_Last updated: 2026-08-24_
-_Pages: 358 (256 concepts + 102 sources)_
+_Last updated: 2026-09-20_
+_Pages: 369 (261 concepts + 108 sources)_

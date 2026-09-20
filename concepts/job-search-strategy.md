@@ -3,8 +3,8 @@ title: "Job Search Strategy"
 type: concept
 tags: [career, job-search, networking]
 created: 2026-07-14
-updated: 2026-07-14
-sources: [entrylevelboss]
+updated: 2026-09-20
+sources: [entrylevelboss, fearless-salary-negotiation-doody, the-start-up-of-you-hoffman]
 ---
 
 # Job Search Strategy
@@ -42,6 +42,10 @@ The system emphasizes that rejection at any stage is normal — the math works i
 
 Remove all friction for contacts: provide specific time slots, travel to their location, make the ask small and clear. The easier you make it to help, the more likely they will.
 
+## From Offer to Negotiation
+
+The funnel ends where Doody's playbook begins (source: [[sources/fearless-salary-negotiation-doody]]): once an offer arrives, [[salary-negotiation]] takes over — research market value, set a walk-away number, counter 10–20% above the offer, and negotiate base salary with non-confrontational, value-focused language. Hoffman's framing (source: [[sources/the-start-up-of-you-hoffman]]) keeps the search strategic over time: treat yourself as a company in permanent beta, run experiments, and let [[abz-planning]]'s Plan Z remove the fear that distorts negotiation.
+
 ---
 
 ## Connections
@@ -50,3 +54,5 @@ Remove all friction for contacts: provide specific time slots, travel to their l
 - [[personal-branding]] — CV, LinkedIn, and professional presence
 - [[t-shaped-skills]] — Skill hacking to close gaps
 - [[directness]] — Learning by doing the exact target skill
+- [[salary-negotiation]] — The offer/negotiation stage after outreach and interviews
+- [[abz-planning]] — Career-as-company strategy and Plan Z safety net

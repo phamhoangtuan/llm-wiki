@@ -3,8 +3,8 @@ title: "High Output Management"
 type: concept
 tags: [management, leadership, leverage, organizational-design, motivation, meetings]
 created: 2026-08-24
-updated: 2026-08-24
-sources: [high-output-management-grove]
+updated: 2026-09-20
+sources: [high-output-management-grove, the-coaching-habit-stanier]
 aliases: [HOM, Grove Management, Task-Relevant Maturity]
 ---
 
@@ -78,3 +78,5 @@ This reframes management from personal productivity to organizational leverage �
 - Benchmark source: [[sources/high-output-management-grove]] — Grove's classic Intel-era management guide
 - Benchmark source: [[sources/engineering-management-drasner]] — Drasner's modern EM guide
 - Benchmark source: [[sources/scaling-people-hughes-johnson]] — Hughes Johnson's tactical scaling guide
+- Related to [[coaching]] — the one-on-one "one more question!" technique is question-based coaching
+- Related to [[engineering-management]] — Zhuo's eight principles operationalize Grove's people management

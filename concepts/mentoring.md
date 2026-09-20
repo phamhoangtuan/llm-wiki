@@ -3,8 +3,8 @@ title: "Mentoring"
 type: concept
 tags: [career, craftsmanship, software-engineering]
 created: 2026-07-14
-updated: 2026-07-14
-sources: [the-clean-coder]
+updated: 2026-09-20
+sources: [the-clean-coder, the-coaching-habit-stanier, the-making-of-a-manager-zhuo]
 ---
 
 # Mentoring
@@ -51,3 +51,6 @@ The book frames mentoring not as optional generosity but as a professional oblig
 - [[t-shaped-skills]] — Mentoring develops breadth beyond deep expertise
 - [[code-readability]] — Writing code that juniors can understand
 - [[feedback]] — Mentoring is corrective feedback at the career scale
+- [[coaching]] — Modern mentoring questions rather than dictates: build the answer, then share experience
+- [[engineering-management]] — Mentoring is the management duty of developing people
+- [[the-making-of-a-manager-zhuo|The Making of a Manager]] — Developing people by letting them solve problems themselves

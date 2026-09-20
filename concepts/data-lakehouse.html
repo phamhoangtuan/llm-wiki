@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Lakehouse</h1>
-  <div class="page-meta"><span>Source: databricks-dea-study-guide, big-book-data-engineering</span><span>Updated: 2026-06-23</span></div>
+  <div class="page-meta"><span>Source: databricks-dea-study-guide, big-book-data-engineering, the-data-lakehouse-inmon</span><span>Updated: 2026-09-20</span></div>
   <div class="page-tags"><span class="tag">databricks</span><span class="tag">data-engineering</span><span class="tag">architecture</span><span class="tag">lakehouse</span></div>
 </div>
 <div class="content-area concept">
@@ -109,6 +109,14 @@
 <li><strong>Governance</strong>: <a href="unity-catalog.html" class="wiki-link">unity-catalog</a> — centralized security and access control</li>
 <li><strong>Abstraction</strong>: <a href="dbfs.html" class="wiki-link">dbfs</a> — cloud storage feels like a local filesystem</li>
 </ul>
+<h2 id="data-types-in-the-lakehouse-inmon">Data Types in the Lakehouse (Inmon)</h2>
+<p>Inmon's treatment (source: <span class="wiki-link source-ref">sources/the-data-lakehouse-inmon</span>) adds practical storage guidance:</p>
+<ul>
+<li><strong>Avoid storing raw text</strong> in the lakehouse unless explicitly required — prefer structured database storage so text can be analyzed with standard analytical tools</li>
+<li><strong>Structured data</strong> is best for known, predefined queries; <strong>other unstructured data</strong> is best for exploratory, unknown queries; <strong>textual data</strong> uniquely supports <em>both</em> known and unknown analytics</li>
+<li><strong>Calculated values need context</strong>: a final value is meaningless without knowing <em>what</em> was calculated (the definition), <em>what data</em> was used (the inputs), and <em>how</em> it was computed (the method) — see <a href="semantic-layer.html" class="wiki-link">semantic-layer</a> and <a href="data-lineage.html" class="wiki-link">data-lineage</a></li>
+<li><strong>Comprehensive lineage</strong> is mandatory: documentation must cover <em>every step</em> of the data's journey, not just one or two — see <a href="data-lineage.html" class="wiki-link">data-lineage</a></li>
+</ul>
 <blockquote>A lakehouse represents a smart, adaptable library that combines the best of both worlds.</blockquote>
 </div>
 <section class="connections-section">
@@ -148,6 +156,16 @@
       <span class="connection-type related">Related to</span>
       <h4>Snowflake Data Cloud</h4>
       <p>Snowflake is a proprietary lakehouse platform with separated storage/compute</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>The Data Lakehouse — Bill Inmon, Ranjeet Srivastava & Mary Levins</h4>
+      <p>data-type suitability, text storage, calculated-value context, full lineage</p>
+    </div>
+    <a class="connection-card" href="data-lineage.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Lineage</h4>
+      <p>every-step lineage as a lakehouse trust requirement</p>
     </a>
   </div>
 </section>

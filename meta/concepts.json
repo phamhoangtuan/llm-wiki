@@ -1,5 +1,18 @@
 {
   "concepts": {
+    "abz-planning": {
+      "title": "ABZ Planning",
+      "category": "Career & Growth",
+      "url": "concepts/abz-planning.html",
+      "definition": "**ABZ Planning** is Reid Hoffman's career-strategy framework from *The Start-Up of You*: treat your career like a start-up in \"permanent beta,\" run concrete experiments, pivot when reality demands it,",
+      "tags": [
+        "career",
+        "planning",
+        "networking",
+        "personal-development",
+        "strategy"
+      ]
+    },
     "agent-components": {
       "title": "Agent Components",
       "category": "AI & Agents",
@@ -390,6 +403,19 @@
         "traditional"
       ]
     },
+    "behavioral-habits": {
+      "title": "Behavioral Habits",
+      "category": "Career & Growth",
+      "url": "concepts/behavioral-habits.html",
+      "definition": "**Behavioral Habits** — from Marshall Goldsmith's *What Got You Here Won't Get You There* — are the interpersonal behaviors that either accelerate or derail a successful person's further rise. The boo",
+      "tags": [
+        "leadership",
+        "behavior",
+        "communication",
+        "feedback",
+        "emotional-intelligence"
+      ]
+    },
     "big-o-notation": {
       "title": "Big O Notation",
       "category": "Career & Growth",
@@ -539,6 +565,19 @@
         "cloud",
         "infrastructure",
         "system-design"
+      ]
+    },
+    "coaching": {
+      "title": "Coaching",
+      "category": "Meta",
+      "url": "concepts/coaching.html",
+      "definition": "**Coaching** is the practice of developing people by asking questions instead of giving answers — staying curious so the other person owns both the problem and the solution. Michael Bungay Stanier's *",
+      "tags": [
+        "coaching",
+        "management",
+        "communication",
+        "feedback",
+        "questions"
       ]
     },
     "code-archaeology": {
@@ -803,6 +842,19 @@
         "data-lifecycle",
         "governance",
         "infrastructure"
+      ]
+    },
+    "data-lineage": {
+      "title": "Data Lineage",
+      "category": "Data Engineering",
+      "url": "concepts/data-lineage.html",
+      "definition": "**Data Lineage** is the documentation of where data came from and how it was transformed at every step of its journey — the traceability that makes analytical outputs trustworthy. Inmon's *The Data La",
+      "tags": [
+        "data-engineering",
+        "metadata",
+        "governance",
+        "lineage",
+        "data-quality"
       ]
     },
     "data-mesh": {
@@ -2541,6 +2593,18 @@
         "transactions",
         "microservices",
         "patterns"
+      ]
+    },
+    "salary-negotiation": {
+      "title": "Salary Negotiation",
+      "category": "Career & Growth",
+      "url": "concepts/salary-negotiation.html",
+      "definition": "**Salary Negotiation** is the preparation-heavy discipline of getting paid what you're worth — estimating your market value, setting a walk-away number, navigating the offer conversation, and justifyi",
+      "tags": [
+        "career",
+        "negotiation",
+        "compensation",
+        "interviewing"
       ]
     },
     "saying-no": {

@@ -1,4 +1,56 @@
 {
+  "sources/the-start-up-of-you-hoffman": [
+    "abz-planning",
+    "abz-planning",
+    "job-search-strategy",
+    "networking-theory",
+    "personal-branding"
+  ],
+  "networking-theory": [
+    "abz-planning",
+    "job-search-strategy",
+    "personal-branding",
+    "the-start-up-of-you-hoffman",
+    "the-start-up-of-you-hoffman"
+  ],
+  "job-search-strategy": [
+    "abz-planning",
+    "networking-theory",
+    "personal-branding",
+    "salary-negotiation",
+    "fearless-salary-negotiation-doody",
+    "fearless-salary-negotiation-doody",
+    "the-start-up-of-you-hoffman",
+    "the-start-up-of-you-hoffman"
+  ],
+  "personal-branding": [
+    "abz-planning",
+    "golden-circle",
+    "job-search-strategy",
+    "networking-theory",
+    "salary-negotiation",
+    "fearless-salary-negotiation-doody",
+    "fearless-salary-negotiation-doody",
+    "start-with-why-sinek",
+    "the-start-up-of-you-hoffman",
+    "the-start-up-of-you-hoffman"
+  ],
+  "t-shaped-skills": [
+    "abz-planning",
+    "dataops",
+    "dataops",
+    "job-search-strategy",
+    "mentoring",
+    "the-start-up-of-you-hoffman",
+    "the-start-up-of-you-hoffman"
+  ],
+  "salary-negotiation": [
+    "abz-planning",
+    "job-search-strategy",
+    "job-search-strategy",
+    "fearless-salary-negotiation-doody",
+    "the-start-up-of-you-hoffman"
+  ],
   "agent-loop": [
     "agent-components",
     "agent-components",
@@ -579,6 +631,7 @@
     "data-architecture",
     "data-lifecycle",
     "data-lifecycle",
+    "data-lineage",
     "data-modeling",
     "data-observability",
     "data-product",
@@ -602,11 +655,16 @@
     "fundamentals-of-data-observability",
     "how-ai-changes-4-core-data-roles",
     "how-ai-changes-4-core-data-roles",
-    "snowflake-the-definitive-guide"
+    "snowflake-the-definitive-guide",
+    "the-data-lakehouse-inmon",
+    "the-data-lakehouse-inmon"
   ],
   "semantic-layer": [
     "analytics-engineer",
     "data-engineer",
+    "data-lakehouse",
+    "data-lineage",
+    "data-lineage",
     "data-product",
     "metadata-management",
     "reranking",
@@ -615,7 +673,9 @@
     "self-service-analytics",
     "how-ai-changes-4-core-data-roles",
     "how-ai-changes-4-core-data-roles",
-    "semantic-layers-for-ai"
+    "semantic-layers-for-ai",
+    "the-data-lakehouse-inmon",
+    "the-data-lakehouse-inmon"
   ],
   "data-analyst": [
     "analytics-engineer",
@@ -1197,6 +1257,7 @@
   ],
   "data-lakehouse": [
     "apache-spark",
+    "data-lineage",
     "data-warehousing",
     "databricks-platform",
     "dbfs",
@@ -1210,7 +1271,9 @@
     "big-book-data-engineering",
     "building-real-time-analytics-systems",
     "databricks-dea-study-guide",
-    "snowflake-the-definitive-guide"
+    "snowflake-the-definitive-guide",
+    "the-data-lakehouse-inmon",
+    "the-data-lakehouse-inmon"
   ],
   "functional-programming": [
     "apache-spark",
@@ -1448,6 +1511,106 @@
     "data-engineer",
     "data-engineering-with-python"
   ],
+  "sources/what-got-you-here-goldsmith": [
+    "behavioral-habits",
+    "behavioral-habits",
+    "engineering-management",
+    "engineering-management",
+    "feedback"
+  ],
+  "engineering-management": [
+    "behavioral-habits",
+    "behavioral-habits",
+    "coaching",
+    "feedback",
+    "golden-circle",
+    "high-output-management",
+    "high-output-management",
+    "mentoring",
+    "scaling-people",
+    "technical-debt-management",
+    "technical-leadership",
+    "an-elegant-puzzle",
+    "engineering-management-drasner",
+    "engineering-management-drasner",
+    "high-output-management-grove",
+    "scaling-people-hughes-johnson",
+    "start-with-why-sinek",
+    "the-coaching-habit-stanier",
+    "the-coaching-habit-stanier",
+    "the-making-of-a-manager-zhuo",
+    "the-making-of-a-manager-zhuo",
+    "what-got-you-here-goldsmith",
+    "what-got-you-here-goldsmith",
+    "what-got-you-here-goldsmith"
+  ],
+  "coaching": [
+    "behavioral-habits",
+    "behavioral-habits",
+    "feedback",
+    "feedback",
+    "high-output-management",
+    "mentoring",
+    "scaling-people",
+    "technical-leadership",
+    "the-coaching-habit-stanier",
+    "the-making-of-a-manager-zhuo",
+    "the-making-of-a-manager-zhuo",
+    "what-got-you-here-goldsmith",
+    "what-got-you-here-goldsmith"
+  ],
+  "feedback": [
+    "behavioral-habits",
+    "coaching",
+    "engineering-management",
+    "engineering-management",
+    "high-output-management",
+    "mentoring",
+    "metalearning",
+    "saying-no",
+    "scaling-people",
+    "spaced-repetition",
+    "testing-effect",
+    "ultralearning",
+    "engineering-management-drasner",
+    "engineering-management-drasner",
+    "high-output-management-grove",
+    "scaling-people-hughes-johnson",
+    "the-coaching-habit-stanier",
+    "the-coaching-habit-stanier",
+    "the-making-of-a-manager-zhuo",
+    "the-making-of-a-manager-zhuo",
+    "what-got-you-here-goldsmith",
+    "what-got-you-here-goldsmith"
+  ],
+  "technical-leadership": [
+    "behavioral-habits",
+    "engineering-management",
+    "engineering-management",
+    "golden-circle",
+    "mentoring",
+    "networking-theory",
+    "saying-no",
+    "staff-engineering",
+    "staff-plus-archetypes",
+    "engineering-management-drasner",
+    "start-with-why-sinek",
+    "the-making-of-a-manager-zhuo",
+    "the-making-of-a-manager-zhuo",
+    "what-got-you-here-goldsmith",
+    "what-got-you-here-goldsmith"
+  ],
+  "scaling-people": [
+    "behavioral-habits",
+    "coaching",
+    "feedback",
+    "high-output-management",
+    "scaling-people-hughes-johnson",
+    "the-coaching-habit-stanier",
+    "the-making-of-a-manager-zhuo",
+    "the-making-of-a-manager-zhuo",
+    "what-got-you-here-goldsmith"
+  ],
   "algorithm-analysis": [
     "big-o-notation",
     "time-space-tradeoff"
@@ -1601,10 +1764,13 @@
   "technical-interview": [
     "case-interview",
     "personal-branding",
+    "salary-negotiation",
     "staff-engineering",
     "system-design-interview",
     "cracking-the-coding-interview",
-    "de-coding-technical-interview"
+    "de-coding-technical-interview",
+    "fearless-salary-negotiation-doody",
+    "fearless-salary-negotiation-doody"
   ],
   "sources/the-1-percent-case-interview": [
     "case-interview"
@@ -1671,6 +1837,45 @@
     "microservices",
     "microservices",
     "the-accidental-cto"
+  ],
+  "sources/the-coaching-habit-stanier": [
+    "coaching",
+    "coaching",
+    "engineering-management",
+    "engineering-management"
+  ],
+  "mentoring": [
+    "coaching",
+    "engineering-management",
+    "flow-zone-critique",
+    "high-output-management",
+    "scaling-people",
+    "software-professionalism",
+    "clean-code-martin",
+    "engineering-management-drasner",
+    "high-output-management-grove",
+    "the-coaching-habit-stanier",
+    "the-coaching-habit-stanier",
+    "the-making-of-a-manager-zhuo",
+    "the-making-of-a-manager-zhuo"
+  ],
+  "high-output-management": [
+    "coaching",
+    "feedback",
+    "scaling-people",
+    "high-output-management-grove",
+    "scaling-people-hughes-johnson",
+    "the-coaching-habit-stanier",
+    "the-coaching-habit-stanier",
+    "the-making-of-a-manager-zhuo",
+    "the-making-of-a-manager-zhuo"
+  ],
+  "behavioral-habits": [
+    "coaching",
+    "feedback",
+    "scaling-people",
+    "technical-leadership",
+    "what-got-you-here-goldsmith"
   ],
   "essential-accidental-complexity": [
     "code-archaeology",
@@ -2028,6 +2233,24 @@
     "data-governance",
     "data-lifecycle"
   ],
+  "sources/the-data-lakehouse-inmon": [
+    "data-governance",
+    "data-governance",
+    "data-lakehouse",
+    "data-lineage",
+    "data-lineage",
+    "metadata-management"
+  ],
+  "data-lineage": [
+    "data-governance",
+    "data-lakehouse",
+    "data-lakehouse",
+    "data-lakehouse",
+    "metadata-management",
+    "metadata-management",
+    "the-data-lakehouse-inmon",
+    "the-data-lakehouse-inmon"
+  ],
   "unity-catalog": [
     "data-governance",
     "data-lakehouse",
@@ -2086,6 +2309,34 @@
     "data-warehousing",
     "snowflake-the-definitive-guide"
   ],
+  "the-data-lakehouse-inmon": [
+    "data-lakehouse"
+  ],
+  "metadata-management": [
+    "data-lineage",
+    "document-content-management",
+    "master-data-management",
+    "the-data-lakehouse-inmon",
+    "the-data-lakehouse-inmon"
+  ],
+  "data-quality-engineering": [
+    "data-lineage",
+    "data-quality-monitoring",
+    "fail-fast",
+    "master-data-management",
+    "data-quality-engineering-financial-services-buzzelli",
+    "the-data-lakehouse-inmon"
+  ],
+  "data-observability": [
+    "data-lineage",
+    "data-quality-engineering",
+    "dataops",
+    "metadata-management",
+    "observability",
+    "data-engineering-design-patterns-konieczny",
+    "fundamentals-of-data-observability",
+    "fundamentals-of-data-observability"
+  ],
   "data-product": [
     "data-mesh",
     "dataops",
@@ -2114,24 +2365,9 @@
     "data-quality-engineering",
     "data-quality-engineering-financial-services-buzzelli"
   ],
-  "data-observability": [
-    "data-quality-engineering",
-    "dataops",
-    "metadata-management",
-    "observability",
-    "data-engineering-design-patterns-konieczny",
-    "fundamentals-of-data-observability",
-    "fundamentals-of-data-observability"
-  ],
   "sources/data-quality-traffic-lights-sahlin": [
     "data-quality-engineering",
     "data-quality-monitoring",
-    "data-quality-engineering-financial-services-buzzelli"
-  ],
-  "data-quality-engineering": [
-    "data-quality-monitoring",
-    "fail-fast",
-    "master-data-management",
     "data-quality-engineering-financial-services-buzzelli"
   ],
   "password-storage": [
@@ -2189,12 +2425,6 @@
   ],
   "sources/system-design-interview-xu": [
     "database-sharding"
-  ],
-  "t-shaped-skills": [
-    "dataops",
-    "dataops",
-    "job-search-strategy",
-    "mentoring"
   ],
   "sources/data-engineering-with-dbt": [
     "dataops"
@@ -2317,10 +2547,6 @@
   "data-storage-operations": [
     "document-content-management"
   ],
-  "metadata-management": [
-    "document-content-management",
-    "master-data-management"
-  ],
   "software-as-simulation": [
     "domain-driven-design",
     "mapper-principles",
@@ -2362,18 +2588,6 @@
     "sustainable-ai",
     "building-llms-for-production"
   ],
-  "technical-leadership": [
-    "engineering-management",
-    "engineering-management",
-    "golden-circle",
-    "mentoring",
-    "networking-theory",
-    "saying-no",
-    "staff-engineering",
-    "staff-plus-archetypes",
-    "engineering-management-drasner",
-    "start-with-why-sinek"
-  ],
   "sources/engineering-management-drasner": [
     "engineering-management",
     "engineering-management",
@@ -2391,33 +2605,14 @@
     "high-output-management-grove",
     "scaling-people-hughes-johnson",
     "start-with-why-sinek",
-    "start-with-why-sinek"
+    "start-with-why-sinek",
+    "the-making-of-a-manager-zhuo",
+    "the-making-of-a-manager-zhuo"
   ],
-  "feedback": [
+  "sources/the-making-of-a-manager-zhuo": [
     "engineering-management",
     "engineering-management",
-    "high-output-management",
-    "mentoring",
-    "metalearning",
-    "saying-no",
-    "scaling-people",
-    "spaced-repetition",
-    "testing-effect",
-    "ultralearning",
-    "engineering-management-drasner",
-    "engineering-management-drasner",
-    "high-output-management-grove",
-    "scaling-people-hughes-johnson"
-  ],
-  "mentoring": [
-    "engineering-management",
-    "flow-zone-critique",
-    "high-output-management",
-    "scaling-people",
-    "software-professionalism",
-    "clean-code-martin",
-    "engineering-management-drasner",
-    "high-output-management-grove"
+    "feedback"
   ],
   "saying-no": [
     "engineering-management",
@@ -2489,30 +2684,11 @@
     "ultralearning",
     "ultralearning-scott-young"
   ],
-  "high-output-management": [
+  "the-making-of-a-manager-zhuo": [
     "feedback",
+    "mentoring",
     "scaling-people",
-    "high-output-management-grove",
-    "scaling-people-hughes-johnson"
-  ],
-  "scaling-people": [
-    "feedback",
-    "high-output-management",
-    "scaling-people-hughes-johnson"
-  ],
-  "engineering-management": [
-    "feedback",
-    "golden-circle",
-    "high-output-management",
-    "scaling-people",
-    "technical-debt-management",
-    "technical-leadership",
-    "an-elegant-puzzle",
-    "engineering-management-drasner",
-    "engineering-management-drasner",
-    "high-output-management-grove",
-    "scaling-people-hughes-johnson",
-    "start-with-why-sinek"
+    "technical-leadership"
   ],
   "lora": [
     "fine-tuning",
@@ -2653,12 +2829,6 @@
     "golden-circle",
     "golden-circle"
   ],
-  "personal-branding": [
-    "golden-circle",
-    "job-search-strategy",
-    "networking-theory",
-    "start-with-why-sinek"
-  ],
   "metric-fixation": [
     "goodharts-law",
     "goodharts-law"
@@ -2694,9 +2864,23 @@
     "python-repl",
     "pythonic-code"
   ],
-  "networking-theory": [
+  "sources/fearless-salary-negotiation-doody": [
     "job-search-strategy",
-    "personal-branding"
+    "salary-negotiation",
+    "salary-negotiation"
+  ],
+  "abz-planning": [
+    "job-search-strategy",
+    "job-search-strategy",
+    "networking-theory",
+    "networking-theory",
+    "personal-branding",
+    "personal-branding",
+    "salary-negotiation",
+    "t-shaped-skills",
+    "fearless-salary-negotiation-doody",
+    "the-start-up-of-you-hoffman",
+    "the-start-up-of-you-hoffman"
   ],
   "entity-resolution": [
     "knowledge-graph",
@@ -2782,10 +2966,6 @@
     "nash-equilibrium",
     "nash-equilibrium",
     "game-theory-bonanno"
-  ],
-  "job-search-strategy": [
-    "networking-theory",
-    "personal-branding"
   ],
   "sources/practical-object-oriented-design": [
     "object-oriented-design"
@@ -2981,6 +3161,9 @@
   ],
   "sources/dama-dmbok-2nd-edition": [
     "data-quality-engineering-financial-services-buzzelli"
+  ],
+  "the-start-up-of-you-hoffman": [
+    "fearless-salary-negotiation-doody"
   ],
   "ai-psychosis": [
     "meta-destroying-engineering-org-orosz"

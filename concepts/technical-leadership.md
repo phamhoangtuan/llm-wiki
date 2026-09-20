@@ -3,8 +3,8 @@ title: "Technical Leadership"
 type: concept
 tags: [career, leadership, staff-engineering, influence]
 created: 2026-07-13
-updated: 2026-07-13
-sources: [staff-engineers-path]
+updated: 2026-09-20
+sources: [staff-engineers-path, what-got-you-here-goldsmith, the-making-of-a-manager-zhuo]
 aliases: [tech-leadership, leadership-without-authority]
 ---
 
@@ -56,3 +56,6 @@ This might mean writing a three-year strategy, aligning five teams on shared arc
 - Connected to [[information-hiding]] — good technical leaders hide complexity and expose clear interfaces, at organizational scale
 - Benchmark source: [[sources/staff-engineers-path]] — Reilly's guide defines the technical leadership track
 - Related to [[engineering-management]] — the people-management counterpart to influence-without-authority leadership
+- Related to [[behavioral-habits]] — Goldsmith's self-control and accountability habits for senior leaders
+- Related to [[the-making-of-a-manager-zhuo|The Making of a Manager]] — leading through vision and influence, not authority
+- Related to [[coaching]] — curiosity and questions as the leadership stance

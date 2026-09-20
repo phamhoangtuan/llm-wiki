@@ -340,13 +340,13 @@ def build_connections_section(connections, output_dir):
         m = re.match(r'^(Core to|Foundation for|Extends|Complements|Used by|Related to|Contrasts with|Informs|Drives|Enforced by|Supported by|Protects|Prevents|Managed by|Reduced by|Relies on|Requires|Depends on|Operationalizes|Enforced|Supports)\s+\[\[([^\]]+)\]\](.*)', line)
         if m:
             rel_type = m.group(1)
-            target = m.group(2).strip()
+            target = m.group(2).strip().split("|")[0].strip()
             desc = m.group(3).strip().lstrip('—').strip()
             conn_items.append({"type": rel_type, "target": target, "desc": desc})
         else:
             m2 = re.match(r'.*?\[\[([^\]]+)\]\](.*)', line)
             if m2:
-                target = m2.group(1).strip()
+                target = m2.group(1).strip().split("|")[0].strip()
                 desc = m2.group(2).strip().lstrip('—').strip()
                 conn_items.append({"type": "Related", "target": target, "desc": desc})
     if not conn_items:

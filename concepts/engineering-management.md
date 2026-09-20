@@ -3,8 +3,8 @@ title: "Engineering Management"
 type: concept
 tags: [engineering-management, leadership, people-management, career, trust]
 created: 2026-08-15
-updated: 2026-08-24
-sources: [engineering-management-drasner, an-elegant-puzzle, high-output-management-grove, scaling-people-hughes-johnson]
+updated: 2026-09-20
+sources: [engineering-management-drasner, an-elegant-puzzle, high-output-management-grove, scaling-people-hughes-johnson, the-making-of-a-manager-zhuo, the-coaching-habit-stanier, what-got-you-here-goldsmith]
 aliases: [em, people-management, engineering-leadership]
 ---
 
@@ -42,6 +42,12 @@ The manager's job is to create stable conditions — team size, resources, visio
 - **Boundaries** — be interruption-driven so the team can be focus-driven, but protect yourself from burnout.
 - **Resilience** — a "manager cabal" or coaching processes the isolating parts of the role.
 
+## The Manager as Coach
+
+Julie Zhuo's eight core principles (source: [[sources/the-making-of-a-manager-zhuo]]) condense the people layer: focus on the **team** not the individual, **empower** people to solve problems themselves, build a **safe, caring environment**, develop people through **feedback**, adapt and keep learning, remove **performance barriers** (skill vs. motivation), protect **team values** against toxic behavior, and **lead with vision and a growth mindset**.
+
+Stanier's coaching habit supplies the 1:1 mechanics (source: [[sources/the-coaching-habit-stanier]]): open with "What's on your mind?", follow with "And what else?", then "What's the real challenge here for you?" and "What do you want from me?" — staying on "What" questions to keep the employee owning the problem. Goldsmith adds the behavioral layer (source: [[sources/what-got-you-here-goldsmith]]): pause before responding, replace criticism with curiosity, acknowledge contributions, own mistakes without blame, and apologize sincerely — the behavioral habits that separate good leaders from derailed ones.
+
 ---
 
 - Contrasts with [[technical-leadership]] — influence without authority (Staff+), vs. leading through direct reports
@@ -53,3 +59,6 @@ The manager's job is to create stable conditions — team size, resources, visio
 - Benchmark source: [[sources/an-elegant-puzzle]] — Larson's systems approach to team design, management, and organizational scaling
 - Benchmark source: [[sources/high-output-management-grove]] — Grove's factory model: leverage, TRM, meetings, bottleneck-focused management
 - Benchmark source: [[sources/scaling-people-hughes-johnson]] — Hughes Johnson's 4 core frameworks: planning, hiring, team development, feedback/performance
+- Benchmark source: [[sources/the-making-of-a-manager-zhuo]] — Zhuo's eight core management principles
+- Benchmark source: [[sources/the-coaching-habit-stanier]] — Stanier's question-based coaching for 1:1s
+- Benchmark source: [[sources/what-got-you-here-goldsmith]] — Goldsmith's behavioral habits for leaders

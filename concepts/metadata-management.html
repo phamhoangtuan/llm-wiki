@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Metadata Management</h1>
-  <div class="page-meta"><span>Source: dama-dmbok-2nd-edition</span><span>Updated: 2026-07-14</span></div>
+  <div class="page-meta"><span>Source: dama-dmbok-2nd-edition, the-data-lakehouse-inmon</span><span>Updated: 2026-09-20</span></div>
   <div class="page-tags"><span class="tag">data-management</span><span class="tag">metadata</span><span class="tag">dama</span></div>
 </div>
 <div class="content-area concept">
@@ -62,6 +62,8 @@
 <h2 id="dama-principle">DAMA Principle</h2>
 <blockquote>"Managing data effectively requires Metadata."</blockquote>
 <p>Metadata is not optional documentation — it is the operating system of a data organization.</p>
+<h2 id="the-every-step-lineage-rule-inmon">The Every-Step Lineage Rule (Inmon)</h2>
+<p>Inmon's <em>The Data Lakehouse</em> hardens the requirement (source: <span class="wiki-link source-ref">sources/the-data-lakehouse-inmon</span>): lineage documentation must cover <strong>every single step</strong> in the data's journey. Documenting only one or two steps is insufficient — end-to-end lineage is the trust layer that makes outputs verifiable, and a calculated value is meaningless without its context triad (what was calculated, what data was used, how it was computed). See <a href="data-lineage.html" class="wiki-link">data-lineage</a>.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -90,6 +92,11 @@
       <span class="connection-type related">Related</span>
       <h4>Data Observability</h4>
       <p>Making pipelines transparent through metadata</p>
+    </a>
+    <a class="connection-card" href="data-lineage.html">
+      <span class="connection-type related">Related</span>
+      <h4>Data Lineage</h4>
+      <p>End-to-end lineage as the every-step traceability requirement</p>
     </a>
   </div>
 </section>

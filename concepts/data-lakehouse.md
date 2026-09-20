@@ -3,8 +3,8 @@ title: "Data Lakehouse"
 type: concept
 tags: [databricks, data-engineering, architecture, lakehouse]
 created: 2026-06-23
-updated: 2026-06-23
-sources: [databricks-dea-study-guide, big-book-data-engineering]
+updated: 2026-09-20
+sources: [databricks-dea-study-guide, big-book-data-engineering, the-data-lakehouse-inmon]
 aliases: [Lakehouse architecture]
 ---
 
@@ -41,6 +41,15 @@ The canonical data organization pattern within a lakehouse: [[medallion-architec
 - **Governance**: [[unity-catalog]] — centralized security and access control
 - **Abstraction**: [[dbfs]] — cloud storage feels like a local filesystem
 
+## Data Types in the Lakehouse (Inmon)
+
+Inmon's treatment (source: [[sources/the-data-lakehouse-inmon]]) adds practical storage guidance:
+
+- **Avoid storing raw text** in the lakehouse unless explicitly required — prefer structured database storage so text can be analyzed with standard analytical tools
+- **Structured data** is best for known, predefined queries; **other unstructured data** is best for exploratory, unknown queries; **textual data** uniquely supports *both* known and unknown analytics
+- **Calculated values need context**: a final value is meaningless without knowing *what* was calculated (the definition), *what data* was used (the inputs), and *how* it was computed (the method) — see [[semantic-layer]] and [[data-lineage]]
+- **Comprehensive lineage** is mandatory: documentation must cover *every step* of the data's journey, not just one or two — see [[data-lineage]]
+
 > A lakehouse represents a smart, adaptable library that combines the best of both worlds.
 
 ---
@@ -52,3 +61,5 @@ The canonical data organization pattern within a lakehouse: [[medallion-architec
 - Related to [[kappa-architecture]] — unified lakehouse storage supports single-path streaming replay
 - Uses [[medallion-architecture]] — the canonical data organization pattern for lakehouse platforms
 - Related to [[snowflake-data-cloud]] — Snowflake is a proprietary lakehouse platform with separated storage/compute
+- Informed by [[the-data-lakehouse-inmon]] — data-type suitability, text storage, calculated-value context, full lineage
+- Feeds [[data-lineage]] — every-step lineage as a lakehouse trust requirement

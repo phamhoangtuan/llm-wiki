@@ -3,8 +3,8 @@ title: "T-Shaped Skills"
 type: concept
 tags: [career, team-structure, dataops, collaboration, professional-development]
 created: 2026-07-14
-updated: 2026-07-14
-sources: [practical-dataops]
+updated: 2026-09-20
+sources: [practical-dataops, the-start-up-of-you-hoffman]
 aliases: [generalized-specialist, t-shaped-person]
 ---
 
@@ -57,4 +57,5 @@ Building T-shaped skills means:
 - Enables [[analytics-engineer]] — the analytics engineer role is inherently T-shaped (SQL + engineering + business)
 - Related to [[data-engineer]] — modern data engineers need ML, analytics, and domain breadth
 - Related to [[ultralearning|Ultralearning]] — deliberate cross-domain learning builds the horizontal bar
+- Related to [[abz-planning]] — Hoffman's "specialize, don't generalize" is the vertical bar; adjacent pivots build the horizontal bar
 - Benchmark source: [[sources/practical-dataops]] — Atwal on team design

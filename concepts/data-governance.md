@@ -3,8 +3,8 @@ title: "Data Governance"
 type: concept
 tags: [data-governance, compliance, security, metadata, data-quality]
 created: 2026-06-14
-updated: 2026-08-24
-sources: [data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline, data-quality-engineering-financial-services-buzzelli]
+updated: 2026-09-20
+sources: [data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline, data-quality-engineering-financial-services-buzzelli, the-data-lakehouse-inmon]
 aliases: [governance]
 ---
 
@@ -59,6 +59,10 @@ Data Engineers implement governance through:
 - **Schema enforcement** with contract testing
 - **Audit logging** for all data access and mutations
 
+## Lineage & Calculated-Value Context (Inmon)
+
+Inmon's *The Data Lakehouse* makes lineage a hard governance requirement (source: [[sources/the-data-lakehouse-inmon]]): documentation must cover **every single step** of the data's journey — partial lineage silently invalidates downstream analysis. It also adds a governance rule for metrics: a calculated value is only auditable when its context is preserved — *what* was calculated (definition), *what data* was used (inputs), and *how* (method). See [[data-lineage]].
+
 ---
 
 - Core to [[data-lifecycle]] — Data Lifecycle Management operationalizes governance retention and archiving policies
@@ -73,3 +77,4 @@ Data Engineers implement governance through:
 - Benchmark source: [[sources/data-engineering-handbook]] — Data Engineering Handbook (discipline overview)
 - Benchmark source: [[sources/building-anonymization-pipeline]] — Arbuckle & El Emam on Five Safes, ethics committees, and trust-based governance
 - Benchmark source: [[sources/data-quality-engineering-financial-services-buzzelli]] — Buzzelli's governance playbook: owners/stewards per dataset, DQS signoff, lightweight monthly council
+- Benchmark source: [[sources/the-data-lakehouse-inmon]] — Inmon's every-step lineage and calculated-value context rules
