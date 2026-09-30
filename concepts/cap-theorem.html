@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CAP Theorem — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-distributed-systems">Distributed Systems</a> <span class="sep">/</span>
+  <span>CAP Theorem</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>CAP Theorem</h1>
+  <div class="page-meta"><span>Source: cap-theorem-handbook</span><span>Updated: 2026-06-17</span></div>
+  <div class="page-tags"><span class="tag">distributed-systems</span><span class="tag">consistency</span><span class="tag">availability</span><span class="tag">architecture</span><span class="tag">database-design</span></div>
+</div>
+<div class="content-area concept">
+<p><strong>CAP Theorem</strong> (also known as Brewer's Theorem) states that any distributed data store can provide at most two of three guarantees simultaneously: <strong>Consistency</strong>, <strong>Availability</strong>, and <strong>Partition Tolerance</strong> (source: <span class="wiki-link source-ref">sources/cap-theorem-handbook</span>).</p>
+<p>Formulated by Eric Brewer in 2000 and formally proven by Seth Gilbert and Nancy Lynch (MIT) in 2002, CAP is the most important architectural constraint in distributed system design.</p>
+<h2 id="the-three-properties">The Three Properties</h2>
+<h3 id="c--consistency">C — Consistency</h3>
+<p>Every read receives the most recent write (or an error). All nodes in the distributed system see the same data at the same time. A strongly consistent system behaves as if it were a single machine — even though it's a cluster.</p>
+<h3 id="a--availability">A — Availability</h3>
+<p>Every request (read or write) receives a non-error response — even if some nodes are down or unreachable. The response may not contain the latest data.</p>
+<h3 id="p--partition-tolerance">P — Partition Tolerance</h3>
+<p>The system continues to operate despite arbitrary message loss or network failures between nodes. The network is allowed to drop, delay, or reorder messages between nodes.</p>
+<h2 id="why-p-is-non-negotiable">Why P is Non-Negotiable</h2>
+<p>In any real distributed system — cloud (AWS, GCP, Azure) or on-premise — network partitions <strong>will</strong> happen. Causes include:</p>
+<ul>
+<li>Switch/router failures</li>
+<li>Packet loss due to congestion</li>
+<li>GC pauses that break heartbeat timeouts</li>
+<li>Undersea cable cuts</li>
+<li>DDoS attacks saturating links</li>
+</ul>
+<p>Since P cannot be opted out of, the real architectural choice is <strong>CP</strong> (Consistency + Partition Tolerance) or <strong>AP</strong> (Availability + Partition Tolerance). The theoretical <strong>CA</strong> system can only exist on a single-node database (e.g., a standalone PostgreSQL instance) — not in a distributed setting.</p>
+<h2 id="cap-c-vs-acid-c-a-critical-distinction">CAP-C vs ACID-C: A Critical Distinction</h2>
+<p>A common confusion: the "C" in CAP is <strong>not</strong> the "C" in ACID.</p>
+<table><thead><tr>
+<th></th>
+<th>CAP Consistency</th>
+<th>ACID Consistency</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Scope</strong></td>
+<td>Distributed system level</td>
+<td>Single database transaction level</td>
+</tr>
+<tr>
+<td><strong>Meaning</strong></td>
+<td>All replicas show identical data</td>
+<td>Data satisfies all constraints (FK, UNIQUE, triggers)</td>
+</tr>
+<tr>
+<td><strong>Violation</strong></td>
+<td>Client reads stale data from a lagging replica</td>
+<td>Invalid data written that violates schema rules</td>
+</tr>
+<tr>
+<td><strong>Example</strong></td>
+<td>Async master-slave: slave returns outdated row</td>
+<td>Bank transfer: total money unchanged before/after</td>
+</tr>
+</tbody></table>
+<p>A system can be ACID-compliant (all constraints enforced) while being CAP-inconsistent (reads from a lagging replica return stale data).</p>
+<h2 id="cp-architecture-consistency-over-availab">CP Architecture: Consistency Over Availability</h2>
+<p>When a network partition occurs, CP systems <strong>reject requests</strong> on the minority partition rather than risk serving stale data. The system prefers returning <code>500</code> or <code>Timeout</code> errors over returning inconsistent results.</p>
+<p><strong>Representative systems</strong>: Google Bigtable, Apache HBase, MongoDB (with <code>w: "majority"</code>), Zookeeper, etcd, CockroachDB.</p>
+<p><strong>Data Engineering use cases</strong>:</p>
+<ul>
+<li>Core banking ledgers and financial transactions</li>
+<li>Inventory management (preventing double-selling)</li>
+<li>Metadata stores (Hive Metastore)</li>
+<li>Reconciliation services</li>
+</ul>
+<h3 id="mongodb-cp-example">MongoDB CP Example</h3>
+<pre><code class="language-javascript">db.transactions.insertOne(
+  { transaction_id: &quot;TXN12345&quot;, amount: 5000, status: &quot;COMPLETED&quot; },
+  { writeConcern: { w: &quot;majority&quot;, wtimeout: 5000 } }
+);
+// If &gt; half the nodes are unreachable, this times out with an error
+// Consistency is preserved; availability is sacrificed</code></pre>
+<h2 id="ap-architecture-availability-over-consis">AP Architecture: Availability Over Consistency</h2>
+<p>During partitions, AP systems <strong>continue serving requests</strong> on all reachable nodes, accepting that data may be temporarily inconsistent. They rely on <strong>Eventual Consistency</strong> — background anti-entropy mechanisms reconcile diverged copies once the network heals.</p>
+<p><strong>Representative systems</strong>: Amazon DynamoDB, Apache Cassandra, CouchDB, Riak.</p>
+<p><strong>Data Engineering use cases</strong>:</p>
+<ul>
+<li>User-facing applications (profile updates, shopping carts)</li>
+<li>CDN edge caches</li>
+<li>Social media feeds</li>
+<li>IoT sensor data ingestion</li>
+</ul>
+<h3 id="cassandra-ap-example">Cassandra AP Example</h3>
+<pre><code class="language-cql">CONSISTENCY ONE;
+SELECT * FROM user_profiles WHERE user_id = &#x27;U123&#x27;;
+// Returns immediately from any replica — may be stale
+// Trade-off: low latency for potentially outdated data</code></pre>
+<h3 id="consistency-models-in-ap-systems">Consistency Models in AP Systems</h3>
+<p>AP systems offer tunable consistency levels:</p>
+<ul>
+<li><strong>Eventual Consistency</strong>: Replicas converge over time with no guarantees on when</li>
+<li><strong>Causal Consistency</strong>: Operations with causal relationships are seen in order</li>
+<li><strong>Read-Your-Writes</strong>: A client always sees its own writes</li>
+<li><strong>Monotonic Reads</strong>: A client never sees older data than it previously saw</li>
+</ul>
+<h2 id="quorum-bridging-cp-and-ap">Quorum: Bridging CP and AP</h2>
+<p>Quorum-based systems allow per-operation tuning between consistency and availability. The key formula:</p>
+<ul>
+<li><code>N</code> = total replication factor</li>
+<li><code>R</code> = number of replicas that must acknowledge a read</li>
+<li><code>W</code> = number of replicas that must acknowledge a write</li>
+</ul>
+<p><strong>Strong consistency</strong>: <code>R + W > N</code> — read and write quorums overlap, guaranteeing at least one node has the latest data.</p>
+<p><strong>Eventual consistency</strong>: <code>R + W ≤ N</code> — no guaranteed overlap, higher availability, potential for stale reads.</p>
+<p><strong>Example</strong> (Cassandra, N=3):</p>
+<ul>
+<li><code>QUORUM</code> (R=2, W=2): R+W = 4 > 3 → strong consistency</li>
+<li><code>ONE</code> (R=1, W=1): R+W = 2 ≤ 3 → eventual consistency</li>
+</ul>
+<h2 id="split-brain-and-quorum-resolution">Split-Brain and Quorum Resolution</h2>
+<p><strong>Split-brain</strong> occurs when a network partition divides a cluster into two subgroups that both believe they are the majority and continue accepting writes independently — creating irreconcilable data divergence.</p>
+<p><strong>Solution</strong>: Majority quorum (<code>N/2 + 1</code>). A partition can only operate if it controls more than half the nodes. The minority partition refuses writes. Zookeeper, etcd, and most consensus systems embed this principle.</p>
+<h2 id="pacelc-caps-evolution">PACELC: CAP's Evolution</h2>
+<p><strong>PACELC Theorem</strong> (Abadi, 2012) refines CAP by distinguishing behavior during partitions vs normal operation:</p>
+<table><thead><tr>
+<th>Condition</th>
+<th>Trade-off</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>P</strong>artition</td>
+<td><strong>A</strong>vailability vs <strong>C</strong>onsistency</td>
+</tr>
+<tr>
+<td><strong>E</strong>lse (no partition)</td>
+<td><strong>L</strong>atency vs <strong>C</strong>onsistency</td>
+</tr>
+</tbody></table>
+<p>Modern systems map to PACELC categories:</p>
+<ul>
+<li><strong>PC/EC</strong> (Cassandra): Prefer consistency during partition; eventual consistency in normal ops</li>
+<li><strong>PA/EL</strong> (DynamoDB): Prefer availability during partition; favor latency in normal ops</li>
+<li><strong>PC/EC</strong> (MongoDB): Prefer consistency during partition; eventual consistency in normal ops (default reads from primary)</li>
+</ul>
+<h2 id="best-practices-for-data-engineers">Best Practices for Data Engineers</h2>
+<ol>
+<li><strong>Start with AP for user-facing services</strong> — latency matters more than perfect consistency for most apps</li>
+<li><strong>Use CP for financial/audit data</strong> — incorrect data is worse than slow data</li>
+<li><strong>Tune quorum, not architecture</strong> — modern databases (Cassandra, MongoDB) let you set consistency per-operation; don't change the entire architecture for edge cases</li>
+<li><strong>Understand your failure mode</strong> — what happens when the network breaks? Define the degraded experience explicitly</li>
+<li><strong>Don't optimize for P before measuring</strong> — many teams over-engineer for partitions that happen rarely; measure actual network reliability first</li>
+<li><strong>PACELC informs normal-operation choices</strong> — even without partitions, there's a latency-vs-consistency trade-off every day</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="distributed-consensus.html">
+      <span class="connection-type related">Related</span>
+      <h4>Distributed Consensus (Raft & Paxos)</h4>
+      <p>Raft and Paxos are the consensus mechanisms that make CP systems possible; without consensus, distributed databases cannot guarantee consistency during partitions</p>
+    </a>
+    <a class="connection-card" href="byzantine-fault-tolerance.html">
+      <span class="connection-type related">Related</span>
+      <h4>Byzantine Fault Tolerance (BFT)</h4>
+      <p>BFT extends fault tolerance beyond crash-stop to arbitrary (Byzantine) failures; CAP only models crash-stop and network partitions</p>
+    </a>
+    <a class="connection-card" href="database-replication.html">
+      <span class="connection-type related">Related</span>
+      <h4>Database Replication</h4>
+      <p>Master-slave replication is the mechanism that creates the C-vs-A tension in CAP</p>
+    </a>
+    <a class="connection-card" href="scalable-architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Scalable Architecture</h4>
+      <p>CAP is the fundamental constraint on how distributed data stores scale</p>
+    </a>
+    <a class="connection-card" href="message-queue.html">
+      <span class="connection-type related">Related</span>
+      <h4>Message Queue</h4>
+      <p>Async messaging decouples producers/consumers, trading consistency for availability — an AP pattern</p>
+    </a>
+    <a class="connection-card" href="cache-strategy.html">
+      <span class="connection-type related">Related</span>
+      <h4>Cache Strategy</h4>
+      <p>Caches are inherently AP: they optimize for latency/availability over consistency</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="cache-strategy.html" class="prev">← Cache Strategy</a><a href="case-interview.html" class="next">Case Interview →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

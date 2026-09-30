@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Domain-Driven Design — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-domain-driven-design">Domain Driven Design</a> <span class="sep">/</span>
+  <span>Domain-Driven Design</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Domain-Driven Design</h1>
+  <div class="page-meta"><span>Source: learning-domain-driven-design</span><span>Updated: 2026-06-14</span></div>
+  <div class="page-tags"><span class="tag">domain-driven-design</span><span class="tag">software-architecture</span><span class="tag">strategic-design</span><span class="tag">modeling</span><span class="tag">business-strategy</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Domain-Driven Design (DDD)</strong> is a strategic software design discipline that aligns code with business reality. It treats software as a simulation of the business domain — not a mechanical translation of requirements into syntax. The central insight: code is a side effect of understanding the domain. When the team cultivates shared knowledge of what the business actually does, correct architecture and implementation emerge naturally.</p>
+<blockquote>"Working code is a side effect of shared understanding."</blockquote>
+<h2 id="the-software-crisis-persists">The Software Crisis Persists</h2>
+<p>In 1968, at the NATO Software Engineering Conference in Garmisch, Germany, the term "Software Crisis" was coined: the industry could not deliver software on time, on budget, or to specification.</p>
+<p><strong>~70% of projects still fail to meet requirements after 50+ years.</strong></p>
+<p>The industry has consistently blamed the wrong cause:</p>
+<table><thead><tr>
+<th>False Belief</th>
+<th>Reality</th>
+</tr></thead><tbody>
+<tr>
+<td>"We need a newer framework"</td>
+<td>Failure is a <strong>breakdown in communication</strong>, not syntax</td>
+</tr>
+<tr>
+<td>"Devs need to learn more technologies"</td>
+<td>We excel at "how to build," but poorly understand "what and why we build"</td>
+</tr>
+<tr>
+<td>"Technical debt is the enemy"</td>
+<td>The real invisible wall is <strong>misaligned mental models</strong> between business and development</td>
+</tr>
+</tbody></table>
+<blockquote>Software does not fail because of bad code. It fails because we build what the business doesn't actually need.</blockquote>
+<p>DDD addresses this by making the domain — not the technology — the central organizing principle of software design.</p>
+<h2 id="subdomain-classification">Subdomain Classification</h2>
+<p>Not all parts of a business deserve the same engineering investment. DDD classifies every subdomain into one of three strategic types:</p>
+<table><thead><tr>
+<th>Type</th>
+<th>Competitive Advantage</th>
+<th>Complexity</th>
+<th>Volatility</th>
+<th>Strategy</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Core</strong> 🚀</td>
+<td>Yes</td>
+<td>High</td>
+<td>High (emergent)</td>
+<td>In-house + best talent</td>
+</tr>
+<tr>
+<td><strong>Generic</strong> 📦</td>
+<td>No</td>
+<td>High (solved)</td>
+<td>Low</td>
+<td>Buy / adopt off-the-shelf</td>
+</tr>
+<tr>
+<td><strong>Supporting</strong> 🔧</td>
+<td>No</td>
+<td>Low</td>
+<td>Low</td>
+<td>In-house / outsource + juniors</td>
+</tr>
+</tbody></table>
+<h3 id="core-subdomain-the-engine-of-innovation">Core Subdomain: The Engine of Innovation</h3>
+<blockquote>"What a company does differently from its competitors."</blockquote>
+<p>Core subdomains create competitive advantage. They are emergent — constantly evolving, with no fixed solution. They require continuous innovation, advanced engineering patterns, and the most skilled engineers. This is where organizations should invest heavily and never outsource.</p>
+<h3 id="generic-subdomain-dont-reinvent-the-whee">Generic Subdomain: Don't Reinvent the Wheel</h3>
+<p>Authentication, encryption, payment gateways — problems that are hard but already have excellent solutions. Strategy: buy or adopt battle-tested off-the-shelf solutions. Focus on integration, not implementation.</p>
+<h3 id="supporting-subdomain-strategic-corner-cu">Supporting Subdomain: Strategic "Corner Cutting"</h3>
+<p>Necessary but not unique — internal CRUD screens, simple reporting, admin tools. Strategy: cut corners responsibly without over-engineering. Assign to junior developers as training opportunities, or outsource to free the "A-team" for Core work.</p>
+<blockquote>Strategic design is the art of knowing where to be brilliant and where "good enough" is sufficient.</blockquote>
+<h2 id="ubiquitous-language">Ubiquitous Language</h2>
+<h3 id="the-problem-knowledge-degradation-via-tr">The Problem: Knowledge Degradation via Translation</h3>
+<pre><code>Domain Expert
+    ↓ (Translation 1: Analysis Model)
+Analyst
+    ↓ (Translation 2: Requirements)
+Product Owner
+    ↓ (Translation 3: System Design)
+Developer
+    ↓ (Translation 4: Source Code)
+Production 🚨</code></pre>
+<p>Every handoff loses context and nuance. The implementation model ends up solving a different problem than the one the business actually faces.</p>
+<h3 id="the-solution-one-language-for-everyone">The Solution: One Language for Everyone</h3>
+<p><strong>Ubiquitous Language</strong> is a shared, rigorous business language used by all team members — domain experts, analysts, developers, testers — in conversation, documentation, and code itself.</p>
+<p><strong>Three golden rules:</strong></p>
+<ol>
+<li><strong>Use business terms, not technical jargon</strong> — class names, method names, and variables should reflect the domain</li>
+<li><strong>Eliminate ambiguity</strong> — one word must not have multiple meanings</li>
+<li><strong>Eliminate synonyms</strong> — one concept must not have multiple names</li>
+</ol>
+<p><strong>Example: disambiguating "Policy"</strong></p>
+<table><thead><tr>
+<th>Before (Confusing)</th>
+<th>After (Clear)</th>
+</tr></thead><tbody>
+<tr>
+<td>"Policy" (means both rule and contract)</td>
+<td>→ "Regulatory Rule" or "Insurance Contract"</td>
+</tr>
+<tr>
+<td>"User", "Account", "Visitor" used interchangeably</td>
+<td>→ "Visitor" (unauthenticated), "Account" (registered)</td>
+</tr>
+</tbody></table>
+<blockquote><strong>Key benefit</strong>: When code uses the same language as the business, "lost in translation" bugs disappear. Developers no longer guess at the meaning of requirements.</blockquote>
+<h2 id="bounded-contexts">Bounded Contexts</h2>
+<h3 id="the-dangerous-dream-one-universal-model">The Dangerous Dream: One Universal Model</h3>
+<p>Many architects dream of a single language for the entire enterprise — "Lead," "Policy," "Customer" must mean the same thing in every department. Reality: forcing a single definition creates a "Big Ball of Mud" architecture where complexity from one domain leaks into another.</p>
+<h3 id="the-reality-same-term-different-meanings">The Reality: Same Term, Different Meanings</h3>
+<table><thead><tr>
+<th>Context</th>
+<th>Model of "Lead"</th>
+<th>Purpose</th>
+<th>Complexity</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Marketing</strong> 📢</td>
+<td>Event (notification of interest)</td>
+<td>Trigger campaigns, track engagement</td>
+<td>Low</td>
+</tr>
+<tr>
+<td><strong>Sales</strong> 💼</td>
+<td>Complex entity (lifecycle, conversion rules, history)</td>
+<td>Manage pipeline, forecast revenue</td>
+<td>High</td>
+</tr>
+</tbody></table>
+<h3 id="bounded-contexts-consistency-boundaries">Bounded Contexts: Consistency Boundaries</h3>
+<blockquote>A Bounded Context is a clear boundary within which a specific Ubiquitous Language and its model are consistent and valid.</blockquote>
+<p><strong>Design rules:</strong></p>
+<ol>
+<li><strong>Consistency first</strong>: A context should be exactly as wide as the language remains consistent — no wider</li>
+<li><strong>Team alignment</strong>: Contexts should align with team boundaries to enable autonomy</li>
+<li><strong>Integration trade-off</strong>: Wider boundaries → easier consistency, harder model complexity. Narrower boundaries → simpler individual models, harder cross-context integration</li>
+</ol>
+<p><strong>Strategic benefits:</strong></p>
+<ul>
+<li>Prevent over-engineering: don't force Sales complexity into the Marketing model</li>
+<li>Prevent under-engineering: don't use a simple Marketing event to run a complex Sales process</li>
+<li>Enable independent evolution: Marketing and Sales can change their models without breaking each other</li>
+<li>Reduce cognitive load: developers only need to understand the model within their context</li>
+</ul>
+<h3 id="critical-distinction-problem-vs-solution">Critical Distinction: Problem vs Solution Space</h3>
+<table><thead><tr>
+<th></th>
+<th>Subdomains</th>
+<th>Bounded Contexts</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Nature</strong></td>
+<td>Discovered</td>
+<td>Designed</td>
+</tr>
+<tr>
+<td><strong>Domain</strong></td>
+<td>Problem Space (business analysis)</td>
+<td>Solution Space (software design)</td>
+</tr>
+<tr>
+<td><strong>Question</strong></td>
+<td>"What is the business?"</td>
+<td>"How do we model it in software?"</td>
+</tr>
+</tbody></table>
+<h2 id="purposeful-ignorance">Purposeful Ignorance</h2>
+<h3 id="the-trap-building-a-perfect-mirror-of-re">The Trap: Building a "Perfect" Mirror of Reality</h3>
+<p>Developers often fall into the trap of trying to create models that reflect every detail of the real world. The result: unmanageable complexity.</p>
+<blockquote>"All models are wrong, but some are useful." — George Box</blockquote>
+<p><strong>Purposeful Ignorance</strong> is the discipline of deliberately omitting irrelevant details from a model. A good model is not comprehensive — it focuses on a specific purpose.</p>
+<h3 id="the-metro-map-metaphor">The Metro Map Metaphor</h3>
+<p>A metro map is useful <strong>precisely because</strong> it omits topography, buildings, real distances, and geographic accuracy. It focuses entirely on connections between stations, stop order, lines, and transfers. By omitting unnecessary details, it provides clarity about what actually matters for navigation.</p>
+<blockquote>"The purpose of abstraction is not to be vague, but to create a new semantic level in which one can be absolutely precise." — Edsger W. Dijkstra</blockquote>
+<h2 id="modernization-roadmap">Modernization Roadmap</h2>
+<p>DDD is not just for greenfield projects. It can be applied incrementally to legacy systems through a four-step modernization approach:</p>
+<h3 id="step-1-analyze-subdomains--prioritize-in">Step 1: Analyze Subdomains — Prioritize Investment</h3>
+<ul>
+<li>Audit the current system: map every module/subsystem to Core / Generic / Supporting</li>
+<li>Re-allocate talent: move best engineers to Core work</li>
+<li>Identify "buy" opportunities: evaluate off-the-shelf solutions for Generic subdomains</li>
+</ul>
+<h3 id="step-2-cultivate-ubiquitous-language--br">Step 2: Cultivate Ubiquitous Language — Bridge the Gap</h3>
+<ul>
+<li>Create a wiki-based glossary: shared ownership, living document</li>
+<li>Conduct "Language Workshops": devs + domain experts define terms together</li>
+<li>Embed language in code: class names, method names, variable names = business terms</li>
+</ul>
+<h3 id="step-3-define-bounded-contexts--protect-">Step 3: Define Bounded Contexts — Protect Model Integrity</h3>
+<ul>
+<li>Identify consistency boundaries: where does one model end, another begin?</li>
+<li>Design explicit integration points: Context Mapping patterns (Anticorruption Layer, Open Host Service, etc.)</li>
+<li>Start small: refactor one module at a time, validate with Gherkin tests</li>
+</ul>
+<h3 id="step-4-undercover-ddd--gradual-introduct">Step 4: "Undercover DDD" — Gradual Introduction in Legacy Environments</h3>
+<p>When leadership won't approve a "big bang" rewrite:</p>
+<ul>
+<li>Refine terminology in small modules first</li>
+<li>Extract one Bounded Context at a time</li>
+<li>Measure and communicate value: show reduced bugs, faster feature delivery</li>
+<li>Keep the design "in shape" without high-risk overhaul</li>
+</ul>
+<h3 id="gherkin-tests-as-the-bridge">Gherkin Tests as the Bridge</h3>
+<pre><code>Scenario: Notify the agent about a new support case
+  Given Vincent Jules submits a new support case saying:
+    &quot;&quot;&quot;
+    I need help configuring AWS Infinidash
+    &quot;&quot;&quot;
+  When the ticket is assigned to Mr. Wolf
+  Then the agent receives a notification about the new ticket</code></pre>
+<p>Domain experts can read and verify business rules without knowing any code. Gherkin tests become executable specifications that both business and development can trust.</p>
+<h2 id="role-transformation">Role Transformation</h2>
+<p>DDD demands a fundamental shift in what it means to be a developer:</p>
+<table><thead><tr>
+<th>Old Role: "Translator"</th>
+<th>New Role: "Co-Creator"</th>
+</tr></thead><tbody>
+<tr>
+<td>Receive requirements → Code → Deliver</td>
+<td>Explore the problem with domain experts → Model → Code</td>
+</tr>
+<tr>
+<td>"How do I code this?"</td>
+<td>"Why does the business need this? What problem does it solve?"</td>
+</tr>
+<tr>
+<td>Deliver working code</td>
+<td>Deliver shared understanding</td>
+</tr>
+</tbody></table>
+<blockquote>"It's developers' (mis)understanding, not domain experts' knowledge, that gets released in production." — Alberto Brandolini</blockquote>
+<p>Working code is not the goal — it is the side effect of shared understanding. When the team truly internalizes the domain, correct code emerges naturally. The developer identity shifts from "practitioner of syntax" to "student of business strategy."</p>
+<h2 id="architecture-guidelines">Architecture Guidelines</h2>
+<p>When designing any system through a DDD lens, architects and tech leads should ask five questions:</p>
+<ol>
+<li><strong>Is this subdomain Core, Generic, or Supporting?</strong> What is the corresponding investment strategy?</li>
+<li><strong>Does the code use Ubiquitous Language</strong>, or is it still written in technical jargon?</li>
+<li><strong>Am I forcing a universal model?</strong> Embrace Bounded Contexts instead of fighting against them</li>
+<li><strong>Track shared understanding metrics</strong> — e.g., how often do developers have to re-ask for requirements?</li>
+<li><strong>Can the architecture evolve with business strategy change?</strong> If the business pivots tomorrow, is the architecture a facilitator or a barrier?</li>
+</ol>
+<blockquote>If business strategy changes tomorrow, does your architecture evolve with it — or become the bottleneck?</blockquote>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="software-as-simulation.html">
+      <span class="connection-type related">Related</span>
+      <h4>Software as Simulation</h4>
+      <p>DDD applies "software as simulation" at strategic business scale: the model simulates the domain reality</p>
+    </a>
+    <a class="connection-card" href="mapper-principles.html">
+      <span class="connection-type related">Related to</span>
+      <h4>MAPPER Principles</h4>
+      <p>Purposeful Ignorance implements MAPPER's Partial principle at strategic level</p>
+    </a>
+    <a class="connection-card" href="bijection.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Bijection</h4>
+      <p>Bounded Contexts enforce 1-1 mapping between business context and code model</p>
+    </a>
+    <a class="connection-card" href="rich-domain-model.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Rich Domain Model</h4>
+      <p>Ubiquitous Language enriches the domain model with business terms, not technical jargon</p>
+    </a>
+    <a class="connection-card" href="tell-dont-ask.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Tell, Don't Ask</h4>
+      <p>DDD's strategic design tells systems what business capability to own; Bounded Contexts define who owns what</p>
+    </a>
+    <a class="connection-card" href="object-oriented-design.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Object-Oriented Design</h4>
+      <p>DDD is OO design applied at enterprise scale; TRUE standard maps to subdomain classification</p>
+    </a>
+    <a class="connection-card" href="harness-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Harness Engineering</h4>
+      <p>DDD's Bounded Contexts and Ubiquitous Language provide the "good architecture" that makes agents more discoverable (as recommended in agent quality workshop)</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Learning Domain-Driven Design</h4>
+      <p>Vlad Khononov's 340-page guide to strategic DDD</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="document-content-management.html" class="prev">← Document and Content Management</a><a href="duckdb.html" class="next">DuckDB →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

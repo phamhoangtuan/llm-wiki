@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entity Resolution — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-knowledge-graph">Knowledge Graph</a> <span class="sep">/</span>
+  <span>Entity Resolution</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Entity Resolution</h1>
+  <div class="page-meta"><span>Source: graph-engineering-karpathy</span><span>Updated: 2026-08-06</span></div>
+  <div class="page-tags"><span class="tag">knowledge-graph</span><span class="tag">nlp</span><span class="tag">data-quality</span><span class="tag">agents</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Entity Resolution</strong> is the process of mapping surface forms (names, abbreviations, aliases, spelling variants, partial names) to canonical entities in a knowledge graph. In the context of <a href="knowledge-graph.html" class="wiki-link">knowledge-graph</a> construction for agents, it is framed as a <strong>reasoning task</strong> rather than a string-matching problem — because simple similarity fails when labels differ substantially yet refer to the same entity.</p>
+<h2 id="why-string-matching-fails">Why String Matching Fails</h2>
+<ul>
+<li>"Edwin Aldrin" vs "Buzz Aldrin" — zero character overlap, same person</li>
+<li>"IBM" vs "International Business Machines" — same entity, different lengths</li>
+<li>Different people can share the same name — similarity incorrectly merges them</li>
+</ul>
+<h2 id="model-based-resolution">Model-Based Resolution</h2>
+<p>Anthropic's cookbook approach:</p>
+<ol>
+<li><strong>Group candidates by entity type</strong> — all "Person" mentions, all "Organization" mentions</li>
+<li><strong>Use descriptions as contextual evidence</strong> — what does each surface form's context say about this entity?</li>
+<li><strong>Ask a stronger model (Sonnet) to propose canonical clusters</strong> — the model reasons about whether two surface forms refer to the same real-world entity</li>
+<li><strong>At scale</strong>: cheap blocking signals (shared words, type overlap) narrow the candidate set before model arbitration</li>
+</ol>
+<h2 id="resolution-must-be-reversible">Resolution Must Be Reversible</h2>
+<p>A canonical entity should retain:</p>
+<ul>
+<li>Its aliases (all surface forms)</li>
+<li>Source documents</li>
+<li>Resolution rationale</li>
+<li>Confidence score</li>
+<li>The run that created the merge</li>
+</ul>
+<p>This ensures incorrect merges can be reversed without reconstructing the entire pipeline. <strong>A false merge is catastrophic</strong> — if two people are collapsed into one node, every downstream query may combine their employers, projects, dates, and actions.</p>
+<h2 id="evaluation-metrics">Evaluation Metrics</h2>
+<ul>
+<li><strong>Compression ratio</strong>: raw surface forms / canonical entities (high is not automatically good — over-merging creates a connected but false graph)</li>
+<li><strong>Pairwise precision and recall</strong>: did we correctly pair surface forms?</li>
+<li><strong>False merge rate</strong>: how many distinct entities were incorrectly merged?</li>
+<li><strong>Missed merge rate</strong>: how many aliases of the same entity were not merged?</li>
+<li><strong>Manual review rate</strong>: how many decisions require human verification?</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="knowledge-graph.html">
+      <span class="connection-type related">Related</span>
+      <h4>Knowledge Graph</h4>
+      <p>construction — extracts produce surface forms, resolution produces canonical nodes</p>
+    </a>
+    <a class="connection-card" href="graph-grounding.html">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Grounding</h4>
+      <p>resolution quality determines whether queries traverse correct or false paths</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Graph Engineering: The Karpathy Loop, Improved 1000x by Itself</h4>
+      <p></p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="engineering-management.html" class="prev">← Engineering Management</a><a href="essential-accidental-complexity.html" class="next">Essential vs Accidental Complexity →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

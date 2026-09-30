@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apache Parquet — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-file-formats">File Formats</a> <span class="sep">/</span>
+  <span>Apache Parquet</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Apache Parquet</h1>
+  <div class="page-meta"><span>Source: benchmarking-vortex-file-format, integrating-rust-delta-kernel-clickhouse, debunking-data-layout-myths-liquid-clustering</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">file-formats</span><span class="tag">columnar</span><span class="tag">big-data</span><span class="tag">data-engineering</span><span class="tag">delta-lake</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Apache Parquet</strong> is the dominant open-source columnar storage format for the big data ecosystem. It stores data column-by-column (rather than row-by-row like CSV), enabling highly efficient compression and selective column reads. It is the de facto standard for data lakes, supported by virtually every analytics engine: <a href="duckdb.html" class="wiki-link">DuckDB</a>, <a href="polars.html" class="wiki-link">Polars</a>, <a href="apache-datafusion.html" class="wiki-link">Apache DataFusion</a>, Apache Spark, Presto/Trino, and more.</p>
+<h2 id="why-columnar">Why Columnar?</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Row-based (CSV, JSON)</th>
+<th>Columnar (Parquet)</th>
+</tr></thead><tbody>
+<tr>
+<td>Storage</td>
+<td>Row by row</td>
+<td>Column by column</td>
+</tr>
+<tr>
+<td>Compressibility</td>
+<td>Low (mixed types per row)</td>
+<td>High (same-type values together)</td>
+</tr>
+<tr>
+<td>Read pattern</td>
+<td>Must read all columns</td>
+<td>Read only needed columns</td>
+</tr>
+<tr>
+<td>Analytics suitability</td>
+<td>Poor</td>
+<td>Excellent</td>
+</tr>
+</tbody></table>
+<p>In Daniel Beach's benchmarks, switching from CSV to Parquet yielded a <strong>~200× speed improvement</strong> (25.5s → 0.125s with DuckDB) — a larger gain than any difference between columnar formats.</p>
+<h2 id="key-features">Key Features</h2>
+<ul>
+<li><strong>Columnar storage</strong> — values of the same column stored contiguously, enabling high compression (run-length, dictionary, delta encoding)</li>
+<li><strong>Predicate pushdown</strong> — filter conditions pushed to storage layer; only matching row groups are read</li>
+<li><strong>File-level statistics</strong> — each Parquet file stores per-column min/max values and row counts, enabling engines to skip entire files without reading them (data skipping). This is the foundation for partition pruning and statistics-based pruning in <a href="delta-lake.html" class="wiki-link">Delta Lake</a> and <a href="apache-iceberg.html" class="wiki-link">Iceberg</a>.</li>
+<li><strong>Schema evolution</strong> — add/remove columns without rewriting entire datasets</li>
+<li><strong>Nested data</strong> — supports complex types (structs, lists, maps)</li>
+<li><strong>Splittable</strong> — files can be split for parallel processing across distributed workers</li>
+</ul>
+<h2 id="performance-benchmarks-2026-05">Performance Benchmarks (2026-05)</h2>
+<p>Independent benchmarks by Daniel Beach (Backblaze hard drive data, ~24 GB):</p>
+<table><thead><tr>
+<th>Engine</th>
+<th>Parquet Runtime</th>
+<th>vs CSV (same engine)</th>
+</tr></thead><tbody>
+<tr>
+<td>DuckDB</td>
+<td>0.125s</td>
+<td>~200× faster</td>
+</tr>
+<tr>
+<td>DataFusion</td>
+<td>0.370s</td>
+<td>~14× faster</td>
+</tr>
+<tr>
+<td>Polars</td>
+<td>0.193s</td>
+<td>N/A (OOM on CSV)</td>
+</tr>
+</tbody></table>
+<h2 id="competing-formats">Competing Formats</h2>
+<p>Parquet faces competition from newer columnar formats aiming to improve on its design:</p>
+<ul>
+<li><strong><a href="vortex-file-format.html" class="wiki-link">Vortex</a></strong> — Rust-native, claims 10–20× faster scans; benchmarks show marginal improvement (0.111s vs 0.125s Parquet)</li>
+<li><strong><a href="lance-file-format.html" class="wiki-link">Lance</a></strong> — Columnar format optimized for ML/AI workloads, random access, and versioning</li>
+<li><strong>Apache ORC</strong> — Similar to Parquet, historically preferred in the Hive ecosystem</li>
+</ul>
+<p>Despite challengers, Parquet remains the <strong>incumbent standard</strong> with the broadest ecosystem support and proven production reliability.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="duckdb.html">
+      <span class="connection-type related">Used by</span>
+      <h4>DuckDB</h4>
+      <p>DuckDB reads/writes Parquet natively with excellent performance</p>
+    </a>
+    <a class="connection-card" href="polars.html">
+      <span class="connection-type related">Used by</span>
+      <h4>Polars</h4>
+      <p>Polars supports Parquet via `read_parquet()` / `scan_parquet()`</p>
+    </a>
+    <a class="connection-card" href="apache-datafusion.html">
+      <span class="connection-type related">Used by</span>
+      <h4>Apache DataFusion</h4>
+      <p>DataFusion reads Parquet natively (0.370s benchmark)</p>
+    </a>
+    <a class="connection-card" href="clickhouse.html">
+      <span class="connection-type related">Used by</span>
+      <h4>ClickHouse</h4>
+      <p>ClickHouse writes Parquet for Delta Lake tables (Kernel handles metadata)</p>
+    </a>
+    <a class="connection-card" href="vortex-file-format.html">
+      <span class="connection-type related">Related</span>
+      <h4>Vortex File Format</h4>
+      <p>Vortex aims to replace Parquet as the columnar standard</p>
+    </a>
+    <a class="connection-card" href="vectorized-execution.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Vectorized Execution</h4>
+      <p>columnar storage enables vectorized query execution</p>
+    </a>
+    <a class="connection-card" href="delta-lake.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Delta Lake</h4>
+      <p>Delta tables store data as Parquet files with min/max stats for data skipping</p>
+    </a>
+    <a class="connection-card" href="liquid-clustering.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Liquid Clustering</h4>
+      <p>Liquid produces standard Parquet files with statistics, enabling reader-agnostic pruning</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Benchmarking Vortex File Format vs Parquet, CSV — DuckDB, Polars, DataFusion</h4>
+      <p>0.125s DuckDB-on-Parquet, the baseline to beat</p>
+    </div>
+    <a class="connection-card" href="apache-iceberg.html">
+      <span class="connection-type core">Foundation for</span>
+      <h4>Apache Iceberg</h4>
+      <p>Iceberg tables store data as Parquet files with file-level statistics for data skipping</p>
+    </a>
+    <a class="connection-card" href="lance-file-format.html">
+      <span class="connection-type related">Related</span>
+      <h4>Lance File Format</h4>
+      <p>Lance is a next-gen columnar format optimized for ML/AI workloads and random access</p>
+    </a>
+  </div>
+</section>
+<nav class="pagination"><a href="apache-kafka.html" class="prev">← Apache Kafka</a><a href="apache-pinot.html" class="next">Apache Pinot →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

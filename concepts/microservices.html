@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microservices — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-architecture">Architecture</a> <span class="sep">/</span>
+  <span>Microservices</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Microservices</h1>
+  <div class="page-meta"><span>Source: clean-code-principles-patterns-silen</span><span>Updated: 2026-06-27</span></div>
+  <div class="page-tags"><span class="tag">architecture</span><span class="tag">microservices</span><span class="tag">cloud-native</span><span class="tag">distributed-systems</span><span class="tag">clean-code</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Microservices</strong> is an architectural style where an application is composed of small, independent services — each with a single responsibility, running in its own process, and communicating via lightweight APIs. The goal is to create services that operate like "autopilot" vehicles: stateless, resilient, and highly available without manual intervention.</p>
+<h2 id="core-principles">Core Principles</h2>
+<h3 id="single-responsibility-at-every-level">Single Responsibility at Every Level</h3>
+<p>SRP applies recursively across architectural layers:</p>
+<table><thead><tr>
+<th>Level</th>
+<th>Responsibility</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>System</strong></td>
+<td>One overarching purpose</td>
+</tr>
+<tr>
+<td><strong>Application</strong></td>
+<td>One core business domain</td>
+</tr>
+<tr>
+<td><strong>Microservice</strong></td>
+<td>One specific responsibility within its bounded context</td>
+</tr>
+</tbody></table>
+<p>A service handling orders should not also manage inventory or send notifications — those are separate bounded contexts with their own services.</p>
+<h3 id="autopilot-microservices">Autopilot Microservices</h3>
+<p>Each service should operate like a self-driving car — no human babysitting:</p>
+<ul>
+<li><strong>Stateless</strong>: No local state storage. State lives in external data stores. Enables horizontal scaling (spin up N instances, any can handle any request).</li>
+<li><strong>Resilient</strong>: Self-healing on failure. Circuit breakers, retries with backoff, graceful degradation.</li>
+<li><strong>Highly Available</strong>: Designed for continuous operation. Redundancy, failover, health checks.</li>
+</ul>
+<h3 id="reducing-coupling">Reducing Coupling</h3>
+<p>Loose coupling is the architecture's primary defense against <a href="software-rot.html" class="wiki-link">software-rot</a>:</p>
+<table><thead><tr>
+<th>Technique</th>
+<th>Description</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Encapsulation</strong></td>
+<td>Hide internal implementation; expose only public APIs. Database schemas are private to each service.</td>
+</tr>
+<tr>
+<td><strong>Facade Pattern</strong></td>
+<td>Aggregate multiple lower-level services behind a simplified interface for higher-level consumers</td>
+</tr>
+<tr>
+<td>**[[domain-driven-design</td>
+<td>Domain-Driven Design]]**</td>
+<td>Partition the system into subdomains and bounded contexts. Code speaks the business's ubiquitous language.</td>
+</tr>
+</tbody></table>
+<blockquote>Example: Service "Order" needs inventory data → calls Inventory API, never accesses Inventory's database directly. Schema changes in Inventory don't touch Order code.</blockquote>
+<h2 id="communication-patterns">Communication Patterns</h2>
+<p>Microservices communicate via well-defined interfaces:</p>
+<table><thead><tr>
+<th>Pattern</th>
+<th>Use Case</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Synchronous (REST/gRPC)</strong></td>
+<td>Request-response when caller needs immediate answer</td>
+</tr>
+<tr>
+<td><strong>Asynchronous (<a href="message-queue.html" class="wiki-link">message-queue</a>)</strong></td>
+<td>Fire-and-forget; decouple producer from consumer timing and availability</td>
+</tr>
+<tr>
+<td><strong>Event-driven</strong></td>
+<td>Services emit events; interested services subscribe</td>
+</tr>
+</tbody></table>
+<p>Synchronous creates temporal coupling (caller waits). Asynchronous and event-driven enable greater independence but add eventual consistency complexity. See <a href="orchestration-vs-choreography.html" class="wiki-link">orchestration-vs-choreography</a> for coordination patterns.</p>
+<h2 id="trade-offs">Trade-offs</h2>
+<table><thead><tr>
+<th>Benefit</th>
+<th>Cost</th>
+</tr></thead><tbody>
+<tr>
+<td>Independent deployability</td>
+<td>Network latency between services</td>
+</tr>
+<tr>
+<td>Technology diversity (right tool per service)</td>
+<td>Operational complexity (more moving parts)</td>
+</tr>
+<tr>
+<td>Fault isolation (one service down ≠ system down)</td>
+<td>Distributed debugging (traces span services)</td>
+</tr>
+<tr>
+<td>Team autonomy (small teams own services)</td>
+<td>Data consistency challenges (no cross-service transactions)</td>
+</tr>
+</tbody></table>
+<p>Microservices are not a default choice — they solve organizational scaling problems. A monolith is often the right starting point until team size or independent scaling demands emerge.</p>
+<h2 id="relationship-to-other-patterns">Relationship to Other Patterns</h2>
+<ul>
+<li><strong><a href="stateless-architecture.html" class="wiki-link">stateless-architecture</a></strong>: Microservices must be stateless to scale horizontally</li>
+<li><strong><a href="middleware-pattern.html" class="wiki-link">middleware-pattern</a></strong>: Cross-cutting concerns (auth, logging, rate limiting) applied consistently across services</li>
+<li><strong><a href="deployment-strategies.html" class="wiki-link">deployment-strategies</a></strong>: Independent deployability enables blue-green, canary, and rolling deployments per service</li>
+<li><strong><a href="containerization.html" class="wiki-link">containerization</a></strong>: Docker provides the isolation boundary for microservice processes</li>
+<li><strong><a href="orchestration-vs-choreography.html" class="wiki-link">orchestration-vs-choreography</a></strong>: Two competing patterns for coordinating microservice workflows</li>
+<li><strong><a href="api-architectural-styles.html" class="wiki-link">api-architectural-styles</a></strong>: REST, gRPC, and GraphQL are the communication protocols that connect microservices</li>
+<li><strong><a href="observability.html" class="wiki-link">observability</a></strong>: Distributed tracing across services is mandatory for debugging microservice systems</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="stateless-architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Stateless Architecture</h4>
+      <p>horizontal scaling demands stateless design</p>
+    </a>
+    <a class="connection-card" href="middleware-pattern.html">
+      <span class="connection-type related">Related</span>
+      <h4>Middleware Pattern</h4>
+      <p>consistent cross-cutting concerns across all services</p>
+    </a>
+    <a class="connection-card" href="observability.html">
+      <span class="connection-type related">Requires</span>
+      <h4>Observability</h4>
+      <p>distributed tracing essential for debugging multi-service systems</p>
+    </a>
+    <a class="connection-card" href="deployment-strategies.html">
+      <span class="connection-type related">Related</span>
+      <h4>Deployment Strategies</h4>
+      <p>independent deployability enables risk-managed releases</p>
+    </a>
+    <a class="connection-card" href="containerization.html">
+      <span class="connection-type related">Related</span>
+      <h4>Containerization</h4>
+      <p>Docker isolates each service's runtime</p>
+    </a>
+    <a class="connection-card" href="orchestration-vs-choreography.html">
+      <span class="connection-type related">Related</span>
+      <h4>Orchestration vs Choreography</h4>
+      <p>two patterns for service workflow management</p>
+    </a>
+    <a class="connection-card" href="api-architectural-styles.html">
+      <span class="connection-type related">Related</span>
+      <h4>API Architectural Styles</h4>
+      <p>REST, gRPC, GraphQL as inter-service protocols</p>
+    </a>
+    <a class="connection-card" href="message-queue.html">
+      <span class="connection-type related">Related</span>
+      <h4>Message Queue</h4>
+      <p>asynchronous decoupling between services</p>
+    </a>
+    <a class="connection-card" href="solid-principles.html">
+      <span class="connection-type related">Related</span>
+      <h4>SOLID Principles</h4>
+      <p>SRP at the service level is the architectural translation of class-level SRP</p>
+    </a>
+    <a class="connection-card" href="domain-driven-design.html">
+      <span class="connection-type related">Related</span>
+      <h4>Domain-Driven Design</h4>
+      <p>bounded contexts define service boundaries</p>
+    </a>
+    <a class="connection-card" href="software-rot.html">
+      <span class="connection-type related">Related</span>
+      <h4>Software Rot</h4>
+      <p>loose coupling is the defense against degradation spreading across services</p>
+    </a>
+    <a class="connection-card" href="architectural-characteristics.html">
+      <span class="connection-type related">Related</span>
+      <h4>Architectural Characteristics</h4>
+      <p>scalability and deployability are the -ilities that justify microservices</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Clean Code Principles And Patterns</h4>
+      <p>Silén's microservices architecture chapter</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="metric-fixation.html" class="prev">← Metric Fixation</a><a href="middleware-pattern.html" class="next">Middleware Pattern →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

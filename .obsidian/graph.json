@@ -1,0 +1,51 @@
+{
+  "collapse-filter": false,
+  "search": "",
+  "showTags": false,
+  "showAttachments": false,
+  "hideUnresolved": false,
+  "showOrphans": true,
+  "collapse-color-groups": true,
+  "colorGroups": [
+    {
+      "query": "tag:#pytest",
+      "color": {
+        "a": 1,
+        "rgb": 10066431
+      }
+    },
+    {
+      "query": "path:concepts/mapper-principles OR path:concepts/bijection OR path:concepts/rich-domain-model OR path:concepts/tell-dont-ask OR path:concepts/immutability OR path:concepts/fail-fast OR path:concepts/essential-accidental-complexity OR path:concepts/technological-centaur OR path:concepts/readability-vs-performance OR path:concepts/software-as-simulation OR path:concepts/testing-strategy",
+      "color": {
+        "a": 1,
+        "rgb": 15921906
+      }
+    },
+    {
+      "query": "path:concepts/duckdb OR path:concepts/vectorized-execution OR path:concepts/in-process-olap OR path:concepts/materialized-views OR path:concepts/incremental-view-maintenance",
+      "color": {
+        "a": 1,
+        "rgb": 6347935
+      }
+    },
+    {
+      "query": "path:concepts/timely-dataflow OR path:concepts/differential-dataflow OR path:concepts/dbsp",
+      "color": {
+        "a": 1,
+        "rgb": 16733525
+      }
+    }
+  ],
+  "collapse-display": true,
+  "showArrow": false,
+  "textFadeMultiplier": 0,
+  "nodeSizeMultiplier": 1,
+  "lineSizeMultiplier": 1,
+  "collapse-forces": true,
+  "centerStrength": 0.518713248970312,
+  "repelStrength": 10,
+  "linkStrength": 1,
+  "linkDistance": 200,
+  "scale": 0.9356391091769269,
+  "close": true
+}
