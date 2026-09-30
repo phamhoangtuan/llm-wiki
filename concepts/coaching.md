@@ -3,8 +3,8 @@ title: "Coaching"
 type: concept
 tags: [coaching, management, communication, feedback, questions]
 created: 2026-09-20
-updated: 2026-09-20
-sources: [the-coaching-habit-stanier]
+updated: 2026-09-30
+sources: [the-coaching-habit-stanier, leading-effective-engineering-teams-osmani]
 aliases: [coaching habit, question-based coaching, managerial coaching]
 ---
 
@@ -35,6 +35,10 @@ aliases: [coaching habit, question-based coaching, managerial coaching]
 - **Feedback**: questions elicit self-discovery instead of imposed correction
 - **Mentoring**: the mentor coaches the juniors to find answers, then shares experience
 
+## Coaching at Team Scale (Osmani)
+
+Osmani scales the habit to the whole team (source: [[sources/leading-effective-engineering-teams-osmani]]): **"Always Be Leaving"** — coach the team until it no longer needs you, retreating to macro-management and intervening only when the machine malfunctions. This is the coaching habit applied to [[multiplier-leadership]]'s EXPAND stage: the leader's goal is to become redundant in daily operations while raising the bus factor. The 20-minute rule (self-research first, then ask with evidence) is the engineer-side complement — coaching encourages self-sufficiency before asking.
+
 ---
 
 - Core to [[engineering-management]] — the manager-as-coach stance and 1:1 structure
@@ -43,4 +47,6 @@ aliases: [coaching habit, question-based coaching, managerial coaching]
 - Related to [[high-output-management]] — Grove's "one more question!" 1:1 practice
 - Related to [[scaling-people]] — hypothesis-based coaching and "say the thing you think you cannot say"
 - Related to [[behavioral-habits]] — curiosity over criticism, "Why not?"
+- Related to [[multiplier-leadership]] — Always Be Leaving is coaching at team scale
+- Related to [[psychological-safety]] — questions signal it is safe to think out loud
 - Benchmark source: [[sources/the-coaching-habit-stanier]] — Stanier's seven-question toolkit

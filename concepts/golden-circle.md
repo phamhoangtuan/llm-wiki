@@ -3,8 +3,8 @@ title: "Golden Circle"
 type: concept
 tags: [leadership, purpose, inspiration, motivation, why]
 created: 2026-08-15
-updated: 2026-08-15
-sources: [start-with-why-sinek]
+updated: 2026-09-30
+sources: [start-with-why-sinek, leading-effective-engineering-teams-osmani]
 aliases: [start-with-why, why-how-what]
 ---
 
@@ -47,9 +47,15 @@ Because the decision-making brain cannot process language, people struggle to ex
 - **The Celery Test** — adopt only practices/products consistent with your WHY.
 - **Discovery, not invention** — a WHY is found by looking backward at founding purpose.
 
+## The How-Before-Why Failure Mode
+
+Osmani's *Leading Effective Engineering Teams* shows the circle failing inside engineering teams (source: [[sources/leading-effective-engineering-teams-osmani]]): the "Cloudoids" team built a technically perfect microservices migration — focused on the **HOW** — while forgetting the **WHY** (business value). The result was a "tech wonderland": efficient and productive by every metric, yet 0% effective because customers saw no difference. The lesson maps directly onto the [[output-vs-outcome]] trap: without a WHY-anchored outcome, HOW-obsession produces green metrics with a red inside (the watermelon effect).
+
 ---
 
 - Informs [[engineering-management]] — Drasner's "alignment with the why" is the same principle applied to teams
 - Related to [[technical-leadership]] — communicating purpose to inspire rather than command
 - Related to [[personal-branding]] — articulating a personal WHY as differentiation
+- Related to [[output-vs-outcome]] — HOW-obsession without WHY produces ineffective output
+- Related to [[psychological-safety]] — teams need safety to question the HOW and surface the WHY
 - Benchmark source: [[sources/start-with-why-sinek]] — Sinek's framework and its biological grounding

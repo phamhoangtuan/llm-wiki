@@ -3,8 +3,8 @@ title: "High Output Management"
 type: concept
 tags: [management, leadership, leverage, organizational-design, motivation, meetings]
 created: 2026-08-24
-updated: 2026-09-20
-sources: [high-output-management-grove, the-coaching-habit-stanier]
+updated: 2026-09-30
+sources: [high-output-management-grove, the-coaching-habit-stanier, leading-effective-engineering-teams-osmani]
 aliases: [HOM, Grove Management, Task-Relevant Maturity]
 ---
 
@@ -67,6 +67,10 @@ aliases: [HOM, Grove Management, Task-Relevant Maturity]
 
 This reframes management from personal productivity to organizational leverage — the manager's job is to multiply, not add.
 
+## Leverage as Effectiveness (Osmani)
+
+Osmani's *Leading Effective Engineering Teams* (source: [[sources/leading-effective-engineering-teams-osmani]]) modernizes the leverage idea for the individual engineer: pursue **force-multiplier activities** — improve shared tooling, mentor colleagues, document complex systems — so one hour of your time saves the team ten. He also refines Grove's "output" framing: leverage should amplify **outcome**, not raw output, otherwise high leverage efficiently produces [[output-vs-outcome|ineffective work]] (the watermelon effect). His 20-minute rule (research first, then ask with evidence) operationalizes Grove's self-sufficiency ethos.
+
 ---
 
 - Related to [[engineering-management]] — Grove's factory model complements Drasner's human-centric approach
@@ -80,3 +84,5 @@ This reframes management from personal productivity to organizational leverage �
 - Benchmark source: [[sources/scaling-people-hughes-johnson]] — Hughes Johnson's tactical scaling guide
 - Related to [[coaching]] — the one-on-one "one more question!" technique is question-based coaching
 - Related to [[engineering-management]] — Zhuo's eight principles operationalize Grove's people management
+- Related to [[output-vs-outcome]] — leverage amplifies outcome, not raw output
+- Related to [[multiplier-leadership]] — macro-management after delegation; Always Be Leaving

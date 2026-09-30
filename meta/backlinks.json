@@ -1527,6 +1527,10 @@
     "high-output-management",
     "high-output-management",
     "mentoring",
+    "multiplier-leadership",
+    "output-vs-outcome",
+    "psychological-safety",
+    "psychological-safety",
     "scaling-people",
     "technical-debt-management",
     "technical-leadership",
@@ -1534,6 +1538,7 @@
     "engineering-management-drasner",
     "engineering-management-drasner",
     "high-output-management-grove",
+    "leading-effective-engineering-teams-osmani",
     "scaling-people-hughes-johnson",
     "start-with-why-sinek",
     "the-coaching-habit-stanier",
@@ -1551,8 +1556,12 @@
     "feedback",
     "high-output-management",
     "mentoring",
+    "multiplier-leadership",
+    "psychological-safety",
+    "psychological-safety",
     "scaling-people",
     "technical-leadership",
+    "leading-effective-engineering-teams-osmani",
     "the-coaching-habit-stanier",
     "the-making-of-a-manager-zhuo",
     "the-making-of-a-manager-zhuo",
@@ -1567,6 +1576,7 @@
     "high-output-management",
     "mentoring",
     "metalearning",
+    "psychological-safety",
     "saying-no",
     "scaling-people",
     "spaced-repetition",
@@ -1605,6 +1615,9 @@
     "coaching",
     "feedback",
     "high-output-management",
+    "multiplier-leadership",
+    "psychological-safety",
+    "leading-effective-engineering-teams-osmani",
     "scaling-people-hughes-johnson",
     "the-coaching-habit-stanier",
     "the-making-of-a-manager-zhuo",
@@ -1844,11 +1857,37 @@
     "engineering-management",
     "engineering-management"
   ],
+  "sources/leading-effective-engineering-teams-osmani": [
+    "coaching",
+    "engineering-management",
+    "engineering-management",
+    "golden-circle",
+    "high-output-management",
+    "multiplier-leadership",
+    "multiplier-leadership",
+    "output-vs-outcome",
+    "output-vs-outcome",
+    "psychological-safety",
+    "psychological-safety",
+    "technical-debt-management"
+  ],
+  "multiplier-leadership": [
+    "coaching",
+    "coaching",
+    "engineering-management",
+    "high-output-management",
+    "psychological-safety",
+    "scaling-people",
+    "technical-leadership",
+    "leading-effective-engineering-teams-osmani",
+    "leading-effective-engineering-teams-osmani"
+  ],
   "mentoring": [
     "coaching",
     "engineering-management",
     "flow-zone-critique",
     "high-output-management",
+    "psychological-safety",
     "scaling-people",
     "software-professionalism",
     "clean-code-martin",
@@ -1862,8 +1901,12 @@
   "high-output-management": [
     "coaching",
     "feedback",
+    "multiplier-leadership",
+    "output-vs-outcome",
     "scaling-people",
     "high-output-management-grove",
+    "leading-effective-engineering-teams-osmani",
+    "leading-effective-engineering-teams-osmani",
     "scaling-people-hughes-johnson",
     "the-coaching-habit-stanier",
     "the-coaching-habit-stanier",
@@ -1873,9 +1916,21 @@
   "behavioral-habits": [
     "coaching",
     "feedback",
+    "psychological-safety",
+    "psychological-safety",
     "scaling-people",
     "technical-leadership",
     "what-got-you-here-goldsmith"
+  ],
+  "psychological-safety": [
+    "coaching",
+    "engineering-management",
+    "golden-circle",
+    "multiplier-leadership",
+    "output-vs-outcome",
+    "scaling-people",
+    "leading-effective-engineering-teams-osmani",
+    "leading-effective-engineering-teams-osmani"
   ],
   "essential-accidental-complexity": [
     "code-archaeology",
@@ -2066,8 +2121,12 @@
   "technical-debt-management": [
     "continuous-delivery",
     "engineering-management",
+    "output-vs-outcome",
+    "output-vs-outcome",
     "an-elegant-puzzle",
-    "an-elegant-puzzle"
+    "an-elegant-puzzle",
+    "leading-effective-engineering-teams-osmani",
+    "leading-effective-engineering-teams-osmani"
   ],
   "kubernetes-architecture": [
     "continuous-delivery",
@@ -2600,9 +2659,12 @@
     "engineering-management",
     "engineering-management",
     "high-output-management",
+    "output-vs-outcome",
+    "output-vs-outcome",
     "scaling-people",
     "engineering-management-drasner",
     "high-output-management-grove",
+    "leading-effective-engineering-teams-osmani",
     "scaling-people-hughes-johnson",
     "start-with-why-sinek",
     "start-with-why-sinek",
@@ -2613,6 +2675,21 @@
     "engineering-management",
     "engineering-management",
     "feedback"
+  ],
+  "output-vs-outcome": [
+    "engineering-management",
+    "golden-circle",
+    "golden-circle",
+    "high-output-management",
+    "high-output-management",
+    "multiplier-leadership",
+    "psychological-safety",
+    "psychological-safety",
+    "technical-debt-management",
+    "technical-debt-management",
+    "technical-leadership",
+    "leading-effective-engineering-teams-osmani",
+    "leading-effective-engineering-teams-osmani"
   ],
   "saying-no": [
     "engineering-management",
@@ -2831,7 +2908,8 @@
   ],
   "metric-fixation": [
     "goodharts-law",
-    "goodharts-law"
+    "goodharts-law",
+    "output-vs-outcome"
   ],
   "sources/tyranny-of-metrics": [
     "goodharts-law",

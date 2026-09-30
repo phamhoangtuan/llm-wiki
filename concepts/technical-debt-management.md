@@ -3,8 +3,8 @@ title: "Technical Debt Management"
 type: concept
 tags: [technical-debt, migrations, engineering-management, maintainability, architecture]
 created: 2026-08-18
-updated: 2026-08-18
-sources: [an-elegant-puzzle, software-engineering-at-google]
+updated: 2026-09-30
+sources: [an-elegant-puzzle, software-engineering-at-google, leading-effective-engineering-teams-osmani]
 aliases: [technical debt, migration management]
 ---
 
@@ -30,9 +30,14 @@ Small changes, explicit dependency versions, automated large-scale changes, and 
 - Update broken policies instead of granting one-off exceptions.
 - Use dashboards and directional metrics to find debt that affects users or delivery.
 
+## The Career Tax (Osmani)
+
+Osmani frames context-free code as a **"career tax"** (source: [[sources/leading-effective-engineering-teams-osmani]]): coding without understanding the *Why* produces technical debt that "steals" your future time — output that will have to be redone. The antidote ties debt back to [[output-vs-outcome]]: before writing code, ask what outcome it serves; if the answer is absent, the work is likely to become debt.
+
 ## Connections
 
 - Operationalized by [[engineering-management]] through team-health diagnosis and migration leadership.
 - Supported by [[continuous-delivery]] because small, reversible changes lower migration risk.
 - Related to [[software-rot]] and [[refactoring-at-scale]].
+- Related to [[output-vs-outcome]] — context-free, Why-less code becomes debt.
 - Benchmark sources: [[sources/an-elegant-puzzle]] and [[sources/software-engineering-at-google]].

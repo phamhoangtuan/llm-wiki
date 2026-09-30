@@ -4,6 +4,14 @@
 
 ---
 
+## [2026-09-30] ingest | Leading Effective Engineering Teams — Addy Osmani
+
+- Created sources/leading-effective-engineering-teams-osmani.md — Osmani's 279-page effectiveness & leadership handbook (Vietnamese edition): performance trio, watermelon effect, 20-minute rule, career tax, Project Aristotle, 3E model, Multiplier vs Diminisher
+- New concepts: output-vs-outcome, psychological-safety, multiplier-leadership
+- Updated concepts: engineering-management, golden-circle, technical-debt-management, high-output-management, coaching, scaling-people, technical-leadership
+- Updated index.md: +3 concepts, +1 source, 373 total pages (264 concepts + 109 sources)
+- HTML regenerated via convert-to-html.py
+
 ## [2026-09-20] lint | Post-ingest health check + link fix pass
 
 - Scanned 369 pages (261 concepts + 108 sources) across broken wikilinks, HTML hrefs, orphans, frontmatter, gaps

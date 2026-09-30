@@ -2141,6 +2141,19 @@
         "production"
       ]
     },
+    "multiplier-leadership": {
+      "title": "Multiplier Leadership",
+      "category": "Career & Growth",
+      "url": "concepts/multiplier-leadership.html",
+      "definition": "**Multiplier Leadership** is the operating model for leaders who scale themselves out of the critical path: instead of being the smartest person in the room, they make everyone else smarter. The measu",
+      "tags": [
+        "leadership",
+        "delegation",
+        "scaling",
+        "engineering-management",
+        "growth"
+      ]
+    },
     "nash-equilibrium": {
       "title": "Nash Equilibrium",
       "category": "Testing",
@@ -2199,6 +2212,19 @@
         "architecture",
         "system-design",
         "distributed-systems"
+      ]
+    },
+    "output-vs-outcome": {
+      "title": "Output vs Outcome",
+      "category": "Data Engineering",
+      "url": "concepts/output-vs-outcome.html",
+      "definition": "**Output vs Outcome** is the distinction between what a team *delivers* (features, code, docs, releases) and the *value change* that delivery causes in the real world (adoption, retention, revenue, re",
+      "tags": [
+        "effectiveness",
+        "metrics",
+        "engineering-leadership",
+        "product-thinking",
+        "performance"
       ]
     },
     "password-storage": {
@@ -2273,6 +2299,19 @@
         "geospatial",
         "scalability",
         "architecture"
+      ]
+    },
+    "psychological-safety": {
+      "title": "Psychological Safety",
+      "category": "Meta",
+      "url": "concepts/psychological-safety.html",
+      "definition": "**Psychological Safety** is the shared belief that a team member can take interpersonal risks — ask questions, admit mistakes, propose ideas, challenge the status quo — without fear of punishment, emb",
+      "tags": [
+        "team-dynamics",
+        "engineering-management",
+        "culture",
+        "innovation",
+        "project-aristotle"
       ]
     },
     "pytest-assertions": {

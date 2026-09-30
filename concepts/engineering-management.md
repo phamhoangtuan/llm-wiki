@@ -3,8 +3,8 @@ title: "Engineering Management"
 type: concept
 tags: [engineering-management, leadership, people-management, career, trust]
 created: 2026-08-15
-updated: 2026-09-20
-sources: [engineering-management-drasner, an-elegant-puzzle, high-output-management-grove, scaling-people-hughes-johnson, the-making-of-a-manager-zhuo, the-coaching-habit-stanier, what-got-you-here-goldsmith]
+updated: 2026-09-30
+sources: [engineering-management-drasner, an-elegant-puzzle, high-output-management-grove, scaling-people-hughes-johnson, the-making-of-a-manager-zhuo, the-coaching-habit-stanier, what-got-you-here-goldsmith, leading-effective-engineering-teams-osmani]
 aliases: [em, people-management, engineering-leadership]
 ---
 
@@ -48,6 +48,14 @@ Julie Zhuo's eight core principles (source: [[sources/the-making-of-a-manager-zh
 
 Stanier's coaching habit supplies the 1:1 mechanics (source: [[sources/the-coaching-habit-stanier]]): open with "What's on your mind?", follow with "And what else?", then "What's the real challenge here for you?" and "What do you want from me?" — staying on "What" questions to keep the employee owning the problem. Goldsmith adds the behavioral layer (source: [[sources/what-got-you-here-goldsmith]]): pause before responding, replace criticism with curiosity, acknowledge contributions, own mistakes without blame, and apologize sincerely — the behavioral habits that separate good leaders from derailed ones.
 
+## Effectiveness, Safety, and Scaling
+
+Osmani's *Leading Effective Engineering Teams* (source: [[sources/leading-effective-engineering-teams-osmani]]) adds the team-level and leadership-level layers:
+
+- **Focus on [[output-vs-outcome]]** — the manager's job is to point the team at outcomes (user adoption, satisfaction), not output (LOC, velocity); the "watermelon effect" (green metrics, red results) is the team disease to guard against
+- **Build [[psychological-safety]] first** — Project Aristotle's #1 team dynamic: safe teams admit mistakes early and innovate; it outranks dependability, structure, meaning, and impact
+- **Practice [[multiplier-leadership]]** — servant leadership in the ENABLE stage (absorb admin, co-create standards — ~23% effectiveness gain), remove blockers in EMPOWER, and scale self-sufficiency in EXPAND ("Always Be Leaving", bus factor)
+
 ---
 
 - Contrasts with [[technical-leadership]] — influence without authority (Staff+), vs. leading through direct reports
@@ -62,3 +70,4 @@ Stanier's coaching habit supplies the 1:1 mechanics (source: [[sources/the-coach
 - Benchmark source: [[sources/the-making-of-a-manager-zhuo]] — Zhuo's eight core management principles
 - Benchmark source: [[sources/the-coaching-habit-stanier]] — Stanier's question-based coaching for 1:1s
 - Benchmark source: [[sources/what-got-you-here-goldsmith]] — Goldsmith's behavioral habits for leaders
+- Benchmark source: [[sources/leading-effective-engineering-teams-osmani]] — Osmani's effectiveness, safety, and 3E leadership model

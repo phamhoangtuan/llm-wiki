@@ -3,8 +3,8 @@ title: "Technical Leadership"
 type: concept
 tags: [career, leadership, staff-engineering, influence]
 created: 2026-07-13
-updated: 2026-09-20
-sources: [staff-engineers-path, what-got-you-here-goldsmith, the-making-of-a-manager-zhuo]
+updated: 2026-09-30
+sources: [staff-engineers-path, what-got-you-here-goldsmith, the-making-of-a-manager-zhuo, leading-effective-engineering-teams-osmani]
 aliases: [tech-leadership, leadership-without-authority]
 ---
 
@@ -59,3 +59,5 @@ This might mean writing a three-year strategy, aligning five teams on shared arc
 - Related to [[behavioral-habits]] — Goldsmith's self-control and accountability habits for senior leaders
 - Related to [[the-making-of-a-manager-zhuo|The Making of a Manager]] — leading through vision and influence, not authority
 - Related to [[coaching]] — curiosity and questions as the leadership stance
+- Related to [[multiplier-leadership]] — decoding jargon and multiplying team intelligence is technical leadership's core move
+- Related to [[output-vs-outcome]] — technical leaders frame problems by business outcome, not technical output

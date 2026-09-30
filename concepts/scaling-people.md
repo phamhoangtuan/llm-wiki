@@ -3,8 +3,8 @@ title: "Scaling People"
 type: concept
 tags: [management, scaling, hiring, team-development, feedback, operating-system]
 created: 2026-08-24
-updated: 2026-09-20
-sources: [scaling-people-hughes-johnson, the-coaching-habit-stanier, what-got-you-here-goldsmith]
+updated: 2026-09-30
+sources: [scaling-people-hughes-johnson, the-coaching-habit-stanier, what-got-you-here-goldsmith, leading-effective-engineering-teams-osmani]
 aliases: [Scaling People Tactics, Hughes Johnson Frameworks]
 ---
 
@@ -69,3 +69,5 @@ aliases: [Scaling People Tactics, Hughes Johnson Frameworks]
 - Related to [[coaching]] — hypothesis-based coaching runs on Stanier's question habit
 - Related to [[behavioral-habits]] — "say the thing you think you cannot say" is Goldsmith's honesty habit
 - Related to [[the-making-of-a-manager-zhuo|The Making of a Manager]] — Zhuo's skill vs. motivation diagnosis matches the skill-will matrix
+- Related to [[multiplier-leadership]] — Osmani's 3E model (Enable → Empower → Expand) parallels Hughes Johnson's operating-system frameworks
+- Related to [[psychological-safety]] — "say the thing" requires psychological safety

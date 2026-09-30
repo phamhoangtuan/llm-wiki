@@ -268,6 +268,9 @@
 - [Data Lineage](concepts/data-lineage.html) — End-to-end traceability of data's journey; the every-step rule and context for calculated values
 - [ABZ Planning](concepts/abz-planning.html) — Hoffman's career-as-start-up: Plan A experiments, adjacent Plan B pivots, Plan Z safety net
 - [Behavioral Habits](concepts/behavioral-habits.html) — Goldsmith's 9-step behavioral improvement: communication, accountability, emotional mastery
+- [Output vs Outcome](concepts/output-vs-outcome.html) — Performance Trio (productivity/efficiency/effectiveness); watermelon effect; measure value, not volume
+- [Psychological Safety](concepts/psychological-safety.html) — Project Aristotle's #1 team dynamic: safe teams take risks and admit mistakes
+- [Multiplier Leadership](concepts/multiplier-leadership.html) — 3E model (Enable → Empower → Expand); Multiplier vs Diminisher; Always Be Leaving
 
 ## Sources
 
@@ -379,6 +382,7 @@
 - [The Data Lakehouse — Bill Inmon, Ranjeet Srivastava & Mary Levins](sources/the-data-lakehouse-inmon.md) — 256-page guide: text storage, data-type suitability, calculated-value context, full lineage
 - [The Start-Up of You — Reid Hoffman](sources/the-start-up-of-you-hoffman.md) — 312-page career-as-start-up guide: permanent beta, ABZ planning, relationships
 - [What Got You Here Won't Get You There — Marshall Goldsmith & Mark Reiter](sources/what-got-you-here-goldsmith.md) — 379-page 9-step behavioral improvement guide for successful people
+- [Leading Effective Engineering Teams — Addy Osmani](sources/leading-effective-engineering-teams-osmani.md) — 279-page effectiveness handbook: performance trio, watermelon effect, Project Aristotle, 3E leadership model
 
 ## Syntheses
 
@@ -386,5 +390,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-_Last updated: 2026-09-20_
-_Pages: 369 (261 concepts + 108 sources)_
+_Last updated: 2026-09-30_
+_Pages: 373 (264 concepts + 109 sources)_
