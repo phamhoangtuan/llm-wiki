@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Context Engineering — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>Context Engineering</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Context Engineering</h1>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, agent-quality-token-optimization, new-sdlc-vibe-coding</span><span>Updated: 2026-06-20</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">agents</span><span class="tag">prompt-engineering</span><span class="tag">llm</span><span class="tag">knowledge-management</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Context Engineering</strong> is the systematic discipline of curating and injecting project-specific information into AI agent working memory to maximize output quality. It is the next evolution beyond prompt engineering — recognizing that the quality of AI-generated output is fundamentally bounded by the quality, relevance, and structure of the context the model receives.</p>
+<blockquote>"The quality of AI output is bounded by the quality of context it receives." — Shah Rahman, Meta</blockquote>
+<h2 id="context-engineering-vs-prompt-engineerin">Context Engineering vs Prompt Engineering</h2>
+<table><thead><tr>
+<th>Prompt Engineering</th>
+<th>Context Engineering</th>
+</tr></thead><tbody>
+<tr>
+<td>Crafting a single message to the model</td>
+<td>Curating a persistent knowledge layer</td>
+</tr>
+<tr>
+<td>One-off, ad-hoc instructions</td>
+<td>Reusable, standardized, version-controlled artifacts</td>
+</tr>
+<tr>
+<td>Focused on the <em>instruction</em></td>
+<td>Focused on the <em>environment</em> the instruction lands in</td>
+</tr>
+<tr>
+<td>Easy to start, hard to scale</td>
+<td>Requires upfront investment, compounds over time</td>
+</tr>
+</tbody></table>
+<h2 id="core-components">Core Components</h2>
+<p>The context layer consists of reusable, standardized artifacts:</p>
+<table><thead><tr>
+<th>Artifact</th>
+<th>Role</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>AGENTS.md / CLAUDE.md</strong></td>
+<td>Constitutional rules, constraints, conventions</td>
+<td>Coding standards, banned patterns, workflow expectations</td>
+</tr>
+<tr>
+<td><strong>Architectural diagrams</strong></td>
+<td>System structure and component relationships</td>
+<td>C4 diagrams, data flow maps</td>
+</tr>
+<tr>
+<td><strong>Coding standards</strong></td>
+<td>Style guides, naming conventions, patterns</td>
+<td>Language-specific conventions, team preferences</td>
+</tr>
+<tr>
+<td><strong>Business rules</strong></td>
+<td>Domain logic, validation constraints</td>
+<td>"A premium customer must have a valid payment method"</td>
+</tr>
+<tr>
+<td><strong>Team conventions</strong></td>
+<td>Shared practices and expectations</td>
+<td>Branch naming, PR template, review checklist</td>
+</tr>
+<tr>
+<td><strong>Development workflows</strong></td>
+<td>Step-by-step processes</td>
+<td>"Plan → Research → Implement → Verify"</td>
+</tr>
+</tbody></table>
+<h2 id="six-dimensions-of-context">Six Dimensions of Context</h2>
+<p>Beyond static files, context engineering addresses six dimensions that feed the agent's working memory:</p>
+<ol>
+<li><strong>Instructions</strong>: Role, mission objectives, operational guardrails</li>
+<li><strong>Knowledge</strong>: Architectural diagrams, technical debt logs, domain schemas</li>
+<li><strong>Memory</strong>: Short-term session logs + long-term project persistent state</li>
+<li><strong>Examples</strong>: Few-shot demonstrations, gold-standard reference patterns</li>
+<li><strong>Tools</strong>: Structured definitions for APIs, scripts, external service access</li>
+<li><strong>Guardrails</strong>: Formatting requirements, safety validations, hard-coded constraints</li>
+</ol>
+<p>These six dimensions correspond to the Memory, Tools, and Orchestration components of the <a href="agent-components.html" class="wiki-link">agent architecture</a>. Context engineering is the practice of curating and delivering the right information from each dimension.</p>
+<h2 id="static-vs-dynamic-context">Static vs Dynamic Context</h2>
+<p>Context can be delivered in two modes — each with distinct trade-offs:</p>
+<table><thead><tr>
+<th>Feature</th>
+<th>Static Context</th>
+<th>Dynamic Context</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Definition</strong></td>
+<td>Always loaded (AGENTS.md rules)</td>
+<td>Loaded on demand (RAG results, skills)</td>
+</tr>
+<tr>
+<td><strong>Cost (Tokens)</strong></td>
+<td>🔴 High (paid in every interaction)</td>
+<td>🟢 Low (paid only when needed)</td>
+</tr>
+<tr>
+<td><strong>Reliability</strong></td>
+<td>✅ Excellent: Agent never forgets</td>
+<td>⚠️ Variable: Subject to retrieval misses</td>
+</tr>
+<tr>
+<td><strong>Use Case</strong></td>
+<td>Core conventions, architectural rules</td>
+<td>Task-specific knowledge, RAG retrieval</td>
+</tr>
+</tbody></table>
+<p><strong>The balance</strong>: Static context ensures the agent never violates foundational rules. Dynamic context keeps token costs manageable by loading specialized knowledge only when relevant. Overloading static context causes context rot; relying entirely on dynamic context risks retrieval misses on critical constraints.</p>
+<h2 id="agent-skills-pattern-progressive-disclos">Agent Skills Pattern: Progressive Disclosure</h2>
+<p>The Agent Skills pattern implements dynamic context through progressive disclosure:</p>
+<ul>
+<li>✅ Agent remains a <strong>lightweight generalist</strong> by default</li>
+<li>✅ When a task matches a skill trigger → load <strong>deep procedural knowledge</strong></li>
+<li>✅ Optimizes token economics — prevents context rot from rarely-used instructions</li>
+<li>✅ Prevents the "one giant instruction file" anti-pattern</li>
+</ul>
+<p>This maps directly to the behavior files (AGENTS.md for static rules + skills loaded on demand for dynamic knowledge). The mental model: "What would a new team member need to know to contribute effectively, and how do I encode that knowledge in a form the AI can use?"</p>
+<h2 id="mechanics-of-context-quality">Mechanics of Context Quality</h2>
+<p>Two well-documented biases govern how models utilize context:</p>
+<h3 id="lost-in-the-middle">Lost in the Middle</h3>
+<p>Information in the middle of a long context window receives significantly less attention than information at the beginning or end. Critical instructions must be positioned strategically — near the beginning (system prompt) or near the end (most recent messages).</p>
+<h3 id="recency-bias--context-rot">Recency Bias / Context Rot</h3>
+<p>As context grows, earlier information loses influence. Stale context accumulates, diluting the signal-to-noise ratio and causing the agent to "forget" constraints established early in the session. Session compaction and scoping are essential countermeasures.</p>
+<h2 id="mcp-and-tool-integration">MCP and Tool Integration</h2>
+<p>Anthropic's <strong>Model Context Protocol (MCP)</strong> — described as "USB-C for AI" — provides a universal standard for connecting agents to external tools and data sources. MCP extends context engineering from static files to dynamic, tool-mediated context retrieval.</p>
+<h2 id="shared-context-libraries">Shared Context Libraries</h2>
+<p>At the team level, shared context libraries become the core currency of AI-native development:</p>
+<ul>
+<li>Standardize context files, evaluation sets, and agent configurations across teams</li>
+<li>Package context through plugins, skills, and commands</li>
+<li><strong>Watch for uncontrolled proliferation</strong> — teams competing for standardization rather than collaborating</li>
+</ul>
+<h2 id="impact">Impact</h2>
+<p>Teams practicing rigorous context engineering report <strong>40-50% speed increases</strong> and dramatically reduced alignment overhead in agent interactions.</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>AI-Native Engineering</h4>
+      <p>context engineering is the first and most important of the four core practices</p>
+    </a>
+    <a class="connection-card" href="agent-quality-optimization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Quality Optimization</h4>
+      <p>agent quality optimization includes context strategy as a key dimension of ROI</p>
+    </a>
+    <a class="connection-card" href="harness-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Harness Engineering</h4>
+      <p>the AGENTS.md file is a harness primitive that acts as a context engineering artifact</p>
+    </a>
+    <a class="connection-card" href="agent-components.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Components</h4>
+      <p>the 6 dimensions of context map to Memory, Tools, and Orchestration components</p>
+    </a>
+    <a class="connection-card" href="vibe-coding.html">
+      <span class="connection-type related">Related</span>
+      <h4>Vibe Coding</h4>
+      <p>vibe coders give one-off prompts; AI-native engineers build persistent context layers</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>A Practical Guide to Becoming an AI-Native Engineer</h4>
+      <p>ByteByteGo guide covering context engineering</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Agent Quality & Token Optimization — GitHub Workshop</h4>
+      <p>GitHub workshop on context strategy</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>The New SDLC With Vibe Coding: From ad-hoc prompting to Agentic Engineering</h4>
+      <p>6 dimensions, static vs dynamic context, agent skills pattern</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="containerization.html" class="prev">← Containerization</a><a href="continuous-delivery.html" class="next">Continuous Delivery →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

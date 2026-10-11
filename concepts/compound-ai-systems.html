@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compound AI Systems — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-machine-learning">Machine Learning</a> <span class="sep">/</span>
+  <span>Compound AI Systems</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Compound AI Systems</h1>
+  <div class="page-meta"><span>Source: introduction-to-machine-learning-systems</span><span>Updated: 2026-07-13</span></div>
+  <div class="page-tags"><span class="tag">machine-learning</span><span class="tag">ai-engineering</span><span class="tag">orchestration</span><span class="tag">systems-design</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Compound AI Systems</strong> are the paradigm shift from single monolithic models to orchestrated ensembles of specialized components — retrievers, reasoners, verifiers, tools, and agents working together. The future of AI isn't one bigger model; it's many models and tools that compose into a system smarter than any individual piece.</p>
+<h2 id="why-compound-systems">Why Compound Systems</h2>
+<p>Single-model approaches hit diminishing returns (see <a href="ai-scaling-laws.html" class="wiki-link">ai-scaling-laws</a>). Compound systems achieve more by:</p>
+<ul>
+<li><strong>Division of labor</strong>: Each component specializes — a retriever finds context, a reasoner generates answers, a verifier checks correctness</li>
+<li><strong>Composability</strong>: Swap components independently — upgrade the retriever without touching the reasoner</li>
+<li><strong>Tool use</strong>: Models call APIs, query databases, run code — extending capability beyond what's encoded in weights</li>
+<li><strong>Safety through structure</strong>: Verification layers catch hallucinations before they reach users</li>
+</ul>
+<h2 id="architecture-patterns">Architecture Patterns</h2>
+<table><thead><tr>
+<th>Pattern</th>
+<th>Components</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>RAG</strong></td>
+<td>Retriever + Generator</td>
+<td>Search docs, feed context to LLM for grounded answers</td>
+</tr>
+<tr>
+<td><strong>Agent with Tools</strong></td>
+<td>Planner + Executor + Verifier</td>
+<td>ReAct loop: plan, use tools, verify, iterate</td>
+</tr>
+<tr>
+<td><strong>Ensemble</strong></td>
+<td>Multiple models + Router</td>
+<td>Route simple queries to small model, complex to large model</td>
+</tr>
+<tr>
+<td><strong>Guardrails</strong></td>
+<td>Input filter + Model + Output validator</td>
+<td>Detect PII before inference, verify outputs before delivery</td>
+</tr>
+</tbody></table>
+<h2 id="the-frontier">The Frontier</h2>
+<p>As AI systems become more autonomous, engineering value shifts from tweaking individual models to mastering integration, orchestration, and reliability of compound systems. The bottleneck is no longer "Can we build a smarter model?" but "Can we build a scalable, sustainable, safe system around it?"</p>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="machine-learning-systems.html">
+      <span class="connection-type related">Related</span>
+      <h4>Machine Learning Systems</h4>
+      <p>compound systems are the frontier (Part VI of the ML Systems framework)</p>
+    </a>
+    <a class="connection-card" href="retrieval-augmented-generation.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Retrieval-Augmented Generation (RAG)</h4>
+      <p>RAG is the most widely deployed compound AI pattern</p>
+    </a>
+    <a class="connection-card" href="agent-components.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Agent Components</h4>
+      <p>agents are compound systems of model + tools + memory + orchestration</p>
+    </a>
+    <a class="connection-card" href="harness-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Harness Engineering</h4>
+      <p>compound systems need verification and guardrail infrastructure</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Introduction to Machine Learning Systems</h4>
+      <p>Reddi covers compound AI as the future paradigm</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="composition-root.html" class="prev">← Composition Root</a><a href="containerization.html" class="next">Containerization →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

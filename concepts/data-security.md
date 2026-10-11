@@ -1,0 +1,52 @@
+---
+title: "Data Security"
+type: concept
+tags: [data-management, security, dama]
+created: 2026-07-14
+updated: 2026-10-11
+sources: [dama-dmbok-2nd-edition, financial-data-engineering-khraisha]
+---
+
+# Data Security
+
+Maintaining privacy, confidentiality, and appropriate access to data assets. One of DAMA's eleven Knowledge Areas.
+
+## Scope
+
+Data Security covers planning, implementation, and enforcement of security policies for data:
+
+- **Authentication & Authorization**: Who can access what data
+- **Classification**: Labeling data by sensitivity (public, internal, confidential, restricted)
+- **Encryption**: At rest and in transit
+- **Audit & Monitoring**: Detecting and logging unauthorized access
+- **Privacy compliance**: GDPR, HIPAA, and other regulatory requirements
+
+## Role in DAMA Framework
+
+Data Security is a foundational concern that intersects with every other Knowledge Area. It is part of the **Enable & Maintain** lifecycle phase and a prerequisite for Data Governance to function effectively.
+
+## In Aiken's Pyramid
+
+Phase 1 discipline — organizations must establish data security fundamentals before pursuing advanced analytics.
+
+## RBAC + Encryption by Design (Khraisha)
+
+Khraisha's *Financial Data Engineering* (source: [[sources/financial-data-engineering-khraisha]]) adds the regulated-data posture:
+
+- **RBAC** — restrict access per role; least privilege applied to sensitive financial data
+- **Encryption** — encrypt sensitive data at rest and in transit
+- **PII masking** — mask personally identifiable information before non-privileged access
+- **Audit rigor** — log all access, transformations, and errors; OpenTelemetry for traceability
+
+> Security ≠ slowness — RBAC and encryption add negligible overhead when designed upfront, not retrofitted.
+
+---
+
+## Connections
+
+- [[data-governance]] — Security policies are enforced through governance
+- [[data-anonymization]] — Techniques for protecting individual privacy in datasets
+- [[differential-privacy]] — Mathematical guarantees for privacy preservation
+- [[shift-left-security]] — Embedding security throughout the development lifecycle
+- [[password-storage]] — Salting, hashing, and constant-time comparison
+- Extended by [[financial-data-engineering-khraisha]] — RBAC, encryption, and PII masking by design

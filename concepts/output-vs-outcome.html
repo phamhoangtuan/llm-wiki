@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Output vs Outcome — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-effectiveness">Effectiveness</a> <span class="sep">/</span>
+  <span>Output vs Outcome</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Output vs Outcome</h1>
+  <div class="page-meta"><span>Source: leading-effective-engineering-teams-osmani</span><span>Updated: 2026-09-30</span></div>
+  <div class="page-tags"><span class="tag">effectiveness</span><span class="tag">metrics</span><span class="tag">engineering-leadership</span><span class="tag">product-thinking</span><span class="tag">performance</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Output vs Outcome</strong> is the distinction between what a team <em>delivers</em> (features, code, docs, releases) and the <em>value change</em> that delivery causes in the real world (adoption, retention, revenue, reduced latency). The performance mantra: measure <strong>outcome</strong>, not output — otherwise a team can be extremely productive and efficient while being completely ineffective. Addy Osmani's <em>Leading Effective Engineering Teams</em> makes this the central thesis (source: <span class="wiki-link source-ref">sources/leading-effective-engineering-teams-osmani</span>).</p>
+<h2 id="the-performance-trio">The Performance Trio</h2>
+<table><thead><tr>
+<th>Concept</th>
+<th>Mantra</th>
+<th>Focus</th>
+<th>Typical Metric</th>
+<th>Nature</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Productivity</strong></td>
+<td>"Output over input"</td>
+<td>Speed, raw volume</td>
+<td>Story points / LOC</td>
+<td>Raw — measures speed, weak for knowledge work</td>
+</tr>
+<tr>
+<td><strong>Efficiency</strong></td>
+<td>"Doing things right"</td>
+<td>Reducing wasted resources</td>
+<td>Bug fix rate / cycle time</td>
+<td>Refined — fast without burning money/time</td>
+</tr>
+<tr>
+<td><strong>Effectiveness</strong></td>
+<td>"Doing the right thing"</td>
+<td>Delivering real value</td>
+<td>User adoption / satisfaction</td>
+<td>North Star — building what customers need</td>
+</tr>
+</tbody></table>
+<p>The blunt truth: the most productive, most efficient coder can still be <strong>0% effective</strong> if nobody uses what they build. Efficient-but-ineffective is the most dangerous combination of all.</p>
+<h2 id="the-watermelon-effect">The Watermelon Effect</h2>
+<p>The deadliest team disease: <strong>green on the outside, red on the inside</strong>.</p>
+<table><thead><tr>
+<th>Green Outside (looks healthy)</th>
+<th>Red Inside (actually failing)</th>
+</tr></thead><tbody>
+<tr>
+<td>Pretty metrics, met deadlines</td>
+<td>No business value</td>
+</tr>
+<tr>
+<td>High velocity, smooth deploys</td>
+<td>Unhappy users</td>
+</tr>
+<tr>
+<td>Bug-free, "successful" launches</td>
+<td>Outcome unchanged</td>
+</tr>
+</tbody></table>
+<p>The <strong>Cloudoids case</strong>: a team migrated a flagship app to Kubernetes/microservices, delivered bug-free and on time, celebrated with pizza — but the app wasn't faster, the UX didn't improve, and customers saw no difference. They built a "tech wonderland" that failed commercially because they focused on the <strong>How</strong> and forgot the <strong>Why</strong> (see <a href="golden-circle.html" class="wiki-link">golden-circle</a>). Other traps: <strong>burnout</strong> (chasing volume without checking value) and <strong>unreasonable deadlines</strong> (healthcare.gov 2013 — legal-deadline launches that ship output over outcome and fail catastrophically).</p>
+<h2 id="output-vs-outcome-shift">Output vs Outcome Shift</h2>
+<table><thead><tr>
+<th>Output (what you deliver)</th>
+<th>Outcome (the value change)</th>
+</tr></thead><tbody>
+<tr>
+<td>Release a new app</td>
+<td>Reach a new user segment</td>
+</tr>
+<tr>
+<td>Refactor code</td>
+<td>Improve performance, reduce latency</td>
+</tr>
+<tr>
+<td>Add a feature</td>
+<td>Increase retention, improve UX</td>
+</tr>
+<tr>
+<td>Write a design doc</td>
+<td>Simplify the team's dev process</td>
+</tr>
+<tr>
+<td>Release a new API</td>
+<td>Enable business partnerships, increase revenue</td>
+</tr>
+</tbody></table>
+<p>The mindset shift: don't ask <em>"Did I finish the code?"</em> — ask <strong>"How did the world change because of my code?"</strong></p>
+<h2 id="why-it-matters">Why It Matters</h2>
+<ul>
+<li><strong>Measurement drives behavior</strong> — metrics that track LOC/story points reward volume; outcome metrics reward value</li>
+<li><strong>Business alignment</strong> — engineers become "outcome-owners" rather than "task-takers" by asking "Why" before coding (avoiding the <a href="technical-debt-management.html" class="wiki-link">career tax</a>)</li>
+<li><strong>Prioritization</strong> — effectiveness as the North Star compresses the "efficiently doing the wrong things" trap</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="engineering-management.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Engineering Management</h4>
+      <p>enabling teams to focus on outcome, not output</p>
+    </a>
+    <a class="connection-card" href="psychological-safety.html">
+      <span class="connection-type related">Related</span>
+      <h4>Psychological Safety</h4>
+      <p>safe teams surface the red inside honestly</p>
+    </a>
+    <a class="connection-card" href="high-output-management.html">
+      <span class="connection-type related">Complements</span>
+      <h4>High Output Management</h4>
+      <p>leverage amplifies effectiveness, not just output</p>
+    </a>
+    <a class="connection-card" href="metric-fixation.html">
+      <span class="connection-type related">Related</span>
+      <h4>Metric Fixation</h4>
+      <p>outcome metrics can themselves become targets</p>
+    </a>
+    <a class="connection-card" href="technical-debt-management.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Technical Debt Management</h4>
+      <p>context-free output creates debt</p>
+    </a>
+    <a class="connection-card" href="golden-circle.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Golden Circle</h4>
+      <p>starting from Why avoids the tech-wonderland trap</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Leading Effective Engineering Teams — Addy Osmani</h4>
+      <p>Osmani's effectiveness handbook</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="orchestration-vs-choreography.html" class="prev">← Orchestration vs Choreography</a><a href="password-storage.html" class="next">Password Storage →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

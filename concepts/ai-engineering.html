@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Engineering — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-ai-engineering">Ai Engineering</a> <span class="sep">/</span>
+  <span>AI Engineering</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>AI Engineering</h1>
+  <div class="page-meta"><span>Source: ai-engineering-chip-huyen</span><span>Updated: 2026-08-15</span></div>
+  <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">foundation-models</span><span class="tag">ml-engineering</span><span class="tag">rag</span><span class="tag">evaluation</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>AI Engineering</strong> is the discipline of building applications on top of readily available foundation models — large models trained by a few organizations and served via APIs — rather than training models from scratch. Coined and mapped by Chip Huyen, it reframes AI from an esoteric, specialized field into a general-purpose development tool accessible to engineers with no prior ML background (source: <span class="wiki-link source-ref">sources/ai-engineering-chip-huyen</span>).</p>
+<h2 id="ai-engineering-vs-ml-engineering">AI Engineering vs ML Engineering</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Traditional [[machine-learning-systems</th>
+<th>ML Engineering]]</th>
+<th>AI Engineering</th>
+</tr></thead><tbody>
+<tr>
+<td>Model origin</td>
+<td>Build and train your own</td>
+<td>Adapt pre-trained foundation models</td>
+</tr>
+<tr>
+<td>Core work</td>
+<td>Feature engineering, tabular annotation</td>
+<td>Adaptation: <a href="prompt-engineering.html" class="wiki-link">prompt-engineering</a>, [[retrieval-augmented-generation</td>
+<td>RAG]], <a href="fine-tuning.html" class="wiki-link">fine-tuning</a></td>
+</tr>
+<tr>
+<td>Product involvement</td>
+<td>Often downstream</td>
+<td>Engineers sit close to product, iterate faster</td>
+</tr>
+<tr>
+<td>Investment order</td>
+<td>Data/model first</td>
+<td>Product first; invest in data/training only after the app shows promise</td>
+</tr>
+</tbody></table>
+<p>The shift is from <em>developing</em> models to <em>adapting and evaluating</em> them.</p>
+<h2 id="the-three-layer-stack">The Three-Layer Stack</h2>
+<table><thead><tr>
+<th>Layer</th>
+<th>Responsibility</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Application Development</strong></td>
+<td>UI, prompt engineering, context construction (RAG), rigorous evaluation</td>
+</tr>
+<tr>
+<td><strong>Model Development</strong></td>
+<td>Modeling, training, dataset engineering, inference optimization (faster/cheaper)</td>
+</tr>
+<tr>
+<td><strong>Infrastructure</strong></td>
+<td>Model serving, compute and data management, system monitoring</td>
+</tr>
+</tbody></table>
+<h2 id="core-adaptation-techniques">Core Adaptation Techniques</h2>
+<ol>
+<li><strong><a href="prompt-engineering.html" class="wiki-link">Prompt Engineering</a></strong> — adapt the model without touching weights: instructions, personas, in-context examples.</li>
+<li><strong><a href="retrieval-augmented-generation.html" class="wiki-link">RAG</a></strong> — connect responses to external data for query-specific context, mitigating hallucination.</li>
+<li><strong><a href="fine-tuning.html" class="wiki-link">Finetuning</a></strong> — adjust actual weights to optimize behavior, style, or domain capability.</li>
+</ol>
+<h2 id="evaluation-driven-development">Evaluation-Driven Development</h2>
+<p>Evaluation is the hardest problem in AI engineering because foundation models emit open-ended output with no single "ground truth." The discipline mandates defining evaluation criteria and pipelines <strong>before</strong> building — tracking domain capabilities, generation quality, instruction-following reliability, and operational cost/latency. See <a href="llm-evaluation-metrics.html" class="wiki-link">llm-evaluation-metrics</a>.</p>
+<h2 id="risks-and-maintenance">Risks and Maintenance</h2>
+<ul>
+<li><strong>Prompt attacks</strong> — jailbreaking and indirect prompt injection exploit instruction-following to leak data or perform unauthorized actions.</li>
+<li><strong>Model obsolescence</strong> — a model optimal today may be outperformed months later; <a href="compound-ai-systems.html" class="wiki-link">compound systems</a> with swappable models hedge against this.</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="ai-native-engineering.html">
+      <span class="connection-type related">Related to</span>
+      <h4>AI-Native Engineering</h4>
+      <p>AI engineering is the field; AI-native engineering is its agent-orchestration paradigm</p>
+    </a>
+    <a class="connection-card" href="machine-learning-systems.html">
+      <span class="connection-type related">Related</span>
+      <h4>Machine Learning Systems</h4>
+      <p>the foundation-model successor to Huyen's earlier ML-systems framing</p>
+    </a>
+    <a class="connection-card" href="prompt-engineering.html">
+      <span class="connection-type related">Related</span>
+      <h4>Prompt Engineering</h4>
+      <p>, [[retrieval-augmented-generation]], [[fine-tuning]] — the three adaptation techniques</p>
+    </a>
+    <a class="connection-card" href="llm-evaluation-metrics.html">
+      <span class="connection-type related">Depends on</span>
+      <h4>LLM Evaluation Metrics</h4>
+      <p>evaluation-driven development is the discipline's hardest challenge</p>
+    </a>
+    <a class="connection-card" href="compound-ai-systems.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Compound AI Systems</h4>
+      <p>swappable, multi-component systems hedge against model drift</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>AI Engineering: Building Applications with Foundation Models</h4>
+      <p>Chip Huyen's canonical map of the discipline</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="agentic-development-life-cycle.html" class="prev">← Agentic Development Life Cycle</a><a href="ai-native-engineering.html" class="next">AI-Native Engineering →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kubernetes Operator — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-kubernetes">Kubernetes</a> <span class="sep">/</span>
+  <span>Kubernetes Operator</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Kubernetes Operator</h1>
+  <div class="page-meta"><span>Source: programming-kubernetes</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-tags"><span class="tag">kubernetes</span><span class="tag">operators</span><span class="tag">controllers</span><span class="tag">cloud-native</span><span class="tag">golang</span><span class="tag">automation</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>A Kubernetes Operator is a software extension that encodes domain-specific operational knowledge into automated controllers. Built on the control loop pattern (READ → CHANGE → UPDATE), operators watch custom resources and reconcile actual state toward desired state — turning manual SRE procedures into version-controlled, testable code. Operators are the mechanism that makes Kubernetes self-healing and self-managing.</p>
+<h2 id="running-on-k8s-vs-programming-k8s">Running on K8s vs Programming K8s</h2>
+<table><thead><tr>
+<th>Approach</th>
+<th>Description</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Run on K8s</strong> 📦</td>
+<td>Deploy existing software onto a cluster</td>
+<td><code>kubectl apply -f deployment.yaml</code></td>
+</tr>
+<tr>
+<td><strong>Program K8s</strong> 🔧</td>
+<td>Build applications aware of K8s, using APIs to manage state</td>
+<td>Write a controller that auto-scales a database on load</td>
+</tr>
+</tbody></table>
+<blockquote>One is a tenant. The other is a builder who reads the building's blueprints.</blockquote>
+<h2 id="the-control-loop-read--change--update">The Control Loop: READ → CHANGE → UPDATE</h2>
+<p>Every Kubernetes controller and operator follows this universal pattern:</p>
+<pre><code>┌────────────────────────┐
+│ 1. READ: Observe state  │ → Watch API events, detect drift from desired state
+└────────┬───────────────┘
+         ▼
+┌────────────────────────┐
+│ 2. CHANGE: Act          │ → Create, modify, or delete resources to close the gap
+└────────┬───────────────┘
+         ▼
+┌────────────────────────┐
+│ 3. UPDATE: Report       │ → Update .status in the API, emit logs, export metrics
+└────────────────────────┘</code></pre>
+<p><strong>Analogy</strong>: A thermostat — reads temperature (READ), turns AC on/off (CHANGE), updates the display (UPDATE).</p>
+<h2 id="operator--crd--custom-controller">Operator = CRD + Custom Controller</h2>
+<p>An operator has two components:</p>
+<table><thead><tr>
+<th>Component</th>
+<th>Role</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Custom Resource Definition (CRD)</strong> 📋</td>
+<td>Defines the schema for a domain-specific resource</td>
+<td><code>kind: PostgreSQLCluster</code> with fields: <code>replicas</code>, <code>storageSize</code>, <code>version</code></td>
+</tr>
+<tr>
+<td><strong>Custom Controller</strong> ⚙️</td>
+<td>Supervises those resources, manages their lifecycle</td>
+<td>Auto-provisions, backs up, failovers, and upgrades the PostgreSQL cluster</td>
+</tr>
+</tbody></table>
+<p>Instead of 10 manual <code>kubectl</code> commands:</p>
+<pre><code class="language-yaml">apiVersion: database.example.com/v1
+kind: PostgreSQLCluster
+metadata:
+  name: prod-db
+spec:
+  replicas: 3
+  storageSize: 100Gi
+  backupSchedule: &quot;0 2 * * *&quot;</code></pre>
+<p>→ The operator handles everything: provisioning, scaling, backup, recovery, upgrade.</p>
+<blockquote>Operators turn tribal SRE knowledge into code that can be version-controlled, tested, and reused.</blockquote>
+<h2 id="the-go-ecosystem">The Go Ecosystem</h2>
+<p>Kubernetes is written in Go, and the ecosystem mirrors that:</p>
+<table><thead><tr>
+<th>Library</th>
+<th>Purpose</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>client-go</strong> 🚀</td>
+<td>Standard library for K8s API interaction — <code>clientset.CoreV1().Pods(ns).Get(ctx, name, opts)</code></td>
+</tr>
+<tr>
+<td><strong>API Machinery</strong> ⚙️</td>
+<td>Building blocks for K8s-like APIs — Kinds, Resources, Schemes (Go type ↔ API mapping)</td>
+</tr>
+</tbody></table>
+<p><strong>Pro tip</strong>: Always use informers and caches from <code>client-go</code> instead of polling the API directly — reduces load on the API server.</p>
+<h2 id="extension-patterns">Extension Patterns</h2>
+<p>Three ways to extend Kubernetes, in order of complexity:</p>
+<h3 id="1-custom-resource-definitions-crds--most">1. Custom Resource Definitions (CRDs) — Most Common</h3>
+<ul>
+<li><strong>When</strong>: Adding a new resource type with custom schema</li>
+<li><strong>Pros</strong>: Easy to implement, integrates with <code>kubectl</code>, RBAC, validation</li>
+<li><strong>Cons</strong>: Performance may be limited at extreme scale</li>
+</ul>
+<h3 id="2-custom-api-servers--for-edge-cases">2. Custom API Servers — For Edge Cases</h3>
+<ul>
+<li><strong>When</strong>: CRDs are too limiting — need custom storage backend, subresources, or high performance</li>
+<li><strong>Trade-off</strong>: Significantly more complex to build and maintain</li>
+</ul>
+<h3 id="3-webhooks--dynamic-admission-control">3. Webhooks — Dynamic Admission Control</h3>
+<ul>
+<li><strong>Mutating Webhook</strong>: Modify requests before etcd persistence (e.g., inject sidecar)</li>
+<li><strong>Validating Webhook</strong>: Reject invalid requests (e.g., block images from untrusted registries)</li>
+</ul>
+<h2 id="production-ready-operators">Production-Ready Operators</h2>
+<p>Three pillars for deploying operators to production:</p>
+<table><thead><tr>
+<th>Pillar</th>
+<th>Tools</th>
+<th>Practice</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Packaging</strong></td>
+<td>Helm (templating, rollback), Kustomize (overlays, native)</td>
+<td>Versioned releases, dependency management</td>
+</tr>
+<tr>
+<td><strong>Security</strong></td>
+<td>RBAC, ServiceAccounts</td>
+<td>Least privilege — grant only required verbs on required resources</td>
+</tr>
+<tr>
+<td><strong>Observability</strong></td>
+<td>Prometheus metrics, structured JSON logs, OpenTelemetry tracing</td>
+<td>Track reconciliation counts, latency, error rates per controller</td>
+</tr>
+</tbody></table>
+<pre><code class="language-go">// Export metrics for controller health
+reconciliationsTotal.WithLabelValues(controllerName, result).Inc()
+reconcileDuration.WithLabelValues(controllerName).Observe(duration.Seconds())</code></pre>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="kubernetes-architecture.html">
+      <span class="connection-type related">Related</span>
+      <h4>Kubernetes Architecture</h4>
+      <p>operators reuse the same reconcile loop, watch mechanism, and spec/status model as core controllers</p>
+    </a>
+    <a class="connection-card" href="go-web-ecosystem.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Go Web Ecosystem</h4>
+      <p>Go's standard-library philosophy, static binaries, and implicit interfaces power the K8s ecosystem</p>
+    </a>
+    <a class="connection-card" href="goroutines.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Goroutines</h4>
+      <p>controllers leverage Go's lightweight concurrency for watch loops and parallel reconciliation</p>
+    </a>
+    <a class="connection-card" href="observability.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Observability</h4>
+      <p>production operators require metrics, logs, and traces for cluster health visibility</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Programming Kubernetes</h4>
+      <p>Schimanski & Hausenblas's 244-page guide</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="kubernetes-networking.html" class="prev">← Kubernetes Networking</a><a href="kubernetes-security.html" class="next">Kubernetes Security →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stream-Table Duality — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-streaming">Streaming</a> <span class="sep">/</span>
+  <span>Stream-Table Duality</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Stream-Table Duality</h1>
+  <div class="page-meta"><span>Source: streaming-systems</span><span>Updated: 2026-07-14</span></div>
+  <div class="page-tags"><span class="tag">streaming</span><span class="tag">data-modeling</span><span class="tag">kafka</span><span class="tag">tables</span><span class="tag">sql</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Stream-Table Duality</strong> is the principle that streams and tables are two sides of the same coin — every stream can be converted into a table, and every table can be converted into a stream. This is the foundational theory underlying modern <a href="stream-processing.html" class="wiki-link">stream-processing</a> and the <a href="apache-kafka.html" class="wiki-link">Kafka</a> ecosystem (source: <span class="wiki-link source-ref">sources/streaming-systems</span>).</p>
+<h2 id="the-two-abstractions">The Two Abstractions</h2>
+<table><thead><tr>
+<th></th>
+<th>Stream</th>
+<th>Table</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Nature</strong></td>
+<td>Data in motion (element-by-element)</td>
+<td>Data at rest (holistic, bounded snapshot)</td>
+</tr>
+<tr>
+<td><strong>Analogy</strong></td>
+<td>A movie</td>
+<td>A screenshot</td>
+</tr>
+<tr>
+<td><strong>Operation</strong></td>
+<td>Append-only log of events</td>
+<td>Current state of each key</td>
+</tr>
+<tr>
+<td><strong>Query</strong></td>
+<td>Process each event as it arrives</td>
+<td>Query the accumulated state</td>
+</tr>
+</tbody></table>
+<h2 id="the-duality">The Duality</h2>
+<h3 id="stream--table-aggregation">Stream → Table (Aggregation)</h3>
+<p>Applying an aggregation over a stream of updates yields a table:</p>
+<pre><code>Stream: INSERT user=1,action=click → INSERT user=1,action=buy → INSERT user=2,action=click
+Table:  user=1: {click, buy}        →    user=2: {click}</code></pre>
+<p>This is <code>SELECT key, collect_list(event) FROM stream GROUP BY key</code>.</p>
+<h3 id="table--stream-change-data-capture">Table → Stream (Change Data Capture)</h3>
+<p>Observing changes to a table over time yields a stream:</p>
+<pre><code>Table:  user=1,balance=100 → user=1,balance=150 (update)
+Stream: UPDATE user=1,balance=100 → UPDATE user=1,balance=150</code></pre>
+<p>This is <a href="change-data-capture.html" class="wiki-link">CDC</a> — the stream of row-level mutations.</p>
+<h2 id="practical-implications">Practical Implications</h2>
+<table><thead><tr>
+<th>Implication</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Unified processing</strong></td>
+<td>One system can handle both real-time and historical data</td>
+</tr>
+<tr>
+<td><strong>Materialized views</strong></td>
+<td>SQL queries on streams produce continuously updated tables</td>
+</tr>
+<tr>
+<td><strong>Streaming SQL</strong></td>
+<td><code>SELECT ... FROM stream GROUP BY</code> is natural, not a special case</td>
+</tr>
+<tr>
+<td><strong>Kafka's design</strong></td>
+<td>Kafka topics are streams; compacted topics are tables; KTables in Kafka Streams are tables backed by compacted topics</td>
+</tr>
+</tbody></table>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Streams and tables are not competing paradigms — they are <strong>dual</strong> representations</li>
+<li>The duality means streaming systems are a <strong>strict superset</strong> of batch (batch = bounded stream)</li>
+<li>Understanding the duality is essential for designing correct streaming pipelines</li>
+<li>SQL on streams is possible <em>because</em> of this duality — <code>GROUP BY</code> converts stream → table; any table can be replayed as a stream</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="stream-processing.html">
+      <span class="connection-type related">Related</span>
+      <h4>Stream Processing</h4>
+      <p>the theoretical basis for stream-table unification</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Apache Kafka</h4>
+      <p>Kafka's architecture (topics + compacted topics) embodies the duality</p>
+    </a>
+    <a class="connection-card" href="materialized-views.html">
+      <span class="connection-type related">Related</span>
+      <h4>Materialized Views</h4>
+      <p>stream aggregation produces incrementally maintained views</p>
+    </a>
+    <a class="connection-card" href="change-data-capture.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Change Data Capture (CDC)</h4>
+      <p>CDC is the practical mechanism for table → stream</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Streaming Systems: The What, Where, When, and How of Large-Scale Data Processing</h4>
+      <p>Akidau's complete treatment of the duality</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="stream-processing.html" class="prev">← Stream Processing</a><a href="sustainable-ai.html" class="next">Sustainable AI →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>
