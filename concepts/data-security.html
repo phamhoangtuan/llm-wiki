@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Security</h1>
-  <div class="page-meta"><span>Source: dama-dmbok-2nd-edition</span><span>Updated: 2026-07-14</span></div>
+  <div class="page-meta"><span>Source: dama-dmbok-2nd-edition, financial-data-engineering-khraisha</span><span>Updated: 2026-10-11</span></div>
   <div class="page-tags"><span class="tag">data-management</span><span class="tag">security</span><span class="tag">dama</span></div>
 </div>
 <div class="content-area concept">
@@ -61,6 +61,15 @@
 <p>Data Security is a foundational concern that intersects with every other Knowledge Area. It is part of the <strong>Enable & Maintain</strong> lifecycle phase and a prerequisite for Data Governance to function effectively.</p>
 <h2 id="in-aikens-pyramid">In Aiken's Pyramid</h2>
 <p>Phase 1 discipline — organizations must establish data security fundamentals before pursuing advanced analytics.</p>
+<h2 id="rbac--encryption-by-design-khraisha">RBAC + Encryption by Design (Khraisha)</h2>
+<p>Khraisha's <em>Financial Data Engineering</em> (source: <span class="wiki-link source-ref">sources/financial-data-engineering-khraisha</span>) adds the regulated-data posture:</p>
+<ul>
+<li><strong>RBAC</strong> — restrict access per role; least privilege applied to sensitive financial data</li>
+<li><strong>Encryption</strong> — encrypt sensitive data at rest and in transit</li>
+<li><strong>PII masking</strong> — mask personally identifiable information before non-privileged access</li>
+<li><strong>Audit rigor</strong> — log all access, transformations, and errors; OpenTelemetry for traceability</li>
+</ul>
+<blockquote>Security ≠ slowness — RBAC and encryption add negligible overhead when designed upfront, not retrofitted.</blockquote>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -90,6 +99,11 @@
       <h4>Password Storage</h4>
       <p>Salting, hashing, and constant-time comparison</p>
     </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Financial Data Engineering — Tamer Khraisha</h4>
+      <p>RBAC, encryption, and PII masking by design</p>
+    </div>
   </div>
 </section>
 <nav class="pagination"><a href="data-scientist.html" class="prev">← Data Scientist</a><a href="data-sovereignty.html" class="next">Data Sovereignty →</a></nav>

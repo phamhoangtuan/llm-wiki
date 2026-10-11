@@ -9,12 +9,17 @@
   "networking-theory": [
     "abz-planning",
     "job-search-strategy",
+    "learn-in-public",
+    "learn-in-public",
     "personal-branding",
+    "the-coding-career-handbook-wang",
+    "the-coding-career-handbook-wang",
     "the-start-up-of-you-hoffman",
     "the-start-up-of-you-hoffman"
   ],
   "job-search-strategy": [
     "abz-planning",
+    "learn-in-public",
     "networking-theory",
     "personal-branding",
     "salary-negotiation",
@@ -27,11 +32,15 @@
     "abz-planning",
     "golden-circle",
     "job-search-strategy",
+    "learn-in-public",
+    "learn-in-public",
     "networking-theory",
     "salary-negotiation",
     "fearless-salary-negotiation-doody",
     "fearless-salary-negotiation-doody",
     "start-with-why-sinek",
+    "the-coding-career-handbook-wang",
+    "the-coding-career-handbook-wang",
     "the-start-up-of-you-hoffman",
     "the-start-up-of-you-hoffman"
   ],
@@ -39,8 +48,13 @@
     "abz-planning",
     "dataops",
     "dataops",
+    "developer-productivity",
     "job-search-strategy",
     "mentoring",
+    "14-habits-of-highly-productive-developers-rocha",
+    "14-habits-of-highly-productive-developers-rocha",
+    "the-software-engineers-guidebook-orosz",
+    "the-software-engineers-guidebook-orosz",
     "the-start-up-of-you-hoffman",
     "the-start-up-of-you-hoffman"
   ],
@@ -48,7 +62,12 @@
     "abz-planning",
     "job-search-strategy",
     "job-search-strategy",
+    "managing-up",
     "fearless-salary-negotiation-doody",
+    "help-your-boss-help-you-kousen",
+    "help-your-boss-help-you-kousen",
+    "the-coding-career-handbook-wang",
+    "the-coding-career-handbook-wang",
     "the-start-up-of-you-hoffman"
   ],
   "agent-loop": [
@@ -272,7 +291,9 @@
     "tdd-methodology",
     "contieri-clean-code-cookbook",
     "data-engineering-design-patterns-konieczny",
-    "data-quality-engineering-financial-services-buzzelli"
+    "data-quality-engineering-financial-services-buzzelli",
+    "the-coding-career-handbook-wang",
+    "the-coding-career-handbook-wang"
   ],
   "technological-centaur": [
     "agent-quality-optimization",
@@ -458,11 +479,16 @@
     "ai-psychosis",
     "case-interview",
     "engineering-management",
+    "managing-up",
     "staff-plus-archetypes",
     "technical-leadership",
     "an-elegant-puzzle",
     "engineering-management-drasner",
-    "senior-to-staff-engineer"
+    "senior-to-staff-engineer",
+    "the-coding-career-handbook-wang",
+    "the-coding-career-handbook-wang",
+    "the-software-engineers-guidebook-orosz",
+    "the-software-engineers-guidebook-orosz"
   ],
   "software-rot": [
     "ai-psychosis",
@@ -652,6 +678,8 @@
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026",
     "data-quality-engineering-financial-services-buzzelli",
+    "financial-data-engineering-khraisha",
+    "financial-data-engineering-khraisha",
     "fundamentals-of-data-observability",
     "how-ai-changes-4-core-data-roles",
     "how-ai-changes-4-core-data-roles",
@@ -667,6 +695,8 @@
     "data-lineage",
     "data-product",
     "metadata-management",
+    "query-optimization",
+    "query-optimization",
     "reranking",
     "self-service-analytics",
     "self-service-analytics",
@@ -710,6 +740,10 @@
     "dataops",
     "dbt",
     "dbt",
+    "apache-iceberg-definitive-guide-shiran",
+    "apache-iceberg-definitive-guide-shiran",
+    "data-pipelines-pocket-reference-densmore",
+    "data-pipelines-pocket-reference-densmore",
     "unlocking-dbt-design-deploy-transformations",
     "unlocking-dbt-design-deploy-transformations"
   ],
@@ -733,7 +767,11 @@
     "medallion-architecture",
     "retrieval-augmented-generation",
     "synthetic-data",
+    "apache-iceberg-definitive-guide-shiran",
+    "apache-iceberg-definitive-guide-shiran",
     "data-engineering-design-patterns-konieczny",
+    "data-pipelines-pocket-reference-densmore",
+    "data-pipelines-pocket-reference-densmore",
     "hugo-data-ingestion-platform-flink",
     "hugo-data-ingestion-platform-flink"
   ],
@@ -754,6 +792,7 @@
     "data-quality-monitoring",
     "dbt",
     "mlops",
+    "query-optimization",
     "semantic-layer",
     "t-shaped-skills",
     "t-shaped-skills",
@@ -761,6 +800,8 @@
     "data-engineering-with-python",
     "data-fundamentals-matter-2026",
     "data-fundamentals-matter-2026",
+    "data-pipelines-pocket-reference-densmore",
+    "data-pipelines-pocket-reference-densmore",
     "fundamentals-of-data-observability",
     "reddit-cicd-tips-data-engineering",
     "reddit-cicd-tips-data-engineering"
@@ -930,6 +971,7 @@
     "duckdb",
     "in-process-olap",
     "model-pruning",
+    "query-optimization",
     "duckdb-up-and-running",
     "duckdb-up-and-running"
   ],
@@ -1008,6 +1050,8 @@
     "stream-processing",
     "stream-table-duality",
     "stream-table-duality",
+    "apache-iceberg-definitive-guide-shiran",
+    "apache-iceberg-definitive-guide-shiran",
     "building-real-time-analytics-systems",
     "data-engineering-design-patterns-konieczny",
     "hugo-data-ingestion-platform-flink",
@@ -1071,6 +1115,8 @@
     "snowflake-data-cloud",
     "unity-catalog",
     "unity-catalog",
+    "apache-iceberg-definitive-guide-shiran",
+    "apache-iceberg-definitive-guide-shiran",
     "debunking-data-layout-myths-liquid-clustering",
     "delta-catalog-managed-tables",
     "delta-catalog-managed-tables",
@@ -1143,7 +1189,13 @@
     "apache-parquet",
     "delta-lake",
     "delta-lake",
+    "apache-iceberg-definitive-guide-shiran",
+    "apache-iceberg-definitive-guide-shiran",
     "debunking-data-layout-myths-liquid-clustering"
+  ],
+  "sources/apache-iceberg-definitive-guide-shiran": [
+    "apache-iceberg",
+    "apache-iceberg"
   ],
   "delta-lake": [
     "apache-iceberg",
@@ -1268,6 +1320,8 @@
     "real-time-analytics",
     "snowflake-data-cloud",
     "unity-catalog",
+    "apache-iceberg-definitive-guide-shiran",
+    "apache-iceberg-definitive-guide-shiran",
     "big-book-data-engineering",
     "building-real-time-analytics-systems",
     "databricks-dea-study-guide",
@@ -1414,7 +1468,8 @@
     "secure-system-design",
     "secure-system-design",
     "building-secure-and-reliable-systems",
-    "clean-code-principles-patterns-silen"
+    "clean-code-principles-patterns-silen",
+    "financial-data-engineering-khraisha"
   ],
   "software-quality-dimensions": [
     "architecture-hoisting",
@@ -1509,7 +1564,8 @@
   "apache-airflow": [
     "batch-processing",
     "data-engineer",
-    "data-engineering-with-python"
+    "data-engineering-with-python",
+    "data-pipelines-pocket-reference-densmore"
   ],
   "sources/what-got-you-here-goldsmith": [
     "behavioral-habits",
@@ -1526,6 +1582,7 @@
     "golden-circle",
     "high-output-management",
     "high-output-management",
+    "managing-up",
     "mentoring",
     "multiplier-leadership",
     "output-vs-outcome",
@@ -1537,6 +1594,8 @@
     "an-elegant-puzzle",
     "engineering-management-drasner",
     "engineering-management-drasner",
+    "help-your-boss-help-you-kousen",
+    "help-your-boss-help-you-kousen",
     "high-output-management-grove",
     "leading-effective-engineering-teams-osmani",
     "scaling-people-hughes-johnson",
@@ -1574,6 +1633,7 @@
     "engineering-management",
     "engineering-management",
     "high-output-management",
+    "managing-up",
     "mentoring",
     "metalearning",
     "psychological-safety",
@@ -1584,6 +1644,7 @@
     "ultralearning",
     "engineering-management-drasner",
     "engineering-management-drasner",
+    "help-your-boss-help-you-kousen",
     "high-output-management-grove",
     "scaling-people-hughes-johnson",
     "the-coaching-habit-stanier",
@@ -1598,15 +1659,19 @@
     "engineering-management",
     "engineering-management",
     "golden-circle",
+    "managing-up",
     "mentoring",
     "networking-theory",
     "saying-no",
     "staff-engineering",
     "staff-plus-archetypes",
     "engineering-management-drasner",
+    "help-your-boss-help-you-kousen",
     "start-with-why-sinek",
     "the-making-of-a-manager-zhuo",
     "the-making-of-a-manager-zhuo",
+    "the-software-engineers-guidebook-orosz",
+    "the-software-engineers-guidebook-orosz",
     "what-got-you-here-goldsmith",
     "what-got-you-here-goldsmith"
   ],
@@ -1804,6 +1869,7 @@
     "differential-dataflow",
     "incremental-view-maintenance",
     "incremental-view-maintenance",
+    "query-optimization",
     "stream-table-duality",
     "timely-dataflow",
     "materialized-views-quick-insights"
@@ -1874,52 +1940,70 @@
   "multiplier-leadership": [
     "coaching",
     "coaching",
+    "developer-productivity",
     "engineering-management",
     "high-output-management",
     "psychological-safety",
     "scaling-people",
     "technical-leadership",
     "leading-effective-engineering-teams-osmani",
-    "leading-effective-engineering-teams-osmani"
+    "leading-effective-engineering-teams-osmani",
+    "the-effective-engineer-lau",
+    "the-effective-engineer-lau"
   ],
   "mentoring": [
     "coaching",
+    "developer-productivity",
     "engineering-management",
     "flow-zone-critique",
     "high-output-management",
     "psychological-safety",
     "scaling-people",
     "software-professionalism",
+    "14-habits-of-highly-productive-developers-rocha",
+    "14-habits-of-highly-productive-developers-rocha",
     "clean-code-martin",
     "engineering-management-drasner",
     "high-output-management-grove",
     "the-coaching-habit-stanier",
     "the-coaching-habit-stanier",
+    "the-effective-engineer-lau",
     "the-making-of-a-manager-zhuo",
-    "the-making-of-a-manager-zhuo"
+    "the-making-of-a-manager-zhuo",
+    "the-software-engineers-guidebook-orosz"
   ],
   "high-output-management": [
     "coaching",
+    "developer-productivity",
+    "developer-productivity",
     "feedback",
     "multiplier-leadership",
     "output-vs-outcome",
     "scaling-people",
+    "14-habits-of-highly-productive-developers-rocha",
+    "14-habits-of-highly-productive-developers-rocha",
     "high-output-management-grove",
     "leading-effective-engineering-teams-osmani",
     "leading-effective-engineering-teams-osmani",
     "scaling-people-hughes-johnson",
     "the-coaching-habit-stanier",
     "the-coaching-habit-stanier",
+    "the-effective-engineer-lau",
+    "the-effective-engineer-lau",
     "the-making-of-a-manager-zhuo",
     "the-making-of-a-manager-zhuo"
   ],
   "behavioral-habits": [
     "coaching",
     "feedback",
+    "managing-up",
     "psychological-safety",
     "psychological-safety",
     "scaling-people",
     "technical-leadership",
+    "help-your-boss-help-you-kousen",
+    "help-your-boss-help-you-kousen",
+    "help-your-boss-help-you-kousen",
     "what-got-you-here-goldsmith"
   ],
   "psychological-safety": [
@@ -1975,9 +2059,12 @@
     "staff-engineering",
     "staff-plus-archetypes",
     "testing-strategy",
+    "14-habits-of-highly-productive-developers-rocha",
     "clean-code-martin",
     "clean-code-principles-patterns-silen",
     "code-complete",
+    "data-pipelines-pocket-reference-densmore",
+    "data-pipelines-pocket-reference-densmore",
     "good-code-bad-code"
   ],
   "sources/refactoring-at-scale-lemaire": [
@@ -2018,9 +2105,18 @@
   ],
   "code-readability": [
     "code-quality-pillars",
+    "developer-productivity",
     "mentoring",
+    "technical-debt-management",
+    "technical-debt-management",
+    "14-habits-of-highly-productive-developers-rocha",
+    "14-habits-of-highly-productive-developers-rocha",
     "clean-code-martin",
-    "clean-code-martin"
+    "clean-code-martin",
+    "the-coding-career-handbook-wang",
+    "the-coding-career-handbook-wang",
+    "the-software-engineers-guidebook-orosz",
+    "the-software-engineers-guidebook-orosz"
   ],
   "object-oriented-design": [
     "code-quality-pillars",
@@ -2072,6 +2168,57 @@
     "code-complete",
     "code-complete"
   ],
+  "sources/the-coding-career-handbook-wang": [
+    "code-readability",
+    "developer-productivity",
+    "learn-in-public",
+    "learn-in-public",
+    "personal-branding",
+    "salary-negotiation",
+    "salary-negotiation"
+  ],
+  "sources/the-software-engineers-guidebook-orosz": [
+    "code-readability",
+    "staff-engineering",
+    "staff-engineering",
+    "t-shaped-skills",
+    "technical-debt-management"
+  ],
+  "sources/14-habits-of-highly-productive-developers-rocha": [
+    "code-readability",
+    "developer-productivity"
+  ],
+  "developer-productivity": [
+    "code-readability",
+    "code-readability",
+    "learn-in-public",
+    "14-habits-of-highly-productive-developers-rocha",
+    "14-habits-of-highly-productive-developers-rocha",
+    "the-coding-career-handbook-wang",
+    "the-effective-engineer-lau",
+    "the-effective-engineer-lau",
+    "the-software-engineers-guidebook-orosz"
+  ],
+  "technical-debt-management": [
+    "code-readability",
+    "continuous-delivery",
+    "engineering-management",
+    "output-vs-outcome",
+    "output-vs-outcome",
+    "an-elegant-puzzle",
+    "an-elegant-puzzle",
+    "leading-effective-engineering-teams-osmani",
+    "leading-effective-engineering-teams-osmani",
+    "the-software-engineers-guidebook-orosz",
+    "the-software-engineers-guidebook-orosz"
+  ],
+  "the-software-engineers-guidebook-orosz": [
+    "code-readability",
+    "t-shaped-skills"
+  ],
+  "the-coding-career-handbook-wang": [
+    "code-readability"
+  ],
   "sources/art-of-readable-code": [
     "code-readability"
   ],
@@ -2117,16 +2264,6 @@
     "deployment-strategies",
     "secure-system-design",
     "building-secure-and-reliable-systems"
-  ],
-  "technical-debt-management": [
-    "continuous-delivery",
-    "engineering-management",
-    "output-vs-outcome",
-    "output-vs-outcome",
-    "an-elegant-puzzle",
-    "an-elegant-puzzle",
-    "leading-effective-engineering-teams-osmani",
-    "leading-effective-engineering-teams-osmani"
   ],
   "kubernetes-architecture": [
     "continuous-delivery",
@@ -2201,13 +2338,18 @@
     "master-data-management",
     "metadata-management",
     "metric-fixation",
+    "query-optimization",
     "statistical-thinking",
     "synthetic-data",
     "building-anonymization-pipeline",
     "data-engineering-design-patterns-konieczny",
     "data-engineering-with-python",
+    "data-pipelines-pocket-reference-densmore",
+    "data-pipelines-pocket-reference-densmore",
     "data-quality-engineering-financial-services-buzzelli",
     "data-quality-traffic-lights-sahlin",
+    "financial-data-engineering-khraisha",
+    "financial-data-engineering-khraisha",
     "fundamentals-of-data-observability"
   ],
   "data-lifecycle": [
@@ -2243,6 +2385,7 @@
     "data-modeling",
     "dataops",
     "lindy-effect",
+    "query-optimization",
     "data-engineering-design-patterns-konieczny",
     "data-engineering-with-python",
     "data-fundamentals-matter-2026",
@@ -2307,8 +2450,29 @@
     "data-lakehouse",
     "metadata-management",
     "metadata-management",
+    "query-optimization",
+    "query-optimization",
+    "financial-data-engineering-khraisha",
+    "financial-data-engineering-khraisha",
     "the-data-lakehouse-inmon",
     "the-data-lakehouse-inmon"
+  ],
+  "sources/financial-data-engineering-khraisha": [
+    "data-governance",
+    "data-governance",
+    "data-lineage",
+    "data-lineage",
+    "data-quality-monitoring",
+    "data-security",
+    "query-optimization",
+    "query-optimization"
+  ],
+  "query-optimization": [
+    "data-governance",
+    "data-lineage",
+    "elt",
+    "financial-data-engineering-khraisha",
+    "financial-data-engineering-khraisha"
   ],
   "unity-catalog": [
     "data-governance",
@@ -2375,6 +2539,7 @@
     "data-lineage",
     "document-content-management",
     "master-data-management",
+    "financial-data-engineering-khraisha",
     "the-data-lakehouse-inmon",
     "the-data-lakehouse-inmon"
   ],
@@ -2383,6 +2548,8 @@
     "data-quality-monitoring",
     "fail-fast",
     "master-data-management",
+    "apache-iceberg-definitive-guide-shiran",
+    "apache-iceberg-definitive-guide-shiran",
     "data-quality-engineering-financial-services-buzzelli",
     "the-data-lakehouse-inmon"
   ],
@@ -2393,6 +2560,8 @@
     "metadata-management",
     "observability",
     "data-engineering-design-patterns-konieczny",
+    "data-pipelines-pocket-reference-densmore",
+    "data-pipelines-pocket-reference-densmore",
     "fundamentals-of-data-observability",
     "fundamentals-of-data-observability"
   ],
@@ -2412,6 +2581,21 @@
     "data-observability",
     "data-observability"
   ],
+  "sources/data-pipelines-pocket-reference-densmore": [
+    "data-observability",
+    "data-quality-monitoring",
+    "dataops",
+    "elt",
+    "query-optimization",
+    "query-optimization"
+  ],
+  "data-pipelines-pocket-reference-densmore": [
+    "data-observability",
+    "data-quality-monitoring",
+    "dataops",
+    "elt",
+    "elt"
+  ],
   "sources/practical-dataops": [
     "data-product",
     "data-product",
@@ -2428,6 +2612,10 @@
     "data-quality-engineering",
     "data-quality-monitoring",
     "data-quality-engineering-financial-services-buzzelli"
+  ],
+  "financial-data-engineering-khraisha": [
+    "data-quality-monitoring",
+    "data-security"
   ],
   "password-storage": [
     "data-security",
@@ -2547,8 +2735,12 @@
   ],
   "continuous-delivery": [
     "deployment-strategies",
+    "developer-productivity",
     "technical-debt-management",
-    "the-accidental-cto"
+    "the-accidental-cto",
+    "the-effective-engineer-lau",
+    "the-software-engineers-guidebook-orosz",
+    "the-software-engineers-guidebook-orosz"
   ],
   "secure-system-design": [
     "deployment-strategies",
@@ -2556,6 +2748,65 @@
     "site-reliability-engineering",
     "building-secure-and-reliable-systems",
     "building-secure-and-reliable-systems"
+  ],
+  "output-vs-outcome": [
+    "developer-productivity",
+    "developer-productivity",
+    "developer-productivity",
+    "engineering-management",
+    "golden-circle",
+    "golden-circle",
+    "high-output-management",
+    "high-output-management",
+    "multiplier-leadership",
+    "psychological-safety",
+    "psychological-safety",
+    "technical-debt-management",
+    "technical-debt-management",
+    "technical-leadership",
+    "14-habits-of-highly-productive-developers-rocha",
+    "14-habits-of-highly-productive-developers-rocha",
+    "leading-effective-engineering-teams-osmani",
+    "leading-effective-engineering-teams-osmani",
+    "the-effective-engineer-lau",
+    "the-effective-engineer-lau"
+  ],
+  "golden-circle": [
+    "developer-productivity",
+    "engineering-management",
+    "engineering-management",
+    "high-output-management",
+    "output-vs-outcome",
+    "output-vs-outcome",
+    "scaling-people",
+    "14-habits-of-highly-productive-developers-rocha",
+    "14-habits-of-highly-productive-developers-rocha",
+    "engineering-management-drasner",
+    "high-output-management-grove",
+    "leading-effective-engineering-teams-osmani",
+    "scaling-people-hughes-johnson",
+    "start-with-why-sinek",
+    "start-with-why-sinek",
+    "the-making-of-a-manager-zhuo",
+    "the-making-of-a-manager-zhuo"
+  ],
+  "ultralearning": [
+    "developer-productivity",
+    "directness",
+    "directness",
+    "feedback",
+    "feedback",
+    "learn-in-public",
+    "metalearning",
+    "metalearning",
+    "spaced-repetition",
+    "staff-engineering",
+    "t-shaped-skills",
+    "testing-effect",
+    "14-habits-of-highly-productive-developers-rocha"
+  ],
+  "sources/the-effective-engineer-lau": [
+    "developer-productivity"
   ],
   "dbsp": [
     "differential-dataflow",
@@ -2565,26 +2816,17 @@
     "materialized-views-quick-insights",
     "materialized-views-quick-insights"
   ],
-  "ultralearning": [
-    "directness",
-    "directness",
-    "feedback",
-    "feedback",
-    "metalearning",
-    "metalearning",
-    "spaced-repetition",
-    "staff-engineering",
-    "t-shaped-skills",
-    "testing-effect"
-  ],
   "testing-effect": [
     "directness",
     "feedback",
+    "learn-in-public",
+    "learn-in-public",
     "metalearning",
     "spaced-repetition",
     "spaced-repetition",
     "ultralearning",
     "ultralearning",
+    "14-habits-of-highly-productive-developers-rocha",
     "ultralearning-scott-young"
   ],
   "metalearning": [
@@ -2655,49 +2897,27 @@
     "high-output-management-grove",
     "scaling-people-hughes-johnson"
   ],
-  "golden-circle": [
-    "engineering-management",
-    "engineering-management",
-    "high-output-management",
-    "output-vs-outcome",
-    "output-vs-outcome",
-    "scaling-people",
-    "engineering-management-drasner",
-    "high-output-management-grove",
-    "leading-effective-engineering-teams-osmani",
-    "scaling-people-hughes-johnson",
-    "start-with-why-sinek",
-    "start-with-why-sinek",
-    "the-making-of-a-manager-zhuo",
-    "the-making-of-a-manager-zhuo"
-  ],
   "sources/the-making-of-a-manager-zhuo": [
     "engineering-management",
     "engineering-management",
     "feedback"
   ],
-  "output-vs-outcome": [
-    "engineering-management",
-    "golden-circle",
-    "golden-circle",
-    "high-output-management",
-    "high-output-management",
-    "multiplier-leadership",
-    "psychological-safety",
-    "psychological-safety",
-    "technical-debt-management",
-    "technical-debt-management",
-    "technical-leadership",
-    "leading-effective-engineering-teams-osmani",
-    "leading-effective-engineering-teams-osmani"
-  ],
   "saying-no": [
     "engineering-management",
+    "managing-up",
     "software-professionalism",
     "an-elegant-puzzle",
     "clean-code-martin",
     "clean-code-martin",
-    "engineering-management-drasner"
+    "engineering-management-drasner",
+    "help-your-boss-help-you-kousen",
+    "help-your-boss-help-you-kousen"
+  ],
+  "managing-up": [
+    "engineering-management",
+    "learn-in-public",
+    "help-your-boss-help-you-kousen",
+    "the-coding-career-handbook-wang"
   ],
   "sources/an-elegant-puzzle": [
     "engineering-management",
@@ -2716,6 +2936,11 @@
     "high-output-management",
     "scaling-people",
     "scaling-people"
+  ],
+  "sources/help-your-boss-help-you-kousen": [
+    "engineering-management",
+    "managing-up",
+    "managing-up"
   ],
   "graph-grounding": [
     "entity-resolution",
@@ -3068,6 +3293,13 @@
     "password-storage",
     "sso"
   ],
+  "learn-in-public": [
+    "personal-branding",
+    "personal-branding",
+    "salary-negotiation",
+    "the-coding-career-handbook-wang",
+    "the-coding-career-handbook-wang"
+  ],
   "pytest-test-results": [
     "pytest-assertions",
     "pytest-basics"
@@ -3243,6 +3475,13 @@
   "the-start-up-of-you-hoffman": [
     "fearless-salary-negotiation-doody"
   ],
+  "data-security": [
+    "financial-data-engineering-khraisha",
+    "financial-data-engineering-khraisha"
+  ],
+  "what-got-you-here-goldsmith": [
+    "help-your-boss-help-you-kousen"
+  ],
   "ai-psychosis": [
     "meta-destroying-engineering-org-orosz"
   ],
@@ -3251,5 +3490,9 @@
   ],
   "concepts/technical-debt-management": [
     "software-engineering-at-google"
+  ],
+  "14-habits-of-highly-productive-developers-rocha": [
+    "the-effective-engineer-lau",
+    "the-effective-engineer-lau"
   ]
 }

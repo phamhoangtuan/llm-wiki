@@ -3,8 +3,8 @@ title: "Engineering Management"
 type: concept
 tags: [engineering-management, leadership, people-management, career, trust]
 created: 2026-08-15
-updated: 2026-09-30
-sources: [engineering-management-drasner, an-elegant-puzzle, high-output-management-grove, scaling-people-hughes-johnson, the-making-of-a-manager-zhuo, the-coaching-habit-stanier, what-got-you-here-goldsmith, leading-effective-engineering-teams-osmani]
+updated: 2026-10-11
+sources: [engineering-management-drasner, an-elegant-puzzle, high-output-management-grove, scaling-people-hughes-johnson, the-making-of-a-manager-zhuo, the-coaching-habit-stanier, what-got-you-here-goldsmith, leading-effective-engineering-teams-osmani, help-your-boss-help-you-kousen]
 aliases: [em, people-management, engineering-leadership]
 ---
 
@@ -63,6 +63,7 @@ Osmani's *Leading Effective Engineering Teams* (source: [[sources/leading-effect
 - Builds on [[feedback]] and [[mentoring]] — the interpersonal mechanics of management
 - Shares [[saying-no]] — the manager's counterpart to the engineer's professional "no"
 - Informed by [[golden-circle]] — alignment with purpose is the manager's leverage
+- Mirrored by [[managing-up]] — the employee half of the manager relationship
 - Benchmark source: [[sources/engineering-management-drasner]] — Drasner's pragmatic EM guide
 - Benchmark source: [[sources/an-elegant-puzzle]] — Larson's systems approach to team design, management, and organizational scaling
 - Benchmark source: [[sources/high-output-management-grove]] — Grove's factory model: leverage, TRM, meetings, bottleneck-focused management
@@ -71,3 +72,4 @@ Osmani's *Leading Effective Engineering Teams* (source: [[sources/leading-effect
 - Benchmark source: [[sources/the-coaching-habit-stanier]] — Stanier's question-based coaching for 1:1s
 - Benchmark source: [[sources/what-got-you-here-goldsmith]] — Goldsmith's behavioral habits for leaders
 - Benchmark source: [[sources/leading-effective-engineering-teams-osmani]] — Osmani's effectiveness, safety, and 3E leadership model
+- Benchmark source: [[sources/help-your-boss-help-you-kousen]] — Kousen's managing-up guide (the employee's side)

@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Quality Monitoring</h1>
-  <div class="page-meta"><span>Source: data-quality-traffic-lights-sahlin, building-anonymization-pipeline, big-book-data-engineering, data-quality-engineering-financial-services-buzzelli</span><span>Updated: 2026-08-24</span></div>
+  <div class="page-meta"><span>Source: data-quality-traffic-lights-sahlin, building-anonymization-pipeline, big-book-data-engineering, data-quality-engineering-financial-services-buzzelli, data-pipelines-pocket-reference-densmore, financial-data-engineering-khraisha</span><span>Updated: 2026-10-11</span></div>
   <div class="page-tags"><span class="tag">data-quality</span><span class="tag">data-observability</span><span class="tag">lineage</span><span class="tag">monitoring</span><span class="tag">dbt</span><span class="tag">data-platform</span></div>
 </div>
 <div class="content-area concept">
@@ -158,6 +158,13 @@
 <li><strong>Tune relentlessly</strong> — anomaly detection ships with false positives; expect continuous iteration based on real-world feedback</li>
 <li><strong>Choose tools that reduce complexity</strong> — TimesFM abstracted away ML infrastructure while delivering production-grade anomaly detection</li>
 </ol>
+<h2 id="validate-early--often-densmore--khraisha">Validate Early & Often (Densmore / Khraisha)</h2>
+<p>The pocket-reference and financial guides add the validation-at-ingestion discipline:</p>
+<ul>
+<li><strong>Validate at ingestion points</strong> — automated schema, null, and format checks block bad data <em>before</em> it enters the platform (source: <span class="wiki-link source-ref">sources/financial-data-engineering-khraisha</span>)</li>
+<li><strong>Check after transformation too</strong> — post-transform checks catch errors before analysis (source: <span class="wiki-link source-ref">sources/data-pipelines-pocket-reference-densmore</span>)</li>
+<li><strong>Monitoring = trust</strong> — automated checks prevent "silent" data corruption; track latency, failure rates, and drift with SLA alerts</li>
+</ul>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -197,6 +204,16 @@
       <h4>Data Quality Engineering</h4>
       <p>DQS framework provides the specification contract; monitoring provides the detection and communication layer</p>
     </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Pipelines Pocket Reference — James Densmore</h4>
+      <p>validate early & often at ingestion and post-transform</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Financial Data Engineering — Tamer Khraisha</h4>
+      <p>automated checks at ingestion points block bad data</p>
+    </div>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
       <h4>Data Quality Engineering in Financial Services</h4>

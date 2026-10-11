@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Lineage</h1>
-  <div class="page-meta"><span>Source: the-data-lakehouse-inmon</span><span>Updated: 2026-09-20</span></div>
+  <div class="page-meta"><span>Source: the-data-lakehouse-inmon, financial-data-engineering-khraisha</span><span>Updated: 2026-10-11</span></div>
   <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">metadata</span><span class="tag">governance</span><span class="tag">lineage</span><span class="tag">data-quality</span></div>
 </div>
 <div class="content-area concept">
@@ -81,6 +81,8 @@
 <li><strong>Compliance</strong>: regulators (and quality standards) require traceability of sensitive data</li>
 <li><strong>Quality</strong>: data quality work presupposes knowing which step produced the defect</li>
 </ul>
+<h2 id="lineage-in-regulated-environments-khrais">Lineage in Regulated Environments (Khraisha)</h2>
+<p>Khraisha's <em>Financial Data Engineering</em> (source: <span class="wiki-link source-ref">sources/financial-data-engineering-khraisha</span>) makes lineage an audit instrument in finance: map data flow from source to consumption with tools like <strong>Apache Atlas</strong> so that debugging becomes a lookup, and "governance prevents firefighting" — validation + lineage mean fewer data-outage emergencies.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -115,10 +117,20 @@
       <h4>Data Observability</h4>
       <p>lineage is the "where did this come from" channel</p>
     </a>
+    <a class="connection-card" href="query-optimization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Query Optimization</h4>
+      <p>explicit, lean queries make lineage traceable</p>
+    </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
       <h4>The Data Lakehouse — Bill Inmon, Ranjeet Srivastava & Mary Levins</h4>
       <p>Inmon's every-step lineage requirement</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Financial Data Engineering — Tamer Khraisha</h4>
+      <p>Apache Atlas end-to-end lineage in finance</p>
     </div>
   </div>
 </section>

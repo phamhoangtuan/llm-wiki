@@ -3,8 +3,8 @@ title: "Salary Negotiation"
 type: concept
 tags: [career, negotiation, compensation, interviewing]
 created: 2026-09-20
-updated: 2026-09-20
-sources: [fearless-salary-negotiation-doody]
+updated: 2026-10-11
+sources: [fearless-salary-negotiation-doody, the-coding-career-handbook-wang]
 aliases: [compensation negotiation, offer negotiation, salary talk]
 ---
 
@@ -38,10 +38,16 @@ aliases: [compensation negotiation, offer negotiation, salary talk]
 - Confidence comes from **preparing your case** and knowing your worth
 - Use **non-confrontational, value-focused language** in every salary discussion
 
+## Negotiate Fearlessly (Swyx)
+
+Swyx's career handbook adds the psychological permission (source: [[sources/the-coding-career-handbook-wang]]): **negotiate job offers confidently, without fear of rescission**, and prioritize roles that align with your passions and values — not just the highest number. Fearless negotiation pairs with Doody's preparation: the walk-away number kills the fear, and value alignment keeps the choice honest.
+
 ---
 
 - Core to [[job-search-strategy]] — the offer/negotiation stage of the search funnel
 - Extends [[technical-interview]] — the interview as mutual assessment
 - Related to [[personal-branding]] — documented value is the basis of negotiation power
 - Related to [[abz-planning]] — the walk-away number is a Plan Z for job moves
+- Related to [[learn-in-public]] — visible public value strengthens negotiation claims
 - Benchmark source: [[sources/fearless-salary-negotiation-doody]] — Doody's step-by-step playbook
+- Benchmark source: [[sources/the-coding-career-handbook-wang]] — Swyx's fearless-negotiation stance

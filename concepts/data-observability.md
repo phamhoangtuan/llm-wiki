@@ -3,8 +3,8 @@ title: "Data Observability"
 type: concept
 tags: [data-observability, data-quality, lineage, monitoring, data-pipeline, incident-management]
 created: 2026-07-14
-updated: 2026-08-15
-sources: [data-observability-for-data-engineering, fundamentals-of-data-observability]
+updated: 2026-10-11
+sources: [data-observability-for-data-engineering, fundamentals-of-data-observability, data-pipelines-pocket-reference-densmore]
 aliases: [pipeline-observability, data-monitoring]
 ---
 
@@ -91,6 +91,10 @@ Encode business assumptions as **Expectations** (rules or automatic anomaly dete
 
 Start with **one critical pipeline**, use **monkey patching** for quick wins, prove ROI, then expand. Embed observability into your Definition of Done.
 
+## Pipeline Health Metrics (Densmore)
+
+The pocket reference (source: [[sources/data-pipelines-pocket-reference-densmore]]) turns observability into routine pipeline-health practice: **track latency, failure rates, and data drift**; set **alerts for SLA breaches**; and monitor rigorously as a first-class pipeline requirement — not an afterthought. This operationalizes the incident workflow above into the daily monitoring rhythm of production pipelines.
+
 ---
 
 - Complementary to [[observability]] — software observability for services, data observability for pipelines
@@ -99,3 +103,4 @@ Start with **one critical pipeline**, use **monkey patching** for quick wins, pr
 - Relies on [[data-governance]] — governance metadata (ownership, classification) contextualizes alerts
 - Benchmark source: [[sources/data-observability-for-data-engineering]] — Pinto & El Khammal's guide
 - Benchmark source: [[sources/fundamentals-of-data-observability]] — Petrella's channels, observations model, and defensive logic
+- Extended by [[data-pipelines-pocket-reference-densmore]] — latency, failure rates, data drift, SLA alerts

@@ -3,8 +3,8 @@ title: "ELT (Extract-Load-Transform)"
 type: concept
 tags: [data-engineering, elt, etl, data-warehouse, architecture]
 created: 2026-05-28
-updated: 2026-06-15
-sources: [unlocking-dbt-design-deploy-transformations, data-engineering-with-dbt]
+updated: 2026-10-11
+sources: [unlocking-dbt-design-deploy-transformations, data-engineering-with-dbt, data-pipelines-pocket-reference-densmore]
 aliases: [Extract-Load-Transform]
 ---
 
@@ -99,8 +99,15 @@ dbt is the **canonical "T" tool** in the modern ELT stack:
 | Raw data needed for multiple use cases | Single-purpose, fixed-schema pipeline |
 | Team prefers SQL over proprietary tools | Highly regulated data requiring pre-load masking |
 | Need fast iteration and experimentation | Simple, unchanging transformations |
+
+## ELT in Practice (Densmore)
+
+Densmore's *Data Pipelines Pocket Reference* (source: [[sources/data-pipelines-pocket-reference-densmore]]) adds the operational playbook: prioritize ELT in cloud ecosystems (load raw first into Redshift/Snowflake, then transform), orchestrate with Airflow-style tools for dependency management and retries, validate at ingestion and post-transform, monitor latency/failure/drift against SLAs, design stateless modular tasks with incremental loads, and standardize ingestion patterns (APIs, CDC, batch) to avoid pipeline sprawl. The pocket guidance pairs with [[data-pipelines-pocket-reference-densmore|the reference]] for the batch-focused practitioner.
+
 ---
 - Powers [[dbt]] — dbt was designed specifically for the ELT paradigm's "Transform" step
 - Defines [[analytics-engineer]] — the role that owns the transform layer in ELT
 - Related to [[data-ingestion]] — ELT describes the full pipeline; ingestion handles the "EL" portion
+- Extended by [[data-pipelines-pocket-reference-densmore]] — orchestration, validation, monitoring, incremental loads
+- Related to [[query-optimization]] — transform-in-warehouse runs on lean, explicit queries
 - Benchmark source: [[sources/unlocking-dbt-design-deploy-transformations]] — Cyr & Dorsey's book explains why ELT beats ETL

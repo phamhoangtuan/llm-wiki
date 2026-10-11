@@ -271,6 +271,10 @@
 - [Output vs Outcome](concepts/output-vs-outcome.html) — Performance Trio (productivity/efficiency/effectiveness); watermelon effect; measure value, not volume
 - [Psychological Safety](concepts/psychological-safety.html) — Project Aristotle's #1 team dynamic: safe teams take risks and admit mistakes
 - [Multiplier Leadership](concepts/multiplier-leadership.html) — 3E model (Enable → Empower → Expand); Multiplier vs Diminisher; Always Be Leaving
+- [Developer Productivity](concepts/developer-productivity.html) — habits (Rocha) + leverage (Lau): strategic mastery, high-leverage work, ruthless prioritization, compounding skills
+- [Managing Up](concepts/managing-up.html) — Kousen's 9 practices: advise don't decide, own outcomes, tactful pushback, loyalty, own mistakes
+- [Learn in Public](concepts/learn-in-public.html) — Swyx's career strategy: share experiments, write, engage — reputation compounds from a public learning trail
+- [Query Optimization](concepts/query-optimization.html) — column pruning (30–70% latency), filter-before-join, CTE modularization; lean auditable SQL
 
 ## Sources
 
@@ -383,6 +387,14 @@
 - [The Start-Up of You — Reid Hoffman](sources/the-start-up-of-you-hoffman.md) — 312-page career-as-start-up guide: permanent beta, ABZ planning, relationships
 - [What Got You Here Won't Get You There — Marshall Goldsmith & Mark Reiter](sources/what-got-you-here-goldsmith.md) — 379-page 9-step behavioral improvement guide for successful people
 - [Leading Effective Engineering Teams — Addy Osmani](sources/leading-effective-engineering-teams-osmani.md) — 279-page effectiveness handbook: performance trio, watermelon effect, Project Aristotle, 3E leadership model
+- [14 Habits of Highly Productive Developers — Zeno Rocha](sources/14-habits-of-highly-productive-developers-rocha.md) — 102-page habit playbook: strategic mastery, teaching, maintainability, incremental progress
+- [Apache Iceberg: The Definitive Guide — Tomer Shiran](sources/apache-iceberg-definitive-guide-shiran.md) — 580-page operating guide: ACID, schema evolution, hidden partitioning, time travel, CDC, compaction
+- [Data Pipelines Pocket Reference — James Densmore](sources/data-pipelines-pocket-reference-densmore.md) — 277-page batch/ELT guide: ELT-first, orchestration, validate early, monitoring, incremental loads
+- [Financial Data Engineering — Tamer Khraisha](sources/financial-data-engineering-khraisha.md) — 898-page governance/query guide: ingestion validation, audit, lineage, RBAC+encryption, lean SQL
+- [Help Your Boss Help You — Ken Kousen](sources/help-your-boss-help-you-kousen.md) — 154-page managing-up guide: 9 practices for trust through consistency, ownership, tactful advocacy
+- [The Coding Career Handbook — Shawn 'Swyx' Wang](sources/the-coding-career-handbook-wang.md) — 413-page career-design playbook: ownership, readability, writing, learn in public, fearless negotiation
+- [The Effective Engineer — Edmond Lau](sources/the-effective-engineer-lau.md) — 296-page leverage guide: high-leverage work, ruthless prioritization, compounding skills, weekly review
+- [The Software Engineer's Guidebook — Gergely Orosz](sources/the-software-engineers-guidebook-orosz.md) — 603-page senior → tech lead → staff map: career ownership, readability, atomic iterations, proactive debt
 
 ## Syntheses
 
@@ -390,5 +402,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-_Last updated: 2026-09-30_
-_Pages: 373 (264 concepts + 109 sources)_
+_Last updated: 2026-10-11_
+_Pages: 385 (268 concepts + 117 sources)_

@@ -3,8 +3,8 @@ title: "Data Quality Monitoring"
 type: concept
 tags: [data-quality, data-observability, lineage, monitoring, dbt, data-platform]
 created: 2026-06-17
-updated: 2026-08-24
-sources: [data-quality-traffic-lights-sahlin, building-anonymization-pipeline, big-book-data-engineering, data-quality-engineering-financial-services-buzzelli]
+updated: 2026-10-11
+sources: [data-quality-traffic-lights-sahlin, building-anonymization-pipeline, big-book-data-engineering, data-quality-engineering-financial-services-buzzelli, data-pipelines-pocket-reference-densmore, financial-data-engineering-khraisha]
 aliases: [Data Quality Health Badge, Data Quality Traffic Lights, DQ Monitoring]
 ---
 
@@ -100,6 +100,14 @@ This extends traditional quality monitoring (detecting broken pipelines, missing
 4. **Tune relentlessly** — anomaly detection ships with false positives; expect continuous iteration based on real-world feedback
 5. **Choose tools that reduce complexity** — TimesFM abstracted away ML infrastructure while delivering production-grade anomaly detection
 
+## Validate Early & Often (Densmore / Khraisha)
+
+The pocket-reference and financial guides add the validation-at-ingestion discipline:
+
+- **Validate at ingestion points** — automated schema, null, and format checks block bad data *before* it enters the platform (source: [[sources/financial-data-engineering-khraisha]])
+- **Check after transformation too** — post-transform checks catch errors before analysis (source: [[sources/data-pipelines-pocket-reference-densmore]])
+- **Monitoring = trust** — automated checks prevent "silent" data corruption; track latency, failure rates, and drift with SLA alerts
+
 ---
 
 ## Connections
@@ -112,4 +120,6 @@ This extends traditional quality monitoring (detecting broken pipelines, missing
 - Data observability — Monitoring, alerting, and lineage together form data observability; a natural next concept to formalize from this source
 - Related to [[data-anonymization]] — output validation and continuous risk monitoring are quality dimensions specific to anonymization pipelines
 - Related to [[data-quality-engineering]] — DQS framework provides the specification contract; monitoring provides the detection and communication layer
+- Extended by [[data-pipelines-pocket-reference-densmore]] — validate early & often at ingestion and post-transform
+- Extended by [[financial-data-engineering-khraisha]] — automated checks at ingestion points block bad data
 - Source: [[sources/data-quality-engineering-financial-services-buzzelli]] — Buzzelli's manufacturing-lens DQ: DQS contracts, template library, scorecards, operational cost model

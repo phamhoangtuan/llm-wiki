@@ -3,8 +3,8 @@ title: "Data Security"
 type: concept
 tags: [data-management, security, dama]
 created: 2026-07-14
-updated: 2026-07-14
-sources: [dama-dmbok-2nd-edition]
+updated: 2026-10-11
+sources: [dama-dmbok-2nd-edition, financial-data-engineering-khraisha]
 ---
 
 # Data Security
@@ -29,6 +29,17 @@ Data Security is a foundational concern that intersects with every other Knowled
 
 Phase 1 discipline — organizations must establish data security fundamentals before pursuing advanced analytics.
 
+## RBAC + Encryption by Design (Khraisha)
+
+Khraisha's *Financial Data Engineering* (source: [[sources/financial-data-engineering-khraisha]]) adds the regulated-data posture:
+
+- **RBAC** — restrict access per role; least privilege applied to sensitive financial data
+- **Encryption** — encrypt sensitive data at rest and in transit
+- **PII masking** — mask personally identifiable information before non-privileged access
+- **Audit rigor** — log all access, transformations, and errors; OpenTelemetry for traceability
+
+> Security ≠ slowness — RBAC and encryption add negligible overhead when designed upfront, not retrofitted.
+
 ---
 
 ## Connections
@@ -38,3 +49,4 @@ Phase 1 discipline — organizations must establish data security fundamentals b
 - [[differential-privacy]] — Mathematical guarantees for privacy preservation
 - [[shift-left-security]] — Embedding security throughout the development lifecycle
 - [[password-storage]] — Salting, hashing, and constant-time comparison
+- Extended by [[financial-data-engineering-khraisha]] — RBAC, encryption, and PII masking by design

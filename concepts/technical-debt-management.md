@@ -3,8 +3,8 @@ title: "Technical Debt Management"
 type: concept
 tags: [technical-debt, migrations, engineering-management, maintainability, architecture]
 created: 2026-08-18
-updated: 2026-09-30
-sources: [an-elegant-puzzle, software-engineering-at-google, leading-effective-engineering-teams-osmani]
+updated: 2026-10-11
+sources: [an-elegant-puzzle, software-engineering-at-google, leading-effective-engineering-teams-osmani, the-software-engineers-guidebook-orosz]
 aliases: [technical debt, migration management]
 ---
 
@@ -34,10 +34,15 @@ Small changes, explicit dependency versions, automated large-scale changes, and 
 
 Osmani frames context-free code as a **"career tax"** (source: [[sources/leading-effective-engineering-teams-osmani]]): coding without understanding the *Why* produces technical debt that "steals" your future time — output that will have to be redone. The antidote ties debt back to [[output-vs-outcome]]: before writing code, ask what outcome it serves; if the answer is absent, the work is likely to become debt.
 
+## Proactive Debt Discipline (Orosz)
+
+Orosz's guidebook (source: [[sources/the-software-engineers-guidebook-orosz]]) adds the craft-level prevention: write **clean code upfront**, **schedule incremental refactoring**, and **address debt before it cripples agility**. Debt that is tackled proactively — rather than reactively after it blocks delivery — is the mark of the senior engineer; see [[code-readability]] for the discipline that makes debt unnecessary in the first place.
+
 ## Connections
 
 - Operationalized by [[engineering-management]] through team-health diagnosis and migration leadership.
 - Supported by [[continuous-delivery]] because small, reversible changes lower migration risk.
 - Related to [[software-rot]] and [[refactoring-at-scale]].
 - Related to [[output-vs-outcome]] — context-free, Why-less code becomes debt.
+- Related to [[code-readability]] — clean code upfront prevents debt.
 - Benchmark sources: [[sources/an-elegant-puzzle]] and [[sources/software-engineering-at-google]].

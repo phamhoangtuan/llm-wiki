@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>DataOps</h1>
-  <div class="page-meta"><span>Source: data-engineering-with-dbt, practical-dataops</span><span>Updated: 2026-07-14</span></div>
+  <div class="page-meta"><span>Source: data-engineering-with-dbt, practical-dataops, data-pipelines-pocket-reference-densmore</span><span>Updated: 2026-10-11</span></div>
   <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">devops</span><span class="tag">dbt</span><span class="tag">analytics</span><span class="tag">methodology</span></div>
 </div>
 <div class="content-area concept">
@@ -202,6 +202,8 @@
 </ul>
 <h2 id="minimum-viable-dataops">Minimum Viable DataOps</h2>
 <p>Start with a <strong>single thin slice</strong> — end-to-end delivery of one data product — to prove value before scaling. Choose a high-value use case, deliver, learn, then expand incrementally.</p>
+<h2 id="pipeline-health-discipline-densmore">Pipeline Health Discipline (Densmore)</h2>
+<p>Densmore's <em>Data Pipelines Pocket Reference</em> (source: <span class="wiki-link source-ref">sources/data-pipelines-pocket-reference-densmore</span>) maps DataOps onto the operational pipeline: orchestrate with Airflow-style tools (dependency management, retries), <strong>validate early & often</strong> (schema, nulls at ingestion; checks post-transformation), monitor latency/failure rates/data drift with <strong>SLA alerts</strong>, and design stateless, modular tasks with <strong>incremental loads</strong>. Validation = trust, orchestration = resilience — the DataOps principles made concrete.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -256,6 +258,11 @@
       <h4>Data Observability</h4>
       <p>observability is the feedback loop that makes DataOps safe at speed</p>
     </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Supported by</span>
+      <h4>Data Pipelines Pocket Reference — James Densmore</h4>
+      <p>orchestration, validation, monitoring, incremental loads</p>
+    </div>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>
       <h4>Data Engineering with dbt</h4>

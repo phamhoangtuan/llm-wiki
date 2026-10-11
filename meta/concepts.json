@@ -1182,6 +1182,19 @@
         "gang-of-four"
       ]
     },
+    "developer-productivity": {
+      "title": "Developer Productivity",
+      "category": "Career & Growth",
+      "url": "concepts/developer-productivity.html",
+      "definition": "**Developer Productivity** is the discipline of sustaining high-value engineering output over a long career — not raw output, but habits and leverage that compound. Zeno Rocha's *14 Habits* supplies t",
+      "tags": [
+        "productivity",
+        "career",
+        "habits",
+        "software-engineering",
+        "effectiveness"
+      ]
+    },
     "differential-dataflow": {
       "title": "Differential Dataflow",
       "category": "System Architecture",
@@ -1828,6 +1841,19 @@
         "coordination"
       ]
     },
+    "learn-in-public": {
+      "title": "Learn in Public",
+      "category": "Career & Growth",
+      "url": "concepts/learn-in-public.html",
+      "definition": "**Learn in Public** is the career strategy of learning out in the open — sharing experiments, writing notes, and engaging in public discussions so your growth compounds into reputation. Shawn \"Swyx\" W",
+      "tags": [
+        "career",
+        "learning",
+        "networking",
+        "personal-branding",
+        "writing"
+      ]
+    },
     "lindy-effect": {
       "title": "Lindy Effect",
       "category": "System Architecture",
@@ -1916,6 +1942,19 @@
         "systems-design",
         "ml-engineering",
         "ai-engineering"
+      ]
+    },
+    "managing-up": {
+      "title": "Managing Up",
+      "category": "Career & Growth",
+      "url": "concepts/managing-up.html",
+      "definition": "**Managing Up** is the deliberate practice of building a productive, trust-based relationship with your manager — treating the reporting line as a relationship to cultivate rather than a hierarchy to ",
+      "tags": [
+        "career",
+        "managing-up",
+        "communication",
+        "trust",
+        "engineering-management"
       ]
     },
     "mapper-principles": {
@@ -2521,6 +2560,19 @@
         "data-structures",
         "in-memory",
         "algorithms"
+      ]
+    },
+    "query-optimization": {
+      "title": "Query Optimization",
+      "category": "Data Engineering",
+      "url": "concepts/query-optimization.html",
+      "definition": "**Query Optimization** is the practice of writing analytical queries that minimize compute cost and latency — by fetching less data, doing heavy work as late as possible, and structuring queries for t",
+      "tags": [
+        "data-engineering",
+        "query-optimization",
+        "sql",
+        "performance",
+        "data-warehouse"
       ]
     },
     "readability-vs-performance": {

@@ -3,8 +3,8 @@ title: "Personal Branding"
 type: concept
 tags: [career, branding, professional-presence]
 created: 2026-07-14
-updated: 2026-09-20
-sources: [entrylevelboss, the-start-up-of-you-hoffman]
+updated: 2026-10-11
+sources: [entrylevelboss, the-start-up-of-you-hoffman, the-coding-career-handbook-wang]
 ---
 
 # Personal Branding
@@ -46,6 +46,10 @@ Personal branding extends to behavior:
 
 Hoffman adds a strategic core (source: [[sources/the-start-up-of-you-hoffman]]): the strongest brand is built on **specialization** — "specialize, don't generalize" — and on positioning where your **existing assets outperform others** (competitive advantage). A coherent brand narrative is the public face of that advantage; see also [[abz-planning]] for aligning assets, aspirations, and market realities.
 
+## Learn in Public as the Brand Engine (Swyx)
+
+Swyx's career handbook (source: [[sources/the-coding-career-handbook-wang]]) supplies the *substance* behind the collateral: **[[learn-in-public]]** — share experiments, write about your work, engage in public discussions. Writing clarifies thinking, and the public trail becomes career collateral that recruiters and peers find on their own. The documents are the *presentation*; the learning trail is the *evidence* — a brand without a trail is performance.
+
 ---
 
 ## Connections
@@ -55,3 +59,4 @@ Hoffman adds a strategic core (source: [[sources/the-start-up-of-you-hoffman]]):
 - [[software-professionalism]] — Professional conduct is a form of branding
 - [[technical-interview]] — Interview performance must match the brand narrative
 - [[abz-planning]] — Specialize and position where your assets outperform others
+- [[learn-in-public]] — Public learning trail is branding with substance

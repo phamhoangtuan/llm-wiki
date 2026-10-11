@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Apache Iceberg</h1>
-  <div class="page-meta"><span>Source: hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog, debunking-data-layout-myths-liquid-clustering, apache-iceberg-1.11.0-release</span><span>Updated: 2026-06-05</span></div>
+  <div class="page-meta"><span>Source: hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog, debunking-data-layout-myths-liquid-clustering, apache-iceberg-1.11.0-release, apache-iceberg-definitive-guide-shiran</span><span>Updated: 2026-10-11</span></div>
   <div class="page-tags"><span class="tag">table-formats</span><span class="tag">data-lake</span><span class="tag">iceberg</span><span class="tag">data-engineering</span><span class="tag">lakehouse</span></div>
 </div>
 <div class="content-area concept">
@@ -258,6 +258,18 @@
 <li><strong>Scheduled credential refresh</strong> — for S3FileIO and GCSFileIO, eliminating auth expiration failures in long-running jobs</li>
 <li><strong>Async micro-batch planner</strong> (Spark) — faster Structured Streaming execution</li>
 </ul>
+<h2 id="the-definitive-guide-operating-guidance">The Definitive Guide (Operating Guidance)</h2>
+<p>Shiran's <em>The Definitive Guide</em> (source: <span class="wiki-link source-ref">sources/apache-iceberg-definitive-guide-shiran</span>) is the practical how-to layer on top of the spec:</p>
+<ul>
+<li><strong>ACID for reliability</strong> — atomic commits + snapshot isolation prevent partial updates under concurrency</li>
+<li><strong>Schema evolution without rewrites</strong> — add/drop/rename columns without rewriting data or breaking pipelines</li>
+<li><strong>Hidden & evolving partitioning</strong> — partition values derived automatically; layouts evolve without costly reorganization</li>
+<li><strong>Unify batch + streaming</strong> — one shared metadata layer serves both historical and real-time workloads</li>
+<li><strong>Time travel for testing</strong> — <code>TIMESTAMP AS OF</code> auditing, debugging, and rollback make pipelines reproducible</li>
+<li><strong>Metadata pruning at PB scale</strong> — manifest files accelerate queries on massive datasets</li>
+<li><strong>Native CDC</strong> — <code>create_changelog_view</code> or Debezium/Kafka for real-time synchronization</li>
+<li><strong>Storage cost control</strong> — compact small files, expire old snapshots, evolve partitions</li>
+</ul>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -286,6 +298,11 @@
       <span class="connection-type related">Related</span>
       <h4>Apache Iceberg 1.11.0 Release</h4>
       <p>1.11.0 release blog post with full feature list</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Apache Iceberg: The Definitive Guide — Tomer Shiran</h4>
+      <p>Shiran's practical operating guide</p>
     </div>
   </div>
 </section>

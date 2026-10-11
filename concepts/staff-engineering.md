@@ -3,8 +3,8 @@ title: "Staff Engineering"
 type: concept
 tags: [career, engineering-leadership, growth, senior-to-staff]
 created: 2026-06-08
-updated: 2026-07-13
-sources: [senior-to-staff-engineer, staff-engineers-path, staff-engineer-larson]
+updated: 2026-10-11
+sources: [senior-to-staff-engineer, staff-engineers-path, staff-engineer-larson, the-software-engineers-guidebook-orosz]
 aliases: [staff-plus, staff-engineer-role, senior-to-staff]
 ---
 
@@ -103,6 +103,10 @@ Build frameworks where value compounds without your ongoing involvement.
 
 > Staff Engineering is about the work that compounds. Build things where you're not the bottleneck — where impact grows without you doing anything new.
 
+## The Career Map (Orosz)
+
+Orosz's *The Software Engineer's Guidebook* (source: [[sources/the-software-engineers-guidebook-orosz]]) frames the senior → tech lead → staff progression as intentional career ownership: seek challenges, prioritize learning, and align growth with a long-term vision; deliver **visible, high-impact results** aligned with business goals; and **lead through strategic alignment** — communicating trade-offs and mentoring peers so solutions drive organizational success. It complements the Staff+ pillar model with the day-to-day craft habits (coding rigor, readability, atomic iterations, proactive debt work) that build the credibility Staff+ impact rests on.
+
 ---
 
 - Core to [[staff-plus-archetypes]] — archetypes define the operational modes of Staff Engineering
@@ -114,3 +118,4 @@ Build frameworks where value compounds without your ongoing involvement.
 - Benchmark source: [[sources/senior-to-staff-engineer]] — Jordan Cutler's case study from Pinterest
 - Benchmark source: [[sources/staff-engineers-path]] — Tanya Reilly's three-pillar framework and mental models
 - Benchmark source: [[sources/staff-engineer-larson]] — Will Larson on Staff impact as multiplying the organization
+- Benchmark source: [[sources/the-software-engineers-guidebook-orosz]] — Orosz's senior → tech lead → staff career map

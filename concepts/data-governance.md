@@ -3,8 +3,8 @@ title: "Data Governance"
 type: concept
 tags: [data-governance, compliance, security, metadata, data-quality]
 created: 2026-06-14
-updated: 2026-09-20
-sources: [data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline, data-quality-engineering-financial-services-buzzelli, the-data-lakehouse-inmon]
+updated: 2026-10-11
+sources: [data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline, data-quality-engineering-financial-services-buzzelli, the-data-lakehouse-inmon, financial-data-engineering-khraisha]
 aliases: [governance]
 ---
 
@@ -63,6 +63,16 @@ Data Engineers implement governance through:
 
 Inmon's *The Data Lakehouse* makes lineage a hard governance requirement (source: [[sources/the-data-lakehouse-inmon]]): documentation must cover **every single step** of the data's journey — partial lineage silently invalidates downstream analysis. It also adds a governance rule for metrics: a calculated value is only auditable when its context is preserved — *what* was calculated (definition), *what data* was used (inputs), and *how* (method). See [[data-lineage]].
 
+## Regulated-Data Governance (Khraisha)
+
+Khraisha's *Financial Data Engineering* (source: [[sources/financial-data-engineering-khraisha]]) adds the regulated-industry playbook:
+
+- **Validate at ingestion points** — automated quality checks (schema, nulls, formats) block bad data before it enters systems
+- **Audit rigorously** — log all access, transformations, and errors; OpenTelemetry for traceability
+- **Map end-to-end lineage** — Apache Atlas-style tracking from source to consumption turns debugging into a lookup
+- **Secure with RBAC + encryption** — restrict access, encrypt sensitive data, mask PII; security adds negligible overhead when designed upfront
+- **Keep queries auditable** — explicit columns and modular queries (see [[query-optimization]]) document exactly what a metric consumed
+
 ---
 
 - Core to [[data-lifecycle]] — Data Lifecycle Management operationalizes governance retention and archiving policies
@@ -78,3 +88,4 @@ Inmon's *The Data Lakehouse* makes lineage a hard governance requirement (source
 - Benchmark source: [[sources/building-anonymization-pipeline]] — Arbuckle & El Emam on Five Safes, ethics committees, and trust-based governance
 - Benchmark source: [[sources/data-quality-engineering-financial-services-buzzelli]] — Buzzelli's governance playbook: owners/stewards per dataset, DQS signoff, lightweight monthly council
 - Benchmark source: [[sources/the-data-lakehouse-inmon]] — Inmon's every-step lineage and calculated-value context rules
+- Benchmark source: [[sources/financial-data-engineering-khraisha]] — Khraisha's regulated-data governance: ingestion validation, audit, lineage, RBAC + encryption

@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Data Governance</h1>
-  <div class="page-meta"><span>Source: data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline, data-quality-engineering-financial-services-buzzelli, the-data-lakehouse-inmon</span><span>Updated: 2026-09-20</span></div>
+  <div class="page-meta"><span>Source: data-lifecycle-handbook, data-engineering-handbook, building-anonymization-pipeline, data-quality-engineering-financial-services-buzzelli, the-data-lakehouse-inmon, financial-data-engineering-khraisha</span><span>Updated: 2026-10-11</span></div>
   <div class="page-tags"><span class="tag">data-governance</span><span class="tag">compliance</span><span class="tag">security</span><span class="tag">metadata</span><span class="tag">data-quality</span></div>
 </div>
 <div class="content-area concept">
@@ -130,6 +130,15 @@
 </ul>
 <h2 id="lineage--calculated-value-context-inmon">Lineage & Calculated-Value Context (Inmon)</h2>
 <p>Inmon's <em>The Data Lakehouse</em> makes lineage a hard governance requirement (source: <span class="wiki-link source-ref">sources/the-data-lakehouse-inmon</span>): documentation must cover <strong>every single step</strong> of the data's journey — partial lineage silently invalidates downstream analysis. It also adds a governance rule for metrics: a calculated value is only auditable when its context is preserved — <em>what</em> was calculated (definition), <em>what data</em> was used (inputs), and <em>how</em> (method). See <a href="data-lineage.html" class="wiki-link">data-lineage</a>.</p>
+<h2 id="regulated-data-governance-khraisha">Regulated-Data Governance (Khraisha)</h2>
+<p>Khraisha's <em>Financial Data Engineering</em> (source: <span class="wiki-link source-ref">sources/financial-data-engineering-khraisha</span>) adds the regulated-industry playbook:</p>
+<ul>
+<li><strong>Validate at ingestion points</strong> — automated quality checks (schema, nulls, formats) block bad data before it enters systems</li>
+<li><strong>Audit rigorously</strong> — log all access, transformations, and errors; OpenTelemetry for traceability</li>
+<li><strong>Map end-to-end lineage</strong> — Apache Atlas-style tracking from source to consumption turns debugging into a lookup</li>
+<li><strong>Secure with RBAC + encryption</strong> — restrict access, encrypt sensitive data, mask PII; security adds negligible overhead when designed upfront</li>
+<li><strong>Keep queries auditable</strong> — explicit columns and modular queries (see <a href="query-optimization.html" class="wiki-link">query-optimization</a>) document exactly what a metric consumed</li>
+</ul>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -198,6 +207,11 @@
       <span class="connection-type related">Related</span>
       <h4>The Data Lakehouse — Bill Inmon, Ranjeet Srivastava & Mary Levins</h4>
       <p>Inmon's every-step lineage and calculated-value context rules</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Financial Data Engineering — Tamer Khraisha</h4>
+      <p>Khraisha's regulated-data governance: ingestion validation, audit, lineage, RBAC + encryption</p>
     </div>
   </div>
 </section>

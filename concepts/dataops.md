@@ -3,8 +3,8 @@ title: "DataOps"
 type: concept
 tags: [data-engineering, devops, dbt, analytics, methodology]
 created: 2026-06-08
-updated: 2026-07-14
-sources: [data-engineering-with-dbt, practical-dataops]
+updated: 2026-10-11
+sources: [data-engineering-with-dbt, practical-dataops, data-pipelines-pocket-reference-densmore]
 aliases: [data-operations, data-devops]
 ---
 
@@ -119,6 +119,10 @@ Fast DataOps requires "brakes" — automated governance that builds confidence:
 
 Start with a **single thin slice** — end-to-end delivery of one data product — to prove value before scaling. Choose a high-value use case, deliver, learn, then expand incrementally.
 
+## Pipeline Health Discipline (Densmore)
+
+Densmore's *Data Pipelines Pocket Reference* (source: [[sources/data-pipelines-pocket-reference-densmore]]) maps DataOps onto the operational pipeline: orchestrate with Airflow-style tools (dependency management, retries), **validate early & often** (schema, nulls at ingestion; checks post-transformation), monitor latency/failure rates/data drift with **SLA alerts**, and design stateless, modular tasks with **incremental loads**. Validation = trust, orchestration = resilience — the DataOps principles made concrete.
+
 ---
 
 - Formalized by [[dbt]] — dbt is the canonical tool that makes DataOps practical for SQL transformations
@@ -131,5 +135,6 @@ Start with a **single thin slice** — end-to-end delivery of one data product �
 - Produces [[data-product]] — the output of a mature DataOps operation is a continuously produced data product
 - Requires [[t-shaped-skills]] — cross-functional DataOps teams need generalized specialists
 - Related to [[data-observability]] — observability is the feedback loop that makes DataOps safe at speed
+- Supported by [[data-pipelines-pocket-reference-densmore]] — orchestration, validation, monitoring, incremental loads
 - Benchmark source: [[sources/data-engineering-with-dbt]] — Roberto Zagni's 603-page guide
 - Benchmark source: [[sources/practical-dataops]] — Harvinder Atwal's Lean/Agile/DevOps integration for data

@@ -3,8 +3,8 @@ title: "Apache Iceberg"
 type: concept
 tags: [table-formats, data-lake, iceberg, data-engineering, lakehouse]
 created: 2026-05-26
-updated: 2026-06-05
-sources: [hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog, debunking-data-layout-myths-liquid-clustering, apache-iceberg-1.11.0-release]
+updated: 2026-10-11
+sources: [hugo-data-ingestion-platform-flink, delta-grows-up-writes-unity-catalog, debunking-data-layout-myths-liquid-clustering, apache-iceberg-1.11.0-release, apache-iceberg-definitive-guide-shiran]
 ---
 
 ## Summary
@@ -126,9 +126,24 @@ On Databricks, Iceberg tables in Unity Catalog support **[[liquid-clustering|Liq
 - **Overwrite-aware table registration** — idempotent catalog operations
 - **Scheduled credential refresh** — for S3FileIO and GCSFileIO, eliminating auth expiration failures in long-running jobs
 - **Async micro-batch planner** (Spark) — faster Structured Streaming execution
+
+## The Definitive Guide (Operating Guidance)
+
+Shiran's *The Definitive Guide* (source: [[sources/apache-iceberg-definitive-guide-shiran]]) is the practical how-to layer on top of the spec:
+
+- **ACID for reliability** — atomic commits + snapshot isolation prevent partial updates under concurrency
+- **Schema evolution without rewrites** — add/drop/rename columns without rewriting data or breaking pipelines
+- **Hidden & evolving partitioning** — partition values derived automatically; layouts evolve without costly reorganization
+- **Unify batch + streaming** — one shared metadata layer serves both historical and real-time workloads
+- **Time travel for testing** — `TIMESTAMP AS OF` auditing, debugging, and rollback make pipelines reproducible
+- **Metadata pruning at PB scale** — manifest files accelerate queries on massive datasets
+- **Native CDC** — `create_changelog_view` or Debezium/Kafka for real-time synchronization
+- **Storage cost control** — compact small files, expire old snapshots, evolve partitions
+
 ---
 - Related to [[data-ingestion]] — Iceberg is the planned next-gen table format for Hugo's data lake
 - Integrates with [[apache-flink]] — Flink 2.1 is the default build target; DynamicIcebergSink enables multi-table routing and auto-schema evolution
 - Competes with [[delta-lake]] — both dominate the open table format landscape; Iceberg has partition evolution, built-in encryption (1.11.0), and broader engine support; Delta has deeper Databricks integration
 - Optimized by [[liquid-clustering]] — modern data layout available for Iceberg tables on Databricks; write-side optimization
 - Reference: [[sources/apache-iceberg-1.11.0-release]] — 1.11.0 release blog post with full feature list
+- Benchmark source: [[sources/apache-iceberg-definitive-guide-shiran]] — Shiran's practical operating guide

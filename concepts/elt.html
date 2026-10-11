@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>ELT (Extract-Load-Transform)</h1>
-  <div class="page-meta"><span>Source: unlocking-dbt-design-deploy-transformations, data-engineering-with-dbt</span><span>Updated: 2026-06-15</span></div>
+  <div class="page-meta"><span>Source: unlocking-dbt-design-deploy-transformations, data-engineering-with-dbt, data-pipelines-pocket-reference-densmore</span><span>Updated: 2026-10-11</span></div>
   <div class="page-tags"><span class="tag">data-engineering</span><span class="tag">elt</span><span class="tag">etl</span><span class="tag">data-warehouse</span><span class="tag">architecture</span></div>
 </div>
 <div class="content-area concept">
@@ -162,6 +162,8 @@ ELT:  Source → Load Raw to Warehouse → [Transform IN warehouse] → Analytic
 <td>Simple, unchanging transformations</td>
 </tr>
 </tbody></table>
+<h2 id="elt-in-practice-densmore">ELT in Practice (Densmore)</h2>
+<p>Densmore's <em>Data Pipelines Pocket Reference</em> (source: <span class="wiki-link source-ref">sources/data-pipelines-pocket-reference-densmore</span>) adds the operational playbook: prioritize ELT in cloud ecosystems (load raw first into Redshift/Snowflake, then transform), orchestrate with Airflow-style tools for dependency management and retries, validate at ingestion and post-transform, monitor latency/failure/drift against SLAs, design stateless modular tasks with incremental loads, and standardize ingestion patterns (APIs, CDC, batch) to avoid pipeline sprawl. The pocket guidance pairs with <span class="wiki-link source-ref">the reference</span> for the batch-focused practitioner.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -180,6 +182,16 @@ ELT:  Source → Load Raw to Warehouse → [Transform IN warehouse] → Analytic
       <span class="connection-type related">Related to</span>
       <h4>Data Ingestion</h4>
       <p>ELT describes the full pipeline; ingestion handles the "EL" portion</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Data Pipelines Pocket Reference — James Densmore</h4>
+      <p>orchestration, validation, monitoring, incremental loads</p>
+    </div>
+    <a class="connection-card" href="query-optimization.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Query Optimization</h4>
+      <p>transform-in-warehouse runs on lean, explicit queries</p>
     </a>
     <div class="connection-card text-ref">
       <span class="connection-type related">Related</span>

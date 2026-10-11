@@ -4,6 +4,32 @@
 
 ---
 
+## [2026-10-11] lint | Post-ingest health check
+
+- Scanned 385 pages (268 concepts + 117 sources) across broken wikilinks, HTML hrefs, orphans, frontmatter, gaps
+- Broken wikilinks: 0 — all [[links]] in concepts/sources resolve correctly
+- Broken HTML hrefs: 0
+- Orphans: 0 — every page has an inbound link or frontmatter backlink
+- Frontmatter: all 385 pages complete; gaps: 0
+- Contradictions: 0 — spot-checked batch claims (Khraisha 30–70% latency; Osmani 23% standards gain) consistent across pages
+- Index: 385 pages (268 concepts + 117 sources) — consistent with disk; note: site-reliability-engineering exists as both concept and source (pre-existing, directory-additive count)
+- HTML regenerated via convert-to-html.py
+
+## [2026-10-11] ingest | 14 Habits + Apache Iceberg Definitive Guide + Data Pipelines Pocket Reference + Financial Data Engineering + Help Your Boss Help You + The Coding Career Handbook + The Effective Engineer + The Software Engineer's Guidebook
+
+- Created sources/14-habits-of-highly-productive-developers-rocha.md — Rocha's 102-page productivity habit playbook
+- Created sources/apache-iceberg-definitive-guide-shiran.md — Shiran's 580-page Iceberg operating guide: ACID, schema evolution, hidden partitioning, time travel, CDC, compaction
+- Created sources/data-pipelines-pocket-reference-densmore.md — Densmore's 277-page batch/ELT guide: ELT-first, orchestration, validation, monitoring, incremental loads
+- Created sources/financial-data-engineering-khraisha.md — Khraisha's 898-page governance & query guide: validation, audit, lineage, RBAC+encryption, lean SQL
+- Created sources/help-your-boss-help-you-kousen.md — Kousen's 154-page managing-up guide (9 practices)
+- Created sources/the-coding-career-handbook-wang.md — Swyx's 413-page career design playbook
+- Created sources/the-effective-engineer-lau.md — Lau's 296-page leverage guide (9 steps)
+- Created sources/the-software-engineers-guidebook-orosz.md — Orosz's 603-page senior → tech lead → staff guide
+- New concepts: developer-productivity, managing-up, learn-in-public, query-optimization
+- Updated concepts: apache-iceberg, elt, dataops, data-quality-monitoring, data-observability, data-governance, data-security, data-lineage, code-readability, staff-engineering, technical-debt-management, t-shaped-skills, salary-negotiation, engineering-management, personal-branding
+- Updated index.md: +4 concepts, +8 sources, 385 total pages (268 concepts + 117 sources)
+- HTML regenerated via convert-to-html.py
+
 ## [2026-09-30] ingest | Leading Effective Engineering Teams — Addy Osmani
 
 - Created sources/leading-effective-engineering-teams-osmani.md — Osmani's 279-page effectiveness & leadership handbook (Vietnamese edition): performance trio, watermelon effect, 20-minute rule, career tax, Project Aristotle, 3E model, Multiplier vs Diminisher

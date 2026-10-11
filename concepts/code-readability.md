@@ -3,8 +3,8 @@ title: "Code Readability"
 type: concept
 tags: [code-quality, readability, software-engineering, best-practices]
 created: 2026-07-13
-updated: 2026-07-13
-sources: [art-of-readable-code, 500-lines-or-less]
+updated: 2026-10-11
+sources: [art-of-readable-code, 500-lines-or-less, the-coding-career-handbook-wang, the-software-engineers-guidebook-orosz]
 aliases: [readable-code, code-clarity]
 ---
 
@@ -57,10 +57,17 @@ Reduce the cognitive load of tracking state and branching:
 - **Reduce cognitive load**: Make it easy for the brain to track state and flow
 - **Write for humans**: Code is read orders of magnitude more than it is written
 
+## Readability as Career Discipline
+
+Career-oriented sources elevate readability into a professional habit: Swyx's handbook (source: [[sources/the-coding-career-handbook-wang]]) — "write code for humans first, avoid clever tricks, **delay abstractions until patterns emerge**"; Orosz's guidebook (source: [[sources/the-software-engineers-guidebook-orosz]]) — **self-documenting code**, meaningful names, simplified logic "for future maintainers." Rocha's habits (source: [[sources/14-habits-of-highly-productive-developers-rocha]]) add "write code/docs for your future self." Readability is thus not a style preference — it's the discipline that makes [[developer-productivity]] compound and [[technical-debt-management]] unnecessary.
+
 ---
 
 - Foundation for [[code-quality-pillars]] — readability is a core pillar of maintainable software
 - Complements [[readability-vs-performance]] — write clean first, optimize bottlenecks after profiling
 - Related to [[information-hiding]] — readable code reveals intent and hides implementation complexity
+- Supported by [[the-software-engineers-guidebook-orosz]] — self-documenting code and atomic iterations
+- Supported by [[the-coding-career-handbook-wang]] — humans first, delay abstractions until patterns emerge
+- Related to [[developer-productivity]] — maintainability is a compounding productivity habit
 - Benchmark source: [[sources/art-of-readable-code]] — Boswell & Foucher's 198-page guide
 - Benchmark source: [[sources/500-lines-or-less]] — AOSA vol. 4: design decisions under a 500-line constraint, code as literature

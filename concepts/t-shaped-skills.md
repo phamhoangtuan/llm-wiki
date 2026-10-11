@@ -3,8 +3,8 @@ title: "T-Shaped Skills"
 type: concept
 tags: [career, team-structure, dataops, collaboration, professional-development]
 created: 2026-07-14
-updated: 2026-09-20
-sources: [practical-dataops, the-start-up-of-you-hoffman]
+updated: 2026-10-11
+sources: [practical-dataops, the-start-up-of-you-hoffman, the-software-engineers-guidebook-orosz]
 aliases: [generalized-specialist, t-shaped-person]
 ---
 
@@ -51,6 +51,10 @@ Building T-shaped skills means:
 2. **Learn the adjacent vocabulary** — you don't need to write production code, but you must *speak the language* of neighboring disciplines
 3. **Pair with complementary T-shapes** — a team of overlapping T's covers the full problem space without single points of failure
 
+## Specialization + Exploration (Orosz)
+
+Orosz's guidebook (source: [[sources/the-software-engineers-guidebook-orosz]]) phrases the same shape as a career rule: **master core domains deeply while experimenting with adjacent tools/frameworks** to find cross-disciplinary insight, and **expand full-stack fluency** — volunteer for cross-platform tasks, study diverse codebases, collaborate outside your expertise. The vertical bar is deliberate mastery; the horizontal bar is deliberate exploration; both are intentional, not accidental.
+
 ---
 
 - Core to [[dataops]] — T-shaped skills enable cross-functional DataOps teams
@@ -58,4 +62,5 @@ Building T-shaped skills means:
 - Related to [[data-engineer]] — modern data engineers need ML, analytics, and domain breadth
 - Related to [[ultralearning|Ultralearning]] — deliberate cross-domain learning builds the horizontal bar
 - Related to [[abz-planning]] — Hoffman's "specialize, don't generalize" is the vertical bar; adjacent pivots build the horizontal bar
+- Supported by [[the-software-engineers-guidebook-orosz]] — deliberate specialization plus exploration, full-stack fluency
 - Benchmark source: [[sources/practical-dataops]] — Atwal on team design
