@@ -1,0 +1,11 @@
+{
+  "attachmentFolderPath": "raw/assets",
+  "alwaysUpdateLinks": true,
+  "newFileLocation": "current",
+  "showUnsupportedFiles": false,
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest",
+  "showLineNumber": false,
+  "spellcheck": true,
+  "tabSize": 2
+}

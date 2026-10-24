@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kappa Architecture — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-big-data">Big Data</a> <span class="sep">/</span>
+  <span>Kappa Architecture</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Kappa Architecture</h1>
+  <div class="page-meta"><span>Source: building-real-time-analytics-systems</span><span>Updated: 2026-07-11</span></div>
+  <div class="page-tags"><span class="tag">big-data</span><span class="tag">architecture</span><span class="tag">streaming</span><span class="tag">simplification</span><span class="tag">kafka</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p><strong>Kappa Architecture</strong> is a simplified data processing paradigm proposed by Jay Kreps (co-creator of Apache Kafka) that eliminates the batch layer entirely. All data is treated as a stream — even "batch" workloads are simply streaming jobs that read from the beginning of a log. This removes the code duplication and operational complexity of <a href="lambda-architecture.html" class="wiki-link">lambda-architecture</a>.</p>
+<h2 id="core-principle">Core Principle</h2>
+<blockquote>There is no batch layer. There is only a stream.</blockquote>
+<pre><code>Raw Data → Streaming Platform (immutable log) → Stream Processor → Serving Layer → Query API</code></pre>
+<p>If you need to re-process historical data, you replay the log from the beginning through the same streaming job.</p>
+<h2 id="how-it-works">How It Works</h2>
+<ol>
+<li><strong>All data enters as events</strong> into an append-only log (e.g., Kafka)</li>
+<li><strong>A single stream processor</strong> (e.g., Flink, Kafka Streams) consumes the log</li>
+<li><strong>To recompute history:</strong> reset the consumer offset to the beginning of the log and re-run the same job</li>
+<li><strong>No separate batch code path</strong> — one codebase, one mental model</li>
+</ol>
+<h2 id="comparison-with-lambda">Comparison with Lambda</h2>
+<table><thead><tr>
+<th>Aspect</th>
+<th>Lambda</th>
+<th>Kappa</th>
+</tr></thead><tbody>
+<tr>
+<td>Code paths</td>
+<td>2 (batch + speed)</td>
+<td>1 (stream only)</td>
+</tr>
+<tr>
+<td>Re-processing</td>
+<td>Separate batch job</td>
+<td>Replay log through same job</td>
+</tr>
+<tr>
+<td>Operational load</td>
+<td>High (maintain two systems)</td>
+<td>Lower (one system)</td>
+</tr>
+<tr>
+<td>Latency</td>
+<td>Dual (slow batch + fast stream)</td>
+<td>Unified (stream-native)</td>
+</tr>
+<tr>
+<td>Requires mature streaming</td>
+<td>No (batch compensates)</td>
+<td>Yes (must handle late data, exactly-once)</td>
+</tr>
+</tbody></table>
+<h2 id="requirements-for-kappa">Requirements for Kappa</h2>
+<p>Kappa only works when the streaming layer is sufficiently mature:</p>
+<ul>
+<li><strong>Exactly-once semantics</strong> — no data loss or duplication on replay</li>
+<li><strong>Event time processing</strong> — correctly handles out-of-order and late-arriving data</li>
+<li><strong>Durable, replayable log</strong> — Kafka's retention must cover the full history window</li>
+<li><strong>Reprocessing scalability</strong> — replaying months of data must finish in reasonable time</li>
+</ul>
+<h2 id="when-kappa-fits">When Kappa Fits</h2>
+<ul>
+<li>Greenfield streaming systems with modern processors like <a href="apache-flink.html" class="wiki-link">apache-flink</a></li>
+<li>Organizations already using Kafka as their source of truth</li>
+<li>Workloads where batch and stream logic are identical (aggregations, filtering, joins)</li>
+</ul>
+<h2 id="when-lambda-persists">When Lambda Persists</h2>
+<ul>
+<li>Legacy systems where the batch layer provides trusted, audited final results</li>
+<li>Organizations with immature streaming infrastructure</li>
+<li>Complex analytical workloads that streaming engines still struggle with (e.g., large-scale graph analytics)</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ol>
+<li>Kappa simplifies operations by unifying all processing into a single streaming path.</li>
+<li>It requires a mature, replayable streaming platform and exactly-once semantics.</li>
+<li>The concept is now mainstream — modern architectures rarely distinguish "batch" from "stream" at the infrastructure level.</li>
+<li><a href="apache-flink.html" class="wiki-link">apache-flink</a> and <a href="apache-kafka.html" class="wiki-link">apache-kafka</a> together provide the technical foundation for Kappa architecture.</li>
+</ol>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="lambda-architecture.html">
+      <span class="connection-type related">Contrasts with</span>
+      <h4>Lambda Architecture</h4>
+      <p>Kappa removes the batch layer entirely</p>
+    </a>
+    <a class="connection-card" href="real-time-analytics.html">
+      <span class="connection-type related">Related</span>
+      <h4>Real-Time Analytics</h4>
+      <p>Kappa is the architectural philosophy behind modern RTA stacks</p>
+    </a>
+    <a class="connection-card" href="apache-kafka.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Kafka</h4>
+      <p>Kafka's immutable, replayable log is the prerequisite for Kappa</p>
+    </a>
+    <a class="connection-card" href="apache-flink.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Apache Flink</h4>
+      <p>Flink's exactly-once and event-time capabilities make Kappa viable in production</p>
+    </a>
+    <a class="connection-card" href="message-delivery-semantics.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Message Delivery Semantics</h4>
+      <p>exactly-once delivery is a hard requirement for Kappa correctness</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>Building Real-Time Analytics Systems</h4>
+      <p>Needham covers the Lambda-to-Kappa evolution</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="job-search-strategy.html" class="prev">← Job Search Strategy</a><a href="knowledge-graph.html" class="next">Knowledge Graph →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>
