@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brag Document — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-career">Career</a> <span class="sep">/</span>
+  <span>Brag Document</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Brag Document</h1>
+  <div class="page-meta"><span>Source: the-effective-software-engineer-osmani</span><span>Updated: 2026-10-24</span></div>
+  <div class="page-tags"><span class="tag">career</span><span class="tag">promotion</span><span class="tag">personal-branding</span><span class="tag">evidence</span><span class="tag">engineering-management</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>A <strong>Brag Document</strong> is a continuously maintained record of your achievements, metrics, and feedback — framed in terms of business outcomes rather than activity. Addy Osmani's <em>The Effective Software Engineer</em> lists it as the first of four implicit rules for promotion, precisely because promotion rests on <strong>demonstrated scope and outcome impact</strong>, not tenure (source: <span class="wiki-link source-ref">sources/the-effective-software-engineer-osmani</span>).</p>
+<h2 id="why-keep-one">Why Keep One</h2>
+<ul>
+<li><strong>Memory fails</strong> — by review season you will have forgotten the quarter's wins; a running log preserves the evidence</li>
+<li><strong>Promotion is demonstrated, not granted</strong> — you must already be working at the next level's scope, and the document is how that is shown</li>
+<li><strong>Calibration is competitive</strong> — managers argue your case in rooms you are not in; concrete artifacts travel further than impressions</li>
+<li><strong>It protects against recounting only the visible</strong> — quiet wins (mentoring, debt repayment, risk averted) are exactly what goes unremembered</li>
+</ul>
+<h2 id="what-to-record">What to Record</h2>
+<table><thead><tr>
+<th>Record</th>
+<th>Weak Version ❌</th>
+<th>Strong Version ✅</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Outcomes</strong></td>
+<td>"Refactored the payment module"</td>
+<td>"Cut payment retries 30%, reducing support load"</td>
+</tr>
+<tr>
+<td><strong>Metrics</strong></td>
+<td>"Improved latency"</td>
+<td>"Cut p95 latency 40%; conversion up 3%"</td>
+</tr>
+<tr>
+<td><strong>Scope</strong></td>
+<td>"Worked on the migration"</td>
+<td>"Led 3-team migration of 12 services, no downtime"</td>
+</tr>
+<tr>
+<td><strong>Feedback</strong></td>
+<td>(nothing)</td>
+<td>Quote the PM who said launch risk dropped</td>
+</tr>
+<tr>
+<td><strong>Invisible work</strong></td>
+<td>(nothing)</td>
+<td>Mentored 2 juniors to independent delivery</td>
+</tr>
+</tbody></table>
+<p>The framing rule: <strong>outcome over output</strong> (see <a href="output-vs-outcome.html" class="wiki-link">output-vs-outcome</a>) — business results, not activity.</p>
+<h2 id="the-four-implicit-promotion-rules-osmani">The Four Implicit Promotion Rules (Osmani)</h2>
+<ol>
+<li><strong>Maintain a "brag document"</strong> — running record of achievements, metrics, feedback, framed by business results</li>
+<li><strong>Build your personal brand</strong> — be known for consistent excellence (debugging wizard, clean-API architect, dedicated mentor)</li>
+<li><strong>Cultivate sponsors</strong> — senior leaders willing to advocate for you in calibration meetings</li>
+<li><strong>Choose your track</strong> — Individual Contributor (Staff+) vs Engineering Management (EM)</li>
+</ol>
+<h2 id="relationship-to-leveling">Relationship to Leveling</h2>
+<p>The document is also a <strong>gap analysis</strong> tool: compare what you have recorded against the next level's expectations.</p>
+<table><thead><tr>
+<th>Level</th>
+<th>Focus</th>
+<th>What the document should show</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Mid-Level (L4)</strong></td>
+<td>Execution & delivery</td>
+<td>Independent delivery on clear scope, maintainable code, thoughtful reviews</td>
+</tr>
+<tr>
+<td><strong>Senior (L5)</strong></td>
+<td>Project ownership & team elevation</td>
+<td>Ambiguous goals turned into architecture, coordinated execution, juniors mentored</td>
+</tr>
+<tr>
+<td><strong>Staff (L6+)</strong></td>
+<td>Organizational strategy</td>
+<td>Cross-team architectural risk identified, technical strategy aligned to business</td>
+</tr>
+</tbody></table>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="staff-engineering.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Staff Engineering</h4>
+      <p>evidence of next-level scope before the title</p>
+    </a>
+    <a class="connection-card" href="output-vs-outcome.html">
+      <span class="connection-type extends">Supports</span>
+      <h4>Output vs Outcome</h4>
+      <p>outcome framing is the whole point</p>
+    </a>
+    <a class="connection-card" href="personal-branding.html">
+      <span class="connection-type related">Related</span>
+      <h4>Personal Branding</h4>
+      <p>the record is the raw material of a reputation</p>
+    </a>
+    <a class="connection-card" href="managing-up.html">
+      <span class="connection-type extends">Extends</span>
+      <h4>Managing Up</h4>
+      <p>a shared impact record makes your manager's advocacy easy</p>
+    </a>
+    <a class="connection-card" href="technical-credibility.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Technical Credibility</h4>
+      <p>documented impact builds the standing to influence</p>
+    </a>
+    <a class="connection-card" href="salary-negotiation.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Salary Negotiation</h4>
+      <p>documented value is the basis of negotiation power</p>
+    </a>
+    <a class="connection-card" href="multiplier-leadership.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Multiplier Leadership</h4>
+      <p>team-elevation work belongs in the record too</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>The Effective Software Engineer: How ICs at Every Level Can Leverage AI, Prioritize High-Value Work, and Lead Beyond Their Role — Addy Osmani</h4>
+      <p>Osmani's four promotion rules</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="bloom-filter.html" class="prev">← Bloom Filter</a><a href="byzantine-fault-tolerance.html" class="next">Byzantine Fault Tolerance (BFT) →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

@@ -4,6 +4,25 @@
 
 ---
 
+## [2026-10-24] lint | Post-ingest health check
+
+- Scanned 389 pages (271 concepts + 118 sources) across broken wikilinks, HTML hrefs, orphans, frontmatter, gaps
+- Broken wikilinks: 0 — all [[links]] resolve correctly
+- Broken HTML hrefs: 0 (connection-card alias handling verified)
+- Orphans: 0 — every page has an inbound link or frontmatter backlink
+- Frontmatter: all 389 pages complete; frontmatter concepts/sources refs all resolve; gaps: 0
+- Contradictions: 0 — spot-checked the AI stats (55% faster / 45% OWASP) consistent across developer-productivity, ai-native-engineering, vibe-coding, and the source page
+- Index: 389 pages (271 concepts + 118 sources) — consistent with disk; index.html MOC shows 271 concepts
+- HTML regenerated via convert-to-html.py
+
+## [2026-10-24] ingest | The Effective Software Engineer — Addy Osmani
+
+- Created sources/the-effective-software-engineer-osmani.md — 268-page IC handbook (Vietnamese edition): Drucker Spectrum, four-engineers case, clean code as force multiplier, scientific debugging, T-shaped depth/breadth, informal influence, anti-patterns, L4/L5/L6 progression, pragmatic AI (55% faster / 45% OWASP)
+- New concepts: drucker-spectrum, technical-credibility, brag-document
+- Updated concepts: output-vs-outcome, developer-productivity, t-shaped-skills, managing-up, technical-leadership, ai-native-engineering, code-quality-pillars, staff-engineering, vibe-coding
+- Updated index.md: +3 concepts, +1 source, 389 total pages (271 concepts + 118 sources)
+- HTML regenerated via convert-to-html.py
+
 ## [2026-10-11] lint | Post-ingest health check
 
 - Scanned 385 pages (268 concepts + 117 sources) across broken wikilinks, HTML hrefs, orphans, frontmatter, gaps

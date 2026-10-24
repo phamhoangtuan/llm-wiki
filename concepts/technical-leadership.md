@@ -3,8 +3,8 @@ title: "Technical Leadership"
 type: concept
 tags: [career, leadership, staff-engineering, influence]
 created: 2026-07-13
-updated: 2026-09-30
-sources: [staff-engineers-path, what-got-you-here-goldsmith, the-making-of-a-manager-zhuo, leading-effective-engineering-teams-osmani]
+updated: 2026-10-24
+sources: [staff-engineers-path, what-got-you-here-goldsmith, the-making-of-a-manager-zhuo, leading-effective-engineering-teams-osmani, the-effective-software-engineer-osmani]
 aliases: [tech-leadership, leadership-without-authority]
 ---
 
@@ -49,6 +49,10 @@ Three maps help navigate ambiguity:
 
 This might mean writing a three-year strategy, aligning five teams on shared architecture, hauling diesel during a data center emergency, or saying "no" to good ideas so the team focuses on great ones.
 
+## Leading Without a Title (Osmani)
+
+Osmani's *The Effective Software Engineer* (source: [[sources/the-effective-software-engineer-osmani]]) grounds influence without authority in four levers — **[[technical-credibility|technical credibility]]** (consistently deliver reliable solutions), **empathetic alignment** (package proposals in stakeholder priorities — e.g. sell refactoring to a PM as launch-risk reduction), **evidence & prototypes** (win debates with data, benchmarks, and minimal proofs-of-concept), and **[[managing-up|managing up]]** (proactive status, early risks with mitigation plans). He also names the anti-patterns that destroy this standing: knowledge silos and low bus factor, the "hero" complex, over-engineering, inability to delegate, rubber-stamping reviews, and flaky product ownership.
+
 ---
 
 - Core to [[staff-engineering]] — technical leadership is the mechanism through which Staff+ engineers create impact
@@ -61,3 +65,6 @@ This might mean writing a three-year strategy, aligning five teams on shared arc
 - Related to [[coaching]] — curiosity and questions as the leadership stance
 - Related to [[multiplier-leadership]] — decoding jargon and multiplying team intelligence is technical leadership's core move
 - Related to [[output-vs-outcome]] — technical leaders frame problems by business outcome, not technical output
+- Extended by [[technical-credibility]] — the four levers of informal influence
+- Related to [[the-effective-software-engineer-osmani]] — leading beyond your role, anti-patterns to eliminate
+- Related to [[brag-document]] — evidence of next-level scope precedes the title

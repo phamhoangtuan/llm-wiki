@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>Vibe Coding</h1>
-  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, new-sdlc-vibe-coding, graph-engineering-karpathy, beyond-vibe-coding-osmani</span><span>Updated: 2026-08-24</span></div>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, new-sdlc-vibe-coding, graph-engineering-karpathy, beyond-vibe-coding-osmani, the-effective-software-engineer-osmani</span><span>Updated: 2026-10-24</span></div>
   <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">coding</span><span class="tag">methodology</span><span class="tag">terminology</span></div>
 </div>
 <div class="content-area concept">
@@ -171,6 +171,8 @@
 <li><strong>Graph engineering</strong>: agents share durable state through typed, queryable graphs of work and knowledge. Memory and evaluation live outside context windows.</li>
 </ol>
 <p>Each stage addresses a limitation of the previous: vibe coding lacks verification → agentic engineering adds it → graph engineering externalizes state from context windows into persistent structures.</p>
+<h2 id="the-security-cost-osmani">The Security Cost (Osmani)</h2>
+<p>Osmani's <em>The Effective Software Engineer</em> (source: <span class="wiki-link source-ref">sources/the-effective-software-engineer-osmani</span>) quantifies the risk in production terms: AI tools speed up task completion by up to <strong>55%</strong>, but roughly <strong>45% of AI-generated code contains OWASP vulnerabilities</strong> (SQL injection, XSS). His guardrails for professional use: treat AI output as an inexperienced junior's code and <strong>always test and verify</strong>; run strict <strong>SAST/SCA scanning</strong>; and when autonomous agents perform large refactors, require <strong>sandboxed permissions, test-passing constraints, and mandatory human review</strong> before merge. This is the security dimension of the "higher the stakes, the tighter the harness" rule.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -229,6 +231,11 @@
       <span class="connection-type related">Related</span>
       <h4>Beyond Vibe Coding</h4>
       <p>Osmani's 5-discipline framework for professional AI-assisted coding; the 70% problem (AI handles majority, final 30% demands human expertise)</p>
+    </div>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>The Effective Software Engineer: How ICs at Every Level Can Leverage AI, Prioritize High-Value Work, and Lead Beyond Their Role — Addy Osmani</h4>
+      <p>45% OWASP vulnerability rate; SAST/SCA and mandatory human review guardrails</p>
     </div>
   </div>
 </section>

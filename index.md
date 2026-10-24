@@ -275,6 +275,9 @@
 - [Managing Up](concepts/managing-up.html) — Kousen's 9 practices: advise don't decide, own outcomes, tactful pushback, loyalty, own mistakes
 - [Learn in Public](concepts/learn-in-public.html) — Swyx's career strategy: share experiments, write, engage — reputation compounds from a public learning trail
 - [Query Optimization](concepts/query-optimization.html) — column pruning (30–70% latency), filter-before-join, CTE modularization; lean auditable SQL
+- [Drucker Spectrum](concepts/drucker-spectrum.html) — four quadrants of effectiveness; the "polished turd" trap; four-engineers case
+- [Technical Credibility](concepts/technical-credibility.html) — informal influence without authority: track record, empathetic alignment, evidence, managing up
+- [Brag Document](concepts/brag-document.html) — outcome-framed impact log; the evidence base for promotion, branding, and sponsorship
 
 ## Sources
 
@@ -387,6 +390,7 @@
 - [The Start-Up of You — Reid Hoffman](sources/the-start-up-of-you-hoffman.md) — 312-page career-as-start-up guide: permanent beta, ABZ planning, relationships
 - [What Got You Here Won't Get You There — Marshall Goldsmith & Mark Reiter](sources/what-got-you-here-goldsmith.md) — 379-page 9-step behavioral improvement guide for successful people
 - [Leading Effective Engineering Teams — Addy Osmani](sources/leading-effective-engineering-teams-osmani.md) — 279-page effectiveness handbook: performance trio, watermelon effect, Project Aristotle, 3E leadership model
+- [The Effective Software Engineer — Addy Osmani](sources/the-effective-software-engineer-osmani.md) — 268-page IC handbook: Drucker Spectrum, clean-code force multiplier, T-shaped depth/breadth, informal influence, career levels, pragmatic AI guardrails
 - [14 Habits of Highly Productive Developers — Zeno Rocha](sources/14-habits-of-highly-productive-developers-rocha.md) — 102-page habit playbook: strategic mastery, teaching, maintainability, incremental progress
 - [Apache Iceberg: The Definitive Guide — Tomer Shiran](sources/apache-iceberg-definitive-guide-shiran.md) — 580-page operating guide: ACID, schema evolution, hidden partitioning, time travel, CDC, compaction
 - [Data Pipelines Pocket Reference — James Densmore](sources/data-pipelines-pocket-reference-densmore.md) — 277-page batch/ELT guide: ELT-first, orchestration, validate early, monitoring, incremental loads
@@ -402,5 +406,5 @@ _No syntheses yet. Ask a question and file the answer to add one._
 
 ---
 
-_Last updated: 2026-10-11_
-_Pages: 385 (268 concepts + 117 sources)_
+_Last updated: 2026-10-24_
+_Pages: 389 (271 concepts + 118 sources)_

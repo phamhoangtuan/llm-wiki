@@ -30,6 +30,7 @@
   ],
   "personal-branding": [
     "abz-planning",
+    "brag-document",
     "golden-circle",
     "job-search-strategy",
     "learn-in-public",
@@ -53,6 +54,8 @@
     "mentoring",
     "14-habits-of-highly-productive-developers-rocha",
     "14-habits-of-highly-productive-developers-rocha",
+    "the-effective-software-engineer-osmani",
+    "the-effective-software-engineer-osmani",
     "the-software-engineers-guidebook-orosz",
     "the-software-engineers-guidebook-orosz",
     "the-start-up-of-you-hoffman",
@@ -60,6 +63,7 @@
   ],
   "salary-negotiation": [
     "abz-planning",
+    "brag-document",
     "job-search-strategy",
     "job-search-strategy",
     "managing-up",
@@ -142,6 +146,8 @@
     "data-engineer",
     "data-engineering-fundamentals",
     "data-scientist",
+    "developer-productivity",
+    "developer-productivity",
     "harness-engineering",
     "machine-learning-systems",
     "mlops",
@@ -154,7 +160,8 @@
     "how-ai-changes-4-core-data-roles",
     "new-sdlc-vibe-coding",
     "practical-guide-ai-native-engineer",
-    "practical-guide-ai-native-engineer"
+    "practical-guide-ai-native-engineer",
+    "the-effective-software-engineer-osmani"
   ],
   "agent-verification": [
     "agent-components",
@@ -254,6 +261,7 @@
     "agent-verification",
     "ai-native-engineering",
     "ai-native-engineering",
+    "ai-native-engineering",
     "ai-psychosis",
     "code-overload",
     "code-overload",
@@ -264,7 +272,9 @@
     "beyond-vibe-coding-osmani",
     "new-sdlc-vibe-coding",
     "practical-guide-ai-native-engineer",
-    "practical-guide-ai-native-engineer"
+    "practical-guide-ai-native-engineer",
+    "the-effective-software-engineer-osmani",
+    "the-effective-software-engineer-osmani"
   ],
   "fail-fast": [
     "agent-loop",
@@ -355,6 +365,7 @@
   ],
   "tdd-methodology": [
     "agentic-development-life-cycle",
+    "developer-productivity",
     "fail-fast",
     "flow-zone-critique",
     "functional-testing",
@@ -457,6 +468,40 @@
     "ai-engineering-chip-huyen",
     "ai-engineering-chip-huyen"
   ],
+  "sources/the-effective-software-engineer-osmani": [
+    "ai-native-engineering",
+    "brag-document",
+    "brag-document",
+    "developer-productivity",
+    "developer-productivity",
+    "drucker-spectrum",
+    "drucker-spectrum",
+    "managing-up",
+    "managing-up",
+    "output-vs-outcome",
+    "output-vs-outcome",
+    "staff-engineering",
+    "staff-engineering",
+    "t-shaped-skills",
+    "technical-credibility",
+    "technical-credibility",
+    "technical-leadership",
+    "vibe-coding"
+  ],
+  "shift-left-security": [
+    "ai-native-engineering",
+    "ai-native-engineering",
+    "architecture-fitness-functions",
+    "data-security",
+    "kubernetes-security",
+    "secure-system-design",
+    "secure-system-design",
+    "building-secure-and-reliable-systems",
+    "clean-code-principles-patterns-silen",
+    "financial-data-engineering-khraisha",
+    "the-effective-software-engineer-osmani",
+    "the-effective-software-engineer-osmani"
+  ],
   "sources/beyond-vibe-coding-osmani": [
     "ai-native-engineering",
     "vibe-coding"
@@ -465,6 +510,13 @@
     "ai-native-engineering",
     "ai-engineering-chip-huyen",
     "ai-engineering-chip-huyen"
+  ],
+  "the-effective-software-engineer-osmani": [
+    "ai-native-engineering",
+    "code-quality-pillars",
+    "t-shaped-skills",
+    "technical-leadership",
+    "vibe-coding"
   ],
   "sources/meta-destroying-engineering-org-orosz": [
     "ai-psychosis"
@@ -477,6 +529,7 @@
   ],
   "staff-engineering": [
     "ai-psychosis",
+    "brag-document",
     "case-interview",
     "engineering-management",
     "managing-up",
@@ -487,6 +540,7 @@
     "senior-to-staff-engineer",
     "the-coding-career-handbook-wang",
     "the-coding-career-handbook-wang",
+    "the-effective-software-engineer-osmani",
     "the-software-engineers-guidebook-orosz",
     "the-software-engineers-guidebook-orosz"
   ],
@@ -1461,16 +1515,6 @@
     "architecture-in-agile",
     "risk-driven-architecture"
   ],
-  "shift-left-security": [
-    "architecture-fitness-functions",
-    "data-security",
-    "kubernetes-security",
-    "secure-system-design",
-    "secure-system-design",
-    "building-secure-and-reliable-systems",
-    "clean-code-principles-patterns-silen",
-    "financial-data-engineering-khraisha"
-  ],
   "software-quality-dimensions": [
     "architecture-hoisting",
     "code-quality-pillars",
@@ -1665,9 +1709,12 @@
     "saying-no",
     "staff-engineering",
     "staff-plus-archetypes",
+    "technical-credibility",
+    "technical-credibility",
     "engineering-management-drasner",
     "help-your-boss-help-you-kousen",
     "start-with-why-sinek",
+    "the-effective-software-engineer-osmani",
     "the-making-of-a-manager-zhuo",
     "the-making-of-a-manager-zhuo",
     "the-software-engineers-guidebook-orosz",
@@ -1763,6 +1810,70 @@
     "system-design-interview",
     "system-design-big-archive",
     "system-design-interview-xu"
+  ],
+  "output-vs-outcome": [
+    "brag-document",
+    "brag-document",
+    "developer-productivity",
+    "developer-productivity",
+    "developer-productivity",
+    "drucker-spectrum",
+    "drucker-spectrum",
+    "engineering-management",
+    "golden-circle",
+    "golden-circle",
+    "high-output-management",
+    "high-output-management",
+    "multiplier-leadership",
+    "psychological-safety",
+    "psychological-safety",
+    "technical-credibility",
+    "technical-debt-management",
+    "technical-debt-management",
+    "technical-leadership",
+    "14-habits-of-highly-productive-developers-rocha",
+    "14-habits-of-highly-productive-developers-rocha",
+    "leading-effective-engineering-teams-osmani",
+    "leading-effective-engineering-teams-osmani",
+    "the-effective-engineer-lau",
+    "the-effective-engineer-lau",
+    "the-effective-software-engineer-osmani"
+  ],
+  "managing-up": [
+    "brag-document",
+    "engineering-management",
+    "learn-in-public",
+    "technical-credibility",
+    "technical-credibility",
+    "technical-leadership",
+    "help-your-boss-help-you-kousen",
+    "the-coding-career-handbook-wang",
+    "the-effective-software-engineer-osmani",
+    "the-effective-software-engineer-osmani"
+  ],
+  "technical-credibility": [
+    "brag-document",
+    "managing-up",
+    "managing-up",
+    "staff-engineering",
+    "technical-leadership",
+    "technical-leadership"
+  ],
+  "multiplier-leadership": [
+    "brag-document",
+    "coaching",
+    "coaching",
+    "developer-productivity",
+    "engineering-management",
+    "high-output-management",
+    "psychological-safety",
+    "scaling-people",
+    "technical-credibility",
+    "technical-leadership",
+    "leading-effective-engineering-teams-osmani",
+    "leading-effective-engineering-teams-osmani",
+    "the-effective-engineer-lau",
+    "the-effective-engineer-lau"
   ],
   "sources/bft-data-engineering-handbook": [
     "byzantine-fault-tolerance"
@@ -1935,21 +2046,8 @@
     "output-vs-outcome",
     "psychological-safety",
     "psychological-safety",
-    "technical-debt-management"
-  ],
-  "multiplier-leadership": [
-    "coaching",
-    "coaching",
-    "developer-productivity",
-    "engineering-management",
-    "high-output-management",
-    "psychological-safety",
-    "scaling-people",
-    "technical-leadership",
-    "leading-effective-engineering-teams-osmani",
-    "leading-effective-engineering-teams-osmani",
-    "the-effective-engineer-lau",
-    "the-effective-engineer-lau"
+    "technical-debt-management",
+    "the-effective-software-engineer-osmani"
   ],
   "mentoring": [
     "coaching",
@@ -1960,6 +2058,7 @@
     "psychological-safety",
     "scaling-people",
     "software-professionalism",
+    "technical-credibility",
     "14-habits-of-highly-productive-developers-rocha",
     "14-habits-of-highly-productive-developers-rocha",
     "clean-code-martin",
@@ -1968,6 +2067,7 @@
     "the-coaching-habit-stanier",
     "the-coaching-habit-stanier",
     "the-effective-engineer-lau",
+    "the-effective-software-engineer-osmani",
     "the-making-of-a-manager-zhuo",
     "the-making-of-a-manager-zhuo",
     "the-software-engineers-guidebook-orosz"
@@ -2013,6 +2113,7 @@
     "multiplier-leadership",
     "output-vs-outcome",
     "scaling-people",
+    "technical-credibility",
     "leading-effective-engineering-teams-osmani",
     "leading-effective-engineering-teams-osmani"
   ],
@@ -2039,6 +2140,7 @@
     "code-readability",
     "complexity-metrics",
     "dataops",
+    "developer-productivity",
     "essential-accidental-complexity",
     "fail-fast",
     "flow-zone-critique",
@@ -2065,7 +2167,8 @@
     "code-complete",
     "data-pipelines-pocket-reference-densmore",
     "data-pipelines-pocket-reference-densmore",
-    "good-code-bad-code"
+    "good-code-bad-code",
+    "the-effective-software-engineer-osmani"
   ],
   "sources/refactoring-at-scale-lemaire": [
     "code-archaeology",
@@ -2168,6 +2271,20 @@
     "code-complete",
     "code-complete"
   ],
+  "developer-productivity": [
+    "code-quality-pillars",
+    "code-readability",
+    "code-readability",
+    "drucker-spectrum",
+    "learn-in-public",
+    "14-habits-of-highly-productive-developers-rocha",
+    "14-habits-of-highly-productive-developers-rocha",
+    "the-coding-career-handbook-wang",
+    "the-effective-engineer-lau",
+    "the-effective-engineer-lau",
+    "the-effective-software-engineer-osmani",
+    "the-software-engineers-guidebook-orosz"
+  ],
   "sources/the-coding-career-handbook-wang": [
     "code-readability",
     "developer-productivity",
@@ -2188,23 +2305,14 @@
     "code-readability",
     "developer-productivity"
   ],
-  "developer-productivity": [
-    "code-readability",
-    "code-readability",
-    "learn-in-public",
-    "14-habits-of-highly-productive-developers-rocha",
-    "14-habits-of-highly-productive-developers-rocha",
-    "the-coding-career-handbook-wang",
-    "the-effective-engineer-lau",
-    "the-effective-engineer-lau",
-    "the-software-engineers-guidebook-orosz"
-  ],
   "technical-debt-management": [
     "code-readability",
     "continuous-delivery",
+    "drucker-spectrum",
     "engineering-management",
     "output-vs-outcome",
     "output-vs-outcome",
+    "t-shaped-skills",
     "an-elegant-puzzle",
     "an-elegant-puzzle",
     "leading-effective-engineering-teams-osmani",
@@ -2749,30 +2857,9 @@
     "building-secure-and-reliable-systems",
     "building-secure-and-reliable-systems"
   ],
-  "output-vs-outcome": [
-    "developer-productivity",
-    "developer-productivity",
-    "developer-productivity",
-    "engineering-management",
-    "golden-circle",
-    "golden-circle",
-    "high-output-management",
-    "high-output-management",
-    "multiplier-leadership",
-    "psychological-safety",
-    "psychological-safety",
-    "technical-debt-management",
-    "technical-debt-management",
-    "technical-leadership",
-    "14-habits-of-highly-productive-developers-rocha",
-    "14-habits-of-highly-productive-developers-rocha",
-    "leading-effective-engineering-teams-osmani",
-    "leading-effective-engineering-teams-osmani",
-    "the-effective-engineer-lau",
-    "the-effective-engineer-lau"
-  ],
   "golden-circle": [
     "developer-productivity",
+    "drucker-spectrum",
     "engineering-management",
     "engineering-management",
     "high-output-management",
@@ -2804,6 +2891,10 @@
     "t-shaped-skills",
     "testing-effect",
     "14-habits-of-highly-productive-developers-rocha"
+  ],
+  "drucker-spectrum": [
+    "developer-productivity",
+    "output-vs-outcome"
   ],
   "sources/the-effective-engineer-lau": [
     "developer-productivity"
@@ -2872,6 +2963,22 @@
   "sources/learning-domain-driven-design": [
     "domain-driven-design"
   ],
+  "brag-document": [
+    "drucker-spectrum",
+    "managing-up",
+    "managing-up",
+    "output-vs-outcome",
+    "staff-engineering",
+    "staff-engineering",
+    "technical-credibility",
+    "technical-leadership"
+  ],
+  "metric-fixation": [
+    "drucker-spectrum",
+    "goodharts-law",
+    "goodharts-law",
+    "output-vs-outcome"
+  ],
   "sources/duckdb-up-and-running": [
     "duckdb",
     "in-process-olap",
@@ -2912,12 +3019,6 @@
     "engineering-management-drasner",
     "help-your-boss-help-you-kousen",
     "help-your-boss-help-you-kousen"
-  ],
-  "managing-up": [
-    "engineering-management",
-    "learn-in-public",
-    "help-your-boss-help-you-kousen",
-    "the-coding-career-handbook-wang"
   ],
   "sources/an-elegant-puzzle": [
     "engineering-management",
@@ -3130,11 +3231,6 @@
   "sources/start-with-why-sinek": [
     "golden-circle",
     "golden-circle"
-  ],
-  "metric-fixation": [
-    "goodharts-law",
-    "goodharts-law",
-    "output-vs-outcome"
   ],
   "sources/tyranny-of-metrics": [
     "goodharts-law",

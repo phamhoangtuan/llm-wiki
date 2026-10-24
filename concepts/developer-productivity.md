@@ -3,8 +3,8 @@ title: "Developer Productivity"
 type: concept
 tags: [productivity, career, habits, software-engineering, effectiveness]
 created: 2026-10-11
-updated: 2026-10-11
-sources: [14-habits-of-highly-productive-developers-rocha, the-effective-engineer-lau, the-coding-career-handbook-wang]
+updated: 2026-10-24
+sources: [14-habits-of-highly-productive-developers-rocha, the-effective-engineer-lau, the-coding-career-handbook-wang, the-effective-software-engineer-osmani]
 aliases: [engineering productivity, effective engineering, productive developer]
 ---
 
@@ -39,6 +39,18 @@ aliases: [engineering productivity, effective engineering, productive developer]
 
 Productivity ≠ velocity on the wrong things. The [[output-vs-outcome]] distinction applies: raw output (LOC, story points) can be high while effectiveness (user adoption, business value) is zero. Developer productivity is deliberately aimed at outcomes — see [[output-vs-outcome]] and [[golden-circle]] for the Why-first alignment.
 
+## The Craft Layer (Osmani)
+
+Osmani's *The Effective Software Engineer* (source: [[sources/the-effective-software-engineer-osmani]]) adds the daily-practice layer that makes productivity durable:
+
+- **Foundational craft as leverage** — clean code is a **force multiplier**: clarity and intent (self-explanatory names; comments explain *why*), simplicity (KISS/YAGNI, no premature generalization), and design foundations (SOLID, high cohesion, loose coupling)
+- **Testing as compounding investment** — not extra work; when fixing a bug, **write a failing test first** so it can never return (see [[tdd-methodology]])
+- **Scientific debugging** — gather evidence, formulate testable hypotheses, test and isolate, document findings; never guess
+- **Git commits as a story** — clean, atomic commits with descriptive messages make `git blame` and `git bisect` powerful diagnostics
+- **Pragmatic AI leverage** — AI speeds tasks up to ~55%, but ~45% of AI-generated code carries OWASP vulnerabilities; treat its output as a keen junior's code and **always verify** (see [[ai-native-engineering]])
+
+The through-line: productivity compounds when craft makes each unit of work cheaper to read, test, and change.
+
 ---
 
 - Core to [[high-output-management]] — IC-level leverage mirrors Grove's organizational leverage
@@ -48,6 +60,10 @@ Productivity ≠ velocity on the wrong things. The [[output-vs-outcome]] distinc
 - Related to [[output-vs-outcome]] — productivity aimed at outcomes, not raw output
 - Related to [[ultralearning]] — compounding skill acquisition over a career
 - Related to [[continuous-delivery]] — atomic iterations, simplify, automate
+- Extends [[code-quality-pillars]] — clarity, simplicity, SOLID, cohesion/coupling as leverage
+- Related to [[drucker-spectrum]] — effectiveness (right things) before efficiency (right way)
+- Related to [[ai-native-engineering]] — AI as leverage with verification guardrails
 - Benchmark source: [[sources/14-habits-of-highly-productive-developers-rocha]] — Rocha's habit framework
 - Benchmark source: [[sources/the-effective-engineer-lau]] — Lau's leverage framework
 - Benchmark source: [[sources/the-coding-career-handbook-wang]] — Swyx's career-craft habits
+- Benchmark source: [[sources/the-effective-software-engineer-osmani]] — Osmani's craft, debugging, and AI workflow

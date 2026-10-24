@@ -3,8 +3,8 @@ title: "Staff Engineering"
 type: concept
 tags: [career, engineering-leadership, growth, senior-to-staff]
 created: 2026-06-08
-updated: 2026-10-11
-sources: [senior-to-staff-engineer, staff-engineers-path, staff-engineer-larson, the-software-engineers-guidebook-orosz]
+updated: 2026-10-24
+sources: [senior-to-staff-engineer, staff-engineers-path, staff-engineer-larson, the-software-engineers-guidebook-orosz, the-effective-software-engineer-osmani]
 aliases: [staff-plus, staff-engineer-role, senior-to-staff]
 ---
 
@@ -107,6 +107,18 @@ Build frameworks where value compounds without your ongoing involvement.
 
 Orosz's *The Software Engineer's Guidebook* (source: [[sources/the-software-engineers-guidebook-orosz]]) frames the senior → tech lead → staff progression as intentional career ownership: seek challenges, prioritize learning, and align growth with a long-term vision; deliver **visible, high-impact results** aligned with business goals; and **lead through strategic alignment** — communicating trade-offs and mentoring peers so solutions drive organizational success. It complements the Staff+ pillar model with the day-to-day craft habits (coding rigor, readability, atomic iterations, proactive debt work) that build the credibility Staff+ impact rests on.
 
+## Level Expectations & Promotion Rules (Osmani)
+
+Osmani's *The Effective Software Engineer* (source: [[sources/the-effective-software-engineer-osmani]]) states the rule plainly: **promotion is not automatic with tenure — it rests on demonstrated scope and outcome impact**, and you must work at the next level before receiving it.
+
+| Level | Focus | Expected scope |
+| --- | --- | --- |
+| **Mid-Level (L4)** | Execution & delivery | Independent work on clear scope; maintainable code; thoughtful PR reviews |
+| **Senior (L5)** | Project ownership & team elevation | Ambiguous business goals → architecture; coordinate execution; mentor juniors; manage tech debt |
+| **Staff (L6+)** | Organizational strategy | Spot cross-team architectural risk; align technical strategy with business; lead multi-team initiatives without formal authority |
+
+The four implicit rules: maintain a **[[brag-document]]** (outcomes framed by business results), **build your personal brand** (known for consistent excellence — the debugging wizard, the clean-API architect, the dedicated mentor), **cultivate sponsors** (senior leaders who advocate for you in calibration), and **choose your track** (IC/Staff+ vs Engineering Management).
+
 ---
 
 - Core to [[staff-plus-archetypes]] — archetypes define the operational modes of Staff Engineering
@@ -119,3 +131,6 @@ Orosz's *The Software Engineer's Guidebook* (source: [[sources/the-software-engi
 - Benchmark source: [[sources/staff-engineers-path]] — Tanya Reilly's three-pillar framework and mental models
 - Benchmark source: [[sources/staff-engineer-larson]] — Will Larson on Staff impact as multiplying the organization
 - Benchmark source: [[sources/the-software-engineers-guidebook-orosz]] — Orosz's senior → tech lead → staff career map
+- Benchmark source: [[sources/the-effective-software-engineer-osmani]] — Osmani's L4/L5/L6 scope expectations and four promotion rules
+- Related to [[brag-document]] — documented next-level scope is the promotion case
+- Related to [[technical-credibility]] — informal influence is how Staff+ impact travels

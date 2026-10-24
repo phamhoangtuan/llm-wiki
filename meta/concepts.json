@@ -452,6 +452,19 @@
         "probabilistic"
       ]
     },
+    "brag-document": {
+      "title": "Brag Document",
+      "category": "Career & Growth",
+      "url": "concepts/brag-document.html",
+      "definition": "A **Brag Document** is a continuously maintained record of your achievements, metrics, and feedback — framed in terms of business outcomes rather than activity. Addy Osmani's *The Effective Software E",
+      "tags": [
+        "career",
+        "promotion",
+        "personal-branding",
+        "evidence",
+        "engineering-management"
+      ]
+    },
     "byzantine-fault-tolerance": {
       "title": "Byzantine Fault Tolerance (BFT)",
       "category": "System Architecture",
@@ -1266,6 +1279,19 @@
         "strategic-design",
         "modeling",
         "business-strategy"
+      ]
+    },
+    "drucker-spectrum": {
+      "title": "Drucker Spectrum",
+      "category": "Career & Growth",
+      "url": "concepts/drucker-spectrum.html",
+      "definition": "The **Drucker Spectrum** is a four-quadrant model of engineering effectiveness, derived from Peter Drucker's distinction: *\"Efficiency is doing things right; effectiveness is doing the right things.\"*",
+      "tags": [
+        "effectiveness",
+        "productivity",
+        "prioritization",
+        "product-thinking",
+        "career"
       ]
     },
     "duckdb": {
@@ -3103,6 +3129,19 @@
         "design",
         "python",
         "clean-code"
+      ]
+    },
+    "technical-credibility": {
+      "title": "Technical Credibility",
+      "category": "Career & Growth",
+      "url": "concepts/technical-credibility.html",
+      "definition": "**Technical Credibility** is the standing an engineer earns by consistently delivering reliable, high-quality work — the currency that makes influence possible *without* formal authority. Addy Osmani'",
+      "tags": [
+        "influence",
+        "leadership",
+        "collaboration",
+        "trust",
+        "technical-leadership"
       ]
     },
     "technical-debt-management": {

@@ -3,8 +3,8 @@ title: "T-Shaped Skills"
 type: concept
 tags: [career, team-structure, dataops, collaboration, professional-development]
 created: 2026-07-14
-updated: 2026-10-11
-sources: [practical-dataops, the-start-up-of-you-hoffman, the-software-engineers-guidebook-orosz]
+updated: 2026-10-24
+sources: [practical-dataops, the-start-up-of-you-hoffman, the-software-engineers-guidebook-orosz, the-effective-software-engineer-osmani]
 aliases: [generalized-specialist, t-shaped-person]
 ---
 
@@ -55,6 +55,15 @@ Building T-shaped skills means:
 
 Orosz's guidebook (source: [[sources/the-software-engineers-guidebook-orosz]]) phrases the same shape as a career rule: **master core domains deeply while experimenting with adjacent tools/frameworks** to find cross-disciplinary insight, and **expand full-stack fluency** — volunteer for cross-platform tasks, study diverse codebases, collaborate outside your expertise. The vertical bar is deliberate mastery; the horizontal bar is deliberate exploration; both are intentional, not accidental.
 
+## Depth Scales the System, Breadth Scales the Team (Osmani)
+
+Osmani's *The Effective Software Engineer* (source: [[sources/the-effective-software-engineer-osmani]]) gives the two bars distinct jobs:
+
+- **Depth scales the system** — deep expertise (database internals, distributed systems) solves complex problems far faster and sets best practices
+- **Breadth scales team velocity and codebase health** — it prevents **specialist blind spots**: a DB specialist may spend weeks tuning a SQL index for a slow page, while a T-shaped engineer recognizes that batching 50 API calls or adding a Redis cache solves it in hours
+
+Osmani also applies the shape to **technical debt**: depth lets you spot code smells and measure architectural "interest," while breadth lets you translate debt into business language — explaining to a PM that repaying debt today shortens feature lead time tomorrow (see [[technical-debt-management]]).
+
 ---
 
 - Core to [[dataops]] — T-shaped skills enable cross-functional DataOps teams
@@ -63,4 +72,5 @@ Orosz's guidebook (source: [[sources/the-software-engineers-guidebook-orosz]]) p
 - Related to [[ultralearning|Ultralearning]] — deliberate cross-domain learning builds the horizontal bar
 - Related to [[abz-planning]] — Hoffman's "specialize, don't generalize" is the vertical bar; adjacent pivots build the horizontal bar
 - Supported by [[the-software-engineers-guidebook-orosz]] — deliberate specialization plus exploration, full-stack fluency
+- Extended by [[the-effective-software-engineer-osmani]] — depth scales the system, breadth scales the team; specialist blind spots
 - Benchmark source: [[sources/practical-dataops]] — Atwal on team design

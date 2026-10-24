@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Drucker Spectrum — LLM Wiki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../styles/main.css">
+<link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+<link href="../pagefind/pagefind-ui.css" rel="stylesheet">
+</head>
+<body>
+<header class="site-header">
+  <button id="sidebar-toggle" class="icon-btn" aria-label="Toggle sidebar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <a href="../index.html" class="site-title">LLM Wiki</a>
+  <div class="header-actions">
+    <div id="search"></div>
+    <button id="theme-toggle" class="icon-btn" aria-label="Toggle theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+<div id="sidebar-overlay"></div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-content">
+    <h3>Concepts</h3>
+    <nav id="sidebar-nav"><p style="color:var(--color-ink-dim);font-size:var(--text-sm);padding:0.5rem;">Loading…</p></nav>
+    <div class="sidebar-resize-handle"></div>
+  </div>
+</aside>
+<main class="main-content">
+<div class="breadcrumb-wrapper"><nav class="breadcrumb">
+  <a href="../index.html">Home</a> <span class="sep">/</span>
+  <a href="../index.html#cat-effectiveness">Effectiveness</a> <span class="sep">/</span>
+  <span>Drucker Spectrum</span>
+</nav></div>
+<div class="page-hero">
+  <div class="page-type-badge concept">Concept</div>
+  <h1>Drucker Spectrum</h1>
+  <div class="page-meta"><span>Source: the-effective-software-engineer-osmani</span><span>Updated: 2026-10-24</span></div>
+  <div class="page-tags"><span class="tag">effectiveness</span><span class="tag">productivity</span><span class="tag">prioritization</span><span class="tag">product-thinking</span><span class="tag">career</span></div>
+</div>
+<div class="content-area concept">
+<h2 id="summary">Summary</h2>
+<p>The <strong>Drucker Spectrum</strong> is a four-quadrant model of engineering effectiveness, derived from Peter Drucker's distinction: <em>"Efficiency is doing things right; effectiveness is doing the right things."</em> Addy Osmani's <em>The Effective Software Engineer</em> uses it to locate any engineer's work on the axes of <strong>right thing</strong> (business/user value) and <strong>right way</strong> (technical quality) — and to show that the most dangerous quadrant is not failure but <em>polished waste</em> (source: <span class="wiki-link source-ref">sources/the-effective-software-engineer-osmani</span>).</p>
+<h2 id="the-four-quadrants">The Four Quadrants</h2>
+<table><thead><tr>
+<th>Quadrant</th>
+<th>Meaning</th>
+<th>Engineering Example</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>Doing the wrong things wrong</strong></td>
+<td>Failing at something pointless</td>
+<td>Broken feature nobody asked for</td>
+</tr>
+<tr>
+<td><strong>Doing the wrong things right</strong></td>
+<td>A "polished turd"</td>
+<td>Perfect microservice architecture for a feature no one requested or uses</td>
+</tr>
+<tr>
+<td><strong>Doing the right things wrong</strong></td>
+<td>Real need, poor execution</td>
+<td>Solving a genuine user problem with buggy code or weak architecture — sometimes acceptable to get fast market feedback</td>
+</tr>
+<tr>
+<td><strong>Doing the right things right</strong></td>
+<td>The sweet spot</td>
+<td>High-quality technical solutions to real business and user problems</td>
+</tr>
+</tbody></table>
+<h2 id="why-the-second-quadrant-is-the-trap">Why the Second Quadrant Is the Trap</h2>
+<p>Most engineers assume the risk is shipping broken code. The spectrum argues the costlier failure is <strong>efficiency spent on the wrong target</strong>: a beautifully engineered system that changes nothing. This is the individual-engineer expression of the <a href="output-vs-outcome.html" class="wiki-link">watermelon effect</a> — green metrics over a red result. High competence makes the wrong work <em>more</em> expensive, not less, because it is harder to question.</p>
+<h2 id="the-four-engineers">The Four Engineers</h2>
+<p>An e-commerce platform, four engineers, four quadrants in practice:</p>
+<table><thead><tr>
+<th>Engineer</th>
+<th>Work</th>
+<th>Result</th>
+</tr></thead><tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>3 weeks optimizing the recommendation algorithm by 12%</td>
+<td>Feature buried deep in the UI; nobody saw it; revenue unchanged → <strong>high output, zero outcome</strong></td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>Found checkout timeouts at peak; built a queue system in 2 days</td>
+<td>Timeout errors down 85%; revenue rose immediately</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>Noticed hundreds of password-reset support tickets; shipped social sign-in</td>
+<td>Ticket volume down 40%</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>Refactored the deployment pipeline</td>
+<td>Build time 45 min → 8 min; whole team faster</td>
+</tr>
+</tbody></table>
+<p>B, C, and D had impact because they attacked <strong>observable problems with measurable results</strong>. A chased a technical metric (12% improvement) with no line of sight to a business outcome.</p>
+<h2 id="practicing-it">Practicing It</h2>
+<ul>
+<li><strong>Ask "what changes in the world?"</strong> before optimizing — if the answer is a number nobody consumes, stop</li>
+<li><strong>Track business impact records</strong>, not vanity metrics (tickets closed, PRs merged, LOC)</li>
+<li><strong>Prefer observable problems</strong> — support ticket volume, timeout rates, build times, conversion — over internal proxies</li>
+<li><strong>Accept "right things wrong" deliberately</strong> when fast market feedback outweighs polish, then repay the quality debt</li>
+</ul>
+</div>
+<section class="connections-section">
+  <h2>Connections</h2>
+  <div class="connections-grid">
+    <a class="connection-card" href="developer-productivity.html">
+      <span class="connection-type core">Core to</span>
+      <h4>Developer Productivity</h4>
+      <p>effectiveness as the aim, efficiency as the means</p>
+    </a>
+    <a class="connection-card" href="output-vs-outcome.html">
+      <span class="connection-type extends">Extends</span>
+      <h4>Output vs Outcome</h4>
+      <p>the IC-level quadrant model behind the watermelon effect</p>
+    </a>
+    <a class="connection-card" href="brag-document.html">
+      <span class="connection-type extends">Supports</span>
+      <h4>Brag Document</h4>
+      <p>impact records are how the spectrum is evidenced</p>
+    </a>
+    <a class="connection-card" href="golden-circle.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Golden Circle</h4>
+      <p>"right thing" is the Why-anchored choice</p>
+    </a>
+    <a class="connection-card" href="metric-fixation.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Metric Fixation</h4>
+      <p>optimizing the measurable proxy instead of the goal</p>
+    </a>
+    <a class="connection-card" href="technical-debt-management.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Technical Debt Management</h4>
+      <p>the "right things wrong" quadrant is borrowed debt</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>The Effective Software Engineer: How ICs at Every Level Can Leverage AI, Prioritize High-Value Work, and Lead Beyond Their Role — Addy Osmani</h4>
+      <p>Osmani's Drucker Spectrum and four-engineers case</p>
+    </div>
+  </div>
+</section>
+<nav class="pagination"><a href="domain-driven-design.html" class="prev">← Domain-Driven Design</a><a href="duckdb.html" class="next">DuckDB →</a></nav>
+</main>
+<aside class="right-sidebar" id="right-sidebar">
+  <div class="toc-container">
+    <h3>On This Page</h3>
+    <nav id="toc"></nav>
+  </div>
+</aside>
+</div>
+<footer class="page-footer">
+  <div class="page-footer-inner">
+    <span><a href="../index.html">LLM Wiki</a> · A living knowledge base</span>
+    <span><a href="https://github.com/phamhoangtuan/llm-wiki">GitHub</a></span>
+  </div>
+</footer>
+<button id="focus-toggle" class="icon-btn" title="Focus mode" aria-label="Toggle focus mode">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+</button>
+<script src="https://unpkg.com/@popperjs/core@2"></script>
+<script src="https://unpkg.com/tippy.js@6"></script>
+<script src="../pagefind/pagefind-ui.js"></script>
+<script src="../scripts/js/theme.js"></script>
+<script src="../scripts/js/sidebar.js"></script>
+<script src="../scripts/js/focus.js"></script>
+<script src="../scripts/js/toc.js"></script>
+<script src="../scripts/js/popovers.js"></script>
+<script>window.addEventListener('DOMContentLoaded',function(){if(window.PagefindUI)new PagefindUI({element:'#search',showImages:false});});</script>
+</body>
+</html>

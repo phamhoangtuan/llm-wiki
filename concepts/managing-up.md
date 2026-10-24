@@ -3,8 +3,8 @@ title: "Managing Up"
 type: concept
 tags: [career, managing-up, communication, trust, engineering-management]
 created: 2026-10-11
-updated: 2026-10-11
-sources: [help-your-boss-help-you-kousen]
+updated: 2026-10-24
+sources: [help-your-boss-help-you-kousen, the-effective-software-engineer-osmani]
 aliases: [managing upward, upward management, boss relationship]
 ---
 
@@ -34,6 +34,10 @@ aliases: [managing upward, upward management, boss relationship]
 
 Managing up is not flattery. The distinction: sycophants tell the boss what they want to hear; managing up means *advising with options*, *pushing back tactfully on harmful decisions*, and *owning mistakes* — advocacy anchored in honesty and results.
 
+## Managing Up as a Lever of Influence (Osmani)
+
+Osmani places managing up inside the **informal influence** toolkit (source: [[sources/the-effective-software-engineer-osmani]]): **proactively report status, raise risks early *with mitigation plans*, and make your boss's job easier**. This is influence-building rather than relationship maintenance — the same behavior that earns [[technical-credibility|technical credibility]] inside your team earns it upward. It also pairs with the [[brag-document]]: a shared, outcome-framed impact record lets your manager advocate for you in calibration meetings without having to reconstruct your quarter.
+
 ---
 
 - Core to [[engineering-management]] — the employee half of the manager relationship
@@ -43,4 +47,7 @@ Managing up is not flattery. The distinction: sycophants tell the boss what they
 - Related to [[feedback]] — asking for help and follow-through as feedback loops
 - Related to [[technical-leadership]] — advocacy and influence-building without authority
 - Related to [[staff-engineering]] — ownership and reliability precede title
+- Related to [[technical-credibility]] — managing up is one of four levers of informal influence
+- Related to [[brag-document]] — a shared impact record makes advocacy easy
 - Benchmark source: [[sources/help-your-boss-help-you-kousen]] — Kousen's 9-point framework
+- Benchmark source: [[sources/the-effective-software-engineer-osmani]] — Osmani's influence toolkit

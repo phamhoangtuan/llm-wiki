@@ -3,8 +3,8 @@ title: "AI-Native Engineering"
 type: concept
 tags: [ai-engineering, software-engineering, agents, methodology]
 created: 2026-06-15
-updated: 2026-08-24
-sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding, beyond-vibe-coding-osmani]
+updated: 2026-10-24
+sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding, beyond-vibe-coding-osmani, the-effective-software-engineer-osmani]
 aliases: [ai-native, ai-orchestrated-development]
 ---
 
@@ -105,6 +105,21 @@ The security landscape is alarming: roughly one new insecure AI integration per 
 2. **Integration** (month): Structured prompting frameworks, context files, small verification loops
 3. **Mastery** (ongoing): Multi-agent workflows, 80%+ AI-generated code with <20% rewrite rate
 
+## Division of Responsibility (Osmani)
+
+Osmani's *The Effective Software Engineer* (source: [[sources/the-effective-software-engineer-osmani]]) gives the pragmatic split — AI tools complete tasks up to **55% faster**, but roughly **45% of AI-generated code carries OWASP vulnerabilities** (SQL injection, XSS):
+
+| AI excels at | Humans must own |
+| --- | --- |
+| Boilerplate, initial unit test drafts | System architecture |
+| Summarizing complex diffs | Non-functional requirements |
+| Turning PRDs into Jira backlogs | Security assumptions |
+| Repetitive refactoring | Critical state logic, final accountability |
+
+> Golden rule: treat AI output as code from an enthusiastic but inexperienced **junior developer** — always test and verify.
+
+His **AI-enhanced daily workflow**: (1) prompt AI to draft an ADR with trade-offs of several design options; (2) generate epics/stories/acceptance criteria from the PRD; (3) **tests-first** — generate tests from acceptance criteria, watch them fail, then generate scaffolding to pass; (4) **context sandwich prompting** — Goal → relevant Code Context → strict Constraints & Security Rules → specific Output requirements; (5) use AI for review checklists, release notes, and runbooks. Guardrails: no [[vibe-coding|vibe coding]], strict SAST/SCA scanning (see [[shift-left-security]]), and for autonomous refactoring agents — **sandboxed permissions, test-passing constraints, mandatory human review** before merge.
+
 ---
 
 - Contrasts with [[vibe-coding]] — AI-native engineering requires coding expertise; vibe coding does not
@@ -119,3 +134,5 @@ The security landscape is alarming: roughly one new insecure AI integration per 
 - Benchmark source: [[sources/new-sdlc-vibe-coding]] — Conductor vs Orchestrator modes, 4 orchestrator skills
 - Benchmark source: [[sources/beyond-vibe-coding-osmani]] — Osmani's 5 disciplines: engineering mindset, programming with intent, QA, security/ethics, role evolution
 - Related to [[ai-engineering]] — AI engineering is the broader field; AI-native engineering is its agent-orchestration paradigm
+- Extended by [[the-effective-software-engineer-osmani]] — AI/human division of responsibility, context sandwich prompting, security guardrails
+- Related to [[shift-left-security]] — SAST/SCA scanning and mandatory human review for AI-generated code

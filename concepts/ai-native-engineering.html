@@ -42,7 +42,7 @@
 <div class="page-hero">
   <div class="page-type-badge concept">Concept</div>
   <h1>AI-Native Engineering</h1>
-  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, new-sdlc-vibe-coding, beyond-vibe-coding-osmani</span><span>Updated: 2026-08-24</span></div>
+  <div class="page-meta"><span>Source: practical-guide-ai-native-engineer, new-sdlc-vibe-coding, beyond-vibe-coding-osmani, the-effective-software-engineer-osmani</span><span>Updated: 2026-10-24</span></div>
   <div class="page-tags"><span class="tag">ai-engineering</span><span class="tag">software-engineering</span><span class="tag">agents</span><span class="tag">methodology</span></div>
 </div>
 <div class="content-area concept">
@@ -162,6 +162,31 @@
 <li><strong>Integration</strong> (month): Structured prompting frameworks, context files, small verification loops</li>
 <li><strong>Mastery</strong> (ongoing): Multi-agent workflows, 80%+ AI-generated code with <20% rewrite rate</li>
 </ol>
+<h2 id="division-of-responsibility-osmani">Division of Responsibility (Osmani)</h2>
+<p>Osmani's <em>The Effective Software Engineer</em> (source: <span class="wiki-link source-ref">sources/the-effective-software-engineer-osmani</span>) gives the pragmatic split — AI tools complete tasks up to <strong>55% faster</strong>, but roughly <strong>45% of AI-generated code carries OWASP vulnerabilities</strong> (SQL injection, XSS):</p>
+<table><thead><tr>
+<th>AI excels at</th>
+<th>Humans must own</th>
+</tr></thead><tbody>
+<tr>
+<td>Boilerplate, initial unit test drafts</td>
+<td>System architecture</td>
+</tr>
+<tr>
+<td>Summarizing complex diffs</td>
+<td>Non-functional requirements</td>
+</tr>
+<tr>
+<td>Turning PRDs into Jira backlogs</td>
+<td>Security assumptions</td>
+</tr>
+<tr>
+<td>Repetitive refactoring</td>
+<td>Critical state logic, final accountability</td>
+</tr>
+</tbody></table>
+<blockquote>Golden rule: treat AI output as code from an enthusiastic but inexperienced <strong>junior developer</strong> — always test and verify.</blockquote>
+<p>His <strong>AI-enhanced daily workflow</strong>: (1) prompt AI to draft an ADR with trade-offs of several design options; (2) generate epics/stories/acceptance criteria from the PRD; (3) <strong>tests-first</strong> — generate tests from acceptance criteria, watch them fail, then generate scaffolding to pass; (4) <strong>context sandwich prompting</strong> — Goal → relevant Code Context → strict Constraints & Security Rules → specific Output requirements; (5) use AI for review checklists, release notes, and runbooks. Guardrails: no <a href="vibe-coding.html" class="wiki-link">vibe coding</a>, strict SAST/SCA scanning (see <a href="shift-left-security.html" class="wiki-link">shift-left-security</a>), and for autonomous refactoring agents — <strong>sandboxed permissions, test-passing constraints, mandatory human review</strong> before merge.</p>
 </div>
 <section class="connections-section">
   <h2>Connections</h2>
@@ -225,6 +250,16 @@
       <span class="connection-type related">Related to</span>
       <h4>AI Engineering</h4>
       <p>AI engineering is the broader field; AI-native engineering is its agent-orchestration paradigm</p>
+    </a>
+    <div class="connection-card text-ref">
+      <span class="connection-type related">Related</span>
+      <h4>The Effective Software Engineer: How ICs at Every Level Can Leverage AI, Prioritize High-Value Work, and Lead Beyond Their Role — Addy Osmani</h4>
+      <p>AI/human division of responsibility, context sandwich prompting, security guardrails</p>
+    </div>
+    <a class="connection-card" href="shift-left-security.html">
+      <span class="connection-type related">Related to</span>
+      <h4>Shift Left Security</h4>
+      <p>SAST/SCA scanning and mandatory human review for AI-generated code</p>
     </a>
   </div>
 </section>

@@ -3,8 +3,8 @@ title: "Vibe Coding"
 type: concept
 tags: [ai-engineering, coding, methodology, terminology]
 created: 2026-06-15
-updated: 2026-08-24
-sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding, graph-engineering-karpathy, beyond-vibe-coding-osmani]
+updated: 2026-10-24
+sources: [practical-guide-ai-native-engineer, new-sdlc-vibe-coding, graph-engineering-karpathy, beyond-vibe-coding-osmani, the-effective-software-engineer-osmani]
 aliases: [vibe-coding]
 ---
 
@@ -80,6 +80,10 @@ Vibe coding is stage one of a three-stage progression described in [[graph-engin
 
 Each stage addresses a limitation of the previous: vibe coding lacks verification → agentic engineering adds it → graph engineering externalizes state from context windows into persistent structures.
 
+## The Security Cost (Osmani)
+
+Osmani's *The Effective Software Engineer* (source: [[sources/the-effective-software-engineer-osmani]]) quantifies the risk in production terms: AI tools speed up task completion by up to **55%**, but roughly **45% of AI-generated code contains OWASP vulnerabilities** (SQL injection, XSS). His guardrails for professional use: treat AI output as an inexperienced junior's code and **always test and verify**; run strict **SAST/SCA scanning**; and when autonomous agents perform large refactors, require **sandboxed permissions, test-passing constraints, and mandatory human review** before merge. This is the security dimension of the "higher the stakes, the tighter the harness" rule.
+
 ---
 
 - Contrasts with [[ai-native-engineering]] — AI-native engineering is the professional discipline; vibe coding is the democratized subset
@@ -93,3 +97,4 @@ Each stage addresses a limitation of the previous: vibe coding lacks verificatio
 - Stage one of [[graph-engineering]] — Karpathy's three-stage progression (vibe → agentic → graph)
 - Source: [[sources/graph-engineering-karpathy]] — the three-stage framing
 - Source: [[sources/beyond-vibe-coding-osmani]] — Osmani's 5-discipline framework for professional AI-assisted coding; the 70% problem (AI handles majority, final 30% demands human expertise)
+- Extended by [[the-effective-software-engineer-osmani]] — 45% OWASP vulnerability rate; SAST/SCA and mandatory human review guardrails
